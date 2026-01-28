@@ -466,10 +466,11 @@ def get_llm(model_path: Optional[str] = None, **kwargs) -> LlamaCpp:
     # Memory checks removed per user request - load models regardless of available RAM
 
     # Load model path from config if not provided
+    cfg = get_config()
     if model_path is None:
         model_path = os.getenv(
             "LLM_MODEL_PATH",
-            CONFIG["models"]["llm_path"]
+            cfg["models"]["llm_path"]
         )
     
     # Verify model exists
@@ -489,9 +490,9 @@ def get_llm(model_path: Optional[str] = None, **kwargs) -> LlamaCpp:
     # Build parameters with environment variable overrides
     llm_params = {
         'model_path': model_path,
-        'n_ctx': int(os.getenv('LLAMA_CPP_N_CTX', CONFIG['models']['llm_context_window'])),
+        'n_ctx': int(os.getenv('LLAMA_CPP_N_CTX', cfg['models']['llm_context_window'])),
         'n_batch': int(os.getenv('LLAMA_CPP_N_BATCH', 512)),
-        'n_threads': int(os.getenv('LLAMA_CPP_N_THREADS', CONFIG['performance']['cpu_threads'])),
+        'n_threads': int(os.getenv('LLAMA_CPP_N_THREADS', cfg['performance']['cpu_threads'])),
         'n_gpu_layers': 0,  # Default
         'f16_kv': os.getenv('LLAMA_CPP_F16_KV', 'true').lower() == 'true',
         'use_mlock': os.getenv('LLAMA_CPP_USE_MLOCK', 'true').lower() == 'true',
@@ -500,7 +501,7 @@ def get_llm(model_path: Optional[str] = None, **kwargs) -> LlamaCpp:
         'max_tokens': int(os.getenv('LLM_MAX_TOKENS', 512)),
         'temperature': float(os.getenv('LLM_TEMPERATURE', 0.7)),
         'top_p': float(os.getenv('LLM_TOP_P', 0.95)),
-        'top_k': int(os.getenv('LLM_TOP_K', 40)),
+        'top_k': int(os.getenv('LLAMA_CPP_TOP_K', 40)) if os.getenv('LLAMA_CPP_TOP_K') else int(os.getenv('LLM_TOP_K', 40)),
         'repeat_penalty': float(os.getenv('LLM_REPEAT_PENALTY', 1.1)),
     }
 
@@ -545,10 +546,17 @@ def get_llm(model_path: Optional[str] = None, **kwargs) -> LlamaCpp:
     )
     
     try:
+        # Import LlamaCpp lazily to avoid heavy import at module load
+        try:
+            from langchain_community.llms import LlamaCpp
+        except Exception as e:
+            logger.error(f"LLM backend not available: {e}")
+            raise
+
         llm = LlamaCpp(**filtered_params)
         logger.info("LLM initialized successfully")
         return llm
-        
+
     except Exception as e:
         logger.error(f"LLM initialization failed: {e}", exc_info=True)
         raise RuntimeError(
@@ -599,10 +607,11 @@ def get_embeddings(model_path: Optional[str] = None, **kwargs) -> LlamaCppEmbedd
     Returns:
         Initialized LlamaCppEmbeddings instance
     """
+    cfg = get_config()
     if model_path is None:
         model_path = os.getenv(
             "EMBEDDING_MODEL_PATH",
-            CONFIG["models"]["embedding_path"]
+            cfg["models"]["embedding_path"]
         )
     
     # Verify model exists
@@ -625,9 +634,12 @@ def get_embeddings(model_path: Optional[str] = None, **kwargs) -> LlamaCppEmbedd
     embed_params.update(kwargs)
     
     try:
+        # Lazy import embeddings implementation
+        from XNAi_rag_app.core.embeddings_shim import LlamaCppEmbeddings
+
         embeddings = LlamaCppEmbeddings(**embed_params)
         logger.info(
-            f"Embeddings initialized: {CONFIG['models']['embedding_dimensions']} dimensions, "
+            f"Embeddings initialized: {cfg['models']['embedding_dimensions']} dimensions, "
             f"n_threads={embed_params['n_threads']}"
         )
         return embeddings
@@ -689,16 +701,17 @@ def get_vectorstore(
             logger.error(f"Failed to initialize embeddings for vectorstore: {e}")
             return None
     
+    cfg = get_config()
     if index_path is None:
         index_path = os.getenv(
             "FAISS_INDEX_PATH",
-            CONFIG["vectorstore"]["index_path"]
+            cfg["vectorstore"]["index_path"]
         )
-    
+
     if backup_path is None:
         backup_path = os.getenv(
             "FAISS_BACKUP_PATH",
-            CONFIG["vectorstore"]["backup_path"]
+            cfg["vectorstore"]["backup_path"]
         )
     
     index_dir = Path(index_path)
@@ -744,6 +757,13 @@ def get_vectorstore(
                 if not verify_faiss_integrity(index_dir):
                     raise RuntimeError("FAISS integrity verification failed - aborting dangerous deserialization")
 
+            # Import FAISS shim lazily to avoid binary imports at module load
+            try:
+                from XNAi_rag_app.core.vectorstore_shim import FAISS
+            except Exception as e:
+                logger.error(f"FAISS backend not available: {e}")
+                raise
+
             vectorstore = FAISS.load_local(
                 index_path,
                 embeddings,
@@ -751,7 +771,7 @@ def get_vectorstore(
             )
             
             # Validate if enabled
-            if CONFIG["backup"]["faiss"].get("verify_on_load", True):
+            if cfg["backup"]["faiss"].get("verify_on_load", True):
                 try:
                     test_result = vectorstore.similarity_search("test", k=1)
                     vector_count = vectorstore.index.ntotal
@@ -781,7 +801,7 @@ def get_vectorstore(
             reverse=True
         )
         
-        max_backups_to_try = CONFIG["backup"]["faiss"].get("max_count", 5)
+        max_backups_to_try = cfg["backup"]["faiss"].get("max_count", 5)
         
         for backup in backup_dirs[:max_backups_to_try]:
             backup_index = backup / "index.faiss"
@@ -792,6 +812,13 @@ def get_vectorstore(
             logger.info(f"Trying backup: {backup}")
             
             try:
+                # Import FAISS lazily for backups as well
+                try:
+                    from XNAi_rag_app.core.vectorstore_shim import FAISS
+                except Exception as e:
+                    logger.error(f"FAISS backend not available for backup load: {e}")
+                    continue
+
                 vectorstore = FAISS.load_local(
                     str(backup),
                     embeddings,
@@ -983,7 +1010,8 @@ def check_dependencies_ready() -> Dict[str, bool]:
     
     # Vectorstore (check file existence)
     try:
-        index_path = Path(CONFIG["vectorstore"]["index_path"])
+        cfg = get_config()
+        index_path = Path(cfg["vectorstore"]["index_path"])
         status["vectorstore"] = (index_path / "index.faiss").exists()
     except Exception as e:
         logger.error(f"Vectorstore check failed: {e}")
@@ -1025,8 +1053,12 @@ def get_awq_quantizer(config: Optional[Dict[str, Any]] = None) -> Optional[CPUAW
     """
     global _awq_quantizer
 
-    if not AWQ_AVAILABLE:
-        logger.warning("AWQ quantization not available - ONNX Runtime missing")
+    # Attempt to import AWQ runtime lazily
+    try:
+        from XNAi_rag_app.core.awq_quantizer import CPUAWQQuantizer, QuantizationConfig
+        from XNAi_rag_app.core.dynamic_precision import DynamicPrecisionManager
+    except Exception as e:
+        logger.warning(f"AWQ quantization not available: {e}")
         return None
 
     if _awq_quantizer is None:
