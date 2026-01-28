@@ -1,0 +1,59 @@
+# syntax=docker/dockerfile:1
+# ============================================================================ 
+# Xoe-NovAi MkDocs Documentation Container
+
+# ============================================================================ 
+# Purpose: Enterprise-grade documentation platform with Diátaxis framework
+# Based on: Research findings from MkDocs Material optimization study
+# Features: Performance optimization, AI research integration, enterprise security
+# ============================================================================ 
+
+FROM xnai-base:latest
+
+# Build arguments for cache optimization
+ARG BUILDKIT_INLINE_CACHE=1
+ARG BUILD_DATE
+ARG VCS_REF
+
+# Labels for container metadata
+LABEL org.opencontainers.image.title="Xoe-NovAi Documentation"
+LABEL org.opencontainers.image.description="Enterprise MkDocs documentation platform with Diátaxis framework"
+LABEL org.opencontainers.image.vendor="Xoe-NovAi"
+LABEL org.opencontainers.image.version="v0.1.7"
+LABEL org.opencontainers.image.created="${BUILD_DATE}"
+LABEL org.opencontainers.image.revision="${VCS_REF}"
+
+# Install Python dependencies with BuildKit optimization
+# FIX: Standardize to uid=0 for root-level uv pip installs
+RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+    --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
+    uv pip install --system --upgrade pip setuptools wheel
+
+# Install MkDocs ecosystem with research-validated versions
+RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+    --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
+    uv pip install --system \
+    mkdocs==1.6.1 \
+    mkdocs-material==9.7.0 \
+    mkdocs-section-index==0.3.9 \
+    mkdocs-minify-plugin==0.8.0 \
+    mkdocs-git-revision-date-localized-plugin==1.2.5 \
+    mkdocs-glightbox==0.4.0 \
+    pymdown-extensions \
+    python-frontmatter
+
+# Create workspace directory with correct permissions
+RUN mkdir -p /workspace && chown -R appuser:appuser /workspace
+
+# Set working directory
+WORKDIR /workspace
+
+# Switch to non-root user
+USER appuser
+
+# Health check for container
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000 || exit 1
+
+# Default command (overridden in docker-compose.yml)
+CMD ["mkdocs", "serve", "--dev-addr=0.0.0.0:8000"]

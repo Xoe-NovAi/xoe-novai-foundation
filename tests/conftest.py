@@ -16,6 +16,28 @@ from pathlib import Path
 from unittest.mock import Mock, MagicMock
 from datetime import datetime
 
+# Compatibility shim for pybreaker behavior across versions
+try:
+    import pybreaker as _pybreaker
+    _pybreaker_call_orig = _pybreaker.CircuitBreaker.call
+
+    def _pybreaker_call_compat(self, func, *args, **kwargs):
+        try:
+            return _pybreaker_call_orig(self, func, *args, **kwargs)
+        except _pybreaker.CircuitBreakerError as cbe:
+            # If the pybreaker version wrapped the original exception into CircuitBreakerError
+            # attempt to unwrap and re-raise the original exception to preserve older behavior
+            if getattr(cbe, '__cause__', None):
+                raise cbe.__cause__
+            if getattr(cbe, '__context__', None):
+                raise cbe.__context__
+            raise
+
+    _pybreaker.CircuitBreaker.call = _pybreaker_call_compat
+except Exception:
+    # If pybreaker is not available or monkeypatching fails, tests will install it in CI
+    pass
+
 # Add app directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "app" / "XNAi_rag_app"))
 

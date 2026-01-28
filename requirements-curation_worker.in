@@ -1,0 +1,22 @@
+# Curation worker requirements
+# Generated from requirements-curation_worker.txt on Tue Jan 13 12:20:46 PM AST 2026
+
+annotated-types
+anyio
+certifi
+h11
+httpcore
+httpx
+idna
+json-log-formatter
+pydantic
+pydantic-core
+python-dotenv
+redis
+tenacity
+typing-extensions
+typing-inspection
+bcrypt
+pyjwt
+cryptography
+sqlite-utils

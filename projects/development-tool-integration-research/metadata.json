@@ -1,0 +1,18 @@
+{
+  "name": "development-tool-integration-research",
+  "type": "research-project",
+  "status": "active",
+  "created": "2026-01-21T18:33:07.679180",
+  "last_modified": "2026-01-21T18:33:07.679180",
+  "description": "Research and integration of advanced development tools, with priority focus on project management capabilities (Jira, Trello, GitHub integration, CI/CD automation)",
+  "path": "/home/arcana-novai/Documents/Xoe-NovAi/projects/development-tool-integration-research",
+  "template_used": "research-project",
+  "version": "1.0.0",
+  "tags": [],
+  "milestones": [],
+  "dependencies": [],
+  "evaluation_criteria": {
+    "success_metrics": [],
+    "completion_criteria": []
+  }
+}

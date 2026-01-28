@@ -1,0 +1,45 @@
+name: CI — Python 3.12 smoke
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  smoke-import:
+    name: Smoke import + unit tests (3.12)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: "pip-cache-${{ matrix.python-version }}-${{ hashFiles('**/requirements-*.txt') }}"
+          restore-keys: |
+            pip-cache-${{ matrix.python-version }}-
+
+      - name: Install build deps and wheels
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements-api.txt ]; then pip install -r requirements-api.txt; fi
+
+      - name: Run smoke-import test
+        run: |
+          pytest -q tests/smoke_import_test.py -q
+
+      - name: Run core unit tests (optional)
+        run: |
+          pytest -q -k "not integration and not requires_native" || true

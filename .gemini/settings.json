@@ -1,0 +1,36 @@
+{
+  "general": {
+    "checkpointing": {
+      "enabled": true
+    },
+    "vimMode": true,
+    "preferredEditor": "code"
+  },
+  "experimental": {
+    "plan": true,
+    "enableAgents": true,
+    "skills": true
+  },
+  "tools": {
+    "approvalMode": "default",
+    "autoAccept": false
+  },
+  "mcpServers": {
+    "filesystem": {
+      "command": "uvx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/arcana-novai/Documents/Xoe-NovAi"
+      ],
+      "timeout": 5000,
+      "trust": true
+    }
+  },
+  "model": {
+    "compressionThreshold": 0.2
+  },
+  "privacy": {
+    "usageStatisticsEnabled": false
+  }
+}

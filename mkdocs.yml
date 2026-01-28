@@ -1,0 +1,157 @@
+site_name: Xoe-NovAi Foundation Stack
+site_description: Sovereign AI Assistant - Modular Foundation & Toolkit
+site_url: http://localhost:8000
+repo_url: https://github.com/arcana-novai/Xoe-NovAi
+repo_name: arcana-novai/Xoe-NovAi
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.path
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - toc.integrate
+
+  icon:
+    logo: material/shield-crown-outline
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+plugins:
+  - search
+  - section-index
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      type: timeago
+      fallback_to_build_date: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.details
+  - attr_list
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - 🏁 Getting Started:
+      - Quick Start: 01-start/quick-start.md
+      - Sovereign Podman Setup: 02-tutorials/sovereign-setup.md
+      - Team Onboarding: 02-tutorials/onboarding.md
+  - 🚀 Tutorials:
+      - Voice Setup: 02-tutorials/voice-setup.md
+      - ♊ Gemini CLI Mastery:
+          - Strategy Manual: 02-tutorials/gemini-mastery/gemini_cli_strategy_manual.md
+          - Extension Guide: 02-tutorials/gemini-mastery/Top 10 Gemini CLI extensions for stack management and dev.md
+          - Installation 101: 02-tutorials/gemini-mastery/Gemini CLI install 101.md
+      - 🤖 Advanced Agent Patterns:
+          - Agentic Multi-Role Workflows: 02-tutorials/advanced-agent-patterns/CR - Agentic Multi-Role Workflows in Cline (2026 Edition).md
+          - Cline Implementation Master Guide: 02-tutorials/advanced-agent-patterns/cline-implementation-master-guide.md
+          - SPARC Framework: 02-tutorials/advanced-agent-patterns/CR - The SPARC Framework in Cline (2026 Edition).md
+          - PlanAct Workflow: 02-tutorials/advanced-agent-patterns/CR - The PlanAct Workflow in Cline (2026 Edition).md
+          - Autonomous Research System: 02-tutorials/advanced-agent-patterns/CR - Autonomous Research System.md
+      - 📝 Prompt Engineering:
+          - Master System Prompt: 02-tutorials/prompt-engineering/master-system-prompt.md
+          - NotebookLM Video Guide: 02-tutorials/prompt-engineering/notebooklm-video-guide.md
+  - 🛠️ How-to Guides:
+      - PR Readiness Workflow: 03-how-to-guides/pr-readiness-workflow.md
+      - EKB Contribution Guide: 03-how-to-guides/contributing-to-ekb.md
+      - Security DB Management: 03-how-to-guides/security-db-management.md
+      - Development Workflow: 03-how-to-guides/dev-workflow.md
+      - ⚡ Hardware Tuning:
+          - Ryzen & Vulkan Mastery: 03-how-to-guides/hardware-tuning/amd-ryzen-vulkan-mastery.md
+          - The Resilience Manifesto: 03-how-to-guides/hardware-tuning/resilience-manifesto.md
+          - Hybrid Retrieval Standard: 03-how-to-guides/hardware-tuning/hybrid-retrieval-standard.md
+      - 📋 Runbooks:
+          - build-tools: 03-how-to-guides/runbooks/build-tools.md
+          - security-fixes: 03-how-to-guides/runbooks/security-fixes-runbook.md
+          - voice-deployment: 03-how-to-guides/runbooks/voice-deployment.md
+      - 🌐 Air-Gap Ops:
+          - Aptly Air-Gap: 03-how-to-guides/aptly_airgap_impl.md
+          - Apt Cache Strategy: 03-how-to-guides/apt_cache_strategy.md
+      - 🔬 Research Ops:
+          - Methodology: 03-how-to-guides/research-ops/RESEARCH_METHODOLOGY_FRAMEWORK.md
+  - 🧠 Explanation:
+      - Sovereign Toolkit Philosophy: 04-explanation/sovereign-toolkit-philosophy.md
+      - System Architecture: 04-explanation/sovereign-entity-architecture.md
+      - Security Model: 04-explanation/security.md
+      - Expert Knowledge System: 04-explanation/expert-knowledge-system-overview.md
+      - 📑 Engineering Deep-Dives:
+          - Sovereign Security Trinity: 04-explanation/engineering-deep-dives/sovereign-security-trinity.md
+          - Ryzen Performance Steering: 04-explanation/engineering-deep-dives/ryzen-performance-steering.md
+          - Enterprise Build System: 04-explanation/engineering-deep-dives/build-system.md
+          - Voice Recovery System: 04-explanation/engineering-deep-dives/voice-recovery-system-implementation.md
+          - The Butler System: 04-explanation/the-butler-system.md
+      - ⚖️ Sovereign Ethics:
+          - The 42 Ideals of Ma'at: 04-explanation/sovereign-ethics/maatIdeals.md
+          - The 7 Cardinal Virtues: 04-explanation/sovereign-ethics/maatDistilled.md
+  - 🎓 Expert Knowledge:
+      - Overview: expert-knowledge/README.md
+      - 📐 Architect Mastery:
+          - Lore Extraction: expert-knowledge/architect/lore-extraction.md
+          - Build Recovery: expert-knowledge/architect/build_recovery_disk_management.md
+      - 🖥️ Environment Mastery:
+          - BuildKit Cache Hardlining: expert-knowledge/environment/buildkit_cache_hardlining.md
+          - Rootless Podman U-Flag: expert-knowledge/environment/rootless_podman_u_flag.md
+  - 📖 Reference:
+      - Hardware Mastery: 03-reference/hardware.md
+      - Master Plan: 03-reference/master-plan.md
+      - API Reference: 03-reference/api.md
+      - 🏺 Project History:
+          - Changelog: 03-reference/project-history/CHANGELOG.md
+          - Daily Status Reports: 03-reference/project-history/daily-logs/
+      - 🚀 Releases:
+          - v0.1.0-alpha Notes: 03-reference/releases/pr-release-notes.md
+          - Historical Releases: 03-reference/releases/
+  - 🔬 Research Hub:
+      - Overview: 05-research/index.md
+      - 🧪 ML Research Labs:
+          - Vulkan Native Inference: 05-research/labs/01-vulkan-native-inference.md
+          - AWQ Production Report: 05-research/labs/AWQ Quantization Production Implementation Research Report.md
+  - 🗄️ Archive: _archive/

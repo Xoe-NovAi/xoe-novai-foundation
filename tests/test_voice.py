@@ -6,12 +6,10 @@ This test file mirrors `test_enterprise_voice.py` but uses the new public
 module name `voice_interface` to align docs and quick-start commands.
 """
 
-import sys
 import logging
 import asyncio
 import time
 from typing import Dict, List, Tuple
-import numpy as np
 
 logging.basicConfig(
     level=logging.INFO,

@@ -1,0 +1,5 @@
+scripts/_archive/
+**/__pycache__/
+*.mdE*
+*.pyE*
+*.jsonE*

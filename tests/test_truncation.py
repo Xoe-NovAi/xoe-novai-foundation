@@ -14,9 +14,16 @@
 
 import pytest
 import psutil
-from pathlib import Path
 from unittest.mock import Mock
 from typing import List
+import logging
+import sys
+from pathlib import Path
+
+# Add app directory to path (before any other imports that might depend on it)
+sys.path.insert(0, str(Path(__file__).parent.parent / "app"))
+
+logger = logging.getLogger(__name__)
 
 from XNAi_rag_app.services.ingest_library import _build_truncated_context
 from langchain_core.documents import Document

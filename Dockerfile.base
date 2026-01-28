@@ -1,0 +1,89 @@
+# syntax=docker/dockerfile:1
+# ============================================================================
+# Xoe-NovAi Base Image Dockerfile
+# ============================================================================
+# Purpose: Provides a standardized, pre-built base image with common system
+#          dependencies to accelerate subsequent service builds.
+# Features: BuildKit optimized APT caching, essential build tools.
+# ============================================================================
+
+FROM python:3.12-slim
+
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL maintainer="Xoe-NovAi Team" \
+      version="0.1.7" \
+      description="Xoe-NovAi Common Base Image" \
+      org.opencontainers.image.created="${BUILD_DATE}" \
+      org.opencontainers.image.revision="${VCS_REF}"
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=off \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    UV_LINK_MODE=copy \
+    UV_LINK_MODE=copy
+
+# --- SPEED UP DEBIAN DOWNLOADS (BuildKit Optimized) ---
+RUN rm -f /etc/apt/apt.conf.d/docker-clean && \
+    echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache && \
+    echo 'Acquire::http::Pipeline-Depth "5";' > /etc/apt/apt.conf.d/99parallel && \
+    sed -i 's/deb.debian.org/cdn-fastly.deb.debian.org/g' /etc/apt/sources.list.d/debian.sources 2>/dev/null || true
+
+# Install common system dependencies with BuildKit cache mounts
+# NOTE: sharing=locked is excluded as it's unsupported in many Podman versions.
+# NOTE: uid=1001,gid=1001 added for rootless permission stability.
+RUN --mount=type=cache,id=xnai-apt-cache,target=/var/cache/apt,uid=0,gid=0 \
+    --mount=type=cache,id=xnai-apt-lists,target=/var/lib/apt,uid=0,gid=0 \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        # Common build tools
+        build-essential \
+        cmake \
+        git \
+        pkg-config \
+        wget \
+        curl \
+        ca-certificates \
+        ninja-build \
+        # Python development libraries
+        libssl-dev \
+        libffi-dev \
+        # Performance/ML related
+        libopenblas-dev \
+        libgomp1 \
+        procps \
+    && echo "✓ Base system dependencies installed"
+
+# Install uv for fast package management
+RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+    pip install uv==0.5.21 && \
+    echo "✓ uv 0.5.21 installed"
+
+# Configure pip cache directory
+RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+    mkdir -p /root/.pip
+
+# Create a non-root user (consistent across services)
+RUN groupadd -g 1001 appuser && \
+    useradd -m -u 1001 -g 1001 -s /bin/bash appuser
+
+# Create logs and data directories with world-writable permissions to support rootless Podman mounts
+RUN mkdir -p /app/logs /app/data && \
+    chmod 1777 /app/logs /app/data
+
+# Set common environment variables for performance/security
+ENV OPENBLAS_NUM_THREADS=6 \
+    OPENBLAS_CORETYPE=ZEN \
+    OMP_NUM_THREADS=1
+
+WORKDIR /app
+
+# Health check (basic check for common tools)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD bash -c "dpkg -s git curl python3 || exit 1"
+
+# Default command (can be overridden by service Dockerfiles)
+CMD ["bash"]
