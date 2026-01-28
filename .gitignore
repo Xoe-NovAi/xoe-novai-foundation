@@ -130,3 +130,4 @@ scripts/stack-cat/groups.json
 /.cursor
 /.files
 /.codo
+/.chainlit

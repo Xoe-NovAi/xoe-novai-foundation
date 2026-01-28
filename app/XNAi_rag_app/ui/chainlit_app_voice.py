@@ -366,35 +366,33 @@ if cl:
         if cl:
             @cl.action_callback("start_voice_chat")
             async def start_voice_chat(action: cl.Action):
-        cl.user_session.set("voice_conversation_active", True)
-        cl.user_session.set("voice_enabled", True)  # Explicitly enable voice
-        _conversation_manager.start_conversation()
+                cl.user_session.set("voice_conversation_active", True)
+                cl.user_session.set("voice_enabled", True)  # Explicitly enable voice
+                _conversation_manager.start_conversation()
 
-        await cl.Message(content="""**Voice Chat Started!**
+                await cl.Message(content="""**Voice Chat Started!**
 
 I'm listening. Say "Hey Nova" when ready.
 
 **Status:** Listening for wake word... (Voice responses ENABLED)
-        """).send()
+                """).send()
 
-        if cl:
             @cl.action_callback("stop_voice_chat")
             async def stop_voice_chat(action: cl.Action):
-        cl.user_session.set("voice_conversation_active", False)
-        cl.user_session.set("voice_enabled", False)
-        _conversation_manager.end_conversation()
-        
-        if _session_manager:
-            _session_manager.clear_session()
-        
-        await cl.Message(content="**Voice Chat Stopped** - Session cleared").send()
+                cl.user_session.set("voice_conversation_active", False)
+                cl.user_session.set("voice_enabled", False)
+                _conversation_manager.end_conversation()
+                
+                if _session_manager:
+                    _session_manager.clear_session()
+                
+                await cl.Message(content="**Voice Chat Stopped** - Session cleared").send()
 
-        if cl:
             @cl.action_callback("voice_settings")
             async def voice_settings(action: cl.Action):
-        settings_msg = "**Voice Settings**"
-        sensitivity_slider = cl.Slider(id="wake_sensitivity", label="Wake Sensitivity", initial=0.8, min=0.5, max=1.0, step=0.05)
-        await cl.Message(content=settings_msg, elements=[sensitivity_slider]).send()
+                settings_msg = "**Voice Settings**"
+                sensitivity_slider = cl.Slider(id="wake_sensitivity", label="Wake Sensitivity", initial=0.8, min=0.5, max=1.0, step=0.05)
+                await cl.Message(content=settings_msg, elements=[sensitivity_slider]).send()
 
 
 # ============================================================================
@@ -692,65 +690,65 @@ async def generate_voice_response(text: str) -> Optional[bytes]:
 if cl:
     @cl.on_message
     async def on_message(message: cl.Message):
-    """Handle incoming messages with voice support."""
-    user_query = message.content.strip()
+        """Handle incoming messages with voice support."""
+        user_query = message.content.strip()
 
-    if user_query.startswith("/"):
-        command_response = await handle_command(user_query)
-        if command_response:
-            await cl.Message(content=command_response).send()
-        return
+        if user_query.startswith("/"):
+            command_response = await handle_command(user_query)
+            if command_response:
+                await cl.Message(content=command_response).send()
+            return
 
-    msg = cl.Message(content="")
-    await msg.send()
+        msg = cl.Message(content="")
+        await msg.send()
 
-    # Check if voice is explicitly enabled via command/button/session
-    voice_enabled = (
-        cl.user_session.get("voice_enabled", False) or
-        cl.user_session.get("voice_conversation_active", False)
-    )
+        # Check if voice is explicitly enabled via command/button/session
+        voice_enabled = (
+            cl.user_session.get("voice_enabled", False) or
+            cl.user_session.get("voice_conversation_active", False)
+        )
 
-    try:
-        response_text = await generate_ai_response(user_query)
+        try:
+            response_text = await generate_ai_response(user_query)
 
-        # Stream text response
-        for word in response_text.split():
-            await msg.stream_token(word + " ")
-            await asyncio.sleep(0.02)
+            # Stream text response
+            for word in response_text.split():
+                await msg.stream_token(word + " ")
+                await asyncio.sleep(0.02)
 
-        await msg.update()
+            await msg.update()
 
-        # Only attempt voice if explicitly enabled
-        if voice_enabled:
-            try:
-                voice_msg = cl.Message(content="🎤 Generating voice response...")
-                await voice_msg.send()
+            # Only attempt voice if explicitly enabled
+            if voice_enabled:
+                try:
+                    voice_msg = cl.Message(content="🎤 Generating voice response...")
+                    await voice_msg.send()
 
-                audio_data = await generate_voice_response(response_text)
-                if audio_data and len(audio_data) > 0:
-                    # Send audio to UI
-                    await cl.Audio(
-                        name="Nova",
-                        content=audio_data,
-                        display="inline"
-                    ).send()
-                    voice_msg.content = "🎤 Voice response ready."
-                    await voice_msg.update()
-                else:
-                    voice_msg.content = "🎤 Voice generation returned no data (model may be initializing or input text invalid)."
-                    await voice_msg.update()
-            except Exception as e:
-                logger.error(f"Voice generation failed: {e}")
-                await cl.Message(content=f"❌ Voice generation failed: {e}").send()
-        else:
-            # Add hint for enabling voice
-            hint_msg = cl.Message(content="\n\n💡 *Tip:* Use `/voice on` or click 'Start Voice Chat' for voice responses")
-            await hint_msg.send()
+                    audio_data = await generate_voice_response(response_text)
+                    if audio_data and len(audio_data) > 0:
+                        # Send audio to UI
+                        await cl.Audio(
+                            name="Nova",
+                            content=audio_data,
+                            display="inline"
+                        ).send()
+                        voice_msg.content = "🎤 Voice response ready."
+                        await voice_msg.update()
+                    else:
+                        voice_msg.content = "🎤 Voice generation returned no data (model may be initializing or input text invalid)."
+                        await voice_msg.update()
+                except Exception as e:
+                    logger.error(f"Voice generation failed: {e}")
+                    await cl.Message(content=f"❌ Voice generation failed: {e}").send()
+            else:
+                # Add hint for enabling voice
+                hint_msg = cl.Message(content="\n\n💡 *Tip:* Use `/voice on` or click 'Start Voice Chat' for voice responses")
+                await hint_msg.send()
 
-    except Exception as e:
-        logger.error(f"Message processing failed: {e}")
-        error_msg = cl.Message(content=f"❌ Error processing request: {str(e)}")
-        await error_msg.send()
+        except Exception as e:
+            logger.error(f"Message processing failed: {e}")
+            error_msg = cl.Message(content=f"❌ Error processing request: {str(e)}")
+            await error_msg.send()
 
 
 async def handle_command(command: str) -> Optional[str]:
@@ -783,11 +781,11 @@ async def handle_command(command: str) -> Optional[str]:
 if cl:
     @cl.on_settings_update
     async def on_settings_update(settings):
-    """Handle settings updates."""
-    if "voice_enabled" in settings:
-        cl.user_session.set("voice_enabled", settings["voice_enabled"])
-        status = "enabled" if settings["voice_enabled"] else "disabled"
-        await cl.Message(content=f"Voice responses {status}").send()
+        """Handle settings updates."""
+        if "voice_enabled" in settings:
+            cl.user_session.set("voice_enabled", settings["voice_enabled"])
+            status = "enabled" if settings["voice_enabled"] else "disabled"
+            await cl.Message(content=f"Voice responses {status}").send()
 
 
 # Health check endpoint for Docker

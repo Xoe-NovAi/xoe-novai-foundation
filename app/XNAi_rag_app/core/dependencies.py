@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from __future__ import annotations
 # ============================================================================
 # Xoe-NovAi Phase 1 v0.1.0-alpha - Dependencies Module (PRODUCTION-READY)
 # ============================================================================
