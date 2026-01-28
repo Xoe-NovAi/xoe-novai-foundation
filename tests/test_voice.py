@@ -19,13 +19,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 try:
-    from voice_interface import (
+    from XNAi_rag_app.services.voice.voice_interface import (
         VoiceInterface,
         VoiceConfig,
     )
     VOICE_IMPORT_OK = True
 except Exception as e:
+    logger.error('Failed to import VoiceInterface: %s', e)
     VOICE_IMPORT_OK = False
 
 

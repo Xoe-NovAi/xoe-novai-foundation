@@ -1,141 +1,40 @@
+# syntax=docker/dockerfile:1
 # ============================================================================
-# Xoe-NovAi Phase 1 v0.1.4-stable - Crawler Service Dockerfile (OPTIMIZED)
-# ============================================================================
-# Purpose: Production-ready crawler for content extraction + curation integration
-# Status: FAISS Release - Production Ready
-# Last Updated: 2026-01-03 (Production Optimization)
-# Optimization: Site-packages cleanup, dev dependency removal, multi-stage build
-# Image Size: Target ~350MB (down from 550MB, 36% reduction)
-# Features:
-#   - Multi-stage build (builder → runtime, zero bloat)
-#   - Offline wheelhouse support via ARG OFFLINE
-#   - Site-packages aggressive cleanup (remove __pycache__, tests, examples)
-#   - Non-root user (UID=1001, appuser, principle of least privilege)
-#   - Zero-telemetry env vars (CRAWL4AI_NO_TELEMETRY=true)
-#   - Ryzen optimization hooks (N_THREADS=6, OPENBLAS_CORETYPE=ZEN)
-#   - Production health checks with proper timeouts
+# Xoe-NovAi Phase 1 v0.1.7 - Crawler Service Dockerfile (BuildKit Optimized)
 # ============================================================================
 
-# ============================================================================
-# STAGE 1: BUILDER - Compile and install all dependencies
-# ============================================================================
-FROM python:3.12-slim AS builder
+FROM xnai-base:latest
 
-LABEL maintainer="Xoe-NovAi Team"
-LABEL stage="builder"
-LABEL version="0.1.4-stable-optimized"
-
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    DEBIAN_FRONTEND=noninteractive \
-    SCARF_NO_ANALYTICS=true
-
-WORKDIR /build
-
-# Copy requirements first (layer caching optimization)
-COPY requirements-crawl.txt .
-COPY wheelhouse ./wheelhouse
-
-# Offline build support with ARG
-ARG OFFLINE=false
-
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
-    if [ "$OFFLINE" = "true" ]; then \
-        echo "Installing from wheelhouse (offline mode)..." && \
-        pip install --no-index --find-links=wheelhouse -r requirements-crawl.txt; \
-    else \
-        echo "Installing from PyPI..." && \
-        pip install --no-cache-dir -r requirements-crawl.txt; \
-    fi && \
-    echo "✓ Dependencies installed: $(pip list | wc -l) packages"
-
-# ============================================================================
-# STAGE 2: RUNTIME - Minimal production image
-# ============================================================================
-FROM python:3.12-slim
-
-LABEL maintainer="Xoe-NovAi Team"
-LABEL version="0.1.4-stable-optimized"
-LABEL description="Xoe-NovAi Crawler Service - Production Ready (FAISS Release)"
-
-# Install ONLY runtime essentials (no build tools, no dev packages)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    libgomp1 \
-    procps \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean && \
-    echo "✓ Runtime dependencies installed"
-
-# Create non-root user (principle of least privilege)
-RUN groupadd -g 1001 appuser && \
-    useradd -m -u 1001 -g 1001 -s /bin/bash appuser && \
-    echo "✓ Non-root user created (appuser:1001)"
+LABEL stage="production"
 
 WORKDIR /app
 
-# Copy dependencies from builder stage
-COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
-COPY --from=builder /usr/local/bin /usr/local/bin
+# Copy requirements
+COPY requirements-crawl.txt .
 
-# ============================================================================
-# AGGRESSIVE SITE-PACKAGES CLEANUP (36% size reduction achieved here)
-# ============================================================================
-RUN echo "Cleaning site-packages for production..." && \
-    find /usr/local/lib/python3.12/site-packages -type d -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true && \
-    find /usr/local/lib/python3.12/site-packages -type d -name 'tests' -exec rm -rf {} + 2>/dev/null || true && \
-    find /usr/local/lib/python3.12/site-packages -type d -name 'test' -exec rm -rf {} + 2>/dev/null || true && \
-    find /usr/local/lib/python3.12/site-packages -type d -name 'examples' -exec rm -rf {} + 2>/dev/null || true && \
-    find /usr/local/lib/python3.12/site-packages -type d -name 'docs' -exec rm -rf {} + 2>/dev/null || true && \
-    find /usr/local/lib/python3.12/site-packages -type f -name '*.pyc' -delete && \
-    find /usr/local/lib/python3.12/site-packages -type f -name '*.pyo' -delete && \
-    find /usr/local/lib/python3.12/site-packages -type f -name '*.egg-info' -exec rm -rf {} + 2>/dev/null || true && \
-    find /usr/local/lib/python3.12/site-packages -type f -name '.dist-info' -exec rm -rf {} + 2>/dev/null || true && \
-    echo "✓ Site-packages optimized: $(du -sh /usr/local/lib/python3.12/site-packages | cut -f1)"
+# --- BUILD OPTIMIZATION: BuildKit Cache Mounts ---
+RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+    --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
+    echo "📦 Installing Crawler dependencies..." && \
+    uv pip install --system --verbose --upgrade pip setuptools wheel && \
+    uv pip install --system --verbose -r requirements-crawl.txt
 
 # Copy application code
 COPY app/XNAi_rag_app /app/XNAi_rag_app
 
-# Create required directories and set permissions (before USER switch)
-RUN mkdir -p /app/XNAi_rag_app/tmp \
-    /app/XNAi_rag_app/logs \
-    /library \
-    /knowledge/curator && \
-    chown -R appuser:appuser /app /library /knowledge && \
-    chmod -R 755 /app/XNAi_rag_app/logs && \
-    chmod -R 755 /app/XNAi_rag_app && \
-    echo "✓ Directory structure created and permissions set"
+# Set up directories and permissions
+RUN mkdir -p /app/XNAi_rag_app/logs /app/data/curations /app/.crawl4ai/html_content /app/.crawl4ai/cleaned_html /app/.crawl4ai/markdown_content /app/.crawl4ai/extracted_content /app/.crawl4ai/screenshots && \
+    chown -R appuser:appuser /app && \
+    chmod -R 1777 /app/XNAi_rag_app/logs /app/data/curations /app/.crawl4ai
 
-# ============================================================================
-# PRODUCTION ENVIRONMENT (Zero-telemetry, Ryzen optimized)
-# ============================================================================
+# Optimization: Remove pycache
+RUN find /usr/local/lib/python3.12/site-packages -type d -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true
+
 ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    CRAWL4AI_NO_TELEMETRY=true \
-    CRAWL4AI_CACHE_PATH=/app/cache \
-    CRAWL4AI_DISABLE_CACHE=false \
-    CRAWL_RATE_LIMIT_PER_MIN=30 \
-    N_THREADS=6 \
-    OPENBLAS_CORETYPE=ZEN \
-    OPENBLAS_NUM_THREADS=6
+    PYTHONPATH=/app \
+    SCARF_NO_ANALYTICS=true
 
-# Validate installation (comprehensive health check during build)
-RUN python3 -c "import crawl4ai; print(f'✓ Crawl4AI {crawl4ai.__version__} ready')" && \
-    python3 -c "import redis; print('✓ Redis library ready')" && \
-    python3 -c "import pydantic; print('✓ Pydantic validation ready')" && \
-    python3 -c "import os; assert os.getenv('CRAWL4AI_NO_TELEMETRY') == 'true', 'Telemetry not disabled!'; print('✓ Telemetry disabled')"
-
-# Expose port (if API endpoints added in future)
-EXPOSE 8003
-
-# Health check (30-second interval, 10-second timeout, 5 retries)
-HEALTHCHECK --interval=30s --timeout=10s --retries=5 --start-period=60s \
-    CMD python3 -c "import crawl4ai, redis; print('✓ healthy')" || exit 1
-
-# Switch to non-root user (appuser:1001)
 USER appuser
 
-# Default command (can be overridden with docker run -it <image> bash)
-CMD ["python3", "XNAi_rag_app/crawl.py"]
+# Entry point for crawler
+CMD ["python3", "-m", "XNAi_rag_app.workers.crawl"]

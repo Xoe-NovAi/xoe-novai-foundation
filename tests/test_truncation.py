@@ -18,12 +18,11 @@ from pathlib import Path
 from unittest.mock import Mock
 from typing import List
 
-# System under test
-from ingest_library import _build_truncated_context
+from XNAi_rag_app.services.ingest_library import _build_truncated_context
 from langchain_core.documents import Document
 
 # Configuration
-from config_loader import load_config
+from XNAi_rag_app.core.config_loader import load_config
 CONFIG = load_config()
 
 # ============================================================================

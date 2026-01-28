@@ -5,6 +5,30 @@
 # Example: ./scripts/download_wheelhouse.sh wheelhouse "requirements-*.txt"
 set -euo pipefail
 
+# Environment validation - enforce Python 3.12
+if [[ -z "${PYTHONPATH}" ]] || [[ "${PYTHONPATH}" != *".xoe_novai_py312_venv"* ]]; then
+    echo "ERROR: Must use Xoe-NovAi Python 3.12 virtual environment"
+    echo "Run: source .xoe_novai_py312_venv/xoe-novai-py312-env/bin/activate"
+    exit 1
+fi
+
+# Environment validation - enforce Python 3.12
+if [[ -z "${VIRTUAL_ENV}" ]] || [[ "${VIRTUAL_ENV}" != *".xoe_novai_py312_venv"* ]]; then
+    echo "ERROR: Must use Xoe-NovAi Python 3.12 virtual environment"
+    echo "Run: source .xoe_novai_py312_venv/xoe-novai-py312-env/bin/activate"
+    exit 1
+fi
+
+# Check for UV installation (preferred fast installer)
+if ! command -v uv >/dev/null 2>&1; then
+    echo "WARNING: UV not found, using pip with fast mirrors (5-10x slower)"
+    echo "For best performance, install UV: curl -LsSf https://astral.sh/uv/install.sh | sh"
+    USE_UV=false
+else
+    echo "✅ UV detected - using fastest Python package installer (10-100x speedup)"
+    USE_UV=true
+fi
+
 # Setup logging
 LOGDIR="logs/wheelhouse"
 mkdir -p "${LOGDIR}"
@@ -69,7 +93,9 @@ log_download() {
 echo "[1/6] Downloading core build dependencies..."
 for pkg in pip setuptools wheel scikit-build-core; do
     echo "Downloading $pkg..."
-    if python3 -m pip download --only-binary=:all: "$pkg" -d "${OUTDIR}" 2>/tmp/pip_error; then
+    if $USE_UV && uv pip download --only-binary "$pkg" -d "${OUTDIR}" 2>/tmp/pip_error; then
+        log_download "$pkg" "success"
+    elif python3 -m pip download --only-binary=:all: "$pkg" -d "${OUTDIR}" 2>/tmp/pip_error; then
         log_download "$pkg" "success"
     else
         error=$(cat /tmp/pip_error)
@@ -90,6 +116,18 @@ for pkg in cmake ninja; do
         echo "Warning: Failed to download $pkg: $error"
     fi
 done
+
+# Download MkDocs documentation dependencies
+echo "[2.5/6] Downloading MkDocs documentation dependencies..."
+if [[ -f "docs/requirements-docs.txt" ]]; then
+    echo "Found MkDocs requirements file, downloading documentation dependencies..."
+    python3 -m pip download -r "docs/requirements-docs.txt" -d "${OUTDIR}" 2>/tmp/pip_error || {
+        error=$(cat /tmp/pip_error)
+        echo "Warning: Failed to download some MkDocs dependencies: $error"
+    }
+else
+    echo "Warning: docs/requirements-docs.txt not found, skipping MkDocs dependencies"
+fi
 
 # Create deps cache if it doesn't exist
 DEPS_CACHE=".deps_cache"

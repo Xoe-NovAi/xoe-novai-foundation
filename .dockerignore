@@ -1,92 +1,52 @@
-# Xoe-NovAi Phase 1 v0.1.2 rev_1.4 - Docker Ignore File
-# Guide Reference: Section 6 (Docker Configuration)
-# Purpose: Exclude sensitive, build, and runtime data from Docker builds
-# Last Updated: 2025-10-13
+# Xoe-NovAi Foundation Stack .dockerignore
+# Exclude source of truth and temporary files from container builds
 
-# Python build artifacts
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# Git and Metadata
+.git
+.github
+.vscode
+.idea
+.qodo
+.pip_cache
+.build_cache
 
-# Environment variables
-.env
-.env.local
-.env.*.local
+# Internal Documentation (Public Shield)
+internal_docs/
+memory_bank/_archive/
+memory_bank/communications/
+memory_bank/lore/
+docs/_archive/
 
-# Runtime data (not in images)
+# Data and Persistent Storage
 data/
 backups/
-logs/
+models/*
+embeddings/*
 library/
 knowledge/
-models/
-embeddings/
+wheelhouse/
 
-# Docker
-.dockerignore
-Dockerfile*
-.dockerignore
-docker-compose.override.yml
-build_context_api/
-build_context_chainlit/
-build_context_crawl/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-
-# Virtual environments
+# Python Artifacts
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.venv/
 venv/
-env/
-ENV/
 
-# Git
-.git/
-.gitignore
+# Environment and Secrets
+.env
+.env.*
+secrets/
 
-# Security scans
-bandit.yaml
-snyk.yaml
+# Build Logs and Temp Files
+*.log
+oom
+*.tmp
+*.bak
+temp/
+docs/site/
 
-# CI/CD
-.github/workflows/
-!.github/workflows/ci.yml
-!.github/workflows/dependabot.yml
-!.github/workflows/snyk.yml
+# Miscellaneous
+*~
+.#*

@@ -1,6 +1,6 @@
 {
   "default": {
-    "description": "Full core stack - Xoe-NovAi v0.1.5 Voice Integration",
+    "description": "Full core stack - Xoe-NovAi v0.1.0-alpha Voice Integration",
     "files": [
       "Dockerfile.api",
       "Dockerfile.chainlit",
@@ -67,7 +67,7 @@
     ]
   },
   "voice": {
-    "description": "Voice interface and TTS/STT components (v0.1.5)",
+    "description": "Voice interface and TTS/STT components (v0.1.0-alpha)",
     "files": [
       "requirements-chainlit.txt",
       "app/XNAi_rag_app/chainlit_app_voice.py",

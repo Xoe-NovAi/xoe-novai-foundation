@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================================
-# Xoe-NovAi v0.1.5 - Wheelhouse Duplicate Cleaner
+# Xoe-NovAi v0.1.0-alpha - Wheelhouse Duplicate Cleaner
 # ============================================================================
 # Purpose: Remove duplicate wheels while respecting version constraints
 # Guide Reference: Section 6.3 (Wheelhouse Management)
@@ -39,7 +39,7 @@ log_success() {
 }
 
 echo -e "${BLUE}========================================================================${NC}"
-echo -e "${BLUE}Xoe-NovAi v0.1.5 - Wheelhouse Duplicate Cleaner${NC}"
+echo -e "${BLUE}Xoe-NovAi v0.1.0-alpha - Wheelhouse Duplicate Cleaner${NC}"
 echo -e "${BLUE}========================================================================${NC}"
 echo ""
 

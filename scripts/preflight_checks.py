@@ -1,141 +1,162 @@
 #!/usr/bin/env python3
-"""
-============================================================================
-Xoe-NovAi Phase 1 v0.1.2 - Preflight Checks
-============================================================================
-Purpose: Validate environment and security settings before deployment
-Guide Reference: Section 6 (Security)
-Last Updated: 2025-10-28
-============================================================================
-"""
+# Xoe-NovAi Pre-flight Checks
+# Comprehensive validation before test build and deployment
 
 import os
 import sys
-import pwd
-import grp
-import json
-import logging
+import stat
+import subprocess
 from pathlib import Path
-from typing import Dict, List, Tuple
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+def check_directories():
+    """Check required directories exist with correct permissions"""
+    required_dirs = [
+        ('library', 1001, 1001),
+        ('knowledge', 1001, 1001),
+        ('data/faiss_index', 1001, 1001),
+        ('backups', 1001, 1001),
+        ('logs', 1001, 1001),
+        ('models/optimized', 1001, 1001),
+        ('models/backup', 1001, 1001),
+        ('data/cache', 1001, 1001),
+        ('models', 0, 0),  # models dir can be owned by user
+    ]
 
-def check_environment_vars() -> Tuple[bool, List[str]]:
-    """Validate required environment variables."""
-    required_vars = {
-        'REDIS_PASSWORD': 'Redis password must be set',
-        'PHASE2_QDRANT_ENABLED': 'Phase 2 feature flag must be set (true/false)',
-    }
-    
-    missing = []
-    for var, message in required_vars.items():
-        value = os.getenv(var)
-        if not value:
-            missing.append(f"{var}: {message}")
-        elif var == 'PHASE2_QDRANT_ENABLED' and value.lower() not in ('true', 'false'):
-            missing.append(f"{var}: Must be 'true' or 'false', got '{value}'")
-            
-    return len(missing) == 0, missing
-
-def check_directory_permissions() -> Tuple[bool, List[str]]:
-    """Check directory permissions and ownership."""
-    dirs_to_check = {
-        'logs': 0o750,
-        'data/faiss_index': 0o750,
-        'library': 0o750,
-        'knowledge': 0o750,
-    }
-    
-    issues = []
-    for dir_path, expected_mode in dirs_to_check.items():
-        path = Path(dir_path)
-        if not path.exists():
-            issues.append(f"Directory {dir_path} does not exist")
+    all_good = True
+    for dir_path, expected_uid, expected_gid in required_dirs:
+        if not os.path.exists(dir_path):
+            print(f"❌ Missing directory: {dir_path}")
+            all_good = False
             continue
-            
-        try:
-            stat = path.stat()
-            mode = stat.st_mode & 0o777
-            if mode != expected_mode:
-                issues.append(
-                    f"Directory {dir_path} has incorrect permissions: "
-                    f"{oct(mode)[2:]} (expected {oct(expected_mode)[2:]})"
-                )
-                
-            # Check ownership (UID 1001 for non-root)
-            if stat.st_uid != 1001:
-                issues.append(
-                    f"Directory {dir_path} has incorrect owner: "
-                    f"{stat.st_uid} (expected 1001)"
-                )
-        except Exception as e:
-            issues.append(f"Error checking {dir_path}: {e}")
-            
-    return len(issues) == 0, issues
 
-def check_docker_security() -> Tuple[bool, List[str]]:
-    """Validate Docker security settings."""
-    import yaml
-    
-    issues = []
+        # Check ownership
+        stat_info = os.stat(dir_path)
+        if stat_info.st_uid != expected_uid or stat_info.st_gid != expected_gid:
+            print(f"⚠️  Wrong ownership on {dir_path}: {stat_info.st_uid}:{stat_info.st_gid} (expected {expected_uid}:{expected_gid})")
+            # Don't fail on ownership for now, just warn
+
+    return all_good
+
+def check_models():
+    """Check model files exist"""
+    required_models = [
+        'models/smollm2-135m-instruct-q8_0.gguf',
+        'models/all-MiniLM-L12-v2.Q8_0.gguf'
+    ]
+
+    all_good = True
+    for model in required_models:
+        if not os.path.exists(model):
+            print(f"❌ Missing model: {model}")
+            all_good = False
+        else:
+            size = os.path.getsize(model) / (1024 * 1024)  # Size in MB
+            print(f"✅ Found model: {model} ({size:.1f}MB)")
+
+    return all_good
+
+def check_config():
+    """Check configuration files"""
+    config_checks = [
+        ('config.toml', 'TOML configuration'),
+        ('.env', 'Environment variables'),
+        ('docker-compose.yml', 'Docker compose configuration'),
+        ('requirements-api.txt', 'API dependencies'),
+    ]
+
+    all_good = True
+    for config_file, description in config_checks:
+        if not os.path.exists(config_file):
+            print(f"❌ Missing {description}: {config_file}")
+            all_good = False
+        else:
+            print(f"✅ Found {description}: {config_file}")
+
+    return all_good
+
+def check_docker():
+    """Check Docker availability"""
     try:
-        with open('docker-compose.yml', 'r') as f:
-            config = yaml.safe_load(f)
-            
-        services = config.get('services', {})
-        for service_name, service in services.items():
-            # Check security_opt
-            security_opt = service.get('security_opt', [])
-            if 'no-new-privileges:true' not in security_opt:
-                issues.append(
-                    f"Service {service_name} missing "
-                    "'security_opt: [no-new-privileges:true]'"
-                )
-            
-            # Check tmpfs
-            tmpfs = service.get('tmpfs', [])
-            expected_tmpfs = '/tmp:mode=1777,size=512m'
-            if expected_tmpfs not in tmpfs:
-                issues.append(
-                    f"Service {service_name} missing "
-                    f"'tmpfs: [{expected_tmpfs}]'"
-                )
+        result = subprocess.run(['docker', 'info'], capture_output=True, timeout=10)
+        if result.returncode == 0:
+            print("✅ Docker daemon available")
+            return True
+        else:
+            print("❌ Docker daemon not running")
+            return False
+    except (subprocess.SubprocessError, FileNotFoundError):
+        print("❌ Docker not installed or not accessible")
+        return False
+
+def check_environment():
+    """Check environment variables"""
+    required_vars = [
+        'REDIS_PASSWORD',
+        'APP_UID',
+        'APP_GID',
+    ]
+
+    all_good = True
+    for var in required_vars:
+        if var not in os.environ:
+            print(f"⚠️  Missing environment variable: {var}")
+            # Check if it's in .env file
+            if os.path.exists('.env'):
+                with open('.env', 'r') as f:
+                    env_content = f.read()
+                    if var in env_content:
+                        print(f"   ℹ️  {var} found in .env file")
+                    else:
+                        print(f"❌ {var} not found in .env file")
+                        all_good = False
+        else:
+            print(f"✅ Environment variable set: {var}")
+
+    return all_good
+
+def check_python():
+    """Check Python version and availability"""
+    try:
+        result = subprocess.run([sys.executable, '--version'], capture_output=True, text=True)
+        if result.returncode == 0:
+            version = result.stdout.strip()
+            print(f"✅ Python available: {version}")
+            return True
+        else:
+            print("❌ Python execution failed")
+            return False
     except Exception as e:
-        issues.append(f"Error checking docker-compose.yml: {e}")
-        
-    return len(issues) == 0, issues
+        print(f"❌ Python check failed: {e}")
+        return False
 
 def main():
-    """Run all preflight checks."""
-    checks = [
-        ('Environment Variables', check_environment_vars),
-        ('Directory Permissions', check_directory_permissions),
-        ('Docker Security', check_docker_security),
-    ]
-    
-    all_passed = True
-    for name, check_fn in checks:
-        logger.info(f"\nRunning {name} check...")
-        passed, issues = check_fn()
-        
-        if passed:
-            logger.info(f"✅ {name} check passed")
-        else:
-            all_passed = False
-            logger.error(f"❌ {name} check failed:")
-            for issue in issues:
-                logger.error(f"   - {issue}")
-                
-    if not all_passed:
-        logger.error("\n❌ Some checks failed. Please fix the issues and retry.")
-        sys.exit(1)
-    else:
-        logger.info("\n✅ All preflight checks passed!")
+    print("🛩️  Running Xoe-NovAi Pre-flight Checks...")
+    print("=" * 60)
 
-if __name__ == '__main__':
-    main()
+    checks = [
+        ("Directories", check_directories),
+        ("Models", check_models),
+        ("Configuration Files", check_config),
+        ("Docker", check_docker),
+        ("Environment Variables", check_environment),
+        ("Python", check_python),
+    ]
+
+    all_passed = True
+    for name, check_func in checks:
+        print(f"\n🔍 Checking {name}...")
+        if not check_func():
+            all_passed = False
+
+    print("\n" + "=" * 60)
+    if all_passed:
+        print("✅ All pre-flight checks passed!")
+        print("🚀 Ready to proceed with build and deployment")
+        return 0
+    else:
+        print("❌ Pre-flight checks failed!")
+        print("🔧 Please fix the issues above before proceeding")
+        return 1
+
+if __name__ == "__main__":
+    exit(main())

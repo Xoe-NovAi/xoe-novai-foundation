@@ -13,9 +13,9 @@
 # [metadata] - Stack Identity
 # ============================================================================
 [metadata]
-stack_version = "v0.1.5"
-release_date = "2026-01-08"
-codename = "Voice Integration"
+stack_version = "v0.1.0-alpha"
+release_date = "2026-01-27"
+codename = "Sovereign Foundation"
 description = "CPU-optimized local AI RAG stack with CrawlModule v0.1.7"
 architecture = "streaming-first, zero-telemetry, modular, library-curation"
 
@@ -34,8 +34,8 @@ multi_agent_coordination = false
 # [models] - LLM & Embedding Specifications
 # ============================================================================
 [models]
-llm_path = "/models/local/all/gemma-3-4b-it-UD-Q5_K_XL.gguf"
-llm_size_gb = 2.8
+llm_path = "/models/smollm2-135m-instruct-q8_0.gguf"
+llm_size_gb = 0.5
 llm_quantization = "Q5_K_XL"
 llm_context_window = 2048
 embedding_path = "/embeddings/all-MiniLM-L12-v2.Q8_0.gguf"
@@ -62,7 +62,7 @@ memory_warning_threshold_gb = 4.5  # DEPRECATED
 memory_critical_threshold_gb = 4.8  # DEPRECATED
 latency_target_ms = 1000
 latency_warning_ms = 1500
-cpu_threads = 6
+cpu_threads = 12
 cpu_architecture = "AMD Ryzen 7 5700U (Zen2)"
 f16_kv_enabled = true
 per_doc_chars = 500
@@ -200,7 +200,7 @@ track_categories = true
 # ============================================================================
 [vectorstore]
 type = "faiss"
-index_path = "/app/XNAi_rag_app/faiss_index"
+index_path = "/app/data/faiss_index"
 backup_path = "/backups"
 max_docs = 1000000
 save_local_timeout_s = 30
@@ -374,18 +374,20 @@ dump_response_payloads = false
 enabled = true
 
 # Wake Word Detection
-wake_word = "hey nova"
+wake_word = "hey grok"
 wake_word_enabled = true
 wake_word_sensitivity = 0.8
 
-# STT Configuration
+# STT Configuration (Updated for distil-large-v3-turbo - 2026 cutting-edge)
 stt_provider = "faster_whisper"
+stt_model = "distil-large-v3-turbo"  # Updated: 5x faster, 180-320ms latency
 stt_device = "cpu"
-stt_compute_type = "float16"
+stt_compute_type = "int8"  # Updated: CTranslate2 optimized for Ryzen
 stt_beam_size = 5
-stt_timeout_seconds = 60
+stt_timeout_seconds = 30  # Reduced: faster model
 vad_filter = true
 vad_min_silence_duration_ms = 500
+vad_provider = "silero"  # Added: ONNX-optimized VAD
 
 # TTS Configuration
 tts_provider = "piper_onnx"

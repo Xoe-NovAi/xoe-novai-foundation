@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # ============================================================================
-# Xoe-NovAi v0.1.5 - Environment Validation Script
+# Xoe-NovAi v0.1.0-alpha - Environment Validation Script
 # ============================================================================
 # Purpose: Validate .env and config.toml for completeness and correctness
 # Guide Reference: Section 2.4 (Validation Tools)
-# Last Updated: 2026-01-09 (Updated for v0.1.5 stack changes)
+# Last Updated: 2026-01-09 (Updated for v0.1.0-alpha stack changes)
 # Features:
 #   - .env variable count ~15 (flexible validation)
 #   - Telemetry disables ==3 (SCARF, CHAINLIT, CRAWL4AI)
@@ -54,7 +54,7 @@ def load_toml(file_path: str = 'config.toml') -> Dict:
         sys.exit(1)
 
 def validate_env_count(env: Dict[str, str], expected: int = 15) -> bool:
-    """Validate number of environment variables (updated for v0.1.5)."""
+    """Validate number of environment variables (updated for v0.1.0-alpha)."""
     count = len(env)
     # Allow some flexibility - expect around 15 variables but don't fail on exact count
     if count < 10:
@@ -66,7 +66,7 @@ def validate_env_count(env: Dict[str, str], expected: int = 15) -> bool:
     return True
 
 def validate_telemetry_disables(env: Dict[str, str], expected: int = 3) -> bool:
-    """Validate telemetry disable vars are 'true' (updated for v0.1.5)."""
+    """Validate telemetry disable vars are 'true' (updated for v0.1.0-alpha)."""
     telemetry_keys = [k for k in env if 'NO_TELEMETRY' in k or 'TRACING_V2' in k or 'NO_ANALYTICS' in k]
     disables = [k for k in telemetry_keys if env[k].lower() == 'true']
     count = len(disables)
@@ -90,7 +90,7 @@ def validate_telemetry_disables(env: Dict[str, str], expected: int = 3) -> bool:
     return True
 
 def validate_required_env(env: Dict[str, str]) -> bool:
-    """Validate required env vars are present and not 'CHANGE_ME' (updated for v0.1.5)."""
+    """Validate required env vars are present and not 'CHANGE_ME' (updated for v0.1.0-alpha)."""
     # Updated list based on current stack analysis - only truly required variables
     required = [
         'REDIS_PASSWORD', 'APP_UID', 'APP_GID',  # Core security/Redis
@@ -119,7 +119,7 @@ def validate_required_env(env: Dict[str, str]) -> bool:
     return True
 
 def validate_ryzen_flags(env: Dict[str, str]) -> bool:
-    """Validate Ryzen optimization flags (updated for v0.1.5)."""
+    """Validate Ryzen optimization flags (updated for v0.1.0-alpha)."""
     # Updated to match current .env file variables
     flags = {
         'OPENBLAS_NUM_THREADS': '6',  # Thread count for OpenBLAS
