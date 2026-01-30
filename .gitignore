@@ -1,33 +1,36 @@
-# Xoe-NovAi Phase 1 v0.1.2 .gitignore
-# Excludes large, generated, sensitive, and temporary files from public repo
-# Guide Reference: Section 2.4 (Configuration Management), 5.3 (Health Checks)
+# Secrets (Ma'at Purity)
+.env*
+*password*
+*secret*
+config.toml
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
 
-# Generated data directories
-data/
-backups/
-library/
-knowledge/
-app/XNAi_rag_app/faiss_index/
-app/XNAi_rag_app/faiss_index.bak/
-updates/
+# Builds/Transients (Zero-Bloat)
+.build_wheels_tmp/
+*.log
+docker-*.log
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+overlay2/
+*.podman
 
-# Large model and embedding files
-models/
-embeddings/
+# OS/Editors
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+.codium/
 
-# Sensitive configuration files
-.env
-.env.*.old
-.env_v*
-
-# Internal development notes and summaries
-internal_docs/
-memory_bank/communications/
-memory_bank/lore/
-memory_bank/_archive/
-docs/_archive/
-updates/
-docs/projects/*
+# EKB Transients
+_archive/*.tmp
+_archive/*.tmp
+_archive/*.tmp
 
 # Git metadata (already ignored by Git, included for clarity)
 .git/
@@ -110,16 +113,11 @@ build_tools.log
 /projects
 
 # Scripts and tools
-
 /scripts
 scripts/stack-cat/groups.json
 
-
-
-# 🔱 GitHub-Ready Root Protections
-
+# GitHub-Ready Root Protections
 # These rules ensure the root remains clean of temporary execution artifacts.
-
 /*.log
 /*.json
 /*.tmp
