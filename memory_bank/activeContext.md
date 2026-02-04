@@ -7,6 +7,7 @@
 ## Current System State
 
 ### 🤖 AI-Native Foundation (NEW)
+
 - **100% AI-Written**: The entire codebase and documentation are now officially documented as AI-written, directed by a non-programmer User/Architect.
 - **Sovereign Origin**: Rebranded as a $0-capital, open-source experiment in AI-steered development.
 - **Elite Clean**: Documentation synchronized, legacy names purged, and corrupted backup files resolved.
@@ -44,7 +45,7 @@
 
 ## Strategic Closing
 The Xoe-NovAi Foundation Stack has graduated from "Stabilized" to "Enterprise-Grade Sovereign." We now possess a verifiable, policy-driven security posture that ensures the stack's integrity without compromising its offline-first mission.
- 
+
 ---
 
 ## 🚀 2026 Refactoring & Research Phase (v0.1.0-alpha)
@@ -66,3 +67,10 @@ All assistants and contributors should also review the "additional critical area
 **Summary:**
 - All agents and contributors should review these plans before making architectural or code changes.
 - The memory_bank, projectbrief, and progress files are now aligned with this new phase.
+
+## Living Registry Update (_meta/projects.md)
+
+| Project | Status | Priority | Owner | Next Action | Blockers | EKB Links | Local Sync Notes |
+|---------|--------|----------|-------|-------------|----------|-----------|------------------|
+| Docs Restoration Audit | CANCELLED | LOW | Cline-Trinity | Documentation sync cancelled; manual recovery as needed | None | infrastructure/docs-evolution-v1.0.0.md, sync/multi-grok-harmony-v1.0.0.md | Reverted mass docs recovery script output |
+| Stack-Cat Rebirth | COMPLETE | HIGH | Gemini CLI | Enhanced v2.1.0 ready; config-driven packs enabled | None | expert-knowledge/protocols/context-packing-expert-v2.1.0.md | scripts/stack-cat.py restored and tested with YAML config |

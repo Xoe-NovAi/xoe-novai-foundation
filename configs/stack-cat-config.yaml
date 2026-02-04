@@ -1,0 +1,15 @@
+file_lists:
+  grok-pack:
+    - memory_bank/projectbrief.md
+    - memory_bank/productContext.md
+    - memory_bank/systemPatterns.md
+    - memory_bank/techContext.md
+    - memory_bank/activeContext.md
+    - memory_bank/progress.md
+  onboarding:
+    - docs/index.md
+    - docs/01-start/quick-start.md
+    - memory_bank/projectbrief.md
+  minimal:
+    - memory_bank/activeContext.md
+    - memory_bank/progress.md

@@ -1,0 +1,267 @@
+# Standard Python project ignores
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE and editor directories and files
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Test coverage
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Log files
+*.log
+logs/
+*.tmp
+*.temp
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.envrc
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+docker-compose.prod.yml
+*.dockerignore
+
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# Secrets
+secrets/
+*.key
+*.pem
+*.crt
+*.key.pub
+*.p12
+*.pfx
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Documentation
+_site/
+*.html
+*.pdf
+
+# Build artifacts
+.cache/
+.parcel-cache/
+.nuxt/
+.next/
+.vuepress/dist/
+.gatsby/
+
+# Static analysis
+.flake8
+.pylintrc
+.mypy_cache/
+*.pyi
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env.test
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# next.js build output
+.next
+
+# nuxt.js build / generate output
+.nuxt
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Custom Xoe-NovAi ignores
+_internal-docs/
+.gemini/
+.geminiignore
+.chainlit/
+.pip_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage/
+htmlcov/
+*.log
+*.tmp
+*.temp
+secrets/
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.envrc
+.DS_Store
+Thumbs.db
+*.swp
+*~
+*.sublime-project
+*.sublime-workspace
+.idea/
+.vscode/
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Devops specific
+.devops/
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Local dev directories
+local/
+dev/
+tmp/
+temp/
+
+# Backup directories
+_backups/
+*.bak
+*.backup
