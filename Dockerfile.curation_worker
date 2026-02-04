@@ -1,0 +1,42 @@
+# syntax=docker/dockerfile:1
+# ============================================================================
+# Xoe-NovAi Phase 1 v0.1.7 - Curation Worker Dockerfile (BuildKit Optimized)
+# ============================================================================
+
+FROM xnai-base:latest
+
+LABEL stage="production"
+
+WORKDIR /app
+
+# Copy requirements
+COPY requirements-curation_worker.txt .
+
+# --- BUILD OPTIMIZATION: BuildKit Cache Mounts ---
+RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+    --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
+    echo "📦 Installing Curation Worker dependencies..." && \
+    uv pip install --system --verbose --upgrade pip setuptools wheel && \
+    uv pip install --system --verbose -r requirements-curation_worker.txt
+
+# Copy application code
+COPY app/XNAi_rag_app /app/XNAi_rag_app
+
+# Set up directories and permissions
+RUN mkdir -p /app/logs/curations /app/data/curations /library /knowledge/curator && \
+    chown -R appuser:appuser /app /library /knowledge && \
+    chmod -R 1777 /app/logs /app/data /library /knowledge
+
+# Optimization: Remove pycache
+RUN find /usr/local/lib/python3.12/site-packages -type d -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true
+
+ENV PYTHONUNBUFFERED=1 \
+    N_THREADS=6 \
+    REDIS_URL="redis://redis:6379/0" \
+    OPENBLAS_NUM_THREADS=6 \
+    OPENBLAS_CORETYPE=ZEN
+
+USER appuser
+
+# Entry point for curation worker
+CMD ["python3", "-m", "XNAi_rag_app.workers.curation_worker"]

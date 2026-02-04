@@ -1,0 +1,6 @@
+[versions]
+api = "0.1.7"
+ui = "0.1.7"
+crawler = "0.1.7"
+curation_worker = "0.1.7"
+docs = "0.1.7"

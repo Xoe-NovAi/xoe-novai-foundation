@@ -1,0 +1,73 @@
+# API service requirements - UPDATED for 2026 standards
+# Generated from pyproject.toml on Wed Jan 14 7:56 PM AST 2026
+# CRITICAL: Added missing RAG, voice, and observability packages
+
+# Core RAG stack (CRITICAL - PREVIOUSLY MISSING)
+langchain
+langchain-community
+faiss-cpu
+
+# Voice stack (UPDATED for turbo performance)
+faster-whisper
+piper-tts
+
+# Hybrid retrieval (Week 2 - Academic AI foundation)
+rank-bm25
+
+# Circuit breaker (MODERNIZED - 2026 standards)
+aiobreaker
+pybreaker
+
+# Observability (2026 standards)
+opentelemetry-sdk
+opentelemetry-exporter-prometheus
+opentelemetry-instrumentation
+opentelemetry-instrumentation-fastapi
+
+# Existing dependencies
+annotated-doc
+annotated-types
+anyio
+beautifulsoup4
+certifi
+click
+deprecated
+fastapi
+feedparser
+h11
+httpcore
+httptools
+httpx
+idna
+json-log-formatter
+limits
+orjson
+packaging
+prometheus-client
+psutil
+pydantic
+pydantic-core
+pydantic-settings
+python-dotenv
+python-magic
+pyyaml
+redis
+sgmllib3k
+slowapi
+soupsieve
+starlette
+tenacity
+toml
+tqdm
+typing-extensions
+typing-inspection
+uvicorn
+uvloop
+watchfiles
+websockets
+wrapt>=1.14.0,<2.0.0
+griffe
+bcrypt
+pyjwt
+cryptography
+sqlite-utils

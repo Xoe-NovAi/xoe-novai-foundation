@@ -1,0 +1,58 @@
+# syntax=docker/dockerfile:1
+# ============================================================================ 
+# Xoe-NovAi Phase 1 v0.1.7 - Chainlit UI Service Dockerfile (BuildKit Optimized) 
+# ============================================================================ 
+
+FROM xnai-base:latest
+
+LABEL stage="production"
+
+WORKDIR /app
+
+# Copy requirements as root to ensure we can read them, but we will install as appuser
+COPY requirements-chainlit.txt .
+
+# --- BUILD OPTIMIZATION: BuildKit Cache Mounts ---
+# We install as root to /usr/local/lib, but we match the cache UID/GID to the builder (root) if needed, 
+# or we install to a user-writable location. Given it's a container, system-wide install as root is fine 
+# IF we handle the cache correctly.
+# The previous errors showed uv running as root failing to hardlink to a cache owned by 1001.
+# FIX: Use root (0) for cache mounts during system-wide installation.
+
+RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+    --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
+    echo "📦 Installing Chainlit UI dependencies..." && \
+    uv pip install --system --verbose --upgrade pip setuptools wheel && \
+    uv pip install --system --verbose -r requirements-chainlit.txt
+
+# Copy application code
+COPY app/XNAi_rag_app /app/XNAi_rag_app
+
+# Set up directories and permissions
+RUN mkdir -p /app/XNAi_rag_app/tmp /app/XNAi_rag_app/logs /app/.files /app/.chainlit && \
+    chown -R appuser:appuser /app && \
+    chmod -R 1777 /app
+
+# Optimization: Remove pycache
+RUN find /usr/local/lib/python3.12/site-packages -type d -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONPATH=/app \
+    CHAINLIT_NO_TELEMETRY=true \
+    CHAINLIT_PORT=8001 \
+    CHAINLIT_FILES_DIR=/app/.files \
+    OPENBLAS_NUM_THREADS=6 \
+    OPENBLAS_CORETYPE=ZEN
+
+EXPOSE 8001
+
+USER appuser
+
+# Health check (Note: requests might not be installed yet, let's use a simpler check if needed, 
+# but requirements-chainlit.txt usually has it or we can use curl if available in base)
+HEALTHCHECK --interval=30s --timeout=10s --retries=5 --start-period=60s \
+    CMD curl -f http://localhost:8001/health || exit 1
+
+# Production command (Voice-Enabled)
+CMD ["chainlit", "run", "XNAi_rag_app/ui/chainlit_app_voice.py", "--host", "0.0.0.0", "--port", "8001"]

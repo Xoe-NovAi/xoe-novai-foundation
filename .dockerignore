@@ -1,0 +1,52 @@
+# Xoe-NovAi Foundation Stack .dockerignore
+# Exclude source of truth and temporary files from container builds
+
+# Git and Metadata
+.git
+.github
+.vscode
+.idea
+.qodo
+.pip_cache
+.build_cache
+
+# Internal Documentation (Public Shield)
+internal_docs/
+memory_bank/_archive/
+memory_bank/communications/
+memory_bank/lore/
+docs/_archive/
+
+# Data and Persistent Storage
+data/
+backups/
+models/*
+embeddings/*
+library/
+knowledge/
+wheelhouse/
+
+# Python Artifacts
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Environment and Secrets
+.env
+.env.*
+secrets/
+
+# Build Logs and Temp Files
+*.log
+oom
+*.tmp
+*.bak
+temp/
+docs/site/
+
+# Miscellaneous
+*~
+.#*

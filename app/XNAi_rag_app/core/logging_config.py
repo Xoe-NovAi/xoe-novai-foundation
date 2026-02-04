@@ -1,0 +1,556 @@
+#!/usr/bin/env python3
+# ============================================================================
+# Xoe-NovAi Phase 1 v0.1.0-alpha - Logging Configuration Module (FIXED)
+# ============================================================================
+# Purpose: Structured JSON logging with rotation and multiple outputs
+# Guide Reference: Section 5.2 (JSON Structured Logging)
+# Last Updated: 2025-10-19 (COMPLETE FIX - was truncated)
+# Features:
+#   - JSON formatted logs for machine parsing
+#   - Rotating file handler (10MB per file, 5 backups)
+#   - Console and file output
+#   - Context injection (request_id, user_id, session_id)
+#   - Performance logging for token generation
+#   - Crawler operation logging
+# ============================================================================
+
+import os
+import sys
+import logging
+import json
+import hashlib
+import re
+from datetime import datetime
+from pathlib import Path
+from logging.handlers import RotatingFileHandler
+from typing import Dict, Any, Optional
+
+# JSON formatter
+try:
+    from json_log_formatter import JSONFormatter
+except ImportError:
+    # Fallback if json_log_formatter not available
+    class JSONFormatter(logging.Formatter):
+        def format(self, record):
+            return json.dumps({
+                'timestamp': datetime.utcnow().isoformat(),
+                'level': record.levelname,
+                'module': record.module,
+                'message': record.getMessage()
+            })
+
+# Configuration
+try:
+    from XNAi_rag_app.core.config_loader import load_config, get_config_value
+    CONFIG = load_config()
+except Exception as e:
+    print(f"Warning: Could not load config: {e}")
+    CONFIG = {'metadata': {'stack_version': 'v0.1.0-alpha'}, 'performance': {}}
+
+# ============================================================================
+# CUSTOM JSON FORMATTER
+# ============================================================================
+
+class XNAiJSONFormatter(JSONFormatter):
+    """
+    Custom JSON formatter for Xoe-NovAi logs with PII filtering.
+
+    Guide Reference: Section 5.2 (Custom JSON Formatting)
+    Security: Sovereign Security Trinity - PII filtering with SHA256 correlation hashes
+    """
+
+    # PII Detection Patterns (Sovereign Security Requirements)
+    EMAIL_PATTERN = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+    IP_PATTERN = re.compile(r'\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b')
+    CREDIT_CARD_PATTERN = re.compile(r'\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b')
+    SSN_PATTERN = re.compile(r'\b\d{3}[\s-]?\d{2}[\s-]?\d{4}\b')
+    PHONE_PATTERN = re.compile(r'\b\d{3}[\s.-]?\d{3}[\s.-]?\d{4}\b')
+
+    def json_record(
+        self,
+        message: str,
+        extra: Dict[str, Any],
+        record: logging.LogRecord
+    ) -> Dict[str, Any]:
+        """Create JSON log record with PII filtering."""
+        # Apply PII filtering to message
+        filtered_message = self._redact_pii(message)
+
+        log_entry = {
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "level": record.levelname,
+            "module": record.module,
+            "function": record.funcName,
+            "line": record.lineno,
+            "message": filtered_message,
+        }
+
+        # Add stack version
+        try:
+            log_entry["stack_version"] = get_config_value("metadata.stack_version", "v0.1.0-alpha")
+        except:
+            log_entry["stack_version"] = "v0.1.0-alpha"
+
+        # Add process info
+        log_entry["process_id"] = record.process
+        log_entry["thread_id"] = record.thread
+
+        # Add extra fields from context with PII filtering
+        if extra:
+            filtered_extra = {}
+            for k, v in extra.items():
+                if not k.startswith('_') and k not in ['message', 'asctime']:
+                    filtered_extra[k] = self._redact_pii(v) if isinstance(v, str) else v
+            log_entry.update(filtered_extra)
+
+        # Add exception info if present (with PII filtering)
+        if record.exc_info:
+            exception_message = str(record.exc_info[1])
+            filtered_exception = self._redact_pii(exception_message)
+            log_entry["exception"] = {
+                "type": record.exc_info[0].__name__,
+                "message": filtered_exception,
+            }
+
+        return log_entry
+
+    def _redact_pii(self, data: Any) -> Any:
+        """
+        Redact personally identifiable information with SHA256 correlation hashes.
+
+        Claude v2 Security Requirements: PII filtering for GDPR/SOC2 compliance
+        """
+        if not isinstance(data, str):
+            return data
+
+        # Create a copy to avoid modifying the original
+        filtered_data = data
+
+        # Redact email addresses
+        filtered_data = self.EMAIL_PATTERN.sub(
+            lambda m: f"EMAIL:{self._hash(m.group(0))[:8]}",
+            filtered_data
+        )
+
+        # Redact IP addresses
+        filtered_data = self.IP_PATTERN.sub(
+            lambda m: f"IP:{self._hash(m.group(0))[:8]}",
+            filtered_data
+        )
+
+        # Redact credit card numbers
+        filtered_data = self.CREDIT_CARD_PATTERN.sub(
+            lambda m: f"CC:{self._hash(m.group(0))[:8]}",
+            filtered_data
+        )
+
+        # Redact Social Security Numbers
+        filtered_data = self.SSN_PATTERN.sub(
+            lambda m: f"SSN:{self._hash(m.group(0))[:8]}",
+            filtered_data
+        )
+
+        # Redact phone numbers
+        filtered_data = self.PHONE_PATTERN.sub(
+            lambda m: f"PHONE:{self._hash(m.group(0))[:8]}",
+            filtered_data
+        )
+
+        return filtered_data
+
+    @staticmethod
+    def _hash(value: str) -> str:
+        """
+        Generate SHA256 hash for correlation while maintaining privacy.
+
+        Claude v2 Security: Correlation hashes allow log analysis without exposing PII
+        """
+        return hashlib.sha256(value.encode('utf-8')).hexdigest()
+
+# ============================================================================
+# CONTEXT INJECTION
+# ============================================================================
+
+class ContextAdapter(logging.LoggerAdapter):
+    """Logger adapter for injecting contextual information."""
+    
+    def process(self, msg: str, kwargs: Dict[str, Any]) -> tuple:
+        """Add context to log message."""
+        extra = kwargs.get('extra', {})
+        extra.update(self.extra)
+        kwargs['extra'] = extra
+        return msg, kwargs
+
+# ============================================================================
+# PERFORMANCE LOGGING
+# ============================================================================
+
+class PerformanceLogger:
+    """Performance metrics logger."""
+    
+    def __init__(self, logger: logging.Logger):
+        """Initialize performance logger."""
+        self.logger = logger
+    
+    def log_token_generation(
+        self,
+        tokens: int,
+        duration_s: float,
+        model: str = "gemma-2-9b"
+    ):
+        """Log token generation performance."""
+        tokens_per_second = tokens / duration_s if duration_s > 0 else 0
+        
+        self.logger.info(
+            "Token generation completed",
+            extra={
+                "operation": "token_generation",
+                "model": model,
+                "tokens": tokens,
+                "duration_s": round(duration_s, 3),
+                "tokens_per_second": round(tokens_per_second, 2),
+                "target_min": CONFIG.get('performance', {}).get('token_rate_min', 15),
+                "target_max": CONFIG.get('performance', {}).get('token_rate_max', 25),
+            }
+        )
+    
+    def log_memory_usage(self, component: str = "system"):
+        """Log current memory usage."""
+        try:
+            import psutil
+            memory = psutil.virtual_memory()
+            process = psutil.Process()
+            
+            self.logger.info(
+                "Memory usage",
+                extra={
+                    "operation": "memory_check",
+                    "component": component,
+                    "system_used_gb": round(memory.used / (1024**3), 2),
+                    "system_percent": memory.percent,
+                    "process_used_gb": round(process.memory_info().rss / (1024**3), 2),
+                    "limit_gb": CONFIG.get('performance', {}).get('memory_limit_gb', 6.0),
+                }
+            )
+        except Exception as e:
+            self.logger.warning(f"Could not measure memory: {e}")
+    
+    def log_query_latency(
+        self,
+        query: str,
+        duration_ms: float,
+        success: bool = True,
+        error: str = None
+    ):
+        """Log query processing latency."""
+        self.logger.info(
+            f"Query {'succeeded' if success else 'failed'}",
+            extra={
+                "operation": "query_processing",
+                "query_preview": query[:100] if query else "",
+                "duration_ms": round(duration_ms, 2),
+                "success": success,
+                "error": error,
+                "target_ms": CONFIG.get('performance', {}).get('latency_target_ms', 1000),
+            }
+        )
+    
+    def log_crawl_operation(
+        self,
+        source: str,
+        items: int,
+        duration_s: float,
+        success: bool = True,
+        error: str = None
+    ):
+        """Log crawler operation."""
+        items_per_hour = (items / duration_s * 3600) if duration_s > 0 else 0
+        
+        self.logger.info(
+            f"Crawl {'completed' if success else 'failed'}: {source}",
+            extra={
+                "operation": "crawl",
+                "source": source,
+                "items": items,
+                "duration_s": round(duration_s, 2),
+                "items_per_hour": round(items_per_hour, 1),
+                "success": success,
+                "error": error,
+                "target_rate": CONFIG.get('performance', {}).get('crawl_rate_target', 50),
+            }
+        )
+
+# ============================================================================
+# SETUP FUNCTIONS
+# ============================================================================
+
+def setup_file_handler(
+    log_file: str,
+    max_bytes: int = 10 * 1024 * 1024,
+    backup_count: int = 5,
+    level: int = logging.INFO
+) -> RotatingFileHandler:
+    """
+    Create rotating file handler.
+    
+    CRITICAL: This MUST handle the case where the directory doesn't exist
+    (created at build time) but we still need to verify it's writable.
+    """
+    import errno
+    from pathlib import Path
+    
+    # ensure logs dir exists and is writable for container (non-root: UID 1001)
+    log_path = Path(log_file)
+    logs_dir = log_path.parent
+    
+    try:
+        # Create directory if it doesn't exist
+        logs_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Only attempt chown if platform supports it and UID/GID provided
+        uid, gid = 1001, 1001
+        try:
+            os.chown(str(logs_dir), uid, gid)
+        except PermissionError:
+            # Running as non-root in dev environment; skip chown but log notice.
+            print("Warning: Unable to chown logs directory (non-root).")
+        except AttributeError:
+            # os.chown may not be available on some platforms
+            pass
+        
+        # Tighten perms: owner rwx, group rx (no global write)
+        logs_dir.chmod(0o750)
+        
+    except OSError as e:
+        if e.errno == errno.EACCES:
+            print(f"ERROR: Cannot create/modify logs directory due to permissions: {e}")
+            print(f"  Path: {logs_dir}")
+            print(f"  Current user: {os.getuid()}")
+            print("  Directory ownership:")
+            import subprocess
+            try:
+                subprocess.run(['ls', '-ld', str(logs_dir)])
+            except:
+                pass
+        # Don't crash startup; log error and continue
+        print(f"Warning: Could not configure logs dir permissions: {e}")
+    
+    # Create handler
+    handler = RotatingFileHandler(
+        log_file,
+        maxBytes=max_bytes,
+        backupCount=backup_count,
+        encoding='utf-8'
+    )
+    
+    handler.setLevel(level)
+    handler.setFormatter(XNAiJSONFormatter())
+    
+    return handler
+
+def setup_console_handler(
+    level: int = logging.INFO,
+    use_json: bool = True
+) -> logging.StreamHandler:
+    """Create console handler."""
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setLevel(level)
+    
+    if use_json:
+        handler.setFormatter(XNAiJSONFormatter())
+    else:
+        formatter = logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+            datefmt='%Y-%m-%d %H:%M:%S'
+        )
+        handler.setFormatter(formatter)
+    
+    return handler
+
+def setup_logging(
+    log_level: str = None,
+    log_file: str = None,
+    console_enabled: bool = True,
+    file_enabled: bool = True,
+    json_format: bool = True
+):
+    """
+    Configure logging for entire application.
+    
+    This is the main entrypoint for configuring logging.
+    """
+    # Get configuration
+    if log_level is None:
+        try:
+            log_level = get_config_value('logging.level', 'INFO')
+        except:
+            log_level = 'INFO'
+    
+    if log_file is None:
+        # Priority: 1. LOG_DIR env, 2. config, 3. hardcoded default
+        log_dir = os.getenv('LOG_DIR', '/app/logs')
+        try:
+            log_file = get_config_value(
+                'logging.file_path',
+                os.path.join(log_dir, 'xnai.log')
+            )
+        except:
+            log_file = os.path.join(log_dir, 'xnai.log')
+    
+    # Parse log level
+    numeric_level = getattr(logging, log_level.upper(), logging.INFO)
+    
+    # Get root logger
+    root_logger = logging.getLogger()
+    root_logger.setLevel(numeric_level)
+    
+    # Remove existing handlers
+    root_logger.handlers.clear()
+    
+    # Add console handler
+    if console_enabled:
+        try:
+            console_handler = setup_console_handler(
+                level=numeric_level,
+                use_json=json_format
+            )
+            root_logger.addHandler(console_handler)
+        except Exception as e:
+            print(f"ERROR: Failed to setup console handler: {e}")
+    
+    # Add file handler
+    if file_enabled:
+        try:
+            max_size_mb = get_config_value('logging.max_size_mb', 10)
+        except:
+            max_size_mb = 10
+        
+        try:
+            backup_count = get_config_value('logging.backup_count', 5)
+        except:
+            backup_count = 5
+        
+        try:
+            file_handler = setup_file_handler(
+                log_file=log_file,
+                max_bytes=max_size_mb * 1024 * 1024,
+                backup_count=backup_count,
+                level=numeric_level
+            )
+            root_logger.addHandler(file_handler)
+        except Exception as e:
+            print(f"ERROR: Failed to setup file handler: {e}")
+            print(f"  Log file: {log_file}")
+            print(f"  Will continue with console logging only")
+            file_enabled = False
+    
+    # Log initialization
+    try:
+        root_logger.info(
+            "Logging configured",
+            extra={
+                "log_level": log_level,
+                "log_file": log_file if file_enabled else None,
+                "console_enabled": console_enabled,
+                "file_enabled": file_enabled,
+                "json_format": json_format,
+            }
+        )
+    except Exception as e:
+        print(f"Warning: Could not log initialization: {e}")
+
+# ============================================================================
+# CONVENIENCE FUNCTIONS
+# ============================================================================
+
+def get_logger(
+    name: str,
+    context: Dict[str, Any] = None
+) -> logging.Logger:
+    """Get configured logger with optional context."""
+    logger = logging.getLogger(name)
+    
+    if context:
+        return ContextAdapter(logger, context)
+    
+    return logger
+
+def log_startup_info():
+    """Log application startup information."""
+    logger = logging.getLogger('xnai.startup')
+    
+    try:
+        import psutil
+        memory = psutil.virtual_memory()
+        cpu_count = psutil.cpu_count()
+    except:
+        memory = None
+        cpu_count = None
+    
+    # Stack info
+    logger.info(
+        "Xoe-NovAi starting",
+        extra={
+            "stack_version": CONFIG.get('metadata', {}).get('stack_version', 'v0.1.4-stable'),
+            "codename": CONFIG.get('metadata', {}).get('codename', 'unknown'),
+            "phase": CONFIG.get('project', {}).get('phase', 1),
+        }
+    )
+    
+    # System info
+    if memory and cpu_count:
+        logger.info(
+            "System information",
+            extra={
+                "cpu_count": cpu_count,
+                "memory_total_gb": round(memory.total / (1024**3), 2),
+                "memory_available_gb": round(memory.available / (1024**3), 2),
+            }
+        )
+
+# ============================================================================
+# TESTING
+# ============================================================================
+
+if __name__ == "__main__":
+    """Test logging configuration."""
+    print("=" * 70)
+    print("Xoe-NovAi Logging Configuration - Test Suite v0.1.4-stable")
+    print("=" * 70)
+    print()
+    
+    # Setup logging
+    print("Setting up logging...")
+    try:
+        setup_logging(log_level='INFO', json_format=True)
+        print("✓ Logging configured\n")
+    except Exception as e:
+        print(f"✗ Logging setup failed: {e}\n")
+        sys.exit(1)
+    
+    # Test basic logging
+    print("Test 1: Basic logging")
+    logger = get_logger(__name__)
+    logger.info("Info message")
+    logger.warning("Warning message")
+    print("✓ Basic logging test complete\n")
+    
+    # Test context injection
+    print("Test 2: Context injection")
+    context_logger = get_logger(
+        __name__,
+        context={'request_id': 'test-123'}
+    )
+    context_logger.info("Message with context")
+    print("✓ Context injection test complete\n")
+    
+    # Test performance logging
+    print("Test 3: Performance logging")
+    perf = PerformanceLogger(logger)
+    perf.log_token_generation(tokens=100, duration_s=5.0)
+    perf.log_memory_usage(component="test")
+    print("✓ Performance logging test complete\n")
+    
+    print("=" * 70)
+    print("All logging tests passed!")
+    print("=" * 70)
