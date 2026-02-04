@@ -1,0 +1,2302 @@
+# Xoe-NovAi Foundation: Documentation Audit Report
+
+**Generated:** 2026-02-04
+**Version:** v1.0.0
+**Auditor:** Cline-Trinity
+
+## Ma'at Alignment
+- Truth (Ideal 7): ✅
+- Advancement (Ideal 41): ✅
+
+## Gaps Identified
+- Critical Files Missing: 1
+- Other Files Missing: 2259
+- Memory Bank Incomplete: 10
+- Sync Protocols Invalid: 0
+
+## Restored Files
+- progress.md
+- docs-consolidation-20260119-195827/docs/broken_links_report.json
+- docs-consolidation-20260119-195827/docs/handover-readiness-report.md
+- docs-consolidation-20260119-195827/docs/index.md
+- docs-consolidation-20260119-195827/docs/index.json
+- docs-consolidation-20260119-195827/docs/CHAINLIT_DOWNGRADE_ANALYSIS.md
+- docs-consolidation-20260119-195827/docs/cline-session-onboarding.md
+- docs-consolidation-20260119-195827/docs/incoming-integration-summary.md
+- docs-consolidation-20260119-195827/docs/README.md
+- docs-consolidation-20260119-195827/docs/DR-research-request-from -Cline - 01_13_2026.md
+- docs-consolidation-20260119-195827/docs/DOCUMENTATION_MAINTENANCE_INDEX.md
+- docs-consolidation-20260119-195827/docs/voice-debug-mode.md
+- docs-consolidation-20260119-195827/docs/Xoe-NovAi AI Code Assistant System Prompt.md
+- docs-consolidation-20260119-195827/docs/TRACKING_DOCUMENTS_CONSOLIDATION_ANALYSIS.md
+- docs-consolidation-20260119-195827/docs/business-opportunities.md
+- docs-consolidation-20260119-195827/docs/XOE_NOVAI_CHAINLIT_IMPLEMENTATIONS.md
+- docs-consolidation-20260119-195827/docs/audit-progress.md
+- docs-consolidation-20260119-195827/docs/freshness-report.md
+- docs-consolidation-20260119-195827/docs/cline-session-continuation.md
+- docs-consolidation-20260119-195827/docs/docs_freshness_report.json
+- docs-consolidation-20260119-195827/docs/grok_deep_research_request.md
+- docs-consolidation-20260119-195827/docs/research-validation-report.md
+- docs-consolidation-20260119-195827/docs/search_index.json
+- docs-consolidation-20260119-195827/docs/DOCUMENTATION_AUDIT_CHECKLIST.md
+- docs-consolidation-20260119-195827/docs/claude-research-requirements-q1-2026.md
+- docs-consolidation-20260119-195827/docs/project-tracking/phase1-foundation-security.md
+- docs-consolidation-20260119-195827/docs/project-tracking/build-system.md
+- docs-consolidation-20260119-195827/docs/project-tracking/security-framework.md
+- docs-consolidation-20260119-195827/docs/project-tracking/phase4-documentation-consolidation.md
+- docs-consolidation-20260119-195827/docs/project-tracking/operations-handbook.md
+- docs-consolidation-20260119-195827/docs/project-tracking/performance-optimization.md
+- docs-consolidation-20260119-195827/docs/project-tracking/ai-capabilities-overview.md
+- docs-consolidation-20260119-195827/docs/project-tracking/PROJECT_STATUS_DASHBOARD.md
+- docs-consolidation-20260119-195827/docs/project-tracking/dependency-management.md
+- docs-consolidation-20260119-195827/docs/project-tracking/phase3-production-hardening.md
+- docs-consolidation-20260119-195827/docs/project-tracking/infrastructure-architecture.md
+- docs-consolidation-20260119-195827/docs/project-tracking/phase2-performance-resilience.md
+- docs-consolidation-20260119-195827/docs/project-tracking/integration-guide.md
+- docs-consolidation-20260119-195827/docs/02-development/phase1-implementation-guide.md
+- docs-consolidation-20260119-195827/docs/02-development/implementation-summary.md
+- docs-consolidation-20260119-195827/docs/02-development/week3-progress-summary.md
+- docs-consolidation-20260119-195827/docs/02-development/vulkan-integration-roadmap.md
+- docs-consolidation-20260119-195827/docs/02-development/week2-implementation-plan.md
+- docs-consolidation-20260119-195827/docs/02-development/index.md
+- docs-consolidation-20260119-195827/docs/02-development/holistic-integration-execution-plan.md
+- docs-consolidation-20260119-195827/docs/02-development/week1-2_implementation_log.md
+- docs-consolidation-20260119-195827/docs/02-development/ml_docker_optimization_guide.md
+- docs-consolidation-20260119-195827/docs/02-development/code-skeletons.md
+- docs-consolidation-20260119-195827/docs/02-development/week1-progress-summary.md
+- docs-consolidation-20260119-195827/docs/02-development/CRITICAL_BLOCKERS_REPORT.md
+- docs-consolidation-20260119-195827/docs/02-development/production-stability-audit.md
+- docs-consolidation-20260119-195827/docs/02-development/enterprise-transformation-risk-assessment.md
+- docs-consolidation-20260119-195827/docs/02-development/phase-1.md
+- docs-consolidation-20260119-195827/docs/02-development/visual-reference.md
+- docs-consolidation-20260119-195827/docs/02-development/production-integration-roadmap.md
+- docs-consolidation-20260119-195827/docs/02-development/Claude Fix Rpeort - Docker to Podman move issues and chache_from errors.md
+- docs-consolidation-20260119-195827/docs/02-development/2026_implementation_plan.md
+- docs-consolidation-20260119-195827/docs/02-development/voice-setup.md
+- docs-consolidation-20260119-195827/docs/02-development/developer-portability-guide.md
+- docs-consolidation-20260119-195827/docs/02-development/README.md
+- docs-consolidation-20260119-195827/docs/02-development/DEPENDENCY_UPDATE_IMPLEMENTATION_GUIDE.md
+- docs-consolidation-20260119-195827/docs/02-development/checklist.md
+- docs-consolidation-20260119-195827/docs/02-development/dependency-tracking-matrix.md
+- docs-consolidation-20260119-195827/docs/02-development/phase1_day2_circuit_breaker_testing.md
+- docs-consolidation-20260119-195827/docs/02-development/phase1_week1_security_errorhandling_ux.md
+- docs-consolidation-20260119-195827/docs/02-development/build-performance.md
+- docs-consolidation-20260119-195827/docs/02-development/wheelhouse-build.md
+- docs-consolidation-20260119-195827/docs/02-development/DEPENDENCY_UPDATE_ENTERPRISE_IMPLEMENTATION.md
+- docs-consolidation-20260119-195827/docs/02-development/claude-v2-integration-assessment.md
+- docs-consolidation-20260119-195827/docs/02-development/week1_rollback_procedures.md
+- docs-consolidation-20260119-195827/docs/02-development/piper-onnx-implementation-complete.md
+- docs-consolidation-20260119-195827/docs/02-development/tts-options.md
+- docs-consolidation-20260119-195827/docs/02-development/docker-mkdocs-optimization-complete.md
+- docs-consolidation-20260119-195827/docs/02-development/week1-implementation-plan.md
+- docs-consolidation-20260119-195827/docs/02-development/week3-implementation-plan.md
+- docs-consolidation-20260119-195827/docs/02-development/enterprise_build_system_final_report.md
+- docs-consolidation-20260119-195827/docs/02-development/quality-assurance-framework.md
+- docs-consolidation-20260119-195827/docs/02-development/mkdocs-docker-audit-critical-findings.md
+- docs-consolidation-20260119-195827/docs/02-development/monitoring-observability-plan.md
+- docs-consolidation-20260119-195827/docs/02-development/mkdocs-research-implementation-summary.md
+- docs-consolidation-20260119-195827/docs/02-development/enterprise-build.md
+- docs-consolidation-20260119-195827/docs/02-development/deployment-operations-guide.md
+- docs-consolidation-20260119-195827/docs/02-development/quick-reference-checklist.md
+- docs-consolidation-20260119-195827/docs/02-development/POLISHING_MASTER_INDEX.md
+- docs-consolidation-20260119-195827/docs/02-development/xoe-novai-implementation-completeness-report.md
+- docs-consolidation-20260119-195827/docs/02-development/qdrant-checklist.md
+- docs-consolidation-20260119-195827/docs/02-development/piper-onnx-summary.md
+- docs-consolidation-20260119-195827/docs/02-development/mkdocs-rag-integration-roadmap.md
+- docs-consolidation-20260119-195827/docs/02-development/makefile-usage.md
+- docs-consolidation-20260119-195827/docs/02-development/UX_TEST_FRESH_BUILD_20260110.md
+- docs-consolidation-20260119-195827/docs/02-development/code-review-files.md
+- docs-consolidation-20260119-195827/docs/02-development/research-integration-summary.md
+- docs-consolidation-20260119-195827/docs/02-development/phase3_day567_execution_complete.md
+- docs-consolidation-20260119-195827/docs/02-development/UNIFIED_IMPLEMENTATION_GUIDE.md
+- docs-consolidation-20260119-195827/docs/02-development/implementation-checklist.md
+- docs-consolidation-20260119-195827/docs/02-development/quick-start.md
+- docs-consolidation-20260119-195827/docs/02-development/best_practices_research.md
+- docs-consolidation-20260119-195827/docs/02-development/technical-debt-register.md
+- docs-consolidation-20260119-195827/docs/02-development/risk-assessment-mitigation.md
+- docs-consolidation-20260119-195827/docs/02-development/week1-dependency-audit.md
+- docs-consolidation-20260119-195827/docs/02-development/piper-onnx-complete.md
+- docs-consolidation-20260119-195827/docs/02-development/qdrant-migration.md
+- docs-consolidation-20260119-195827/docs/02-development/github-protocol-guide.md
+- docs-consolidation-20260119-195827/docs/02-development/claude-research-integration-report.md
+- docs-consolidation-20260119-195827/docs/02-development/docker-setup.md
+- docs-consolidation-20260119-195827/docs/02-development/phase-2-3.md
+- docs-consolidation-20260119-195827/docs/02-development/phase3_day34_execution_complete.md
+- docs-consolidation-20260119-195827/docs/02-development/week2_implementation_plan.md
+- docs-consolidation-20260119-195827/docs/02-development/voice-enterprise.md
+- docs-consolidation-20260119-195827/docs/02-development/plugin_architecture_design.md
+- docs-consolidation-20260119-195827/docs/02-development/script_optimization_tracker.md
+- docs-consolidation-20260119-195827/docs/02-development/ml_docker_optimization_guide_v2.md
+- docs-consolidation-20260119-195827/docs/02-development/FULL_STACK_AUDIT_REPORT.md
+- docs-consolidation-20260119-195827/docs/02-development/voice-quick-reference.md
+- docs-consolidation-20260119-195827/docs/02-development/week2-progress-summary.md
+- docs-consolidation-20260119-195827/docs/02-development/polishing-progress-tracker.md
+- docs-consolidation-20260119-195827/docs/02-development/offline-build-logging.md
+- docs-consolidation-20260119-195827/docs/02-development/library-api.md
+- docs-consolidation-20260119-195827/docs/02-development/6_week_stack_enhancement_plan.md
+- docs-consolidation-20260119-195827/docs/02-development/library-api-readme.md
+- docs-consolidation-20260119-195827/docs/02-development/phase3_implementation_guide_research_verified.md
+- docs-consolidation-20260119-195827/docs/02-development/research-integration-master-plan.md
+- docs-consolidation-20260119-195827/docs/02-development/voice-interface-guide.md
+- docs-consolidation-20260119-195827/docs/02-development/claude-briefing-update-research-request.md
+- docs-consolidation-20260119-195827/docs/02-development/site-wide-implementation-roadmap.md
+- docs-consolidation-20260119-195827/docs/02-development/research-implementation-tasks.md
+- docs-consolidation-20260119-195827/docs/02-development/build_timeline.md
+- docs-consolidation-20260119-195827/docs/02-development/code-review-checklists.md
+- docs-consolidation-20260119-195827/docs/02-development/phase1-implementation-status-report.md
+- docs-consolidation-20260119-195827/docs/02-development/qdrant-integration.md
+- docs-consolidation-20260119-195827/docs/02-development/vulkan-igpu-implementation-log.md
+- docs-consolidation-20260119-195827/docs/02-development/offline-deployment.md
+- docs-consolidation-20260119-195827/docs/02-development/docs-enhancement-roadmap.md
+- docs-consolidation-20260119-195827/docs/02-development/qdrant-index.md
+- docs-consolidation-20260119-195827/docs/02-development/project-tracking-dashboard.md
+- docs-consolidation-20260119-195827/docs/02-development/phase1_progress_tracker.md
+- docs-consolidation-20260119-195827/docs/02-development/qdrant-agentic-migration.md
+- docs-consolidation-20260119-195827/docs/02-development/enhanced-metrics-implementation-report.md
+- docs-consolidation-20260119-195827/docs/02-development/claude-guides-analysis-outline.md
+- docs-consolidation-20260119-195827/docs/02-development/week1-completion-summary.md
+- docs-consolidation-20260119-195827/docs/02-development/mkdocs-enterprise-enhancement-plan.md
+- docs-consolidation-20260119-195827/docs/02-development/next_steps_strategy.md
+- docs-consolidation-20260119-195827/docs/02-development/enterprise-enhancement-implementation-roadmap.md
+- docs-consolidation-20260119-195827/docs/02-development/rootless-docker-roadmap.md
+- docs-consolidation-20260119-195827/docs/02-development/phase3_research_audit_complete.md
+- docs-consolidation-20260119-195827/docs/02-development/permissions-mitigation-implementation.md
+- docs-consolidation-20260119-195827/docs/02-development/implementation-execution-tracker.md
+- docs-consolidation-20260119-195827/docs/02-development/COMPREHENSIVE_STACK_POLISHING_ROADMAP.md
+- docs-consolidation-20260119-195827/docs/02-development/piper-onnx-implementation-summary.md
+- docs-consolidation-20260119-195827/docs/02-development/POLISHING_INTEGRATION_SUMMARY.md
+- docs-consolidation-20260119-195827/docs/02-development/wheelhouse-build-tracking.md
+- docs-consolidation-20260119-195827/docs/02-development/project-status-tracker.md
+- docs-consolidation-20260119-195827/docs/02-development/howto_template.md
+- docs-consolidation-20260119-195827/docs/howto/README.md
+- docs-consolidation-20260119-195827/docs/videos/kj-xoe-novai-explanation-script.md
+- docs-consolidation-20260119-195827/docs/videos/Grok - Unique Use Cases Discovered.md
+- docs-consolidation-20260119-195827/docs/videos/Grok - Expanded Script Template (Anime Style – Inspirational Triumph).md
+- docs-consolidation-20260119-195827/docs/videos/README.md
+- docs-consolidation-20260119-195827/docs/videos/xoe-novai-notebooklm-context-package.md
+- docs-consolidation-20260119-195827/docs/videos/Grok - Complete Guide to Generating High-Quality Videos in NotebookLM.md
+- docs-consolidation-20260119-195827/docs/videos/Claude - NotebookLM Masterclass.md
+- docs-consolidation-20260119-195827/docs/videos/claude-research-request-for-video-enhancement.md
+- docs-consolidation-20260119-195827/docs/videos/Research Report Enhanced NotebookLM Video Strategies (Jan 17, 2026).md
+- docs-consolidation-20260119-195827/docs/videos/Grok - video supplemental.md
+- docs-consolidation-20260119-195827/docs/06-meta/Grok - Additional Research Update v5.md
+- docs-consolidation-20260119-195827/docs/06-meta/GROK_EXPERT_ONBOARDING_REPORT.md
+- docs-consolidation-20260119-195827/docs/06-meta/README.md
+- docs-consolidation-20260119-195827/docs/06-meta/grok_deep_research_response.md
+- docs-consolidation-20260119-195827/docs/06-meta/implementation-files-review.md
+- docs-consolidation-20260119-195827/docs/06-meta/Grok - 2026 Tech & Strategy Update v2.md
+- docs-consolidation-20260119-195827/docs/06-meta/bash_best_practices_research.md
+- docs-consolidation-20260119-195827/docs/06-meta/migration-report.md
+- docs-consolidation-20260119-195827/docs/06-meta/Grok - Doc Update v5.md
+- docs-consolidation-20260119-195827/docs/06-meta/bash_script_execution_issues.md
+- docs-consolidation-20260119-195827/docs/06-meta/AI_ASSISTANT_GUIDE.md
+- docs-consolidation-20260119-195827/docs/06-meta/Grok - BIOS Script Update v5.md
+- docs-consolidation-20260119-195827/docs/06-meta/Grok - 2026 Tech & Strategy Update Report.md
+- docs-consolidation-20260119-195827/docs/06-meta/DOCUMENTATION_AUDIT_CHANGES.md
+- docs-consolidation-20260119-195827/docs/06-meta/final-organization-summary.md
+- docs-consolidation-20260119-195827/docs/06-meta/implementation-files-organization-complete.md
+- docs-consolidation-20260119-195827/docs/06-meta/DEPENDENCY_UPDATE_RESEARCH_PLAN.md
+- docs-consolidation-20260119-195827/docs/06-meta/pip_progress_interception_research.md
+- docs-consolidation-20260119-195827/docs/06-meta/organization-summary.md
+- docs-consolidation-20260119-195827/docs/06-meta/Grok - 2026 Tech & Strategy Update v3.md
+- docs-consolidation-20260119-195827/docs/06-meta/Grok - 2026 Tech & Strategy Update v5.md
+- docs-consolidation-20260119-195827/docs/06-meta/organization-complete.md
+- docs-consolidation-20260119-195827/docs/06-meta/Grok - 2026 Tech & Strategy Update v4.md
+- docs-consolidation-20260119-195827/docs/runbooks/README.md
+- docs-consolidation-20260119-195827/docs/audit/ORGANIZATION_PLAN.md
+- docs-consolidation-20260119-195827/docs/audit/CONTENT_CLASSIFICATION.md
+- docs-consolidation-20260119-195827/docs/audit/XOE_NOVAI_CLAUDE_ALIGNMENT_AUDIT.md
+- docs-consolidation-20260119-195827/docs/audit/CONTENT_INVENTORY.md
+- docs-consolidation-20260119-195827/docs/tutorials/quick-start.md
+- docs-consolidation-20260119-195827/docs/tutorials/voice-interface.md
+- docs-consolidation-20260119-195827/docs/tutorials/docker-setup.md
+- docs-consolidation-20260119-195827/docs/tutorials/getting-started.md
+- docs-consolidation-20260119-195827/docs/templates/release_note_template.md
+- docs-consolidation-20260119-195827/docs/templates/enhancement_tracking_template.md
+- docs-consolidation-20260119-195827/docs/research/research-request-template.md
+- docs-consolidation-20260119-195827/docs/research/Grok - Claude final implementations recommenfations.md
+- docs-consolidation-20260119-195827/docs/research/research-needs.md
+- docs-consolidation-20260119-195827/docs/research/README.md
+- docs-consolidation-20260119-195827/docs/research/Grok_Clarification_Response.md
+- docs-consolidation-20260119-195827/docs/research/CLAUDE_WEEK4_PRODUCTION_VALIDATION_PROMPT.md
+- docs-consolidation-20260119-195827/docs/research/POLISHING_RESEARCH_REQUESTS.md
+- docs-consolidation-20260119-195827/docs/research/research-integration-guide.md
+- docs-consolidation-20260119-195827/docs/research/RESEARCH_SYSTEM_SUMMARY.md
+- docs-consolidation-20260119-195827/docs/research/GROK_FINAL_PRODUCTION_READINESS_REPORT_v1.0.md
+- docs-consolidation-20260119-195827/docs/research/research-tracking.md
+- docs-consolidation-20260119-195827/docs/research/projects/README.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/README.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - Chat Summary - Week 3 Enterprise Security & Compliance Hardening.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - week4_gap_sprint_plan.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - XNAI_implementation_plan.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - xoe_novai_realistic_enhancements.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_FINAL_IMPLEMENTATION_INITIATION_PROMPT.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_WEEK4_SESSION_QUICKSTART.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude Research Report - xoe_integration_research_phase1.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_NEXT_PHASE_REQUEST_v1.0.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - XNAI_implementation_plan_chat_summary.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - final clarification and doc creation prompt.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_WEEK4_PRODUCTION_VALIDATION_PROMPT.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_CONCLUSIVE_RESEARCH_REQUEST_v1.0.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_WEEK4_SESSION_ASSETS_SUPPLEMENTAL.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_INTEGRATION_RESEARCH_REQUEST.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - xoe_novai_assessment.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/final_implementation_guides/Claude - xoe_security_technical_manual.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/final_implementation_guides/Claude - xoe_monitoring_stack.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/final_implementation_guides/Claude - xoe_security_implementation.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CRITICAL_RESEARCH_REQUEST.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CLAUDE_FINAL_IMPLEMENTATION_REQUEST_v1.0.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PHASE1_CHAT_INITIATION_PROMPT.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CLAUDE_FINAL_SUPPLEMENTAL.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CONTAINER_ORCHESTRATION_CONTEXT.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok - Production Readiness Verification and Recommendations.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PHASE1_ADVANCED_RESEARCH_REQUEST_v1.0.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FOLLOWUP_RESEARCH_REQUEST.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok Research Report - Phase 1 Critical Research Package.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FOLLOWUP_CLARIFICATION_REQUEST.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CLAUDE_ENHANCEMENT_CHAT_PROMPT.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_RESEARCH_FOLLOWUP_REQUEST_v1.0.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok Research Report - Phase 1 Follow-up Research Package.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_PRODUCTION_READINESS_REQUEST_v1.0.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PHASE1_ADVANCED_RESEARCH_CLARIFYING_QUESTIONS.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok - Phase 1 Advanced Research Clarifications Breakthrough Prioritization Refinement.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_CLAUDE_RESOURCES_REQUEST.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PRODUCTION_READINESS_RESEARCH_REQUEST_v1.0.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_DECISIONS_CHAT_PROMPT.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_PRODUCTION_READINESS_SUPPLEMENTAL.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok Phase 1 Advanced Research Initiation Breakthrough Assessment.md
+- docs-consolidation-20260119-195827/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_PRODUCTION_READINESS_INITIATION_PROMPT.md
+- docs-consolidation-20260119-195827/docs/research/projects/observability/xoe_novai_ultimate_monitoring_guide.md
+- docs-consolidation-20260119-195827/docs/research/projects/observability/xoe_novai_grafana_implementation.md
+- docs-consolidation-20260119-195827/docs/research/projects/observability/xoe_novai_integration_code.md
+- docs-consolidation-20260119-195827/docs/research/projects/observability/xoe_novai_enterprise_guide.md
+- docs-consolidation-20260119-195827/docs/research/projects/observability/xoe_novai_custom_observability_portal.md
+- docs-consolidation-20260119-195827/docs/research/projects/observability/xoe_novai_voice_dashboards.md
+- docs-consolidation-20260119-195827/docs/research/methodology/README.md
+- docs-consolidation-20260119-195827/docs/research/methodology/RESEARCH_METHODOLOGY_FRAMEWORK.md
+- docs-consolidation-20260119-195827/docs/research/methodology/templates/RESEARCH_REQUEST_TEMPLATE.md
+- docs-consolidation-20260119-195827/docs/research/methodology/tracking/RESEARCH_REPORT_CATALOGING_STRATEGY.md
+- docs-consolidation-20260119-195827/docs/research/methodology/tracking/RESEARCH_CYCLE_TRACKING.md
+- docs-consolidation-20260119-195827/docs/research/methodology/tracking/METHODOLOGY_FEEDBACK_REGISTER.md
+- docs-consolidation-20260119-195827/docs/research/methodology/tracking/EMERGING_TECHNOLOGY_INTAKE_SYSTEM.md
+- docs-consolidation-20260119-195827/docs/research/methodology/process/RESEARCH_PROCESS_GUIDE.md
+- docs-consolidation-20260119-195827/docs/research/urls/intake-tracker.md
+- docs-consolidation-20260119-195827/docs/personas/odin.json
+- docs-consolidation-20260119-195827/docs/personas/lilith.json
+- docs-consolidation-20260119-195827/docs/documentation-consolidation-project/xoe-novai-research-expert-v2.0.md
+- docs-consolidation-20260119-195827/docs/documentation-consolidation-project/xoe-novai-documentation-consolidation-specialist-v1.0.md
+- docs-consolidation-20260119-195827/docs/documentation-consolidation-project/README.md
+- docs-consolidation-20260119-195827/docs/documentation-consolidation-project/DRR-DOCS-001_SUPPLEMENTAL_CONTEXT.md
+- docs-consolidation-20260119-195827/docs/documentation-consolidation-project/GROK_DOCUMENTATION_CONSOLIDATION_REQUEST.md
+- docs-consolidation-20260119-195827/docs/documentation-consolidation-project/DOCUMENTATION_CONSOLIDATION_PROJECT_TRACKER.md
+- docs-consolidation-20260119-195827/docs/documentation-consolidation-project/DOCUMENTATION_CONSOLIDATION_PROJECT_README.md
+- docs-consolidation-20260119-195827/docs/documentation-consolidation-project/USER_GUIDES_CRAFTING_PLAN.md
+- docs-consolidation-20260119-195827/docs/documentation-consolidation-project/PR_DOCUMENTATION_ORGANIZATION_RECOMMENDATION.md
+- docs-consolidation-20260119-195827/docs/documentation-consolidation-project/DOCUMENTATION_PROJECT_SUPPLEMENTALS.json
+- docs-consolidation-20260119-195827/docs/projects/TORCH_FREE_CHAINLIT_MOD.md
+- docs-consolidation-20260119-195827/docs/releases/changelog.md
+- docs-consolidation-20260119-195827/docs/releases/README.md
+- docs-consolidation-20260119-195827/docs/archive/README.md
+- docs-consolidation-20260119-195827/docs/archive/code-review-sessions/Grok - Vulkan Troubleshooting draft - January 10, 20.md
+- docs-consolidation-20260119-195827/docs/archive/code-review-sessions/Grok - Vulkan Enhancement code guide - January 10, 20.md
+- docs-consolidation-20260119-195827/docs/archive/code-review-sessions/Grok - Vulkan Enhancement Audit - January 10, 20.md
+- docs-consolidation-20260119-195827/docs/archive/code-review-sessions/Grok - Voice to Voice Code Audit - January 10, 20.md
+- docs-consolidation-20260119-195827/docs/archive/code-review-sessions/Grok Code Audit - January 10 2026.md
+- docs-consolidation-20260119-195827/docs/archive/duplicates/WHEELHOUSE_BUILD_TRACKING_dup.md
+- docs-consolidation-20260119-195827/docs/archive/duplicates/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025_dup.md
+- docs-consolidation-20260119-195827/docs/archive/duplicates/XNAI_blueprint_dup.md
+- docs-consolidation-20260119-195827/docs/archive/duplicates/IMPLEMENTATION_COMPLETE_PIPER_ONNX_dup.md
+- docs-consolidation-20260119-195827/docs/archive/duplicates/PIPER_ONNX_IMPLEMENTATION_SUMMARY_dup.md
+- docs-consolidation-20260119-195827/docs/archive/duplicates/README_dup.md
+- docs-consolidation-20260119-195827/docs/archive/duplicates/CHANGELOG_dup.md
+- docs-consolidation-20260119-195827/docs/archive/duplicates/UPDATES_RUNNING_archive.md
+- docs-consolidation-20260119-195827/docs/archive/old-versions/Xoe-NovAi_v0.1.3_Phase_1_Guide - Grok - 10_20.md
+- docs-consolidation-20260119-195827/docs/archive/old-versions/AUDIT_REPAIR_LOG.md
+- docs-consolidation-20260119-195827/docs/archive/historical/WHEELHOUSE_BUILD_TRACKING.md
+- docs-consolidation-20260119-195827/docs/archive/historical/GIT_COMMIT_INSTRUCTIONS.md
+- docs-consolidation-20260119-195827/docs/archive/historical/FINAL_ORGANIZATION_SUMMARY.md
+- docs-consolidation-20260119-195827/docs/archive/historical/README_IMPLEMENTATION.md
+- docs-consolidation-20260119-195827/docs/archive/historical/CONSOLIDATION_COMPLETION_SUMMARY.md
+- docs-consolidation-20260119-195827/docs/archive/historical/README_archive - 01_04_2026.md
+- docs-consolidation-20260119-195827/docs/archive/historical/IMPLEMENTATION_COMPLETE_PIPER_ONNX.md
+- docs-consolidation-20260119-195827/docs/archive/historical/IMPLEMENTATION_COMPLETE_PIPER_ONNX_archive - 01_04_2026.md
+- docs-consolidation-20260119-195827/docs/archive/historical/PIPER_ONNX_IMPLEMENTATION_SUMMARY.md
+- docs-consolidation-20260119-195827/docs/archive/historical/UPDATES_RUNNING_archive - 01_04_2026.md
+- docs-consolidation-20260119-195827/docs/archive/historical/README.md
+- docs-consolidation-20260119-195827/docs/archive/historical/PIPER_ONNX_IMPLEMENTATION_SUMMARY_archive - 01_04_2026.md
+- docs-consolidation-20260119-195827/docs/archive/historical/INDEX.md
+- docs-consolidation-20260119-195827/docs/archive/historical/XNAI_blueprint_archive - 01_04_2026.md
+- docs-consolidation-20260119-195827/docs/archive/historical/FILES_REVIEWED_COMPLETE_LIST.md
+- docs-consolidation-20260119-195827/docs/archive/historical/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025_archive - 01_04_2026.md
+- docs-consolidation-20260119-195827/docs/archive/historical/CHANGELOG_archive - 01_04_2026.md
+- docs-consolidation-20260119-195827/docs/archive/historical/README_dup.md
+- docs-consolidation-20260119-195827/docs/archive/historical/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025.md
+- docs-consolidation-20260119-195827/docs/archive/historical/UPDATES_RUNNING_dup.md
+- docs-consolidation-20260119-195827/docs/archive/historical/RESEARCH_REFINEMENTS_SUMMARY.md
+- docs-consolidation-20260119-195827/docs/archive/historical/COMPLETE_DOCUMENTATION_AUDIT.md
+- docs-consolidation-20260119-195827/docs/archive/historical/README_IMPLEMENTATION_PACKAGE.md
+- docs-consolidation-20260119-195827/docs/archive/historical/IMMEDIATE_ACTION_PLAN.md
+- docs-consolidation-20260119-195827/docs/archive/historical/WHEELHOUSE_BUILD_TRACKING_archive - 01_04_2026.md
+- docs-consolidation-20260119-195827/docs/archive/historical/DOCUMENTATION_CONSOLIDATION_&_CODE_ROADMAP.md
+- docs-consolidation-20260119-195827/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day7.md
+- docs-consolidation-20260119-195827/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day6.md
+- docs-consolidation-20260119-195827/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day5.md
+- docs-consolidation-20260119-195827/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day8.md
+- docs-consolidation-20260119-195827/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day4.md
+- docs-consolidation-20260119-195827/docs/archive/historical/daily-status-reports/2026-january/HISTORICAL_SUMMARY.md
+- docs-consolidation-20260119-195827/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day3.md
+- docs-consolidation-20260119-195827/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day1.md
+- docs-consolidation-20260119-195827/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day2.md
+- docs-consolidation-20260119-195827/docs/archive/sessions/SESSION_COMPLETION_REPORT.md
+- docs-consolidation-20260119-195827/docs/archive/sessions/DOCUMENTATION_AUDIT.md
+- docs-consolidation-20260119-195827/docs/system-prompts/README.md
+- docs-consolidation-20260119-195827/docs/system-prompts/metrics/prompt-quality-tracking.md
+- docs-consolidation-20260119-195827/docs/system-prompts/_meta/changelog.md
+- docs-consolidation-20260119-195827/docs/system-prompts/_meta/templates/expert-template.md
+- docs-consolidation-20260119-195827/docs/system-prompts/_meta/templates/assistant-template.md
+- docs-consolidation-20260119-195827/docs/system-prompts/assistants/grok/xoe-novai-notebooklm-video-expert-v1.0.md
+- docs-consolidation-20260119-195827/docs/system-prompts/assistants/grok/xoe-novai-research-assistant-v1.0.md
+- docs-consolidation-20260119-195827/docs/system-prompts/assistants/grok/xoe-novai-universal-assistant-v1.0.md
+- docs-consolidation-20260119-195827/docs/system-prompts/assistants/claude/xoe-novai-implementation-specialist-v3.0.md
+- docs-consolidation-20260119-195827/docs/system-prompts/assistants/claude/ultimate-mkdocs-master-guide-research-prompt.md
+- docs-consolidation-20260119-195827/docs/system-prompts/assistants/claude/xoe-novai-research-assistant-v1.0.md
+- docs-consolidation-20260119-195827/docs/system-prompts/assistants/claude/xoe-novai-notebooklm-video-project-v2.0.md
+- docs-consolidation-20260119-195827/docs/system-prompts/assistants/claude/model-analysis.md
+- docs-consolidation-20260119-195827/docs/system-prompts/assistants/claude/xoe-novai-notebooklm-video-project-v1.0.md
+- docs-consolidation-20260119-195827/docs/system-prompts/assistants/claude/xoe-novai-implementation-specialist-v1.0.md
+- docs-consolidation-20260119-195827/docs/system-prompts/experts/grok-stack-expert-v1.0.md
+- docs-consolidation-20260119-195827/docs/system-prompts/experts/claude-stack-code-expert-v2.0.md
+- docs-consolidation-20260119-195827/docs/reference/configuration.md
+- docs-consolidation-20260119-195827/docs/reference/README.md
+- docs-consolidation-20260119-195827/docs/reference/integration/rag-integration.md
+- docs-consolidation-20260119-195827/docs/reference/integration/voice-integration.md
+- docs-consolidation-20260119-195827/docs/reference/enterprise-features/enterprise_monitoring.md
+- docs-consolidation-20260119-195827/docs/reference/enterprise-features/structured_concurrency.md
+- docs-consolidation-20260119-195827/docs/reference/enterprise-features/zero_telemetry.md
+- docs-consolidation-20260119-195827/docs/reference/enterprise-features/enterprise_security.md
+- docs-consolidation-20260119-195827/docs/reference/enterprise-features/circuit_breaker.md
+- docs-consolidation-20260119-195827/docs/reference/api/dependencies.md
+- docs-consolidation-20260119-195827/docs/reference/api/healthcheck.md
+- docs-consolidation-20260119-195827/docs/reference/api/voice_command_handler.md
+- docs-consolidation-20260119-195827/docs/reference/api/async_patterns.md
+- docs-consolidation-20260119-195827/docs/reference/api/chainlit_app_voice.md
+- docs-consolidation-20260119-195827/docs/reference/api/crawl.md
+- docs-consolidation-20260119-195827/docs/reference/api/crawler_curation.md
+- docs-consolidation-20260119-195827/docs/reference/api/verify_imports.md
+- docs-consolidation-20260119-195827/docs/reference/api/api_docs.md
+- docs-consolidation-20260119-195827/docs/reference/api/ingest_library.md
+- docs-consolidation-20260119-195827/docs/reference/api/config_loader.md
+- docs-consolidation-20260119-195827/docs/reference/api/voice_degradation.md
+- docs-consolidation-20260119-195827/docs/reference/api/curation_worker.md
+- docs-consolidation-20260119-195827/docs/reference/api/chainlit_curator_interface.md
+- docs-consolidation-20260119-195827/docs/reference/api/main.md
+- docs-consolidation-20260119-195827/docs/reference/api/logging_config.md
+- docs-consolidation-20260119-195827/docs/reference/api/observability.md
+- docs-consolidation-20260119-195827/docs/reference/api/metrics.md
+- docs-consolidation-20260119-195827/docs/reference/api/retrievers.md
+- docs-consolidation-20260119-195827/docs/reference/api/chainlit_app.md
+- docs-consolidation-20260119-195827/docs/reference/api/voice_interface.md
+- docs-consolidation-20260119-195827/docs/reference/api/library_api_integrations.md
+- docs-consolidation-20260119-195827/docs/design/README.md
+- docs-consolidation-20260119-195827/docs/99-research/Top 5 Most Critical Cutting-Edge Practices.md
+- docs-consolidation-20260119-195827/docs/99-research/README.md
+- docs-consolidation-20260119-195827/docs/99-research/operational-stack-readiness-research.md
+- docs-consolidation-20260119-195827/docs/99-research/Operational Stack Readiness Research Fulfillment.md
+- docs-consolidation-20260119-195827/docs/99-research/Complete Vulkan Offload Guide for Xoe-NovAi.md
+- docs-consolidation-20260119-195827/docs/99-research/vulkan-inference/README.md
+- docs-consolidation-20260119-195827/docs/99-research/mkdocs/troubleshooting_guide.md
+- docs-consolidation-20260119-195827/docs/99-research/mkdocs/cline_integration_guide.md
+- docs-consolidation-20260119-195827/docs/99-research/mkdocs/mkdocs_enterprise_integration_tracking.md
+- docs-consolidation-20260119-195827/docs/99-research/mkdocs/Claude - mkdocs graphana and chat summary.md
+- docs-consolidation-20260119-195827/docs/99-research/mkdocs/vscode_tasks.json
+- docs-consolidation-20260119-195827/docs/99-research/faiss-architecture/README.md
+- docs-consolidation-20260119-195827/docs/99-research/kokoro-tts/README.md
+- docs-consolidation-20260119-195827/docs/99-research/enterprise-modernization/README.md
+- docs-consolidation-20260119-195827/docs/99-research/stack-2026/README.md
+- docs-consolidation-20260119-195827/docs/how-to/voice-setup.md
+- docs-consolidation-20260119-195827/docs/how-to/troubleshooting.md
+- docs-consolidation-20260119-195827/docs/deep_research/02-kokoro-v2-voice-synthesis.md
+- docs-consolidation-20260119-195827/docs/deep_research/Grok - DR - FastAPI and version conflict resolution  (Jan 13, 2026).md
+- docs-consolidation-20260119-195827/docs/deep_research/Claude__Sonnet 4-5 enhanced__code audit - 01-13-2026.md
+- docs-consolidation-20260119-195827/docs/deep_research/Grok - DR -  Overview & Guiding Principles (2026 Edition).md
+- docs-consolidation-20260119-195827/docs/deep_research/Grok- DR - UV security and ruff linter.md
+- docs-consolidation-20260119-195827/docs/deep_research/Claude code audit - 01-13-2026.md
+- docs-consolidation-20260119-195827/docs/deep_research/README.md
+- docs-consolidation-20260119-195827/docs/deep_research/05-neural-compilation-paradigms.md
+- docs-consolidation-20260119-195827/docs/deep_research/Grok- DR - UV advanced features and usage.md
+- docs-consolidation-20260119-195827/docs/deep_research/xnai_stack_research_2026.md
+- docs-consolidation-20260119-195827/docs/deep_research/03-advanced-faiss-architecture.md
+- docs-consolidation-20260119-195827/docs/deep_research/xnai_top_3_deep_research_findings.md
+- docs-consolidation-20260119-195827/docs/deep_research/Grok - DR - Speed up pip downloads (2026).md
+- docs-consolidation-20260119-195827/docs/deep_research/xnai_knowledge_gap_findings.md
+- docs-consolidation-20260119-195827/docs/deep_research/mkdocs_research_solutions.md
+- docs-consolidation-20260119-195827/docs/deep_research/Grok - DR - Technical Guide Enforcing Python 3.12.md
+- docs-consolidation-20260119-195827/docs/deep_research/mkdocs-error-resolution-research-request.md
+- docs-consolidation-20260119-195827/docs/deep_research/01-vulkan-native-inference.md
+- docs-consolidation-20260119-195827/docs/deep_research/Grok-DR-Mkdocs-integration.md
+- docs-consolidation-20260119-195827/docs/deep_research/research-request-v1.md
+- docs-consolidation-20260119-195827/docs/deep_research/04-system-resilience-extensibility.md
+- docs-consolidation-20260119-195827/docs/03-architecture/audio-strategy.md
+- docs-consolidation-20260119-195827/docs/03-architecture/project-charter.md
+- docs-consolidation-20260119-195827/docs/03-architecture/architecture.md
+- docs-consolidation-20260119-195827/docs/03-architecture/condensed-guide.md
+- docs-consolidation-20260119-195827/docs/03-architecture/STACK_ARCHITECTURE_AND_TECHNOLOGY_SUPPLEMENT.md
+- docs-consolidation-20260119-195827/docs/03-architecture/ux_timing_system_final_report.md
+- docs-consolidation-20260119-195827/docs/03-architecture/docker-code-changes.md
+- docs-consolidation-20260119-195827/docs/03-architecture/README.md
+- docs-consolidation-20260119-195827/docs/03-architecture/TECHNICAL_STACK_DOCUMENTATION.md
+- docs-consolidation-20260119-195827/docs/03-architecture/enhancement-project-completion-summary.md
+- docs-consolidation-20260119-195827/docs/03-architecture/enterprise-strategy.md
+- docs-consolidation-20260119-195827/docs/03-architecture/EmbeddingGemma model card.md
+- docs-consolidation-20260119-195827/docs/03-architecture/stack-cat-guide.md
+- docs-consolidation-20260119-195827/docs/03-architecture/TECHNICAL_STACK_AUDIT_TRACKING.md
+- docs-consolidation-20260119-195827/docs/03-architecture/enhancement-lfm25-voice-integration.md
+- docs-consolidation-20260119-195827/docs/03-architecture/xnai_v0.1.5_voice_addendum.md
+- docs-consolidation-20260119-195827/docs/03-architecture/docker-visual-guide.md
+- docs-consolidation-20260119-195827/docs/03-architecture/rag-refinements.md
+- docs-consolidation-20260119-195827/docs/03-architecture/enhancement-architecture-multi-agent-orchestration.md
+- docs-consolidation-20260119-195827/docs/03-architecture/implementation-roadmap.md
+- docs-consolidation-20260119-195827/docs/03-architecture/enhancement-learning-evolving-agents.md
+- docs-consolidation-20260119-195827/docs/03-architecture/enhancement-performance-distributed-vector-storage.md
+- docs-consolidation-20260119-195827/docs/03-architecture/enhancement-security-zero-trust-architecture.md
+- docs-consolidation-20260119-195827/docs/03-architecture/DR - Top 20 Resources for EmbGemma in XNAi.md
+- docs-consolidation-20260119-195827/docs/03-architecture/docker-services.md
+- docs-consolidation-20260119-195827/docs/03-architecture/data-directories.md
+- docs-consolidation-20260119-195827/docs/03-architecture/CODE_REVIEW_2026_01_05.md
+- docs-consolidation-20260119-195827/docs/03-architecture/enhancement-voice-to-voice-basic.md
+- docs-consolidation-20260119-195827/docs/03-architecture/STACK_STATUS.md
+- docs-consolidation-20260119-195827/docs/03-architecture/enhancement-persona-system-intelligence.md
+- docs-consolidation-20260119-195827/docs/03-architecture/audio-research.md
+- docs-consolidation-20260119-195827/docs/03-architecture/qdrant-agentic-api.md
+- docs-consolidation-20260119-195827/docs/03-architecture/blueprint.md
+- docs-consolidation-20260119-195827/docs/03-architecture/docker-summary.md
+- docs-consolidation-20260119-195827/docs/03-architecture/enhancement-dependency-tracking.md
+- docs-consolidation-20260119-195827/docs/03-architecture/crawler-optimization.md
+- docs-consolidation-20260119-195827/docs/03-architecture/organization-plan.md
+- docs-consolidation-20260119-195827/docs/03-architecture/curator-enhancement.md
+- docs-consolidation-20260119-195827/docs/03-architecture/docker-optimization.md
+- docs-consolidation-20260119-195827/docs/03-architecture/project-overview.md
+- docs-consolidation-20260119-195827/docs/versions/version_strategy.md
+- docs-consolidation-20260119-195827/docs/portability/README.md
+- docs-consolidation-20260119-195827/docs/portability/partition-migration-analysis.md
+- docs-consolidation-20260119-195827/docs/portability/migration-partition-fixes-2026.md
+- docs-consolidation-20260119-195827/docs/best-practices/docker-buildkit-wheelhouse-guide.md
+- docs-consolidation-20260119-195827/docs/best-practices/README.md
+- docs-consolidation-20260119-195827/docs/best-practices/python-version-management.md
+- docs-consolidation-20260119-195827/docs/best-practices/uv-integration-guide.md
+- docs-consolidation-20260119-195827/docs/operations/monitoring-dashboard.md
+- docs-consolidation-20260119-195827/docs/operations/troubleshooting.md
+- docs-consolidation-20260119-195827/docs/explanation/system-overview.md
+- docs-consolidation-20260119-195827/docs/01-getting-started/05-awq-production-pipeline-guide.md
+- docs-consolidation-20260119-195827/docs/01-getting-started/01-START_HERE.md
+- docs-consolidation-20260119-195827/docs/01-getting-started/README.md
+- docs-consolidation-20260119-195827/docs/01-getting-started/beginner-guide.md
+- docs-consolidation-20260119-195827/docs/01-getting-started/01-QUICK_START_MAKEFILE.md
+- docs-consolidation-20260119-195827/docs/01-getting-started/02-podman-installation-guide.md
+- docs-consolidation-20260119-195827/docs/01-getting-started/04-redis-sentinel-cluster-guide.md
+- docs-consolidation-20260119-195827/docs/01-getting-started/06-neural-bm25-retrieval-guide.md
+- docs-consolidation-20260119-195827/docs/01-getting-started/03-advanced-features-user-guide.md
+- docs-consolidation-20260119-195827/docs/policies/PIP_INSTALL_STANDARDS.md
+- docs-consolidation-20260119-195827/docs/policies/DOCUMENTATION_STRATEGY.md
+- docs-consolidation-20260119-195827/docs/policies/README.md
+- docs-consolidation-20260119-195827/docs/ai-research/notebooklm-video-generation-research.md
+- docs-consolidation-20260119-195827/docs/ai-research/Grok - Podman for Multi-Container Orchestration in Xoe-NovAi.md
+- docs-consolidation-20260119-195827/docs/ai-research/README.md
+- docs-consolidation-20260119-195827/docs/ai-research/remaining-research-questions.md
+- docs-consolidation-20260119-195827/docs/ai-research/claude-onboarding-document.md
+- docs-consolidation-20260119-195827/docs/ai-research/AWQ Quantization Production Implementation Research Report.md
+- docs-consolidation-20260119-195827/docs/ai-research/PRR-P1-WATERMARK-003 Educational Briefing AI Content Watermarking.md
+- docs-consolidation-20260119-195827/docs/ai-research/claude-research-initiation-prompt.md
+- docs-consolidation-20260119-195827/docs/ai-research/comprehensive-claude-research-synthesis.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/01-mkdocs-rag-integration.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/11-wasm-component-deep-research.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/03-anyio-concurrency.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/09-kokoro-v2-deep-research.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/05-opentelemetry-genai.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/06-rootless-docker-sbom.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/10-qdrant-agentic-deep-research.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/08-vulkan-deep-research.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/07-voice-degradation.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/02-vulkan-igpu-acceleration.md
+- docs-consolidation-20260119-195827/docs/ai-research/requests/04-hypothesis-voice-testing.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Cline-Technical-Response-to-Grok-Analysis.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Cline-Technical-Response-to-Grok-Analysis-Appendix.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Cluade Refined - Supplemental - INCOMPLETE - awaiting finalization- Research Request - multiple - 01-14-2026 - response 4.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Research Request - multiple - 01-14-2026 - response 3.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Research Request - multiple - 01-14-2026 - response 2.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Research Recommendation Enhanced MkDocs Plugin Ecosystem for Dockerized Documentation - response 2.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Research Request - multiple - 01-14-2026.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Cline-Grok-Response-3-Technical-Details.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Research Request - multiple - 01-14-2026 - response 4.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Research Recommendation Enhanced MkDocs Plugin Ecosystem for Dockerized Documentation.md
+- docs-consolidation-20260119-195827/docs/ai-research/responses/Cluade Refined - Research Request - multiple - 01-14-2026 - response 4.md
+- docs-consolidation-20260119-195827/docs/ai-research/admin/evaluation-framework.md
+- docs-consolidation-20260119-195827/docs/ai-research/admin/ai-provider-matrix.md
+- docs-consolidation-20260119-195827/docs/ai-research/admin/quality-standards.md
+- docs-consolidation-20260119-195827/docs/ai-research/admin/research-process.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/README.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/broken_links_report.json
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/handover-readiness-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/week3-progress-summary.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/monitoring-dashboard.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/ux_timing_system_final_report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day7.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day6.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/week1-progress-summary.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/checklist.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/dependency-tracking-matrix.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/enterprise_build_system_final_report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/mkdocs_enterprise_integration_tracking.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/quick-reference-checklist.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/migration-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/xoe-novai-implementation-completeness-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day5.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/qdrant-checklist.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/implementation-checklist.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day8.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day4.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/prompt-quality-tracking.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/claude-research-integration-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day3.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day1.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/script_optimization_tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/week2-progress-summary.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/audit-progress.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/freshness-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/xoe_novai_voice_dashboards.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/polishing-progress-tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day2.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs_freshness_report.json
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/enhancement_tracking_template.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/code-review-checklists.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/phase1-implementation-status-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/research-validation-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/pip_progress_interception_research.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/project-tracking-dashboard.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/phase1_progress_tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/enhanced-metrics-implementation-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/code-updates-tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/enhancement-dependency-tracking.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/research-tracking.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/implementation-execution-tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/wheelhouse-build-tracking.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/intake-tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/project-status-tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/broken_links_report.json
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/handover-readiness-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/audit-progress.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/freshness-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/docs_freshness_report.json
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research-validation-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/week3-progress-summary.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/week1-progress-summary.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/checklist.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/dependency-tracking-matrix.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/enterprise_build_system_final_report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/quick-reference-checklist.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/xoe-novai-implementation-completeness-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/qdrant-checklist.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/implementation-checklist.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/claude-research-integration-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/script_optimization_tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/week2-progress-summary.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/polishing-progress-tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/code-review-checklists.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/phase1-implementation-status-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/project-tracking-dashboard.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/phase1_progress_tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/enhanced-metrics-implementation-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/implementation-execution-tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/wheelhouse-build-tracking.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/project-status-tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/06-meta/migration-report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/06-meta/pip_progress_interception_research.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/templates/enhancement_tracking_template.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research/research-tracking.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research/projects/observability/xoe_novai_voice_dashboards.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research/urls/intake-tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day7.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day6.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day5.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day8.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day4.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day3.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day1.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day2.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/system-prompts/metrics/prompt-quality-tracking.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/99-research/mkdocs/mkdocs_enterprise_integration_tracking.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/03-architecture/ux_timing_system_final_report.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/03-architecture/enhancement-dependency-tracking.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/operations/monitoring-dashboard.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/04-operations/code-updates-tracker.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/execution/REFERENCE_MAPPING_TRACKER.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/execution/EXECUTION_CHECKLIST.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/execution/STAKEHOLDER_COMMUNICATION_PLAN.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/planning/CONSOLIDATION_MAPPING_MATRIX.md
+- docs-consolidation-20260119-195827/docs/project-tracking-consolidation-resources/planning/CONTENT_INVENTORY_DATABASE.json
+- docs-consolidation-20260119-195827/docs/implementation/core-patterns.md
+- docs-consolidation-20260119-195827/docs/implementation/README.md
+- docs-consolidation-20260119-195827/docs/implementation/advanced-features.md
+- docs-consolidation-20260119-195827/docs/journey/README.md
+- docs-consolidation-20260119-195827/docs/05-governance/pr-release-notes.md
+- docs-consolidation-20260119-195827/docs/05-governance/documentation-changelog.md
+- docs-consolidation-20260119-195827/docs/05-governance/policy_template.md
+- docs-consolidation-20260119-195827/docs/05-governance/implementation-package-summary.md
+- docs-consolidation-20260119-195827/docs/05-governance/OWNERS.md
+- docs-consolidation-20260119-195827/docs/05-governance/DOCS_STRATEGY.md
+- docs-consolidation-20260119-195827/docs/05-governance/v0.1.4-stable.md
+- docs-consolidation-20260119-195827/docs/05-governance/implementation-complete.md
+- docs-consolidation-20260119-195827/docs/05-governance/executive-audit.md
+- docs-consolidation-20260119-195827/docs/05-governance/DOCUMENTATION_BEST_PRACTICES.md
+- docs-consolidation-20260119-195827/docs/05-governance/README.md
+- docs-consolidation-20260119-195827/docs/05-governance/v0.1.5.md
+- docs-consolidation-20260119-195827/docs/05-governance/delivery-complete.md
+- docs-consolidation-20260119-195827/docs/05-governance/version-management-policy.md
+- docs-consolidation-20260119-195827/docs/05-governance/CHANGELOG.md
+- docs-consolidation-20260119-195827/docs/05-governance/executive-summary.md
+- docs-consolidation-20260119-195827/docs/05-governance/DOCUMENTATION_DRIFT_PREVENTION.md
+- docs-consolidation-20260119-195827/docs/05-governance/audit_summary_20260110.md
+- docs-consolidation-20260119-195827/docs/05-governance/Cline Rules.md
+- docs-consolidation-20260119-195827/docs/05-governance/POLICIES.md
+- docs-consolidation-20260119-195827/docs/05-governance/phase-2-completion.md
+- docs-consolidation-20260119-195827/docs/05-governance/v0.1.4-stable-release-readiness-audit.md
+- docs-consolidation-20260119-195827/docs/scripts/catalog.json
+- docs-consolidation-20260119-195827/docs/scripts/README.md
+- docs-consolidation-20260119-195827/docs/04-operations/make-up-test-results.md
+- docs-consolidation-20260119-195827/docs/04-operations/build-tools.md
+- docs-consolidation-20260119-195827/docs/04-operations/security-fixes-runbook.md
+- docs-consolidation-20260119-195827/docs/04-operations/README.md
+- docs-consolidation-20260119-195827/docs/04-operations/runbook_template.md
+- docs-consolidation-20260119-195827/docs/04-operations/voice-deployment.md
+- docs-consolidation-20260119-195827/docs/04-operations/updates-running.md
+- docs-consolidation-20260119-195827/docs/04-operations/ingestion-system-enhancements.md
+- docs-consolidation-20260119-195827/docs/04-operations/qdrant-performance-tuning.md
+- docs-consolidation-20260119-195827/docs/04-operations/build-logging.md
+- docs-consolidation-20260119-195827/docs/04-operations/local-telemetry-free-tts-options.md
+- docs-consolidation-20260119-195827/docs/04-operations/docker-build-troubleshooting.md
+- docs-consolidation-20260119-195827/docs/04-operations/docker-testing.md
+- docs-consolidation-20260119-195827/docs/04-operations/code-updates-tracker.md
+- docs-consolidation-20260119-195827/docs/incoming/MKdocs Diataxis Versioning Guide + Mike RAG metadata.md
+- docs-consolidation-20260119-195827/docs/incoming/MkDocs Mike Versioning.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - config_improvements_report_v3.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v3 - complete.md
+- docs-consolidation-20260119-195827/docs/incoming/Additional 2026 Best Practices for Integration.md
+- docs-consolidation-20260119-195827/docs/incoming/xoe_enterprise_remediation_guide.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - mkdocs-master-guide-complete.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - mkdocs_rag_enhanced_guide.md
+- docs-consolidation-20260119-195827/docs/incoming/Griffe Backend Customization Guide.md
+- docs-consolidation-20260119-195827/docs/incoming/MkDocStrings Plugin Tutorial.md
+- docs-consolidation-20260119-195827/docs/incoming/Xoe-NovAi Permissions Best Practices Guide.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - AI Enhancement Metrics.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - config_improvements_report_v2.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - config_improvements_report_v1.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - Comprehensive System Briefing and Research - doc 1.md
+- docs-consolidation-20260119-195827/docs/incoming/Xoe-NovAi Comprehensive Implementation Quick-Start.md
+- docs-consolidation-20260119-195827/docs/incoming/Xoe-NovAi Remediation & Implementation Main Guide.md
+- docs-consolidation-20260119-195827/docs/incoming/Grok - Complete Guide to Generating High-Quality Videos in NotebookLM.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - mkdocs_rag_master_guide.md
+- docs-consolidation-20260119-195827/docs/incoming/Xoe-NovAi .env File Review & Recommendations.md
+- docs-consolidation-20260119-195827/docs/incoming/Report - Cutting-Edge MkDocs Configuration for Xoe-NovAi Documentation Resilience.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - XNAI MASTER OPERATIONS & IMPLEMENTATIONS HANDBOOK (01-17-2026).md
+- docs-consolidation-20260119-195827/docs/incoming/MkDocs Guide Elevate Local RAG to Academic Performance.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - medium_priority_guide - incomplete.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - critical_issues_guide.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - AWQ Quantization Production Implementation Research Report.md
+- docs-consolidation-20260119-195827/docs/incoming/PRR-P1-WATERMARK-003 Educational Briefing AI Content Watermarking.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v2 - incomplete.md
+- docs-consolidation-20260119-195827/docs/incoming/NotebooLM - Xoe-NovAi Enterprise Platform Advanced Research & Implementation Briefing.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v1 - supplemental.md
+- docs-consolidation-20260119-195827/docs/incoming/Advanced MkDocStrings Options Guide.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v0.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - Advanced AI Hardware & Security Research Supplement (2026-2027) - incomplete.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - high_priority_guide.md
+- docs-consolidation-20260119-195827/docs/incoming/Ultimate MkDocs Master Guide Research Plan.md
+- docs-consolidation-20260119-195827/docs/incoming/Claude - enterprise_integration_matrix.md
+- docs-consolidation-20260119-195827/docs/incoming/Advanced Diátaxis Patterns Guide.md
+- docs-consolidation-20260119-200037/docs/broken_links_report.json
+- docs-consolidation-20260119-200037/docs/handover-readiness-report.md
+- docs-consolidation-20260119-200037/docs/index.md
+- docs-consolidation-20260119-200037/docs/index.json
+- docs-consolidation-20260119-200037/docs/CHAINLIT_DOWNGRADE_ANALYSIS.md
+- docs-consolidation-20260119-200037/docs/cline-session-onboarding.md
+- docs-consolidation-20260119-200037/docs/incoming-integration-summary.md
+- docs-consolidation-20260119-200037/docs/README.md
+- docs-consolidation-20260119-200037/docs/DR-research-request-from -Cline - 01_13_2026.md
+- docs-consolidation-20260119-200037/docs/DOCUMENTATION_MAINTENANCE_INDEX.md
+- docs-consolidation-20260119-200037/docs/voice-debug-mode.md
+- docs-consolidation-20260119-200037/docs/Xoe-NovAi AI Code Assistant System Prompt.md
+- docs-consolidation-20260119-200037/docs/TRACKING_DOCUMENTS_CONSOLIDATION_ANALYSIS.md
+- docs-consolidation-20260119-200037/docs/business-opportunities.md
+- docs-consolidation-20260119-200037/docs/XOE_NOVAI_CHAINLIT_IMPLEMENTATIONS.md
+- docs-consolidation-20260119-200037/docs/audit-progress.md
+- docs-consolidation-20260119-200037/docs/freshness-report.md
+- docs-consolidation-20260119-200037/docs/cline-session-continuation.md
+- docs-consolidation-20260119-200037/docs/docs_freshness_report.json
+- docs-consolidation-20260119-200037/docs/grok_deep_research_request.md
+- docs-consolidation-20260119-200037/docs/research-validation-report.md
+- docs-consolidation-20260119-200037/docs/search_index.json
+- docs-consolidation-20260119-200037/docs/DOCUMENTATION_AUDIT_CHECKLIST.md
+- docs-consolidation-20260119-200037/docs/claude-research-requirements-q1-2026.md
+- docs-consolidation-20260119-200037/docs/project-tracking/phase1-foundation-security.md
+- docs-consolidation-20260119-200037/docs/project-tracking/build-system.md
+- docs-consolidation-20260119-200037/docs/project-tracking/security-framework.md
+- docs-consolidation-20260119-200037/docs/project-tracking/phase4-documentation-consolidation.md
+- docs-consolidation-20260119-200037/docs/project-tracking/operations-handbook.md
+- docs-consolidation-20260119-200037/docs/project-tracking/performance-optimization.md
+- docs-consolidation-20260119-200037/docs/project-tracking/ai-capabilities-overview.md
+- docs-consolidation-20260119-200037/docs/project-tracking/PROJECT_STATUS_DASHBOARD.md
+- docs-consolidation-20260119-200037/docs/project-tracking/dependency-management.md
+- docs-consolidation-20260119-200037/docs/project-tracking/phase3-production-hardening.md
+- docs-consolidation-20260119-200037/docs/project-tracking/infrastructure-architecture.md
+- docs-consolidation-20260119-200037/docs/project-tracking/phase2-performance-resilience.md
+- docs-consolidation-20260119-200037/docs/project-tracking/integration-guide.md
+- docs-consolidation-20260119-200037/docs/02-development/phase1-implementation-guide.md
+- docs-consolidation-20260119-200037/docs/02-development/implementation-summary.md
+- docs-consolidation-20260119-200037/docs/02-development/week3-progress-summary.md
+- docs-consolidation-20260119-200037/docs/02-development/vulkan-integration-roadmap.md
+- docs-consolidation-20260119-200037/docs/02-development/week2-implementation-plan.md
+- docs-consolidation-20260119-200037/docs/02-development/index.md
+- docs-consolidation-20260119-200037/docs/02-development/holistic-integration-execution-plan.md
+- docs-consolidation-20260119-200037/docs/02-development/week1-2_implementation_log.md
+- docs-consolidation-20260119-200037/docs/02-development/ml_docker_optimization_guide.md
+- docs-consolidation-20260119-200037/docs/02-development/code-skeletons.md
+- docs-consolidation-20260119-200037/docs/02-development/week1-progress-summary.md
+- docs-consolidation-20260119-200037/docs/02-development/CRITICAL_BLOCKERS_REPORT.md
+- docs-consolidation-20260119-200037/docs/02-development/production-stability-audit.md
+- docs-consolidation-20260119-200037/docs/02-development/enterprise-transformation-risk-assessment.md
+- docs-consolidation-20260119-200037/docs/02-development/phase-1.md
+- docs-consolidation-20260119-200037/docs/02-development/visual-reference.md
+- docs-consolidation-20260119-200037/docs/02-development/production-integration-roadmap.md
+- docs-consolidation-20260119-200037/docs/02-development/Claude Fix Rpeort - Docker to Podman move issues and chache_from errors.md
+- docs-consolidation-20260119-200037/docs/02-development/2026_implementation_plan.md
+- docs-consolidation-20260119-200037/docs/02-development/voice-setup.md
+- docs-consolidation-20260119-200037/docs/02-development/developer-portability-guide.md
+- docs-consolidation-20260119-200037/docs/02-development/README.md
+- docs-consolidation-20260119-200037/docs/02-development/DEPENDENCY_UPDATE_IMPLEMENTATION_GUIDE.md
+- docs-consolidation-20260119-200037/docs/02-development/checklist.md
+- docs-consolidation-20260119-200037/docs/02-development/dependency-tracking-matrix.md
+- docs-consolidation-20260119-200037/docs/02-development/phase1_day2_circuit_breaker_testing.md
+- docs-consolidation-20260119-200037/docs/02-development/phase1_week1_security_errorhandling_ux.md
+- docs-consolidation-20260119-200037/docs/02-development/build-performance.md
+- docs-consolidation-20260119-200037/docs/02-development/wheelhouse-build.md
+- docs-consolidation-20260119-200037/docs/02-development/DEPENDENCY_UPDATE_ENTERPRISE_IMPLEMENTATION.md
+- docs-consolidation-20260119-200037/docs/02-development/claude-v2-integration-assessment.md
+- docs-consolidation-20260119-200037/docs/02-development/week1_rollback_procedures.md
+- docs-consolidation-20260119-200037/docs/02-development/piper-onnx-implementation-complete.md
+- docs-consolidation-20260119-200037/docs/02-development/tts-options.md
+- docs-consolidation-20260119-200037/docs/02-development/docker-mkdocs-optimization-complete.md
+- docs-consolidation-20260119-200037/docs/02-development/week1-implementation-plan.md
+- docs-consolidation-20260119-200037/docs/02-development/week3-implementation-plan.md
+- docs-consolidation-20260119-200037/docs/02-development/enterprise_build_system_final_report.md
+- docs-consolidation-20260119-200037/docs/02-development/quality-assurance-framework.md
+- docs-consolidation-20260119-200037/docs/02-development/mkdocs-docker-audit-critical-findings.md
+- docs-consolidation-20260119-200037/docs/02-development/monitoring-observability-plan.md
+- docs-consolidation-20260119-200037/docs/02-development/mkdocs-research-implementation-summary.md
+- docs-consolidation-20260119-200037/docs/02-development/enterprise-build.md
+- docs-consolidation-20260119-200037/docs/02-development/deployment-operations-guide.md
+- docs-consolidation-20260119-200037/docs/02-development/quick-reference-checklist.md
+- docs-consolidation-20260119-200037/docs/02-development/POLISHING_MASTER_INDEX.md
+- docs-consolidation-20260119-200037/docs/02-development/xoe-novai-implementation-completeness-report.md
+- docs-consolidation-20260119-200037/docs/02-development/qdrant-checklist.md
+- docs-consolidation-20260119-200037/docs/02-development/piper-onnx-summary.md
+- docs-consolidation-20260119-200037/docs/02-development/mkdocs-rag-integration-roadmap.md
+- docs-consolidation-20260119-200037/docs/02-development/makefile-usage.md
+- docs-consolidation-20260119-200037/docs/02-development/UX_TEST_FRESH_BUILD_20260110.md
+- docs-consolidation-20260119-200037/docs/02-development/code-review-files.md
+- docs-consolidation-20260119-200037/docs/02-development/research-integration-summary.md
+- docs-consolidation-20260119-200037/docs/02-development/phase3_day567_execution_complete.md
+- docs-consolidation-20260119-200037/docs/02-development/UNIFIED_IMPLEMENTATION_GUIDE.md
+- docs-consolidation-20260119-200037/docs/02-development/implementation-checklist.md
+- docs-consolidation-20260119-200037/docs/02-development/quick-start.md
+- docs-consolidation-20260119-200037/docs/02-development/best_practices_research.md
+- docs-consolidation-20260119-200037/docs/02-development/technical-debt-register.md
+- docs-consolidation-20260119-200037/docs/02-development/risk-assessment-mitigation.md
+- docs-consolidation-20260119-200037/docs/02-development/week1-dependency-audit.md
+- docs-consolidation-20260119-200037/docs/02-development/piper-onnx-complete.md
+- docs-consolidation-20260119-200037/docs/02-development/qdrant-migration.md
+- docs-consolidation-20260119-200037/docs/02-development/github-protocol-guide.md
+- docs-consolidation-20260119-200037/docs/02-development/claude-research-integration-report.md
+- docs-consolidation-20260119-200037/docs/02-development/docker-setup.md
+- docs-consolidation-20260119-200037/docs/02-development/phase-2-3.md
+- docs-consolidation-20260119-200037/docs/02-development/phase3_day34_execution_complete.md
+- docs-consolidation-20260119-200037/docs/02-development/week2_implementation_plan.md
+- docs-consolidation-20260119-200037/docs/02-development/voice-enterprise.md
+- docs-consolidation-20260119-200037/docs/02-development/plugin_architecture_design.md
+- docs-consolidation-20260119-200037/docs/02-development/script_optimization_tracker.md
+- docs-consolidation-20260119-200037/docs/02-development/ml_docker_optimization_guide_v2.md
+- docs-consolidation-20260119-200037/docs/02-development/FULL_STACK_AUDIT_REPORT.md
+- docs-consolidation-20260119-200037/docs/02-development/voice-quick-reference.md
+- docs-consolidation-20260119-200037/docs/02-development/week2-progress-summary.md
+- docs-consolidation-20260119-200037/docs/02-development/polishing-progress-tracker.md
+- docs-consolidation-20260119-200037/docs/02-development/offline-build-logging.md
+- docs-consolidation-20260119-200037/docs/02-development/library-api.md
+- docs-consolidation-20260119-200037/docs/02-development/6_week_stack_enhancement_plan.md
+- docs-consolidation-20260119-200037/docs/02-development/library-api-readme.md
+- docs-consolidation-20260119-200037/docs/02-development/phase3_implementation_guide_research_verified.md
+- docs-consolidation-20260119-200037/docs/02-development/research-integration-master-plan.md
+- docs-consolidation-20260119-200037/docs/02-development/voice-interface-guide.md
+- docs-consolidation-20260119-200037/docs/02-development/claude-briefing-update-research-request.md
+- docs-consolidation-20260119-200037/docs/02-development/site-wide-implementation-roadmap.md
+- docs-consolidation-20260119-200037/docs/02-development/research-implementation-tasks.md
+- docs-consolidation-20260119-200037/docs/02-development/build_timeline.md
+- docs-consolidation-20260119-200037/docs/02-development/code-review-checklists.md
+- docs-consolidation-20260119-200037/docs/02-development/phase1-implementation-status-report.md
+- docs-consolidation-20260119-200037/docs/02-development/qdrant-integration.md
+- docs-consolidation-20260119-200037/docs/02-development/vulkan-igpu-implementation-log.md
+- docs-consolidation-20260119-200037/docs/02-development/offline-deployment.md
+- docs-consolidation-20260119-200037/docs/02-development/docs-enhancement-roadmap.md
+- docs-consolidation-20260119-200037/docs/02-development/qdrant-index.md
+- docs-consolidation-20260119-200037/docs/02-development/project-tracking-dashboard.md
+- docs-consolidation-20260119-200037/docs/02-development/phase1_progress_tracker.md
+- docs-consolidation-20260119-200037/docs/02-development/qdrant-agentic-migration.md
+- docs-consolidation-20260119-200037/docs/02-development/enhanced-metrics-implementation-report.md
+- docs-consolidation-20260119-200037/docs/02-development/claude-guides-analysis-outline.md
+- docs-consolidation-20260119-200037/docs/02-development/week1-completion-summary.md
+- docs-consolidation-20260119-200037/docs/02-development/mkdocs-enterprise-enhancement-plan.md
+- docs-consolidation-20260119-200037/docs/02-development/next_steps_strategy.md
+- docs-consolidation-20260119-200037/docs/02-development/enterprise-enhancement-implementation-roadmap.md
+- docs-consolidation-20260119-200037/docs/02-development/rootless-docker-roadmap.md
+- docs-consolidation-20260119-200037/docs/02-development/phase3_research_audit_complete.md
+- docs-consolidation-20260119-200037/docs/02-development/permissions-mitigation-implementation.md
+- docs-consolidation-20260119-200037/docs/02-development/implementation-execution-tracker.md
+- docs-consolidation-20260119-200037/docs/02-development/COMPREHENSIVE_STACK_POLISHING_ROADMAP.md
+- docs-consolidation-20260119-200037/docs/02-development/piper-onnx-implementation-summary.md
+- docs-consolidation-20260119-200037/docs/02-development/POLISHING_INTEGRATION_SUMMARY.md
+- docs-consolidation-20260119-200037/docs/02-development/wheelhouse-build-tracking.md
+- docs-consolidation-20260119-200037/docs/02-development/project-status-tracker.md
+- docs-consolidation-20260119-200037/docs/02-development/howto_template.md
+- docs-consolidation-20260119-200037/docs/howto/README.md
+- docs-consolidation-20260119-200037/docs/videos/kj-xoe-novai-explanation-script.md
+- docs-consolidation-20260119-200037/docs/videos/Grok - Unique Use Cases Discovered.md
+- docs-consolidation-20260119-200037/docs/videos/Grok - Expanded Script Template (Anime Style – Inspirational Triumph).md
+- docs-consolidation-20260119-200037/docs/videos/README.md
+- docs-consolidation-20260119-200037/docs/videos/xoe-novai-notebooklm-context-package.md
+- docs-consolidation-20260119-200037/docs/videos/Grok - Complete Guide to Generating High-Quality Videos in NotebookLM.md
+- docs-consolidation-20260119-200037/docs/videos/Claude - NotebookLM Masterclass.md
+- docs-consolidation-20260119-200037/docs/videos/claude-research-request-for-video-enhancement.md
+- docs-consolidation-20260119-200037/docs/videos/Research Report Enhanced NotebookLM Video Strategies (Jan 17, 2026).md
+- docs-consolidation-20260119-200037/docs/videos/Grok - video supplemental.md
+- docs-consolidation-20260119-200037/docs/06-meta/Grok - Additional Research Update v5.md
+- docs-consolidation-20260119-200037/docs/06-meta/GROK_EXPERT_ONBOARDING_REPORT.md
+- docs-consolidation-20260119-200037/docs/06-meta/README.md
+- docs-consolidation-20260119-200037/docs/06-meta/grok_deep_research_response.md
+- docs-consolidation-20260119-200037/docs/06-meta/implementation-files-review.md
+- docs-consolidation-20260119-200037/docs/06-meta/Grok - 2026 Tech & Strategy Update v2.md
+- docs-consolidation-20260119-200037/docs/06-meta/bash_best_practices_research.md
+- docs-consolidation-20260119-200037/docs/06-meta/migration-report.md
+- docs-consolidation-20260119-200037/docs/06-meta/Grok - Doc Update v5.md
+- docs-consolidation-20260119-200037/docs/06-meta/bash_script_execution_issues.md
+- docs-consolidation-20260119-200037/docs/06-meta/AI_ASSISTANT_GUIDE.md
+- docs-consolidation-20260119-200037/docs/06-meta/Grok - BIOS Script Update v5.md
+- docs-consolidation-20260119-200037/docs/06-meta/Grok - 2026 Tech & Strategy Update Report.md
+- docs-consolidation-20260119-200037/docs/06-meta/DOCUMENTATION_AUDIT_CHANGES.md
+- docs-consolidation-20260119-200037/docs/06-meta/final-organization-summary.md
+- docs-consolidation-20260119-200037/docs/06-meta/implementation-files-organization-complete.md
+- docs-consolidation-20260119-200037/docs/06-meta/DEPENDENCY_UPDATE_RESEARCH_PLAN.md
+- docs-consolidation-20260119-200037/docs/06-meta/pip_progress_interception_research.md
+- docs-consolidation-20260119-200037/docs/06-meta/organization-summary.md
+- docs-consolidation-20260119-200037/docs/06-meta/Grok - 2026 Tech & Strategy Update v3.md
+- docs-consolidation-20260119-200037/docs/06-meta/Grok - 2026 Tech & Strategy Update v5.md
+- docs-consolidation-20260119-200037/docs/06-meta/organization-complete.md
+- docs-consolidation-20260119-200037/docs/06-meta/Grok - 2026 Tech & Strategy Update v4.md
+- docs-consolidation-20260119-200037/docs/runbooks/README.md
+- docs-consolidation-20260119-200037/docs/audit/ORGANIZATION_PLAN.md
+- docs-consolidation-20260119-200037/docs/audit/CONTENT_CLASSIFICATION.md
+- docs-consolidation-20260119-200037/docs/audit/XOE_NOVAI_CLAUDE_ALIGNMENT_AUDIT.md
+- docs-consolidation-20260119-200037/docs/audit/CONTENT_INVENTORY.md
+- docs-consolidation-20260119-200037/docs/tutorials/quick-start.md
+- docs-consolidation-20260119-200037/docs/tutorials/voice-interface.md
+- docs-consolidation-20260119-200037/docs/tutorials/docker-setup.md
+- docs-consolidation-20260119-200037/docs/tutorials/getting-started.md
+- docs-consolidation-20260119-200037/docs/templates/release_note_template.md
+- docs-consolidation-20260119-200037/docs/templates/enhancement_tracking_template.md
+- docs-consolidation-20260119-200037/docs/research/research-request-template.md
+- docs-consolidation-20260119-200037/docs/research/Grok - Claude final implementations recommenfations.md
+- docs-consolidation-20260119-200037/docs/research/research-needs.md
+- docs-consolidation-20260119-200037/docs/research/README.md
+- docs-consolidation-20260119-200037/docs/research/Grok_Clarification_Response.md
+- docs-consolidation-20260119-200037/docs/research/CLAUDE_WEEK4_PRODUCTION_VALIDATION_PROMPT.md
+- docs-consolidation-20260119-200037/docs/research/POLISHING_RESEARCH_REQUESTS.md
+- docs-consolidation-20260119-200037/docs/research/research-integration-guide.md
+- docs-consolidation-20260119-200037/docs/research/RESEARCH_SYSTEM_SUMMARY.md
+- docs-consolidation-20260119-200037/docs/research/GROK_FINAL_PRODUCTION_READINESS_REPORT_v1.0.md
+- docs-consolidation-20260119-200037/docs/research/research-tracking.md
+- docs-consolidation-20260119-200037/docs/research/projects/README.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/README.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - Chat Summary - Week 3 Enterprise Security & Compliance Hardening.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - week4_gap_sprint_plan.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - XNAI_implementation_plan.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - xoe_novai_realistic_enhancements.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_FINAL_IMPLEMENTATION_INITIATION_PROMPT.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_WEEK4_SESSION_QUICKSTART.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude Research Report - xoe_integration_research_phase1.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_NEXT_PHASE_REQUEST_v1.0.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - XNAI_implementation_plan_chat_summary.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - final clarification and doc creation prompt.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_WEEK4_PRODUCTION_VALIDATION_PROMPT.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_CONCLUSIVE_RESEARCH_REQUEST_v1.0.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_WEEK4_SESSION_ASSETS_SUPPLEMENTAL.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_INTEGRATION_RESEARCH_REQUEST.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - xoe_novai_assessment.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/final_implementation_guides/Claude - xoe_security_technical_manual.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/final_implementation_guides/Claude - xoe_monitoring_stack.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/final_implementation_guides/Claude - xoe_security_implementation.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CRITICAL_RESEARCH_REQUEST.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CLAUDE_FINAL_IMPLEMENTATION_REQUEST_v1.0.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PHASE1_CHAT_INITIATION_PROMPT.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CLAUDE_FINAL_SUPPLEMENTAL.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CONTAINER_ORCHESTRATION_CONTEXT.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok - Production Readiness Verification and Recommendations.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PHASE1_ADVANCED_RESEARCH_REQUEST_v1.0.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FOLLOWUP_RESEARCH_REQUEST.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok Research Report - Phase 1 Critical Research Package.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FOLLOWUP_CLARIFICATION_REQUEST.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CLAUDE_ENHANCEMENT_CHAT_PROMPT.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_RESEARCH_FOLLOWUP_REQUEST_v1.0.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok Research Report - Phase 1 Follow-up Research Package.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_PRODUCTION_READINESS_REQUEST_v1.0.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PHASE1_ADVANCED_RESEARCH_CLARIFYING_QUESTIONS.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok - Phase 1 Advanced Research Clarifications Breakthrough Prioritization Refinement.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_CLAUDE_RESOURCES_REQUEST.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PRODUCTION_READINESS_RESEARCH_REQUEST_v1.0.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_DECISIONS_CHAT_PROMPT.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_PRODUCTION_READINESS_SUPPLEMENTAL.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok Phase 1 Advanced Research Initiation Breakthrough Assessment.md
+- docs-consolidation-20260119-200037/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_PRODUCTION_READINESS_INITIATION_PROMPT.md
+- docs-consolidation-20260119-200037/docs/research/projects/observability/xoe_novai_ultimate_monitoring_guide.md
+- docs-consolidation-20260119-200037/docs/research/projects/observability/xoe_novai_grafana_implementation.md
+- docs-consolidation-20260119-200037/docs/research/projects/observability/xoe_novai_integration_code.md
+- docs-consolidation-20260119-200037/docs/research/projects/observability/xoe_novai_enterprise_guide.md
+- docs-consolidation-20260119-200037/docs/research/projects/observability/xoe_novai_custom_observability_portal.md
+- docs-consolidation-20260119-200037/docs/research/projects/observability/xoe_novai_voice_dashboards.md
+- docs-consolidation-20260119-200037/docs/research/methodology/README.md
+- docs-consolidation-20260119-200037/docs/research/methodology/RESEARCH_METHODOLOGY_FRAMEWORK.md
+- docs-consolidation-20260119-200037/docs/research/methodology/templates/RESEARCH_REQUEST_TEMPLATE.md
+- docs-consolidation-20260119-200037/docs/research/methodology/tracking/RESEARCH_REPORT_CATALOGING_STRATEGY.md
+- docs-consolidation-20260119-200037/docs/research/methodology/tracking/RESEARCH_CYCLE_TRACKING.md
+- docs-consolidation-20260119-200037/docs/research/methodology/tracking/METHODOLOGY_FEEDBACK_REGISTER.md
+- docs-consolidation-20260119-200037/docs/research/methodology/tracking/EMERGING_TECHNOLOGY_INTAKE_SYSTEM.md
+- docs-consolidation-20260119-200037/docs/research/methodology/process/RESEARCH_PROCESS_GUIDE.md
+- docs-consolidation-20260119-200037/docs/research/urls/intake-tracker.md
+- docs-consolidation-20260119-200037/docs/personas/odin.json
+- docs-consolidation-20260119-200037/docs/personas/lilith.json
+- docs-consolidation-20260119-200037/docs/documentation-consolidation-project/xoe-novai-research-expert-v2.0.md
+- docs-consolidation-20260119-200037/docs/documentation-consolidation-project/xoe-novai-documentation-consolidation-specialist-v1.0.md
+- docs-consolidation-20260119-200037/docs/documentation-consolidation-project/README.md
+- docs-consolidation-20260119-200037/docs/documentation-consolidation-project/DRR-DOCS-001_SUPPLEMENTAL_CONTEXT.md
+- docs-consolidation-20260119-200037/docs/documentation-consolidation-project/GROK_DOCUMENTATION_CONSOLIDATION_REQUEST.md
+- docs-consolidation-20260119-200037/docs/documentation-consolidation-project/DOCUMENTATION_CONSOLIDATION_PROJECT_TRACKER.md
+- docs-consolidation-20260119-200037/docs/documentation-consolidation-project/DOCUMENTATION_CONSOLIDATION_PROJECT_README.md
+- docs-consolidation-20260119-200037/docs/documentation-consolidation-project/USER_GUIDES_CRAFTING_PLAN.md
+- docs-consolidation-20260119-200037/docs/documentation-consolidation-project/PR_DOCUMENTATION_ORGANIZATION_RECOMMENDATION.md
+- docs-consolidation-20260119-200037/docs/documentation-consolidation-project/DOCUMENTATION_PROJECT_SUPPLEMENTALS.json
+- docs-consolidation-20260119-200037/docs/projects/TORCH_FREE_CHAINLIT_MOD.md
+- docs-consolidation-20260119-200037/docs/releases/changelog.md
+- docs-consolidation-20260119-200037/docs/releases/README.md
+- docs-consolidation-20260119-200037/docs/archive/README.md
+- docs-consolidation-20260119-200037/docs/archive/code-review-sessions/Grok - Vulkan Troubleshooting draft - January 10, 20.md
+- docs-consolidation-20260119-200037/docs/archive/code-review-sessions/Grok - Vulkan Enhancement code guide - January 10, 20.md
+- docs-consolidation-20260119-200037/docs/archive/code-review-sessions/Grok - Vulkan Enhancement Audit - January 10, 20.md
+- docs-consolidation-20260119-200037/docs/archive/code-review-sessions/Grok - Voice to Voice Code Audit - January 10, 20.md
+- docs-consolidation-20260119-200037/docs/archive/code-review-sessions/Grok Code Audit - January 10 2026.md
+- docs-consolidation-20260119-200037/docs/archive/duplicates/WHEELHOUSE_BUILD_TRACKING_dup.md
+- docs-consolidation-20260119-200037/docs/archive/duplicates/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025_dup.md
+- docs-consolidation-20260119-200037/docs/archive/duplicates/XNAI_blueprint_dup.md
+- docs-consolidation-20260119-200037/docs/archive/duplicates/IMPLEMENTATION_COMPLETE_PIPER_ONNX_dup.md
+- docs-consolidation-20260119-200037/docs/archive/duplicates/PIPER_ONNX_IMPLEMENTATION_SUMMARY_dup.md
+- docs-consolidation-20260119-200037/docs/archive/duplicates/README_dup.md
+- docs-consolidation-20260119-200037/docs/archive/duplicates/CHANGELOG_dup.md
+- docs-consolidation-20260119-200037/docs/archive/duplicates/UPDATES_RUNNING_archive.md
+- docs-consolidation-20260119-200037/docs/archive/old-versions/Xoe-NovAi_v0.1.3_Phase_1_Guide - Grok - 10_20.md
+- docs-consolidation-20260119-200037/docs/archive/old-versions/AUDIT_REPAIR_LOG.md
+- docs-consolidation-20260119-200037/docs/archive/historical/WHEELHOUSE_BUILD_TRACKING.md
+- docs-consolidation-20260119-200037/docs/archive/historical/GIT_COMMIT_INSTRUCTIONS.md
+- docs-consolidation-20260119-200037/docs/archive/historical/FINAL_ORGANIZATION_SUMMARY.md
+- docs-consolidation-20260119-200037/docs/archive/historical/README_IMPLEMENTATION.md
+- docs-consolidation-20260119-200037/docs/archive/historical/CONSOLIDATION_COMPLETION_SUMMARY.md
+- docs-consolidation-20260119-200037/docs/archive/historical/README_archive - 01_04_2026.md
+- docs-consolidation-20260119-200037/docs/archive/historical/IMPLEMENTATION_COMPLETE_PIPER_ONNX.md
+- docs-consolidation-20260119-200037/docs/archive/historical/IMPLEMENTATION_COMPLETE_PIPER_ONNX_archive - 01_04_2026.md
+- docs-consolidation-20260119-200037/docs/archive/historical/PIPER_ONNX_IMPLEMENTATION_SUMMARY.md
+- docs-consolidation-20260119-200037/docs/archive/historical/UPDATES_RUNNING_archive - 01_04_2026.md
+- docs-consolidation-20260119-200037/docs/archive/historical/README.md
+- docs-consolidation-20260119-200037/docs/archive/historical/PIPER_ONNX_IMPLEMENTATION_SUMMARY_archive - 01_04_2026.md
+- docs-consolidation-20260119-200037/docs/archive/historical/INDEX.md
+- docs-consolidation-20260119-200037/docs/archive/historical/XNAI_blueprint_archive - 01_04_2026.md
+- docs-consolidation-20260119-200037/docs/archive/historical/FILES_REVIEWED_COMPLETE_LIST.md
+- docs-consolidation-20260119-200037/docs/archive/historical/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025_archive - 01_04_2026.md
+- docs-consolidation-20260119-200037/docs/archive/historical/CHANGELOG_archive - 01_04_2026.md
+- docs-consolidation-20260119-200037/docs/archive/historical/README_dup.md
+- docs-consolidation-20260119-200037/docs/archive/historical/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025.md
+- docs-consolidation-20260119-200037/docs/archive/historical/UPDATES_RUNNING_dup.md
+- docs-consolidation-20260119-200037/docs/archive/historical/RESEARCH_REFINEMENTS_SUMMARY.md
+- docs-consolidation-20260119-200037/docs/archive/historical/COMPLETE_DOCUMENTATION_AUDIT.md
+- docs-consolidation-20260119-200037/docs/archive/historical/README_IMPLEMENTATION_PACKAGE.md
+- docs-consolidation-20260119-200037/docs/archive/historical/IMMEDIATE_ACTION_PLAN.md
+- docs-consolidation-20260119-200037/docs/archive/historical/WHEELHOUSE_BUILD_TRACKING_archive - 01_04_2026.md
+- docs-consolidation-20260119-200037/docs/archive/historical/DOCUMENTATION_CONSOLIDATION_&_CODE_ROADMAP.md
+- docs-consolidation-20260119-200037/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day7.md
+- docs-consolidation-20260119-200037/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day6.md
+- docs-consolidation-20260119-200037/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day5.md
+- docs-consolidation-20260119-200037/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day8.md
+- docs-consolidation-20260119-200037/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day4.md
+- docs-consolidation-20260119-200037/docs/archive/historical/daily-status-reports/2026-january/HISTORICAL_SUMMARY.md
+- docs-consolidation-20260119-200037/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day3.md
+- docs-consolidation-20260119-200037/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day1.md
+- docs-consolidation-20260119-200037/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day2.md
+- docs-consolidation-20260119-200037/docs/archive/sessions/SESSION_COMPLETION_REPORT.md
+- docs-consolidation-20260119-200037/docs/archive/sessions/DOCUMENTATION_AUDIT.md
+- docs-consolidation-20260119-200037/docs/system-prompts/README.md
+- docs-consolidation-20260119-200037/docs/system-prompts/metrics/prompt-quality-tracking.md
+- docs-consolidation-20260119-200037/docs/system-prompts/_meta/changelog.md
+- docs-consolidation-20260119-200037/docs/system-prompts/_meta/templates/expert-template.md
+- docs-consolidation-20260119-200037/docs/system-prompts/_meta/templates/assistant-template.md
+- docs-consolidation-20260119-200037/docs/system-prompts/assistants/grok/xoe-novai-notebooklm-video-expert-v1.0.md
+- docs-consolidation-20260119-200037/docs/system-prompts/assistants/grok/xoe-novai-research-assistant-v1.0.md
+- docs-consolidation-20260119-200037/docs/system-prompts/assistants/grok/xoe-novai-universal-assistant-v1.0.md
+- docs-consolidation-20260119-200037/docs/system-prompts/assistants/claude/xoe-novai-implementation-specialist-v3.0.md
+- docs-consolidation-20260119-200037/docs/system-prompts/assistants/claude/ultimate-mkdocs-master-guide-research-prompt.md
+- docs-consolidation-20260119-200037/docs/system-prompts/assistants/claude/xoe-novai-research-assistant-v1.0.md
+- docs-consolidation-20260119-200037/docs/system-prompts/assistants/claude/xoe-novai-notebooklm-video-project-v2.0.md
+- docs-consolidation-20260119-200037/docs/system-prompts/assistants/claude/model-analysis.md
+- docs-consolidation-20260119-200037/docs/system-prompts/assistants/claude/xoe-novai-notebooklm-video-project-v1.0.md
+- docs-consolidation-20260119-200037/docs/system-prompts/assistants/claude/xoe-novai-implementation-specialist-v1.0.md
+- docs-consolidation-20260119-200037/docs/system-prompts/experts/grok-stack-expert-v1.0.md
+- docs-consolidation-20260119-200037/docs/system-prompts/experts/claude-stack-code-expert-v2.0.md
+- docs-consolidation-20260119-200037/docs/reference/configuration.md
+- docs-consolidation-20260119-200037/docs/reference/README.md
+- docs-consolidation-20260119-200037/docs/reference/integration/rag-integration.md
+- docs-consolidation-20260119-200037/docs/reference/integration/voice-integration.md
+- docs-consolidation-20260119-200037/docs/reference/enterprise-features/enterprise_monitoring.md
+- docs-consolidation-20260119-200037/docs/reference/enterprise-features/structured_concurrency.md
+- docs-consolidation-20260119-200037/docs/reference/enterprise-features/zero_telemetry.md
+- docs-consolidation-20260119-200037/docs/reference/enterprise-features/enterprise_security.md
+- docs-consolidation-20260119-200037/docs/reference/enterprise-features/circuit_breaker.md
+- docs-consolidation-20260119-200037/docs/reference/api/dependencies.md
+- docs-consolidation-20260119-200037/docs/reference/api/healthcheck.md
+- docs-consolidation-20260119-200037/docs/reference/api/voice_command_handler.md
+- docs-consolidation-20260119-200037/docs/reference/api/async_patterns.md
+- docs-consolidation-20260119-200037/docs/reference/api/chainlit_app_voice.md
+- docs-consolidation-20260119-200037/docs/reference/api/crawl.md
+- docs-consolidation-20260119-200037/docs/reference/api/crawler_curation.md
+- docs-consolidation-20260119-200037/docs/reference/api/verify_imports.md
+- docs-consolidation-20260119-200037/docs/reference/api/api_docs.md
+- docs-consolidation-20260119-200037/docs/reference/api/ingest_library.md
+- docs-consolidation-20260119-200037/docs/reference/api/config_loader.md
+- docs-consolidation-20260119-200037/docs/reference/api/voice_degradation.md
+- docs-consolidation-20260119-200037/docs/reference/api/curation_worker.md
+- docs-consolidation-20260119-200037/docs/reference/api/chainlit_curator_interface.md
+- docs-consolidation-20260119-200037/docs/reference/api/main.md
+- docs-consolidation-20260119-200037/docs/reference/api/logging_config.md
+- docs-consolidation-20260119-200037/docs/reference/api/observability.md
+- docs-consolidation-20260119-200037/docs/reference/api/metrics.md
+- docs-consolidation-20260119-200037/docs/reference/api/retrievers.md
+- docs-consolidation-20260119-200037/docs/reference/api/chainlit_app.md
+- docs-consolidation-20260119-200037/docs/reference/api/voice_interface.md
+- docs-consolidation-20260119-200037/docs/reference/api/library_api_integrations.md
+- docs-consolidation-20260119-200037/docs/design/README.md
+- docs-consolidation-20260119-200037/docs/99-research/Top 5 Most Critical Cutting-Edge Practices.md
+- docs-consolidation-20260119-200037/docs/99-research/README.md
+- docs-consolidation-20260119-200037/docs/99-research/operational-stack-readiness-research.md
+- docs-consolidation-20260119-200037/docs/99-research/Operational Stack Readiness Research Fulfillment.md
+- docs-consolidation-20260119-200037/docs/99-research/Complete Vulkan Offload Guide for Xoe-NovAi.md
+- docs-consolidation-20260119-200037/docs/99-research/vulkan-inference/README.md
+- docs-consolidation-20260119-200037/docs/99-research/mkdocs/troubleshooting_guide.md
+- docs-consolidation-20260119-200037/docs/99-research/mkdocs/cline_integration_guide.md
+- docs-consolidation-20260119-200037/docs/99-research/mkdocs/mkdocs_enterprise_integration_tracking.md
+- docs-consolidation-20260119-200037/docs/99-research/mkdocs/Claude - mkdocs graphana and chat summary.md
+- docs-consolidation-20260119-200037/docs/99-research/mkdocs/vscode_tasks.json
+- docs-consolidation-20260119-200037/docs/99-research/faiss-architecture/README.md
+- docs-consolidation-20260119-200037/docs/99-research/kokoro-tts/README.md
+- docs-consolidation-20260119-200037/docs/99-research/enterprise-modernization/README.md
+- docs-consolidation-20260119-200037/docs/99-research/stack-2026/README.md
+- docs-consolidation-20260119-200037/docs/how-to/voice-setup.md
+- docs-consolidation-20260119-200037/docs/how-to/troubleshooting.md
+- docs-consolidation-20260119-200037/docs/deep_research/02-kokoro-v2-voice-synthesis.md
+- docs-consolidation-20260119-200037/docs/deep_research/Grok - DR - FastAPI and version conflict resolution  (Jan 13, 2026).md
+- docs-consolidation-20260119-200037/docs/deep_research/Claude__Sonnet 4-5 enhanced__code audit - 01-13-2026.md
+- docs-consolidation-20260119-200037/docs/deep_research/Grok - DR -  Overview & Guiding Principles (2026 Edition).md
+- docs-consolidation-20260119-200037/docs/deep_research/Grok- DR - UV security and ruff linter.md
+- docs-consolidation-20260119-200037/docs/deep_research/Claude code audit - 01-13-2026.md
+- docs-consolidation-20260119-200037/docs/deep_research/README.md
+- docs-consolidation-20260119-200037/docs/deep_research/05-neural-compilation-paradigms.md
+- docs-consolidation-20260119-200037/docs/deep_research/Grok- DR - UV advanced features and usage.md
+- docs-consolidation-20260119-200037/docs/deep_research/xnai_stack_research_2026.md
+- docs-consolidation-20260119-200037/docs/deep_research/03-advanced-faiss-architecture.md
+- docs-consolidation-20260119-200037/docs/deep_research/xnai_top_3_deep_research_findings.md
+- docs-consolidation-20260119-200037/docs/deep_research/Grok - DR - Speed up pip downloads (2026).md
+- docs-consolidation-20260119-200037/docs/deep_research/xnai_knowledge_gap_findings.md
+- docs-consolidation-20260119-200037/docs/deep_research/mkdocs_research_solutions.md
+- docs-consolidation-20260119-200037/docs/deep_research/Grok - DR - Technical Guide Enforcing Python 3.12.md
+- docs-consolidation-20260119-200037/docs/deep_research/mkdocs-error-resolution-research-request.md
+- docs-consolidation-20260119-200037/docs/deep_research/01-vulkan-native-inference.md
+- docs-consolidation-20260119-200037/docs/deep_research/Grok-DR-Mkdocs-integration.md
+- docs-consolidation-20260119-200037/docs/deep_research/research-request-v1.md
+- docs-consolidation-20260119-200037/docs/deep_research/04-system-resilience-extensibility.md
+- docs-consolidation-20260119-200037/docs/03-architecture/audio-strategy.md
+- docs-consolidation-20260119-200037/docs/03-architecture/project-charter.md
+- docs-consolidation-20260119-200037/docs/03-architecture/architecture.md
+- docs-consolidation-20260119-200037/docs/03-architecture/condensed-guide.md
+- docs-consolidation-20260119-200037/docs/03-architecture/STACK_ARCHITECTURE_AND_TECHNOLOGY_SUPPLEMENT.md
+- docs-consolidation-20260119-200037/docs/03-architecture/ux_timing_system_final_report.md
+- docs-consolidation-20260119-200037/docs/03-architecture/docker-code-changes.md
+- docs-consolidation-20260119-200037/docs/03-architecture/README.md
+- docs-consolidation-20260119-200037/docs/03-architecture/TECHNICAL_STACK_DOCUMENTATION.md
+- docs-consolidation-20260119-200037/docs/03-architecture/enhancement-project-completion-summary.md
+- docs-consolidation-20260119-200037/docs/03-architecture/enterprise-strategy.md
+- docs-consolidation-20260119-200037/docs/03-architecture/EmbeddingGemma model card.md
+- docs-consolidation-20260119-200037/docs/03-architecture/stack-cat-guide.md
+- docs-consolidation-20260119-200037/docs/03-architecture/TECHNICAL_STACK_AUDIT_TRACKING.md
+- docs-consolidation-20260119-200037/docs/03-architecture/enhancement-lfm25-voice-integration.md
+- docs-consolidation-20260119-200037/docs/03-architecture/xnai_v0.1.5_voice_addendum.md
+- docs-consolidation-20260119-200037/docs/03-architecture/docker-visual-guide.md
+- docs-consolidation-20260119-200037/docs/03-architecture/rag-refinements.md
+- docs-consolidation-20260119-200037/docs/03-architecture/enhancement-architecture-multi-agent-orchestration.md
+- docs-consolidation-20260119-200037/docs/03-architecture/implementation-roadmap.md
+- docs-consolidation-20260119-200037/docs/03-architecture/enhancement-learning-evolving-agents.md
+- docs-consolidation-20260119-200037/docs/03-architecture/enhancement-performance-distributed-vector-storage.md
+- docs-consolidation-20260119-200037/docs/03-architecture/enhancement-security-zero-trust-architecture.md
+- docs-consolidation-20260119-200037/docs/03-architecture/DR - Top 20 Resources for EmbGemma in XNAi.md
+- docs-consolidation-20260119-200037/docs/03-architecture/docker-services.md
+- docs-consolidation-20260119-200037/docs/03-architecture/data-directories.md
+- docs-consolidation-20260119-200037/docs/03-architecture/CODE_REVIEW_2026_01_05.md
+- docs-consolidation-20260119-200037/docs/03-architecture/enhancement-voice-to-voice-basic.md
+- docs-consolidation-20260119-200037/docs/03-architecture/STACK_STATUS.md
+- docs-consolidation-20260119-200037/docs/03-architecture/enhancement-persona-system-intelligence.md
+- docs-consolidation-20260119-200037/docs/03-architecture/audio-research.md
+- docs-consolidation-20260119-200037/docs/03-architecture/qdrant-agentic-api.md
+- docs-consolidation-20260119-200037/docs/03-architecture/blueprint.md
+- docs-consolidation-20260119-200037/docs/03-architecture/docker-summary.md
+- docs-consolidation-20260119-200037/docs/03-architecture/enhancement-dependency-tracking.md
+- docs-consolidation-20260119-200037/docs/03-architecture/crawler-optimization.md
+- docs-consolidation-20260119-200037/docs/03-architecture/organization-plan.md
+- docs-consolidation-20260119-200037/docs/03-architecture/curator-enhancement.md
+- docs-consolidation-20260119-200037/docs/03-architecture/docker-optimization.md
+- docs-consolidation-20260119-200037/docs/03-architecture/project-overview.md
+- docs-consolidation-20260119-200037/docs/versions/version_strategy.md
+- docs-consolidation-20260119-200037/docs/portability/README.md
+- docs-consolidation-20260119-200037/docs/portability/partition-migration-analysis.md
+- docs-consolidation-20260119-200037/docs/portability/migration-partition-fixes-2026.md
+- docs-consolidation-20260119-200037/docs/best-practices/docker-buildkit-wheelhouse-guide.md
+- docs-consolidation-20260119-200037/docs/best-practices/README.md
+- docs-consolidation-20260119-200037/docs/best-practices/python-version-management.md
+- docs-consolidation-20260119-200037/docs/best-practices/uv-integration-guide.md
+- docs-consolidation-20260119-200037/docs/operations/monitoring-dashboard.md
+- docs-consolidation-20260119-200037/docs/operations/troubleshooting.md
+- docs-consolidation-20260119-200037/docs/explanation/system-overview.md
+- docs-consolidation-20260119-200037/docs/01-getting-started/05-awq-production-pipeline-guide.md
+- docs-consolidation-20260119-200037/docs/01-getting-started/01-START_HERE.md
+- docs-consolidation-20260119-200037/docs/01-getting-started/README.md
+- docs-consolidation-20260119-200037/docs/01-getting-started/beginner-guide.md
+- docs-consolidation-20260119-200037/docs/01-getting-started/01-QUICK_START_MAKEFILE.md
+- docs-consolidation-20260119-200037/docs/01-getting-started/02-podman-installation-guide.md
+- docs-consolidation-20260119-200037/docs/01-getting-started/04-redis-sentinel-cluster-guide.md
+- docs-consolidation-20260119-200037/docs/01-getting-started/06-neural-bm25-retrieval-guide.md
+- docs-consolidation-20260119-200037/docs/01-getting-started/03-advanced-features-user-guide.md
+- docs-consolidation-20260119-200037/docs/policies/PIP_INSTALL_STANDARDS.md
+- docs-consolidation-20260119-200037/docs/policies/DOCUMENTATION_STRATEGY.md
+- docs-consolidation-20260119-200037/docs/policies/README.md
+- docs-consolidation-20260119-200037/docs/ai-research/notebooklm-video-generation-research.md
+- docs-consolidation-20260119-200037/docs/ai-research/Grok - Podman for Multi-Container Orchestration in Xoe-NovAi.md
+- docs-consolidation-20260119-200037/docs/ai-research/README.md
+- docs-consolidation-20260119-200037/docs/ai-research/remaining-research-questions.md
+- docs-consolidation-20260119-200037/docs/ai-research/claude-onboarding-document.md
+- docs-consolidation-20260119-200037/docs/ai-research/AWQ Quantization Production Implementation Research Report.md
+- docs-consolidation-20260119-200037/docs/ai-research/PRR-P1-WATERMARK-003 Educational Briefing AI Content Watermarking.md
+- docs-consolidation-20260119-200037/docs/ai-research/claude-research-initiation-prompt.md
+- docs-consolidation-20260119-200037/docs/ai-research/comprehensive-claude-research-synthesis.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/01-mkdocs-rag-integration.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/11-wasm-component-deep-research.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/03-anyio-concurrency.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/09-kokoro-v2-deep-research.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/05-opentelemetry-genai.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/06-rootless-docker-sbom.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/10-qdrant-agentic-deep-research.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/08-vulkan-deep-research.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/07-voice-degradation.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/02-vulkan-igpu-acceleration.md
+- docs-consolidation-20260119-200037/docs/ai-research/requests/04-hypothesis-voice-testing.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Cline-Technical-Response-to-Grok-Analysis.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Cline-Technical-Response-to-Grok-Analysis-Appendix.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Cluade Refined - Supplemental - INCOMPLETE - awaiting finalization- Research Request - multiple - 01-14-2026 - response 4.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Research Request - multiple - 01-14-2026 - response 3.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Research Request - multiple - 01-14-2026 - response 2.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Research Recommendation Enhanced MkDocs Plugin Ecosystem for Dockerized Documentation - response 2.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Research Request - multiple - 01-14-2026.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Cline-Grok-Response-3-Technical-Details.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Research Request - multiple - 01-14-2026 - response 4.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Research Recommendation Enhanced MkDocs Plugin Ecosystem for Dockerized Documentation.md
+- docs-consolidation-20260119-200037/docs/ai-research/responses/Cluade Refined - Research Request - multiple - 01-14-2026 - response 4.md
+- docs-consolidation-20260119-200037/docs/ai-research/admin/evaluation-framework.md
+- docs-consolidation-20260119-200037/docs/ai-research/admin/ai-provider-matrix.md
+- docs-consolidation-20260119-200037/docs/ai-research/admin/quality-standards.md
+- docs-consolidation-20260119-200037/docs/ai-research/admin/research-process.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/README.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/broken_links_report.json
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/handover-readiness-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/week3-progress-summary.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/monitoring-dashboard.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/ux_timing_system_final_report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day7.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day6.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/week1-progress-summary.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/checklist.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/dependency-tracking-matrix.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/enterprise_build_system_final_report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/mkdocs_enterprise_integration_tracking.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/quick-reference-checklist.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/migration-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/xoe-novai-implementation-completeness-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day5.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/qdrant-checklist.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/implementation-checklist.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day8.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day4.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/prompt-quality-tracking.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/claude-research-integration-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day3.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day1.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/script_optimization_tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/week2-progress-summary.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/audit-progress.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/freshness-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/xoe_novai_voice_dashboards.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/polishing-progress-tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day2.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs_freshness_report.json
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/enhancement_tracking_template.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/code-review-checklists.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/phase1-implementation-status-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/research-validation-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/pip_progress_interception_research.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/project-tracking-dashboard.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/phase1_progress_tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/enhanced-metrics-implementation-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/code-updates-tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/enhancement-dependency-tracking.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/research-tracking.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/implementation-execution-tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/wheelhouse-build-tracking.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/intake-tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/project-status-tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/broken_links_report.json
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/handover-readiness-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/audit-progress.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/freshness-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/docs_freshness_report.json
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research-validation-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/week3-progress-summary.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/week1-progress-summary.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/checklist.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/dependency-tracking-matrix.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/enterprise_build_system_final_report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/quick-reference-checklist.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/xoe-novai-implementation-completeness-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/qdrant-checklist.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/implementation-checklist.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/claude-research-integration-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/script_optimization_tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/week2-progress-summary.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/polishing-progress-tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/code-review-checklists.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/phase1-implementation-status-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/project-tracking-dashboard.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/phase1_progress_tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/enhanced-metrics-implementation-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/implementation-execution-tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/wheelhouse-build-tracking.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/project-status-tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/06-meta/migration-report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/06-meta/pip_progress_interception_research.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/templates/enhancement_tracking_template.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research/research-tracking.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research/projects/observability/xoe_novai_voice_dashboards.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research/urls/intake-tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day7.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day6.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day5.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day8.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day4.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day3.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day1.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day2.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/system-prompts/metrics/prompt-quality-tracking.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/99-research/mkdocs/mkdocs_enterprise_integration_tracking.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/03-architecture/ux_timing_system_final_report.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/03-architecture/enhancement-dependency-tracking.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/operations/monitoring-dashboard.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/04-operations/code-updates-tracker.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/execution/REFERENCE_MAPPING_TRACKER.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/execution/EXECUTION_CHECKLIST.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/execution/STAKEHOLDER_COMMUNICATION_PLAN.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/planning/CONSOLIDATION_MAPPING_MATRIX.md
+- docs-consolidation-20260119-200037/docs/project-tracking-consolidation-resources/planning/CONTENT_INVENTORY_DATABASE.json
+- docs-consolidation-20260119-200037/docs/implementation/core-patterns.md
+- docs-consolidation-20260119-200037/docs/implementation/README.md
+- docs-consolidation-20260119-200037/docs/implementation/advanced-features.md
+- docs-consolidation-20260119-200037/docs/journey/README.md
+- docs-consolidation-20260119-200037/docs/05-governance/pr-release-notes.md
+- docs-consolidation-20260119-200037/docs/05-governance/documentation-changelog.md
+- docs-consolidation-20260119-200037/docs/05-governance/policy_template.md
+- docs-consolidation-20260119-200037/docs/05-governance/implementation-package-summary.md
+- docs-consolidation-20260119-200037/docs/05-governance/OWNERS.md
+- docs-consolidation-20260119-200037/docs/05-governance/DOCS_STRATEGY.md
+- docs-consolidation-20260119-200037/docs/05-governance/v0.1.4-stable.md
+- docs-consolidation-20260119-200037/docs/05-governance/implementation-complete.md
+- docs-consolidation-20260119-200037/docs/05-governance/executive-audit.md
+- docs-consolidation-20260119-200037/docs/05-governance/DOCUMENTATION_BEST_PRACTICES.md
+- docs-consolidation-20260119-200037/docs/05-governance/README.md
+- docs-consolidation-20260119-200037/docs/05-governance/v0.1.5.md
+- docs-consolidation-20260119-200037/docs/05-governance/delivery-complete.md
+- docs-consolidation-20260119-200037/docs/05-governance/version-management-policy.md
+- docs-consolidation-20260119-200037/docs/05-governance/CHANGELOG.md
+- docs-consolidation-20260119-200037/docs/05-governance/executive-summary.md
+- docs-consolidation-20260119-200037/docs/05-governance/DOCUMENTATION_DRIFT_PREVENTION.md
+- docs-consolidation-20260119-200037/docs/05-governance/audit_summary_20260110.md
+- docs-consolidation-20260119-200037/docs/05-governance/Cline Rules.md
+- docs-consolidation-20260119-200037/docs/05-governance/POLICIES.md
+- docs-consolidation-20260119-200037/docs/05-governance/phase-2-completion.md
+- docs-consolidation-20260119-200037/docs/05-governance/v0.1.4-stable-release-readiness-audit.md
+- docs-consolidation-20260119-200037/docs/scripts/catalog.json
+- docs-consolidation-20260119-200037/docs/scripts/README.md
+- docs-consolidation-20260119-200037/docs/04-operations/make-up-test-results.md
+- docs-consolidation-20260119-200037/docs/04-operations/build-tools.md
+- docs-consolidation-20260119-200037/docs/04-operations/security-fixes-runbook.md
+- docs-consolidation-20260119-200037/docs/04-operations/README.md
+- docs-consolidation-20260119-200037/docs/04-operations/runbook_template.md
+- docs-consolidation-20260119-200037/docs/04-operations/voice-deployment.md
+- docs-consolidation-20260119-200037/docs/04-operations/updates-running.md
+- docs-consolidation-20260119-200037/docs/04-operations/ingestion-system-enhancements.md
+- docs-consolidation-20260119-200037/docs/04-operations/qdrant-performance-tuning.md
+- docs-consolidation-20260119-200037/docs/04-operations/build-logging.md
+- docs-consolidation-20260119-200037/docs/04-operations/local-telemetry-free-tts-options.md
+- docs-consolidation-20260119-200037/docs/04-operations/docker-build-troubleshooting.md
+- docs-consolidation-20260119-200037/docs/04-operations/docker-testing.md
+- docs-consolidation-20260119-200037/docs/04-operations/code-updates-tracker.md
+- docs-consolidation-20260119-200037/docs/incoming/MKdocs Diataxis Versioning Guide + Mike RAG metadata.md
+- docs-consolidation-20260119-200037/docs/incoming/MkDocs Mike Versioning.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - config_improvements_report_v3.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v3 - complete.md
+- docs-consolidation-20260119-200037/docs/incoming/Additional 2026 Best Practices for Integration.md
+- docs-consolidation-20260119-200037/docs/incoming/xoe_enterprise_remediation_guide.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - mkdocs-master-guide-complete.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - mkdocs_rag_enhanced_guide.md
+- docs-consolidation-20260119-200037/docs/incoming/Griffe Backend Customization Guide.md
+- docs-consolidation-20260119-200037/docs/incoming/MkDocStrings Plugin Tutorial.md
+- docs-consolidation-20260119-200037/docs/incoming/Xoe-NovAi Permissions Best Practices Guide.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - AI Enhancement Metrics.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - config_improvements_report_v2.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - config_improvements_report_v1.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - Comprehensive System Briefing and Research - doc 1.md
+- docs-consolidation-20260119-200037/docs/incoming/Xoe-NovAi Comprehensive Implementation Quick-Start.md
+- docs-consolidation-20260119-200037/docs/incoming/Xoe-NovAi Remediation & Implementation Main Guide.md
+- docs-consolidation-20260119-200037/docs/incoming/Grok - Complete Guide to Generating High-Quality Videos in NotebookLM.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - mkdocs_rag_master_guide.md
+- docs-consolidation-20260119-200037/docs/incoming/Xoe-NovAi .env File Review & Recommendations.md
+- docs-consolidation-20260119-200037/docs/incoming/Report - Cutting-Edge MkDocs Configuration for Xoe-NovAi Documentation Resilience.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - XNAI MASTER OPERATIONS & IMPLEMENTATIONS HANDBOOK (01-17-2026).md
+- docs-consolidation-20260119-200037/docs/incoming/MkDocs Guide Elevate Local RAG to Academic Performance.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - medium_priority_guide - incomplete.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - critical_issues_guide.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - AWQ Quantization Production Implementation Research Report.md
+- docs-consolidation-20260119-200037/docs/incoming/PRR-P1-WATERMARK-003 Educational Briefing AI Content Watermarking.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v2 - incomplete.md
+- docs-consolidation-20260119-200037/docs/incoming/NotebooLM - Xoe-NovAi Enterprise Platform Advanced Research & Implementation Briefing.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v1 - supplemental.md
+- docs-consolidation-20260119-200037/docs/incoming/Advanced MkDocStrings Options Guide.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v0.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - Advanced AI Hardware & Security Research Supplement (2026-2027) - incomplete.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - high_priority_guide.md
+- docs-consolidation-20260119-200037/docs/incoming/Ultimate MkDocs Master Guide Research Plan.md
+- docs-consolidation-20260119-200037/docs/incoming/Claude - enterprise_integration_matrix.md
+- docs-consolidation-20260119-200037/docs/incoming/Advanced Diátaxis Patterns Guide.md
+- migrations/migration-log-20260120-091926.json
+- docs-backup-20260120-091926/handover-readiness-report.md
+- docs-backup-20260120-091926/updated_mkdocs_research_request.md
+- docs-backup-20260120-091926/index.md
+- docs-backup-20260120-091926/link-repair-report.md
+- docs-backup-20260120-091926/CHAINLIT_DOWNGRADE_ANALYSIS.md
+- docs-backup-20260120-091926/cline-session-onboarding.md
+- docs-backup-20260120-091926/incoming-integration-summary.md
+- docs-backup-20260120-091926/README.md
+- docs-backup-20260120-091926/DR-research-request-from -Cline - 01_13_2026.md
+- docs-backup-20260120-091926/DOCUMENTATION_MAINTENANCE_INDEX.md
+- docs-backup-20260120-091926/voice-debug-mode.md
+- docs-backup-20260120-091926/classification-report.md
+- docs-consolidation-20260119-195937/docs/broken_links_report.json
+- docs-consolidation-20260119-195937/docs/handover-readiness-report.md
+- docs-consolidation-20260119-195937/docs/index.md
+- docs-consolidation-20260119-195937/docs/index.json
+- docs-consolidation-20260119-195937/docs/CHAINLIT_DOWNGRADE_ANALYSIS.md
+- docs-consolidation-20260119-195937/docs/cline-session-onboarding.md
+- docs-consolidation-20260119-195937/docs/incoming-integration-summary.md
+- docs-consolidation-20260119-195937/docs/README.md
+- docs-consolidation-20260119-195937/docs/DR-research-request-from -Cline - 01_13_2026.md
+- docs-consolidation-20260119-195937/docs/DOCUMENTATION_MAINTENANCE_INDEX.md
+- docs-consolidation-20260119-195937/docs/voice-debug-mode.md
+- docs-consolidation-20260119-195937/docs/Xoe-NovAi AI Code Assistant System Prompt.md
+- docs-consolidation-20260119-195937/docs/TRACKING_DOCUMENTS_CONSOLIDATION_ANALYSIS.md
+- docs-consolidation-20260119-195937/docs/business-opportunities.md
+- docs-consolidation-20260119-195937/docs/XOE_NOVAI_CHAINLIT_IMPLEMENTATIONS.md
+- docs-consolidation-20260119-195937/docs/audit-progress.md
+- docs-consolidation-20260119-195937/docs/freshness-report.md
+- docs-consolidation-20260119-195937/docs/cline-session-continuation.md
+- docs-consolidation-20260119-195937/docs/docs_freshness_report.json
+- docs-consolidation-20260119-195937/docs/grok_deep_research_request.md
+- docs-consolidation-20260119-195937/docs/research-validation-report.md
+- docs-consolidation-20260119-195937/docs/search_index.json
+- docs-consolidation-20260119-195937/docs/DOCUMENTATION_AUDIT_CHECKLIST.md
+- docs-consolidation-20260119-195937/docs/claude-research-requirements-q1-2026.md
+- docs-consolidation-20260119-195937/docs/project-tracking/phase1-foundation-security.md
+- docs-consolidation-20260119-195937/docs/project-tracking/build-system.md
+- docs-consolidation-20260119-195937/docs/project-tracking/security-framework.md
+- docs-consolidation-20260119-195937/docs/project-tracking/phase4-documentation-consolidation.md
+- docs-consolidation-20260119-195937/docs/project-tracking/operations-handbook.md
+- docs-consolidation-20260119-195937/docs/project-tracking/performance-optimization.md
+- docs-consolidation-20260119-195937/docs/project-tracking/ai-capabilities-overview.md
+- docs-consolidation-20260119-195937/docs/project-tracking/PROJECT_STATUS_DASHBOARD.md
+- docs-consolidation-20260119-195937/docs/project-tracking/dependency-management.md
+- docs-consolidation-20260119-195937/docs/project-tracking/phase3-production-hardening.md
+- docs-consolidation-20260119-195937/docs/project-tracking/infrastructure-architecture.md
+- docs-consolidation-20260119-195937/docs/project-tracking/phase2-performance-resilience.md
+- docs-consolidation-20260119-195937/docs/project-tracking/integration-guide.md
+- docs-consolidation-20260119-195937/docs/02-development/phase1-implementation-guide.md
+- docs-consolidation-20260119-195937/docs/02-development/implementation-summary.md
+- docs-consolidation-20260119-195937/docs/02-development/week3-progress-summary.md
+- docs-consolidation-20260119-195937/docs/02-development/vulkan-integration-roadmap.md
+- docs-consolidation-20260119-195937/docs/02-development/week2-implementation-plan.md
+- docs-consolidation-20260119-195937/docs/02-development/index.md
+- docs-consolidation-20260119-195937/docs/02-development/holistic-integration-execution-plan.md
+- docs-consolidation-20260119-195937/docs/02-development/week1-2_implementation_log.md
+- docs-consolidation-20260119-195937/docs/02-development/ml_docker_optimization_guide.md
+- docs-consolidation-20260119-195937/docs/02-development/code-skeletons.md
+- docs-consolidation-20260119-195937/docs/02-development/week1-progress-summary.md
+- docs-consolidation-20260119-195937/docs/02-development/CRITICAL_BLOCKERS_REPORT.md
+- docs-consolidation-20260119-195937/docs/02-development/production-stability-audit.md
+- docs-consolidation-20260119-195937/docs/02-development/enterprise-transformation-risk-assessment.md
+- docs-consolidation-20260119-195937/docs/02-development/phase-1.md
+- docs-consolidation-20260119-195937/docs/02-development/visual-reference.md
+- docs-consolidation-20260119-195937/docs/02-development/production-integration-roadmap.md
+- docs-consolidation-20260119-195937/docs/02-development/Claude Fix Rpeort - Docker to Podman move issues and chache_from errors.md
+- docs-consolidation-20260119-195937/docs/02-development/2026_implementation_plan.md
+- docs-consolidation-20260119-195937/docs/02-development/voice-setup.md
+- docs-consolidation-20260119-195937/docs/02-development/developer-portability-guide.md
+- docs-consolidation-20260119-195937/docs/02-development/README.md
+- docs-consolidation-20260119-195937/docs/02-development/DEPENDENCY_UPDATE_IMPLEMENTATION_GUIDE.md
+- docs-consolidation-20260119-195937/docs/02-development/checklist.md
+- docs-consolidation-20260119-195937/docs/02-development/dependency-tracking-matrix.md
+- docs-consolidation-20260119-195937/docs/02-development/phase1_day2_circuit_breaker_testing.md
+- docs-consolidation-20260119-195937/docs/02-development/phase1_week1_security_errorhandling_ux.md
+- docs-consolidation-20260119-195937/docs/02-development/build-performance.md
+- docs-consolidation-20260119-195937/docs/02-development/wheelhouse-build.md
+- docs-consolidation-20260119-195937/docs/02-development/DEPENDENCY_UPDATE_ENTERPRISE_IMPLEMENTATION.md
+- docs-consolidation-20260119-195937/docs/02-development/claude-v2-integration-assessment.md
+- docs-consolidation-20260119-195937/docs/02-development/week1_rollback_procedures.md
+- docs-consolidation-20260119-195937/docs/02-development/piper-onnx-implementation-complete.md
+- docs-consolidation-20260119-195937/docs/02-development/tts-options.md
+- docs-consolidation-20260119-195937/docs/02-development/docker-mkdocs-optimization-complete.md
+- docs-consolidation-20260119-195937/docs/02-development/week1-implementation-plan.md
+- docs-consolidation-20260119-195937/docs/02-development/week3-implementation-plan.md
+- docs-consolidation-20260119-195937/docs/02-development/enterprise_build_system_final_report.md
+- docs-consolidation-20260119-195937/docs/02-development/quality-assurance-framework.md
+- docs-consolidation-20260119-195937/docs/02-development/mkdocs-docker-audit-critical-findings.md
+- docs-consolidation-20260119-195937/docs/02-development/monitoring-observability-plan.md
+- docs-consolidation-20260119-195937/docs/02-development/mkdocs-research-implementation-summary.md
+- docs-consolidation-20260119-195937/docs/02-development/enterprise-build.md
+- docs-consolidation-20260119-195937/docs/02-development/deployment-operations-guide.md
+- docs-consolidation-20260119-195937/docs/02-development/quick-reference-checklist.md
+- docs-consolidation-20260119-195937/docs/02-development/POLISHING_MASTER_INDEX.md
+- docs-consolidation-20260119-195937/docs/02-development/xoe-novai-implementation-completeness-report.md
+- docs-consolidation-20260119-195937/docs/02-development/qdrant-checklist.md
+- docs-consolidation-20260119-195937/docs/02-development/piper-onnx-summary.md
+- docs-consolidation-20260119-195937/docs/02-development/mkdocs-rag-integration-roadmap.md
+- docs-consolidation-20260119-195937/docs/02-development/makefile-usage.md
+- docs-consolidation-20260119-195937/docs/02-development/UX_TEST_FRESH_BUILD_20260110.md
+- docs-consolidation-20260119-195937/docs/02-development/code-review-files.md
+- docs-consolidation-20260119-195937/docs/02-development/research-integration-summary.md
+- docs-consolidation-20260119-195937/docs/02-development/phase3_day567_execution_complete.md
+- docs-consolidation-20260119-195937/docs/02-development/UNIFIED_IMPLEMENTATION_GUIDE.md
+- docs-consolidation-20260119-195937/docs/02-development/implementation-checklist.md
+- docs-consolidation-20260119-195937/docs/02-development/quick-start.md
+- docs-consolidation-20260119-195937/docs/02-development/best_practices_research.md
+- docs-consolidation-20260119-195937/docs/02-development/technical-debt-register.md
+- docs-consolidation-20260119-195937/docs/02-development/risk-assessment-mitigation.md
+- docs-consolidation-20260119-195937/docs/02-development/week1-dependency-audit.md
+- docs-consolidation-20260119-195937/docs/02-development/piper-onnx-complete.md
+- docs-consolidation-20260119-195937/docs/02-development/qdrant-migration.md
+- docs-consolidation-20260119-195937/docs/02-development/github-protocol-guide.md
+- docs-consolidation-20260119-195937/docs/02-development/claude-research-integration-report.md
+- docs-consolidation-20260119-195937/docs/02-development/docker-setup.md
+- docs-consolidation-20260119-195937/docs/02-development/phase-2-3.md
+- docs-consolidation-20260119-195937/docs/02-development/phase3_day34_execution_complete.md
+- docs-consolidation-20260119-195937/docs/02-development/week2_implementation_plan.md
+- docs-consolidation-20260119-195937/docs/02-development/voice-enterprise.md
+- docs-consolidation-20260119-195937/docs/02-development/plugin_architecture_design.md
+- docs-consolidation-20260119-195937/docs/02-development/script_optimization_tracker.md
+- docs-consolidation-20260119-195937/docs/02-development/ml_docker_optimization_guide_v2.md
+- docs-consolidation-20260119-195937/docs/02-development/FULL_STACK_AUDIT_REPORT.md
+- docs-consolidation-20260119-195937/docs/02-development/voice-quick-reference.md
+- docs-consolidation-20260119-195937/docs/02-development/week2-progress-summary.md
+- docs-consolidation-20260119-195937/docs/02-development/polishing-progress-tracker.md
+- docs-consolidation-20260119-195937/docs/02-development/offline-build-logging.md
+- docs-consolidation-20260119-195937/docs/02-development/library-api.md
+- docs-consolidation-20260119-195937/docs/02-development/6_week_stack_enhancement_plan.md
+- docs-consolidation-20260119-195937/docs/02-development/library-api-readme.md
+- docs-consolidation-20260119-195937/docs/02-development/phase3_implementation_guide_research_verified.md
+- docs-consolidation-20260119-195937/docs/02-development/research-integration-master-plan.md
+- docs-consolidation-20260119-195937/docs/02-development/voice-interface-guide.md
+- docs-consolidation-20260119-195937/docs/02-development/claude-briefing-update-research-request.md
+- docs-consolidation-20260119-195937/docs/02-development/site-wide-implementation-roadmap.md
+- docs-consolidation-20260119-195937/docs/02-development/research-implementation-tasks.md
+- docs-consolidation-20260119-195937/docs/02-development/build_timeline.md
+- docs-consolidation-20260119-195937/docs/02-development/code-review-checklists.md
+- docs-consolidation-20260119-195937/docs/02-development/phase1-implementation-status-report.md
+- docs-consolidation-20260119-195937/docs/02-development/qdrant-integration.md
+- docs-consolidation-20260119-195937/docs/02-development/vulkan-igpu-implementation-log.md
+- docs-consolidation-20260119-195937/docs/02-development/offline-deployment.md
+- docs-consolidation-20260119-195937/docs/02-development/docs-enhancement-roadmap.md
+- docs-consolidation-20260119-195937/docs/02-development/qdrant-index.md
+- docs-consolidation-20260119-195937/docs/02-development/project-tracking-dashboard.md
+- docs-consolidation-20260119-195937/docs/02-development/phase1_progress_tracker.md
+- docs-consolidation-20260119-195937/docs/02-development/qdrant-agentic-migration.md
+- docs-consolidation-20260119-195937/docs/02-development/enhanced-metrics-implementation-report.md
+- docs-consolidation-20260119-195937/docs/02-development/claude-guides-analysis-outline.md
+- docs-consolidation-20260119-195937/docs/02-development/week1-completion-summary.md
+- docs-consolidation-20260119-195937/docs/02-development/mkdocs-enterprise-enhancement-plan.md
+- docs-consolidation-20260119-195937/docs/02-development/next_steps_strategy.md
+- docs-consolidation-20260119-195937/docs/02-development/enterprise-enhancement-implementation-roadmap.md
+- docs-consolidation-20260119-195937/docs/02-development/rootless-docker-roadmap.md
+- docs-consolidation-20260119-195937/docs/02-development/phase3_research_audit_complete.md
+- docs-consolidation-20260119-195937/docs/02-development/permissions-mitigation-implementation.md
+- docs-consolidation-20260119-195937/docs/02-development/implementation-execution-tracker.md
+- docs-consolidation-20260119-195937/docs/02-development/COMPREHENSIVE_STACK_POLISHING_ROADMAP.md
+- docs-consolidation-20260119-195937/docs/02-development/piper-onnx-implementation-summary.md
+- docs-consolidation-20260119-195937/docs/02-development/POLISHING_INTEGRATION_SUMMARY.md
+- docs-consolidation-20260119-195937/docs/02-development/wheelhouse-build-tracking.md
+- docs-consolidation-20260119-195937/docs/02-development/project-status-tracker.md
+- docs-consolidation-20260119-195937/docs/02-development/howto_template.md
+- docs-consolidation-20260119-195937/docs/howto/README.md
+- docs-consolidation-20260119-195937/docs/videos/kj-xoe-novai-explanation-script.md
+- docs-consolidation-20260119-195937/docs/videos/Grok - Unique Use Cases Discovered.md
+- docs-consolidation-20260119-195937/docs/videos/Grok - Expanded Script Template (Anime Style – Inspirational Triumph).md
+- docs-consolidation-20260119-195937/docs/videos/README.md
+- docs-consolidation-20260119-195937/docs/videos/xoe-novai-notebooklm-context-package.md
+- docs-consolidation-20260119-195937/docs/videos/Grok - Complete Guide to Generating High-Quality Videos in NotebookLM.md
+- docs-consolidation-20260119-195937/docs/videos/Claude - NotebookLM Masterclass.md
+- docs-consolidation-20260119-195937/docs/videos/claude-research-request-for-video-enhancement.md
+- docs-consolidation-20260119-195937/docs/videos/Research Report Enhanced NotebookLM Video Strategies (Jan 17, 2026).md
+- docs-consolidation-20260119-195937/docs/videos/Grok - video supplemental.md
+- docs-consolidation-20260119-195937/docs/06-meta/Grok - Additional Research Update v5.md
+- docs-consolidation-20260119-195937/docs/06-meta/GROK_EXPERT_ONBOARDING_REPORT.md
+- docs-consolidation-20260119-195937/docs/06-meta/README.md
+- docs-consolidation-20260119-195937/docs/06-meta/grok_deep_research_response.md
+- docs-consolidation-20260119-195937/docs/06-meta/implementation-files-review.md
+- docs-consolidation-20260119-195937/docs/06-meta/Grok - 2026 Tech & Strategy Update v2.md
+- docs-consolidation-20260119-195937/docs/06-meta/bash_best_practices_research.md
+- docs-consolidation-20260119-195937/docs/06-meta/migration-report.md
+- docs-consolidation-20260119-195937/docs/06-meta/Grok - Doc Update v5.md
+- docs-consolidation-20260119-195937/docs/06-meta/bash_script_execution_issues.md
+- docs-consolidation-20260119-195937/docs/06-meta/AI_ASSISTANT_GUIDE.md
+- docs-consolidation-20260119-195937/docs/06-meta/Grok - BIOS Script Update v5.md
+- docs-consolidation-20260119-195937/docs/06-meta/Grok - 2026 Tech & Strategy Update Report.md
+- docs-consolidation-20260119-195937/docs/06-meta/DOCUMENTATION_AUDIT_CHANGES.md
+- docs-consolidation-20260119-195937/docs/06-meta/final-organization-summary.md
+- docs-consolidation-20260119-195937/docs/06-meta/implementation-files-organization-complete.md
+- docs-consolidation-20260119-195937/docs/06-meta/DEPENDENCY_UPDATE_RESEARCH_PLAN.md
+- docs-consolidation-20260119-195937/docs/06-meta/pip_progress_interception_research.md
+- docs-consolidation-20260119-195937/docs/06-meta/organization-summary.md
+- docs-consolidation-20260119-195937/docs/06-meta/Grok - 2026 Tech & Strategy Update v3.md
+- docs-consolidation-20260119-195937/docs/06-meta/Grok - 2026 Tech & Strategy Update v5.md
+- docs-consolidation-20260119-195937/docs/06-meta/organization-complete.md
+- docs-consolidation-20260119-195937/docs/06-meta/Grok - 2026 Tech & Strategy Update v4.md
+- docs-consolidation-20260119-195937/docs/runbooks/README.md
+- docs-consolidation-20260119-195937/docs/audit/ORGANIZATION_PLAN.md
+- docs-consolidation-20260119-195937/docs/audit/CONTENT_CLASSIFICATION.md
+- docs-consolidation-20260119-195937/docs/audit/XOE_NOVAI_CLAUDE_ALIGNMENT_AUDIT.md
+- docs-consolidation-20260119-195937/docs/audit/CONTENT_INVENTORY.md
+- docs-consolidation-20260119-195937/docs/tutorials/quick-start.md
+- docs-consolidation-20260119-195937/docs/tutorials/voice-interface.md
+- docs-consolidation-20260119-195937/docs/tutorials/docker-setup.md
+- docs-consolidation-20260119-195937/docs/tutorials/getting-started.md
+- docs-consolidation-20260119-195937/docs/templates/release_note_template.md
+- docs-consolidation-20260119-195937/docs/templates/enhancement_tracking_template.md
+- docs-consolidation-20260119-195937/docs/research/research-request-template.md
+- docs-consolidation-20260119-195937/docs/research/Grok - Claude final implementations recommenfations.md
+- docs-consolidation-20260119-195937/docs/research/research-needs.md
+- docs-consolidation-20260119-195937/docs/research/README.md
+- docs-consolidation-20260119-195937/docs/research/Grok_Clarification_Response.md
+- docs-consolidation-20260119-195937/docs/research/CLAUDE_WEEK4_PRODUCTION_VALIDATION_PROMPT.md
+- docs-consolidation-20260119-195937/docs/research/POLISHING_RESEARCH_REQUESTS.md
+- docs-consolidation-20260119-195937/docs/research/research-integration-guide.md
+- docs-consolidation-20260119-195937/docs/research/RESEARCH_SYSTEM_SUMMARY.md
+- docs-consolidation-20260119-195937/docs/research/GROK_FINAL_PRODUCTION_READINESS_REPORT_v1.0.md
+- docs-consolidation-20260119-195937/docs/research/research-tracking.md
+- docs-consolidation-20260119-195937/docs/research/projects/README.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/README.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - Chat Summary - Week 3 Enterprise Security & Compliance Hardening.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - week4_gap_sprint_plan.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - XNAI_implementation_plan.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - xoe_novai_realistic_enhancements.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_FINAL_IMPLEMENTATION_INITIATION_PROMPT.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_WEEK4_SESSION_QUICKSTART.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude Research Report - xoe_integration_research_phase1.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_NEXT_PHASE_REQUEST_v1.0.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - XNAI_implementation_plan_chat_summary.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - final clarification and doc creation prompt.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_WEEK4_PRODUCTION_VALIDATION_PROMPT.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_CONCLUSIVE_RESEARCH_REQUEST_v1.0.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_WEEK4_SESSION_ASSETS_SUPPLEMENTAL.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/CLAUDE_INTEGRATION_RESEARCH_REQUEST.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/claude_responses/Claude - xoe_novai_assessment.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/final_implementation_guides/Claude - xoe_security_technical_manual.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/final_implementation_guides/Claude - xoe_monitoring_stack.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/final_implementation_guides/Claude - xoe_security_implementation.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CRITICAL_RESEARCH_REQUEST.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CLAUDE_FINAL_IMPLEMENTATION_REQUEST_v1.0.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PHASE1_CHAT_INITIATION_PROMPT.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CLAUDE_FINAL_SUPPLEMENTAL.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CONTAINER_ORCHESTRATION_CONTEXT.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok - Production Readiness Verification and Recommendations.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PHASE1_ADVANCED_RESEARCH_REQUEST_v1.0.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FOLLOWUP_RESEARCH_REQUEST.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok Research Report - Phase 1 Critical Research Package.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FOLLOWUP_CLARIFICATION_REQUEST.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_CLAUDE_ENHANCEMENT_CHAT_PROMPT.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_RESEARCH_FOLLOWUP_REQUEST_v1.0.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok Research Report - Phase 1 Follow-up Research Package.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_PRODUCTION_READINESS_REQUEST_v1.0.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PHASE1_ADVANCED_RESEARCH_CLARIFYING_QUESTIONS.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok - Phase 1 Advanced Research Clarifications Breakthrough Prioritization Refinement.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_CLAUDE_RESOURCES_REQUEST.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_PRODUCTION_READINESS_RESEARCH_REQUEST_v1.0.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_DECISIONS_CHAT_PROMPT.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_PRODUCTION_READINESS_SUPPLEMENTAL.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/Grok Phase 1 Advanced Research Initiation Breakthrough Assessment.md
+- docs-consolidation-20260119-195937/docs/research/projects/phase1_enterprise_implementation/grok_responses/GROK_FINAL_PRODUCTION_READINESS_INITIATION_PROMPT.md
+- docs-consolidation-20260119-195937/docs/research/projects/observability/xoe_novai_ultimate_monitoring_guide.md
+- docs-consolidation-20260119-195937/docs/research/projects/observability/xoe_novai_grafana_implementation.md
+- docs-consolidation-20260119-195937/docs/research/projects/observability/xoe_novai_integration_code.md
+- docs-consolidation-20260119-195937/docs/research/projects/observability/xoe_novai_enterprise_guide.md
+- docs-consolidation-20260119-195937/docs/research/projects/observability/xoe_novai_custom_observability_portal.md
+- docs-consolidation-20260119-195937/docs/research/projects/observability/xoe_novai_voice_dashboards.md
+- docs-consolidation-20260119-195937/docs/research/methodology/README.md
+- docs-consolidation-20260119-195937/docs/research/methodology/RESEARCH_METHODOLOGY_FRAMEWORK.md
+- docs-consolidation-20260119-195937/docs/research/methodology/templates/RESEARCH_REQUEST_TEMPLATE.md
+- docs-consolidation-20260119-195937/docs/research/methodology/tracking/RESEARCH_REPORT_CATALOGING_STRATEGY.md
+- docs-consolidation-20260119-195937/docs/research/methodology/tracking/RESEARCH_CYCLE_TRACKING.md
+- docs-consolidation-20260119-195937/docs/research/methodology/tracking/METHODOLOGY_FEEDBACK_REGISTER.md
+- docs-consolidation-20260119-195937/docs/research/methodology/tracking/EMERGING_TECHNOLOGY_INTAKE_SYSTEM.md
+- docs-consolidation-20260119-195937/docs/research/methodology/process/RESEARCH_PROCESS_GUIDE.md
+- docs-consolidation-20260119-195937/docs/research/urls/intake-tracker.md
+- docs-consolidation-20260119-195937/docs/personas/odin.json
+- docs-consolidation-20260119-195937/docs/personas/lilith.json
+- docs-consolidation-20260119-195937/docs/documentation-consolidation-project/xoe-novai-research-expert-v2.0.md
+- docs-consolidation-20260119-195937/docs/documentation-consolidation-project/xoe-novai-documentation-consolidation-specialist-v1.0.md
+- docs-consolidation-20260119-195937/docs/documentation-consolidation-project/README.md
+- docs-consolidation-20260119-195937/docs/documentation-consolidation-project/DRR-DOCS-001_SUPPLEMENTAL_CONTEXT.md
+- docs-consolidation-20260119-195937/docs/documentation-consolidation-project/GROK_DOCUMENTATION_CONSOLIDATION_REQUEST.md
+- docs-consolidation-20260119-195937/docs/documentation-consolidation-project/DOCUMENTATION_CONSOLIDATION_PROJECT_TRACKER.md
+- docs-consolidation-20260119-195937/docs/documentation-consolidation-project/DOCUMENTATION_CONSOLIDATION_PROJECT_README.md
+- docs-consolidation-20260119-195937/docs/documentation-consolidation-project/USER_GUIDES_CRAFTING_PLAN.md
+- docs-consolidation-20260119-195937/docs/documentation-consolidation-project/PR_DOCUMENTATION_ORGANIZATION_RECOMMENDATION.md
+- docs-consolidation-20260119-195937/docs/documentation-consolidation-project/DOCUMENTATION_PROJECT_SUPPLEMENTALS.json
+- docs-consolidation-20260119-195937/docs/projects/TORCH_FREE_CHAINLIT_MOD.md
+- docs-consolidation-20260119-195937/docs/releases/changelog.md
+- docs-consolidation-20260119-195937/docs/releases/README.md
+- docs-consolidation-20260119-195937/docs/archive/README.md
+- docs-consolidation-20260119-195937/docs/archive/code-review-sessions/Grok - Vulkan Troubleshooting draft - January 10, 20.md
+- docs-consolidation-20260119-195937/docs/archive/code-review-sessions/Grok - Vulkan Enhancement code guide - January 10, 20.md
+- docs-consolidation-20260119-195937/docs/archive/code-review-sessions/Grok - Vulkan Enhancement Audit - January 10, 20.md
+- docs-consolidation-20260119-195937/docs/archive/code-review-sessions/Grok - Voice to Voice Code Audit - January 10, 20.md
+- docs-consolidation-20260119-195937/docs/archive/code-review-sessions/Grok Code Audit - January 10 2026.md
+- docs-consolidation-20260119-195937/docs/archive/duplicates/WHEELHOUSE_BUILD_TRACKING_dup.md
+- docs-consolidation-20260119-195937/docs/archive/duplicates/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025_dup.md
+- docs-consolidation-20260119-195937/docs/archive/duplicates/XNAI_blueprint_dup.md
+- docs-consolidation-20260119-195937/docs/archive/duplicates/IMPLEMENTATION_COMPLETE_PIPER_ONNX_dup.md
+- docs-consolidation-20260119-195937/docs/archive/duplicates/PIPER_ONNX_IMPLEMENTATION_SUMMARY_dup.md
+- docs-consolidation-20260119-195937/docs/archive/duplicates/README_dup.md
+- docs-consolidation-20260119-195937/docs/archive/duplicates/CHANGELOG_dup.md
+- docs-consolidation-20260119-195937/docs/archive/duplicates/UPDATES_RUNNING_archive.md
+- docs-consolidation-20260119-195937/docs/archive/old-versions/Xoe-NovAi_v0.1.3_Phase_1_Guide - Grok - 10_20.md
+- docs-consolidation-20260119-195937/docs/archive/old-versions/AUDIT_REPAIR_LOG.md
+- docs-consolidation-20260119-195937/docs/archive/historical/WHEELHOUSE_BUILD_TRACKING.md
+- docs-consolidation-20260119-195937/docs/archive/historical/GIT_COMMIT_INSTRUCTIONS.md
+- docs-consolidation-20260119-195937/docs/archive/historical/FINAL_ORGANIZATION_SUMMARY.md
+- docs-consolidation-20260119-195937/docs/archive/historical/README_IMPLEMENTATION.md
+- docs-consolidation-20260119-195937/docs/archive/historical/CONSOLIDATION_COMPLETION_SUMMARY.md
+- docs-consolidation-20260119-195937/docs/archive/historical/README_archive - 01_04_2026.md
+- docs-consolidation-20260119-195937/docs/archive/historical/IMPLEMENTATION_COMPLETE_PIPER_ONNX.md
+- docs-consolidation-20260119-195937/docs/archive/historical/IMPLEMENTATION_COMPLETE_PIPER_ONNX_archive - 01_04_2026.md
+- docs-consolidation-20260119-195937/docs/archive/historical/PIPER_ONNX_IMPLEMENTATION_SUMMARY.md
+- docs-consolidation-20260119-195937/docs/archive/historical/UPDATES_RUNNING_archive - 01_04_2026.md
+- docs-consolidation-20260119-195937/docs/archive/historical/README.md
+- docs-consolidation-20260119-195937/docs/archive/historical/PIPER_ONNX_IMPLEMENTATION_SUMMARY_archive - 01_04_2026.md
+- docs-consolidation-20260119-195937/docs/archive/historical/INDEX.md
+- docs-consolidation-20260119-195937/docs/archive/historical/XNAI_blueprint_archive - 01_04_2026.md
+- docs-consolidation-20260119-195937/docs/archive/historical/FILES_REVIEWED_COMPLETE_LIST.md
+- docs-consolidation-20260119-195937/docs/archive/historical/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025_archive - 01_04_2026.md
+- docs-consolidation-20260119-195937/docs/archive/historical/CHANGELOG_archive - 01_04_2026.md
+- docs-consolidation-20260119-195937/docs/archive/historical/README_dup.md
+- docs-consolidation-20260119-195937/docs/archive/historical/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025.md
+- docs-consolidation-20260119-195937/docs/archive/historical/UPDATES_RUNNING_dup.md
+- docs-consolidation-20260119-195937/docs/archive/historical/RESEARCH_REFINEMENTS_SUMMARY.md
+- docs-consolidation-20260119-195937/docs/archive/historical/COMPLETE_DOCUMENTATION_AUDIT.md
+- docs-consolidation-20260119-195937/docs/archive/historical/README_IMPLEMENTATION_PACKAGE.md
+- docs-consolidation-20260119-195937/docs/archive/historical/IMMEDIATE_ACTION_PLAN.md
+- docs-consolidation-20260119-195937/docs/archive/historical/WHEELHOUSE_BUILD_TRACKING_archive - 01_04_2026.md
+- docs-consolidation-20260119-195937/docs/archive/historical/DOCUMENTATION_CONSOLIDATION_&_CODE_ROADMAP.md
+- docs-consolidation-20260119-195937/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day7.md
+- docs-consolidation-20260119-195937/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day6.md
+- docs-consolidation-20260119-195937/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day5.md
+- docs-consolidation-20260119-195937/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day8.md
+- docs-consolidation-20260119-195937/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day4.md
+- docs-consolidation-20260119-195937/docs/archive/historical/daily-status-reports/2026-january/HISTORICAL_SUMMARY.md
+- docs-consolidation-20260119-195937/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day3.md
+- docs-consolidation-20260119-195937/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day1.md
+- docs-consolidation-20260119-195937/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day2.md
+- docs-consolidation-20260119-195937/docs/archive/sessions/SESSION_COMPLETION_REPORT.md
+- docs-consolidation-20260119-195937/docs/archive/sessions/DOCUMENTATION_AUDIT.md
+- docs-consolidation-20260119-195937/docs/system-prompts/README.md
+- docs-consolidation-20260119-195937/docs/system-prompts/metrics/prompt-quality-tracking.md
+- docs-consolidation-20260119-195937/docs/system-prompts/_meta/changelog.md
+- docs-consolidation-20260119-195937/docs/system-prompts/_meta/templates/expert-template.md
+- docs-consolidation-20260119-195937/docs/system-prompts/_meta/templates/assistant-template.md
+- docs-consolidation-20260119-195937/docs/system-prompts/assistants/grok/xoe-novai-notebooklm-video-expert-v1.0.md
+- docs-consolidation-20260119-195937/docs/system-prompts/assistants/grok/xoe-novai-research-assistant-v1.0.md
+- docs-consolidation-20260119-195937/docs/system-prompts/assistants/grok/xoe-novai-universal-assistant-v1.0.md
+- docs-consolidation-20260119-195937/docs/system-prompts/assistants/claude/xoe-novai-implementation-specialist-v3.0.md
+- docs-consolidation-20260119-195937/docs/system-prompts/assistants/claude/ultimate-mkdocs-master-guide-research-prompt.md
+- docs-consolidation-20260119-195937/docs/system-prompts/assistants/claude/xoe-novai-research-assistant-v1.0.md
+- docs-consolidation-20260119-195937/docs/system-prompts/assistants/claude/xoe-novai-notebooklm-video-project-v2.0.md
+- docs-consolidation-20260119-195937/docs/system-prompts/assistants/claude/model-analysis.md
+- docs-consolidation-20260119-195937/docs/system-prompts/assistants/claude/xoe-novai-notebooklm-video-project-v1.0.md
+- docs-consolidation-20260119-195937/docs/system-prompts/assistants/claude/xoe-novai-implementation-specialist-v1.0.md
+- docs-consolidation-20260119-195937/docs/system-prompts/experts/grok-stack-expert-v1.0.md
+- docs-consolidation-20260119-195937/docs/system-prompts/experts/claude-stack-code-expert-v2.0.md
+- docs-consolidation-20260119-195937/docs/reference/configuration.md
+- docs-consolidation-20260119-195937/docs/reference/README.md
+- docs-consolidation-20260119-195937/docs/reference/integration/rag-integration.md
+- docs-consolidation-20260119-195937/docs/reference/integration/voice-integration.md
+- docs-consolidation-20260119-195937/docs/reference/enterprise-features/enterprise_monitoring.md
+- docs-consolidation-20260119-195937/docs/reference/enterprise-features/structured_concurrency.md
+- docs-consolidation-20260119-195937/docs/reference/enterprise-features/zero_telemetry.md
+- docs-consolidation-20260119-195937/docs/reference/enterprise-features/enterprise_security.md
+- docs-consolidation-20260119-195937/docs/reference/enterprise-features/circuit_breaker.md
+- docs-consolidation-20260119-195937/docs/reference/api/dependencies.md
+- docs-consolidation-20260119-195937/docs/reference/api/healthcheck.md
+- docs-consolidation-20260119-195937/docs/reference/api/voice_command_handler.md
+- docs-consolidation-20260119-195937/docs/reference/api/async_patterns.md
+- docs-consolidation-20260119-195937/docs/reference/api/chainlit_app_voice.md
+- docs-consolidation-20260119-195937/docs/reference/api/crawl.md
+- docs-consolidation-20260119-195937/docs/reference/api/crawler_curation.md
+- docs-consolidation-20260119-195937/docs/reference/api/verify_imports.md
+- docs-consolidation-20260119-195937/docs/reference/api/api_docs.md
+- docs-consolidation-20260119-195937/docs/reference/api/ingest_library.md
+- docs-consolidation-20260119-195937/docs/reference/api/config_loader.md
+- docs-consolidation-20260119-195937/docs/reference/api/voice_degradation.md
+- docs-consolidation-20260119-195937/docs/reference/api/curation_worker.md
+- docs-consolidation-20260119-195937/docs/reference/api/chainlit_curator_interface.md
+- docs-consolidation-20260119-195937/docs/reference/api/main.md
+- docs-consolidation-20260119-195937/docs/reference/api/logging_config.md
+- docs-consolidation-20260119-195937/docs/reference/api/observability.md
+- docs-consolidation-20260119-195937/docs/reference/api/metrics.md
+- docs-consolidation-20260119-195937/docs/reference/api/retrievers.md
+- docs-consolidation-20260119-195937/docs/reference/api/chainlit_app.md
+- docs-consolidation-20260119-195937/docs/reference/api/voice_interface.md
+- docs-consolidation-20260119-195937/docs/reference/api/library_api_integrations.md
+- docs-consolidation-20260119-195937/docs/design/README.md
+- docs-consolidation-20260119-195937/docs/99-research/Top 5 Most Critical Cutting-Edge Practices.md
+- docs-consolidation-20260119-195937/docs/99-research/README.md
+- docs-consolidation-20260119-195937/docs/99-research/operational-stack-readiness-research.md
+- docs-consolidation-20260119-195937/docs/99-research/Operational Stack Readiness Research Fulfillment.md
+- docs-consolidation-20260119-195937/docs/99-research/Complete Vulkan Offload Guide for Xoe-NovAi.md
+- docs-consolidation-20260119-195937/docs/99-research/vulkan-inference/README.md
+- docs-consolidation-20260119-195937/docs/99-research/mkdocs/troubleshooting_guide.md
+- docs-consolidation-20260119-195937/docs/99-research/mkdocs/cline_integration_guide.md
+- docs-consolidation-20260119-195937/docs/99-research/mkdocs/mkdocs_enterprise_integration_tracking.md
+- docs-consolidation-20260119-195937/docs/99-research/mkdocs/Claude - mkdocs graphana and chat summary.md
+- docs-consolidation-20260119-195937/docs/99-research/mkdocs/vscode_tasks.json
+- docs-consolidation-20260119-195937/docs/99-research/faiss-architecture/README.md
+- docs-consolidation-20260119-195937/docs/99-research/kokoro-tts/README.md
+- docs-consolidation-20260119-195937/docs/99-research/enterprise-modernization/README.md
+- docs-consolidation-20260119-195937/docs/99-research/stack-2026/README.md
+- docs-consolidation-20260119-195937/docs/how-to/voice-setup.md
+- docs-consolidation-20260119-195937/docs/how-to/troubleshooting.md
+- docs-consolidation-20260119-195937/docs/deep_research/02-kokoro-v2-voice-synthesis.md
+- docs-consolidation-20260119-195937/docs/deep_research/Grok - DR - FastAPI and version conflict resolution  (Jan 13, 2026).md
+- docs-consolidation-20260119-195937/docs/deep_research/Claude__Sonnet 4-5 enhanced__code audit - 01-13-2026.md
+- docs-consolidation-20260119-195937/docs/deep_research/Grok - DR -  Overview & Guiding Principles (2026 Edition).md
+- docs-consolidation-20260119-195937/docs/deep_research/Grok- DR - UV security and ruff linter.md
+- docs-consolidation-20260119-195937/docs/deep_research/Claude code audit - 01-13-2026.md
+- docs-consolidation-20260119-195937/docs/deep_research/README.md
+- docs-consolidation-20260119-195937/docs/deep_research/05-neural-compilation-paradigms.md
+- docs-consolidation-20260119-195937/docs/deep_research/Grok- DR - UV advanced features and usage.md
+- docs-consolidation-20260119-195937/docs/deep_research/xnai_stack_research_2026.md
+- docs-consolidation-20260119-195937/docs/deep_research/03-advanced-faiss-architecture.md
+- docs-consolidation-20260119-195937/docs/deep_research/xnai_top_3_deep_research_findings.md
+- docs-consolidation-20260119-195937/docs/deep_research/Grok - DR - Speed up pip downloads (2026).md
+- docs-consolidation-20260119-195937/docs/deep_research/xnai_knowledge_gap_findings.md
+- docs-consolidation-20260119-195937/docs/deep_research/mkdocs_research_solutions.md
+- docs-consolidation-20260119-195937/docs/deep_research/Grok - DR - Technical Guide Enforcing Python 3.12.md
+- docs-consolidation-20260119-195937/docs/deep_research/mkdocs-error-resolution-research-request.md
+- docs-consolidation-20260119-195937/docs/deep_research/01-vulkan-native-inference.md
+- docs-consolidation-20260119-195937/docs/deep_research/Grok-DR-Mkdocs-integration.md
+- docs-consolidation-20260119-195937/docs/deep_research/research-request-v1.md
+- docs-consolidation-20260119-195937/docs/deep_research/04-system-resilience-extensibility.md
+- docs-consolidation-20260119-195937/docs/03-architecture/audio-strategy.md
+- docs-consolidation-20260119-195937/docs/03-architecture/project-charter.md
+- docs-consolidation-20260119-195937/docs/03-architecture/architecture.md
+- docs-consolidation-20260119-195937/docs/03-architecture/condensed-guide.md
+- docs-consolidation-20260119-195937/docs/03-architecture/STACK_ARCHITECTURE_AND_TECHNOLOGY_SUPPLEMENT.md
+- docs-consolidation-20260119-195937/docs/03-architecture/ux_timing_system_final_report.md
+- docs-consolidation-20260119-195937/docs/03-architecture/docker-code-changes.md
+- docs-consolidation-20260119-195937/docs/03-architecture/README.md
+- docs-consolidation-20260119-195937/docs/03-architecture/TECHNICAL_STACK_DOCUMENTATION.md
+- docs-consolidation-20260119-195937/docs/03-architecture/enhancement-project-completion-summary.md
+- docs-consolidation-20260119-195937/docs/03-architecture/enterprise-strategy.md
+- docs-consolidation-20260119-195937/docs/03-architecture/EmbeddingGemma model card.md
+- docs-consolidation-20260119-195937/docs/03-architecture/stack-cat-guide.md
+- docs-consolidation-20260119-195937/docs/03-architecture/TECHNICAL_STACK_AUDIT_TRACKING.md
+- docs-consolidation-20260119-195937/docs/03-architecture/enhancement-lfm25-voice-integration.md
+- docs-consolidation-20260119-195937/docs/03-architecture/xnai_v0.1.5_voice_addendum.md
+- docs-consolidation-20260119-195937/docs/03-architecture/docker-visual-guide.md
+- docs-consolidation-20260119-195937/docs/03-architecture/rag-refinements.md
+- docs-consolidation-20260119-195937/docs/03-architecture/enhancement-architecture-multi-agent-orchestration.md
+- docs-consolidation-20260119-195937/docs/03-architecture/implementation-roadmap.md
+- docs-consolidation-20260119-195937/docs/03-architecture/enhancement-learning-evolving-agents.md
+- docs-consolidation-20260119-195937/docs/03-architecture/enhancement-performance-distributed-vector-storage.md
+- docs-consolidation-20260119-195937/docs/03-architecture/enhancement-security-zero-trust-architecture.md
+- docs-consolidation-20260119-195937/docs/03-architecture/DR - Top 20 Resources for EmbGemma in XNAi.md
+- docs-consolidation-20260119-195937/docs/03-architecture/docker-services.md
+- docs-consolidation-20260119-195937/docs/03-architecture/data-directories.md
+- docs-consolidation-20260119-195937/docs/03-architecture/CODE_REVIEW_2026_01_05.md
+- docs-consolidation-20260119-195937/docs/03-architecture/enhancement-voice-to-voice-basic.md
+- docs-consolidation-20260119-195937/docs/03-architecture/STACK_STATUS.md
+- docs-consolidation-20260119-195937/docs/03-architecture/enhancement-persona-system-intelligence.md
+- docs-consolidation-20260119-195937/docs/03-architecture/audio-research.md
+- docs-consolidation-20260119-195937/docs/03-architecture/qdrant-agentic-api.md
+- docs-consolidation-20260119-195937/docs/03-architecture/blueprint.md
+- docs-consolidation-20260119-195937/docs/03-architecture/docker-summary.md
+- docs-consolidation-20260119-195937/docs/03-architecture/enhancement-dependency-tracking.md
+- docs-consolidation-20260119-195937/docs/03-architecture/crawler-optimization.md
+- docs-consolidation-20260119-195937/docs/03-architecture/organization-plan.md
+- docs-consolidation-20260119-195937/docs/03-architecture/curator-enhancement.md
+- docs-consolidation-20260119-195937/docs/03-architecture/docker-optimization.md
+- docs-consolidation-20260119-195937/docs/03-architecture/project-overview.md
+- docs-consolidation-20260119-195937/docs/versions/version_strategy.md
+- docs-consolidation-20260119-195937/docs/portability/README.md
+- docs-consolidation-20260119-195937/docs/portability/partition-migration-analysis.md
+- docs-consolidation-20260119-195937/docs/portability/migration-partition-fixes-2026.md
+- docs-consolidation-20260119-195937/docs/best-practices/docker-buildkit-wheelhouse-guide.md
+- docs-consolidation-20260119-195937/docs/best-practices/README.md
+- docs-consolidation-20260119-195937/docs/best-practices/python-version-management.md
+- docs-consolidation-20260119-195937/docs/best-practices/uv-integration-guide.md
+- docs-consolidation-20260119-195937/docs/operations/monitoring-dashboard.md
+- docs-consolidation-20260119-195937/docs/operations/troubleshooting.md
+- docs-consolidation-20260119-195937/docs/explanation/system-overview.md
+- docs-consolidation-20260119-195937/docs/01-getting-started/05-awq-production-pipeline-guide.md
+- docs-consolidation-20260119-195937/docs/01-getting-started/01-START_HERE.md
+- docs-consolidation-20260119-195937/docs/01-getting-started/README.md
+- docs-consolidation-20260119-195937/docs/01-getting-started/beginner-guide.md
+- docs-consolidation-20260119-195937/docs/01-getting-started/01-QUICK_START_MAKEFILE.md
+- docs-consolidation-20260119-195937/docs/01-getting-started/02-podman-installation-guide.md
+- docs-consolidation-20260119-195937/docs/01-getting-started/04-redis-sentinel-cluster-guide.md
+- docs-consolidation-20260119-195937/docs/01-getting-started/06-neural-bm25-retrieval-guide.md
+- docs-consolidation-20260119-195937/docs/01-getting-started/03-advanced-features-user-guide.md
+- docs-consolidation-20260119-195937/docs/policies/PIP_INSTALL_STANDARDS.md
+- docs-consolidation-20260119-195937/docs/policies/DOCUMENTATION_STRATEGY.md
+- docs-consolidation-20260119-195937/docs/policies/README.md
+- docs-consolidation-20260119-195937/docs/ai-research/notebooklm-video-generation-research.md
+- docs-consolidation-20260119-195937/docs/ai-research/Grok - Podman for Multi-Container Orchestration in Xoe-NovAi.md
+- docs-consolidation-20260119-195937/docs/ai-research/README.md
+- docs-consolidation-20260119-195937/docs/ai-research/remaining-research-questions.md
+- docs-consolidation-20260119-195937/docs/ai-research/claude-onboarding-document.md
+- docs-consolidation-20260119-195937/docs/ai-research/AWQ Quantization Production Implementation Research Report.md
+- docs-consolidation-20260119-195937/docs/ai-research/PRR-P1-WATERMARK-003 Educational Briefing AI Content Watermarking.md
+- docs-consolidation-20260119-195937/docs/ai-research/claude-research-initiation-prompt.md
+- docs-consolidation-20260119-195937/docs/ai-research/comprehensive-claude-research-synthesis.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/01-mkdocs-rag-integration.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/11-wasm-component-deep-research.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/03-anyio-concurrency.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/09-kokoro-v2-deep-research.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/05-opentelemetry-genai.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/06-rootless-docker-sbom.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/10-qdrant-agentic-deep-research.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/08-vulkan-deep-research.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/07-voice-degradation.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/02-vulkan-igpu-acceleration.md
+- docs-consolidation-20260119-195937/docs/ai-research/requests/04-hypothesis-voice-testing.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Cline-Technical-Response-to-Grok-Analysis.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Cline-Technical-Response-to-Grok-Analysis-Appendix.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Cluade Refined - Supplemental - INCOMPLETE - awaiting finalization- Research Request - multiple - 01-14-2026 - response 4.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Research Request - multiple - 01-14-2026 - response 3.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Research Request - multiple - 01-14-2026 - response 2.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Research Recommendation Enhanced MkDocs Plugin Ecosystem for Dockerized Documentation - response 2.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Research Request - multiple - 01-14-2026.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Cline-Grok-Response-3-Technical-Details.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Research Request - multiple - 01-14-2026 - response 4.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Research Recommendation Enhanced MkDocs Plugin Ecosystem for Dockerized Documentation.md
+- docs-consolidation-20260119-195937/docs/ai-research/responses/Cluade Refined - Research Request - multiple - 01-14-2026 - response 4.md
+- docs-consolidation-20260119-195937/docs/ai-research/admin/evaluation-framework.md
+- docs-consolidation-20260119-195937/docs/ai-research/admin/ai-provider-matrix.md
+- docs-consolidation-20260119-195937/docs/ai-research/admin/quality-standards.md
+- docs-consolidation-20260119-195937/docs/ai-research/admin/research-process.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/README.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/broken_links_report.json
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/handover-readiness-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/week3-progress-summary.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/monitoring-dashboard.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/ux_timing_system_final_report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day7.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day6.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/week1-progress-summary.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/checklist.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/dependency-tracking-matrix.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/enterprise_build_system_final_report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/mkdocs_enterprise_integration_tracking.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/quick-reference-checklist.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/migration-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/xoe-novai-implementation-completeness-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day5.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/qdrant-checklist.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/implementation-checklist.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day8.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day4.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/prompt-quality-tracking.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/claude-research-integration-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day3.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day1.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/script_optimization_tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/week2-progress-summary.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/audit-progress.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/freshness-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/xoe_novai_voice_dashboards.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/polishing-progress-tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/daily-status-report-day2.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs_freshness_report.json
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/enhancement_tracking_template.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/code-review-checklists.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/phase1-implementation-status-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/research-validation-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/pip_progress_interception_research.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/project-tracking-dashboard.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/phase1_progress_tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/enhanced-metrics-implementation-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/code-updates-tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/enhancement-dependency-tracking.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/research-tracking.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/implementation-execution-tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/wheelhouse-build-tracking.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/intake-tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/project-status-tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/broken_links_report.json
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/handover-readiness-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/audit-progress.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/freshness-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/docs_freshness_report.json
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research-validation-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/week3-progress-summary.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/week1-progress-summary.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/checklist.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/dependency-tracking-matrix.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/enterprise_build_system_final_report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/quick-reference-checklist.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/xoe-novai-implementation-completeness-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/qdrant-checklist.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/implementation-checklist.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/claude-research-integration-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/script_optimization_tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/week2-progress-summary.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/polishing-progress-tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/code-review-checklists.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/phase1-implementation-status-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/project-tracking-dashboard.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/phase1_progress_tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/enhanced-metrics-implementation-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/implementation-execution-tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/wheelhouse-build-tracking.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/02-development/project-status-tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/06-meta/migration-report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/06-meta/pip_progress_interception_research.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/templates/enhancement_tracking_template.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research/research-tracking.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research/projects/observability/xoe_novai_voice_dashboards.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/research/urls/intake-tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day7.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day6.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day5.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day8.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day4.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day3.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day1.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/archive/historical/daily-status-reports/2026-january/daily-status-report-day2.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/system-prompts/metrics/prompt-quality-tracking.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/99-research/mkdocs/mkdocs_enterprise_integration_tracking.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/03-architecture/ux_timing_system_final_report.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/03-architecture/enhancement-dependency-tracking.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/operations/monitoring-dashboard.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/backups/20260119_190101/docs/04-operations/code-updates-tracker.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/execution/REFERENCE_MAPPING_TRACKER.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/execution/EXECUTION_CHECKLIST.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/execution/STAKEHOLDER_COMMUNICATION_PLAN.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/planning/CONSOLIDATION_MAPPING_MATRIX.md
+- docs-consolidation-20260119-195937/docs/project-tracking-consolidation-resources/planning/CONTENT_INVENTORY_DATABASE.json
+- docs-consolidation-20260119-195937/docs/implementation/core-patterns.md
+- docs-consolidation-20260119-195937/docs/implementation/README.md
+- docs-consolidation-20260119-195937/docs/implementation/advanced-features.md
+- docs-consolidation-20260119-195937/docs/journey/README.md
+- docs-consolidation-20260119-195937/docs/05-governance/pr-release-notes.md
+- docs-consolidation-20260119-195937/docs/05-governance/documentation-changelog.md
+- docs-consolidation-20260119-195937/docs/05-governance/policy_template.md
+- docs-consolidation-20260119-195937/docs/05-governance/implementation-package-summary.md
+- docs-consolidation-20260119-195937/docs/05-governance/OWNERS.md
+- docs-consolidation-20260119-195937/docs/05-governance/DOCS_STRATEGY.md
+- docs-consolidation-20260119-195937/docs/05-governance/v0.1.4-stable.md
+- docs-consolidation-20260119-195937/docs/05-governance/implementation-complete.md
+- docs-consolidation-20260119-195937/docs/05-governance/executive-audit.md
+- docs-consolidation-20260119-195937/docs/05-governance/DOCUMENTATION_BEST_PRACTICES.md
+- docs-consolidation-20260119-195937/docs/05-governance/README.md
+- docs-consolidation-20260119-195937/docs/05-governance/v0.1.5.md
+- docs-consolidation-20260119-195937/docs/05-governance/delivery-complete.md
+- docs-consolidation-20260119-195937/docs/05-governance/version-management-policy.md
+- docs-consolidation-20260119-195937/docs/05-governance/CHANGELOG.md
+- docs-consolidation-20260119-195937/docs/05-governance/executive-summary.md
+- docs-consolidation-20260119-195937/docs/05-governance/DOCUMENTATION_DRIFT_PREVENTION.md
+- docs-consolidation-20260119-195937/docs/05-governance/audit_summary_20260110.md
+- docs-consolidation-20260119-195937/docs/05-governance/Cline Rules.md
+- docs-consolidation-20260119-195937/docs/05-governance/POLICIES.md
+- docs-consolidation-20260119-195937/docs/05-governance/phase-2-completion.md
+- docs-consolidation-20260119-195937/docs/05-governance/v0.1.4-stable-release-readiness-audit.md
+- docs-consolidation-20260119-195937/docs/scripts/catalog.json
+- docs-consolidation-20260119-195937/docs/scripts/README.md
+- docs-consolidation-20260119-195937/docs/04-operations/make-up-test-results.md
+- docs-consolidation-20260119-195937/docs/04-operations/build-tools.md
+- docs-consolidation-20260119-195937/docs/04-operations/security-fixes-runbook.md
+- docs-consolidation-20260119-195937/docs/04-operations/README.md
+- docs-consolidation-20260119-195937/docs/04-operations/runbook_template.md
+- docs-consolidation-20260119-195937/docs/04-operations/voice-deployment.md
+- docs-consolidation-20260119-195937/docs/04-operations/updates-running.md
+- docs-consolidation-20260119-195937/docs/04-operations/ingestion-system-enhancements.md
+- docs-consolidation-20260119-195937/docs/04-operations/qdrant-performance-tuning.md
+- docs-consolidation-20260119-195937/docs/04-operations/build-logging.md
+- docs-consolidation-20260119-195937/docs/04-operations/local-telemetry-free-tts-options.md
+- docs-consolidation-20260119-195937/docs/04-operations/docker-build-troubleshooting.md
+- docs-consolidation-20260119-195937/docs/04-operations/docker-testing.md
+- docs-consolidation-20260119-195937/docs/04-operations/code-updates-tracker.md
+- docs-consolidation-20260119-195937/docs/incoming/MKdocs Diataxis Versioning Guide + Mike RAG metadata.md
+- docs-consolidation-20260119-195937/docs/incoming/MkDocs Mike Versioning.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - config_improvements_report_v3.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v3 - complete.md
+- docs-consolidation-20260119-195937/docs/incoming/Additional 2026 Best Practices for Integration.md
+- docs-consolidation-20260119-195937/docs/incoming/xoe_enterprise_remediation_guide.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - mkdocs-master-guide-complete.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - mkdocs_rag_enhanced_guide.md
+- docs-consolidation-20260119-195937/docs/incoming/Griffe Backend Customization Guide.md
+- docs-consolidation-20260119-195937/docs/incoming/MkDocStrings Plugin Tutorial.md
+- docs-consolidation-20260119-195937/docs/incoming/Xoe-NovAi Permissions Best Practices Guide.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - AI Enhancement Metrics.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - config_improvements_report_v2.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - config_improvements_report_v1.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - Comprehensive System Briefing and Research - doc 1.md
+- docs-consolidation-20260119-195937/docs/incoming/Xoe-NovAi Comprehensive Implementation Quick-Start.md
+- docs-consolidation-20260119-195937/docs/incoming/Xoe-NovAi Remediation & Implementation Main Guide.md
+- docs-consolidation-20260119-195937/docs/incoming/Grok - Complete Guide to Generating High-Quality Videos in NotebookLM.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - mkdocs_rag_master_guide.md
+- docs-consolidation-20260119-195937/docs/incoming/Xoe-NovAi .env File Review & Recommendations.md
+- docs-consolidation-20260119-195937/docs/incoming/Report - Cutting-Edge MkDocs Configuration for Xoe-NovAi Documentation Resilience.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - XNAI MASTER OPERATIONS & IMPLEMENTATIONS HANDBOOK (01-17-2026).md
+- docs-consolidation-20260119-195937/docs/incoming/MkDocs Guide Elevate Local RAG to Academic Performance.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - medium_priority_guide - incomplete.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - critical_issues_guide.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - AWQ Quantization Production Implementation Research Report.md
+- docs-consolidation-20260119-195937/docs/incoming/PRR-P1-WATERMARK-003 Educational Briefing AI Content Watermarking.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v2 - incomplete.md
+- docs-consolidation-20260119-195937/docs/incoming/NotebooLM - Xoe-NovAi Enterprise Platform Advanced Research & Implementation Briefing.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v1 - supplemental.md
+- docs-consolidation-20260119-195937/docs/incoming/Advanced MkDocStrings Options Guide.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - Comprehensive Cline AI Assistant Briefing Xoe-NovAi v0.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - Advanced AI Hardware & Security Research Supplement (2026-2027) - incomplete.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - high_priority_guide.md
+- docs-consolidation-20260119-195937/docs/incoming/Ultimate MkDocs Master Guide Research Plan.md
+- docs-consolidation-20260119-195937/docs/incoming/Claude - enterprise_integration_matrix.md
+- docs-consolidation-20260119-195937/docs/incoming/Advanced Diátaxis Patterns Guide.md
+- START_HERE.md
+- README.md
+- AI_ASSISTANT_GUIDE.md
+- STACK_STATUS.md
+- howto/voice-setup.md
+- howto/README.md
+- howto/wheelhouse-build.md
+- howto/tts-options.md
+- howto/qdrant-checklist.md
+- howto/makefile-usage.md
+- howto/quick-start.md
+- howto/qdrant-migration.md
+- howto/github-protocol-guide.md
+- howto/docker-setup.md
+- howto/voice-enterprise.md
+- howto/voice-quick-reference.md
+- howto/offline-build-logging.md
+- howto/library-api.md
+- howto/library-api-readme.md
+- howto/voice-interface-guide.md
+- howto/offline-deployment.md
+- howto/qdrant-index.md
+- runbooks/make-up-test-results.md
+- runbooks/build-tools.md
+- runbooks/security-fixes-runbook.md
+- runbooks/README.md
+- runbooks/voice-deployment.md
+- runbooks/updates-running.md
+- runbooks/ingestion-system-enhancements.md
+- runbooks/build-logging.md
+- runbooks/docker-build-troubleshooting.md
+- runbooks/docker-testing.md
+- runbooks/code-updates-tracker.md
+- templates/policy_template.md
+- templates/runbook_template.md
+- templates/release_note_template.md
+- templates/enhancement_tracking_template.md
+- templates/howto_template.md
+- build_visualizations/build_timeline.md
+- personas/odin.json
+- personas/lilith.json
+- releases/pr-release-notes.md
+- releases/documentation-changelog.md
+- releases/implementation-package-summary.md
+- releases/v0.1.4-stable.md
+- releases/implementation-complete.md
+- releases/executive-audit.md
+- releases/README.md
+- releases/v0.1.5.md
+- releases/delivery-complete.md
+- releases/CHANGELOG.md
+- releases/executive-summary.md
+- releases/phase-2-completion.md
+- releases/v0.1.4-stable-release-readiness-audit.md
+- archive/README.md
+- archive/code-review-sessions/Grok - minimul code updates to PR - 10-26.md
+- archive/code-review-sessions/code_change_offline_wheelhouse_10_28.md
+- archive/duplicates/WHEELHOUSE_BUILD_TRACKING_dup.md
+- archive/duplicates/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025_dup.md
+- archive/duplicates/XNAI_blueprint_dup.md
+- archive/duplicates/IMPLEMENTATION_COMPLETE_PIPER_ONNX_dup.md
+- archive/duplicates/PIPER_ONNX_IMPLEMENTATION_SUMMARY_dup.md
+- archive/duplicates/README_dup.md
+- archive/duplicates/CHANGELOG_dup.md
+- archive/duplicates/UPDATES_RUNNING_archive.md
+- archive/old-versions/Xoe-NovAi_v0.1.3_Phase_1_Guide - Grok - 10_20.md
+- archive/old-versions/AUDIT_REPAIR_LOG.md
+- archive/historical/WHEELHOUSE_BUILD_TRACKING.md
+- archive/historical/GIT_COMMIT_INSTRUCTIONS.md
+- archive/historical/FINAL_ORGANIZATION_SUMMARY.md
+- archive/historical/README_IMPLEMENTATION.md
+- archive/historical/CONSOLIDATION_COMPLETION_SUMMARY.md
+- archive/historical/README_archive - 01_04_2026.md
+- archive/historical/IMPLEMENTATION_COMPLETE_PIPER_ONNX.md
+- archive/historical/IMPLEMENTATION_COMPLETE_PIPER_ONNX_archive - 01_04_2026.md
+- archive/historical/PIPER_ONNX_IMPLEMENTATION_SUMMARY.md
+- archive/historical/UPDATES_RUNNING_archive - 01_04_2026.md
+- archive/historical/README.md
+- archive/historical/PIPER_ONNX_IMPLEMENTATION_SUMMARY_archive - 01_04_2026.md
+- archive/historical/INDEX.md
+- archive/historical/XNAI_blueprint_archive - 01_04_2026.md
+- archive/historical/FILES_REVIEWED_COMPLETE_LIST.md
+- archive/historical/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025_archive - 01_04_2026.md
+- archive/historical/CHANGELOG_archive - 01_04_2026.md
+- archive/historical/README_dup.md
+- archive/historical/LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025.md
+- archive/historical/UPDATES_RUNNING_dup.md
+- archive/historical/RESEARCH_REFINEMENTS_SUMMARY.md
+- archive/historical/COMPLETE_DOCUMENTATION_AUDIT.md
+- archive/historical/README_IMPLEMENTATION_PACKAGE.md
+- archive/historical/IMMEDIATE_ACTION_PLAN.md
+- archive/historical/WHEELHOUSE_BUILD_TRACKING_archive - 01_04_2026.md
+- archive/historical/DOCUMENTATION_CONSOLIDATION_&_CODE_ROADMAP.md
+- archive/sessions/SESSION_COMPLETION_REPORT.md
+- archive/sessions/DOCUMENTATION_AUDIT.md
+- reference/project-charter.md
+- reference/architecture.md
+- reference/condensed-guide.md
+- reference/README.md
+- reference/EmbeddingGemma model card.md
+- reference/stack-cat-guide.md
+- reference/xnai_v0.1.5_voice_addendum.md
+- reference/DR - Top 20 Resources for EmbGemma in XNAi.md
+- reference/docker-services.md
+- reference/data-directories.md
+- reference/CODE_REVIEW_2026_01_05.md
+- reference/blueprint.md
+- reference/project-overview.md
+- design/audio-strategy.md
+- design/docker-code-changes.md
+- design/README.md
+- design/implementation-files-review.md
+- design/enterprise-strategy.md
+- design/docker-visual-guide.md
+- design/rag-refinements.md
+- design/implementation-roadmap.md
+- design/final-organization-summary.md
+- design/implementation-files-organization-complete.md
+- design/audio-research.md
+- design/organization-summary.md
+- design/docker-summary.md
+- design/organization-complete.md
+- design/crawler-optimization.md
+- design/organization-plan.md
+- design/curator-enhancement.md
+- design/docker-optimization.md
+- enhancements/enhancement-project-completion-summary.md
+- enhancements/enhancement-lfm25-voice-integration.md
+- enhancements/enhancement-architecture-multi-agent-orchestration.md
+- enhancements/enhancement-learning-evolving-agents.md
+- enhancements/enhancement-performance-distributed-vector-storage.md
+- enhancements/enhancement-security-zero-trust-architecture.md
+- enhancements/enhancement-voice-to-voice-basic.md
+- enhancements/enhancement-persona-system-intelligence.md
+- enhancements/enhancement-dependency-tracking.md
+- policies/OWNERS.md
+- policies/DOCS_STRATEGY.md
+- policies/README.md
+- policies/version-management-policy.md
+- policies/DOCUMENTATION_DRIFT_PREVENTION.md
+- policies/POLICIES.md
+- implementation/phase-1.md
+- implementation/README.md
+- implementation/quick-reference-checklist.md
+- implementation/piper-onnx-summary.md
+- implementation/implementation-checklist.md
+- implementation/piper-onnx-complete.md
+- implementation/phase-2-3.md
+- implementation/library-api.md
+- implementation/qdrant-integration.md
+- implementation/project-status-tracker.md
+- implementation/phase-1-5/index.md
+- implementation/phase-1-5/code-skeletons.md
+- implementation/phase-1-5/visual-reference.md
+- implementation/phase-1-5/checklist.md
+
+## File Conflicts
+No conflicts detected.
+
+## Memory Bank Status
+**Missing Files:**
+- activeContext.md
+- environmentContext.md
+- teamProtocols.md
+- agent_capabilities_summary.md
+- projectbrief.md
+- productContext.md
+- techContext.md
+- systemPatterns.md
+- sync-protocols-v1.4.0.md
+- progress.md
+
+## Sync Protocols Validation
+All sync protocols are valid.
+
+## Blockers
+- Critical memory_bank files missing - may affect multi-assistant sync
+
+## Next Steps
+- Reconstruct missing files from EKB masters

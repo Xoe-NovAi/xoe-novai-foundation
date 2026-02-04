@@ -1,13 +1,14 @@
 ---
-pack_version: 2.1.0
+pack_version: 1.5.0
 focus: grok-sync, sovereignty, multi-agent, synergy-branding
-generated_at: 2026-02-04T16:49:41
+generated_at: 2026-02-04T17:31:07
 mode: grok-pack
+delta_mode: False
 ---
 
 # Xoe-NovAi Context Pack (GROK-PACK)
 
-Generated at: 2026-02-04T16:49:41
+Generated at: 2026-02-04T17:31:07
 
 ## Quick Jump
 - [activeContext.md](#file-id-memory-bank-activecontext-md-start-path-memory_bank/activeContext.md)
@@ -50,6 +51,8 @@ Generated at: 2026-02-04T16:49:41
 |       |-- voice_degradation.py
 |       |-- voice_interface.py
 |       `-- workers
+|-- _archive
+|   `-- GROK_CONTEXT_PACK_v1.5.0_20260204_173107.md
 |-- chainlit_app_voice.py
 |-- CODE_OF_CONDUCT.md
 |-- configs
@@ -178,6 +181,7 @@ Generated at: 2026-02-04T16:49:41
 |   |   |-- migrate_content.py
 |   |   `-- research_validator.py
 |   `-- search_index.json
+|-- ekb-exports
 |-- expert-knowledge
 |   |-- architect
 |   |   |-- architect-expert-knowledge-base.md
@@ -212,6 +216,7 @@ Generated at: 2026-02-04T16:49:41
 |   |   |-- podman_quadlet_mastery.md
 |   |   `-- ryzen-hardening-expert-v1.0.0.md
 |   |-- _meta
+|   |   |-- ekb-index-v1.0.0.md
 |   |   |-- knowledge-templates
 |   |   |-- notes
 |   |   |-- notes-todo-manager.md
@@ -234,9 +239,10 @@ Generated at: 2026-02-04T16:49:41
 |-- GetDBInfo
 |   |-- create_api_scraper.py
 |   `-- README.md
+|-- GROK_CONTEXT_PACK_v1.5.0.md
 |-- hooks
 |   `-- performance.py
-|-- _internal-docs
+|-- internal_docs
 |   |-- code-reviews
 |   |   |-- AUDIT_CONCLUSION_REPORTS_SUMMARY_20260123.md
 |   |   |-- AUDIT_UPDATES_AND_RATIONALE_20260123.md
@@ -274,6 +280,10 @@ Generated at: 2026-02-04T16:49:41
 |   |   |-- RESEARCH_REQUEST_VISUAL_RAG_v1.0.md
 |   |   |-- RESEARCH_REQUEST_ZERO_COPY_IPC_v1.0.md
 |   |   `-- SUPPLEMENTAL_ELITE_ASSETS_20260123.md
+|   |-- Grok MC
+|   |   `-- Grok-MC-stack-mermaid.md
+|   |-- grok-mc-evaluation-report.md
+|   |-- grok-pack-latest.md
 |   |-- projects
 |   |   |-- 05_shadow_graph_concept.md
 |   |   |-- bucky-voice-control
@@ -291,14 +301,15 @@ Generated at: 2026-02-04T16:49:41
 |   |-- repo-backups
 |   |   |-- docs-backups
 |   |   `-- docs-merge-to-main
+|   |-- stack-cat-archives
+|   |   |-- stack-cat_20260127_130339.html
+|   |   |-- stack-cat_20260127_130339.md
+|   |   `-- stack-manifest_20260127_130339.json
 |   `-- sync-check-files
 |       |-- Grok-MCA-project-files-tree.md
 |       |-- progress_tracker.json
 |       |-- project management tool comparison.md
 |       `-- Sync and Archiving Protocols v1.4.0.md
-|-- internal_docs
-|   `-- Grok MC
-|       `-- Grok-MC-stack-mermaid.md
 |-- langchain_community
 |   |-- __init__.py
 |   `-- llms.py
@@ -396,9 +407,10 @@ Generated at: 2026-02-04T16:49:41
     |   |-- files-inventory-v1.0.0.md
     |   `-- oss-pm-research-v1.0.0.md
     `-- _meta
-        `-- sync-protocols-v1.4.0.md
+        |-- sync-protocols-v1.4.0.md
+        `-- sync-protocols-v1.5.0.md
 
-107 directories, 257 files
+109 directories, 266 files
 
 ```
 

@@ -1,15 +1,28 @@
 file_lists:
   grok-pack:
+    - memory_bank/activeContext.md
+    - memory_bank/environmentContext.md
+    - memory_bank/teamProtocols.md
+    - memory_bank/agent_capabilities_summary.md
     - memory_bank/projectbrief.md
     - memory_bank/productContext.md
-    - memory_bank/systemPatterns.md
     - memory_bank/techContext.md
-    - memory_bank/activeContext.md
-    - memory_bank/progress.md
+    - memory_bank/systemPatterns.md
+    - xoe-novai-sync/_meta/sync-protocols-v1.4.0.md
+    - internal_docs/Grok MC/Grok-MC-stack-mermaid.md
+    - expert-knowledge/sync/sovereign-synergy-expert-v1.0.0.md
+    - expert-knowledge/infrastructure/ryzen-hardening-expert-v1.0.0.md
+    - expert-knowledge/security/sovereign-trinity-expert-v1.0.0.md
+    - expert-knowledge/origins/xoe-journey-v1.0.0.md
+    - expert-knowledge/research/ekb-research-master-v1.0.0.md
+    - expert-knowledge/protocols/workflows-master-v1.0.0.md
+    - xoe-novai-sync/ekb-exports/files-inventory-v1.0.0.md
+    - xoe-novai-sync/ekb-exports/oss-pm-research-v1.0.0.md
   onboarding:
     - docs/index.md
     - docs/01-start/quick-start.md
     - memory_bank/projectbrief.md
+    - memory_bank/activeContext.md
   minimal:
     - memory_bank/activeContext.md
     - memory_bank/progress.md

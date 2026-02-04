@@ -188,7 +188,7 @@ jspm_packages/
 .pnp.*
 
 # Custom Xoe-NovAi ignores
-_internal-docs/
+internal_docs/
 .gemini/
 .geminiignore
 .chainlit/
@@ -265,3 +265,4 @@ temp/
 _backups/
 *.bak
 *.backup
+internal_docs/projects/README.md
