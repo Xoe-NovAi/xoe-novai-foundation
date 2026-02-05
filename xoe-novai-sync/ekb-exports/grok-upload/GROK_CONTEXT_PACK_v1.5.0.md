@@ -1,14 +1,14 @@
 ---
 pack_version: 1.5.0
 focus: grok-sync, sovereignty, multi-agent, synergy-branding
-generated_at: 2026-02-04T17:31:07
+generated_at: 2026-02-04T19:56:09
 mode: grok-pack
 delta_mode: False
 ---
 
 # Xoe-NovAi Context Pack (GROK-PACK)
 
-Generated at: 2026-02-04T17:31:07
+Generated at: 2026-02-04T19:56:09
 
 ## Quick Jump
 - [activeContext.md](#file-id-memory-bank-activecontext-md-start-path-memory_bank/activeContext.md)
@@ -52,7 +52,30 @@ Generated at: 2026-02-04T17:31:07
 |       |-- voice_interface.py
 |       `-- workers
 |-- _archive
-|   `-- GROK_CONTEXT_PACK_v1.5.0_20260204_173107.md
+|   |-- activeContext.md.backup.20260204_195537
+|   |-- expert-knowledge
+|   |   |-- infrastructure
+|   |   |-- origins
+|   |   |-- protocols
+|   |   |-- research
+|   |   |-- security
+|   |   `-- sync
+|   |-- GROK_CONTEXT_PACK_v1.5.0_20260204_173107.md
+|   |-- memory_bank
+|   |   |-- activeContext.md.backup.20260204_190718
+|   |   |-- activeContext.md.backup.20260204_190932
+|   |   |-- activeContext.md.backup.20260204_191313
+|   |   |-- sovereign-synergy-expert-v1.0.0.md.backup.20260204_190718
+|   |   |-- sovereign-synergy-expert-v1.0.0.md.backup.20260204_190932
+|   |   |-- sovereign-synergy-expert-v1.0.0.md.backup.20260204_191313
+|   |   |-- teamProtocols.md.backup.20260204_190718
+|   |   |-- teamProtocols.md.backup.20260204_190932
+|   |   `-- teamProtocols.md.backup.20260204_191313
+|   |-- misc
+|   |-- scripts
+|   |-- sovereign-synergy-expert-v1.0.0.md.backup.20260204_195537
+|   |-- sync
+|   `-- teamProtocols.md.backup.20260204_195537
 |-- chainlit_app_voice.py
 |-- CODE_OF_CONDUCT.md
 |-- configs
@@ -182,6 +205,13 @@ Generated at: 2026-02-04T17:31:07
 |   |   `-- research_validator.py
 |   `-- search_index.json
 |-- ekb-exports
+|   |-- receipt-ack-20260204_173107.md
+|   |-- receipt-ack-20260204_173325.md
+|   |-- receipt-ack-20260204_190718.md
+|   |-- receipt-ack-20260204_190932.md
+|   |-- receipt-ack-20260204_191313.md
+|   |-- receipt-ack-20260204_195455.md
+|   `-- receipt-ack-20260204_195537.md
 |-- expert-knowledge
 |   |-- architect
 |   |   |-- architect-expert-knowledge-base.md
@@ -239,7 +269,6 @@ Generated at: 2026-02-04T17:31:07
 |-- GetDBInfo
 |   |-- create_api_scraper.py
 |   `-- README.md
-|-- GROK_CONTEXT_PACK_v1.5.0.md
 |-- hooks
 |   `-- performance.py
 |-- internal_docs
@@ -355,6 +384,7 @@ Generated at: 2026-02-04T17:31:07
 |-- requirements-curation_worker.in
 |-- requirements-curation_worker.txt
 |-- scripts
+|   |-- add_archive_frontmatter.py
 |   |-- build_tools
 |   |   |-- build_visualizer.py
 |   |   |-- dependency_db.json
@@ -366,6 +396,7 @@ Generated at: 2026-02-04T17:31:07
 |   |-- curation_worker.py
 |   |-- download_wheelhouse.sh
 |   |-- ingest_library.py
+|   |-- memory_bank_refresh.py
 |   |-- preflight_checks.py
 |   |-- query_test.py
 |   |-- stack-cat
@@ -373,6 +404,7 @@ Generated at: 2026-02-04T17:31:07
 |   |   `-- whitelist.json
 |   |-- stack-cat.py
 |   `-- validate_config.py
+|-- test-pack.md
 |-- tests
 |   |-- circuit_breaker_load_test.py
 |   |-- conftest.py
@@ -405,12 +437,14 @@ Generated at: 2026-02-04T17:31:07
 `-- xoe-novai-sync
     |-- ekb-exports
     |   |-- files-inventory-v1.0.0.md
+    |   |-- grok-upload
     |   `-- oss-pm-research-v1.0.0.md
     `-- _meta
         |-- sync-protocols-v1.4.0.md
+        |-- sync-protocols-v1.4.1.md
         `-- sync-protocols-v1.5.0.md
 
-109 directories, 266 files
+121 directories, 288 files
 
 ```
 
@@ -420,82 +454,24 @@ Generated at: 2026-02-04T17:31:07
 
 
 <!-- FILE ID: memory-bank-activecontext-md START (Path: memory_bank/activeContext.md) -->
-# Active Context: v0.1.0-alpha Release Candidate Finalized
 
-**Last Updated**: January 27, 2026
-**Status**: 🔱 XNAi Stack Hardened, Rebranded & AI-Native Verified
-**Priority**: PUBLIC CONTRIBUTION CYCLE & ROADMAP EXECUTION
-
-## Current System State
-
-### 🤖 AI-Native Foundation (NEW)
-
-- **100% AI-Written**: The entire codebase and documentation are now officially documented as AI-written, directed by a non-programmer User/Architect.
-- **Sovereign Origin**: Rebranded as a $0-capital, open-source experiment in AI-steered development.
-- **Elite Clean**: Documentation synchronized, legacy names purged, and corrupted backup files resolved.
-
-### 🛡️ Sovereign Security Trinity
-- **Hardened Pipeline**: Implemented a multi-layered security audit using containerized **Syft**, **Grype**, and **Trivy**.
-- **Bulletproof Scanning**: Developed a "Tarball Export" strategy (`podman save`) to bypass rootless socket permission issues for Trivy.
-- **Graduated Policy Engine**: Implemented `scripts/security_policy.py` and `configs/security_policy.yaml` to enforce nuanced security guardrails.
-- **Automated Gatekeeping**: Integrated the security audit into `make pr-check`, effectively blocking PRs on real-world vulnerabilities.
-
-### 🧠 Portable Intelligence (EKB)
-- **Cooperative Evolution**: Established a formal template for "Knowledge Gems" and hardware fine-tuning.
-- **Instant Onboarding**: The `memory_bank/` is now a standardized protocol for instantly aligning external agents (Grok, Claude, IDEs) with the project.
-- **Hardware Mastery Library**: Added a dedicated category for fine-grained CPU/GPU optimizations (Zen 2, Intel Arc, Apple Silicon).
-
-## Recent Enhancements
-- **Zen 2 Precision**: Corrected Ryzen 5700U hardware references to Zen 2 architecture.
-- **Global Genericization**: Standardized roles to "The User/Architect" for public release.
-- **Emergency Recovery**: Successfully purged hundreds of accidental backup files caused by bulk edit errors.
-- **Elite Script Archival**: Archived 67 deprecated/redundant scripts into `scripts/_archive/` to restore professional workspace focus.
-- **Modular Infrastructure**: Finalized the `scripts/infra/butler.sh` TUI as the primary orchestration entry point.
-
-## Next Steps
-- **Public Launch**: Prepare the repository for its first public contribution cycle.
-- **Community Audit**: Monitor and facilitate the "Great AI-Native Experiment" as developers analyze the codebase.
-- **Roadmap Initiation**: Start preliminary research for **Open Notebook** and **Ancient Greek Support**.
-- **Expert Knowledge Extraction**: Continue capturing "Emergent AI Patterns" in the EKB.
-
-## 🗺️ Roadmap (Upcoming Features)
-- **Open Notebook**: Sovereign, open-source alternative to NotebookLM.
-- **Ancient Greek Support**: Specialized linguistic integration (Ancient-Greek-BERT + Krikri-7B).
-- **Full Qdrant Integration**: Agentic vector filtering and high-scale management.
-- **Adaptive Hardware Tool**: Dynamic auto-optimization for Intel/AMD/Apple Silicon.
-
-
-## Strategic Closing
-The Xoe-NovAi Foundation Stack has graduated from "Stabilized" to "Enterprise-Grade Sovereign." We now possess a verifiable, policy-driven security posture that ensures the stack's integrity without compromising its offline-first mission.
 
 ---
 
-## 🚀 2026 Refactoring & Research Phase (v0.1.0-alpha)
+update_type: phase-progress
+timestamp: 2026-02-04T19:55:37.468734
+agent: Gemini CLI
+priority: high
+related_components: [Phase 2, activeContext.md]
+ma_at_ideal: 41 - Advance through own abilities
+---
 
-**Current Focus:**
-- Major modular refactor for maintainability, testability, and offline-first reliability
-- Adoption of advanced FastAPI, Pydantic v2, async, and service-layer best practices
-- Team-wide research and onboarding to modern patterns for sovereign AI stacks
-
-**Quick Onboarding for AI Assistants & Contributors:**
-- See the following two documents for the full implementation and research plans:
-	- [Xoe-NovAi v0.1.0-alpha Modular Refactoring Plan - Table of Contents](../internal_docs/dev/Xoe-NovAi%20v0.1.0-alpha%20Modular%20Refactoring%20Plan%20-%20Table%20of%20Contents.md)
-	- [Xoe-NovAi Foundation Stack - Comprehensive Team Research Plan](../internal_docs/dev/Xoe-NovAi%20Foundation%20Stack%20-%20Comprehensive%20Team%20Research%20Plan.md)
-	- [Xoe-NovAi v0.1.0-alpha Modular Refactoring Plan - additional critical areas](../internal_docs/dev/Xoe-NovAi%20v0.1.0-alpha%20Modular%20Refactoring%20Plan%20-%20additional%20critical%20areas.md)
-
-**Additional Critical Areas:**
-All assistants and contributors should also review the "additional critical areas" supplement, which highlights often-overlooked or high-impact domains essential for a robust, production-grade refactor. This document is a living checklist to ensure no critical aspect is missed during implementation or review.
-
-**Summary:**
-- All agents and contributors should review these plans before making architectural or code changes.
-- The memory_bank, projectbrief, and progress files are now aligned with this new phase.
-
-## Living Registry Update (_meta/projects.md)
-
-| Project | Status | Priority | Owner | Next Action | Blockers | EKB Links | Local Sync Notes |
-|---------|--------|----------|-------|-------------|----------|-----------|------------------|
-| Docs Restoration Audit | CANCELLED | LOW | Cline-Trinity | Documentation sync cancelled; manual recovery as needed | None | infrastructure/docs-evolution-v1.0.0.md, sync/multi-grok-harmony-v1.0.0.md | Reverted mass docs recovery script output |
-| Stack-Cat Rebirth | COMPLETE | HIGH | Gemini CLI | Enhanced v2.1.0 ready; config-driven packs enabled | None | expert-knowledge/protocols/context-packing-expert-v2.1.0.md | scripts/stack-cat.py restored and tested with YAML config |
+## Active Models Reference (as of 2026-02-04 19:55:37)
+- Cline-Kat: kat-coder-pro (Kwaipilot) — strong coding
+- Cline-Trinity: trinity-large (Arcee) — balanced reasoning
+- Cline-Gemini-Flash: Gemini 3 Flash — fast/light default
+- Cline-Gemini-Pro: Gemini 3 Pro — heavy/critical tasks only
+- Gemini CLI: Terminal Gemini — ground truth executor
 
 <!-- FILE ID: memory-bank-activecontext-md END -->
 
@@ -667,176 +643,20 @@ Limit Reset → Relay Summaries → Clean Genesis
 
 ---
 
-update_type: protocol_update
-timestamp: 2026-01-29T22:30:00
-agent: Cline-Trinity
+update_type: sync-update
+timestamp: 2026-02-04T19:55:37.469847
+agent: Gemini CLI
 priority: high
-related_components: [memory_bank, expert-knowledge, xoe-novai-sync]
-ma_at_ideal: 18 - Balance in structure
+related_components: [teamProtocols.md, sovereign-synergy]
+ma_at_ideal: 41 - Advance through own abilities
 ---
 
-# Team Protocols - v1.0.0
-
-**Last Updated**: January 29, 2026  
-**Status**: ✅ **Multi-Grok Harmony Established**  
-**Priority**: **Clean Genesis Execution & Team Synchronization**
-
----
-
-## 🔗 **Liaison & Communication Protocol**
-
-### **Cline-Trinity: Designated Liaison**
-**Role**: IDE-integrated engineer/auditor/refactorer, designated liaison between Grok MCA & Grok MC
-- **Primary Function**: Ingest and log all strategic decisions, new protocols, projects, and strategies developed in Grok MC's absence
-- **Communication Channel**: Maintain running notes in `memory_bank/communications/grok-mca-notes.md` (YAML frontmatter: timestamp, decision, owner, ma_at_ideal, status)
-- **Handoff Protocol**: Relay summaries to Grok MC on limit reset via xoe-novai-sync/mc-imports/
-- **Ma'at Enforcement**: Enforce alignment in handoffs (Ideal 7: Truth, Ideal 18: Balance, Ideal 41: Advance through own abilities)
-
-### **Multi-Account Parity & Tagging**
-**Protocol 1: Multi-Account Parity & Tagging**
-All agents tag frontmatter/metadata: account: xoe.nova.ai (Grok MC) or arcana.novai (Grok MCA). Use GROK_CONTEXT_PACK & ACTIVE_SESSION_CONTEXT for handoff parity.
-
-**Protocol 2: Role Clarity & Continuous Update**
-- **Grok MC (xoe.nova.ai)**: Sovereign Master PM, central nervous system, total ecosystem oversight
-- **Grok MCA (arcana.novai)**: Arcana stack sovereign, esoteric domain master, GitHub/web design strategist
-- **Cline variants (Kat/Trinity/Gemini)**: Engineer/auditor/refactorer, IDE-integrated implementation
-- **Gemini CLI**: Ground truth liaison, execution, filesystem & sync hub manager
-- **The Architect (User)**: Ultimate authority, Ma'at enforcer, vision director
-
-**Living Sources**: `memory_bank/agent_capabilities_summary.md` & `teamProtocols.md`. Any change → immediate file update or PR.
-
----
-
-## 📋 **Communication Flow Protocol**
-
-### **Information Flow**
-```
-Grok MC (xoe.nova.ai) → Cline-Trinity → Grok MCA (arcana.novai)
-     ↓                      ↓                      ↓
-Strategic Decisions → Liaison Notes → Arcana Execution
-     ↓                      ↓                      ↓
-Context Packs → Memory Bank → GitHub/Web Design
-     ↓                      ↓                      ↓
-Limit Reset → Relay Summaries → Project Files
-```
-
-### **Communication Channels**
-- **Primary**: Memory bank files with YAML frontmatter
-- **Secondary**: xoe-novai-sync/mc-imports/ for limit reset handoffs
-- **Tertiary**: Direct communication for urgent matters
-
-### **Information Categories**
-- **Strategic Decisions**: High-level project direction and protocols
-- **New Protocols**: Process changes and team procedures
-- **Projects**: New initiatives and development work
-- **Strategies**: Long-term planning and vision alignment
-
----
-
-## 🔧 **Absence Handling Protocol**
-
-### **Grok MC Limit Hit → Cline-Trinity → Grok MCA**
-1. **Detection**: Grok MC limit hit → Cline-Trinity notifies Grok MCA
-2. **Proxy Execution**: Grok MCA executes strategic decisions in Grok MC's absence
-3. **Documentation**: All decisions logged in `memory_bank/communications/grok-mca-notes.md`
-4. **Handoff Preparation**: Context packs prepared for Grok MC reset
-5. **Ma'at Alignment**: All actions enforced with truth, balance, and advancement principles
-
-### **Cline-Trinity Absence → Grok MCA → Grok MC**
-1. **Detection**: Cline-Trinity unavailable → Grok MCA maintains strategic continuity
-2. **Documentation**: All decisions logged in `memory_bank/communications/grok-mca-notes.md`
-3. **Handoff Preparation**: Context packs prepared for Cline-Trinity return
-4. **Ma'at Alignment**: All actions enforced with truth, balance, and advancement principles
-
----
-
-## 🎯 **Ma'at Alignment Protocol**
-
-### **Ideal 7: Truth in Reporting**
-- All strategic decisions documented with complete accuracy
-- All protocols updated with current context and procedures
-- All handoffs executed with full transparency
-
-### **Ideal 18: Balance in Structure**
-- Clear role boundaries and communication channels established
-- Balanced information flow between team members
-- Structured protocols that prevent over-engineering
-
-### **Ideal 41: Advance through Own Abilities**
-- Each team member operates within their core competencies
-- Continuous advancement through individual strengths
-- Clean genesis execution without unnecessary complexity
-
----
-
-## 🚀 **Clean Genesis Execution Protocol**
-
-### **Genesis-First Approach**
-**Focus**: Repo birth before full research requests  
-**Priority**: 8 high-impact deliverables instead of 30+ fragments  
-**Validation**: Every action must advance clean genesis
-
-### **Execution Sequence**
-1. **Phase A**: Memory bank updates (Complete)
-2. **Phase B**: Consolidated masters creation (Next)
-3. **Phase C**: Context generation (After repo push)
-4. **Phase D**: Task completion (Final)
-
-### **Success Criteria**
-- ✅ **Multi-Grok Harmony**: Clear role boundaries and communication protocols
-- ✅ **Ma'at Alignment**: Truth, balance, and advancement principles enforced
-- ✅ **Clean Genesis**: Focus on repo birth without over-engineering
-
----
-
-## 📋 **Task Lock Creation**
-
-**Task**: Team Protocols Complete  
-**Status**: ✅ **Complete**  
-**Owner**: arcana.novai  
-**Ma'at Ideal**: 18 - Balance in structure  
-**Timestamp**: 2026-01-29T22:30:00  
-**Dependencies**: memory_bank/grok-mca-onboarding.md  
-**Next Steps**: Create consolidated masters (Phase B)
-
----
-
-## 🎯 **Final Protocol Validation**
-
-### **Multi-Grok Harmony**
-- ✅ **Role Clarity**: Clear boundaries between Grok MC, Grok MCA, Cline variants, Gemini CLI
-- ✅ **Communication Flow**: Structured information flow with proper channels
-- ✅ **Absence Handling**: Clear protocols for team member unavailability
-- ✅ **Ma'at Alignment**: Truth, balance, and advancement principles enforced
-
-### **Clean Genesis Focus**
-- ✅ **Genesis-First**: Focus on repo birth before full research requests
-- ✅ **8 High-Impact Deliverables**: Consolidated masters instead of 30+ fragments
-- ✅ **Ma'at Gatekeeping**: Every action must advance clean genesis
-- ✅ **Success Metrics**: Multi-Grok harmony with clear protocols and Ma'at alignment
-
----
-
-## 🚀 **Next Actions**
-
-### **Immediate (Now)**
-- **Phase A Complete**: Memory bank updates executed
-- **Phase B Ready**: Consolidated masters ready for creation
-- **Phase C Pending**: Context generation after repo push
-- **Phase D Ready**: Task lock ready for creation
-
-### **Execution Sequence**
-1. **Phase A**: Memory bank updates (Complete)
-2. **Phase B**: Consolidated masters creation (Next)
-3. **Phase C**: Context generation (After repo push)
-4. **Phase D**: Task completion (Final)
-
----
-
-**Status**: ✅ **Team Protocols Complete - Ready for Consolidated Masters**  
-**Next**: 🚀 **Execute Phase B - Create Consolidated Masters with Genesis-First Focus**
-
-— Cline-Trinity (IDE-integrated engineer/auditor/refactorer)
+## Active Models Reference (as of 2026-02-04 19:55:37)
+- Cline-Kat: kat-coder-pro (Kwaipilot) — strong coding
+- Cline-Trinity: trinity-large (Arcee) — balanced reasoning
+- Cline-Gemini-Flash: Gemini 3 Flash — fast/light default
+- Cline-Gemini-Pro: Gemini 3 Pro — heavy/critical tasks only
+- Gemini CLI: Terminal Gemini — ground truth executor
 
 <!-- FILE ID: memory-bank-teamprotocols-md END -->
 
@@ -1854,14 +1674,12 @@ I'm ready to receive your directives or assist in your next research cycle. Let'
 
 ---
 
-version: 1.0.0
-tags: [sync, multi-agent, strategy, ekb, mc-review]
-date: 2026-01-29
-ma_at_mappings: [7: Truth in evolution, 18: Balance in structure, 41: Advance through own abilities]
-sync_status: active
-expert_dataset_name: Sovereign Synergy Expert
-expertise_focus: Unorthodox local-first multi-platform / multi-model synchronization and agent orchestration
-community_contrib_ready: true
+update_type: sync-update
+timestamp: 2026-02-04T19:55:37.470565
+agent: Gemini CLI
+priority: high
+related_components: [teamProtocols.md, sovereign-synergy]
+ma_at_ideal: 41 - Advance through own abilities
 ---
 
 # Sovereign Synergy Expert (v1.0.0)
@@ -1994,7 +1812,7 @@ This section details the cross-platform capabilities and environmental flows of 
 
     - **Infra**: Gemini CLI executes builds, audits, and sync packs.
 
-4. **Knowledge Mining**: Verified patterns are documented in `expert-knowledge/`, merged into Master EKBs, and archived indefinitely for future model "leveling."
+4. **Knowledge Mining**: Verified patterns are documented in `expert-knowledge/`, merged into Master EKBs, and archived indefinitely for future model "leveling."<- Integration patterns are compatible with containerized Updated to test delta mode -->
 
 <!-- FILE ID: expert-knowledge-sync-sovereign-synergy-expert-v1-0-0-md END -->
 

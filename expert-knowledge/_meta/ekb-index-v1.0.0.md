@@ -25,3 +25,4 @@ generated_at: 2026-02-04T17:30:33
 | Sovereign Workflows Expert | expert-knowledge/protocols/workflows-master-v1.0.0.md | AI-native team coordination, relay protocols, task locking, and context management. | 2026-01-29 | active | MEDIUM |
 | files-inventory-v1.0.0.md | xoe-novai-sync/ekb-exports/files-inventory-v1.0.0.md | Not specified | 2026-01-29 | initial | MEDIUM |
 | oss-pm-research-v1.0.0.md | xoe-novai-sync/ekb-exports/oss-pm-research-v1.0.0.md | Not specified | 2026-01-29 | initial | MEDIUM |
+| sovereign-synergy-expert-v1.0.0.md | expert-knowledge/sync/sovereign-synergy-expert-v1.0.0.md | Not specified | 2026-02-04 | active | MEDIUM |

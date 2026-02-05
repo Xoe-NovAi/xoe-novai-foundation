@@ -1,13 +1,13 @@
 ---
 update_type: sync-update
-timestamp: 2026-02-04T19:55:37.469847
+timestamp: 2026-02-04T19:09:32.889934
 agent: Gemini CLI
 priority: high
 related_components: [teamProtocols.md, sovereign-synergy]
 ma_at_ideal: 41 - Advance through own abilities
 ---
 
-## Active Models Reference (as of 2026-02-04 19:55:37)
+## Active Models Reference (as of 2026-02-04 19:09:32)
 - Cline-Kat: kat-coder-pro (Kwaipilot) — strong coding
 - Cline-Trinity: trinity-large (Arcee) — balanced reasoning
 - Cline-Gemini-Flash: Gemini 3 Flash — fast/light default

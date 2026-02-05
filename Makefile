@@ -1447,6 +1447,11 @@ docs-version: ## Create new versioned documentation snapshot
 	@cd docs && mike deploy $(VER) --push
 	@echo "$(GREEN)✅ Documentation version $(VER) created$(NC)"
 
+refresh-memory: ## 🔄 Refresh memory_bank files with latest context from GROK_CONTEXT_PACK
+	@echo "$(CYAN)🔄 Refreshing memory_bank files...$(NC)"
+	@python3 scripts/memory_bank_refresh.py
+	@echo "$(GREEN)✅ Memory bank refresh complete$(NC)"
+
 
 docs-validate-research: ## Validate Grok v5 research coverage
 	@echo "$(CYAN)🔬 Validating Grok v5 research coverage...$(NC)"
