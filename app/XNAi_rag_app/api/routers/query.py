@@ -1,9 +1,8 @@
-""
-
+"""
 Xoe-NovAi Query Router
 ======================
 Endpoints for RAG queries and streaming responses.
-""
+"""
 
 import time
 import json
@@ -23,7 +22,7 @@ from XNAi_rag_app.core.metrics import (
     record_error
 )
 from XNAi_rag_app.core.logging_config import PerformanceLogger, get_logger
-from XNAi_rag_app.api.entrypoint import load_llm_with_circuit_breaker, CircuitBreakerError
+from XNAi_rag_app.core.circuit_breakers import CircuitBreakerError
 
 logger = get_logger(__name__)
 perf_logger = PerformanceLogger(logger)
@@ -113,7 +112,7 @@ async def stream_endpoint(request: Request, query_req: QueryRequest):
             context = ""
             if query_req.use_rag and vectorstore:
                 context, sources = await rag_service.retrieve_context(query_req.query)
-                yield f"data: {json.dumps({'type': 'sources', 'sources': sources})}\\n\n"
+                yield f"data: {json.dumps({'type': 'sources', 'sources': sources})}\\n\\n"
             
             prompt = rag_service.generate_prompt(query_req.query, context)
             token_count = 0
@@ -125,18 +124,18 @@ async def stream_endpoint(request: Request, query_req: QueryRequest):
                 temperature=query_req.temperature,
                 top_p=query_req.top_p
             ):
-                yield f"data: {json.dumps({'type': 'token', 'content': token})}\\n\n"
+                yield f"data: {json.dumps({'type': 'token', 'content': token})}\\n\\n"
                 token_count += 1
                 if token_count % 10 == 0:
                     await asyncio.sleep(0.01)
             
             gen_duration = time.time() - gen_start
             latency_ms = gen_duration * 1000
-            yield f"data: {json.dumps({'type': 'done', 'tokens': token_count, 'latency_ms': latency_ms})}\\n\n"
+            yield f"data: {json.dumps({'type': 'done', 'tokens': token_count, 'latency_ms': latency_ms})}\\n\\n"
             
         except CircuitBreakerError:
-            yield f"data: {json.dumps({'type': 'error', 'error': 'Circuit open'})}\\n\n"
+            yield f"data: {json.dumps({'type': 'error', 'error': 'Circuit open'})}\\n\\n"
         except Exception as e:
-            yield f"data: {json.dumps({'type': 'error', 'error': str(e)})}\\n\n"
+            yield f"data: {json.dumps({'type': 'error', 'error': str(e)})}\\n\\n"
     
     return StreamingResponse(generate(), media_type="text/event-stream")

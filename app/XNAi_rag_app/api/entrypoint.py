@@ -11,6 +11,24 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# Global LLM instance (lazy loading with circuit breaker)
+llm = None
+
+def load_llm_with_circuit_breaker():
+    """
+    Load LLM with circuit breaker protection.
+    This function should be called when LLM is needed.
+    """
+    global llm
+    if llm is None:
+        # Import here to avoid circular imports
+        from XNAi_rag_app.core.services_init import ServiceOrchestrator
+        orchestrator = ServiceOrchestrator()
+        # This will initialize the LLM through the orchestrator
+        services = orchestrator.initialize_all()
+        llm = services.get('llm')
+    return llm
+
 # Instantiate orchestrator
 orchestrator = ServiceOrchestrator()
 

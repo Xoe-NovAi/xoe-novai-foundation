@@ -44,8 +44,7 @@ async def health_check(request: Request):
         # breaker_status is a flat mapping: name -> {state, fail_count, ...}
         healthy = all(info.get('state') == 'closed' for info in breaker_status.values()) if isinstance(breaker_status, dict) else False
         components.update({
-            "circuit_breakers_healthy": healthy,
-            "circuit_breaker_count": len(breaker_status) if isinstance(breaker_status, dict) else 0
+            "circuit_breakers_healthy": healthy
         })
     except Exception as e:
         logger.warning(f"Circuit breaker status check failed: {e}")
