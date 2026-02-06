@@ -1,0 +1,4 @@
+:80 {
+  reverse_proxy vikunja-api:3456 /api/*
+  reverse_proxy vikunja-frontend:80
+}
