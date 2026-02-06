@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  vikunja-db:
+    image: postgres:16
+    container_name: vikunja-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vikunja
+      POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:-vikunja-secret}
+      POSTGRES_DB: vikunja
+    volumes:
+      - ./db:/var/lib/postgresql/data:Z
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vikunja"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - vikunja-network
+
+  vikunja-api:
+    image: vikunja/api:latest
+    container_name: vikunja-api
+    restart: unless-stopped
+    depends_on:
+      vikunja-db:
+        condition: service_healthy
+    environment:
+      VIKUNJA_DATABASE_TYPE: postgres
+      VIKUNJA_DATABASE_HOST: vikunja-db
+      VIKUNJA_DATABASE_PORT: 5432
+      VIKUNJA_DATABASE_USER: vikunja
+      VIKUNJA_DATABASE_PASSWORD: ${VIKUNJA_DB_PASSWORD:-vikunja-secret}
+      VIKUNJA_DATABASE_DATABASE: vikunja
+      VIKUNJA_SERVICE_PUBLICURL: http://localhost:3456
+      VIKUNJA_CORS_ENABLE: "false"
+    volumes:
+      - ./files:/app/vikunja/files:Z
+    ports:
+      - "3456:3456"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3456/api/v1/info"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - vikunja-network
+
+  vikunja-frontend:
+    image: vikunja/frontend:latest
+    container_name: vikunja-frontend
+    restart: unless-stopped
+    depends_on:
+      vikunja-api:
+        condition: service_healthy
+    environment:
+      VIKUNJA_API_URL: /api/v1
+    ports:
+      - "80:80"
+    networks:
+      - vikunja-network
+
+networks:
+  vikunja-network:
+    driver: bridge
