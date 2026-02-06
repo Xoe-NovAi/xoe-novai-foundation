@@ -46,13 +46,34 @@ theme:
     code: Roboto Mono
 
 plugins:
-  - search
+  - search:
+      prebuild_index: true
+  - build_cache:
+      enabled: true
+      cache_dir: .cache/mkdocs
   - section-index
   - minify:
       minify_html: true
   - git-revision-date-localized:
       type: timeago
       fallback_to_build_date: true
+
+validation:
+  nav:
+    omitted_files: warn
+    not_found: warn
+    absolute_links: warn
+  links:
+    not_found: warn
+    absolute_links: warn
+    anchors: warn
+
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Xoe-NovAi
 
 markdown_extensions:
   - admonition
@@ -151,7 +172,9 @@ nav:
           - Historical Releases: 03-reference/releases/
   - 🔬 Research Hub:
       - Overview: 05-research/index.md
+      - 🤝 Multi-Agent Coordination:
+          - Grok MC Arcana Handover: 05-research/handover-to-grok-mc-arcana-20260206.md
+          - Vikunja PM Integration: 05-research/vikunja-pm-integration-plan.md
       - 🧪 ML Research Labs:
           - Vulkan Native Inference: 05-research/labs/01-vulkan-native-inference.md
           - AWQ Production Report: 05-research/labs/AWQ Quantization Production Implementation Research Report.md
-  - 🗄️ Archive: _archive/

@@ -249,6 +249,11 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+models/
+embeddings/
+_archive/
+ekb-exports/
+# docs/_meta/  # Uncommented to track documentation audit files
 
 # Devops specific
 .devops/
@@ -267,3 +272,4 @@ _backups/
 *.bak
 *.backup
 internal_docs/projects/README.md
+memory_bank/GROK_CONTEXT_PACK_v1.5.0.md
