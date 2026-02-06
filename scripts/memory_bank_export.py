@@ -29,6 +29,11 @@ def parse_arguments():
         default="vikunja-import.json",
         help="Output JSON file"
     )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Perform dry run (show count without writing file)"
+    )
     return parser.parse_args()
 
 
@@ -137,11 +142,19 @@ def main():
         except Exception as e:
             print(f"Error processing {md_file}: {e}")
 
-    # Write to output file
-    with open(args.output_file, "w", encoding="utf-8") as f:
-        json.dump(tasks, f, ensure_ascii=False, indent=2, default=str)
+    # Dry run or write to output file
+    if args.dry_run:
+        print(f"DRY RUN: Would export {len(tasks)} tasks to {args.output_file}")
+        print("Task preview:")
+        for i, task in enumerate(tasks[:3]):
+            print(f"  {i+1}. {task['title']} - {len(task['labels'])} labels")
+        if len(tasks) > 3:
+            print(f"  ... and {len(tasks) - 3} more tasks")
+    else:
+        with open(args.output_file, "w", encoding="utf-8") as f:
+            json.dump(tasks, f, ensure_ascii=False, indent=2, default=str)
 
-    print(f"Successfully exported {len(tasks)} tasks to {args.output_file}")
+        print(f"Successfully exported {len(tasks)} tasks to {args.output_file}")
 
 
 if __name__ == "__main__":
