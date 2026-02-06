@@ -89,6 +89,8 @@ services:
       - LLAMA_CPP_USE_MLOCK=true
       - LLAMA_CPP_USE_MMAP=true
       - OMP_NUM_THREADS=1
+      # --- LLM CONFIGURATION ---
+      - LLM_MODEL_PATH=/models/Qwen3-0.6B-Q6_K.gguf
       # --- NETWORK & API ---
       - RAG_API_URL=http://rag:8000
       - REDIS_HOST=redis

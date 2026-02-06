@@ -7,7 +7,8 @@ Ensures dependencies are resolved before dependent services start.
 
 import logging
 import time
-from typing import Dict, Any, Optional
+import asyncio
+from typing import Dict, Any, Optional, List
 
 # Core imports
 from XNAi_rag_app.core.config_loader import load_config
@@ -41,7 +42,6 @@ class ServiceOrchestrator:
         self._ready = False
         self._background_tasks: List[asyncio.Task] = []
         # Lock and cache for LLM initialization to prevent race conditions
-        import asyncio
         self._llm_init_lock = asyncio.Lock()
         self._llm_cache = None
 
@@ -214,4 +214,3 @@ orchestrator = ServiceOrchestrator()
     
 async def _noop():
     return None
-

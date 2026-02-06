@@ -10,6 +10,9 @@ faiss-cpu
 # Voice stack (UPDATED for turbo performance)
 faster-whisper
 piper-tts
+onnxruntime
+pyttsx3
+numpy
 
 # Hybrid retrieval (Week 2 - Academic AI foundation)
 rank-bm25

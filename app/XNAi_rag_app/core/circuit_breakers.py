@@ -12,9 +12,24 @@ from typing import Optional, Callable, Any, Dict
 from functools import wraps
 from dataclasses import dataclass
 from enum import Enum
-import redis.asyncio as aioredis
+
+# Optional Redis import with graceful fallback
+try:
+    import redis.asyncio as aioredis
+    REDIS_AVAILABLE = True
+    RedisClient = aioredis.Redis
+except ImportError:
+    REDIS_AVAILABLE = False
+    aioredis = None
+    RedisClient = None
 
 logger = logging.getLogger(__name__)
+
+# Import voice metrics (optional)
+try:
+    from ..services.voice.voice_interface import voice_metrics
+except ImportError:
+    voice_metrics = None
 
 # ============================================================================
 # CIRCUIT BREAKER STATES
@@ -69,11 +84,11 @@ class PersistentCircuitBreaker:
     def __init__(
         self,
         config: CircuitBreakerConfig,
-        redis_client: aioredis.Redis,
+        redis_client: Optional[RedisClient] = None,
         fallback: Optional[Callable] = None
     ):
         self.config = config
-        self.redis = redis_client
+        self.redis = redis_client if REDIS_AVAILABLE else None
         self.fallback = fallback
 
         # Redis keys for state persistence
@@ -82,12 +97,18 @@ class PersistentCircuitBreaker:
         self._last_failure_key = f"circuit_breaker:{config.name}:last_failure"
         self._half_open_calls_key = f"circuit_breaker:{config.name}:half_open_calls"
 
+        # In-memory fallback state when Redis is not available
+        self._in_memory_state = CircuitState.CLOSED
+        self._in_memory_failures = 0
+        self._in_memory_last_failure = 0
+
         logger.info(
             f"Circuit breaker '{config.name}' initialized",
             extra={
                 "failure_threshold": config.failure_threshold,
                 "recovery_timeout": config.recovery_timeout,
-                "has_fallback": fallback is not None
+                "has_fallback": fallback is not None,
+                "redis_available": REDIS_AVAILABLE
             }
         )
 
@@ -96,17 +117,20 @@ class PersistentCircuitBreaker:
         Get current circuit breaker state from Redis.
 
         Research: State persistence pattern (Redis Labs)
-        Fallback: CLOSED if Redis unavailable (fail-open pattern)
+        Fallback: In-memory state if Redis unavailable
         """
+        if not REDIS_AVAILABLE or self.redis is None:
+            return self._in_memory_state
+
         try:
             state = await self.redis.get(self._state_key)
             return CircuitState(state.decode()) if state else CircuitState.CLOSED
         except Exception as e:
             logger.warning(
                 f"Failed to get circuit breaker state: {e}",
-                extra={"circuit": self.config.name, "fallback": "CLOSED"}
+                extra={"circuit": self.config.name, "fallback": "in-memory"}
             )
-            return CircuitState.CLOSED
+            return self._in_memory_state
 
     async def set_state(self, state: CircuitState):
         """Set circuit breaker state in Redis with TTL."""
@@ -340,8 +364,8 @@ class CircuitBreakerRegistry:
     - Coordinated failure handling
     """
 
-    def __init__(self, redis_client: aioredis.Redis):
-        self.redis = redis_client
+    def __init__(self, redis_client: Optional[RedisClient] = None):
+        self.redis = redis_client if REDIS_AVAILABLE else None
         self.breakers: Dict[str, PersistentCircuitBreaker] = {}
 
     def register(

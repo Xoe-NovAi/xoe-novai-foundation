@@ -6,9 +6,9 @@
 import time
 import logging
 from typing import List, Tuple, Dict, Any, Optional
-from XNAi_rag_app.core.config_loader import get_config_value, load_config
-from XNAi_rag_app.core.logging_config import get_logger, PerformanceLogger
-from XNAi_rag_app.core.metrics import record_rag_retrieval, record_error
+from ...core.config_loader import get_config_value, load_config
+from ...core.logging_config import get_logger, PerformanceLogger
+from ...core.metrics import record_rag_retrieval, record_error
 
 logger = get_logger(__name__)
 CONFIG = load_config()

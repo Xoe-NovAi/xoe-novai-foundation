@@ -49,6 +49,9 @@ from XNAi_rag_app.core.circuit_breakers import (
     initialize_voice_circuit_breakers
 )
 
+# Import FastAPI app for health check
+from XNAi_rag_app.api.entrypoint import app
+
 try:
     import chainlit as cl
     from chainlit.input_widget import Select, Slider

@@ -58,8 +58,22 @@ except ImportError:
 # FastAPI types (lightweight import)
 from fastapi import Request, Depends
 
+# Import required classes for type hints
+try:
+    from langchain_community.llms import LlamaCpp
+    from .embeddings_shim import LlamaCppEmbeddings
+    from .vectorstore_shim import FAISS
+except ImportError:
+    # Create dummy classes for type hints when imports fail
+    class LlamaCpp:
+        pass
+    class LlamaCppEmbeddings:
+        pass
+    class FAISS:
+        pass
+
 # Configuration loader (deferred access via get_config())
-from XNAi_rag_app.core.config_loader import load_config, get_config_value as _get_config_value
+from .config_loader import load_config, get_config_value as _get_config_value
 
 # Lazy-loaded config cache
 _CONFIG: Optional[Dict[str, Any]] = None
@@ -112,8 +126,8 @@ def get_research_agent(request: Request) -> Any:
 
 # AWQ Quantization imports
 try:
-    from XNAi_rag_app.core.awq_quantizer import CPUAWQQuantizer, QuantizationConfig
-    from XNAi_rag_app.core.dynamic_precision import DynamicPrecisionManager
+    from .awq_quantizer import CPUAWQQuantizer, QuantizationConfig
+    from .dynamic_precision import DynamicPrecisionManager
     AWQ_AVAILABLE = True
 except ImportError as e:
     logger.warning(f"AWQ quantization not available: {e}")
@@ -636,7 +650,7 @@ def get_embeddings(model_path: Optional[str] = None, **kwargs) -> LlamaCppEmbedd
     
     try:
         # Lazy import embeddings implementation
-        from XNAi_rag_app.core.embeddings_shim import LlamaCppEmbeddings
+        from .embeddings_shim import LlamaCppEmbeddings
 
         embeddings = LlamaCppEmbeddings(**embed_params)
         logger.info(
@@ -760,7 +774,7 @@ def get_vectorstore(
 
             # Import FAISS shim lazily to avoid binary imports at module load
             try:
-                from XNAi_rag_app.core.vectorstore_shim import FAISS
+                from .vectorstore_shim import FAISS
             except Exception as e:
                 logger.error(f"FAISS backend not available: {e}")
                 raise
@@ -815,7 +829,7 @@ def get_vectorstore(
             try:
                 # Import FAISS lazily for backups as well
                 try:
-                    from XNAi_rag_app.core.vectorstore_shim import FAISS
+                    from .vectorstore_shim import FAISS
                 except Exception as e:
                     logger.error(f"FAISS backend not available for backup load: {e}")
                     continue
@@ -908,7 +922,7 @@ def get_curator(cache_dir: Optional[str] = None, **kwargs) -> Any:
     """
     try:
         # Import crawl module
-        from XNAi_rag_app.workers import crawl
+        from ..workers import crawl
         
         # Return module itself - it has all the functions we need
         logger.info("CrawlModule functions loaded successfully")
@@ -1056,8 +1070,8 @@ def get_awq_quantizer(config: Optional[Dict[str, Any]] = None) -> Optional[CPUAW
 
     # Attempt to import AWQ runtime lazily
     try:
-        from XNAi_rag_app.core.awq_quantizer import CPUAWQQuantizer, QuantizationConfig
-        from XNAi_rag_app.core.dynamic_precision import DynamicPrecisionManager
+        from .awq_quantizer import CPUAWQQuantizer, QuantizationConfig
+        from .dynamic_precision import DynamicPrecisionManager
     except Exception as e:
         logger.warning(f"AWQ quantization not available: {e}")
         return None

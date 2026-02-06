@@ -34,9 +34,9 @@ multi_agent_coordination = false
 # [models] - LLM & Embedding Specifications
 # ============================================================================
 [models]
-llm_path = "/models/smollm2-135m-instruct-q8_0.gguf"
+llm_path = "/models/local/all/ruvltra-claude-code-0.5b-q4_k_m.gguf"
 llm_size_gb = 0.5
-llm_quantization = "Q5_K_XL"
+llm_quantization = "Q4_K_M"
 llm_context_window = 2048
 embedding_path = "/embeddings/all-MiniLM-L12-v2.Q8_0.gguf"
 embedding_size_mb = 45

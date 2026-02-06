@@ -31,12 +31,12 @@ router = APIRouter()
 @router.post("/query", response_model=QueryResponse)
 async def query_endpoint(request: Request, query_req: QueryRequest):
     """Synchronous query endpoint."""
+    # Get services from app state (already initialized during startup)
     services = getattr(request.app.state, 'services', {})
     rag_service = services.get('rag')
     vectorstore = services.get('vectorstore')
     
-    # Access global LLM from entrypoint (for now, until Phase 2 is complete)
-    # Actually, we should probably move LLM initialization to orchestrator too.
+    # Access global LLM from entrypoint
     import XNAi_rag_app.api.entrypoint as ep
     
     with MetricsTimer(response_latency_ms, endpoint='/query', method='POST'):
@@ -45,7 +45,7 @@ async def query_endpoint(request: Request, query_req: QueryRequest):
         try:
             # Initialize LLM (lazy loading with circuit breaker)
             if ep.llm is None:
-                ep.llm = ep.load_llm_with_circuit_breaker()
+                ep.llm = await ep.load_llm_with_circuit_breaker()
             
             # Retrieve context
             sources = []
@@ -106,7 +106,7 @@ async def stream_endpoint(request: Request, query_req: QueryRequest):
     async def generate() -> AsyncGenerator[str, None]:
         try:
             if ep.llm is None:
-                ep.llm = ep.load_llm_with_circuit_breaker()
+                ep.llm = await ep.load_llm_with_circuit_breaker()
             
             sources = []
             context = ""

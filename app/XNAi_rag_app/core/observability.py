@@ -14,8 +14,8 @@ from typing import Optional, Dict, Any
 from datetime import datetime
 
 # Xoe-NovAi Standards Integration
-from XNAi_rag_app.core.maat_guardrails import MaatGuardrails
-from XNAi_rag_app.core.memory_bank_integration import MemoryBankIntegration
+from .maat_guardrails import MaatGuardrails
+from .memory_bank_integration import MemoryBankIntegration
 
 class StructuredFormatter(logging.Formatter):
     """Structured formatter with accessibility compliance"""

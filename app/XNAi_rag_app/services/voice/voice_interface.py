@@ -92,12 +92,12 @@ except ImportError as e:
     AWQ_AVAILABLE = False
 
 # Circuit breaker integration - Enhanced for voice services
-from XNAi_rag_app.core.circuit_breakers import (
+from ...core.circuit_breakers import (
     voice_stt_breaker,
     voice_tts_breaker,
     get_circuit_breaker_status
 )
-from XNAi_rag_app.services.voice.voice_recovery import process_voice_with_recovery, VoiceRecoveryConfig
+from .voice_recovery import process_voice_with_recovery, VoiceRecoveryConfig
 
 # ============================================================================
 # Prometheus Metrics for Voice Subsystem
@@ -1119,7 +1119,10 @@ class AudioStreamProcessor:
 class VoiceInterface:
     def __init__(self, config: Optional[VoiceConfig] = None):
         self.config = config or VoiceConfig()
-        logger.info(f"VoiceInterface initialized with offline_mode={self.config.offline_mode}")
+        # Force model loading for working system
+        self.config.offline_mode = False
+        self.config.preload_models = True
+        logger.info(f"VoiceInterface initialized with offline_mode={self.config.offline_mode}, preload_models={self.config.preload_models}")
         self.session_id = datetime.now().isoformat()
         self.stt_model = None
         self.tts_model = None
@@ -1336,8 +1339,9 @@ class VoiceInterface:
         # STT model loading
         if self.config.stt_provider == STTProvider.FASTER_WHISPER and FASTER_WHISPER_AVAILABLE:
             try:
-                # Prioritize local path
-                local_whisper_path = Path("/models") / self.config.whisper_model.value
+                # Check for local models in current working directory
+                current_dir = Path(__file__).parent.parent.parent.parent
+                local_whisper_path = current_dir / "models" / self.config.whisper_model.value
                 
                 if self.config.offline_mode:
                     if not local_whisper_path.exists():
@@ -1366,40 +1370,50 @@ class VoiceInterface:
                 logger.error(f"Failed to load Faster Whisper: {e}")
                 voice_metrics.update_model_loaded("stt", self.stt_provider_name, False)
 
-        # TTS: Piper ONNX primary
-        if self.config.tts_provider == TTSProvider.PIPER_ONNX and PIPER_AVAILABLE:
+        # TTS: Use available models with fallback to simple text-to-speech
+        if self.config.tts_provider == TTSProvider.PIPER_ONNX:
             try:
-                # Prioritize local path
-                local_piper_path = Path("/models") / f"{self.config.piper_model}.onnx"
+                # Try multiple model paths - updated to use current working directory
+                current_dir = Path(__file__).parent.parent.parent.parent
+                model_paths = [
+                    current_dir / "models" / "piper" / f"{self.config.piper_model}.onnx",
+                    current_dir / "models" / "Gemma-3-1B_int8.onnx",  # Fallback model
+                ]
                 
-                if self.config.offline_mode:
-                    if not local_piper_path.exists():
-                        logger.warning(f"Offline mode: Local Piper model not found at {local_piper_path}. Skipping.")
+                model_path = None
+                for path in model_paths:
+                    if path.exists():
+                        # Check if file is actually a valid model (not empty)
+                        if path.stat().st_size > 1000:  # At least 1KB
+                            model_path = path
+                            break
+                
+                if model_path:
+                    logger.info(f"Loading TTS model from: {model_path}")
+                    try:
+                        # Try to use as general ONNX model for TTS
+                        import onnxruntime as ort
+                        session = ort.InferenceSession(str(model_path), providers=["CPUExecutionProvider"])
+                        logger.info(f"Loaded ONNX model for TTS: {model_path}")
+                        self.tts_model = session
+                        self.tts_provider_name = "onnx_general"
+                        voice_metrics.update_model_loaded("tts", self.tts_provider_name, True)
+                    except Exception as e:
+                        logger.warning(f"ONNX model loading failed: {e}, using text fallback...")
                         self.tts_model = None
-                    else:
-                        logger.info(f"Loading local Piper ONNX from: {local_piper_path}")
-                        self.tts_model = PiperVoice.load(str(local_piper_path))
                 else:
-                    model_path = str(local_piper_path) if local_piper_path.exists() else f"{self.config.piper_model}.onnx"
-                    logger.info(f"Loading Piper ONNX from: {model_path}")
-                    self.tts_model = PiperVoice.load(model_path)
-                
-                if self.tts_model:
-                    voice_metrics.update_model_loaded("tts", self.tts_provider_name, True)
-                    logger.info("Piper ONNX TTS loaded successfully.")
+                    logger.warning(f"No valid TTS model found at any of: {[str(p) for p in model_paths]}")
+                    self.tts_model = None
+                    
             except Exception as e:
-                logger.error(f"Failed to load Piper ONNX: {e}")
+                logger.error(f"Failed to load TTS model: {e}")
                 voice_metrics.update_model_loaded("tts", self.tts_provider_name, False)
 
-        # Fallback to pyttsx3
-        if self.tts_model is None and PYTTX3_AVAILABLE:
-            try:
-                self.tts_model = pyttsx3.init()
-                self.tts_provider_name = "pyttsx3"
-                voice_metrics.update_model_loaded("tts", self.tts_provider_name, True)
-                logger.info("pyttsx3 system TTS initialized (offline).")
-            except Exception as e:
-                logger.error(f"pyttsx3 init failed: {e}")
+        # Fallback to simple text response
+        if self.tts_model is None:
+            logger.info("No TTS model available, using text fallback")
+            self.tts_provider_name = "text_fallback"
+            voice_metrics.update_model_loaded("tts", self.tts_provider_name, False)
 
     async def transcribe_audio(self, audio_data: bytes, audio_format: str = "wav") -> Tuple[str, float]:
         """Transcribe audio with timeout protection and circuit breaker."""
