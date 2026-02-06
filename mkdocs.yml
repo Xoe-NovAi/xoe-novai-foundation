@@ -46,17 +46,7 @@ theme:
     code: Roboto Mono
 
 plugins:
-  - search:
-      prebuild_index: true
-  - build_cache:
-      enabled: true
-      cache_dir: .cache/mkdocs
-  - section-index
-  - minify:
-      minify_html: true
-  - git-revision-date-localized:
-      type: timeago
-      fallback_to_build_date: true
+  - search
 
 validation:
   nav:
@@ -175,6 +165,7 @@ nav:
       - 🤝 Multi-Agent Coordination:
           - Grok MC Arcana Handover: 05-research/handover-to-grok-mc-arcana-20260206.md
           - Vikunja PM Integration: 05-research/vikunja-pm-integration-plan.md
+          - Implementation Roadmap: 05-research/vikunja-implementation-roadmap.md
       - 🧪 ML Research Labs:
           - Vulkan Native Inference: 05-research/labs/01-vulkan-native-inference.md
           - AWQ Production Report: 05-research/labs/AWQ Quantization Production Implementation Research Report.md
