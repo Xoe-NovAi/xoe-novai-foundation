@@ -169,15 +169,31 @@ Xoe-NovAi is built for people who refuse rent-seeking intelligence.
 
 ## 🗺️ Documentation Navigation
 
-| Need | Location |
-|------|----------|
-| Quick deploy commands | This README + [`docs/06-development-log/vikunja-integration/`](./docs/06-development-log/vikunja-integration/) |
-| Architecture deep-dive | [`memory_bank/systemPatterns.md`](./memory_bank/systemPatterns.md) |
-| Current status & blockers | [`memory_bank/progress.md`](./memory_bank/progress.md) |
-| Technical stack details | [`memory_bank/techContext.md`](./memory_bank/techContext.md) |
-| AI team coordination | [`memory_bank/teamProtocols.md`](./memory_bank/teamProtocols.md) |
-| Expert Knowledge Base | [`expert-knowledge/`](./expert-knowledge/) |
-| API Documentation | [`docs/`](./docs/) (MkDocs site at `:8008`) |
+Our documentation follows the [Diátaxis framework](https://diataxis.fr/) — organized by how you need to use it:
+
+| Quadrant | Purpose | Key Documents |
+|----------|---------|---------------|
+| **🏁 Getting Started** | First-time setup | [`docs/01-start/quick-start.md`](./docs/01-start/quick-start.md) — 3-command setup |
+| **🚀 Tutorials** | Learning-oriented lessons | [`docs/02-tutorials/sovereign-setup.md`](./docs/02-tutorials/sovereign-setup.md) — Full sovereign deployment |
+| | | [`docs/02-tutorials/voice-setup.md`](./docs/02-tutorials/voice-setup.md) — Voice interface setup |
+| **🛠️ How-to Guides** | Task-oriented instructions | [`docs/03-how-to-guides/dev-workflow.md`](./docs/03-how-to-guides/dev-workflow.md) — Daily development |
+| | | [`docs/03-how-to-guides/pr-readiness-workflow.md`](./docs/03-how-to-guides/pr-readiness-workflow.md) — Pre-commit checks |
+| | | [`docs/03-how-to-guides/hardware-tuning/`](./docs/03-how-to-guides/hardware-tuning/) — Ryzen/Vulkan optimization |
+| **🧠 Explanation** | Understanding-oriented | [`docs/04-explanation/sovereign-toolkit-philosophy.md`](./docs/04-explanation/sovereign-toolkit-philosophy.md) — Core philosophy |
+| | | [`docs/04-explanation/sovereign-entity-architecture.md`](./docs/04-explanation/sovereign-entity-architecture.md) — System design |
+| | | [`docs/04-explanation/security.md`](./docs/04-explanation/security.md) — Security model |
+| **📖 Reference** | Information-oriented | [`docs/03-reference/hardware.md`](./docs/03-reference/hardware.md) — Hardware specs |
+| | | [`docs/03-reference/api.md`](./docs/03-reference/api.md) — API documentation |
+| **🎓 Expert Knowledge** | Deep technical mastery | [`expert-knowledge/`](./expert-knowledge/) — Infrastructure, security, protocols |
+
+### Running the Documentation Site
+```bash
+# Local development server
+podman compose up -d mkdocs
+# Or: mkdocs serve --dev-addr=0.0.0.0:8000
+
+# Access at http://localhost:8008
+```
 
 <br>
 
@@ -192,7 +208,7 @@ Xoe-NovAi is built for people who refuse rent-seeking intelligence.
 - Arcana-NovAi PoC: symbolic/mythic routing layer (Pantheon masks, Tarot circuitry)  
 - Community ports: Apple Silicon, low-power SBCs, new domain crawlers
 
-Detailed status, blockers, and owners live in [`memory_bank/progress.md`](./memory_bank/progress.md).
+See [GitHub Issues](https://github.com/Xoe-NovAi/xoe-novai-foundation/issues) for detailed status, blockers, and owner assignments.
 
 <br>
 
@@ -200,7 +216,7 @@ Detailed status, blockers, and owners live in [`memory_bank/progress.md`](./memo
 
 Xoe-NovAi was born from one non-programmer's refusal to rent their mind forever. 
 
-**100% of the documentation and almost all of the code** was written by AI assistants (multi-model swarm: Cline variants, Grok MC, Gemini) under human vision, direction, architecture decisions, Ma'at alignment checks, and relentless iteration.
+**100% of the documentation and all of the code** was written by AI assistants (multi-model swarm: Cline variants, Grok MC, Gemini, Claude) under human vision, direction, architecture decisions, Ma'at alignment checks, and relentless iteration.
 
 This is **AI-human symbiosis under Ma'at** — demonstrating that sovereignty doesn't require elite coding skills, just persistence, clear intent, and the right tools.
 
@@ -221,8 +237,8 @@ High-impact starters:
 - Chainlit theme / voice UX polish
 - Additional hardening (seccomp, apparmor, capability drops)
 
-Tagged `good first issue` and `help wanted` labels for entry points.  
-See [`memory_bank/teamProtocols.md`](./memory_bank/teamProtocols.md) before large PRs.
+Look for `good first issue` and `help wanted` labels in [GitHub Issues](https://github.com/Xoe-NovAi/xoe-novai-foundation/issues).  
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for our full contribution guidelines.
 
 <br>
 
@@ -234,5 +250,3 @@ AGPL-3.0-only + explicit sovereignty covenant
 <br>
 
 🔱 **Xoe-NovAi** — Private forge for sovereign intelligence.
-
-What piece do you want to harden, extend, or remix first?
