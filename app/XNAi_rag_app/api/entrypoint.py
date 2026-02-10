@@ -17,24 +17,16 @@ llm = None
 async def load_llm_with_circuit_breaker():
     """
     Load LLM with circuit breaker protection.
-    This function should be called when LLM is needed.
+    Uses the ServiceOrchestrator for thread-safe initialization.
     """
     global llm
     if llm is None:
-        # Import here to avoid circular imports
-        from XNAi_rag_app.core.services_init import ServiceOrchestrator
-        orchestrator = ServiceOrchestrator()
-        # Get services from the global orchestrator (already initialized during startup)
-        services = orchestrator.services
-        llm = services.get('llm')
+        # Get LLM from orchestrator (handles locking and caching internally)
+        llm = await orchestrator._initialize_llm()
         
-        # If LLM is not in services, try to get it from dependencies directly
-        if llm is None:
-            try:
-                from XNAi_rag_app.core.dependencies import get_llm_async
-                llm = await get_llm_async()
-            except Exception as e:
-                raise RuntimeError(f"LLM not available - {str(e)}")
+    if llm is None:
+        raise RuntimeError("LLM not available - initialization failed")
+        
     return llm
 
 # Instantiate orchestrator

@@ -1,4 +1,57 @@
-:80 {
-  reverse_proxy vikunja-api:3456 /api/*
-  reverse_proxy vikunja-frontend:80
+{
+  admin 127.0.0.1:2019
+  log {
+    output file /var/log/caddy/access.log
+    format json
+  }
+}
+
+:8000 {
+  # Security headers in site block
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "DENY"
+    X-XSS-Protection "1; mode=block"
+    Referrer-Policy "strict-origin-when-cross-origin"
+  }
+
+  # Foundation RAG API
+  @rag-api {
+    path /api/v1*
+  }
+  handle @rag-api {
+    reverse_proxy xnai_rag_api:8000 {
+      health_uri /health
+    }
+  }
+
+  # Foundation Chainlit UI
+  @foundation-ui {
+    path /
+  }
+  handle @foundation-ui {
+    reverse_proxy xnai_chainlit_ui:8001
+  }
+
+  # Vikunja - Single route for all-in-one container
+  @vikunja {
+    path /vikunja/*
+  }
+  handle @vikunja {
+    reverse_proxy xnai_vikunja:3456
+  }
+
+  # RAG Metrics (Prometheus scrape endpoint)
+  @metrics {
+    path /metrics
+  }
+  handle @metrics {
+    reverse_proxy xnai_rag_api:8002
+  }
+
+  # Fallback
+  handle {
+    respond "Not Found" 404
+  }
 }

@@ -17,7 +17,7 @@ services:
     user: "${APP_UID:-1001}:${APP_GID:-1001}"
     command: redis-server --requirepass "${REDIS_PASSWORD:?REDIS_PASSWORD must be set}" --maxmemory 512mb --maxmemory-policy allkeys-lru
     volumes:
-      - ./data/redis:/data:Z,U
+      - ./data/redis:/data:Z
     environment:
       - REDIS_PASSWORD
       - REDIS_STREAM_MAX_LEN=${REDIS_STREAM_MAX_LEN:-1000}
@@ -75,11 +75,11 @@ services:
       - ./config.toml:/app/config.toml:ro
       - ./models:/models:ro
       - ./embeddings:/embeddings:ro
-      - ./library:/library:Z,U
-      - ./knowledge:/knowledge:Z,U
-      - ./data/faiss_index:/app/data/faiss_index:Z,U
-      - ./backups:/backups:Z,U
-      - ./data/prometheus-multiproc:/prometheus_data:Z,U
+      - ./library:/library:Z
+      - ./knowledge:/knowledge:Z
+      - ./data/faiss_index:/app/data/faiss_index:Z
+      - ./backups:/backups:Z
+      - ./data/prometheus-multiproc:/prometheus_data:Z
       - ./app/XNAi_rag_app:/app/XNAi_rag_app:ro
     environment:
       # --- RYZEN ZEN 2 OPTIMIZATIONS ---
@@ -111,7 +111,6 @@ services:
     networks:
       - xnai_network
     ports:
-      - "8000:8000"
       - "8002:8002"
     depends_on:
       redis:
@@ -205,9 +204,9 @@ services:
     user: "${APP_UID:-1001}:${APP_GID:-1001}"
     volumes:
       - ./config.toml:/app/config.toml:ro
-      - ./library:/library:Z,U
-      - ./knowledge:/knowledge:Z,U
-      - ./data/cache:/app/cache:Z,U
+      - ./library:/library:Z
+      - ./knowledge:/knowledge:Z
+      - ./data/cache:/app/cache:Z
       - ./app/XNAi_rag_app:/app/XNAi_rag_app
       - /tmp/crawl4ai:/app/.crawl4ai
       - /tmp/crawler_logs:/app/logs
@@ -257,8 +256,8 @@ services:
       - LOG_DIR=/app/logs/curations
       - PYTHONPATH=/app
     volumes:
-      - ./data/curations:/app/data/curations:Z,U
-      - ./logs/curations:/app/logs/curations:Z,U
+      - ./data/curations:/app/data/curations:Z
+      - ./logs/curations:/app/logs/curations:Z
       - ./app/XNAi_rag_app:/app/XNAi_rag_app:ro
     networks:
       - xnai_network
@@ -293,6 +292,27 @@ services:
       - |
         echo '🚀 Starting XNAi Foundation Docs...'
         cd /workspace && mkdocs serve --config-file mkdocs.yml --dev-addr=0.0.0.0:8000
+
+  # ==========================================================================
+  # CADDY SERVICE - Unified Reverse Proxy
+  # ==========================================================================
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: xnai_caddy
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    restart: unless-stopped
+    ports:
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro,Z,U
+      - ./logs/caddy:/var/log/caddy:Z
+    networks:
+      - xnai_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:2019/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
 # ============================================================================ 
 # NETWORKS & VOLUMES

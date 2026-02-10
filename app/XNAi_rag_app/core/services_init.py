@@ -15,6 +15,7 @@ from XNAi_rag_app.core.config_loader import load_config
 from XNAi_rag_app.core.logging_config import setup_logging, get_logger
 from XNAi_rag_app.core.observability import observability
 from XNAi_rag_app.core.metrics import start_metrics_server
+from XNAi_rag_app.core.circuit_breakers import initialize_circuit_breakers, initialize_voice_circuit_breakers
 from XNAi_rag_app.core.dependencies import (
     get_redis_client,
     get_http_client,
@@ -89,6 +90,15 @@ class ServiceOrchestrator:
 
             # 2. Metrics & Observability
             start_metrics_server()
+            
+            # 2.1 Circuit Breakers (Redis needed)
+            redis_url = f"redis://:{self.config.get('redis', {}).get('password', '')}@{self.config.get('redis', {}).get('host', 'redis')}:{self.config.get('redis', {}).get('port', 6379)}/0"
+            try:
+                await initialize_voice_circuit_breakers(redis_url)
+                logger.info("✓ Circuit breakers initialized")
+            except Exception as e:
+                logger.warning(f"⚠ Failed to initialize circuit breakers: {e}")
+
             # Observability is initialized on import, but we can log its status
             logger.info("✓ Metrics and observability initialized")
 

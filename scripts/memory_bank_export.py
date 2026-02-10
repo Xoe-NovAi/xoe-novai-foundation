@@ -6,7 +6,10 @@ and prepares them for bulk import into Vikunja.
 """
 
 import os
-import frontmatter
+try:
+    import frontmatter  # type: ignore
+except Exception:
+    frontmatter = None  # Fallback if the package is not installed
 import json
 import argparse
 from pathlib import Path
@@ -38,9 +41,43 @@ def parse_arguments():
 
 
 def extract_frontmatter(file_path):
-    """Extract YAML frontmatter from markdown file."""
+    """Extract YAML frontmatter from markdown file.
+
+    We prefer using the 'frontmatter' package, but in restricted environments
+    it may not be available. Provide a lightweight fallback parser that extracts
+    a simple YAML-like frontmatter block delimited by --- markers and returns a
+    dictionary-like object with a 'content' attribute (to satisfy downstream
+    code that accesses post.content and post.get()).
+    """
+    if frontmatter is not None:
+        try:
+            # Try to use the standard library when available
+            return frontmatter.load(open(file_path, "r", encoding="utf-8"))
+        except Exception:
+            pass
+    # Fallback path if the frontmatter package isn't available or fails
+    # Lightweight fallback parser (no external dependencies)
     with open(file_path, "r", encoding="utf-8") as f:
-        return frontmatter.load(f)
+        text = f.read()
+    metadata = {}
+    content = text
+    if text.startswith("---"):
+        end = text.find("---", 3)
+        if end != -1:
+            fm = text[3:end]
+            content = text[end + 3 :].lstrip()
+            for line in fm.splitlines():
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if ":" in line:
+                    key, val = line.split(":", 1)
+                    metadata[key.strip()] = val.strip()
+    class SimplePost(dict):
+        def __init__(self, metadata, content):
+            super().__init__(metadata)
+            self.content = content
+    return SimplePost(metadata, content)
 
 
 def map_labels_from_frontmatter(frontmatter_data):

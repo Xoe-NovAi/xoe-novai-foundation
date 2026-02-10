@@ -13,6 +13,18 @@ Enhanced voice interface with:
 Version: v0.1.0-alpha (2026-01-10)
 """
 
+# Standardize import paths using environment-based resolution
+from pathlib import Path
+import sys
+import os
+
+PROJECT_ROOT = os.getenv(
+    'XOE_NOVAI_ROOT',
+    str(Path(__file__).parent.parent.parent.parent.absolute())
+)
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 import os
 import logging
 import asyncio
@@ -23,13 +35,8 @@ from typing import Optional, Dict, Any, List, Tuple
 from datetime import datetime
 from collections import deque
 import time
-
-# CRITICAL FIX: Import path resolution (Pattern 1)
 import sys
 from pathlib import Path
-# Only modify sys.path in explicit developer mode to avoid masking packaging issues
-if os.getenv("XOE_ALLOW_DEV_PATH", "false").lower() == "true":
-    sys.path.insert(0, str(Path(__file__).parent.parent))
 
 # Health check endpoint for Docker
 from fastapi import Request, Response

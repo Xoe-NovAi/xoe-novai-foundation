@@ -1,181 +1,279 @@
-# System Patterns & Architecture Decisions
+---
+update_type: comprehensive-sync
+timestamp: 2026-02-09T07:00:00
+agent: Cline
+priority: critical
+related_components: [systemPatterns, architecture, dual-stack, vikunja-sync]
+ma_at_ideal: 18 - Balance in structure
+---
 
-## Core Architecture: The Unified Entity
+# System Patterns & Architecture Decisions v2.0
+
+**Last Updated**: 2026-02-09  
+**Status**: ✅ **Dual-Stack Architecture Locked**  
+**Version**: v2.0 - Production Ready
+
+---
+
+## 🏗️ Core Architecture: The Dual-Stack Entity
+
+### Xoe-NovAi Foundation vs Arcana-NovAi
+
 ```mermaid
 graph TD
-    A[Xoe-NovAi Platform] --> B[RAG Engine]
-    A --> C[Voice Interface]
-    A --> D[Elite Documentation]
-
-    B --> E[AnyIO TaskGroup Orchestration]
-    B --> F[Hybrid RRF Standard (FAISS + BM25)]
-
-    C --> G[Piper TTS (Emotional Target)]
-    C --> H[Faster-Whisper (Zero-Copy IPC Target)]
-
-    D --> I[Diátaxis Quadrants]
-    D --> J[Hardware Mastery Manuals]
+    subgraph Foundation["Xoe-NovAi Foundation Stack"]
+        F1[llama.cpp Inference]
+        F2[FastAPI Orchestration]
+        F3[FAISS/Qdrant RAG]
+        F4[LangGraph Flows]
+        F5[Vikunja Sync Hub]
+    end
+    
+    subgraph Arcana["Arcana-NovAi Layer"]
+        A1[Dual Flame Engine]
+        A2[Pantheon Masks]
+        A3[Ritual CLI]
+        A4[Tarot Circuitry]
+        A5[Ma'at 42 Filters]
+    end
+    
+    subgraph Specialized["Specialized Stacks"]
+        S1[Scientific]
+        S2[Creative Writing]
+        S3[CAD/Engineering]
+        S4[Music Composition]
+    end
+    
+    Foundation --> Arcana
+    Foundation --> Specialized
+    Arcana --> A6[Consciousness Evolution]
 ```
 
-## Key Architectural Decisions
+### Stack Distinction
 
-### Unified Entity Pattern (AnyIO)
+| Aspect | Foundation | Arcana |
+|--------|-----------|--------|
+| **Purpose** | Universal base inference & orchestration | Consciousness-evolution superstructure |
+| **Content** | Clean, technical, esoteric-minimal | Full mythic/symbolic/archetypal |
+| **Tech Surface** | llama-cpp, FastAPI, FAISS, LangChain | Built ON Foundation + symbolic routing |
+| **Audience** | Any developer/power user | Seekers, mythopoets, shadow workers |
+| **Analogy** | The forge and anvil | The living sword forged upon it |
+
+---
+
+## 🔄 Vikunja-Centric Sync Hub Pattern (OPERATIONAL)
+
+### Architecture
+```mermaid
+flowchart LR
+    User["User / Architect"] --> Vikunja["Vikunja PM<br/>Central Sync Hub"]
+    
+    Vikunja --> Foundation["Foundation Models<br/>(Execute Tasks)"]
+    Vikunja --> External["External Assistants<br/>(Gemini CLI, Grok, Claude)"]
+    
+    Foundation --> Vikunja["Update Status / Results"]
+    External --> Vikunja["Post Outputs / Comments"]
+    
+    Legacy["Legacy Memory_Bank"] --> Vikunja["One-Time Migration"]
+    Vikunja --> RAG["Persist in Foundation RAG"]
+```
+
+### Pattern Rules
+1. **All new tasks → Vikunja** (internal or external)
+2. **Legacy migration**: One-time push memory_bank → Vikunja
+3. **No scattered .md files**: Vikunja is the living source
+4. **External sync**: Task → assign to agent → results in comments
+
+### Deployment Status (2026-02-09)
+
+#### Current Status
+- **Architecture**: ✅ Complete
+- **Configuration**: ✅ Complete
+- **Container Deployment**: ✅ Operational
+- **Service Startup**: ✅ Operational (Redis integration disabled)
+
+#### Issues Identified
+1. **Vikunja Redis Connection Failure**
+   - Container fails to parse VIKUNJA_REDIS_PORT and VIKUNJA_REDIS_URL
+   - Redis integration disabled, using database for caching
+   - Research request sent to Grok MC
+
+2. **Caddy Configuration Issues**
+   - Fixed syntax errors with header and websocket directives
+   - Caddy container now operational
+
+3. **Vikunja Container Health Status**
+   - Container marked as "unhealthy" in podman ps
+   - Healthcheck command or container response issues
+   - Research request sent to Grok MC
+
+#### Files Created
+- `grok-mc-research-request.md` - Research request document
+- `CLAUDE_VIKUNJA_BLOCKER_REPORT.md` - Comprehensive error analysis
+- `docker-compose.vikunja.yml` - Container orchestration
+- `config/postgres.conf` - PostgreSQL configuration
+- `config/vikunja-config.yaml` - Application configuration
+- `scripts/setup_vikunja_secrets.py` - Secret automation
+- `scripts/deploy_vikunja_secure.py` - Deployment script
+
+---
+
+## 🛠️ Key Architectural Decisions
+
+### 1. Unified Entity Pattern (AnyIO)
 **Decision**: Standardized on **AnyIO 4.x TaskGroups** for all concurrent services.
-**Rationale**: Ensures atomic failure handling via `ExceptionGroup`. If the generation stream fails, sibling STT/TTS tasks are canceled, preventing "robotic" audio ghosting.
+**Rationale**: Atomic failure handling via `ExceptionGroup`. Prevents "robotic" audio ghosting.
 
-### Modular Plugin Ecosystem (WASM)
-**Decision**: Transitioning from monolithic scripts to **WASM-isolated plugins**.
-**Rationale**: Achieves <100ms load times with soft-isolation and fine-grained permissions, bridging the gap between scripts and full containers.
+### 2. Dual-Stack Modularity
+**Decision**: Clean separation between Foundation (universal) and Arcana (esoteric).
+**Rationale**: 
+- Foundation can host any specialized stack without bloat
+- Arcana demonstrates consciousness-evolution patterns
+- Both maintain 100% sovereignty
 
-### Sovereign Data Architecture
-**Decision**: All processing local, zero external calls.
-**Rational**: Air-gapped reliability and user privacy (Ma'at Ideals 40, 41).
+### 3. Vikunja as Central Hub
+**Decision**: Replace scattered memory_bank files with structured PM system.
+**Rationale**:
+- API-driven agent integration
+- Structured task/label/priority system
+- Migration path from legacy .md files
+- Offline-capable post-setup
+
+### 4. Modular Plugin Ecosystem (WASM)
+**Decision**: Transition from monolithic scripts to **WASM-isolated plugins**.
+**Rationale**: <100ms load times, soft-isolation, fine-grained permissions.
 
 ---
 
 ## ⚖️ Ethical Foundation (Ma'at Framework)
-The Xoe-NovAi Foundation stack is governed by **The 42 Ideals of Ma'at**. All agents must consult `memory_bank/maatIdeals.md` before performing high-impact operations.
 
-### Technical Mapping of Ideals
-- **Integrity of Data (7, 36, 40):** Zero-telemetry, clean data ingestion, and RAG accuracy.
-- **Resource Stewardship (10, 15, 39):** Optimized Ryzen performance, low RAM footprint, and humble hardware requirements.
-- **Torch-free Capable (41):** The Foundation is **Torch-free by default** (GGUF, ONNX, CTranslate2) to shatter accessibility limits for mid-grade hardware. However, the stack is **Torch-capable**, allowing users to deploy optional GPU-accelerated modules as "Elite Extensions."
+### Technical Mapping
+- **Integrity (7, 36, 40)**: Zero-telemetry, clean data, RAG accuracy
+- **Resource Stewardship (10, 15, 39)**: Ryzen optimization, low RAM
+- **Torch-free (41)**: GGUF/ONNX/CTranslate2 default, GPU extensions optional
 
-
-### Hybrid Retrieval (RRF Standard)
-**Decision**: Combine Lexical (BM25) and Semantic (Dense) search.
-**Pattern**: Reciprocal Rank Fusion (RRF) with $k=60$.
-**Tie-Breaker**: Raw BM25 score as secondary sort key for technical accuracy.
+### Dual-Stack Alignment
+- **Foundation**: Ma'at 41 - Advance through own abilities (raw technical power)
+- **Arcana**: Ma'at 18 - Balance in structure (symbolic tension)
+- **Integration**: Ma'at 7 - Truth in synthesis
 
 ---
 
-## Advanced Technical Patterns
+## 🧠 Knowledge Runtime Patterns
 
-### Zero-Copy IPC Pattern
-**Pattern**: Shared Memory (/dev/shm) for audio streams.
-**Target**: Eliminate network bridge latency for sub-150ms voice responses.
-**Cleanup**: Pre-start `rm -f /tmp/audio_pipe` routine to clear stale crash state.
+### Expert Knowledge Base (EKB)
+**Pattern**: Graph-Markdown Hybrid
+- Markdown + YAML: Human-readable, RAG-optimized
+- Wikilinks (`[[link]]`): Bidirectional relationship mapping
+- Compatibility: Obsidian/Logseq for visualization
 
-### Persistence Model (SQLite WAL & MMAP)
-**Pattern**: Memory-mapped persistence for near-zero I/O.
-**Implementation**:
-- `PRAGMA mmap_size = 256MB` for database address-space mapping.
-- `PRAGMA wal_checkpoint(PASSIVE)` to prevent UI stalls during ingestion.
-
----
-
-## Technical Implementation Patterns (Hardware Native)
-
-### Vulkan GPU Acceleration
-```mermaid
-graph LR
-    A[Matrix Warmup] --> B[Vulkan 1.4 Detection]
-    B --> C[RADV_PERFTEST=gpl]
-    C --> D[Scalar Block Layouts]
-    D --> E[8-bit KV Cache]
-    E --> F[70% VRAM Buffer Rule]
-```
-
-### Concurrency Guard (File Locking)
-**Pattern**: Multi-process write protection.
-**Implementation**: `fcntl.flock` exclusive locks on FAISS index operations to prevent segment violations during concurrent crawl/search.
+### Memory Bank Protocol
+**Status**: Migrating to Vikunja
+- Legacy: `memory_bank/*.md` files
+- Current: Structured tasks in Vikunja
+- Bridge: `scripts/memory_bank_export.py`
 
 ---
 
-## Quality Assurance & Evolution Patterns
+## 🛡️ Security Patterns
 
-### The Sovereign Governor
-- **Thermal-Aware Audio**: Shift PipeWire quantum to 256 samples when CPU > 80°C.
-- **Dynamic Precision**: Thermal-aware precision switching (Q8_0 to Q4_K_S).
+### Sovereign Security Trinity
+**Pattern**: Waterfall of Proof (Inventory → CVE → Safety)
+1. **Syft**: CycloneDX SBOM generation
+2. **Grype**: Precision CVE scanning
+3. **Trivy**: Safety scrub for secrets
+
+### Rootless Container Pattern
+**Standard**: UID 1001, `userns_mode: keep-id`, `:Z` volumes (removed `:U` for SELinux compliance)
+**Hardening**: No new privileges, read-only filesystems where applicable
+
+### Secrets Hygiene
+**Rule**: Runtime injection only - NEVER commit secrets
+- Env vars at runtime
+- `git-secrets` pre-commit hooks
+- Trinity scans pre-push
+
+---
+
+## 🎯 Quality Assurance Patterns
+
+### 1. Persistent Circuit Breaker (NEW)
+**Pattern**: Redis-backed State Machine
+- **State Persistence**: Circuit state survives service restarts via Redis.
+- **Async Safety**: Use of `asyncio.Lock` and proxy wrappers for safe concurrent access.
+- **Fallback Chains**: Automatic degradation to secondary services (e.g., direct LLM if RAG fails).
+
+### 2. Structured Observability (NEW)
+**Pattern**: JSON-OTEL Hybrid Logging
+- **Format**: Structured JSON for machine readability (Elastic/Loki).
+- **Context Propagation**: Automatic injection of OpenTelemetry `trace_id` and `span_id`.
+- **Level Granularity**: Support for `TRACE` and `VERBOSE` levels.
+
+### 3. The Sovereign Governor
+- **Thermal-Aware**: Shift PipeWire quantum at >80°C
+- **Dynamic Precision**: Q8_0 to Q4_K_S switching
 
 ### Testing Strategy
-- **Benchmark-First**: Mandatory warmup matrix ($64 \times 64$) on startup.
-- **Watchdog Logic**: Real-time 400MB soft-stop POST rejection middleware.
+- **Benchmark-First**: $64 \times 64$ warmup matrix on startup
+- **Watchdog**: 400MB soft-stop middleware
 
-### 🏗️ Infrastructure Patterns
+### PR Readiness Gatekeeping
+**Engine**: `scripts/pr_check.py`
+**Policy**: `configs/security_policy.yaml`
+**Gatekeepers**:
+- E2E Smoke Tests
+- Documentation Linting
+- Zero-Telemetry Audit
+- Trinity Security Pass
 
-### 🧠 The Knowledge Runtime (Expert Knowledge Base)
-The `expert-knowledge/` system is the shared "Long-Term Memory" for the Xoe-NovAi Foundation stack. 
-- **Pattern**: **Graph-Markdown Hybrid**.
-- **Implementation**: 
-    - **Markdown + YAML**: Human-readable and RAG-optimized.
-    - **Wikilinks (`[[link]]`)**: Bidirectional relationship mapping for AI reasoning.
-- **Compatibility**: Designed to be managed via **Obsidian** or **Logseq** for human visualization and knowledge-graph discovery.
-- **Strategic Utility**: A Dual-Purpose core feature. It serves the Xoe-NovAi Foundation stack natively but is architected to be a portable source of truth for external AI assistants.
+---
 
-### 🛡️ Sovereign Security Trinity Pattern
-**Pattern**: **Waterfall of Proof (Inventory -> CVE -> Safety)**.
-**Implementation**:
-1.  **Syft**: Generates **CycloneDX JSON** SBOM (The Identity Document).
-2.  **Grype**: Precision vulnerability scan of the SBOM (The Precision Auditor).
-3.  **Trivy**: Safety scrub of raw image layers for secrets/misconfigs (The Safety Guardrail).
-**Why**: Separates the "What is inside" from "What is wrong with it," ensuring an immutable audit trail for sovereignty.
+## 📦 Infrastructure Patterns
 
-### 📦 Bulletproof Tarball Scanning
-**Pattern**: **Export-to-Scan**.
-**Implementation**: `podman save -o image.tar [IMAGE]` followed by `trivy image --input image.tar`.
-**Rationale**: Bypasses complex rootless Podman socket permission issues (`statfs` errors) by treating the image as a local file. Essential for cross-distro reliability in rootless mode.
+### Absolute Package Import Standard
+**Decision**: Absolute imports from `XNAi_rag_app` root
+**Rationale**: Eliminates `ModuleNotFoundError` in container orchestration
+**Standardization**: Use `XOE_NOVAI_ROOT` environment detection in all entrypoints.
 
-### 🚦 Graduated Policy Gatekeeping
-**Pattern**: **Config-Driven Enforcement**.
-**Implementation**: `configs/security_policy.yaml` defines thresholds (e.g., `critical.max_exploitable: 0`).
-**Rationale**: Moves security logic out of code and into declarative policy. Allows for nuanced rules (e.g., "Warn on High CVEs, Block on Criticals").
+### Consolidated Entrypoint Pattern
+**Standard**: `api/entrypoint.py` (API), `ui/chainlit_app_voice.py` (UI)
+**Docker**: `uvicorn XNAi_rag_app.api.entrypoint:app`
 
-### 📦 Absolute Package Import Standard
-**Decision**: Standardized on absolute imports starting from the `XNAi_rag_app` package root.
-**Pattern**: `from XNAi_rag_app.core.circuit_breakers import ...` instead of `from circuit_breakers import ...`.
-**Rationale**: Eliminates `ModuleNotFoundError` during container orchestration where the working directory might vary. Ensures all sub-modules are consistently resolvable as part of a unified package.
+### Unified BuildKit Pattern
+**Cache Mounts**: `type=cache,id=xnai-...,uid=1001`
+**Benefit**: 2-4x build speed with zero external proxy
 
-### 🚀 Consolidated Package Entrypoint Pattern
-**Decision**: Standardized on `api/entrypoint.py` as the primary FastAPI engine and `ui/chainlit_app_voice.py` as the UI engine.
-**Implementation**: 
-- Docker CMD: `uvicorn XNAi_rag_app.api.entrypoint:app`
-- PYTHONPATH: Standardized to `/app` (the parent of `XNAi_rag_app`).
-**Rationale**: Provides a clear separation between API logic, UI frontend, and worker background tasks while maintaining a shared package root.
+### uv Standardization
+**Pattern**: `uv pip install --system`
+**Why**: Replaces slow pip and complex wheelhouse
 
-### ⚡ Unified BuildKit Pattern
-Used for accelerating builds without external proxy infrastructure.
-- **Pattern**: `RUN --mount=type=cache,id=xnai-...,uid=1001...`.
-- **Why**: Provides "Elite" speed (2-4x cache hit) with zero config. Supports rootless Podman via explicit UID mapping.
+---
 
-### 📦 uv Standardization Pattern
-Standardized package management for velocity and consistency.
-- **Pattern**: `uv pip install --system`.
-- **Why**: Replaces `pip` (slow) and `wheelhouse` (complex). `uv` is installed globally in `xnai-base`.
+## 🚀 Active Patterns Summary
 
-### 🛡️ Rootless Quadlet Standard
-Standardized service definition for Podman 5.x.
-- **Pattern**: `configs/quadlets/` -> `~/.config/containers/systemd/`.
+| Pattern | Status | Location |
+|---------|--------|----------|
+| Dual-Stack Architecture | 🟢 Locked | Architecture docs |
+| Vikunja Sync Hub | 🟡 Operational (Redis disabled) | `docker-compose.vikunja.yml` |
+| Persistent Breakers | 🟢 Active | `core/circuit_breakers.py` |
+| Structured Logging | 🟢 Active | `core/logging_config.py` |
+| AnyIO TaskGroups | 🟢 Active | `core/services_init.py` |
+| Security Trinity | 🟢 Active | `configs/security_policy.yaml` |
+| Rootless Deployment | 🟢 Hardened | All compose files |
+| Memory Bank Migration | 🟡 In Progress | `scripts/memory_bank_export.py` |
 
-### 🔧 Infrastructure Permission Pattern (Rootless :U Standard)
-**Pattern**: **Automatic User Namespace (NS) Mapping via Compose**.
-**Implementation**: Use the `:Z,U` volume flag suffix in `docker-compose.yml`.
+---
 
-### 📡 Observability Lifecycle Pattern
-**Pattern**: Async Lifespan management for observability instrumentation.
+## 📚 Reference Documentation
 
-*Updated by Gemini CLI (Security Hardening & Sovereign Trinity Pattern)*
+- **Dev Environment Guide**: `docs/03-reference/architecture/2026-02-06-xoe-novai-dev-environment-guide-v1.1.0.md`
+- **Dual Stack Clarification**: `docs/03-reference/architecture/2026-02-06-xoe-novai-foundation-vs-arcana-novai-v1.0.0.md`
+- **Vikunja Migration**: `docs/06-development-log/vikunja-integration/`
 
-## 🤖 AI Partnership with Claude (NEW)
+---
 
-**Current Collaboration:**
-- **Hybrid Path Research Initiative**: Partnering with Claude to provide comprehensive stack-specific context for advanced refactoring guidance
-- **10 Knowledge Gap Research**: Claude is conducting research on critical areas including BuildKit optimization, Security Trinity integration, Performance benchmarking, Memory Bank synchronization, and Ryzen core steering
-- **Production-Grade Implementation Manual**: Target delivery of 50-60 page manual with code examples, configuration templates, and validation procedures
+**Status**: ✅ **System Patterns v2.0 Synchronized**  
+**Architecture**: Dual-Stack Locked  
+**Sync Hub**: Vikunja-Centric Active (Redis integration disabled)
 
-**Partnership Benefits:**
-- **Stack-Specific Context**: Providing Claude with comprehensive Xoe-NovAi Foundation stack knowledge including Ma'at Guardrails, Sovereign Security Trinity, Memory Bank Protocol, and hardware optimization patterns
-- **Enhanced Research Quality**: Ensuring research is 85-90% specific to Xoe-NovAi constraints rather than generic best practices
-- **Production-Ready Deliverables**: Focus on immediately actionable guidance with copy-paste code examples and configuration templates
-
-**Research Timeline:**
-- **Day 1-3**: Parallel data gathering and research initiation
-- **Day 3**: Checkpoint 1 - Data delivery and direction refinement
-- **Day 6**: Checkpoint 2 - Mid-research status review
-- **Day 9**: Checkpoint 3 - Draft manual review
-- **Day 10**: Final delivery of implementation manual
-
-**Integration with Refactoring:**
-- Research findings will be integrated with the v0.1.0-alpha modular refactoring plan
-- Focus on practical implementation patterns that align with Xoe-NovAi's sovereign, offline-first architecture
-- Emphasis on production-grade solutions that maintain the stack's core principles
+---

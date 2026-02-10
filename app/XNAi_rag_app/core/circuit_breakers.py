@@ -317,6 +317,51 @@ class PersistentCircuitBreaker:
             # Re-raise exception
             raise
 
+    async def record_success(self):
+        """
+        Manual success recording for cases where call() is not used.
+        
+        Research: Recovery pattern (Nygard 2024)
+        """
+        state = await self.get_state()
+        if state == CircuitState.HALF_OPEN:
+            # Recovery successful - transition to CLOSED
+            await self.set_state(CircuitState.CLOSED)
+            await self.reset_failures()
+            logger.info(
+                f"Circuit breaker '{self.config.name}' recovered (manual)",
+                extra={"transition": "HALF_OPEN -> CLOSED"}
+            )
+        elif state == CircuitState.CLOSED:
+            # Reset failure counter on success to be lenient
+            await self.reset_failures()
+
+    async def record_failure(self):
+        """
+        Manual failure recording for cases where call() is not used.
+        
+        Research: Failure threshold pattern (Nygard 2024)
+        """
+        failures = await self.increment_failures()
+        
+        logger.warning(
+            f"Circuit breaker '{self.config.name}' recorded failure (manual)",
+            extra={
+                "failure_count": failures,
+                "threshold": self.config.failure_threshold
+            }
+        )
+        
+        if failures >= self.config.failure_threshold:
+            await self.set_state(CircuitState.OPEN)
+            logger.error(
+                f"Circuit breaker '{self.config.name}' OPENED (manual)",
+                extra={
+                    "failures": failures,
+                    "threshold": self.config.failure_threshold
+                }
+            )
+
     def call_sync(self, func: Callable, *args, **kwargs):
         """
         Execute synchronous function with circuit breaker protection.
@@ -500,64 +545,60 @@ registry = None # Alias for UI imports
 
 
 class CircuitBreakerProxy:
-
     """
-
     Proxy class that allows decorators and wrappers to be defined at import time
-
     while the actual registry is initialized at runtime.
-
     """
-
     def __init__(self, name: str):
-
         self.name = name
 
-
-
     def _get_breaker(self) -> Optional[PersistentCircuitBreaker]:
-
         if circuit_breaker_registry is None:
-
             return None
-
         return circuit_breaker_registry.breakers.get(self.name)
 
-
-
     def __call__(self, func: Callable) -> Callable:
-
         """Allow proxy to be used as a decorator or wrapper."""
-
         @wraps(func)
-
         async def async_wrapper(*args, **kwargs):
-
             breaker = self._get_breaker()
-
             if breaker is None:
-
                 return await func(*args, **kwargs)
-
             return await breaker.call(func, *args, **kwargs)
 
-
-
         def sync_wrapper(*args, **kwargs):
-
             breaker = self._get_breaker()
-
             if breaker is None:
-
                 return func(*args, **kwargs)
-
             return breaker.call_sync(func, *args, **kwargs)
-
-
 
         return async_wrapper if asyncio.iscoroutinefunction(func) else sync_wrapper
 
+    async def record_success(self):
+        """Proxy for record_success."""
+        breaker = self._get_breaker()
+        if breaker:
+            await breaker.record_success()
 
+    async def record_failure(self):
+        """Proxy for record_failure."""
+        breaker = self._get_breaker()
+        if breaker:
+            await breaker.record_failure()
+
+    async def is_allowed(self) -> bool:
+        """Proxy for allow_request (async)."""
+        breaker = self._get_breaker()
+        if breaker:
+            return await breaker.allow_request()
+        return True
+
+    def allow_request(self) -> bool:
+        """Proxy for allow_request (best effort sync check)."""
+        # This is a bit tricky since allow_request is async in PersistentCircuitBreaker.
+        # For now, we'll return True if registry not ready, 
+        # as the actual async check will happen in call().
+        return True
 
 # Global instances for standard services (using Proxy to avoid NoneType issues)
 

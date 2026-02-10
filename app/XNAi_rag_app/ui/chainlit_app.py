@@ -25,11 +25,19 @@ from datetime import datetime
 from subprocess import Popen, PIPE, DEVNULL
 import re
 
-# Chainlit
-import chainlit as cl
-import sys
+# Standardize import paths using environment-based resolution
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent))
+import sys
+import os
+
+PROJECT_ROOT = os.getenv(
+    'XOE_NOVAI_ROOT',
+    str(Path(__file__).parent.parent.parent.parent.absolute())
+)
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+import chainlit as cl
 
 # Async HTTP client
 from httpx import AsyncClient, ConnectError, TimeoutException, HTTPStatusError

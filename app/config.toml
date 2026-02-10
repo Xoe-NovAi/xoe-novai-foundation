@@ -34,11 +34,11 @@ multi_agent_coordination = false
 # [models] - LLM & Embedding Specifications
 # ============================================================================
 [models]
-llm_path = "/models/smollm2-135m-instruct-q8_0.gguf"
-llm_size_gb = 0.5
-llm_quantization = "Q5_K_XL"
+llm_path = "/models/Qwen3-0.6B-Q6_K.gguf"
+llm_size_gb = 3.0
+llm_quantization = "Q6_K"
 llm_context_window = 2048
-embedding_path = "/embeddings/all-MiniLM-L12-v2.Q8_0.gguf"
+embedding_path = "/embeddings/embeddinggemma-300m-Q6_K.gguf"
 embedding_size_mb = 45
 embedding_dimensions = 384
 embedding_model_name = "sentence-transformers/all-MiniLM-L12-v2"

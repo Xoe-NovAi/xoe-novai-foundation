@@ -97,6 +97,7 @@ from ...core.circuit_breakers import (
     voice_tts_breaker,
     get_circuit_breaker_status
 )
+from .voice_degradation import voice_degradation
 from .voice_recovery import process_voice_with_recovery, VoiceRecoveryConfig
 
 # ============================================================================
@@ -247,56 +248,11 @@ voice_metrics = VoiceMetrics()
 
 
 # ============================================================================
-# Circuit Breaker for Resilience
+# Circuit Breaker for Resilience (Legacy - REPLACED BY core.circuit_breakers)
 # ============================================================================
 
-class CircuitState(str, Enum):
-    CLOSED = "closed"
-    OPEN = "open"
-    HALF_OPEN = "half_open"
-
-
-class VoiceCircuitBreaker:
-    """Circuit breaker pattern for voice operations."""
-    
-    def __init__(self, name: str, failure_threshold: int = 5, recovery_timeout: float = 30.0):
-        self.name = name
-        self.failure_threshold = failure_threshold
-        self.recovery_timeout = recovery_timeout
-        self._state = CircuitState.CLOSED
-        self._failure_count = 0
-        self._success_count = 0
-        self._last_failure_time: Optional[float] = None
-        self._lock = threading.Lock()
-    
-    @property
-    def state(self) -> CircuitState:
-        with self._lock:
-            if self._state == CircuitState.OPEN:
-                if self._last_failure_time and (time.time() - self._last_failure_time) > self.recovery_timeout:
-                    self._state = CircuitState.HALF_OPEN
-                    self._success_count = 0
-            return self._state
-    
-    def allow_request(self) -> bool:
-        return self.state != CircuitState.OPEN
-    
-    def record_success(self):
-        with self._lock:
-            if self._state == CircuitState.HALF_OPEN:
-                self._success_count += 1
-                if self._success_count >= 3:
-                    self._state = CircuitState.CLOSED
-                    self._failure_count = 0
-            voice_metrics.update_circuit_breaker(self.name, open=False)
-    
-    def record_failure(self):
-        with self._lock:
-            self._failure_count += 1
-            self._last_failure_time = time.time()
-            if self._failure_count >= self.failure_threshold:
-                self._state = CircuitState.OPEN
-            voice_metrics.update_circuit_breaker(self.name, open=True)
+# The legacy VoiceCircuitBreaker class has been removed.
+# This module now uses the centralized PersistentCircuitBreaker from core.circuit_breakers.
 
 
 # ============================================================================
@@ -1426,9 +1382,13 @@ class VoiceInterface:
         if self.stt_model is None:
             return "[STT Model not loaded]", 0.0
         
-        # Check circuit breaker with safety
-        if self.stt_circuit and not self.stt_circuit.allow_request():
-            return "[STT temporarily unavailable]", 0.0
+        # Check circuit breaker with safety (Async)
+        if self.stt_circuit:
+            if hasattr(self.stt_circuit, 'is_allowed'):
+                if not await self.stt_circuit.is_allowed():
+                    return "[STT temporarily unavailable]", 0.0
+            elif not self.stt_circuit.allow_request():
+                return "[STT temporarily unavailable]", 0.0
 
         t0 = time.time()
         audio_file = io.BytesIO(audio_data)
@@ -1453,7 +1413,10 @@ class VoiceInterface:
             latency = time.time() - t0
             
             if self.stt_circuit:
-                self.stt_circuit.record_success()
+                if asyncio.iscoroutinefunction(self.stt_circuit.record_success):
+                    await self.stt_circuit.record_success()
+                else:
+                    self.stt_circuit.record_success()
             
             if 'voice_metrics' in globals() and voice_metrics:
                 voice_metrics.record_stt_request("success", self.stt_provider_name, latency)
@@ -1461,14 +1424,20 @@ class VoiceInterface:
         except asyncio.TimeoutError:
             logger.error(f"STT transcription timed out after {self.config.stt_timeout_seconds}s")
             if self.stt_circuit:
-                self.stt_circuit.record_failure()
+                if asyncio.iscoroutinefunction(self.stt_circuit.record_failure):
+                    await self.stt_circuit.record_failure()
+                else:
+                    self.stt_circuit.record_failure()
             if 'voice_metrics' in globals() and voice_metrics:
                 voice_metrics.record_stt_request("timeout", self.stt_provider_name, 0)
             return "[Transcription timeout]", 0.0
         except Exception as e:
             logger.error(f"Transcription failed: {e}")
             if self.stt_circuit:
-                self.stt_circuit.record_failure()
+                if asyncio.iscoroutinefunction(self.stt_circuit.record_failure):
+                    await self.stt_circuit.record_failure()
+                else:
+                    self.stt_circuit.record_failure()
             if 'voice_metrics' in globals() and voice_metrics:
                 voice_metrics.record_stt_request("error", self.stt_provider_name, 0)
             return "[Transcription error]", 0.0
@@ -1531,10 +1500,15 @@ class VoiceInterface:
         # Reset interrupt flag at start of synthesis
         self._interrupt_flag = False
         
-        # Safety check for circuit breaker
-        if self.tts_circuit and not self.tts_circuit.allow_request():
-            logger.warning("TTS circuit breaker open - request rejected")
-            return None
+        # Safety check for circuit breaker (Async)
+        if self.tts_circuit:
+            if hasattr(self.tts_circuit, 'is_allowed'):
+                if not await self.tts_circuit.is_allowed():
+                    logger.warning("TTS circuit breaker open - request rejected")
+                    return None
+            elif not self.tts_circuit.allow_request():
+                logger.warning("TTS circuit breaker open - request rejected")
+                return None
 
         t0 = time.time()
         audio_bytes = None
@@ -1586,7 +1560,10 @@ class VoiceInterface:
             
             latency = time.time() - t0
             if self.tts_circuit:
-                self.tts_circuit.record_success()
+                if asyncio.iscoroutinefunction(self.tts_circuit.record_success):
+                    await self.tts_circuit.record_success()
+                else:
+                    self.tts_circuit.record_success()
             
             # Safety check for metrics
             if 'voice_metrics' in globals() and voice_metrics:
@@ -1625,7 +1602,10 @@ class VoiceInterface:
         except Exception as e:
             logger.error(f"TTS failed: {e}")
             if self.tts_circuit:
-                self.tts_circuit.record_failure()
+                if asyncio.iscoroutinefunction(self.tts_circuit.record_failure):
+                    await self.tts_circuit.record_failure()
+                else:
+                    self.tts_circuit.record_failure()
             if 'voice_metrics' in globals() and voice_metrics:
                 voice_metrics.record_tts_request("error", self.tts_provider_name, 0)
             return None

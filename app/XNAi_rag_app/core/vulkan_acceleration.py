@@ -21,8 +21,13 @@ from pathlib import Path
 from dataclasses import dataclass
 from contextlib import contextmanager
 
-# Add app to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
+# Standardize import paths using environment-based resolution
+PROJECT_ROOT = os.getenv(
+    'XOE_NOVAI_ROOT',
+    str(Path(__file__).parent.parent.parent.parent.absolute())
+)
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 # Import Vulkan memory manager
 from scripts.vulkan_memory_manager import VulkanMemoryManager, VulkanMemoryError

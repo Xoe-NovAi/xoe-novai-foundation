@@ -253,6 +253,10 @@ models/
 embeddings/
 _archive/
 ekb-exports/
+.venv*/
+*.old
+*.backup
+*.bak
 # docs/_meta/  # Uncommented to track documentation audit files
 
 # Devops specific
@@ -273,3 +277,4 @@ _backups/
 *.backup
 internal_docs/projects/README.md
 memory_bank/GROK_CONTEXT_PACK_v1.5.0.md
+*.AppImage
