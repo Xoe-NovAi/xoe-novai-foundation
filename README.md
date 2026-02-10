@@ -38,6 +38,8 @@ This is an early release. Bugs, incomplete features, and breaking changes should
 Core flows (RAG retrieval, voice UI, basic ingestion) are stable and performant on target hardware.  
 Higher-order features (Redis reconnection, full worker fault tolerance, observability) are still maturing.
 
+**Hardware Tuning Note**: Currently optimized for AMD Ryzen 5700U (Zen 2) and Linux wheels only — leverages OPENBLAS_CORETYPE=ZEN, even/odd core steering, and zram for 8–16 GB setups. Expansion to Apple Silicon, Intel, and SBCs is planned; contributions for specific hardware tunings are highly welcome.
+
 ### Known Current Limitations
 | Issue | Status | Workaround |
 |-------|--------|------------|
@@ -61,9 +63,8 @@ cd xoe-novai-foundation
 
 # 2. Secrets (change these!)
 cp .env.example .env
-# Edit .env with your passwords
 echo "changeme123" > secrets/redis_password.txt
-echo "your-secure-password" > secrets/vikunja_db_password.txt
+echo "Wj1tpswLowpHHLBb+JuH+/qH1uPGB5W+kDhJRg2txxE=" > secrets/vikunja_db_password.txt
 
 # 3. Launch core stack
 podman compose up -d --build rag chainlit redis mkdocs caddy
@@ -80,36 +81,7 @@ podman compose -f docker-compose.vikunja.yml up -d
 
 <br>
 
-## 💻 System Requirements
-
-### Target Hardware (Sweet Spot)
-- **CPU**: AMD Ryzen 5700U or equivalent (8C/16T, Zen 2)
-- **RAM**: 8 GB physical + 12 GB Zram (compressed swap)
-- **Storage**: SSD with 20 GB free
-- **OS**: Linux (rootless Podman tested on Fedora/Ubuntu)
-
-### Resource Allocation
-| Service | Memory | CPU | Notes |
-|---------|--------|-----|-------|
-| RAG API | 4 GB | 2.0 cores | Even cores (0,2,4,6...) |
-| Chainlit UI | 2 GB | 1.0 cores | Odd cores (1,3,5,7...) |
-| PostgreSQL | 512 MB | 0.5 cores | Optimized for <200MB |
-| Redis | 1 GB | 0.5 cores | LRU eviction |
-| Vikunja | 512 MB | 0.5 cores | All-in-one container |
-| Caddy | 128 MB | 0.25 cores | Reverse proxy |
-
-**Total Reserved**: ~7.5 GB (leaves headroom for llama.cpp inference spikes)
-
-### Why Ryzen 5700U?
-This specific APU represents the optimal price/performance sovereignty node:
-- Integrated Radeon graphics (no discrete GPU needed)
-- Low TDP (15-25W) for 24/7 operation
-- Sufficient PCIe bandwidth for NVMe
-- Common in mini-PCs (Beelink SER5 Pro, etc.)
-
-<br>
-
-## 🧩 Core Components
+## Core Components
 
 - **RAG Engine** — FastAPI + llama.cpp inference + hybrid BM25 + FAISS retrieval  
 - **Voice Interface** — Chainlit + WebRTC voice I/O (<300 ms target E2E latency)  
@@ -124,80 +96,25 @@ All pieces are designed for surgical replacement or standalone use.
 
 <br>
 
-## 🛡️ Sovereign Security Trinity Explained
+## Sovereign Differentiation
 
-Every component passes through a **waterfall of proof**:
-
-1. **Syft** — Generates CycloneDX SBOM (Software Bill of Materials)
-2. **Grype** — Precision CVE scanning against vulnerability databases  
-3. **Trivy** — Secret detection and configuration misconfiguration scanning
-
-**Policy**: `configs/security_policy.yaml` enforces zero-telemetry, no external data transmission, and air-gap capability. No cloud APIs. No vendor lock-in. No subscriptions.
-
-<br>
-
-## 📊 Performance Metrics (Verified)
-
-| Metric | Target | Current | Status |
-|--------|--------|---------|--------|
-| Voice Latency E2E | <300 ms | 250 ms | 🟢 Meeting |
-| RAM Footprint (Idle) | <6 GB | 5.2 GB | 🟢 Under |
-| Documentation Build | <15 s | 12 s | 🟢 Fast |
-| Container Startup | <10 s | 8 s | 🟢 Fast |
-| Zero-Telemetry Pass | 100% | 100% | 🟢 Perfect |
-| Modular Integration | <15 min | 10 min | 🟢 Exceeding |
-
-<br>
-
-## 🆚 Sovereign Differentiation
-
-| Feature | Xoe-NovAi Foundation | OpenAI / Claude / Gemini | Typical Local Stacks |
-|---------|----------------------|--------------------------|----------------------|
-| Offline / Air-Gap by Default | ✅ Yes | ❌ No | ⚠️ Partial (often leaky) |
-| Zero Telemetry Guarantee | ✅ Absolute | ❌ No | ⚠️ Usually optional, rarely enforced |
-| Rootless Podman Native | ✅ Yes | N/A | ⚠️ Rare |
-| Built-in Voice UI (<300 ms) | ✅ Yes | ❌ Cloud-dependent | ⚠️ Rare / cloud-only |
-| Hybrid BM25 + Vector RAG | ✅ Yes (FAISS) | ⚠️ Limited | ⚠️ Usually basic vector-only |
-| Integrated PM / Agent Hub | ✅ Yes (Vikunja) | ❌ No | ❌ No |
-| Ma'at-aligned Ethics | ✅ Yes | ❌ No | ❌ No |
-| Hardware Target | ✅ Ryzen 5700U 8GB | ❌ Cloud-only | ⚠️ Often 24+ GB + GPU |
-| Cost Forever | ✅ $0 | ❌ Subscription | ✅ Free but fragmented |
+| Feature                        | Xoe-NovAi Foundation          | OpenAI / Claude / Gemini | Typical Local Stacks (Ollama / LM Studio) |
+|--------------------------------|-------------------------------|---------------------------|--------------------------------------------|
+| Offline / Air-Gap by Default   | Yes                           | No                        | Partial (often leaky)                      |
+| Zero Telemetry Guarantee       | Absolute                      | No                        | Usually optional, rarely enforced          |
+| Rootless Podman Native         | Yes                           | N/A                       | Rare                                       |
+| Built-in Voice UI (<300 ms)    | Yes                           | Cloud-dependent           | Rare / cloud-only                          |
+| Hybrid BM25 + Vector RAG       | Yes (FAISS default)           | Limited customization     | Usually basic vector-only                  |
+| Integrated PM / Agent Hub      | Yes (Vikunja)                 | No                        | No                                         |
+| Ma'at-aligned Ethical Gatekeeping | Yes                        | No                        | No                                         |
+| Hardware Target                | Ryzen 5700U 8–16 GB           | Cloud-only                | Often 24+ GB + discrete GPU                |
+| Cost Forever                   | $0                            | Subscription              | Free but fragmented                        |
 
 Xoe-NovAi is built for people who refuse rent-seeking intelligence.
 
 <br>
 
-## 🗺️ Documentation Navigation
-
-Our documentation follows the [Diátaxis framework](https://diataxis.fr/) — organized by how you need to use it:
-
-| Quadrant | Purpose | Key Documents |
-|----------|---------|---------------|
-| **🏁 Getting Started** | First-time setup | [`docs/01-start/quick-start.md`](./docs/01-start/quick-start.md) — 3-command setup |
-| **🚀 Tutorials** | Learning-oriented lessons | [`docs/02-tutorials/sovereign-setup.md`](./docs/02-tutorials/sovereign-setup.md) — Full sovereign deployment |
-| | | [`docs/02-tutorials/voice-setup.md`](./docs/02-tutorials/voice-setup.md) — Voice interface setup |
-| **🛠️ How-to Guides** | Task-oriented instructions | [`docs/03-how-to-guides/dev-workflow.md`](./docs/03-how-to-guides/dev-workflow.md) — Daily development |
-| | | [`docs/03-how-to-guides/pr-readiness-workflow.md`](./docs/03-how-to-guides/pr-readiness-workflow.md) — Pre-commit checks |
-| | | [`docs/03-how-to-guides/hardware-tuning/`](./docs/03-how-to-guides/hardware-tuning/) — Ryzen/Vulkan optimization |
-| **🧠 Explanation** | Understanding-oriented | [`docs/04-explanation/sovereign-toolkit-philosophy.md`](./docs/04-explanation/sovereign-toolkit-philosophy.md) — Core philosophy |
-| | | [`docs/04-explanation/sovereign-entity-architecture.md`](./docs/04-explanation/sovereign-entity-architecture.md) — System design |
-| | | [`docs/04-explanation/security.md`](./docs/04-explanation/security.md) — Security model |
-| **📖 Reference** | Information-oriented | [`docs/03-reference/hardware.md`](./docs/03-reference/hardware.md) — Hardware specs |
-| | | [`docs/03-reference/api.md`](./docs/03-reference/api.md) — API documentation |
-| **🎓 Expert Knowledge** | Deep technical mastery | [`expert-knowledge/`](./expert-knowledge/) — Infrastructure, security, protocols |
-
-### Running the Documentation Site
-```bash
-# Local development server
-podman compose up -d mkdocs
-# Or: mkdocs serve --dev-addr=0.0.0.0:8000
-
-# Access at http://localhost:8008
-```
-
-<br>
-
-## 🚀 Roadmap — Near & Mid-Term (2026 Q1–Q3)
+## Roadmap — Near & Mid-Term (2026 Q1–Q3)
 
 - Re-enable & harden Vikunja + Redis reconnection logic  
 - **Qdrant** optional vector backend (payload filtering, distributed mode)  
@@ -216,7 +133,7 @@ See [GitHub Issues](https://github.com/Xoe-NovAi/xoe-novai-foundation/issues) fo
 
 Xoe-NovAi was born from one non-programmer's refusal to rent their mind forever. 
 
-**100% of the documentation and all of the code** was written by AI assistants (multi-model swarm: Cline variants, Grok MC, Gemini, Claude) under human vision, direction, architecture decisions, Ma'at alignment checks, and relentless iteration.
+**100% of the documentation and all of the code** was written by free tier AI assistants (multi-model swarm: Cline variants, Grok MC, Gemini, Claude) under human vision (non-programmer), direction, architecture decisions, Ma'at alignment checks, and relentless iteration.
 
 This is **AI-human symbiosis under Ma'at** — demonstrating that sovereignty doesn't require elite coding skills, just persistence, clear intent, and the right tools.
 
@@ -236,6 +153,7 @@ High-impact starters:
 - New ingestion connectors (Arxiv, PubMed, custom APIs)
 - Chainlit theme / voice UX polish
 - Additional hardening (seccomp, apparmor, capability drops)
+- Hardware-specific optimizations (Apple Silicon, Intel, SBC ports)
 
 Look for `good first issue` and `help wanted` labels in [GitHub Issues](https://github.com/Xoe-NovAi/xoe-novai-foundation/issues).  
 See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for our full contribution guidelines.
