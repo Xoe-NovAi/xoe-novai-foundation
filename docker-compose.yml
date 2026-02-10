@@ -302,8 +302,9 @@ services:
     user: "${APP_UID:-1001}:${APP_GID:-1001}"
     restart: unless-stopped
     ports:
+      - "8000:8000"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro,Z,U
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro,Z
       - ./logs/caddy:/var/log/caddy:Z
     networks:
       - xnai_network
@@ -321,10 +322,6 @@ networks:
   xnai_network:
     driver: bridge
     name: xnai_network
-
-volumes:
-  # redis_data removed in favor of bind mount
-
 
 secrets:
   redis_password:
