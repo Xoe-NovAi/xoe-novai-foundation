@@ -37,9 +37,10 @@ services:
       VIKUNJA_LOGGER_LEVEL: "info"
       VIKUNJA_MAILER_ENABLED: "false"
       VIKUNJA_REDIS_ENABLED: "true"
-      VIKUNJA_REDIS_HOST: "redis:6379"
-      VIKUNJA_REDIS_DB: "5"
+      VIKUNJA_REDIS_HOST: redis
+      VIKUNJA_REDIS_PORT: "6379"
       VIKUNJA_REDIS_PASSWORD: ${REDIS_PASSWORD}
+      VIKUNJA_REDIS_DB: "5"
     volumes:
       - ./data/vikunja/files:/app/vikunja/files:Z
     tmpfs:

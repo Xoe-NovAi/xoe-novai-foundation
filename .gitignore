@@ -257,6 +257,7 @@ ekb-exports/
 *.old
 *.backup
 *.bak
+db/
 # docs/_meta/  # Uncommented to track documentation audit files
 
 # Devops specific

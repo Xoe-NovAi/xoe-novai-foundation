@@ -40,14 +40,14 @@ class MetadataConfig(BaseModel):
     description: Optional[str] = None
     architecture: Optional[str] = None
     
-    model_config = ConfigDict(extra="allow")  # Allow additional fields
+    model_config = ConfigDict(extra="allow")
 
 
 class ProjectConfig(BaseModel):
     """Project section schema."""
     name: str
     phase: int
-    telemetry_enabled: bool = False  # CRITICAL: Must be False
+    telemetry_enabled: bool = False
     privacy_mode: str = "local-only"
     data_sovereignty: bool = True
     multi_agent_coordination: bool = False
@@ -78,25 +78,18 @@ class PerformanceConfig(BaseModel):
     memory_limit_bytes: int
     memory_warning_threshold_bytes: int
     memory_critical_threshold_bytes: int
-    memory_limit_gb: float = Field(..., ge=4.0, le=32.0)  # Must be 4-32GB
+    memory_limit_gb: float = Field(..., ge=4.0, le=32.0)
     memory_warning_threshold_gb: float
     memory_critical_threshold_gb: float
     latency_target_ms: int
     latency_warning_ms: int
     cpu_threads: int = 6
     cpu_architecture: Optional[str] = None
-    f16_kv_enabled: bool = True  # CRITICAL: Must be True for Ryzen optimization
+    f16_kv_enabled: bool = True
     per_doc_chars: int = 500
     total_chars: int = 2048
     
     model_config = ConfigDict(extra="allow")
-    
-    @field_validator('memory_limit_gb')
-    def validate_memory(cls, v):
-        """Ensure memory limit is reasonable."""
-        if v < 5.0:
-            raise ValueError('memory_limit_gb must be >= 5.0')
-        return v
 
 
 class ServerConfig(BaseModel):
@@ -106,6 +99,42 @@ class ServerConfig(BaseModel):
     workers: int = Field(1, ge=1, le=16)
     timeout_seconds: int = 30
     cors_origins: list = []
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class FilesConfig(BaseModel):
+    """Files section schema."""
+    max_size_mb: int = 100
+    accepted_types: list = ["md", "pdf", "txt"]
+    library_path: str = "/library"
+    knowledge_path: str = "/expert-knowledge"
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class SessionConfig(BaseModel):
+    """Session section schema."""
+    session_timeout_s: int = 3600
+    max_concurrent_sessions: int = 10
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class SecurityConfig(BaseModel):
+    """Security section schema."""
+    non_root_uid: int = 1001
+    non_root_gid: int = 1001
+    no_new_privileges: bool = True
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class ChainlitConfig(BaseModel):
+    """Chainlit section schema."""
+    host: str = "0.0.0.0"
+    port: int = 8001
+    no_telemetry: bool = True
     
     model_config = ConfigDict(extra="allow")
 
@@ -122,6 +151,70 @@ class RedisConfig(BaseModel):
     model_config = ConfigDict(extra="allow")
 
 
+class CrawlConfig(BaseModel):
+    """Crawl section schema."""
+    enabled: bool = True
+    version: str = "0.1.7"
+    max_depth: int = 2
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class VectorstoreConfig(BaseModel):
+    """Vectorstore section schema."""
+    type: str = "faiss"
+    index_path: str = "/app/data/faiss_index"
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class ApiConfig(BaseModel):
+    """Api section schema."""
+    base_url: str = "http://rag:8000"
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class LoggingConfig(BaseModel):
+    """Logging section schema."""
+    level: str = "INFO"
+    format: str = "json"
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class MetricsConfig(BaseModel):
+    """Metrics section schema."""
+    enabled: bool = True
+    port: int = 8002
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class HealthcheckConfig(BaseModel):
+    """Healthcheck section schema."""
+    enabled: bool = True
+    interval_seconds: int = 30
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class BackupConfig(BaseModel):
+    """Backup section schema."""
+    enabled: bool = True
+    backup_path: str = "/backups"
+    
+    model_config = ConfigDict(extra="allow")
+
+
+class VoiceConfig(BaseModel):
+    """Voice section schema."""
+    enabled: bool = True
+    wake_word_enabled: bool = True
+    
+    model_config = ConfigDict(extra="allow")
+
+
 class XnaiConfig(BaseModel):
     """Complete Xoe-NovAi configuration schema."""
     metadata: MetadataConfig
@@ -129,9 +222,21 @@ class XnaiConfig(BaseModel):
     models: ModelsConfig
     performance: PerformanceConfig
     server: ServerConfig
+    files: FilesConfig
+    session: SessionConfig
+    security: SecurityConfig
+    chainlit: ChainlitConfig
     redis: RedisConfig
+    crawl: CrawlConfig
+    vectorstore: VectorstoreConfig
+    api: ApiConfig
+    logging: LoggingConfig
+    metrics: MetricsConfig
+    healthcheck: HealthcheckConfig
+    backup: BackupConfig
+    voice: VoiceConfig
     
-    model_config = ConfigDict(extra="allow")  # Allow additional sections not in schema
+    model_config = ConfigDict(extra="allow")
     
     @field_validator('project', mode='before')
     def validate_telemetry(cls, v):

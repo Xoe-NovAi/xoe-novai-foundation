@@ -1,0 +1,50 @@
+# Xoe-NovAi Consolidated Requirements (Top-level)
+# Use pip-compile to generate requirements.txt
+
+# Base
+pydantic>=2.0.0
+pydantic-settings
+python-dotenv
+redis
+tenacity
+json-log-formatter
+bcrypt
+pyjwt
+cryptography
+sqlite-utils
+orjson
+psutil
+toml
+pyyaml
+
+# API
+fastapi
+uvicorn
+uvloop
+langchain
+langchain-community
+faiss-cpu
+rank-bm25
+aiobreaker
+pybreaker
+opentelemetry-sdk
+opentelemetry-exporter-prometheus
+opentelemetry-instrumentation
+opentelemetry-instrumentation-fastapi
+
+# UI
+chainlit==2.8.5
+faster-whisper
+piper-tts
+onnxruntime
+pyttsx3
+numpy
+
+# Crawler
+crawl4ai
+playwright
+beautifulsoup4
+nltk
+tiktoken
+litellm
+openai

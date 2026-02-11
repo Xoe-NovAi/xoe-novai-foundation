@@ -25,6 +25,21 @@ from pathlib import Path
 from logging.handlers import RotatingFileHandler
 from typing import Dict, Any, Optional
 
+# Try to import OpenTelemetry for trace context
+try:
+    from opentelemetry import trace
+    OTEL_AVAILABLE = True
+except ImportError:
+    OTEL_AVAILABLE = False
+
+# ============================================================================
+# LOGGING LEVELS
+# ============================================================================
+
+# Define custom logging levels
+TRACE = 5
+VERBOSE = 15
+
 # JSON formatter
 try:
     from json_log_formatter import JSONFormatter
@@ -84,6 +99,16 @@ class XNAiJSONFormatter(JSONFormatter):
             "line": record.lineno,
             "message": filtered_message,
         }
+
+        # Add trace context if available
+        if OTEL_AVAILABLE:
+            try:
+                span = trace.get_current_span()
+                if span and span.get_span_context().is_valid:
+                    log_entry["trace_id"] = format(span.get_span_context().trace_id, '032x')
+                    log_entry["span_id"] = format(span.get_span_context().span_id, '016x')
+            except Exception:
+                pass
 
         # Add stack version
         try:
@@ -279,6 +304,38 @@ class PerformanceLogger:
                 "target_rate": CONFIG.get('performance', {}).get('crawl_rate_target', 50),
             }
         )
+
+# ============================================================================
+# CUSTOM LOGGING LEVELS
+# ============================================================================
+
+def add_custom_logging_levels():
+    """
+    Add custom logging levels to the logging module.
+    """
+    logging.addLevelName(TRACE, "TRACE")
+    logging.addLevelName(VERBOSE, "VERBOSE")
+
+def trace_log(self, message, *args, **kwargs):
+    """
+    Log a message at the TRACE level.
+    """
+    if self.isEnabledFor(TRACE):
+        self._log(TRACE, message, args, **kwargs)
+
+def verbose_log(self, message, *args, **kwargs):
+    """
+    Log a message at the VERBOSE level.
+    """
+    if self.isEnabledFor(VERBOSE):
+        self._log(VERBOSE, message, args, **kwargs)
+
+# Add custom methods to Logger class
+logging.Logger.trace = trace_log
+logging.Logger.verbose = verbose_log
+
+# Initialize custom logging levels
+add_custom_logging_levels()
 
 # ============================================================================
 # SETUP FUNCTIONS
