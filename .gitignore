@@ -189,7 +189,7 @@ jspm_packages/
 .pnp.*
 
 # Custom Xoe-NovAi ignores
-internal_docs/
+# internal_docs/ - NOW TRACKED (documentation source is committed)
 .gemini/
 .geminiignore
 .chainlit/
@@ -279,3 +279,4 @@ _backups/
 internal_docs/projects/README.md
 memory_bank/GROK_CONTEXT_PACK_v1.5.0.md
 *.AppImage
+site-internal/

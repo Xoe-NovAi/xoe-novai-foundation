@@ -1,0 +1,110 @@
+[
+  {
+    "source": "docs/handover-readiness-report.md",
+    "target": "docs-new/how-to/performance/handover-readiness-report.md",
+    "backup": "docs-backup-20260120-091926/handover-readiness-report.md",
+    "checksum": "201c22564abbfb388e8856fba516a336dfa3b074a30050fb090a3d2e0a92a582",
+    "timestamp": "2026-01-20T09:19:26.196949",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/updated_mkdocs_research_request.md",
+    "target": "docs-new/how-to/rag-architecture/updated_mkdocs_research_request.md",
+    "backup": "docs-backup-20260120-091926/updated_mkdocs_research_request.md",
+    "checksum": "e867f1a231d580fa33c32943a68734d172332b2b8b0455b3db027f348ffbf8b4",
+    "timestamp": "2026-01-20T09:19:26.208537",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/index.md",
+    "target": "docs-new/how-to/voice-ai/index.md",
+    "backup": "docs-backup-20260120-091926/index.md",
+    "checksum": "c2ea9d7206e0a8bf77efa58c976fb74baed3784ca60c909142a1f0efbd5f2da7",
+    "timestamp": "2026-01-20T09:19:26.217646",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/link-repair-report.md",
+    "target": "docs-new/reference/general/link-repair-report.md",
+    "backup": "docs-backup-20260120-091926/link-repair-report.md",
+    "checksum": "045e62bd8e1c102e078c65c86bf055755114bf57d789c52cac1c56c6c9b13622",
+    "timestamp": "2026-01-20T09:19:26.225505",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/CHAINLIT_DOWNGRADE_ANALYSIS.md",
+    "target": "docs-new/how-to/voice-ai/CHAINLIT_DOWNGRADE_ANALYSIS.md",
+    "backup": "docs-backup-20260120-091926/CHAINLIT_DOWNGRADE_ANALYSIS.md",
+    "checksum": "3164fa53206188cdb0ff5d1215d605dbe4bb85dbb786d6ffbe5950f3147f3017",
+    "timestamp": "2026-01-20T09:19:26.241154",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/cline-session-onboarding.md",
+    "target": "docs-new/how-to/performance/cline-session-onboarding.md",
+    "backup": "docs-backup-20260120-091926/cline-session-onboarding.md",
+    "checksum": "40bda8b7ff5e58e1d26d9cdad75935fbb759d7d03a51c4a3468ed8df7eb683f0",
+    "timestamp": "2026-01-20T09:19:26.252350",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/incoming-integration-summary.md",
+    "target": "docs-new/how-to/voice-ai/incoming-integration-summary.md",
+    "backup": "docs-backup-20260120-091926/incoming-integration-summary.md",
+    "checksum": "83fb374ad981b1e42bc58a81db5ac69073f189cd10143cfcaeb1a747bb3ea615",
+    "timestamp": "2026-01-20T09:19:26.261683",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/README.md",
+    "target": "docs-new/how-to/voice-ai/README.md",
+    "backup": "docs-backup-20260120-091926/README.md",
+    "checksum": "ae8e0f81b5e4fcc5cfbffb0211cb0c8083544745072fc9e456f2dcbadc9b548e",
+    "timestamp": "2026-01-20T09:19:26.269658",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/DR-research-request-from -Cline - 01_13_2026.md",
+    "target": "docs-new/reference/rag-architecture/DR-research-request-from -Cline - 01_13_2026.md",
+    "backup": "docs-backup-20260120-091926/DR-research-request-from -Cline - 01_13_2026.md",
+    "checksum": "be6936e8f89fc629980462bffd79e63fdce8f7d71233eed141042be3a58ff126",
+    "timestamp": "2026-01-20T09:19:26.276734",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/DOCUMENTATION_MAINTENANCE_INDEX.md",
+    "target": "docs-new/reference/rag-architecture/DOCUMENTATION_MAINTENANCE_INDEX.md",
+    "backup": "docs-backup-20260120-091926/DOCUMENTATION_MAINTENANCE_INDEX.md",
+    "checksum": "289f0f87d7f93fe9a9d26c6041c89f9b0a9b27dd9dd75f994597fe49fda43746",
+    "timestamp": "2026-01-20T09:19:26.286878",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/voice-debug-mode.md",
+    "target": "docs-new/reference/voice-ai/voice-debug-mode.md",
+    "backup": "docs-backup-20260120-091926/voice-debug-mode.md",
+    "checksum": "eabaca91dc1aadd16d933ab94dc11a02b389f0875db0cbe35390ee23ae9425d4",
+    "timestamp": "2026-01-20T09:19:26.297624",
+    "status": "completed",
+    "error_message": null
+  },
+  {
+    "source": "docs/classification-report.md",
+    "target": "docs-new/reference/library-curation/classification-report.md",
+    "backup": "docs-backup-20260120-091926/classification-report.md",
+    "checksum": "147ce0e546f2772cb810c5bde333a7ff091bf249127fb185cec6458af7052567",
+    "timestamp": "2026-01-20T09:19:26.312178",
+    "status": "completed",
+    "error_message": null
+  }
+]

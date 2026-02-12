@@ -1,0 +1,1341 @@
+{
+  "metadata": {
+    "project": "Xoe-NovAi",
+    "version": "v0.1.0-alpha Voice Integration",
+    "generated": "2026-01-27 13:03:58",
+    "project_root": "/home/arcana-novai/Documents/Xoe-NovAi",
+    "total_files": 188
+  },
+  "files": [
+    {
+      "path": ".dockerignore",
+      "type": "ignore",
+      "size_bytes": 631,
+      "lines": 52,
+      "checksum": "8fed5874b58698155618327af24dd3e9"
+    },
+    {
+      "path": ".env",
+      "type": "environment",
+      "size_bytes": 974,
+      "lines": 45,
+      "checksum": "567c7960a970a9b11684221e95df6ca5"
+    },
+    {
+      "path": ".env.example",
+      "type": "environment",
+      "size_bytes": 960,
+      "lines": 35,
+      "checksum": "265e0c1a1b9614cbf92b478a2ea8d818"
+    },
+    {
+      "path": ".gitignore",
+      "type": "ignore",
+      "size_bytes": 3617,
+      "lines": 163,
+      "checksum": "dad55b524f5097f04216d1c5da6c2af8"
+    },
+    {
+      "path": "Dockerfile.chainlit",
+      "type": "dockerfile",
+      "size_bytes": 2390,
+      "lines": 58,
+      "checksum": "9184a00a7c08d7956726337b150a8c6f"
+    },
+    {
+      "path": "Dockerfile.crawl",
+      "type": "dockerfile",
+      "size_bytes": 1513,
+      "lines": 40,
+      "checksum": "04727f68363ce3560c1382ad177bea61"
+    },
+    {
+      "path": "Makefile",
+      "type": "makefile",
+      "size_bytes": 84164,
+      "lines": 1947,
+      "checksum": "cf0614c7e530b135e3180fda00b0b3b1"
+    },
+    {
+      "path": "app/XNAi_rag_app/__init__.py",
+      "type": "python",
+      "size_bytes": 1166,
+      "lines": 41,
+      "checksum": "5913a09c7f3b41a6f21cb171aa300721"
+    },
+    {
+      "path": "app/XNAi_rag_app/api/__init__.py",
+      "type": "python",
+      "size_bytes": 0,
+      "lines": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "path": "app/XNAi_rag_app/api/api_docs.py",
+      "type": "python",
+      "size_bytes": 19126,
+      "lines": 541,
+      "checksum": "cabef7ab6795284207d60e65e001a74f"
+    },
+    {
+      "path": "app/XNAi_rag_app/api/entrypoint.py",
+      "type": "python",
+      "size_bytes": 39726,
+      "lines": 1155,
+      "checksum": "6362d5f39a1b1d31507472ce08400c3f"
+    },
+    {
+      "path": "app/XNAi_rag_app/api/healthcheck.py",
+      "type": "python",
+      "size_bytes": 25559,
+      "lines": 771,
+      "checksum": "654f8e456371660d92e493594272dad3"
+    },
+    {
+      "path": "app/XNAi_rag_app/api/main.py",
+      "type": "python",
+      "size_bytes": 244,
+      "lines": 9,
+      "checksum": "ac7f9a84eb21dce18756c66e75a8e085"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/__init__.py",
+      "type": "python",
+      "size_bytes": 0,
+      "lines": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/async_patterns.py",
+      "type": "python",
+      "size_bytes": 13065,
+      "lines": 357,
+      "checksum": "1273c65eee6a6de0efcb2052afcda125"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/awq_quantizer.py",
+      "type": "python",
+      "size_bytes": 33580,
+      "lines": 857,
+      "checksum": "dc97f498f87f84458228db3158fceab4"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/circuit_breakers.py",
+      "type": "python",
+      "size_bytes": 20081,
+      "lines": 649,
+      "checksum": "69970c098caee5bb149eb93fc61624a0"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/config_loader.py",
+      "type": "python",
+      "size_bytes": 23341,
+      "lines": 717,
+      "checksum": "1cdb6ec035c6cbdb3d19bfd99ddaaf8e"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/dependencies.py",
+      "type": "python",
+      "size_bytes": 43180,
+      "lines": 1183,
+      "checksum": "f779d254eadd8351337368056ec9e158"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/dynamic_precision.py",
+      "type": "python",
+      "size_bytes": 24536,
+      "lines": 627,
+      "checksum": "75053bbbcb005bd7d270f31001fe48da"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/iam_service.py",
+      "type": "python",
+      "size_bytes": 27084,
+      "lines": 751,
+      "checksum": "8ef383448b755c5e6bf263eebdb311bf"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/logging_config.py",
+      "type": "python",
+      "size_bytes": 18445,
+      "lines": 556,
+      "checksum": "ec488fa48bd0b333a1371356f77fc0cd"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/maat_guardrails.py",
+      "type": "python",
+      "size_bytes": 1728,
+      "lines": 52,
+      "checksum": "63c15437bdcfc87bc815c0ab75cf4a11"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/memory_bank_integration.py",
+      "type": "python",
+      "size_bytes": 2904,
+      "lines": 72,
+      "checksum": "4a671bcba9bb0c049bda1dd23e0a74b8"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/metrics.py",
+      "type": "python",
+      "size_bytes": 38811,
+      "lines": 1303,
+      "checksum": "809fad172a812bf46a95665f927114d6"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/observability.py",
+      "type": "python",
+      "size_bytes": 11881,
+      "lines": 304,
+      "checksum": "890bc424fac969f9a939568f2820360c"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/verify_imports.py",
+      "type": "python",
+      "size_bytes": 7367,
+      "lines": 209,
+      "checksum": "f845fd603189705acd4b1a9c6f93a862"
+    },
+    {
+      "path": "app/XNAi_rag_app/core/vulkan_acceleration.py",
+      "type": "python",
+      "size_bytes": 26827,
+      "lines": 685,
+      "checksum": "4f29d49252004f782da2df2c1aee9ae3"
+    },
+    {
+      "path": "app/XNAi_rag_app/schemas/__init__.py",
+      "type": "python",
+      "size_bytes": 0,
+      "lines": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/__init__.py",
+      "type": "python",
+      "size_bytes": 0,
+      "lines": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/crawler_curation.py",
+      "type": "python",
+      "size_bytes": 22813,
+      "lines": 675,
+      "checksum": "5e1d19430460b26b1150eb11daebd800"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/ingest_library.py",
+      "type": "python",
+      "size_bytes": 66566,
+      "lines": 1683,
+      "checksum": "66c0f3d63ab7417f222517e5f9fe4d43"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/library_api_integrations.py",
+      "type": "python",
+      "size_bytes": 97579,
+      "lines": 2415,
+      "checksum": "b42b9e524bce85c4d95015bed469640d"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/rag/__init__.py",
+      "type": "python",
+      "size_bytes": 0,
+      "lines": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/rag/rag_service.py",
+      "type": "python",
+      "size_bytes": 3492,
+      "lines": 96,
+      "checksum": "a2461c836099af16fa32014735e2371f"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/rag/retrievers.py",
+      "type": "python",
+      "size_bytes": 16478,
+      "lines": 443,
+      "checksum": "46b295b0c5b3919f175b67168e48e679"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/research_agent.py",
+      "type": "python",
+      "size_bytes": 27076,
+      "lines": 723,
+      "checksum": "ca7cee852b998b06ccf9a556aff15736"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/voice/__init__.py",
+      "type": "python",
+      "size_bytes": 0,
+      "lines": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/voice/voice_interface.py",
+      "type": "python",
+      "size_bytes": 70737,
+      "lines": 1876,
+      "checksum": "040b7dfab6da2a43d4605c6fa23bbee1"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/voice_command_handler.py",
+      "type": "python",
+      "size_bytes": 20177,
+      "lines": 586,
+      "checksum": "e5162c278b80e2fea04664683f088c3d"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/voice_degradation.py",
+      "type": "python",
+      "size_bytes": 18169,
+      "lines": 499,
+      "checksum": "aa14df3afefdbe214885e06f0f8be13e"
+    },
+    {
+      "path": "app/XNAi_rag_app/services/voice_recovery.py",
+      "type": "python",
+      "size_bytes": 10420,
+      "lines": 273,
+      "checksum": "2014d2a99954309dde514a317a79bbaa"
+    },
+    {
+      "path": "app/XNAi_rag_app/ui/__init__.py",
+      "type": "python",
+      "size_bytes": 0,
+      "lines": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "path": "app/XNAi_rag_app/ui/chainlit_app.py",
+      "type": "python",
+      "size_bytes": 25000,
+      "lines": 713,
+      "checksum": "a959c1dff57eec35d53efc9f317643a5"
+    },
+    {
+      "path": "app/XNAi_rag_app/ui/chainlit_app_voice.py",
+      "type": "python",
+      "size_bytes": 30726,
+      "lines": 776,
+      "checksum": "d7c5a0a219a8e524b398fc3dabfa0a28"
+    },
+    {
+      "path": "app/XNAi_rag_app/ui/chainlit_curator_interface.py",
+      "type": "python",
+      "size_bytes": 11107,
+      "lines": 314,
+      "checksum": "3a8b4c41cd4f6d5db5485a730265f9e1"
+    },
+    {
+      "path": "app/XNAi_rag_app/workers/__init__.py",
+      "type": "python",
+      "size_bytes": 0,
+      "lines": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "path": "app/XNAi_rag_app/workers/crawl.py",
+      "type": "python",
+      "size_bytes": 42715,
+      "lines": 1218,
+      "checksum": "5e9ba7a33cceb0e153138cbd46d430ac"
+    },
+    {
+      "path": "app/XNAi_rag_app/workers/curation_worker.py",
+      "type": "python",
+      "size_bytes": 3534,
+      "lines": 112,
+      "checksum": "b5af23a91e55cc5491a66e316c416d8a"
+    },
+    {
+      "path": "config.toml",
+      "type": "toml",
+      "size_bytes": 13452,
+      "lines": 415,
+      "checksum": "8213a07cfd75e707ffacf30280c649dd"
+    },
+    {
+      "path": "docker-compose.yml",
+      "type": "docker-compose",
+      "size_bytes": 9443,
+      "lines": 308,
+      "checksum": "e105fb5a392dbb7476e5427e280bdf4c"
+    },
+    {
+      "path": "requirements-api.txt",
+      "type": "text",
+      "size_bytes": 9182,
+      "lines": 412,
+      "checksum": "ce15ca81dccdf088b99cedcccd6bc133"
+    },
+    {
+      "path": "requirements-chainlit.txt",
+      "type": "text",
+      "size_bytes": 22866,
+      "lines": 827,
+      "checksum": "064dc833d18715462350be9d2ebb78c1"
+    },
+    {
+      "path": "requirements-crawl.txt",
+      "type": "text",
+      "size_bytes": 8676,
+      "lines": 445,
+      "checksum": "c705537224b025d2b453d13253ee6056"
+    },
+    {
+      "path": "requirements-curation_worker.txt",
+      "type": "text",
+      "size_bytes": 1446,
+      "lines": 59,
+      "checksum": "976ccd4357fcdbd1ef2c71ecb15e8d74"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/analyze-content-structure.sh",
+      "type": "shell",
+      "size_bytes": 3637,
+      "lines": 114,
+      "checksum": "f46b53f56099d71edddefa84150a6e83"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/analyze_mkdocs_warnings.py",
+      "type": "python",
+      "size_bytes": 5924,
+      "lines": 173,
+      "checksum": "f77c9feb9cfb16c6bcd51259faba482d"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/atomic_migrate.py",
+      "type": "python",
+      "size_bytes": 20121,
+      "lines": 552,
+      "checksum": "ee011ff01d38a5ed6bbb431969f844f2"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/awq-production-setup.sh",
+      "type": "shell",
+      "size_bytes": 19431,
+      "lines": 633,
+      "checksum": "f05b997c119e6a8cd7f96c3c6ac2c56c"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/benchmark_hardware_metrics.py",
+      "type": "python",
+      "size_bytes": 17696,
+      "lines": 527,
+      "checksum": "74dcc9afc15e3ed4587b4917f48844f9"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/bios-agesa-validation.sh",
+      "type": "shell",
+      "size_bytes": 2640,
+      "lines": 70,
+      "checksum": "a822134025f44cf5e007f56b14ef9271"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/build_docs_with_logging.sh",
+      "type": "shell",
+      "size_bytes": 12655,
+      "lines": 375,
+      "checksum": "9d795e01c8b8a0856084f378c5441334"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/build_logging.sh",
+      "type": "shell",
+      "size_bytes": 5081,
+      "lines": 122,
+      "checksum": "4d81b3ee0aaa023a35aca5d809384722"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/chainlit_app_voice.py",
+      "type": "python",
+      "size_bytes": 464,
+      "lines": 15,
+      "checksum": "cd9a56821365c9a8d1e9305e11ff447d"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/check_pip_tools_compatibility.py",
+      "type": "python",
+      "size_bytes": 12255,
+      "lines": 325,
+      "checksum": "9ea32c2935bc59a7183c9f0679bc6391"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/classify_content.py",
+      "type": "python",
+      "size_bytes": 13346,
+      "lines": 331,
+      "checksum": "1dec47c844ab557a9fc84dc4320a0bab"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/classify_content_robust.py",
+      "type": "python",
+      "size_bytes": 11183,
+      "lines": 298,
+      "checksum": "44673b23b2cba9a01c525cbf30d2a923"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/classify_content_simple.py",
+      "type": "python",
+      "size_bytes": 10768,
+      "lines": 269,
+      "checksum": "0dde84a0e7ad9b8987e967fa05667e2f"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/claude_week4_session_setup.sh",
+      "type": "shell",
+      "size_bytes": 7710,
+      "lines": 203,
+      "checksum": "2f477e1cd3af94ce2831e9458db564c0"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/collect_performance_baseline.py",
+      "type": "python",
+      "size_bytes": 19106,
+      "lines": 483,
+      "checksum": "ead1594680532b236f52f4e5f99d0d96"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/database_integration.py",
+      "type": "python",
+      "size_bytes": 22767,
+      "lines": 615,
+      "checksum": "9e542b354dea13a2ec6f6ee252acf705"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/debug_build.sh",
+      "type": "shell",
+      "size_bytes": 1217,
+      "lines": 53,
+      "checksum": "f13986f0935aac3b17e1b98f31cce26a"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/demo_enterprise_monitoring.py",
+      "type": "python",
+      "size_bytes": 5307,
+      "lines": 149,
+      "checksum": "f31fb3f6714d4050b9b2d0b758cdf94c"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/emergency_recovery.sh",
+      "type": "shell",
+      "size_bytes": 6978,
+      "lines": 274,
+      "checksum": "0f69f38f6d6c677c8442909b3fda820f"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/enforce_python312_environment.sh",
+      "type": "shell",
+      "size_bytes": 5757,
+      "lines": 170,
+      "checksum": "c5788b7e4b66f0fd1e7cbd47cfb5bb71"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/enterprise_circuit_breaker.py",
+      "type": "python",
+      "size_bytes": 32424,
+      "lines": 865,
+      "checksum": "af31339353590d3bc0862afde5edd6d3"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/enterprise_dependency_updater.py",
+      "type": "python",
+      "size_bytes": 25528,
+      "lines": 624,
+      "checksum": "652b0a7470bbcdbecd2779c227b14c42"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/enterprise_monitoring.py",
+      "type": "python",
+      "size_bytes": 32931,
+      "lines": 855,
+      "checksum": "e506e97fe45cc32c260fb2d71b4d8fbe"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/enterprise_security.py",
+      "type": "python",
+      "size_bytes": 40519,
+      "lines": 1087,
+      "checksum": "14326a07a0797f458b73e9ab0b55e9d5"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/faiss_optimizer.py",
+      "type": "python",
+      "size_bytes": 19739,
+      "lines": 573,
+      "checksum": "86a8dc4e866fcc2e6419fd2a30663758"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/generate_api_docs.py",
+      "type": "python",
+      "size_bytes": 14826,
+      "lines": 388,
+      "checksum": "8481282b061da58af562f6f2e549aa79"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/generate_script_catalog.py",
+      "type": "python",
+      "size_bytes": 14536,
+      "lines": 416,
+      "checksum": "6be8e743a74cf4d2e5680b04a187bbc2"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/ingest_from_library.py",
+      "type": "python",
+      "size_bytes": 3214,
+      "lines": 98,
+      "checksum": "b084d601eaa3f4a3ce8557d70c17ec0a"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/install-awq-gpu.sh",
+      "type": "shell",
+      "size_bytes": 3688,
+      "lines": 110,
+      "checksum": "079ad43591a941ff543bd84f901116e8"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/install_mesa_vulkan.sh",
+      "type": "shell",
+      "size_bytes": 12354,
+      "lines": 437,
+      "checksum": "d06c21c2dfa80b07aeea0cf5a93ed0c0"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/kokoro_tts_integration.py",
+      "type": "python",
+      "size_bytes": 14574,
+      "lines": 381,
+      "checksum": "e04e3efc488fa66248c3a150f7047f43"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/migrate_content.py",
+      "type": "python",
+      "size_bytes": 11909,
+      "lines": 330,
+      "checksum": "f1a891be8d5fe8bf10daea8885b0bbaf"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/model_integration.py",
+      "type": "python",
+      "size_bytes": 26989,
+      "lines": 687,
+      "checksum": "736331ba9819868212adef42edf7b420"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/model_optimizer.py",
+      "type": "python",
+      "size_bytes": 27149,
+      "lines": 718,
+      "checksum": "e715c71de3f0f00a1796fac6801998e6"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/network_monitor.py",
+      "type": "python",
+      "size_bytes": 15974,
+      "lines": 388,
+      "checksum": "94d5223e48f5504bda2ab9e65b5d48bf"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/neural-bm25-setup.sh",
+      "type": "shell",
+      "size_bytes": 33806,
+      "lines": 929,
+      "checksum": "4d82844d4d53d2f15a052b839c9825f4"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/plugin_framework.py",
+      "type": "python",
+      "size_bytes": 35111,
+      "lines": 958,
+      "checksum": "4b3df4fe38ec6916fcba6ed06ba0f598"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/prebuild_validate.py",
+      "type": "python",
+      "size_bytes": 2212,
+      "lines": 78,
+      "checksum": "984976d98eb063c1255a31831dd24abb"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/qdrant_agentic_rag.py",
+      "type": "python",
+      "size_bytes": 24700,
+      "lines": 615,
+      "checksum": "cf4cd8a8828585c791b9899048258d6b"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/redis_optimizer.py",
+      "type": "python",
+      "size_bytes": 20715,
+      "lines": 580,
+      "checksum": "9ab169f8db6642b867bc6e3372a5411b"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/regenerate_requirements_py312.sh",
+      "type": "shell",
+      "size_bytes": 5766,
+      "lines": 144,
+      "checksum": "eded23365bc49ff8f52b61d36a2b31f7"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/repair_links.py",
+      "type": "python",
+      "size_bytes": 14255,
+      "lines": 374,
+      "checksum": "7f4e85ca225bc1f56247965e1dc913dc"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/run-integration-tests.sh",
+      "type": "shell",
+      "size_bytes": 29174,
+      "lines": 839,
+      "checksum": "dba39d8d170953c4cccc82a795d4f43e"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/security_audit_week1.py",
+      "type": "python",
+      "size_bytes": 22638,
+      "lines": 584,
+      "checksum": "0de4947bcb6dc023e4d8ec30d92a030c"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/security_baseline_validation.py",
+      "type": "python",
+      "size_bytes": 16406,
+      "lines": 405,
+      "checksum": "e94e15b6142eb48b4bdee4b53a574ab9"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/setup-dev-env.sh",
+      "type": "shell",
+      "size_bytes": 2468,
+      "lines": 99,
+      "checksum": "4b5e4005050afd051caaa5134ff1d3c0"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/setup-prod-secrets.sh",
+      "type": "shell",
+      "size_bytes": 2983,
+      "lines": 99,
+      "checksum": "294f9f8d32650db5771ec1914b75bd89"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/setup_cosign.sh",
+      "type": "shell",
+      "size_bytes": 3621,
+      "lines": 101,
+      "checksum": "cb6ccbe0094933126ad8cdb47ecc1bdd"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/setup_python_env.sh",
+      "type": "shell",
+      "size_bytes": 6395,
+      "lines": 197,
+      "checksum": "a111a2d0bbf8e1888ad76c8b117330f9"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/setup_structured_logging.py",
+      "type": "python",
+      "size_bytes": 4208,
+      "lines": 159,
+      "checksum": "14939a3964ae4098617bcb25d0d56774"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/simple_validation.py",
+      "type": "python",
+      "size_bytes": 2088,
+      "lines": 60,
+      "checksum": "e862561179be48429647cea138df9bf4"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/standalone_monitoring_demo.py",
+      "type": "python",
+      "size_bytes": 9126,
+      "lines": 240,
+      "checksum": "d288c3c971baafd78e59f1f41d65abb5"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/system_integration_tester.py",
+      "type": "python",
+      "size_bytes": 35784,
+      "lines": 936,
+      "checksum": "5c929300b1e534281ced93a72a00a91f"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/test_chainlit_fastapi_compatibility.sh",
+      "type": "shell",
+      "size_bytes": 1213,
+      "lines": 45,
+      "checksum": "0e12ec8bbf177f87f338955b6e7af42e"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/test_python312_compatibility.py",
+      "type": "python",
+      "size_bytes": 14466,
+      "lines": 363,
+      "checksum": "5c8a6ac6f3c046df8d484e3668bd82f6"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/validate_agesa.py",
+      "type": "python",
+      "size_bytes": 22148,
+      "lines": 558,
+      "checksum": "b6e1dbead386142f6458c0704bbae54b"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/validate_migration.py",
+      "type": "python",
+      "size_bytes": 17553,
+      "lines": 470,
+      "checksum": "fbac1475e3adf74383358f935d82f0b5"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/validate_migration_comprehensive.py",
+      "type": "python",
+      "size_bytes": 11126,
+      "lines": 309,
+      "checksum": "9218fa4c4642fb61c7e75ee650ad02ff"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/vulkan_memory_manager.py",
+      "type": "python",
+      "size_bytes": 30227,
+      "lines": 781,
+      "checksum": "9aeeb0e5f498e529bcd73f2abcd78976"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/vulkan_optimizer.py",
+      "type": "python",
+      "size_bytes": 33251,
+      "lines": 821,
+      "checksum": "d372265de9d6d15f605f2d53286a4def"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/vulkan_setup.sh",
+      "type": "shell",
+      "size_bytes": 16269,
+      "lines": 521,
+      "checksum": "64f5b2d9193c2bb6bfe44774130542f7"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/wasm_component_framework.py",
+      "type": "python",
+      "size_bytes": 30035,
+      "lines": 797,
+      "checksum": "46c41c932ad727f7da885d53154d3974"
+    },
+    {
+      "path": "scripts/_archive/scripts_20260127/workflow_orchestrator.py",
+      "type": "python",
+      "size_bytes": 29780,
+      "lines": 809,
+      "checksum": "635ae55cfe0408a0fee7365f3d5ddea1"
+    },
+    {
+      "path": "scripts/apt-cache/deploy-apt-cache-secure.sh",
+      "type": "shell",
+      "size_bytes": 2057,
+      "lines": 58,
+      "checksum": "dc4d44a8cb98274988826de69459cd18"
+    },
+    {
+      "path": "scripts/apt-cache/generate-cache-metrics.sh",
+      "type": "shell",
+      "size_bytes": 1856,
+      "lines": 59,
+      "checksum": "a6ed826e7ad5f1953f0df09798436b1e"
+    },
+    {
+      "path": "scripts/apt-cache/scan-cache-security.sh",
+      "type": "shell",
+      "size_bytes": 1901,
+      "lines": 61,
+      "checksum": "f8085c7b0ef6617d677c4a8707f103a8"
+    },
+    {
+      "path": "scripts/apt-cache/validate-prerequisites.sh",
+      "type": "shell",
+      "size_bytes": 1498,
+      "lines": 38,
+      "checksum": "938b0e7bb6eede89468ebd15b1da721f"
+    },
+    {
+      "path": "scripts/apt-cache/verify-cache-integrity.sh",
+      "type": "shell",
+      "size_bytes": 3120,
+      "lines": 90,
+      "checksum": "b528061c2d164e7ae9e38b3f8e423219"
+    },
+    {
+      "path": "scripts/benchmarking/benchmark-builds-statistical.sh",
+      "type": "shell",
+      "size_bytes": 7816,
+      "lines": 267,
+      "checksum": "cc8208055a616321b0e34fe039554e6f"
+    },
+    {
+      "path": "scripts/benchmarking/detect-build-regression.py",
+      "type": "python",
+      "size_bytes": 4775,
+      "lines": 143,
+      "checksum": "41d295a634aa1cfd0dbe29558a804eb2"
+    },
+    {
+      "path": "scripts/build_tools/build_visualizer.py",
+      "type": "python",
+      "size_bytes": 5898,
+      "lines": 176,
+      "checksum": "0719ffc993fc87b0f1fed761c223b2fe"
+    },
+    {
+      "path": "scripts/build_tools/dependency_tracker.py",
+      "type": "python",
+      "size_bytes": 11527,
+      "lines": 320,
+      "checksum": "c486ff2e5b845dd58e0465bb6972d4ac"
+    },
+    {
+      "path": "scripts/build_tools/enhanced_download_wheelhouse.py",
+      "type": "python",
+      "size_bytes": 6817,
+      "lines": 197,
+      "checksum": "1ece2cf4eae8707f31143f7ea8677f70"
+    },
+    {
+      "path": "scripts/build_tools/scan_requirements.py",
+      "type": "python",
+      "size_bytes": 3056,
+      "lines": 81,
+      "checksum": "d7a73f4dea7ec9e52a22f5281ab60b7d"
+    },
+    {
+      "path": "scripts/build_tracking.py",
+      "type": "python",
+      "size_bytes": 10440,
+      "lines": 282,
+      "checksum": "8ce0ebbe4f98e54487a5d4ab98bbe9df"
+    },
+    {
+      "path": "scripts/clean_wheelhouse_duplicates.sh",
+      "type": "shell",
+      "size_bytes": 10468,
+      "lines": 305,
+      "checksum": "9b22cddd33498f6a6a7f81943d93970c"
+    },
+    {
+      "path": "scripts/curation_worker.py",
+      "type": "python",
+      "size_bytes": 3683,
+      "lines": 106,
+      "checksum": "d2758fb52f02caa1503678fc4cf11672"
+    },
+    {
+      "path": "scripts/db_manager.py",
+      "type": "python",
+      "size_bytes": 2626,
+      "lines": 71,
+      "checksum": "d7c979a466157c63a6e98209641953ff"
+    },
+    {
+      "path": "scripts/dependency_update_system.py",
+      "type": "python",
+      "size_bytes": 34773,
+      "lines": 901,
+      "checksum": "6164b01a9e0fef5f814a17992fa3a3e9"
+    },
+    {
+      "path": "scripts/detect_environment.sh",
+      "type": "shell",
+      "size_bytes": 9016,
+      "lines": 276,
+      "checksum": "b2abd5d3bfe3413031ba9549eeeff969"
+    },
+    {
+      "path": "scripts/dev/run_agent.sh",
+      "type": "shell",
+      "size_bytes": 880,
+      "lines": 22,
+      "checksum": "25f4b2f326756a6563a750951aca320d"
+    },
+    {
+      "path": "scripts/doc_checks.sh",
+      "type": "shell",
+      "size_bytes": 7385,
+      "lines": 227,
+      "checksum": "18b3d5618d5cc77dd9fd1fa89409ed68"
+    },
+    {
+      "path": "scripts/docs-intake/monitor-incoming.py",
+      "type": "python",
+      "size_bytes": 2598,
+      "lines": 84,
+      "checksum": "569d2962b3ef6f425fe405aa31e0d39b"
+    },
+    {
+      "path": "scripts/download_wheelhouse.sh",
+      "type": "shell",
+      "size_bytes": 11702,
+      "lines": 310,
+      "checksum": "1b33bc8b5259324b1eb68684cfaddf32"
+    },
+    {
+      "path": "scripts/enhanced_build_logging.sh",
+      "type": "shell",
+      "size_bytes": 7429,
+      "lines": 199,
+      "checksum": "c94c969f9d69076a0a71db07b233c878"
+    },
+    {
+      "path": "scripts/enterprise_build.sh",
+      "type": "shell",
+      "size_bytes": 37779,
+      "lines": 1126,
+      "checksum": "994a6c7a1a0b9e442d3a86079347dfe5"
+    },
+    {
+      "path": "scripts/freshness_monitor.py",
+      "type": "python",
+      "size_bytes": 1279,
+      "lines": 38,
+      "checksum": "c3c418826b29efad28d9d7d46a530c21"
+    },
+    {
+      "path": "scripts/get_container_logs.sh",
+      "type": "shell",
+      "size_bytes": 7968,
+      "lines": 291,
+      "checksum": "1ac495f6ca8a89b24a547d2acd8d778a"
+    },
+    {
+      "path": "scripts/infra/butler.sh",
+      "type": "shell",
+      "size_bytes": 6609,
+      "lines": 206,
+      "checksum": "e60248b7812cfe9e30ec9c124ea1d202"
+    },
+    {
+      "path": "scripts/ingest_library.py",
+      "type": "python",
+      "size_bytes": 22900,
+      "lines": 563,
+      "checksum": "386b54aa1b19f92cd653bb41856ddda0"
+    },
+    {
+      "path": "scripts/mesa-check.sh",
+      "type": "shell",
+      "size_bytes": 1759,
+      "lines": 48,
+      "checksum": "1b45f7647ec05f7d57a9b648a728678f"
+    },
+    {
+      "path": "scripts/plugins/plugin.py",
+      "type": "python",
+      "size_bytes": 7519,
+      "lines": 194,
+      "checksum": "58cbe4fcf5ed567813e3a30ecfff54fd"
+    },
+    {
+      "path": "scripts/pr_check.py",
+      "type": "python",
+      "size_bytes": 4572,
+      "lines": 122,
+      "checksum": "78b9afef25581b832544870be4383b2e"
+    },
+    {
+      "path": "scripts/preflight_checks.py",
+      "type": "python",
+      "size_bytes": 5086,
+      "lines": 162,
+      "checksum": "12e423e540ce067cb376dd293956a92c"
+    },
+    {
+      "path": "scripts/query_test.py",
+      "type": "python",
+      "size_bytes": 17009,
+      "lines": 537,
+      "checksum": "423898e103e969aefc86fe4b7d9e2b2d"
+    },
+    {
+      "path": "scripts/regenerate_requirements_py312_cached.sh",
+      "type": "shell",
+      "size_bytes": 9954,
+      "lines": 261,
+      "checksum": "e2faafcaa7994cfc4bf11109d8fd9383"
+    },
+    {
+      "path": "scripts/security_audit.py",
+      "type": "python",
+      "size_bytes": 4331,
+      "lines": 113,
+      "checksum": "6e1c97d3b50595fe31babd13e28c43c3"
+    },
+    {
+      "path": "scripts/security_policy.py",
+      "type": "python",
+      "size_bytes": 2131,
+      "lines": 57,
+      "checksum": "505f88f7c43ad63b0bc886496a229014"
+    },
+    {
+      "path": "scripts/security_utils.py",
+      "type": "python",
+      "size_bytes": 5409,
+      "lines": 158,
+      "checksum": "9a135fb429f6028ff1802d68ae26b260"
+    },
+    {
+      "path": "scripts/setup/setup.sh",
+      "type": "shell",
+      "size_bytes": 3885,
+      "lines": 132,
+      "checksum": "5f4fae9931d0198d581aad9e89fd24cc"
+    },
+    {
+      "path": "scripts/setup_permissions.sh",
+      "type": "shell",
+      "size_bytes": 2404,
+      "lines": 85,
+      "checksum": "c9b50e4b4a7270f9d3e121d371b17602"
+    },
+    {
+      "path": "scripts/setup_volumes.sh",
+      "type": "shell",
+      "size_bytes": 4842,
+      "lines": 162,
+      "checksum": "ec1f46962109fe3206678dc299d596e6"
+    },
+    {
+      "path": "scripts/smoke_test.py",
+      "type": "python",
+      "size_bytes": 6192,
+      "lines": 154,
+      "checksum": "a05b7e961cd1f15701dd5d7ecbc03d1c"
+    },
+    {
+      "path": "scripts/socket_resolver.py",
+      "type": "python",
+      "size_bytes": 7823,
+      "lines": 202,
+      "checksum": "2eb816b872c272ac8914920fe7626d24"
+    },
+    {
+      "path": "scripts/stack-cat/stack-cat.sh",
+      "type": "shell",
+      "size_bytes": 36631,
+      "lines": 1214,
+      "checksum": "edd07b8c1c046fc68d4541b2c99ccc5a"
+    },
+    {
+      "path": "scripts/telemetry_audit.py",
+      "type": "python",
+      "size_bytes": 6126,
+      "lines": 171,
+      "checksum": "c03a068a20982aeaf0f35181c3218206"
+    },
+    {
+      "path": "scripts/tests/test_docker_integration.sh",
+      "type": "shell",
+      "size_bytes": 10340,
+      "lines": 325,
+      "checksum": "6cbd21f3d21da1849e7c1bb1620fd0a5"
+    },
+    {
+      "path": "scripts/tests/test_ingestion_demo.py",
+      "type": "python",
+      "size_bytes": 12697,
+      "lines": 396,
+      "checksum": "2ced06ec54f54b6be9dd57784bda168e"
+    },
+    {
+      "path": "scripts/tests/test_voice.py",
+      "type": "python",
+      "size_bytes": 3080,
+      "lines": 90,
+      "checksum": "409c8313a49da10aae583ecf2705593b"
+    },
+    {
+      "path": "scripts/utilities/chainlit_app_voice.py",
+      "type": "python",
+      "size_bytes": 475,
+      "lines": 15,
+      "checksum": "bfb2a92fb65d0964273bd3b0289aa06e"
+    },
+    {
+      "path": "scripts/utilities/voice_interface.py",
+      "type": "python",
+      "size_bytes": 494,
+      "lines": 14,
+      "checksum": "83d09c6ff2799adc697a7710beea709d"
+    },
+    {
+      "path": "scripts/validate_config.py",
+      "type": "python",
+      "size_bytes": 7287,
+      "lines": 175,
+      "checksum": "4aebb37fb34446c38273335f65cbaf14"
+    },
+    {
+      "path": "scripts/validate_wheelhouse.py",
+      "type": "python",
+      "size_bytes": 8733,
+      "lines": 235,
+      "checksum": "64e5160f542099c011ece3eed1693665"
+    },
+    {
+      "path": "scripts/verify_offline_build.sh",
+      "type": "shell",
+      "size_bytes": 5788,
+      "lines": 160,
+      "checksum": "34d417e29a72982c014c5cd6a94fe712"
+    },
+    {
+      "path": "tests/circuit_breaker_load_test.py",
+      "type": "python",
+      "size_bytes": 3145,
+      "lines": 88,
+      "checksum": "f391ec431029522d36074254c4c3a15a"
+    },
+    {
+      "path": "tests/conftest.py",
+      "type": "python",
+      "size_bytes": 12421,
+      "lines": 399,
+      "checksum": "09b89bf635b80a5b20cecaae01287181"
+    },
+    {
+      "path": "tests/integration_test_framework.py",
+      "type": "python",
+      "size_bytes": 20365,
+      "lines": 484,
+      "checksum": "3a433d2257a1678c78aeb136eb682947"
+    },
+    {
+      "path": "tests/test_audit_fixes.py",
+      "type": "python",
+      "size_bytes": 3341,
+      "lines": 108,
+      "checksum": "706c82dc984a76e26d01aa531354eeb6"
+    },
+    {
+      "path": "tests/test_chainlit_upgrade.py",
+      "type": "python",
+      "size_bytes": 6160,
+      "lines": 178,
+      "checksum": "036aee5a3517dedd9ee9ecb00c487d57"
+    },
+    {
+      "path": "tests/test_circuit_breaker_chaos.py",
+      "type": "python",
+      "size_bytes": 8734,
+      "lines": 242,
+      "checksum": "b8e7c68dcfdaabce5c553ebf3308a22b"
+    },
+    {
+      "path": "tests/test_crawl.py",
+      "type": "python",
+      "size_bytes": 13687,
+      "lines": 443,
+      "checksum": "931149778b96ea487fc23c113dcad40f"
+    },
+    {
+      "path": "tests/test_curation_worker.py",
+      "type": "python",
+      "size_bytes": 961,
+      "lines": 36,
+      "checksum": "d96848fc91c05c84c6747680651c2a68"
+    },
+    {
+      "path": "tests/test_fallback_mechanisms.py",
+      "type": "python",
+      "size_bytes": 3002,
+      "lines": 75,
+      "checksum": "7d009abc827d388fc33e10349e4ea10a"
+    },
+    {
+      "path": "tests/test_healthcheck.py",
+      "type": "python",
+      "size_bytes": 15480,
+      "lines": 450,
+      "checksum": "d5db0e4fc7846dfb5cef6211ccc2e4b2"
+    },
+    {
+      "path": "tests/test_integration.py",
+      "type": "python",
+      "size_bytes": 17375,
+      "lines": 574,
+      "checksum": "ffd0f9b3aa92894f4a1de645bf7d53bb"
+    },
+    {
+      "path": "tests/test_metrics.py",
+      "type": "python",
+      "size_bytes": 3374,
+      "lines": 96,
+      "checksum": "34e1ed4a8515491a8d56282564c178ac"
+    },
+    {
+      "path": "tests/test_rag_api_circuit_breaker.py",
+      "type": "python",
+      "size_bytes": 2411,
+      "lines": 60,
+      "checksum": "3cdab912a145bc2cacad4470c2183d3f"
+    },
+    {
+      "path": "tests/test_redis_circuit_breaker.py",
+      "type": "python",
+      "size_bytes": 2507,
+      "lines": 62,
+      "checksum": "91330f8496cbddad862eede6d0f0549a"
+    },
+    {
+      "path": "tests/test_truncation.py",
+      "type": "python",
+      "size_bytes": 8109,
+      "lines": 226,
+      "checksum": "119106f280430f96d9aa8f25fb0a0c72"
+    },
+    {
+      "path": "tests/test_voice.py",
+      "type": "python",
+      "size_bytes": 824,
+      "lines": 38,
+      "checksum": "f6d8dd59e16467c8bb7e69c41693e7d2"
+    },
+    {
+      "path": "tests/test_voice_latency_properties.py",
+      "type": "python",
+      "size_bytes": 13621,
+      "lines": 305,
+      "checksum": "26d6b183f92229f39994156dfaf2b0ef"
+    },
+    {
+      "path": "versions/scripts/build_monitor.py",
+      "type": "python",
+      "size_bytes": 4939,
+      "lines": 154,
+      "checksum": "113ac041fd99582e708671df0842dcb2"
+    },
+    {
+      "path": "versions/scripts/update_versions.py",
+      "type": "python",
+      "size_bytes": 11181,
+      "lines": 234,
+      "checksum": "086057b297b614898ba5fa3b462e1a69"
+    }
+  ],
+  "statistics": {
+    "file_types": {
+      "shell": 43,
+      "toml": 1,
+      "docker-compose": 1,
+      "ignore": 2,
+      "python": 132,
+      "dockerfile": 2,
+      "text": 4,
+      "environment": 2,
+      "makefile": 1
+    },
+    "total_size_bytes": 11181
+  }
+}
