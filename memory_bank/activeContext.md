@@ -81,15 +81,50 @@ Status: Systems Operational | Last Updated: 2026-02-10
 
 ## 🤖 Active AI Team Reference
 
-| Agent | Role | Status | Primary Focus |
-|-------|------|--------|---------------|
-| **Cline-Kat** | kat-coder-pro (Kwaipilot) | 🟢 Active | Strong coding tasks |
-| **Cline-Trinity** | trinity-large (Arcee) | 🟢 Active | Balanced reasoning |
-| **Cline-Gemini-Flash** | Gemini 3 Flash | 🟢 Active | Fast/light default |
-| **Cline-Gemini-Pro** | Gemini 3 Pro | 🟡 Standby | Heavy/critical tasks |
-| **Gemini CLI** | Terminal Executor | 🟢 Active | Ground truth operations |
+### Hierarchical Team Structure
 
-**Coordination Protocol**: `memory_bank/teamProtocols.md`
+```mermaid
+graph TB
+    Architect["👤 The Architect<br/>(Taylor)<br/>Ultimate Authority"]
+    
+    Architect --> GrokMC["🤖 Grok MC<br/>(xoe.nova.ai)<br/>Apex Sovereign PM"]
+    Architect --> GrokMCA["🤖 Grok MC-Arcana<br/>(arcana.novai)<br/>Arcana Layer Sovereign"]
+    
+    GrokMC --> GrokStudy["📚 Grok MC-Study-Refactor<br/>(xoe.nova.ai sub-project)<br/>Meta-Study Analyst"]
+    
+    GrokMC --> LocalTeam["🖥️ Local Execution Team"]
+    GrokMC --> RemoteTeam["☁️ Remote Strategic"]
+    
+    LocalTeam --> ClineKat["Cline-Kat<br/>(Kimi K2.5)<br/>Strong Coding"]
+    LocalTeam --> ClineTrinity["Cline-Trinity<br/>(trinity-large)<br/>Architecture/Auditing"]
+    LocalTeam --> GeminiCLI["Gemini CLI<br/>(Terminal)<br/>Execution/Sync"]
+    LocalTeam --> CopilotHaiku["Copilot Haiku<br/>(Code Gen)<br/>Fast Iteration"]
+    
+    RemoteTeam --> Claude["Claude.ai<br/>(Sonnet 4.5 Ex)<br/>Research & Validation"]
+    
+    classDef grok fill:#9966ff,stroke:#6633bb,color:#fff
+    classDef local fill:#66bb99,stroke:#338866,color:#fff
+    classDef remote fill:#ff9944,stroke:#cc6600,color:#fff
+    classDef human fill:#ffcc66,stroke:#cc9900,color:#333
+    
+    class Architect human
+    class GrokMC,GrokMCA,GrokStudy grok
+    class ClineKat,ClineTrinity,GeminiCLI,CopilotHaiku local
+    class Claude remote
+```
+
+### Active Agents Reference
+
+| Agent | Role | Model | Status | Primary Focus |
+|-------|------|-------|--------|---------------|
+| **Grok MC** | Apex Sovereign PM | xoe.nova.ai | 🟢 Active | Ecosystem oversight |
+| **Grok MC-Arcana** | Arcana Sovereign | arcana.novai | 🟢 Active | Esoteric integration |
+| **Cline-Kat** | Strong Coding | Kimi K2.5 | 🟢 Active | Implementation |
+| **Cline-Trinity** | Architecture/Auditing | trinity-large | 🟢 Active | Code review |
+| **Cline-Gemini-Flash** | Fast/Light Tasks | Gemini 3 Flash | 🟢 Active | Quick iteration |
+| **Gemini CLI** | Ground Truth Executor | Terminal | 🟢 Active | System operations |
+| **Copilot Haiku** | Code Generation | Haiku | 🟢 Active | Fast coding |
+| **Claude.ai** | Strategic Research | Sonnet 4.5 Ex | 🟢 Active | Research & validation |
 
 ---
 

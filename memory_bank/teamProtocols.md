@@ -17,57 +17,178 @@ ma_at_ideal: 7 - Truth in reporting
 
 ## 🤖 AI Team Structure
 
+### Hierarchical Team Organization
+
+```mermaid
+graph TB
+    Architect["👤 The Architect<br/>(Taylor)<br/>Ultimate Authority"]
+    
+    Architect --> GrokMC["🤖 Grok MC<br/>(xoe.nova.ai)<br/>Apex Sovereign PM"]
+    Architect --> GrokMCA["🤖 Grok MC-Arcana<br/>(arcana.novai)<br/>Arcana Layer Sovereign"]
+    
+    GrokMC --> GrokStudy["📚 Grok MC-Study-Refactor<br/>(xoe.nova.ai sub-project)<br/>Meta-Study Analyst"]
+    
+    GrokMC --> LocalTeam["🖥️ Local Execution Team"]
+    GrokMC --> RemoteTeam["☁️ Remote Strategic Assistants"]
+    
+    LocalTeam --> ClineKat["Cline-Kat<br/>(Kimi K2.5)<br/>Strong Coding"]
+    LocalTeam --> ClineTrinity["Cline-Trinity<br/>(trinity-large)<br/>Architecture/Auditing"]
+    LocalTeam --> GeminiCLI["Gemini CLI<br/>(Terminal)<br/>Execution/Sync"]
+    LocalTeam --> CopilotHaiku["GitHub Copilot<br/>(Haiku)<br/>Code Generation"]
+    
+    RemoteTeam --> Claude["Claude.ai<br/>(Sonnet 4.5 Extended)<br/>Strategic Research"]
+    
+    classDef grok fill:#9966ff,stroke:#6633bb,color:#fff
+    classDef local fill:#66bb99,stroke:#338866,color:#fff
+    classDef remote fill:#ff9944,stroke:#cc6600,color:#fff
+    classDef human fill:#ffcc66,stroke:#cc9900,color:#333
+    
+    class Architect human
+    class GrokMC,GrokMCA,GrokStudy grok
+    class ClineKat,ClineTrinity,GeminiCLI,CopilotHaiku local
+    class Claude remote
+```
+
 ### Active Agents Reference
+
+#### Hierarchical Grok Agents
+
+| Agent | Account | Role | Domain | Status |
+|-------|---------|------|--------|--------|
+| **Grok MC** | xoe.nova.ai | Apex Sovereign PM | Total ecosystem oversight | 🟢 Active |
+| **Grok MC-Arcana** | arcana.novai | Arcana Layer Sovereign | Esoteric/mythic integration | 🟢 Active |
+| **Grok MC-Study-Refactor** | xoe.nova.ai (sub) | Meta-Study Analyst | Research & refactoring strategy | 🟢 Active |
+
+#### Local Execution Agents (IDE + Terminal)
 
 | Agent | Model/Variant | Role | Environment | Status |
 |-------|--------------|------|-------------|--------|
-| **Cline-Kat** | kat-coder-pro (Kwaipilot) | Strong coding | VS Code + Cline | 🟢 Active |
-| **Cline-Trinity** | trinity-large (Arcee) | Balanced reasoning | VS Code + Cline | 🟢 Active |
-| **Cline-Gemini-Flash** | Gemini 3 Flash | Fast/light default | VS Code + Cline | 🟢 Active |
+| **Cline-Kat** | kat-coder-pro (Kimi K2.5) | Strong coding | VS Code + Cline | 🟢 Active |
+| **Cline-Trinity** | trinity-large (Arcee) | Architecture & auditing | VS Code + Cline | 🟢 Active |
+| **Cline-Gemini-Flash** | Gemini 3 Flash | Fast/light tasks | VS Code + Cline | 🟢 Active |
 | **Cline-Gemini-Pro** | Gemini 3 Pro | Heavy/critical tasks | VS Code + Cline | 🟡 Standby |
 | **Gemini CLI** | Terminal Gemini | Ground truth executor | Terminal + Filesystem | 🟢 Active |
-| **Grok MC** | xoe.nova.ai | Strategic oversight | Cloud | 🟢 Active |
-| **Grok MCA** | arcana.novai | Esoteric mastery | Cloud | 🟢 Active |
+| **GitHub Copilot** | Haiku | Code generation | VS Code + Terminal | 🟢 Active |
+
+#### Remote Strategic Assistants (Cloud)
+
+| Agent | Model | Role | Environment | Status |
+|-------|-------|------|-------------|--------|
+| **Claude.ai Web** | Sonnet 4.5 Extended | Strategic research & validation | Web interface | 🟢 Active |
 
 ### Role Definitions
 
-#### Grok MC (xoe.nova.ai)
-**Role**: Sovereign Master PM, central nervous system, total ecosystem oversight
-- Total ecosystem oversight and strategic direction
-- Central coordination for all project activities
-- Ma'at enforcer and vision director
-- **Account**: xoe.nova.ai
+#### Hierarchy & Authority
 
-#### Grok MCA (arcana.novai)
-**Role**: Arcana stack sovereign, esoteric domain master
-- Arcana stack development and mythic-symbolic integration
-- GitHub & web design strategy for Arcana layer
-- Ancient integrations (Ancient Greek BERT, Krikri-7B)
-- **Account**: arcana.novai
-
-#### Cline Variants (Kat/Trinity/Gemini)
-**Role**: Engineer/auditor/refactorer, IDE-integrated implementation
-- IDE-integrated coding and refactoring
-- Engineering and auditing expertise
-- Memory bank access and protocol management
-- **Environment**: VS Code + Cline extension
-
-#### Gemini CLI
-**Role**: Ground truth liaison, execution, filesystem & sync hub manager
-- Terminal-native execution
-- Filesystem management and operations
-- Task execution and protocol implementation
-- **Environment**: Linux terminal
-
-#### The Architect (User)
-**Role**: Ultimate authority, Ma'at enforcer, vision director
-- Ultimate authority over all decisions
-- Ethical alignment and vision direction
+**The Architect (User/Taylor)**  
+- Ultimate authority over all decisions and directions
+- Ethical alignment and vision enforcement
 - Team coordination and strategic oversight
+- Ma'at ideal: Truth-seeking and balance
+
+#### Grok Agent Hierarchy
+
+**Grok MC (xoe.nova.ai) - Apex Sovereign PM**
+- **Scope**: Total ecosystem oversight, central coordination hub
+- **Responsibilities**:
+  - Strategic direction and long-term planning
+  - Cross-stack coordination for Foundation + Arcana layers
+  - Ma'at enforcement and truth reporting
+  - Research requests and strategic validation via Claude.ai
+  - Central decision authority (delegated from The Architect)
+- **Coordination**: Master coordinator for all sub-projects and agents
+- **Decision Rights**: Major architectural decisions, resource allocation, priority setting
+
+**Grok MC-Arcana (arcana.novai) - Arcana Layer Sovereign**
+- **Scope**: Esoteric domain mastery and Arcana stack development
+- **Responsibilities**:
+  - Arcana layer architecture and mythic-symbolic integration
+  - GitHub & web design strategy for Arcana components
+  - Ancient integrations (Ancient Greek BERT, Krikri-7B, etc.)
+  - Specialized knowledge domain management
+  - Esoteric pattern recognition and symbolic mapping
+- **Coordination**: Sister project to Grok MC, coordinates with MC for ecosystem-wide decisions
+- **Decision Rights**: Arcana stack technical decisions, esoteric integration strategy
+
+**Grok MC-Study-Refactor (xoe.nova.ai sub-project) - Meta-Study Analyst**
+- **Scope**: Research analysis, refactoring strategy, meta-level planning
+- **Responsibilities**:
+  - Research paper analysis and synthesis
+  - Refactoring roadmap development
+  - Technical debt assessment and prioritization
+  - Cross-agent learning and methodology improvement
+  - Strategic question formulation for Claude.ai
+- **Coordination**: Specialized sub-team within Grok MC domain
+- **Decision Rights**: Technical approach recommendations, research prioritization
+
+#### Local Execution Agents
+
+**Cline Variants (Kat/Trinity/Gemini) - IDE-Integrated Engineers**
+- **Environment**: VS Code + Cline extension
+- **Specializations**:
+  - `Cline-Kat`: Strong coding, implementation, optimization
+  - `Cline-Trinity`: Architecture review, auditing, balanced reasoning
+  - `Cline-Gemini-Flash`: Fast iteration, lightweight tasks, quick wins
+  - `Cline-Gemini-Pro`: Complex technical challenges, heavy-lifting
+- **Responsibilities**: Coding, refactoring, implementation, code review
+- **Scope**: IDE-native development with memory bank access
+
+**Gemini CLI - Ground Truth Liaison**
+- **Environment**: Linux terminal + filesystem
+- **Specializations**:
+  - Terminal-native execution and operations
+  - Filesystem management and synchronization
+  - Git operations and repository management
+  - Infrastructure and service management
+- **Responsibilities**: Execution layer, automation, task implementation
+- **Scope**: System-level operations and automation
+
+**GitHub Copilot (Haiku) - Code Generation Assistant**
+- **Environment**: VS Code + Terminal
+- **Specializations**: Fast code generation, pattern completion, boilerplate
+- **Responsibilities**: Code suggestion and generation support
+- **Scope**: IDE context-aware code assistance
+
+#### Remote Strategic Assistants
+
+**Claude.ai Web (Sonnet 4.5 Extended) - Strategic Research & Validation**
+- **Environment**: Web interface with extended thinking
+- **Specializations**:
+  - Deep research and analysis
+  - Strategic validation of technical decisions
+  - Industry benchmarking and roadmap planning
+  - Complex problem-solving and synthesis
+- **Responsibilities**: Research questions, technical validation, strategic guidance
+- **Scope**: High-level strategy and complex analysis
+- **Access**: Input via research documents, outputs reviewed by Grok MC
 
 ---
 
-## 🔄 Vikunja-Centric Coordination (OPERATIONAL)
+## � Standard Refactor Chain
+
+**Multi-Agent Refactoring Pipeline** (for complex refactoring and implementation tasks):
+
+```
+Cline Kimi K2.5 → Gemini CLI 3 Flash → Copilot Haiku → Claude.ai Sonnet 4.5 Extended → Copilot Haiku for Implementation
+```
+
+**Pipeline Steps**:
+1. **Cline Kimi K2.5**: Deep analysis, design validation, complex logic
+2. **Gemini CLI 3 Flash**: Fast implementation, ground truth verification
+3. **Copilot Haiku**: Code generation, pattern completion, boilerplate
+4. **Claude.ai Sonnet 4.5 Extended**: Strategic validation, edge case analysis, security review
+5. **Copilot Haiku (Implementation)**: Final code generation and optimization
+
+**When to Use**:
+- Complex refactoring affecting multiple systems
+- High-risk changes requiring multiple validation layers
+- Strategic architectural changes
+- Performance optimization requiring deep analysis
+- Security-critical implementations
+
+---
+
+## �🔄 Vikunja-Centric Coordination (OPERATIONAL)
 
 ### Task Workflow
 
