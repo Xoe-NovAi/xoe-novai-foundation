@@ -1,0 +1,133 @@
+site_name: Xoe-NovAi Foundation - Internal Knowledge Base
+site_description: Strategic Planning, Research Lab, and Operational Intelligence
+repo_url: https://github.com/arcana-novai/Xoe-NovAi
+repo_name: arcana-novai/Xoe-NovAi
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.path
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - toc.integrate
+
+  icon:
+    logo: material/brain-circuit
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+plugins:
+  - search
+
+docs_dir: internal_docs
+site_dir: site-internal
+
+validation:
+  nav:
+    omitted_files: warn
+    not_found: warn
+    absolute_links: warn
+  links:
+    not_found: warn
+    absolute_links: warn
+    anchors: warn
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.details
+  - attr_list
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/arcana-novai
+
+nav:
+  - Home: index.md
+  
+  - 🎯 System & Navigation:
+      - Documentation Strategy: 00-system/DOCUMENTATION-SYSTEM-STRATEGY.md
+      - Genealogy Tracker: 00-system/GENEALOGY.md
+      - File Explorer Index: 00-system/INDEX.md
+  
+  - 📊 Strategic Planning:
+      - Overview: 01-strategic-planning/ROADMAP-MASTER-INDEX.md
+      - Execution Pillars:
+          - Operational Stability: 01-strategic-planning/PILLARS/PILLAR-1-OPERATIONAL-STABILITY.md
+          - Scholar Differentiation: 01-strategic-planning/PILLARS/PILLAR-2-SCHOLAR-DIFFERENTIATION.md
+          - Modular Excellence: 01-strategic-planning/PILLARS/PILLAR-3-MODULAR-EXCELLENCE.md
+      - Research Index: 01-strategic-planning/RESEARCH-MASTER-INDEX.md
+      - Phase Summaries: 01-strategic-planning/PHASE-COMPLETION-SUMMARY.md
+      - Executive Summary: 01-strategic-planning/EXECUTIVE-SUMMARY-2026-02-11.md
+  
+  - 🔬 Research Lab:
+      - Critical Path (P0): 02-research-lab/RESEARCH-P0-CRITICAL-PATH.md
+      - Phase 5 Strategy: 02-research-lab/PHASE-5-zRAM-OPTIMIZATION-DESIGN.md
+      - Research Report: 02-research-lab/XOE-NOVAI-RESEARCH-REPORT-2026-02-11.md
+      - Phase 5-7 Roadmap: 02-research-lab/CLAUDE-SONNET-RESEARCH-REQUEST-PHASE-5-7.md
+      - Research Sessions: 02-research-lab/RESEARCH-SESSIONS/
+      - Research Request Templates: 02-research-lab/RESEARCH-REQUEST-TEMPLATES/
+  
+  - ⚙️ Infrastructure & Operations:
+      - Deployment Reports:
+          - Deployment Debug Report: 03-infrastructure-ops/DEPLOYMENT-DEBUG-REPORT-2026-02-12.md
+          - Build Deployment Report: 03-infrastructure-ops/BUILD-DEPLOYMENT-REPORT-20260212.md
+          - Incident Resolution: 03-infrastructure-ops/INCIDENT-RESOLUTION-20260212.md
+      - Build System Analysis: 03-infrastructure-ops/BUILD-SYSTEM-AUDIT-REPORT.md
+  
+  - 🏗️ Code Quality & Architecture:
+      - Codebase Audit: 04-code-quality/comprehensive-deep-codebase-audit-v2.0.0.md
+      - Error Handling Audit: 04-code-quality/systematic-error-code-audit-20260211.md
+      - Security & Permissions Audit: 04-code-quality/systematic-permissions-security-audit-v1.0.0.md
+      - Implementation Manual: 04-code-quality/IMPLEMENTATION-GUIDES/xnai-code-audit-implementation-manual.md
+  
+  - 📁 Client Projects: 05-client-projects/index.md
+  - 👥 Team Knowledge: 06-team-knowledge/index.md
+  - 📦 Archives: 07-archives/index.md
