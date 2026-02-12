@@ -3,6 +3,8 @@ Production Circuit Breaker System with Redis Persistence
 ========================================================
 Research: Circuit Breaker Pattern (Michael Nygard, Release It! 2024)
 Library: pycircuitbreaker (async support + Redis backend)
+
+ENHANCED: Exception hierarchy unified with XNAiException base
 """
 
 import asyncio
@@ -12,6 +14,10 @@ from typing import Optional, Callable, Any, Dict
 from functools import wraps
 from dataclasses import dataclass
 from enum import Enum
+
+# Import unified exception hierarchy
+from ..api.exceptions import XNAiException
+from ..schemas.errors import ErrorCategory
 
 # Optional Redis import with graceful fallback
 try:
@@ -40,6 +46,57 @@ class CircuitState(str, Enum):
     CLOSED = "closed"      # Normal operation
     OPEN = "open"          # Failing - requests blocked
     HALF_OPEN = "half_open"  # Testing recovery
+
+
+# ============================================================================
+# CIRCUIT BREAKER EXCEPTION
+# ============================================================================
+
+class CircuitBreakerError(XNAiException):
+    """
+    Raised when circuit breaker is OPEN.
+    
+    Inherits from XNAiException for unified error handling.
+    """
+    def __init__(
+        self,
+        service_name: str,
+        failure_count: int,
+        retry_after: Optional[int] = None,
+        message: Optional[str] = None
+    ):
+        """
+        Initialize CircuitBreakerError.
+        
+        Args:
+            service_name: Name of the protected service
+            failure_count: Number of consecutive failures
+            retry_after: Seconds until circuit half-opens
+            message: Custom error message (optional)
+        """
+        msg = message or f"Circuit breaker open for service: {service_name}"
+        details = {
+            "service_name": service_name,
+            "failure_count": failure_count,
+            "retry_after_seconds": retry_after,
+            "breaker_state": "OPEN"
+        }
+        recovery = (
+            f"Service is temporarily unavailable. "
+            f"Retry after {retry_after} seconds." if retry_after else
+            "Service is temporarily unavailable. Check health and retry."
+        )
+        
+        super().__init__(
+            message=msg,
+            category=ErrorCategory.CIRCUIT_OPEN,
+            details=details,
+            recovery_suggestion=recovery
+        )
+        
+        self.service_name = service_name
+        self.failure_count = failure_count
+        self.retry_after = retry_after
 
 
 # ============================================================================
@@ -387,11 +444,6 @@ class PersistentCircuitBreaker:
                 extra={"error": str(e)}
             )
             raise
-
-
-class CircuitBreakerError(Exception):
-    """Raised when circuit breaker is OPEN."""
-    pass
 
 
 # ============================================================================

@@ -12,8 +12,8 @@ from typing import AsyncGenerator
 from fastapi import APIRouter, Request, HTTPException, Depends
 from fastapi.responses import StreamingResponse, JSONResponse
 
-from XNAi_rag_app.schemas import QueryRequest, QueryResponse
-from XNAi_rag_app.core.metrics import (
+from ...schemas import QueryRequest, QueryResponse
+from ...core.metrics import (
     record_tokens_generated,
     record_query_processed,
     update_token_rate,
@@ -21,8 +21,8 @@ from XNAi_rag_app.core.metrics import (
     response_latency_ms,
     record_error
 )
-from XNAi_rag_app.core.logging_config import PerformanceLogger, get_logger
-from XNAi_rag_app.core.circuit_breakers import CircuitBreakerError
+from ...core.logging_config import PerformanceLogger, get_logger
+from ...core.circuit_breakers import CircuitBreakerError
 
 logger = get_logger(__name__)
 perf_logger = PerformanceLogger(logger)
@@ -37,7 +37,7 @@ async def query_endpoint(request: Request, query_req: QueryRequest):
     vectorstore = services.get('vectorstore')
     
     # Access global LLM from entrypoint
-    import XNAi_rag_app.api.entrypoint as ep
+    from .. import entrypoint as ep
     
     with MetricsTimer(response_latency_ms, endpoint='/query', method='POST'):
         start_time = time.time()
@@ -101,7 +101,7 @@ async def stream_endpoint(request: Request, query_req: QueryRequest):
     services = getattr(request.app.state, 'services', {})
     rag_service = services.get('rag')
     vectorstore = services.get('vectorstore')
-    import XNAi_rag_app.api.entrypoint as ep
+    from .. import entrypoint as ep
     
     async def generate() -> AsyncGenerator[str, None]:
         try:

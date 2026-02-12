@@ -6,8 +6,8 @@ FastAPI application and route definitions.
 
 from fastapi import FastAPI
 
-# Import the main API router
-from XNAi_rag_app.api.routers import router as api_router
+# Do NOT import routers here - causes circular dependencies during testing
+# Instead, import in entrypoint.py when actually needed
 
 # Export the FastAPI app instance directly
 # This assumes the main FastAPI app is initialized in entrypoint.py
@@ -20,7 +20,7 @@ from XNAi_rag_app.api.routers import router as api_router
 # it's good practice to have a clear export.
 
 # We will export the router to be included in the main app setup.
-__all__ = ['api_router']
+__all__ = []
 
 # Note: The FastAPI app instance itself is typically created in the main
 # application file (e.g., entrypoint.py or main.py) and not directly

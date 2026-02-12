@@ -16,6 +16,12 @@ from pathlib import Path
 from unittest.mock import Mock, MagicMock
 from datetime import datetime
 
+# Mock heavy dependencies that aren't needed for unit tests
+sys.modules['prometheus_client'] = MagicMock()
+sys.modules['onnxruntime'] = MagicMock()
+sys.modules['scripts'] = MagicMock()
+sys.modules['scripts.vulkan_memory_manager'] = MagicMock()
+
 # Compatibility shim for pybreaker behavior across versions
 try:
     import pybreaker as _pybreaker

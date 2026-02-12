@@ -9,9 +9,9 @@ import psutil
 import asyncio
 import logging
 from fastapi import APIRouter, Request
-from XNAi_rag_app.schemas import HealthResponse
-from XNAi_rag_app.core.config_loader import load_config
-from XNAi_rag_app.core.circuit_breakers import get_circuit_breaker_status
+from ...schemas import HealthResponse
+from ...core.config_loader import load_config
+from ...core.circuit_breakers import get_circuit_breaker_status
 
 logger = logging.getLogger(__name__)
 CONFIG = load_config()
@@ -52,7 +52,7 @@ async def health_check(request: Request):
     
     # Run healthcheck.py checks if available
     try:
-        from XNAi_rag_app.api.healthcheck import run_health_checks
+        from ..healthcheck import run_health_checks
         ERROR_RECOVERY_ENABLED = os.getenv("ERROR_RECOVERY_ENABLED", "true").lower() == "true"
         
         if ERROR_RECOVERY_ENABLED:

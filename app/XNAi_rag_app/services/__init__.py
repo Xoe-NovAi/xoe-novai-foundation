@@ -4,10 +4,7 @@ Xoe-NovAi Services Module
 Core business logic and service implementations.
 """
 
-from .rag.rag_service import RAGService
-from .voice.voice_interface import VoiceInterface, get_voice_interface
-from .research_agent import ResearchBestPracticeAgent
-
+# Import lazily to avoid circular dependencies during testing
 __all__ = [
     'RAGService',
     'VoiceInterface',

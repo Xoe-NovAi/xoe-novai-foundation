@@ -32,8 +32,10 @@ except ImportError:
     ONNX_AVAILABLE = False
     ort = None
 
-from XNAi_rag_app.core.logging_config import get_logger
-from XNAi_rag_app.core.metrics import metrics_collector
+from ..api.exceptions import XNAiException
+from ..schemas.errors import ErrorCategory
+from .logging_config import get_logger
+from .metrics import metrics_collector
 
 logger = get_logger(__name__)
 
@@ -61,21 +63,48 @@ class QuantizationConfig:
     max_retries: int = 3
     timeout_seconds: int = 300
 
-class AWQQuantizationError(Exception):
-    """Base exception for AWQ quantization errors"""
-    pass
+class AWQQuantizationError(XNAiException):
+    """Base exception for AWQ quantization errors (Experimental/Optional Feature)"""
+    def __init__(self, message: str, details: Optional[Dict[str, Any]] = None, cause=None):
+        recovery = "Disable AWQ with AWQ_ENABLED=false, or verify GPU capabilities and CUDA setup"
+        super().__init__(
+            message=message,
+            category=ErrorCategory.AWQ_QUANTIZATION,
+            details=details or {},
+            recovery_suggestion=recovery,
+            cause=cause
+        )
+
 
 class CalibrationError(AWQQuantizationError):
-    """Error during model calibration"""
-    pass
+    """Error during model calibration (Experimental/Optional Feature)"""
+    def __init__(self, message: str, samples_count: Optional[int] = None, cause=None):
+        details = {"samples_count": samples_count} if samples_count is not None else {}
+        recovery = "Ensure calibration data is valid and sufficient. Run with AWQ_ENABLED=false to bypass quantization"
+        super().__init__(message, details=details, cause=cause)
+        self.recovery_suggestion = recovery
+
 
 class QuantizationError(AWQQuantizationError):
-    """Error during weight quantization"""
-    pass
+    """Error during weight quantization (Experimental/Optional Feature)"""
+    def __init__(self, message: str, layer_index: Optional[int] = None, cause=None):
+        details = {"layer_index": layer_index} if layer_index is not None else {}
+        recovery = "Some weight quantization failed. Disable AWQ with AWQ_ENABLED=false to use unquantized models"
+        super().__init__(message, details=details, cause=cause)
+        self.recovery_suggestion = recovery
+
 
 class PrecisionSwitchError(AWQQuantizationError):
-    """Error during precision switching"""
-    pass
+    """Error during precision switching between FP16 and INT8 (Experimental/Optional Feature)"""
+    def __init__(self, message: str, from_precision: Optional[str] = None, to_precision: Optional[str] = None, cause=None):
+        details = {}
+        if from_precision:
+            details["from_precision"] = from_precision
+        if to_precision:
+            details["to_precision"] = to_precision
+        recovery = "Precision switching failed. Try disabling AWQ or verify ONNX Runtime is properly installed"
+        super().__init__(message, details=details, cause=cause)
+        self.recovery_suggestion = recovery
 
 class CPUAWQQuantizer:
     """

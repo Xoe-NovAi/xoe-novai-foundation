@@ -11,12 +11,12 @@ import asyncio
 from typing import Dict, Any, Optional, List
 
 # Core imports
-from XNAi_rag_app.core.config_loader import load_config
-from XNAi_rag_app.core.logging_config import setup_logging, get_logger
-from XNAi_rag_app.core.observability import observability
-from XNAi_rag_app.core.metrics import start_metrics_server
-from XNAi_rag_app.core.circuit_breakers import initialize_circuit_breakers, initialize_voice_circuit_breakers
-from XNAi_rag_app.core.dependencies import (
+from .config_loader import load_config
+from .logging_config import setup_logging, get_logger
+from .observability import observability
+from .metrics import start_metrics_server
+from .circuit_breakers import initialize_circuit_breakers, initialize_voice_circuit_breakers
+from .dependencies import (
     get_redis_client,
     get_http_client,
     get_embeddings,
@@ -25,9 +25,9 @@ from XNAi_rag_app.core.dependencies import (
 )
 
 # Service imports
-from XNAi_rag_app.services.rag.rag_service import RAGService
-from XNAi_rag_app.services.voice.voice_interface import setup_voice_interface
-from XNAi_rag_app.services.research_agent import get_research_agent
+from ..services.rag.rag_service import RAGService
+from ..services.voice.voice_interface import setup_voice_interface
+from ..services.research_agent import get_research_agent
 
 logger = get_logger(__name__)
 
@@ -57,7 +57,7 @@ class ServiceOrchestrator:
                 return self._llm_cache
 
             # Lazy import to avoid circular deps at module import time
-            from XNAi_rag_app.core.dependencies import get_llm_async
+            from .dependencies import get_llm_async
 
             logger.info("[LLM Init] Priming LLM (this may take a few seconds)...")
             try:
@@ -186,7 +186,7 @@ class ServiceOrchestrator:
         """Background task to initialize embeddings, vectorstore, and LLM."""
         try:
             # Import dependency helpers lazily
-            from XNAi_rag_app.core.dependencies import (
+            from .dependencies import (
                 get_embeddings_async,
                 get_vectorstore_async,
                 get_llm_async,

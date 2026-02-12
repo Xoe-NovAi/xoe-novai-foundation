@@ -29,7 +29,9 @@ PROJECT_ROOT = os.getenv(
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-# Import Vulkan memory manager
+# Import unified exception hierarchy and Vulkan memory manager
+from ..api.exceptions import XNAiException
+from ..schemas.errors import ErrorCategory
 from scripts.vulkan_memory_manager import VulkanMemoryManager, VulkanMemoryError
 
 # Configure logging
@@ -48,17 +50,35 @@ class VulkanAccelerationStats:
     fp16_operations: int = 0
     error_recovery_events: int = 0
 
-class VulkanAccelerationError(Exception):
+class VulkanAccelerationError(XNAiException):
     """Base exception for Vulkan acceleration operations."""
-    pass
+    def __init__(self, message: str, details: Optional[Dict[str, Any]] = None, cause=None):
+        recovery = "Disable Vulkan acceleration with VULKAN_ENABLED=false and use CPU inference instead"
+        super().__init__(
+            message=message,
+            category=ErrorCategory.VULKAN_ACCELERATION,
+            details=details or {},
+            recovery_suggestion=recovery,
+            cause=cause
+        )
+
 
 class VulkanInitializationError(VulkanAccelerationError):
     """Vulkan initialization failure."""
-    pass
+    def __init__(self, message: str, device_info: Optional[Dict[str, Any]] = None, cause=None):
+        details = {"device_info": device_info} if device_info else {}
+        recovery = "Check Vulkan drivers are installed and up-to-date. Disable Vulkan with VULKAN_ENABLED=false"
+        super().__init__(message, details=details, cause=cause)
+        self.recovery_suggestion = recovery
+
 
 class VulkanOperationError(VulkanAccelerationError):
     """Vulkan operation execution failure."""
-    pass
+    def __init__(self, message: str, operation_name: Optional[str] = None, cause=None):
+        details = {"operation_name": operation_name} if operation_name else {}
+        recovery = "Operation failed on GPU. Falling back to CPU. Check system memory and GPU drivers"
+        super().__init__(message, details=details, cause=cause)
+        self.recovery_suggestion = recovery
 
 class VulkanAccelerationFramework:
     """
@@ -670,7 +690,6 @@ def main():
             print(f"  Total operations: {stats.total_operations}")
             print(f"  Successful operations: {stats.successful_operations}")
             print(f"  CPU fallbacks: {stats.cpu_fallbacks}")
-            print(".2f"
             if stats.cooperative_matrix_operations > 0:
                 print(f"  Cooperative matrix ops: {stats.cooperative_matrix_operations}")
             if stats.fp16_operations > 0:

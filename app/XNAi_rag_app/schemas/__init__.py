@@ -4,18 +4,20 @@ Xoe-NovAi Schemas Module
 Export all Pydantic models for easy access.
 """
 
-from XNAi_rag_app.schemas.requests import (
+from .requests import (
     LoginRequest,
     RefreshTokenRequest,
     CreateUserRequest,
     QueryRequest
 )
-from XNAi_rag_app.schemas.responses import (
+from .responses import (
     LoginResponse,
     QueryResponse,
-    HealthResponse
+    HealthResponse,
+    ErrorResponse,
+    SSEErrorMessage
 )
-from XNAi_rag_app.schemas.errors import ErrorCategory, ErrorResponse
+from .errors import ErrorCategory
 
 __all__ = [
     'LoginRequest',
@@ -25,6 +27,8 @@ __all__ = [
     'LoginResponse',
     'QueryResponse',
     'HealthResponse',
+    'ErrorResponse',
+    'SSEErrorMessage',
     'ErrorCategory',
-    'ErrorResponse'
 ]
+

@@ -5,8 +5,8 @@ Register all API routers here.
 """
 
 from fastapi import APIRouter
-from XNAi_rag_app.api.routers.health import router as health_router
-from XNAi_rag_app.api.routers.query import router as query_router
+from .health import router as health_router
+from .query import router as query_router
 
 router = APIRouter()
 
