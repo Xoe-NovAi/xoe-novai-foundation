@@ -274,6 +274,7 @@
    - Is premium voice quality important differentiator for our market?
    - Should we offer multiple voice options?
    - What about multilingual voice support?
+   - Accessibility for the blind? (full voice control of stack and host computer)
 
 **Deliverable Requested**:
 - STT/TTS solutions comparison (Whisper vs. alternatives with price/quality/latency)
@@ -289,13 +290,13 @@
 
 **User Hardware**:
 - CPU: AMD Ryzen 5700U (8 cores, 16 threads, Zen 3 architecture)
-- RAM: 16GB total (1x 8GB stick functional, 1x 8GB non-functional)
-- Disk: ~500GB available
-- zRAM: 12GB configured (with compression)
-- Observed Peak Usage: 7.06GB physical + up to 5GB zRAM
+- RAM: 8GB total (1x 8GB stick functional, 1x 8GB non-functional)
+- Disk: ~250GB drive with <10 GB available
+- zRAM: 12GB configured (compressed RAM swap)
+- Observed Stable Peak Usage: 6.5GB physical + 12GB zRAM swap
 
 **Current Issue**:
-- **Problem**: RAG API consuming 5.6GB/6GB immediately after startup (94% of container limit)
+- **Problem**: RAG API consuming 5.6GB/6GB immediately after startup (94% of container limit) - zRAM handles all services with no problem most of the time, but occasionally the zRAM swap is under-utilized, causing the physical RAM to fill and OOM error
 - **Symptom**: OOM errors noted during builds (VS Code + stack running simultaneously)
 - **Question**: Is this sustainable for production? How to profile load impact?
 
@@ -338,7 +339,7 @@ Swap Preference: Not yet tuned
 
 **Deliverable Requested**:
 - zRAM compression ratio expectations for ML workloads (with data)
-- Kernel tuning recommendations for 16GB + 12GB zRAM system
+- Kernel tuning recommendations for 8GB + 12GB zRAM system
 - Container memory limit strategy
 - Profiling tool recommendations + usage guide
 - Before/after tuning expectations (reduce OOM frequency from "occasional" to "rare"?)
@@ -365,6 +366,7 @@ Swap Preference: Not yet tuned
    - Could we split LLM inference to separate machine? (remote RAG API)
    - Benefits of model quantization (AWQ) for reducing memory? (how much)
    - Implications of running quantized vs. full-precision model?
+   - NOTE: AWQ is an untested, experimental feature that should remain disabled.
 
 4. **Swap Strategy for ML**:
    - Is it ever OK to swap ML model weights to zRAM?
@@ -418,7 +420,7 @@ Swap Preference: Not yet tuned
    - zRAM benefits: compression, CPU-aware, adaptive
    - Traditional Swap (disk) benefits: persistent, larger capacity
    - When to use each? Hybrid zRAM + disk swap?
-   - Our specific case: Linux on ext4, 16GBRAM + 12GB zRAM
+   - Our specific case: Linux on ext4, 8GBRAM + 12GB zRAM
 
 2. **Configuration Scenarios**:
    - Scenario A: zRAM only (current, 12GB)
@@ -427,7 +429,7 @@ Swap Preference: Not yet tuned
    - Which scenario for sustainability in production?
 
 3. **Disk Swap Practicalities**:
-   - Performance impact of disk swap (SSD vs. HDD)?
+   - Performance impact of disk swap (Nvme SSD)?
    - How much disk space to allocate? (8GB? 16GB?)
    - Should disk swap be on same drive as workload data?
    - Impact on SSD wear?
@@ -544,6 +546,6 @@ Swap Preference: Not yet tuned
 ---
 
 **Research Prepared By**: Cline (GitHub Copilot Assistant)  
-**For Review By**: Claude Sonnet 4.6  
+**For Review By**: Claude Sonnet 4.5  
 **Timeline**: Answers needed by 2026-02-15 for Phase 5 implementation  
 **Confidence**: High (based on Phase 4-5 data and industry research)
