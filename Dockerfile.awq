@@ -59,6 +59,13 @@ RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
 # Create working directory
 WORKDIR /workspace
 
+# Configure Python environment
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    OPENBLAS_NUM_THREADS=6 \
+    OPENBLAS_CORETYPE=ZEN \
+    OMP_NUM_THREADS=1
+
 # Use existing appuser from base image
 RUN mkdir -p /opt/awq-env && \
     chown -R appuser:appuser /workspace /opt/awq-env

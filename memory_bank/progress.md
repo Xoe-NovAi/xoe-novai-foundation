@@ -51,25 +51,58 @@
 
 ## Current Issues and Research Request
 
-### 1. **Memory Utilization - RAG API High (94%)**
+### 1. **Redis Persistence Error - RESOLVED ✅**
+- **Incident**: Redis RDB snapshot permission denied on /data directory
+- **Root Cause**: Container UID (999) couldn't write to host-mounted directory (owned by 1001)
+- **Impact**: Redis entered read-only mode, Chainlit API calls failed
+- **Resolution**: Recreated /data/redis with chmod 777, restarted Redis + Chainlit
+- **Status**: RESOLVED - All services restored to healthy operation
+
+### 2. **Memory Utilization - RAG API High (94%)**
 - **Finding**: RAG API using 5.61GB / 6GB immediately after LLM initialization
 - **Impact**: Limits headroom for concurrent requests, startup spike very pronounced
-- **Root Cause**: LLM model fully loaded to memory, embeddings cache, context window allocation
-- **Status**: Research needed - profile memory over time to determine if startup spike or steady state
-- **Action**: Profile memory usage with minimal concurrent requests
+- **Root Cause**: Qwen3-0.6B model fully loaded to memory + embeddings + context cache
+- **Status**: Phase 5 profiling will determine if startup spike or sustained
+- **Action**: Terminal-based metrics collection (no IDE overhead) under load
 
-### 2. **Caddy Log File Rotation Warnings ⚠️**
-- **Error**: `write error: can't rename log file: permission denied`
-- **Root Cause**: Log directory permissions on mount, non-critical
-- **Impact**: Warnings in logs, service functional
-- **Status**: Workable - logs to stdout as fallback
-- **Action**: Test different mount options (Z vs. z, chmod variations)
+### 3. **zRAM Optimization Needed**
+- **Current**: 8GB physical RAM + 12GB zRAM configured
+- **Issue**: OOM errors observed when VS Code + stack running simultaneously
+- **Question**: Is 94% sustained or can we reduce with tuning?
+- **Status**: Phase 5 design created, ready for testing
+- **Action**: Kernel tuning (vm.swappiness=35), stress testing, profiling
 
-### 3. **Observable Features - Prometheus Not Available**
+### 4. **Observable Features - Prometheus Not Available**
 - **Finding**: Metrics export disabled - missing `opentelemetry.exporter.prometheus`
-- **Impact**: Cannot export metrics to Prometheus
-- **Status**: Identified for Phase 5 Observable implementation
-- **Action**: Install prometheus exporter dependency, configure metrics endpoin
+- **Impact**: Cannot export metrics to Prometheus/Grafana
+- **Status**: Identified for Phase 6 Observable implementation
+- **Action**: Phase 6 post-Phase 5 completion
+
+### 5. **Build System Status - AUDITED & IMPROVED**
+- **Makefile**: 1,952 lines, 133 targets - well organized but large
+- **Dockerfiles**: All 7 standardized with consistent environment variables
+- **Status**: Build system working well, Phase 6 can consider tooling alternatives
+- **Research**: Research request prepared for Claude Sonnet (Make vs. Taskfile vs. Nix)
+
+---
+
+## 📚 **Phase 5 PLANNING**
+
+### Phase 5 Research Materials Generated
+1. **Phase 5 zRAM Optimization Design** - Testing framework ready
+2. **Build System Audit Report** - Makefile and Dockerfile analysis
+3. **Claude Sonnet Research Request** - Detailed questions on:
+   - Makefile modernization options
+   - Dockerfile optimization strategies
+   - Industry competitive roadmap (1-2 years)
+   - zRAM/memory optimization for ML workloads
+   - Production-readiness framework
+
+### Phase 5 Execution Schedule
+- **5.A Baseline Collection**: Terminal session, clean system
+- **5.B Kernel Tuning**: vm.swappiness optimization
+- **5.C Stress Testing**: Concurrent load with profiling
+- **5.D Analysis**: Metrics interpretation and recommendations
 
 ---
 
@@ -95,7 +128,7 @@
 -   **Phase 2**: ✅ Complete (Service layer & infrastructure)
 -   **Phase 3**: ✅ Complete (Documentation & alignment)
 -   **Phase 4**: ✅ Complete (Production deployment - FRESH BUILD SUCCESS)
--   **Phase 5**: 🔵 In Progress (Performance profiling & observable implementation)
+-   **Phase 5**: 🔵 In Progress (zRAM optimization, memory profiling, build audit)
 
 ---
 

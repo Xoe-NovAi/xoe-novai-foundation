@@ -32,12 +32,8 @@ RUN rm -f /etc/apt/apt.conf.d/docker-clean && \
     echo 'Acquire::http::Pipeline-Depth "5";' > /etc/apt/apt.conf.d/99parallel && \
     sed -i 's/deb.debian.org/cdn-fastly.deb.debian.org/g' /etc/apt/sources.list.d/debian.sources 2>/dev/null || true
 
-# Install common system dependencies with BuildKit cache mounts
-# NOTE: sharing=locked is excluded as it's unsupported in many Podman versions.
-# NOTE: uid=1001,gid=1001 added for rootless permission stability.
-RUN --mount=type=cache,id=xnai-apt-cache,target=/var/cache/apt,uid=0,gid=0 \
-    --mount=type=cache,id=xnai-apt-lists,target=/var/lib/apt,uid=0,gid=0 \
-    apt-get update && \
+# Install common system dependencies
+RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         # Common build tools
         build-essential \
@@ -55,16 +51,15 @@ RUN --mount=type=cache,id=xnai-apt-cache,target=/var/cache/apt,uid=0,gid=0 \
         libopenblas-dev \
         libgomp1 \
         procps \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* \
     && echo "✓ Base system dependencies installed"
 
 # Install uv for fast package management
-RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
-    pip install uv==0.5.21 && \
+RUN pip install --no-cache-dir uv==0.5.21 && \
     echo "✓ uv 0.5.21 installed"
 
 # Configure pip cache directory
-RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
-    mkdir -p /root/.pip
+RUN mkdir -p /root/.pip
 
 # Create a non-root user (consistent across services)
 RUN groupadd -g 1001 appuser && \

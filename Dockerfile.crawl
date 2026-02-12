@@ -31,8 +31,12 @@ RUN mkdir -p /app/XNAi_rag_app/logs /app/data/curations /app/.crawl4ai/html_cont
 RUN find /usr/local/lib/python3.12/site-packages -type d -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true
 
 ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
     PYTHONPATH=/app \
-    SCARF_NO_ANALYTICS=true
+    SCARF_NO_ANALYTICS=true \
+    OPENBLAS_NUM_THREADS=6 \
+    OPENBLAS_CORETYPE=ZEN \
+    OMP_NUM_THREADS=1
 
 USER appuser
 
