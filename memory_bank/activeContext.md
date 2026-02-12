@@ -152,15 +152,78 @@ graph TB
 | Vikunja PM | 🟢 | 100% | Redis enabled |
 | Monitoring | 🟢 | 100% | Prometheus via Caddy |
 | Caddy | 🟢 | 100% | Operational |
+| Documentation System | 🟢 | 100% | Dual-build MkDocs + Makefile integration |
 
-### Recent Commits
+---
+
+## 📚 Documentation System Status (Phase 5 Integration)
+
+**Status**: ✅ **FULLY OPERATIONAL - Dual-Build MkDocs System Active**
+
+### System Components
+| Component | Status | Details |
+|-----------|--------|---------|
+| Public Docs | 🟢 | `docs/` + `mkdocs.yml` → `site/` (GitHub Pages, port 8000) |
+| Internal KB | 🟢 | `internal_docs/` + `mkdocs-internal.yml` → `site-internal/` (port 8001) |
+| Markdown Files | 🟢 | 349 organized files across 8-level taxonomy |
+| Search Index | 🟢 | Full-text search on both public and internal |
+| Makefile Targets | 🟢 | 8 new targets for build/serve/clean operations |
+| Strategic Alignment | 🟢 | All PILLAR docs (1,2,3) integrated with MkDocs sections |
+| Research Alignment | 🟢 | RESEARCH-P0 marked Phase 0 as critical path foundation |
+
+### Quick Commands
+```bash
+# Start internal KB locally (PRIMARY - default on 8001)
+make mkdocs-serve
+
+# Serve public docs (port 8000)
+make mkdocs-serve-public
+
+# Build both for deployment/CI
+make mkdocs-build
+
+# Show system status
+make docs-system
+
+# See all: memory_bank/mkdocs-commands.md
 ```
-6e9d3b1 feat: implement VIKUNJA INTEGRATION with Foundation Stack
+
+### Internal Documentation Structure (349 markdown files)
 ```
+internal_docs/
+├── 00-system/              Genealogy, strategy, configuration
+├── 01-strategic-planning/  PILLARS (1,2,3), roadmaps, indices
+├── 02-research-lab/        Research (P0-P3), templates
+├── 03-infrastructure-ops/  Deployment, incidents, analysis
+├── 04-code-quality/        Audits, security, implementation
+├── 05-client-projects/     Template (future)
+├── 06-team-knowledge/      Template (future)
+└── 07-archives/            Historical records
+```
+
+### Key Strategic Documents
+- **PILLAR-1**: Operational Stability + MkDocs Integration section
+- **PILLAR-2**: Scholar Differentiation + MkDocs Integration section
+- **PILLAR-3**: Modular Excellence + MkDocs Integration section
+- **RESEARCH-P0**: Critical Path (Phase 0 marks documentation foundation as blocker)
+- **Strategy**: `01-strategic-planning/DOCUMENTATION-SYSTEM-STRATEGY.md` (9-part)
+- **Handoff**: `00-system/HANDOFF-TO-CLAUDE-AI.md` (Claude.ai ready)
+
+### For Developers
+- **Start KB**: `make mkdocs-serve` for local internal docs on 8001
+- **Search anything**: Browser 🔍 in sidebar (instant full-text)
+- **Contribute**: Add `.md` to section, update mkdocs(-internal).yml nav
+- **URLs**: Public `http://localhost:8000` | Internal `http://localhost:8001`
 
 ---
 
 ## 🚀 Active Work Streams
+
+### Stream 0: Documentation System Integration ✅ COMPLETE
+**Status**: FULLY OPERATIONAL  
+**Deliverables**: Dual-build MkDocs + Makefile targets + Memory bank + PILLAR/RESEARCH integration  
+**Commands**: 8 new Makefile targets for development and CI/CD  
+**Claude Handoff**: System ready for RESEARCH-P1/P2/P3 extraction
 
 ### Stream 1: Error Handling Refactoring
 **Owner**: Cline (Active)  

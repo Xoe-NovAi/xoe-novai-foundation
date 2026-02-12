@@ -6,7 +6,7 @@
 # Features: BuildKit cache mounts, YAML task locking, agent coordination
 # Ryzen Opt: N_THREADS=6 implicit in env; Telemetry: 8 disables verified in Podmanfiles
 
-.PHONY: help setup setup-permissions setup-directories check-podman-permissions check-host-setup start stop status restart update doctor install-deps wheelhouse deps download-models validate health benchmark curate ingest test build up down logs debug-rag debug-ui debug-crawler debug-redis cleanup build-analyze build-report check-duplicates voice-test voice-build wheel-build wheel-build-podman-amd wheel-analyze build-tracking stack-cat stack-cat-default stack-cat-api stack-cat-rag stack-cat-frontend stack-cat-crawler stack-cat-voice stack-cat-all stack-cat-separate stack-cat-deconcat stack-cat-clean stack-cat-archive docs-buildkit docs-wheelhouse docs-optimization docs-status enterprise-buildkit enterprise-wheelhouse enterprise-cache build-base cache-status cache-warm cache-clear cache-clear-apt cache-inspect
+.PHONY: help setup setup-permissions setup-directories check-podman-permissions check-host-setup start stop status restart update doctor install-deps wheelhouse deps download-models validate health benchmark curate ingest test build up down logs debug-rag debug-ui debug-crawler debug-redis cleanup build-analyze build-report check-duplicates voice-test voice-build wheel-build wheel-build-podman-amd wheel-analyze build-tracking stack-cat stack-cat-default stack-cat-api stack-cat-rag stack-cat-frontend stack-cat-crawler stack-cat-voice stack-cat-all stack-cat-separate stack-cat-deconcat stack-cat-clean stack-cat-archive docs-buildkit docs-wheelhouse docs-optimization docs-status enterprise-buildkit enterprise-wheelhouse enterprise-cache build-base cache-status cache-warm cache-clear cache-clear-apt cache-inspect mkdocs-build mkdocs-serve mkdocs-serve-public mkdocs-serve-internal mkdocs-clean docs-public docs-internal docs-all docs-system
 
 COMPOSE_FILE := docker-compose.yml
 COMPOSE := podman-compose -f $(COMPOSE_FILE)
@@ -1950,3 +1950,94 @@ check-performance: ## 📊 Compare current system performance against baselines
 	@echo "$(YELLOW)💡 Compare results above with docs/03-reference/PERFORMANCE.md$(NC)"
 
 ingest-library: ingest ## 📚 Alias for library ingestion
+
+# ===========================================================================================
+# 📚 DOCUMENTATION SYSTEM TARGETS (MkDocs Integration - Phase 5)
+# ===========================================================================================
+# Dual-build documentation system:
+#   - Public docs: docs/ + mkdocs.yml → site/ (GitHub Pages, port 8000)
+#   - Internal docs: internal_docs/ + mkdocs-internal.yml → site-internal/ (team, port 8001)
+# ===========================================================================================
+
+mkdocs-build: ## 🏗️ Build both public and internal MkDocs documentation
+	@echo "$(CYAN)🏗️  Building public documentation (docs/ → site/)...$(NC)"
+	@mkdocs build
+	@echo "$(GREEN)✅ Public docs built$(NC)"
+	@echo ""
+	@echo "$(CYAN)🏗️  Building internal documentation (internal_docs/ → site-internal/)...$(NC)"
+	@mkdocs build -f mkdocs-internal.yml
+	@echo "$(GREEN)✅ Internal docs built$(NC)"
+	@echo ""
+	@echo "$(GREEN)✅ Both documentation builds complete!$(NC)"
+	@echo "$(YELLOW)💡 Output locations: site/ (public) and site-internal/ (internal)$(NC)"
+
+mkdocs-serve: mkdocs-serve-internal ## 🌐 Serve internal documentation (PRIMARY - port 8001)
+
+mkdocs-serve-internal: ## 🌐 Serve internal documentation on port 8001
+	@echo "$(CYAN)🌐 Starting internal documentation server (port 8001)...$(NC)"
+	@echo "$(YELLOW)📖 Open browser: http://localhost:8001$(NC)"
+	@echo "$(YELLOW)💡 Press Ctrl+C to stop server$(NC)"
+	@mkdocs serve -f mkdocs-internal.yml -a 127.0.0.1:8001
+
+mkdocs-serve-public: ## 🌐 Serve public documentation on port 8000
+	@echo "$(CYAN)🌐 Starting public documentation server (port 8000)...$(NC)"
+	@echo "$(YELLOW)📖 Open browser: http://localhost:8000$(NC)"
+	@echo "$(YELLOW)💡 Press Ctrl+C to stop server$(NC)"
+	@mkdocs serve -a 127.0.0.1:8000
+
+mkdocs-clean: ## 🧹 Remove built documentation artifacts
+	@echo "$(CYAN)🧹 Cleaning documentation build artifacts...$(NC)"
+	@rm -rf site site-internal
+	@echo "$(GREEN)✅ Documentation artifacts cleaned$(NC)"
+
+docs-public: ## 📚 Build public documentation (alias)
+	@echo "$(CYAN)📚 Building public documentation...$(NC)"
+	@mkdocs build
+	@echo "$(GREEN)✅ Public documentation ready at site/$(NC)"
+
+docs-internal: ## 📚 Build internal documentation (alias)
+	@echo "$(CYAN)📚 Building internal documentation...$(NC)"
+	@mkdocs build -f mkdocs-internal.yml
+	@echo "$(GREEN)✅ Internal documentation ready at site-internal/$(NC)"
+
+docs-all: mkdocs-build ## 🎯 Build all documentation (public and internal)
+
+docs-system: ## 📊 Show documentation system status
+	@echo ""
+	@echo "$(CYAN)📊 Documentation System Status$(NC)"
+	@echo "────────────────────────────────────────────────────────────────"
+	@echo ""
+	@echo "$(YELLOW)📁 Configuration Files:$(NC)"
+	@ls -lh mkdocs.yml mkdocs-internal.yml 2>/dev/null || echo "$(RED)  ⚠️  Config files missing$(NC)"
+	@echo ""
+	@echo "$(YELLOW)📚 Documentation Sources:$(NC)"
+	@echo "  Public:   $(shell find docs -name '*.md' 2>/dev/null | wc -l) markdown files in docs/"
+	@echo "  Internal: $(shell find internal_docs -name '*.md' 2>/dev/null | wc -l) markdown files in internal_docs/"
+	@echo ""
+	@echo "$(YELLOW)🏗️  Build Artifacts:$(NC)"
+	@if [ -d site ]; then \
+		echo "  $(GREEN)✅ Public build exists (site/)$(NC)"; \
+	else \
+		echo "  $(YELLOW)⚠️  No public build (run: make docs-public)$(NC)"; \
+	fi
+	@if [ -d site-internal ]; then \
+		echo "  $(GREEN)✅ Internal build exists (site-internal/)$(NC)"; \
+	else \
+		echo "  $(YELLOW)⚠️  No internal build (run: make docs-internal)$(NC)"; \
+	fi
+	@echo ""
+	@echo "$(YELLOW)🚀 Quick Commands:$(NC)"
+	@echo "  make mkdocs-serve-internal  → Start internal KB on port 8001"
+	@echo "  make mkdocs-serve-public    → Start public docs on port 8000"
+	@echo "  make mkdocs-build           → Build both (for CI/CD)"
+	@echo "  make mkdocs-clean           → Remove built artifacts"
+	@echo ""
+	@echo "$(YELLOW)🌐 URLs when serving:$(NC)"
+	@echo "  Public:   http://localhost:8000"
+	@echo "  Internal: http://localhost:8001"
+	@echo ""
+	@echo "$(YELLOW)📖 More info:$(NC)"
+	@echo "  See: memory_bank/mkdocs-commands.md"
+	@echo "  See: internal_docs/DOCUMENTATION-SYSTEM-STRATEGY.md"
+	@echo "────────────────────────────────────────────────────────────────"
+	@echo ""
