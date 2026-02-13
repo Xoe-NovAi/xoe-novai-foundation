@@ -264,7 +264,7 @@ EOF
 chmod +x scripts/phase-5a-stress-test.py
 ```
 
-### Step 2: Run Stress Test
+### Step 2: Run Stress Test (safe/staged by default)
 
 ```bash
 # Make sure you're in the project directory
@@ -273,11 +273,14 @@ cd /home/arcana-novai/Documents/xnai-foundation
 # Activate venv if needed
 source .venv/bin/activate
 
-# Run stress test (10 minutes with 5x load)
-python scripts/phase-5a-stress-test.py
+# Staging (recommended): incremental ramp and safety checks
+python scripts/phase-5a-stress-test.py --staging --duration 600 --workers 5
 
-# Or with timeout for safety
-timeout 660 python scripts/phase-5a-stress-test.py
+# Production intensity (ONLY with approval):
+python scripts/phase-5a-stress-test.py --confirm-prod --duration 600 --workers 5
+
+# Quick timeout wrapper for safety
+timeout 660 python scripts/phase-5a-stress-test.py --staging --duration 600 --workers 5
 ```
 
 ### Step 3: Monitor During Test (In Separate Terminal)
@@ -332,7 +335,7 @@ sudo apt install stress-ng  # Ubuntu/Debian
 sudo dnf install stress-ng   # Fedora/RHEL
 ```
 
-Script will fall back to Python memory pressure if not available.
+Script will fall back to a controlled Python memory pressure routine if `stress-ng` is not available. The stress script defaults to `--staging` (incremental ramp); use `--confirm-prod` only with approval to run full production intensity.
 
 ### Issue: System becomes unresponsive
 **Solution**: Reduce workload or kill test

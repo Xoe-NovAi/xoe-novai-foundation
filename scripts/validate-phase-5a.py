@@ -6,6 +6,8 @@ Validates all Phase 5A requirements are met
 
 import subprocess
 import sys
+import os
+import shutil
 from datetime import datetime
 
 def run_cmd(cmd, description=""):
@@ -28,7 +30,16 @@ def validate():
     
     passed = 0
     failed = 0
-    
+
+    # --- Preflight checks ---
+    required_tools = ["zramctl", "systemctl", "swapon"]
+    missing = [t for t in required_tools if shutil.which(t) is None]
+    if missing:
+        print(f"⚠️  Missing required tools: {', '.join(missing)}")
+        print("   Install missing tools or expect some checks to be skipped.")
+    if os.geteuid() != 0:
+        print("⚠️  Not running as root — some validation checks may require sudo/root privileges.")
+
     checks = [
         {
             "name": "1. zRAM Device Active",
@@ -74,13 +85,9 @@ def validate():
             "name": "9. Sysctl Config Persistent",
             "cmd": "test -f /etc/sysctl.d/99-xnai-zram-tuning.conf",
             "description": "Configuration file exists"
-        },
-        {
-            "name": "10. No Recent OOM Events",
-            "cmd": "test $(dmesg | grep -c 'Out of memory' || echo 0) -lt 3",
-            "description": "Less than 3 OOM events in dmesg"
         }
     ]
+
     
     for check in checks:
         success, stdout, stderr = run_cmd(check['cmd'])
@@ -97,6 +104,30 @@ def validate():
             failed += 1
         print()
     
+    # Additional OOM check (robust: dmesg -> journalctl fallback)
+    def count_oom_events():
+        try:
+            out = subprocess.run("dmesg | grep -c 'Out of memory'", shell=True, capture_output=True, text=True, timeout=5)
+            return int(out.stdout.strip() or 0)
+        except Exception:
+            try:
+                out = subprocess.run("journalctl -k --no-pager | grep -c 'Out of memory'", shell=True, capture_output=True, text=True, timeout=5)
+                return int(out.stdout.strip() or 0)
+            except Exception:
+                return -1
+
+    oom_count = count_oom_events()
+    if oom_count == -1:
+        print("⚠️  10. No Recent OOM Events — unable to determine (insufficient permissions)")
+    else:
+        if oom_count < 3:
+            passed += 1
+            print("✅ 10. No Recent OOM Events")
+            print(f"   Total OOM events (last boot): {oom_count}")
+        else:
+            failed += 1
+            print(f"❌ 10. No Recent OOM Events ({oom_count} events)")
+
     # Additional info
     print("="*70)
     print("SYSTEM INFO")

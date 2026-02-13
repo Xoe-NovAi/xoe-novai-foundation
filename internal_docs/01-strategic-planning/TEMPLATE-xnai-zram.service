@@ -7,11 +7,12 @@ After=systemd-modules-load.service
 
 [Service]
 Type=oneshot
-# Create zRAM device with 4GB size, zstd compression, 4 streams
-ExecStart=/usr/bin/zramctl --find --size 4G --algorithm zstd --streams 4
-# Activate as swap
-ExecStart=/bin/swapon /dev/zram0
+# Ensure wrapper exists (uses auto-sizing and nproc detection)
+AssertPathExists=/home/arcana-novai/Documents/xnai-foundation/scripts/xnai-zram-init.sh
+TimeoutStartSec=30
+ExecStart=/bin/bash /home/arcana-novai/Documents/xnai-foundation/scripts/xnai-zram-init.sh
 RemainAfterExit=yes
+ExecStartPost=/bin/sh -c 'sleep 1; test -e /dev/zram0 || (journalctl -u xnai-zram.service -n 50; exit 1)'
 
 # Cleanup on stop
 ExecStop=/bin/swapoff /dev/zram0

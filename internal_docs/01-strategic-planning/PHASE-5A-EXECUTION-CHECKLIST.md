@@ -4,15 +4,22 @@
 - [ ] Read `PHASE-5A-MEMORY-OPTIMIZATION.md` (Tier 2 Guide)
 - [ ] Understand success metrics
   - Zero OOM events under 5x load
-  - Compression ≥2.0:1 
+  - Compression ≥2.0:1
   - Peak memory <95%
-- [ ] Have sudo access or run as root
+- [ ] Have sudo access or run as root (required for many steps)
+- [ ] Required tools installed: `zramctl`, `systemctl`, `swapon`, `podman` or `docker` (verify with `which zramctl systemctl swapon podman || which docker`)
+- [ ] Ensure available memory headroom before stress test: `free -h` (recommended: at least 2GB free / >20% available)
 - [ ] Backup current configuration:
   ```bash
   mkdir -p /tmp/phase5a-backup
   cp /proc/sys/vm/swappiness /tmp/phase5a-backup/
   swapon --show > /tmp/phase5a-backup/swaps.txt
   ```
+- [ ] Run preflight validation (recommended):
+  ```bash
+  sudo python3 scripts/validate-phase-5a.py
+  ```
+
 
 ---
 
@@ -107,9 +114,13 @@
 **Objective**: Validate zero OOM events under 5x load
 
 ### Checklist
-- [ ] Prepare stress test:
+- [ ] Prepare stress test (default: staging/ramp):
   ```bash
-  python scripts/phase-5a-stress-test.py --duration 600 --workers 5
+  # Staging (recommended): incremental ramp, safer defaults
+  python scripts/phase-5a-stress-test.py --staging --duration 600 --workers 5
+
+  # Production intensity (ONLY with approval):
+  python scripts/phase-5a-stress-test.py --confirm-prod --duration 600 --workers 5
   ```
 - [ ] Monitor during test (separate terminal):
   ```bash
