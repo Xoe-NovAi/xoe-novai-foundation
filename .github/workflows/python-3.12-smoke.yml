@@ -40,6 +40,10 @@ jobs:
         run: |
           pytest -q tests/smoke_import_test.py -q
 
+      - name: Run Phase-5A unit tests (rollback & health-check)
+        run: |
+          pytest -q tests/test_phase5a_rollback.py tests/test_zram_health_check.py -q || true
+
       - name: Run core unit tests (optional)
         run: |
           pytest -q -k "not integration and not requires_native" || true

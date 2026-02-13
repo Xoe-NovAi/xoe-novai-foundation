@@ -1,0 +1,28 @@
+- name: Rollback Phase-5A zRAM changes (safe)
+  hosts: all
+  become: true
+  vars:
+    rollback_script: "{{ playbook_dir }}/../../scripts/phase5a-rollback.sh"
+  tasks:
+    - name: Ensure rollback script is present
+      stat:
+        path: "{{ rollback_script }}"
+      register: rb_script
+
+    - name: Copy rollback script to remote (if missing)
+      copy:
+        src: "{{ rollback_script }}"
+        dest: /usr/local/sbin/phase5a-rollback.sh
+        owner: root
+        group: root
+        mode: '0755'
+      when: rb_script.stat.exists == False
+
+    - name: Run Phase-5A rollback script
+      command: /usr/local/sbin/phase5a-rollback.sh
+      register: rollback_out
+      failed_when: rollback_out.rc != 0
+
+    - name: Show rollback output
+      debug:
+        msg: "{{ rollback_out.stdout }}"
