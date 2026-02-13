@@ -1,0 +1,25 @@
+[Unit]
+Description=XNAi zRAM Setup - Phase 5A Memory Optimization
+Documentation=https://wiki.archlinux.org/title/Zram
+Before=swap.target
+DefaultDependencies=no
+After=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+# Create zRAM device with 4GB size, zstd compression, 4 streams
+ExecStart=/usr/bin/zramctl --find --size 4G --algorithm zstd --streams 4
+# Activate as swap
+ExecStart=/bin/swapon /dev/zram0
+RemainAfterExit=yes
+
+# Cleanup on stop
+ExecStop=/bin/swapoff /dev/zram0
+ExecStop=/usr/bin/zramctl --reset /dev/zram0
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=xnai-zram
+
+[Install]
+WantedBy=swap.target
