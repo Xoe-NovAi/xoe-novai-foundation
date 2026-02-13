@@ -23,6 +23,62 @@
 
 ---
 
+## Research-backed best practices (deep-research summary)
+
+Highlights
+- ✅ Prefer `zstd` compression where the kernel exposes it (best compression ratio; modern CPUs handle the CPU cost).
+- ✅ Use `lz4` as a safe low-CPU fallback when `zstd` is unavailable.
+- ✅ Default sizing heuristic: `min(ram / 2, 4GiB)` is safe for general-purpose hosts; increase only after staging tests.
+- ✅ Raise `vm.swappiness` for zram (e.g., `180`) and set `vm.page-cluster = 0` to reduce clustered page I/O.
+
+Platform & implementation notes
+- Distro-native: prefer `zram-generator` (systemd generator) on Fedora/Arch when available — it runs at early-boot and is the upstream pattern used by Fedora/Arch. If unavailable, the `xnai-zram.service` wrapper is acceptable.
+- Hibernation: zram-based swap does NOT support hibernation; document this as a known limitation.
+
+Sizing heuristics (recommended defaults)
+- RAM ≤ 4 GiB  -> zram-size = min(ram/2, 1 GiB)
+- 4 GiB < RAM ≤ 16 GiB -> zram-size = min(ram/2, 4 GiB)
+- 16 GiB < RAM ≤ 64 GiB -> zram-size = min(ram/4, 8 GiB)
+- RAM > 64 GiB -> zram-size = min(ram/8, 16 GiB)
+
+Compression algorithm & streams
+- Prefer `zstd(level=3)` for compression/CPU balance. If kernel lacks `zstd`, fall back to `lz4`.
+- Set `streams` ≈ number of physical/available CPUs (use `nproc --ignore=1` for safety in small VMs).
+- Use `zramctl --algorithm zstd --streams $(nproc)` or `zram-generator` `compression-algorithm` entry.
+
+Kernel tuning rationale
+- `vm.swappiness = 180` encourages earlier pageout to zram (recommended by ArchWiki / Pop!_OS / Fedora findings).
+- `vm.page-cluster = 0` avoids large clustered reads/writes and improves responsiveness for in‑RAM swap.
+
+Stress-testing & safety
+- Use `stress-ng` with staged ramps and `--backoff`/`--verify` options (avoid `--pathological`).
+- Keep safety thresholds in staged runs (abort on CPU >85% or MEM > 92%).
+- In CI, run `validate-phase-5a.py` in a containerized environment with mocked `/proc` values; full integration tests require privileged runners or QEMU VM images.
+
+Observability (Prometheus + node_exporter)
+- Health-check script should write Prometheus metrics to `node_exporter` textfile collector directory (e.g., `/var/lib/node_exporter/textfile_collector/xnai_zram.prom`).
+- Recommended metric names (gauge):
+  - `xnai_zram_compression_ratio` (float)
+  - `xnai_zram_used_bytes` (gauge)
+  - `xnai_zram_uncompressed_bytes_total` (gauge)
+  - `xnai_zram_streams` (gauge)
+  - `xnai_zram_algorithm{alg="zstd"}` (label)
+- Ensure metrics file ends with a newline and is owned/readable by `node_exporter`.
+
+Operational & CI recommendations
+- Add unit tests for `validate-phase-5a.py` and `zram-health-check.sh` (mock `/proc` and `zramctl` outputs).
+- Add an integration job that runs `phase-5a-stress-test.py --staging` on a privileged runner or ephemeral VM image (gated behind manual approval).
+- Implement an automatic rollback script (`scripts/phase5a-rollback.sh`) that reverses sysctl, stops/ disables the service and restores backups.
+
+References
+- ArchWiki — zram: https://wiki.archlinux.org/title/Zram
+- Fedora — SwapOnZRAM: https://fedoraproject.org/wiki/Changes/SwapOnZRAM
+- util-linux `zramctl` manpage: https://man7.org/linux/man-pages/man8/zramctl.8.html
+- stress-ng manpage: https://manpages.debian.org/stretch/stress-ng/stress-ng.1.en.html
+- psutil docs (monitoring): https://psutil.readthedocs.io/en/latest/
+
+---
+
 ## Task 5A.1: Collect Baseline (30 minutes)
 
 **Objective**: Capture system state before modifications
@@ -186,6 +242,8 @@
 - [ ] Documentation complete
 - [ ] Team briefed
 - [ ] Monitoring script ready
+- [ ] Prometheus scraping `xnai_zram_*` metrics (see `monitoring/prometheus/phase-5a-scrape.yml`)
+- [ ] Grafana dashboard imported (`monitoring/grafana/dashboards/xnai_zram_dashboard.json`) and panels show live data
 
 ---
 

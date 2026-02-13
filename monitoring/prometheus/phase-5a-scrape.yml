@@ -1,0 +1,19 @@
+# Prometheus scrape config snippet for Phase-5A zRAM metrics
+# Add this to your prometheus.yml under `scrape_configs:` and reload Prometheus.
+
+- job_name: 'node_exporter_xnai_zram'
+  # Update targets to match your node_exporter host(s)
+  static_configs:
+    - targets: ['localhost:9100']
+  metrics_path: /metrics
+  scheme: http
+  relabel_configs:
+    # ensure this job is discoverable by service
+    - source_labels: [__address__]
+      target_label: instance
+      replacement: localhost
+
+# Notes:
+# - `xnai_zram_*` metrics are produced by scripts/zram-health-check.sh and consumed via node_exporter textfile collector.
+# - Ensure node_exporter runs with --collector.textfile.directory=/var/lib/node_exporter/textfile_collector
+# - After adding this snippet, run: `systemctl reload prometheus` (or equivalent)
