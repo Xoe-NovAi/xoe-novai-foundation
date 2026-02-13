@@ -55,6 +55,14 @@ Stress-testing & safety
 - Keep safety thresholds in staged runs (abort on CPU >85% or MEM > 92%).
 - In CI, run `validate-phase-5a.py` in a containerized environment with mocked `/proc` values; full integration tests require privileged runners or QEMU VM images.
 
+CPU affinity & core isolation (actionable checklist)
+- [ ] Reserve isolated cores for latency-sensitive workloads (document `isolcpus=` or chosen core set).
+- [ ] Add `CPUAffinity` to systemd unit templates for critical services (example: `CPUAffinity=2 3 4 5`).
+- [ ] Pin model-serving containers with `--cpuset-cpus` where needed.
+- [ ] Configure `zram.streams` to avoid the isolated core set.
+- [ ] Configure IRQ pinning for NVMe/IO to non-isolated cores.
+- [ ] Add Grafana panels for per-core usage and IRQ distribution; add alert when isolated-core usage > 70%.
+
 Observability (Prometheus + node_exporter)
 - Health-check script should write Prometheus metrics to `node_exporter` textfile collector directory (e.g., `/var/lib/node_exporter/textfile_collector/xnai_zram.prom`).
 - Recommended metric names (gauge):
@@ -196,6 +204,15 @@ References
 
 **If FAILED**: Skip Task 5A.5 and run rollback (see PHASE-5A-MEMORY-OPTIMIZATION.md section 7)
 
+- Run Ansible rollback (recommended for fleets):
+  ```bash
+  ansible-playbook ansible/playbooks/phase5a_rollback.yml -i inventory --limit <host>
+  ```
+- Or run the script locally:
+  ```bash
+  sudo scripts/phase5a-rollback.sh
+  ```
+
 ---
 
 ## Task 5A.5: Production Deployment (15 minutes)
@@ -228,6 +245,22 @@ References
   See PHASE-5A-MEMORY-OPTIMIZATION.md section 7
   EOF
   ```
+
+**How metrics flow (host-level)**
+
+```mermaid
+flowchart LR
+  K[Linux kernel (zram driver)] --> Z[zramctl]
+  Z --> H[scripts/zram-health-check.sh]
+  H --> TF[/var/lib/node_exporter/textfile_collector/xnai_zram.prom]
+  NE[node_exporter:9100] --> TF
+  Prom[Prometheus:9090] --> NE
+  Graf[Grafana] --> Prom
+  Caddy[Caddy (app proxy):8000] --> App[RAG API & Services]
+```
+
+> Note: zRAM and the health-check must run on the host kernel (not inside Podman). Prometheus scrapes `node_exporter` directly on port `9100`; Caddy (port 8000) is not used for metrics scraping.
+
 - [ ] Create health check script:
   ```bash
   chmod +x scripts/zram-health-check.sh
@@ -242,7 +275,9 @@ References
 - [ ] Documentation complete
 - [ ] Team briefed
 - [ ] Monitoring script ready
+- [ ] `scripts/phase5a-rollback.sh` created, executable, and tested (run in staging)
 - [ ] Prometheus scraping `xnai_zram_*` metrics (see `monitoring/prometheus/phase-5a-scrape.yml`)
+- [ ] Add Prometheus alert rules: `monitoring/prometheus/rules/phase-5a-alerts.yml` → include in your `prometheus.yml` `rule_files:` and reload Prometheus
 - [ ] Grafana dashboard imported (`monitoring/grafana/dashboards/xnai_zram_dashboard.json`) and panels show live data
 
 ---
