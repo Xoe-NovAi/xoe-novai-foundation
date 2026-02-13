@@ -74,9 +74,12 @@ Observability (Prometheus + node_exporter)
 - Ensure metrics file ends with a newline and is owned/readable by `node_exporter`.
 
 Operational & CI recommendations
-- Add unit tests for `validate-phase-5a.py` and `zram-health-check.sh` (mock `/proc` and `zramctl` outputs).
+- Add unit tests for `validate-phase-5a.py` and `zram-health-check.sh` (mock `/proc` and `zramctl` outputs). The `scripts/phase5a-rollback.sh` now has a unit test (`tests/test_phase5a_rollback.py`) and is validated by CI.
+- CI coverage:
+  - `python-3.12-smoke.yml` runs Phase‑5A unit tests on PRs and pushes (non-blocking).
+  - `phase5a-integration.yml` runs Phase‑5A unit tests on the privileged staging runner (blocking for the staging job).
 - Add an integration job that runs `phase-5a-stress-test.py --staging` on a privileged runner or ephemeral VM image (gated behind manual approval).
-- Implement an automatic rollback script (`scripts/phase5a-rollback.sh`) that reverses sysctl, stops/ disables the service and restores backups.
+- Implement an automatic rollback script (`scripts/phase5a-rollback.sh`) that reverses sysctl, stops/ disables the service and restores backups. The rollback operation can be executed via `ansible/playbooks/phase5a_rollback.yml`.
 
 References
 - ArchWiki — zram: https://wiki.archlinux.org/title/Zram
