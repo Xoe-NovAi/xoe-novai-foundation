@@ -1,0 +1,406 @@
+# PHASE 5A EXECUTION CHECKLIST
+
+## Pre-Execution
+- [ ] Read `PHASE-5A-MEMORY-OPTIMIZATION.md` (Tier 2 Guide)
+- [ ] Understand success metrics
+  - Zero OOM events under 5x load
+  - Compression ≥2.0:1
+  - Peak memory <95%
+- [ ] Have sudo access or run as root (required for many steps)
+- [ ] Required tools installed: `zramctl`, `systemctl`, `swapon`, `podman` or `docker` (verify with `which zramctl systemctl swapon podman || which docker`)
+- [ ] Ensure available memory headroom before stress test: `free -h` (recommended: at least 2GB free / >20% available)
+- [ ] Backup current configuration:
+  ```bash
+  mkdir -p /tmp/phase5a-backup
+  cp /proc/sys/vm/swappiness /tmp/phase5a-backup/
+  swapon --show > /tmp/phase5a-backup/swaps.txt
+  ```
+- [ ] Run preflight validation (recommended):
+  ```bash
+  sudo python3 scripts/validate-phase-5a.py
+  ```
+
+
+---
+
+## Research-backed best practices (deep-research summary)
+
+Highlights
+- ✅ Prefer `zstd` compression where the kernel exposes it (best compression ratio; modern CPUs handle the CPU cost).
+- ✅ Use `lz4` as a safe low-CPU fallback when `zstd` is unavailable.
+- ✅ Default sizing heuristic: `min(ram / 2, 4GiB)` is safe for general-purpose hosts; increase only after staging tests.
+- ✅ Raise `vm.swappiness` for zram (e.g., `180`) and set `vm.page-cluster = 0` to reduce clustered page I/O.
+
+Platform & implementation notes
+- Distro-native: prefer `zram-generator` (systemd generator) on Fedora/Arch when available — it runs at early-boot and is the upstream pattern used by Fedora/Arch. If unavailable, the `xnai-zram.service` wrapper is acceptable.
+- Hibernation: zram-based swap does NOT support hibernation; document this as a known limitation.
+
+Sizing heuristics (recommended defaults)
+- RAM ≤ 4 GiB  -> zram-size = min(ram/2, 1 GiB)
+- 4 GiB < RAM ≤ 16 GiB -> zram-size = min(ram/2, 4 GiB)
+- 16 GiB < RAM ≤ 64 GiB -> zram-size = min(ram/4, 8 GiB)
+- RAM > 64 GiB -> zram-size = min(ram/8, 16 GiB)
+
+Compression algorithm & streams
+- Prefer `zstd(level=3)` for compression/CPU balance. If kernel lacks `zstd`, fall back to `lz4`.
+- Set `streams` ≈ number of physical/available CPUs (use `nproc --ignore=1` for safety in small VMs).
+- Use `zramctl --algorithm zstd --streams $(nproc)` or `zram-generator` `compression-algorithm` entry.
+
+Kernel tuning rationale
+- `vm.swappiness = 180` encourages earlier pageout to zram (recommended by ArchWiki / Pop!_OS / Fedora findings).
+- `vm.page-cluster = 0` avoids large clustered reads/writes and improves responsiveness for in‑RAM swap.
+
+Stress-testing & safety
+- Use `stress-ng` with staged ramps and `--backoff`/`--verify` options (avoid `--pathological`).
+- Keep safety thresholds in staged runs (abort on CPU >85% or MEM > 92%).
+- In CI, run `validate-phase-5a.py` in a containerized environment with mocked `/proc` values; full integration tests require privileged runners or QEMU VM images.
+
+CPU affinity & core isolation (actionable checklist)
+- [ ] Reserve isolated cores for latency-sensitive workloads (document `isolcpus=` or chosen core set).
+- [ ] Add `CPUAffinity` to systemd unit templates for critical services (example: `CPUAffinity=2 3 4 5`).
+- [ ] Pin model-serving containers with `--cpuset-cpus` where needed.
+- [ ] Configure `zram.streams` to avoid the isolated core set.
+- [ ] Configure IRQ pinning for NVMe/IO to non-isolated cores.
+- [ ] Add Grafana panels for per-core usage and IRQ distribution; add alert when isolated-core usage > 70%.
+
+Observability (Prometheus + node_exporter)
+- Health-check script should write Prometheus metrics to `node_exporter` textfile collector directory (e.g., `/var/lib/node_exporter/textfile_collector/xnai_zram.prom`).
+- Recommended metric names (gauge):
+  - `xnai_zram_compression_ratio` (float)
+  - `xnai_zram_used_bytes` (gauge)
+  - `xnai_zram_uncompressed_bytes_total` (gauge)
+  - `xnai_zram_streams` (gauge)
+  - `xnai_zram_algorithm{alg="zstd"}` (label)
+- Ensure metrics file ends with a newline and is owned/readable by `node_exporter`.
+
+Operational & CI recommendations
+- Add unit tests for `validate-phase-5a.py` and `zram-health-check.sh` (mock `/proc` and `zramctl` outputs). The `scripts/phase5a-rollback.sh` now has a unit test (`tests/test_phase5a_rollback.py`) and is validated by CI.
+- CI coverage:
+  - `python-3.12-smoke.yml` runs Phase‑5A unit tests on PRs and pushes (non-blocking).
+  - `phase5a-integration.yml` runs Phase‑5A unit tests on the privileged staging runner (blocking for the staging job).
+- Add an integration job that runs `phase-5a-stress-test.py --staging` on a privileged runner or ephemeral VM image (gated behind manual approval).
+- Implement an automatic rollback script (`scripts/phase5a-rollback.sh`) that reverses sysctl, stops/ disables the service and restores backups. The rollback operation can be executed via `ansible/playbooks/phase5a_rollback.yml`.
+
+References
+- ArchWiki — zram: https://wiki.archlinux.org/title/Zram
+- Fedora — SwapOnZRAM: https://fedoraproject.org/wiki/Changes/SwapOnZRAM
+- util-linux `zramctl` manpage: https://man7.org/linux/man-pages/man8/zramctl.8.html
+- stress-ng manpage: https://manpages.debian.org/stretch/stress-ng/stress-ng.1.en.html
+- psutil docs (monitoring): https://psutil.readthedocs.io/en/latest/
+
+---
+
+## Task 5A.1: Collect Baseline (30 minutes)
+
+**Objective**: Capture system state before modifications
+
+### Checklist
+- [ ] Create baseline directory: `mkdir -p /tmp/phase5a-baseline`
+- [ ] Run baseline collection script:
+  ```bash
+  scripts/phase-5a-stress-test.py --baseline-only
+  # Or manually:
+  free -h > /tmp/phase5a-baseline/memory-start.txt
+  sysctl vm.swappiness vm.page-cluster > /tmp/phase5a-baseline/kernel-params-start.txt
+  dmesg | tail -20 > /tmp/phase5a-baseline/dmesg-start.txt
+  ```
+- [ ] Record baseline metrics:
+  - Physical RAM: _____ GB
+  - Available: _____ MB
+  - Current swappiness: _____
+  - Current zRAM: _____ (active/not active)
+  - OOM events (24h): _____
+
+### Success Criteria
+- [ ] Baseline data saved to `/tmp/phase5a-baseline/`
+- [ ] Current kernel parameters documented
+- [ ] Memory state captured
+
+---
+
+## Task 5A.2: Apply Kernel Parameters (15 minutes)
+
+**Objective**: Configure kernel for zRAM optimization
+
+### Checklist
+- [ ] Create `/etc/sysctl.d/99-xnai-zram-tuning.conf`:
+  ```bash
+  sudo cp TEMPLATE-sysctl-zram-tuning.conf /etc/sysctl.d/99-xnai-zram-tuning.conf
+  ```
+- [ ] Apply configuration:
+  ```bash
+  sudo sysctl -p /etc/sysctl.d/99-xnai-zram-tuning.conf
+  ```
+- [ ] Verify each parameter:
+  - [ ] `vm.swappiness = 180`: `cat /proc/sys/vm/swappiness | grep 180`
+  - [ ] `vm.page-cluster = 0`: `cat /proc/sys/vm/page-cluster | grep 0`
+  - [ ] `vm.watermark_boost_factor = 0`: `sysctl vm.watermark_boost_factor | grep 0`
+
+### Success Criteria
+- [ ] All 5 kernel parameters set to target values
+- [ ] No errors in sysctl output
+- [ ] Parameters readable via `/proc/sys/`
+
+---
+
+## Task 5A.3: Configure zRAM Device (20 minutes)
+
+**Objective**: Create and activate zRAM swap device
+
+### Checklist
+- [ ] Verify zramctl is installed:
+  ```bash
+  which zramctl || sudo apt install util-linux
+  ```
+- [ ] Create systemd service:
+  ```bash
+  sudo cp TEMPLATE-xnai-zram.service /etc/systemd/system/xnai-zram.service
+  ```
+- [ ] Enable and start service:
+  ```bash
+  sudo systemctl daemon-reload
+  sudo systemctl enable xnai-zram.service
+  sudo systemctl start xnai-zram.service
+  ```
+- [ ] Verify zRAM active:
+  - [ ] `zramctl` shows zram0
+  - [ ] Algorithm is zstd
+  - [ ] `swapon --show` includes /dev/zram0
+  - [ ] `systemctl status xnai-zram.service` shows active
+
+### Success Criteria
+- [ ] `/dev/zram0` active with 4GB size
+- [ ] zstd compression confirmed
+- [ ] Systemd service enabled and running
+- [ ] Swap configuration includes zram0
+
+---
+
+## Task 5A.4: Execute Stress Test (45 minutes)
+
+**Objective**: Validate zero OOM events under 5x load
+
+### Checklist
+- [ ] Prepare stress test (default: staging/ramp):
+  ```bash
+  # Staging (recommended): incremental ramp, safer defaults
+  python scripts/phase-5a-stress-test.py --staging --duration 600 --workers 5
+
+  # Production intensity (ONLY with approval):
+  python scripts/phase-5a-stress-test.py --confirm-prod --duration 600 --workers 5
+  ```
+- [ ] Monitor during test (separate terminal):
+  ```bash
+  watch -n 2 'zramctl && echo "" && free -h'
+  ```
+- [ ] Record results:
+  - OOM events: _____
+  - Compression ratio: _____ : 1
+  - Peak memory %: _____
+  - System responsiveness: _____
+
+### Success Criteria - CRITICAL
+- [ ] ✅ Zero OOM killer invocations
+- [ ] ✅ Compression ratio ≥1.5:1 (target ≥2.0)
+- [ ] ✅ Peak memory <95%
+- [ ] ✅ System remains responsive (no hangs)
+
+**If FAILED**: Skip Task 5A.5 and run rollback (see PHASE-5A-MEMORY-OPTIMIZATION.md section 7)
+
+- Run Ansible rollback (recommended for fleets):
+  ```bash
+  ansible-playbook ansible/playbooks/phase5a_rollback.yml -i inventory --limit <host>
+  ```
+- Or run the script locally:
+  ```bash
+  sudo scripts/phase5a-rollback.sh
+  ```
+
+---
+
+## Task 5A.5: Production Deployment (15 minutes)
+
+**Objective**: Make configuration persistent and document
+
+### Checklist
+- [ ] Verify persistence:
+  ```bash
+  ls -la /etc/sysctl.d/99-xnai-zram-tuning.conf
+  ls -la /etc/systemd/system/xnai-zram.service
+  systemctl is-enabled xnai-zram.service | grep enabled
+  ```
+- [ ] Create team documentation:
+  ```bash
+  cat > memory_bank/PHASE-5A-DEPLOYED.md << 'EOF'
+  # Phase 5A Deployed: 2026-02-12
+  
+  ## Configuration
+  - Kernel parameters: Applied via `/etc/sysctl.d/99-xnai-zram-tuning.conf`
+  - zRAM service: `/etc/systemd/system/xnai-zram.service`
+  - Status: Active and persistent
+  
+  ## Monitoring
+  - Daily check: `./scripts/zram-health-check.sh`
+  - Real-time: `watch zramctl`
+  - Logs: `journalctl -u xnai-zram.service -f`
+  
+  ## Rollback
+  See PHASE-5A-MEMORY-OPTIMIZATION.md section 7
+  EOF
+  ```
+
+**How metrics flow (host-level)**
+
+```mermaid
+flowchart LR
+  K[Linux kernel (zram driver)] --> Z[zramctl]
+  Z --> H[scripts/zram-health-check.sh]
+  H --> TF[/var/lib/node_exporter/textfile_collector/xnai_zram.prom]
+  NE[node_exporter:9100] --> TF
+  Prom[Prometheus:9090] --> NE
+  Graf[Grafana] --> Prom
+  Caddy[Caddy (app proxy):8000] --> App[RAG API & Services]
+```
+
+> Note: zRAM and the health-check must run on the host kernel (not inside Podman). Prometheus scrapes `node_exporter` directly on port `9100`; Caddy (port 8000) is not used for metrics scraping.
+
+- [ ] Create health check script:
+  ```bash
+  chmod +x scripts/zram-health-check.sh
+  ./scripts/zram-health-check.sh  # First run
+  ```
+- [ ] Team briefing document created
+- [ ] All documentation updated
+
+### Success Criteria
+- [ ] Configuration files in `/etc/` 
+- [ ] Systemd service enabled
+- [ ] Documentation complete
+- [ ] Team briefed
+- [ ] Monitoring script ready
+- [ ] `scripts/phase5a-rollback.sh` created, executable, and tested (run in staging)
+- [ ] Prometheus scraping `xnai_zram_*` metrics (see `monitoring/prometheus/phase-5a-scrape.yml`)
+- [ ] Add Prometheus alert rules: `monitoring/prometheus/rules/phase-5a-alerts.yml` → include in your `prometheus.yml` `rule_files:` and reload Prometheus
+- [ ] Grafana dashboard imported (`monitoring/grafana/dashboards/xnai_zram_dashboard.json`) and panels show live data
+
+---
+
+## Phase 5A Validation (Post-Deployment)
+
+### Run Final Validation
+```bash
+python scripts/validate-phase-5a.py
+```
+
+Should show:
+```
+✅ 1. zRAM Device Active
+✅ 2. zRAM Algorithm = zstd
+✅ 3. vm.swappiness = 180
+✅ 4. vm.page-cluster = 0
+✅ 5. Swap Configured
+✅ 6. Systemd Service Exists
+✅ 7. Systemd Service Enabled
+✅ 8. Systemd Service Active
+✅ 9. Sysctl Config Persistent
+✅ 10. No Recent OOM Events
+
+🎉 Phase 5A validation PASSED!
+```
+
+---
+
+## Optional: Test Persistence (Reboot)
+
+### Before Reboot
+```bash
+zramctl > /tmp/zram-pre.txt
+sysctl vm.swappiness > /tmp/swappiness-pre.txt
+```
+
+### Reboot
+```bash
+sudo reboot
+```
+
+### After Reboot
+```bash
+# Verify persistence
+zramctl > /tmp/zram-post.txt
+diff /tmp/zram-pre.txt /tmp/zram-post.txt  # Should be identical
+
+# Verify kernel params
+sysctl vm.swappiness  # Should be 180
+
+# Check service
+systemctl status xnai-zram.service  # Should be active
+```
+
+---
+
+## Troubleshooting During Execution
+
+### If OOM events occur during stress test:
+```bash
+# Stop test immediately
+pkill -9 python
+
+# Check what was OOM killed
+dmesg | grep "Out of memory" | tail -5
+
+# Options:
+# 1. Increase zRAM size to 6GB
+# 2. Reduce container limits
+# 3. Run rollback and retry (see PHASE-5A-MEMORY-OPTIMIZATION.md)
+```
+
+### If stress test hangs:
+```bash
+# In another terminal
+pkill -9 python
+# Or kill the entire terminal session and try again
+```
+
+### If kernel parameters won't apply:
+```bash
+# Requires sudo
+sudo sysctl -w vm.swappiness=180
+
+# Check kernel version (need 5.10+)
+uname -r
+```
+
+---
+
+## Sign-Off
+
+- [ ] Task 5A.1 Complete: _____________ Date: _______
+- [ ] Task 5A.2 Complete: _____________ Date: _______
+- [ ] Task 5A.3 Complete: _____________ Date: _______
+- [ ] Task 5A.4 Complete: _____________ Date: _______
+- [ ] Task 5A.5 Complete: _____________ Date: _______
+- [ ] Validation Passed: _____________ Date: _______
+
+**Phase 5A Status**: 
+- [ ] ✅ COMPLETE AND VALIDATED
+- [ ] ⏳ IN PROGRESS
+- [ ] ❌ FAILED - Rollback executed
+
+**Notes**:
+_________________________________________________
+_________________________________________________
+
+---
+
+## Next: Phase 5B
+
+**Phase 5B**: Observable Stack (Prometheus + Grafana + OpenTelemetry)
+- Start immediately (no blockers after Phase 5A)
+- See: `PHASE-5B-OBSERVABLE-FOUNDATION.md` (when available)
+
+---
+
+**Execution Guide**: Phase 5A Memory Optimization  
+**Version**: Tier 3 Implementation Module  
+**Created**: 2026-02-12  
+**Status**: Ready for Execution
