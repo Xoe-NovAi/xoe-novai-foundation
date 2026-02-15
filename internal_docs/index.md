@@ -86,8 +86,9 @@ This knowledge base uses **MkDocs** for unified, searchable documentation. All c
 
 ### First Time Users
 
-1. **Read the Overview**: Start with [Documentation Strategy](00-system/DOCUMENTATION-SYSTEM-STRATEGY.md)
-2. **Understand Your Role**: Check [File Explorer Index](00-system/INDEX.md) for role-based navigation
+1. **Read the Protocol**: Start with [Documentation Master Protocol](00-system/DOCUMENTATION-MASTER-PROTOCOL.md)
+2. **Understand Strategy**: Read [Master Strategy](00-system/MASTER-STRATEGY-XOE-NOVAI.md)
+3. **Find Your Role**: Check [File Explorer Index](00-system/INDEX.md)
 3. **Find Your Topic**: Use the navigation menu or search bar
 4. **Reference as Needed**: Each document has cross-references to related content
 

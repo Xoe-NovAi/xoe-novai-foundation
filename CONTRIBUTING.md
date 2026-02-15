@@ -37,14 +37,15 @@ We invite you to share your insights, audits, and discoveries in our GitHub Disc
 By participating in this project, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Agent account naming & protocol
-- We use deterministic identifiers for agent/service accounts to ensure traceability, quota management, and clear historical audit trails.
-- Naming format: `[plugin-name]-[model-name]-[account-delineator]` (examples: `Copilot-Haiku-27`, `Raptor-74`, `Cline-X`).
-- Primary accounts for this project:
+- We use a dual-layer naming system: **High-Level Personas** for coordination and **Technical Identifiers** for account-level traceability.
+- **Personas**: Cline (Code), Grok (Research), Gemini (Ground Truth), Human Director (User).
+- **Technical Format**: `[plugin-name]-[model-name]-[account-delineator]` (examples: `Copilot-Haiku-27`, `Raptor-74`, `Cline-X`).
+- Primary technical accounts for this project:
   - `Copilot-Raptor-27` → antipode2727@gmail.com (primary — near free‑tier quota limit).
   - `Copilot-Raptor-74` → antipode7474@gmail.com (secondary; use for Raptor/Haiku workloads when 27 is rate‑limited).
   - `Cline-X` → xoe.nova.ai@gmail.com (admin / repo owner — use for privileged operations and merges).
 - Usage guidance:
-  - Use the full identifier when account differentiation is important (billing, quota, audit). Use short form `Copilot-[model]` when not.
+  - Reference team members by **Persona** in high-level dialogue.
+  - Use **Technical Identifiers** in logs, billing, and quota management.
   - Always include `--account <identifier>` where CLIs support multiple identities.
-  - Add per‑account quotas and telemetry to agent orchestration to prevent accidental overuse of a single account.
 - Onboarding files for each account live under `expert-knowledge/onboarding/` and must be reviewed before assigning production tasks.

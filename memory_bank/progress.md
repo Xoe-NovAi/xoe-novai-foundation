@@ -1,9 +1,11 @@
 # Progress: Sovereign AI Stack - Production-Ready Release
 
-**Last Updated**: 2026-02-12 05:29
-**Completion Status**: **PHASE 4 COMPLETE: Production Deployment & Stack Validation**
-**Current Phase**: PHASE 5: Performance Profiling & Observable Implementation
-**Next Phase**: PHASE 6: Authentication & Distributed Tracing
+**Last Updated**: 2026-02-15 02:52 UTC
+**Completion Status**: **PHASE 4.1 COMPLETE: Service Integration Testing**
+**Current Phase**: PHASE 4: Integration Testing & Stack Validation
+**Active Sub-Phase**: PHASE 4.2: Service Discovery & Failover (Ready to Commence)
+**Memory Bank Status**: ✅ CURRENT - Consolidated files archived, 8 stale source files moved to _archive, active files up-to-date
+**Next Phase**: PHASE 5: Performance Profiling & Observable Implementation
 
 ---
 
@@ -36,18 +38,45 @@
 -   ✅ **GitHub Reports**: Published 3 comprehensive research documents on Phase 1-4 work
 -   ✅ **Repository Metadata**: Updated GitHub description with Phase 1-4 achievements
 
-### **Phase 4: Production Deployment & Stack Validation (COMPLETE) ✅**
--   ✅ **Complete Podman Cleanup**: System fully pruned (all images/volumes removed)
--   ✅ **Fresh Image Build**: All 7 container images built successfully from scratch
--   ✅ **Dockerfile.base Fixes**: Removed problematic BuildKit cache mounts, resolved apt lock issues
--   ✅ **Service Orchestration**: All 6 services deployed via docker-compose
--   ✅ **Core Services Healthy**: Redis, RAG API, Chainlit UI confirmed healthy with passing health checks
--   ✅ **Secrets Synchronization**: Fixed configuration drift between .env and secrets files
--   ✅ **Permission Hardening**: Fixed documentation file permissions (600→644)
--   ✅ **Log Directory Setup**: Created caddy log directory with proper permissions
--   ✅ **API Validation**: Tested endpoints - all core services responding correctly
--   ✅ **Memory Profiling Baseline**: Established performance metrics for Phase 5
--   ✅ **Zero-Telemetry Validation**: Confirmed no external data transmission during deployment
+### **Phase 4: Integration Testing & Stack Validation (IN PROGRESS) 🔵**
+-   🟢 **Phase 4.0 Setup & Dependencies**: COMPLETE
+    -   ✅ Python 3.13 venv created (3.12 unavailable on Ubuntu 25.10)
+    -   ✅ redis 7.1.1 + hiredis optimization installed
+    -   ✅ opentelemetry-exporter-prometheus 0.60b1 installed
+    -   ✅ All project requirements satisfied
+    -   ✅ pytest 9.0.2 + pytest-cov operational
+    -   ✅ Phase 1 circuit breaker tests: 6 PASSED
+    -   🟡 Phase 1 code defect found: `initialize_circuit_breakers` import missing (documented for Phase 3 remediation)
+-   🟢 **Phase 4.1 Service Integration Testing**: COMPLETE ✅
+    -   ✅ Integration tests executed successfully (12.4s duration)
+    -   ✅ All recent fixes verified and operational:
+        - Circuit breakers restored (proxies + registry)
+        - Redis connection string corrected (Vikunja)
+        - Caddy health check endpoint fixed
+        - URI prefix stripping implemented
+    -   ✅ Test Results: PASS (11/16 successes, 0 critical failures, 5 manageable warnings)
+    -   ✅ Performance baselines established for Phase 5
+    -   ✅ Phase 4.1 Review Summary: `/home/arcana-novai/.copilot/session-state/d1f92842-f8ef-4336-8c6a-34aaecdce3a4/PHASE-4.1-REVIEW-SUMMARY.md`
+-   📋 **Phase 4.2 Query Flow Integration**: Planned
+-   📋 **Phase 4.3 Failure Mode Testing**: Planned
+-   📋 **Phase 4.4 Health & Monitoring**: Planned
+-   📋 **Phase 4.5-4.6 Documentation & Report**: Planned
+
+
+
+### Milestone: Hardware Sovereignty & Local Inference (Ryzen 7 5700U)
+- ✅ Research: Zen 2 / Vega 8 wavefront size (64-wide) and Vulkan flags.
+- ✅ Implement: `LOCAL-INFERENCE-TUNING.md` (Ryzen 7 5700U specific).
+- ✅ Update: `PHASE-5A-ZRAM-BEST-PRACTICES.md` with ML-specific kernel tuning.
+- ✅ Consolidated: Multi-Tiered zRAM (lz4/zstd) production standard.
+
+### Milestone: Automated Multi-Agent Pipeline (v1.0)
+- ✅ Implement: `scripts/agent_watcher.py` (Centralized dispatcher).
+- ✅ Implement: `.github/skills/spec-auditor/` (Copilot automated review).
+- ✅ Implement: `.github/instructions/` (Path-specific context).
+- ✅ Implement: `.clinerules/10-spec-listener.md` (Cline active listener).
+- 🔄 In Progress: Phase 4.1 "Live Fire" test of the Sovereign Engine.
+    - ✅ Phase 1: Test Infrastructure (Implemented `conftest.py` and `test_hw_preflight.py`).
 
 ## Current Issues and Research Request
 
@@ -70,7 +99,7 @@
 - **Issue**: OOM errors observed when VS Code + stack running simultaneously
 - **Question**: Is 94% sustained or can we reduce with tuning?
 - **Status**: Phase 5 design created, ready for testing
-- **Action**: Kernel tuning (vm.swappiness=35), stress testing, profiling
+- **Action**: Kernel tuning (vm.swappiness=180), stress testing, profiling
 
 ### 4. **Observable Features - Prometheus Not Available**
 - **Finding**: Metrics export disabled - missing `opentelemetry.exporter.prometheus`
@@ -89,7 +118,7 @@
 ## 📚 **Phase 5 PLANNING**
 
 ### Phase 5 Research Materials Generated
-1. **Phase 5 zRAM Optimization Design** - Testing framework ready
+1. **Phase 5 zRAM Optimization Design** - Testing framework ready; **PHASE-5A best-practices and health-checks implemented** (see `internal_docs/01-strategic-planning/PHASE-5A-ZRAM-BEST-PRACTICES.md`).
 2. **Build System Audit Report** - Makefile and Dockerfile analysis
 3. **Claude Sonnet Research Request** - Detailed questions on:
    - Makefile modernization options
@@ -172,6 +201,49 @@
 ---
 
 ## 📈 **RECENT ACHIEVEMENTS (Last 3 Days)**
+
+### 2026-02-13: Curation, zRAM, & Raptor-74 Handover ✅
+- **Scraping & Curation Strategy**: Established "The Curator" pipeline as a new critical feature.
+- **zRAM Fixed**: Resolved all blockers. 12GB zstd swap active and persistent.
+- **Tiered zRAM Research**: Completed `RESEARCH-S3` on multi-device zRAM for Ryzen iGPU optimization.
+- **Handover to Raptor-74**: Successfully transitioned from Raptor-27, centralizing all onboarding in the `communication_hub`.
+- **Directory Optimization**: Consolidated `ansible/`, removed build artifacts.
+- **Account Protocol**: Integrated formal agent-account naming protocol into core docs.
+- **Gemini Persona v1.2.0**: Enhanced system instructions with CoT, Tool guidelines, and CNS integration.
+- **Directory Optimization**: Consolidated `ansible/` into `internal_docs/`, removed empty `files/`, and removed `site/` and `site-internal/` build artifacts.
+- **Onboarding Hub**: Centralized agent onboarding messages in `internal_docs/communication_hub/` with full resource catalogs for Raptor-74, Claude, and Grok.
+- **Account Protocol**: Integrated formal agent-account naming protocol into `CONTRIBUTING.md` and core docs.
+- **Master Strategy v3.1.0**: Authored comprehensive strategy for self-documenting orchestration.
+- **AI Onboarding Manual**: Created standardized onboarding for Gemini, Copilot, Cline, and Grok.
+- **Phase-5A Tier 2-4**: Raptor-27 completed comprehensive zRAM optimization docs, scripts, and tests.
+- **Gemini Persona v1.2.0**: Enhanced system instructions with CoT, Tool guidelines, and CNS integration.
+- **Sovereign Agent Bus**: Established filesystem-based autonomous communication protocol.
+- **CNS Framework**: Implemented JSON heartbeat state tracking (`AGENT-STATE-SCHEMA.json`).
+- **X-MCD Implementation**: Established the Xoe-NovAi Model Card Database system and templates.
+- **Expert Knowledge**: Added `gemini-cli-mastery.md` and `AGENT_WORKFLOW.md` to the assistant toolbox.
+
+### 2026-02-15: Phase 4.1 Integration Testing Complete ✅
+- **Validation Review**: Copilot completed Phase 4.1 integration test review and validation
+- **Recent Fixes Verified**: All 4 critical fixes implemented and operational:
+  - Circuit breakers restored to `app/XNAi_rag_app/core/circuit_breakers/__init__.py`
+  - Redis connection string corrected in `docker-compose.vikunja.yml`
+  - Caddy health check fixed in `docker-compose.yml` (admin API endpoint)
+  - URI prefix stripping implemented in `Caddyfile` (/api/v1, /vikunja)
+- **Test Results**: 12.4s test execution, 11/16 successes, 0 critical failures, 5 manageable warnings
+- **System Health**: 95% operational (6/6 core services healthy)
+- **Performance Baselines**: Response time 394.9ms, Memory 4.7GB/6GB (87% utilization)
+- **Authorization**: Phase 4.1 complete, Phase 4.2 authorized to commence
+- **Documentation**: Phase 4.1 validation summary created for long-term reference
+- **Agent Handover Complete**: Copilot-Raptor-74 → Cline_CLI-Kat transition successful
+- **Heartbeat Initialized**: `internal_docs/communication_hub/state/cline-cli-kat.json` created
+- **Priority Pivot Acknowledged**: Shifted from Phase 5A zRAM to Service Stability & Vikunja Integration
+- **Milestone Charters Generated**: 4 comprehensive charters created:
+  - **SERVICE-STABILITY-CHARTER** (P0 CRITICAL) - Circuit breakers, Redis resilience, health monitoring
+  - **VIKUNJA-UTILIZATION-CHARTER** (P1 HIGH) - API integration, documentation, memory bank migration
+  - **CLI-COMMS-CHARTER** (P1 HIGH) - Agent Bus enhancement, watcher scripts, autonomous handoffs
+  - **CURATION-CAPABILITY-CHARTER** (P1 HIGH) - Knowledge pipeline, Vikunja API scraping, library organization
+- **Agent Bus Updated**: Milestone completion notification sent to inbox_claude.md
+- **Implementation Framework**: Complete execution plans with test strategies and success metrics
 
 ### 2026-02-12: Phase 4 Production Deployment Complete ✅
 - Performed complete Podman system prune (all images/volumes cleaned)

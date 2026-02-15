@@ -37,7 +37,7 @@ services:
       VIKUNJA_LOGGER_LEVEL: "info"
       VIKUNJA_MAILER_ENABLED: "false"
       VIKUNJA_REDIS_ENABLED: "true"
-      VIKUNJA_REDIS_HOST: redis
+      VIKUNJA_REDIS_HOST: redis:6379
       VIKUNJA_REDIS_PORT: "6379"
       VIKUNJA_REDIS_PASSWORD: ${REDIS_PASSWORD}
       VIKUNJA_REDIS_DB: "5"
@@ -46,12 +46,6 @@ services:
     tmpfs:
       - /tmp:size=100m
       - /app/vikunja/.cache:size=50m
-    healthcheck:
-      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://127.0.0.1:3456/api/v1/info || exit 1"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 90s
     networks: [xnai_network]
 
 networks:

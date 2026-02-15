@@ -4,11 +4,21 @@ Purpose
 - Standardize how agent/service accounts are named, referenced, and used across the Foundation stack for auditability, quota management, and clear handoffs.
 
 Naming convention
-- Format: `[plugin-name]-[model-name]-[account-delineator]`
-  - Examples: `Copilot-Haiku-27`, `Copilot-Raptor-74`, `Cline-X`.
-- Use the full identifier when account differentiation matters (billing, quota, audit). If not critical, `Copilot-[model]` shorthand is acceptable.
+- **Persona Name**: The high-level identity (e.g., Cline, Grok, Gemini, Human Director).
+- **Technical Identifier**: Format: `[plugin-name]-[model-name]-[account-delineator]`
+  - Examples: `Copilot-Raptor-27`, `Copilot-Raptor-74`, `Cline-X`.
+- **Usage**: Always use Persona Names for coordination and high-level dialogue. Use Technical Identifiers for audit trails, quota management, and billing.
 
-Primary account mapping (current)
+Persona-to-Account mapping (current)
+| Persona | Role | Technical Identifiers | Primary Account / Usage |
+| :--- | :--- | :--- | :--- |
+| **Human Director** | Vision & Strategy | `Director-User-X` | The sovereign user (you). |
+| **Cline** | Code & Execution | `Cline-X`, `Cline-Kat`, `Copilot-Raptor-27` | Primary developer/coder role. |
+| **Grok** | Research & Strategy | `Grok-MC`, `Grok-Arcana`, `Grok-4.1` | Strategic Mastermind and researcher. |
+| **Gemini** | Ground Truth & Scribe | `Gemini-CLI` | Filesystem management, auditing, and documentation. |
+| **Copilot** | Tactical Support | `Copilot-Raptor-74`, `Copilot-Haiku-27` | Secondary/Support execution when others are capped. |
+
+Primary technical account mapping
 - `Copilot-Raptor-27` — antipode2727@gmail.com (primary active Copilot account; near monthly free‑tier cap)
 - `Copilot-Raptor-74` — antipode7474@gmail.com (secondary; use when `-27` is rate‑limited)
 - `Cline-X` — xoe.nova.ai@gmail.com (admin / repo owner; privileged operations)

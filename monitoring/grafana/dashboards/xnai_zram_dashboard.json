@@ -89,6 +89,30 @@
       ],
       "title": "System CPU (context) — helpful when stress-testing",
       "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {"defaults": {}, "overrides": []},
+      "gridPos": {"h": 6, "w": 12, "x": 0, "y": 14},
+      "id": 12,
+      "options": {},
+      "targets": [
+        {"expr": "sum by (cpu, mode) (rate(node_cpu_seconds_total[5m]))", "legendFormat": "cpu {{cpu}} - {{mode}}", "refId": "A"}
+      ],
+      "title": "Per‑core CPU (stacked by mode)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {"defaults": {"unit": "percent"}, "overrides": []},
+      "gridPos": {"h": 4, "w": 6, "x": 0, "y": 20},
+      "id": 14,
+      "options": {},
+      "targets": [
+        {"expr": "avg by (instance) (rate(node_cpu_seconds_total{cpu=~\"2|3|4|5\",mode!=\"idle\"}[2m])) * 100", "legendFormat": "isolated-core avg %", "refId": "A"}
+      ],
+      "title": "Isolated‑core avg utilization (example cores 2–5)",
+      "type": "stat"
     }
   ],
   "refresh": "10s",

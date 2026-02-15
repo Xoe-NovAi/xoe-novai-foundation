@@ -79,7 +79,7 @@ Operational & CI recommendations
   - `python-3.12-smoke.yml` runs Phase‑5A unit tests on PRs and pushes (non-blocking).
   - `phase5a-integration.yml` runs Phase‑5A unit tests on the privileged staging runner (blocking for the staging job).
 - Add an integration job that runs `phase-5a-stress-test.py --staging` on a privileged runner or ephemeral VM image (gated behind manual approval).
-- Implement an automatic rollback script (`scripts/phase5a-rollback.sh`) that reverses sysctl, stops/ disables the service and restores backups. The rollback operation can be executed via `ansible/playbooks/phase5a_rollback.yml`.
+- Implement an automatic rollback script (`scripts/phase5a-rollback.sh`) that reverses sysctl, stops/ disables the service and restores backups. The rollback operation can be executed via `internal_docs/ansible/playbooks/phase5a_rollback.yml`.
 
 References
 - ArchWiki — zram: https://wiki.archlinux.org/title/Zram
@@ -209,7 +209,7 @@ References
 
 - Run Ansible rollback (recommended for fleets):
   ```bash
-  ansible-playbook ansible/playbooks/phase5a_rollback.yml -i inventory --limit <host>
+  ansible-playbook internal_docs/ansible/playbooks/phase5a_rollback.yml -i inventory --limit <host>
   ```
 - Or run the script locally:
   ```bash

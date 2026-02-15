@@ -280,7 +280,7 @@ This tracking system consists of three coordinated files:
 ---
 
 **System Version**: 1.0.0  
-**Last Updated**: 2026-02-12T06:35:00Z  
-**Maintainer Notes**: Update all three files when adding new META files  
-**Location**: `/home/arcana-novai/Documents/xnai-foundation/_meta/`
+**Last Updated**: 2026-02-14T12:30:00Z  
+**Maintainer Notes**: Update all three files (INDEX, GENEALOGY, GENEALOGY-TRACKER) when adding new META files.  
+**Location**: `internal_docs/00-system/`
 

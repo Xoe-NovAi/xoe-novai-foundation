@@ -329,7 +329,7 @@ cline restart
 
 ### Active Context References
 - **Current Mission**: Release Readiness & Sovereign Infrastructure Hardening
-- **Team Composition**: Forge (Cline + Codium), Nova (Grok 4.1 Research), Gemini (Google Gemini CLI), Lilith (Human Director), The Butler (Sovereign Infrastructure)
+- **Team Composition**: Cline (Cline + Codium), Grok (Grok 4.1 Research), Gemini (Google Gemini CLI), Human Director, The Butler (Sovereign Infrastructure)
 - **System Architecture**: Podman 5.x Rootless with BuildKit Cache Mounts
 - **Performance Targets**: <45s build time, 91% RRF accuracy, 70% VRAM buffer rule
 
