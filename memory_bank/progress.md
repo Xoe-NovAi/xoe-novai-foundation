@@ -47,17 +47,34 @@
     -   ✅ pytest 9.0.2 + pytest-cov operational
     -   ✅ Phase 1 circuit breaker tests: 6 PASSED
     -   🟡 Phase 1 code defect found: `initialize_circuit_breakers` import missing (documented for Phase 3 remediation)
--   🟢 **Phase 4.1 Service Integration Testing**: COMPLETE ✅
-    -   ✅ Integration tests executed successfully (12.4s duration)
-    -   ✅ All recent fixes verified and operational:
-        - Circuit breakers restored (proxies + registry)
-        - Redis connection string corrected (Vikunja)
-        - Caddy health check endpoint fixed
-        - URI prefix stripping implemented
-    -   ✅ Test Results: PASS (11/16 successes, 0 critical failures, 5 manageable warnings)
-    -   ✅ Performance baselines established for Phase 5
-    -   ✅ Phase 4.1 Review Summary: `/home/arcana-novai/.copilot/session-state/d1f92842-f8ef-4336-8c6a-34aaecdce3a4/PHASE-4.1-REVIEW-SUMMARY.md`
--   📋 **Phase 4.2 Query Flow Integration**: Planned
+-   🟢 **Phase 4.2 Service Discovery & Failover**: COMPLETE ✅
+    -   ✅ **Phase 4.2.1: Infrastructure (Consul)**: COMPLETE
+        -   Consul 1.15.4 deployed in rootless Podman.
+        -   Persistence and DNS (8600) verified.
+    -   ✅ **Phase 4.2.2: Service Registration**: COMPLETE
+        -   `ConsulClient` (httpx-based) implemented.
+        -   `rag-api` auto-registers on startup.
+        -   Health checks (200 OK) operational.
+    -   ✅ **Phase 4.2.3: Tiered Degradation**: COMPLETE
+        -   `degradation.py` and `tier_config.py` implemented.
+        -   Resource-aware context/model switching operational.
+        -   4-tier fallback strategy (T1-T4) fully tested.
+    -   ✅ **Phase 4.2.4: Transaction Logging**: COMPLETE
+        -   Async audit trail via Redis Stream `xnai_audit_trail`.
+        -   Zero-telemetry operational visibility achieved.
+    -   ✅ **Phase 4.2.5: Hardened Circuit Breakers**: COMPLETE
+        -   `RedisConnectionManager` with health checking implemented.
+        -   Persistent state management with in-memory fallback.
+        -   Automatic failover to local storage on Redis unavailability.
+    -   ✅ **Phase 4.2.6: Sovereign IAM & Handshake**: COMPLETE
+        -   SQLite IAM database (`iam_db.py`) with Ed25519 key storage.
+        -   File-based challenge-response handshake protocol (`iam_handshake.py`).
+        -   Successful PoC: Copilot-to-Gemini verification achieved.
+    -   ✅ **Documentation & Integration (NEW)**: COMPLETE (2026-02-15)
+        -   `04-iam-database-management.md` - Diátaxis-compliant comprehensive guide
+        -   `05-sovereign-handshake-protocol.md` - Zero-trust authentication protocol
+        -   `06-redis-state-management.md` - Distributed state persistence with fallback
+        -   All 3 docs include: concepts, instructions, reference, troubleshooting, integration points
 -   📋 **Phase 4.3 Failure Mode Testing**: Planned
 -   📋 **Phase 4.4 Health & Monitoring**: Planned
 -   📋 **Phase 4.5-4.6 Documentation & Report**: Planned
