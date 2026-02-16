@@ -14,12 +14,17 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Callable
 from dataclasses import dataclass, asdict
 import threading
-# Optional infra helpers
+# Optional infra helpers - prefer improved Redis adapter
+_redis_adapter = None
 try:
-    from scripts.agent_state_redis import RedisAgentStateAdapter
+    from scripts.agent_state_redis2 import RedisAgentStateAdapter
     _redis_adapter = RedisAgentStateAdapter()
 except Exception:
-    _redis_adapter = None
+    try:
+        from scripts.agent_state_redis import RedisAgentStateAdapter
+        _redis_adapter = RedisAgentStateAdapter()
+    except Exception:
+        _redis_adapter = None
 
 try:
     from scripts.consul_registration import ConsulRegistrar

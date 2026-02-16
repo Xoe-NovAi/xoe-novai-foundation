@@ -12,12 +12,17 @@ import sys
 import re
 from pathlib import Path
 
-# Optional Redis adapter for agent state
+# Optional Redis adapter for agent state - prefer improved adapter
+_redis_adapter = None
 try:
-    from scripts.agent_state_redis import RedisAgentStateAdapter
+    from scripts.agent_state_redis2 import RedisAgentStateAdapter
     _redis_adapter = RedisAgentStateAdapter()
 except Exception:
-    _redis_adapter = None
+    try:
+        from scripts.agent_state_redis import RedisAgentStateAdapter
+        _redis_adapter = RedisAgentStateAdapter()
+    except Exception:
+        _redis_adapter = None
 
 # Configuration
 INBOX_DIR = Path("internal_docs/communication_hub/inbox")
