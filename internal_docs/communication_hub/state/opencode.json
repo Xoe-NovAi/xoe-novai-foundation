@@ -1,13 +1,13 @@
 {
-  "agent_name": "gemini-cli",
+  "agent_name": "opencode",
   "status": "active",
   "current_task": null,
   "progress": 0.0,
-  "last_heartbeat": "2026-02-16T19:53:28.977830",
+  "last_heartbeat": "2026-02-16T19:53:28.995195",
   "capabilities": [
-    "execution",
-    "filesystem",
-    "sync"
+    "research",
+    "model_access",
+    "analysis"
   ],
   "memory_usage": "",
   "error_count": 0,

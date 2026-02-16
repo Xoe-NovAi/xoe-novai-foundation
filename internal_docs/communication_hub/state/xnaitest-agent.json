@@ -1,13 +1,12 @@
 {
-  "agent_name": "gemini-cli",
+  "agent_name": "xnaitest-agent",
   "status": "active",
   "current_task": null,
   "progress": 0.0,
-  "last_heartbeat": "2026-02-16T19:53:28.977830",
+  "last_heartbeat": "2026-02-16T18:48:44.580027",
   "capabilities": [
-    "execution",
-    "filesystem",
-    "sync"
+    "test",
+    "demo"
   ],
   "memory_usage": "",
   "error_count": 0,
