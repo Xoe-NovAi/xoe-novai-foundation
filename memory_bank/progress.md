@@ -243,7 +243,7 @@
 - **Validation Review**: Copilot completed Phase 4.1 integration test review and validation
 - **Recent Fixes Verified**: All 4 critical fixes implemented and operational:
   - Circuit breakers restored to `app/XNAi_rag_app/core/circuit_breakers/__init__.py`
-  - Redis connection string corrected in `docker-compose.vikunja.yml`
+  - Redis connection string corrected in `docker-compose.yml`
   - Caddy health check fixed in `docker-compose.yml` (admin API endpoint)
   - URI prefix stripping implemented in `Caddyfile` (/api/v1, /vikunja)
 - **Test Results**: 12.4s test execution, 11/16 successes, 0 critical failures, 5 manageable warnings

@@ -6,13 +6,13 @@ Purpose
 Prerequisites
 - Podman installed and user in podman group or run with SKIP_DOCKER_PERMISSIONS
 - Secrets: db-pass and jwt-secret created as Podman secrets
-- docker-compose.vikunja.yml available with proper secret references
+- docker-compose.yml available with proper secret references
 - Python environment with memory_bank_export.py and Vikunja importer available
 
 Run Sequence (idempotent)
 - Prune existing Vikunja-related resources (pods, containers, networks, volumes)
 - Create secrets if missing (db-pass, jwt-secret)
-- Bring up Vikunja using docker-compose.vikunja.yml
+- Bring up Vikunja using docker-compose.yml
 - Wait for API to be reachable at http://localhost:3456/api/v1/info
 - Export memory_bank to vikunja-import.json (one-time or on demand)
 - Import data via the Vikunja importer (dry-run first, then live with token)

@@ -16,7 +16,7 @@ docker-compose.yml (Foundation)
 └─ services:
    └─ redis (can access secrets)
 
-docker-compose_vikunja.yml (Overlay)
+docker-compose.yml (Overlay)
 ├─ secrets:
 │  ├─ vikunja_db_password (marked external: true)
 │  └─ vikunja_jwt_secret (marked external: true)
@@ -287,7 +287,7 @@ vikunja-api:
 # Method 1: Pre-export variables
 export VIKUNJA_DB_PASSWORD=$(cat secrets/vikunja_db_password.txt)
 export VIKUNJA_JWT_SECRET=$(cat secrets/vikunja_jwt_secret.txt)
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up
+podman-compose -f docker-compose.yml -f docker-compose.yml up
 
 # Method 2: Use --env-file
 podman-compose --env-file <(grep VIKUNJA .env) up
@@ -306,7 +306,7 @@ podman-compose up
 ### Before (Broken)
 
 ```yaml
-# docker-compose_vikunja.yml
+# docker-compose.yml
 secrets:
   vikunja_db_password:
     external: true  # ❌ Can't mount in rootless overlay
@@ -321,7 +321,7 @@ vikunja-db:
 ### After (Working)
 
 ```yaml
-# docker-compose_vikunja.yml
+# docker-compose.yml
 # No secrets: block needed
 
 vikunja-db:
@@ -417,7 +417,7 @@ After implementing env var approach:
 - [ ] `.env` contains VIKUNJA_DB_PASSWORD and VIKUNJA_JWT_SECRET
 - [ ] `.gitignore` includes .env (if committing secrets)
 - [ ] Secrets directory (secrets/*.txt) is in .gitignore
-- [ ] docker-compose_vikunja.yml uses `${VARIABLE}` syntax
+- [ ] docker-compose.yml uses `${VARIABLE}` syntax
 - [ ] No `secrets:` block in overlay compose
 - [ ] No `/run/secrets/` references in compose
 - [ ] Pre-flight check passes: `env | grep VIKUNJA`

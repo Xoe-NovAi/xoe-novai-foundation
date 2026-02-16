@@ -69,16 +69,16 @@ env | grep VIKUNJA  # Should show both variables
 
 ---
 
-## STEP 4: Replace docker-compose_vikunja.yml (5 minutes)
+## STEP 4: Replace docker-compose.yml (5 minutes)
 
 **Option A: Using cat (Recommended)**
 
 ```bash
 # Backup current version first
-cp docker-compose_vikunja.yml docker-compose_vikunja.yml.backup
+cp docker-compose.yml docker-compose.yml.backup
 
 # Create corrected version
-cat > docker-compose_vikunja.yml << 'COMPOSE_EOF'
+cat > docker-compose.yml << 'COMPOSE_EOF'
 version: '3.8'
 
 services:
@@ -182,11 +182,11 @@ networks:
 COMPOSE_EOF
 
 # Verify syntax
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config > /dev/null && echo "✅ Compose files valid" || echo "❌ Compose file error"
+podman-compose -f docker-compose.yml -f docker-compose.yml config > /dev/null && echo "✅ Compose files valid" || echo "❌ Compose file error"
 ```
 
 **Option B: Copy from UPDATED_VIKUNJA_BLOCKER_RESOLUTION.md**
-- If cat didn't work, copy the entire docker-compose_vikunja.yml section from the guide
+- If cat didn't work, copy the entire docker-compose.yml section from the guide
 
 ---
 
@@ -230,10 +230,10 @@ env | grep REDIS_PASSWORD
 # Verify compose files exist and are valid
 echo "=== Validating Compose Files ==="
 [ -f docker-compose.yml ] && echo "✅ docker-compose.yml exists" || echo "❌ docker-compose.yml missing"
-[ -f docker-compose_vikunja.yml ] && echo "✅ docker-compose_vikunja.yml exists" || echo "❌ docker-compose_vikunja.yml missing"
+[ -f docker-compose.yml ] && echo "✅ docker-compose.yml exists" || echo "❌ docker-compose.yml missing"
 
 # Syntax check
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config > /dev/null 2>&1 && echo "✅ Compose syntax valid" || echo "❌ Compose syntax error"
+podman-compose -f docker-compose.yml -f docker-compose.yml config > /dev/null 2>&1 && echo "✅ Compose syntax valid" || echo "❌ Compose syntax error"
 
 # Check directories exist
 echo "=== Checking Directories ==="
@@ -278,7 +278,7 @@ echo "🚀 Starting Vikunja overlay..."
 mkdir -p data/vikunja/{db,files}
 podman unshare chown 1000:1000 -R data/vikunja 2>/dev/null
 chmod 700 data/vikunja/db
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Wait for services
 echo "⏳ Waiting 45 seconds for services to start..."
@@ -286,7 +286,7 @@ sleep 45
 
 # Verify deployment
 echo "=== Verifying Deployment ==="
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml ps
+podman-compose -f docker-compose.yml -f docker-compose.yml ps
 ```
 
 ---
@@ -312,7 +312,7 @@ redis-cli -h localhost -a $REDIS_PASSWORD ping && echo "✅ Redis available to V
 
 # Full health report
 echo "=== Full Health Report ==="
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml ps --no-trunc
+podman-compose -f docker-compose.yml -f docker-compose.yml ps --no-trunc
 ```
 
 ---
@@ -350,7 +350,7 @@ curl -s http://localhost:3456/api/v1/tasks \
 # Restart Vikunja to verify data persists
 echo "Testing persistence..."
 echo "Stopping Vikunja..."
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml restart vikunja vikunja-db
+podman-compose -f docker-compose.yml -f docker-compose.yml restart vikunja vikunja-db
 
 # Wait for restart
 echo "Waiting 45 seconds..."
@@ -371,13 +371,13 @@ echo "✅ Data persisted" || echo "❌ Data lost"
 git status
 
 # Stage files
-git add docker-compose_vikunja.yml .env Makefile
+git add docker-compose.yml .env Makefile
 git rm requirements-vikunja.txt  # If it's tracked
 
 # Commit
 git commit -m "fix: Resolve Vikunja blockers - use env vars instead of Podman secrets
 
-- Replace docker-compose_vikunja.yml with env var approach
+- Replace docker-compose.yml with env var approach
 - Update .env with VIKUNJA_DB_PASSWORD and VIKUNJA_JWT_SECRET
 - Share xnai_network for Redis access
 - Delete unnecessary requirements-vikunja.txt
@@ -402,7 +402,7 @@ env | grep VIKUNJA_DB_PASSWORD
 
 # Fix: Make sure env vars are exported before starting
 export VIKUNJA_DB_PASSWORD=$(cat secrets/vikunja_db_password.txt)
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d vikunja-db
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d vikunja-db
 ```
 
 ### If Vikunja API doesn't respond:
@@ -429,10 +429,10 @@ podman exec vikunja nslookup redis
 ### Rollback if needed:
 ```bash
 # Stop Vikunja
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml down
+podman-compose -f docker-compose.yml -f docker-compose.yml down
 
 # Restore backup
-cp docker-compose_vikunja.yml.backup docker-compose_vikunja.yml
+cp docker-compose.yml.backup docker-compose.yml
 
 # Restart Foundation (should still work)
 curl http://localhost/api/v1/health
@@ -447,7 +447,7 @@ All items ✅ = Production Ready
 - [ ] ✅ requirements-vikunja.txt deleted
 - [ ] ✅ Secrets generated and in .env
 - [ ] ✅ Environment variables exported
-- [ ] ✅ docker-compose_vikunja.yml replaced
+- [ ] ✅ docker-compose.yml replaced
 - [ ] ✅ Compose files validate (no syntax errors)
 - [ ] ✅ Data directories created with correct permissions
 - [ ] ✅ Foundation stack running

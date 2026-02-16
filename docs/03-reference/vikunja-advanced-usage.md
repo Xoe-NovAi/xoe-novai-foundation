@@ -22,7 +22,7 @@ Vikunja serves as the central sync hub for multi-agent coordination in the Xoe-N
 ### Rootless Podman Deployment
 
 ```yaml
-# docker-compose.vikunja.yml
+# docker-compose.yml
 version: '3.8'
 services:
   vikunja-db:

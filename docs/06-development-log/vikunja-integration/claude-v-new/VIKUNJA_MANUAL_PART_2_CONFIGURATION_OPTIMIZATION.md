@@ -680,7 +680,7 @@ Connection Lifecycle:
 4. Connection returned to pool
 5. After 5 minutes idle: connection closed
 
-Pool Configuration (docker-compose_vikunja.yml):
+Pool Configuration (docker-compose.yml):
 VIKUNJA_DATABASE_MAXOPENCONNECTIONS=20
 VIKUNJA_DATABASE_MAXIDLECONNECTIONS=5
 

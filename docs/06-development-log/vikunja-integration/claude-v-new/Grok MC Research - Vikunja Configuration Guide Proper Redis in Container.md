@@ -3,7 +3,7 @@
 ### 1. Vikunja Configuration Guide: Proper Redis in Container
 Vikunja's Redis setup is brittle but straightforward — no separate `VIKUNJA_REDIS_PORT` env; port **must** embed in `VIKUNJA_REDIS_HOST` as `host:port` (e.g., `redis:6379`). Missing port triggers `'dial tcp: address redis: missing port in address'` — classic Docker DNS parse fail. Constructed URL: `redis://[:password]@host:port/db`. Enable only for >10 users (caches sessions/queues); otherwise, database fallback is sovereign-light.
 
-**Working Configuration Example** (update `docker-compose.vikunja.yml`):
+**Working Configuration Example** (update `docker-compose.yml`):
 ```yaml
 services:
   vikunja:

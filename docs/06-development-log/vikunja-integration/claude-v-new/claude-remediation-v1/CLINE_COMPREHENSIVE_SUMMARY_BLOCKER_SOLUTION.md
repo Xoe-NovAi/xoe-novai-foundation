@@ -36,7 +36,7 @@ After 15+ deployment attempts, Cline identified that Vikunja authentication was 
 
 ### The Problem (Blocker #1 - Password Authentication)
 
-Cline's current `docker-compose_vikunja.yml` uses:
+Cline's current `docker-compose.yml` uses:
 
 ```yaml
 environment:
@@ -192,7 +192,7 @@ STEP 7: Test API (3 min)
 
 | File | Purpose | Use |
 |------|---------|-----|
-| `docker-compose_vikunja_CORRECTED.yml` | Production-ready config | **Copy to docker-compose_vikunja.yml** |
+| `docker-compose_vikunja_CORRECTED.yml` | Production-ready config | **Copy to docker-compose.yml** |
 | `.env_VIKUNJA_TEMPLATE` | Template with all variables | Reference for your .env |
 | `CLINE_VIKUNJA_BLOCKER_SOLUTION_COMPLETE.md` | Complete root cause analysis | Understanding the issue |
 | `CLINE_DEPLOYMENT_COPY_PASTE_COMMANDS.md` | Step-by-step with commands | **Follow this to deploy** |

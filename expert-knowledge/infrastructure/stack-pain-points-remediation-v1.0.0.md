@@ -3,7 +3,7 @@
 ## 1. Vikunja Redis Connectivity
 - **Issue**: `dial tcp: address redis: missing port in address`
 - **Fix**: Port must be embedded in `VIKUNJA_REDIS_HOST` (e.g., `redis:6379`).
-- **Implementation**: Updated `docker-compose.vikunja.yml` with `VIKUNJA_REDIS_HOST: "redis:6379"`.
+- **Implementation**: Updated `docker-compose.yml` with `VIKUNJA_REDIS_HOST: "redis:6379"`.
 
 ## 2. Caddyfile Syntax
 - **Issue**: Global headers and invalid `websocket` directives.

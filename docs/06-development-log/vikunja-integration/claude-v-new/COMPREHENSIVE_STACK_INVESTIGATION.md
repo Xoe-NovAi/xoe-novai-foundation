@@ -167,7 +167,7 @@ networks:
     driver: bridge
     name: xnai_network
 
-# docker-compose.vikunja.yml
+# docker-compose.yml
 networks:
   xnai_network:
     external: true  # ✅ Correct - references existing
@@ -351,7 +351,7 @@ podman-compose -f docker-compose.yml up -d
 
 ### Phase 3: Deploy Vikunja Stack
 ```bash
-podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 ```
 
 ### Phase 4: Verify
@@ -411,7 +411,7 @@ Current limits may not be optimized for production workload.
 |------|-----------------|----------|
 | docker-compose.yml | Remove RAG port 8000, convert secrets | 🔴 Critical |
 | Caddyfile | Fix Vikunja service names | 🔴 Critical |
-| docker-compose.vikunja.yml | Standardize env vars | 🟡 High |
+| docker-compose.yml | Standardize env vars | 🟡 High |
 | .env | Verify all passwords present | 🟡 High |
 | config.toml | Verify service endpoints | 🟢 Medium |
 

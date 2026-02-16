@@ -125,7 +125,7 @@ Looking at your research file, I see the issue. Your docker-compose file configu
    # Should show both vikunja and redis connected
    ```
 
-### Complete Working docker-compose.vikunja.yml
+### Complete Working docker-compose.yml
 
 Here's the DEFINITIVE working configuration:
 
@@ -347,7 +347,7 @@ podman-compose config | grep -A 10 "vikunja:"
 
 When you run:
 ```bash
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 ```
 
 docker-compose automatically loads `.env` from current directory. But:
@@ -357,7 +357,7 @@ docker-compose automatically loads `.env` from current directory. But:
 podman-compose up -d
 
 # ✅ CORRECT (loads .env):
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Also make sure:
 # 1. .env exists in current directory
@@ -394,10 +394,10 @@ echo "VIKUNJA_JWT_SECRET=$VIKUNJA_JWT_SECRET" >> .env
 
 ```bash
 # Use the definitive working configuration above
-# Replace your docker-compose_vikunja.yml with the complete version
+# Replace your docker-compose.yml with the complete version
 
 # Deploy:
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Wait for startup:
 sleep 60
@@ -414,7 +414,7 @@ curl http://localhost:3456/api/v1/info
 # Change VIKUNJA_REDIS_ENABLED: "true" to "false"
 
 # Deploy:
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # If Vikunja starts, problem is Redis config
 # If Vikunja still fails, problem is something else (database, etc.)
@@ -471,7 +471,7 @@ VIKUNJA_REDIS: "redis://:${REDIS_PASSWORD}@redis:6379/5"
 2. **Use docker-compose_vikunja_CORRECTED.yml** from outputs (has the correct config)
 3. **Deploy** with both compose files:
    ```bash
-   podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+   podman-compose -f docker-compose.yml -f docker-compose.yml up -d
    ```
 4. **Wait** 60 seconds
 5. **Verify** with debugging steps above

@@ -24,7 +24,7 @@ What success looks like
 Data to be delivered to Grok (format: markdown, with embedded logs or snippets)
 - A few representative payload samples from the dry-run importer
 - The exact Podman state dump (ps -a, pod ls, network ls, secret ls)
-- The docker-compose.vikunja.yml excerpt and token handling notes
+- The docker-compose.yml excerpt and token handling notes
 - API token policy summary from Vikunja UI (scope, expiry, revocation)
 - Health-check results and timestamps
 - A short risk assessment and mitigation notes for the live gate

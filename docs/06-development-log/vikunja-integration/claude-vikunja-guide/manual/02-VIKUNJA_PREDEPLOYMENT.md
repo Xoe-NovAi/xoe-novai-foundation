@@ -559,7 +559,7 @@ chmod +x pre-flight-check.sh
 
 # Stop all containers
 podman compose -f docker-compose.yml down
-podman compose -f docker-compose.vikunja.yml down 2>/dev/null || true
+podman compose -f docker-compose.yml down 2>/dev/null || true
 
 # Remove volumes and data
 rm -rf data/vikunja/
@@ -612,7 +612,7 @@ podman system reset  # WARNING: destructive
 ```bash
 # Validate each file
 podman compose -f docker-compose.yml config > /dev/null
-podman compose -f docker-compose.vikunja.yml config > /dev/null
+podman compose -f docker-compose.yml config > /dev/null
 
 # Check for common YAML issues:
 # - Tabs instead of spaces (YAML doesn't allow tabs)

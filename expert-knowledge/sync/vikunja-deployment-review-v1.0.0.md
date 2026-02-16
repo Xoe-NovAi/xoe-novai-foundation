@@ -67,7 +67,7 @@ async def batch_import_tasks(tasks, batch_size=50):
 - ⚠️ Link to updated compose configuration
 - ⚠️ Note bulk import limitation (single-task loop required)
 
-### 3. docker-compose.vikunja.yml → 7.5/10 (Critical Updates Required)
+### 3. docker-compose.yml → 7.5/10 (Critical Updates Required)
 
 **Current Issues**:
 - ❌ Missing `:Z,U` volume flags for SELinux rootless
@@ -193,7 +193,7 @@ podman compose up -d
 ## Implementation Roadmap Updates
 
 ### Phase 0: Pre-Deployment Audit (Updated)
-- [ ] Apply rootless hardening to docker-compose.vikunja.yml
+- [ ] Apply rootless hardening to docker-compose.yml
 - [ ] Create Caddyfile for local-only proxy
 - [ ] Set up Podman secrets for database and JWT
 - [ ] Test Trinity security scan on updated compose
@@ -224,7 +224,7 @@ podman compose up -d
 
 ## Next Actions
 
-1. **Immediate**: Replace docker-compose.vikunja.yml with rootless-hardened version
+1. **Immediate**: Replace docker-compose.yml with rootless-hardened version
 2. **Testing**: Run Trinity security scan on updated configuration
 3. **Migration**: Test memory_bank_export.py dry-run and batch import
 4. **Documentation**: Update vikunja-deployment-artifacts-v1.0.0.md with new commands

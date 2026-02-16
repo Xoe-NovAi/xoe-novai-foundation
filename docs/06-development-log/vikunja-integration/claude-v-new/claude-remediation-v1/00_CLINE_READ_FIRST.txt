@@ -22,7 +22,7 @@ WHAT HAPPENED:
 ═════════════════════════════════════════════════════════════════════════════
 
 Your Issue (Blocker #1):
-  ❌ docker-compose_vikunja.yml uses Podman external secrets
+  ❌ docker-compose.yml uses Podman external secrets
   ❌ Secrets don't mount properly in rootless Podman + docker-compose
   ❌ Result: "password authentication failed" error
 
@@ -90,7 +90,7 @@ FILES YOU NEED (IN ORDER):
 
 3. USE THESE FILES:
    ├─ docker-compose_vikunja_CORRECTED.yml
-   │  └─ Copy to your docker-compose_vikunja.yml
+   │  └─ Copy to your docker-compose.yml
    ├─ .env_VIKUNJA_TEMPLATE
    │  └─ Reference for your .env file
    └─ .env (your existing file)
@@ -164,7 +164,7 @@ A: 25 minutes total (generate secrets 2min, deploy 5min, verify 3min,
    plus wait times for services to start).
 
 Q: Is it reversible if something goes wrong?
-A: YES. Just restore your docker-compose_vikunja.yml.backup
+A: YES. Just restore your docker-compose.yml.backup
 
 Q: What if it fails?
 A: See "TROUBLESHOOTING" section in COPY_PASTE_COMMANDS.md for all

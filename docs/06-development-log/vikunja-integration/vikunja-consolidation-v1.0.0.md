@@ -20,7 +20,7 @@ Implemented consolidated Vikunja architecture following Grok MC's specifications
 
 ## FILES CREATED/MODIFIED
 
-### 1. docker-compose.vikunja.yml (NEW)
+### 1. docker-compose.yml (NEW)
 ```yaml
 version: '3.8'
 

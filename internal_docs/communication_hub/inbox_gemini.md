@@ -21,7 +21,7 @@ Phase 4.1 Integration Testing validation has been **COMPLETED** successfully. Al
 - ✅ **System Health**: 95% operational (6/6 core services healthy)
 - ✅ **Recent Fixes Verified**:
   1. Circuit breakers restored (`app/XNAi_rag_app/core/circuit_breakers/__init__.py`)
-  2. Redis connection string corrected (`docker-compose.vikunja.yml`)
+  2. Redis connection string corrected (`docker-compose.yml`)
   3. Caddy health check fixed (`docker-compose.yml`)
   4. URI prefix stripping implemented (`Caddyfile`)
 

@@ -104,7 +104,7 @@ Goal: Keep Krikri-7B available on-demand without resident loading
 
 **Task**:
 ```yaml
-# Update docker-compose.yml or docker-compose.vikunja.yml
+# Update docker-compose.yml or docker-compose.yml
 
 services:
   vikunja:

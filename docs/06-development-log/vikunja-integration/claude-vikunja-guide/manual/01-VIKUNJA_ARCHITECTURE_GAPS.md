@@ -136,7 +136,7 @@ database:
 **Critical**: Environment variables OVERRIDE config files. This is Podman-friendly.
 
 **Action for Cline**:
-- Use only environment variables in `docker-compose.vikunja.yml` (no config file needed)
+- Use only environment variables in `docker-compose.yml` (no config file needed)
 - All config keys: `VIKUNJA_<SECTION>_<KEY>` (uppercase, underscores)
 - Example: `VIKUNJA_DATABASE_HOST=vikunja-db` → `database.host: vikunja-db`
 

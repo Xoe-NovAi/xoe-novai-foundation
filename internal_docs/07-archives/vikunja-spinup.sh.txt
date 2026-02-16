@@ -23,8 +23,8 @@ if ! podman secret inspect jwt-secret >/dev/null 2>&1; then
 fi
 
 # Spin up Vikunja
-log "Starting Vikunja stack (docker-compose.vikunja.yml)" 
-podman-compose -f docker-compose.vikunja.yml up -d
+log "Starting Vikunja stack (docker-compose.yml)" 
+podman-compose -f docker-compose.yml up -d
 
 # Basic health check loop
 log "Waiting for Vikunja API to become healthy..."

@@ -206,7 +206,7 @@ depends_on:
 
 ## 📋 COMPLETE CORRECTED CONFIGURATION
 
-### Corrected docker-compose_vikunja.yml (WITH MINOR ENHANCEMENTS)
+### Corrected docker-compose.yml (WITH MINOR ENHANCEMENTS)
 
 ```yaml
 version: '3.8'
@@ -345,7 +345,7 @@ networks:
 
 - [ ] **Compose Files Syntax Valid**
   ```bash
-  podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config > /dev/null
+  podman-compose -f docker-compose.yml -f docker-compose.yml config > /dev/null
   ```
 
 - [ ] **Data Directories Created**
@@ -541,14 +541,14 @@ chmod 700 data/vikunja/db
 ### Step 3: Deploy
 ```bash
 # Replace current file with corrected version
-cp docker-compose_vikunja.yml.backup docker-compose_vikunja.yml
+cp docker-compose.yml.backup docker-compose.yml
 # (Use corrected version from above)
 
 # Start Foundation (if not running)
 make up
 
 # Start Vikunja overlay
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Wait for startup
 sleep 45
@@ -560,7 +560,7 @@ curl http://localhost:3456/api/v1/info | jq .
 ### Step 4: Verify All Services
 ```bash
 # Check containers
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml ps
+podman-compose -f docker-compose.yml -f docker-compose.yml ps
 
 # Test API
 curl http://localhost:3456/api/v1/info

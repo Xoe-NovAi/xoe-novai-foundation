@@ -13,7 +13,7 @@
       "summary_report": "INTEGRATION_TEST_SUMMARY.md",
       "recent_fixes": [
         "app/XNAi_rag_app/core/circuit_breakers/__init__.py (Restored proxies and registry)",
-        "docker-compose.vikunja.yml (Fixed Redis connection string)",
+        "docker-compose.yml (Fixed Redis connection string)",
         "docker-compose.yml (Fixed Caddy health check)",
         "Caddyfile (Added URI prefix stripping)"
       ]

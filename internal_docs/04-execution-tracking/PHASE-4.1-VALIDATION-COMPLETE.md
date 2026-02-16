@@ -26,7 +26,7 @@ Phase 4.1 integration testing has been successfully completed and validated. The
 | Fix | File | Status | Impact |
 |-----|------|--------|--------|
 | Circuit Breakers | `app/XNAi_rag_app/core/circuit_breakers/__init__.py` | ✅ VERIFIED | Full graceful degradation capability restored |
-| Redis Connection | `docker-compose.vikunja.yml` | ✅ VERIFIED | Vikunja PM authentication working |
+| Redis Connection | `docker-compose.yml` | ✅ VERIFIED | Vikunja PM authentication working |
 | Caddy Health Check | `docker-compose.yml` | ✅ VERIFIED | Gateway properly monitored and orchestrated |
 | URI Prefix Stripping | `Caddyfile` | ✅ VERIFIED | Request routing normalized for both APIs |
 

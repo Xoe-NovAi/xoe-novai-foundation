@@ -11,7 +11,7 @@
 
 1. [Updated docker-compose.yml (Foundation Core)](#updated-docker-composeyml-foundation-core)
 2. [Caddyfile (Unified Reverse Proxy)](#caddyfile-unified-reverse-proxy)
-3. [Create docker-compose.vikunja.yml (Overlay)](#create-docker-composevikunjayml-overlay)
+3. [Create docker-compose.yml (Overlay)](#create-docker-composevikunjayml-overlay)
 4. [Updated Makefile](#updated-makefile)
 5. [Deployment Steps](#deployment-steps)
 
@@ -523,19 +523,19 @@ echo "✅ Created: Caddyfile"
 
 ---
 
-## Create docker-compose.vikunja.yml (Overlay)
+## Create docker-compose.yml (Overlay)
 
 ### Instructions for Cline
 
 ```bash
 # Cline: This is a NEW file (doesn't replace anything)
-cat > docker-compose.vikunja.yml << 'EOF'
+cat > docker-compose.yml << 'EOF'
 # ============================================================================
 # Xoe-NovAi Vikunja Multi-Service Overlay
 # ============================================================================
 # Purpose: Isolated task management & project coordination (optional)
-# Usage: podman compose -f docker-compose.yml -f docker-compose.vikunja.yml up
-# Toggle: Omit `-f docker-compose.vikunja.yml` to disable
+# Usage: podman compose -f docker-compose.yml -f docker-compose.yml up
+# Toggle: Omit `-f docker-compose.yml` to disable
 # Data Persistence: PostgreSQL bind mount at ./data/vikunja/
 # Created: 2026-02-07
 # ============================================================================
@@ -687,7 +687,7 @@ secrets:
     external: true  # Shared with Foundation (created in Part 2)
 EOF
 
-echo "✅ Created: docker-compose.vikunja.yml"
+echo "✅ Created: docker-compose.yml"
 ```
 
 **Key Configuration Notes**:
@@ -730,7 +730,7 @@ up-vikunja: up
 	@echo "🚀 Starting Vikunja overlay..."
 	@mkdir -p data/vikunja/{db,files}
 	@podman unshare chown 1000:1000 -R data/vikunja 2>/dev/null || true
-	@podman compose -f docker-compose.yml -f docker-compose.vikunja.yml up -d
+	@podman compose -f docker-compose.yml -f docker-compose.yml up -d
 	@sleep 10
 	@echo "⏳ Waiting for services to stabilize..."
 	@sleep 10
@@ -738,23 +738,23 @@ up-vikunja: up
 
 down-vikunja:
 	@echo "🛑 Stopping Vikunja overlay..."
-	@podman compose -f docker-compose.yml -f docker-compose.vikunja.yml down
+	@podman compose -f docker-compose.yml -f docker-compose.yml down
 
 restart-vikunja: down-vikunja up-vikunja
 
 logs-vikunja:
-	@podman compose -f docker-compose.yml -f docker-compose.vikunja.yml logs -f vikunja-api vikunja-db
+	@podman compose -f docker-compose.yml -f docker-compose.yml logs -f vikunja-api vikunja-db
 
 # Health check targets
 health-vikunja:
 	@echo "🏥 Vikunja health check..."
-	@podman compose -f docker-compose.yml -f docker-compose.vikunja.yml ps
+	@podman compose -f docker-compose.yml -f docker-compose.yml ps
 	@echo ""
 	@echo "Testing Vikunja API..."
 	@curl -s http://localhost/vikunja/api/v1/info | jq . || echo "❌ Vikunja API unreachable"
 	@echo ""
 	@echo "Testing PostgreSQL..."
-	@podman compose -f docker-compose.yml -f docker-compose.vikunja.yml exec -T vikunja-db \
+	@podman compose -f docker-compose.yml -f docker-compose.yml exec -T vikunja-db \
 		pg_isready -U vikunja || echo "❌ PostgreSQL unhealthy"
 
 EOF
@@ -772,7 +772,7 @@ echo "✅ Appended Vikunja targets to Makefile"
 # Cline: Verify all configuration files exist
 ls -la \
   docker-compose.yml \
-  docker-compose.vikunja.yml \
+  docker-compose.yml \
   Caddyfile \
   config/postgres.conf \
   config/vikunja-config.yaml \
@@ -792,11 +792,11 @@ podman compose -f docker-compose.yml config > /dev/null && \
   echo "✅ docker-compose.yml valid" || echo "❌ docker-compose.yml has errors"
 
 echo "Validating Vikunja overlay..."
-podman compose -f docker-compose.vikunja.yml config > /dev/null && \
-  echo "✅ docker-compose.vikunja.yml valid" || echo "❌ docker-compose.vikunja.yml has errors"
+podman compose -f docker-compose.yml config > /dev/null && \
+  echo "✅ docker-compose.yml valid" || echo "❌ docker-compose.yml has errors"
 
 echo "Validating combined (Foundation + Vikunja)..."
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml config > /dev/null && \
+podman compose -f docker-compose.yml -f docker-compose.yml config > /dev/null && \
   echo "✅ Combined compose valid" || echo "❌ Combined compose has errors"
 ```
 
@@ -874,14 +874,14 @@ echo "🚀 Starting Vikunja overlay..."
 podman unshare chown 1000:1000 -R data/vikunja/ 2>/dev/null || true
 
 # Start Vikunja (adds to existing Foundation)
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml up -d
+podman compose -f docker-compose.yml -f docker-compose.yml up -d
 
 echo "⏳ Waiting 45s for Vikunja to initialize..."
 sleep 45
 
 echo ""
 echo "Checking Vikunja status..."
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml ps
+podman compose -f docker-compose.yml -f docker-compose.yml ps
 ```
 
 ### Step 8: Verify Vikunja Services
@@ -898,7 +898,7 @@ curl -s http://localhost/vikunja/ | grep -q "vikunja\|Vue\|html" && \
 
 echo ""
 echo "Testing PostgreSQL..."
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml exec -T vikunja-db \
+podman compose -f docker-compose.yml -f docker-compose.yml exec -T vikunja-db \
   pg_isready -U vikunja -h 127.0.0.1 && echo "✅ PostgreSQL healthy" || echo "❌ PostgreSQL unhealthy"
 
 echo ""
@@ -927,7 +927,7 @@ podman compose -f docker-compose.yml ps --format "table {{.Names}}\t{{.Status}}"
 # Vikunja Services
 echo ""
 echo "📊 Vikunja Services Status:"
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml ps --format "table {{.Names}}\t{{.Status}}" | \
+podman compose -f docker-compose.yml -f docker-compose.yml ps --format "table {{.Names}}\t{{.Status}}" | \
   grep vikunja || echo "⚠️  Vikunja services not running"
 
 # Health Endpoints
@@ -951,7 +951,7 @@ echo "RAG API (last 5 lines):"
 podman compose -f docker-compose.yml logs rag --tail=5 | tail -5
 echo ""
 echo "Vikunja API (last 5 lines):"
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml logs vikunja-api --tail=5 | tail -5
+podman compose -f docker-compose.yml -f docker-compose.yml logs vikunja-api --tail=5 | tail -5
 
 echo ""
 echo "✅ Health check complete!"
@@ -967,7 +967,7 @@ chmod +x test-full-stack.sh
 # Cline: Save all changes to git
 git add \
   docker-compose.yml \
-  docker-compose.vikunja.yml \
+  docker-compose.yml \
   Caddyfile \
   config/postgres.conf \
   config/vikunja-config.yaml \
@@ -978,7 +978,7 @@ git add \
 git commit -m "feat: Vikunja multi-file Compose integration (Phase 1)
 
 - Add unified Caddy reverse proxy (port 80 entrypoint)
-- Create isolated docker-compose.vikunja.yml overlay
+- Create isolated docker-compose.yml overlay
 - Implement PostgreSQL 16 Ryzen optimization
 - Add Podman native secrets management
 - Update Makefile with Vikunja targets
@@ -1006,25 +1006,25 @@ podman unshare chmod 700 data/vikunja/db
 ```bash
 # Solution: Clean up stale Postgres process lock
 rm -f data/vikunja/db/postmaster.pid
-podman compose -f docker-compose.vikunja.yml restart vikunja-db
+podman compose -f docker-compose.yml restart vikunja-db
 ```
 
 ### Issue: Vikunja API can't connect to PostgreSQL ("connection refused")
 
 ```bash
 # Verify PostgreSQL is healthy
-podman compose -f docker-compose.vikunja.yml exec vikunja-db pg_isready -U vikunja
+podman compose -f docker-compose.yml exec vikunja-db pg_isready -U vikunja
 
 # Check logs
-podman compose -f docker-compose.vikunja.yml logs vikunja-db
-podman compose -f docker-compose.vikunja.yml logs vikunja-api
+podman compose -f docker-compose.yml logs vikunja-db
+podman compose -f docker-compose.yml logs vikunja-api
 ```
 
 ### Issue: Caddy proxy returns "502 Bad Gateway"
 
 ```bash
 # Check upstream service health
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml ps | grep -E "vikunja|rag|ui"
+podman compose -f docker-compose.yml -f docker-compose.yml ps | grep -E "vikunja|rag|ui"
 
 # Test direct connection (bypass Caddy)
 curl http://localhost:3456/api/v1/info  # Direct to Vikunja
@@ -1048,11 +1048,11 @@ make logs-vikunja           # Tail Vikunja logs
 make health-vikunja         # Health check
 
 # Inspect running containers
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml ps
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml logs vikunja-api --tail=50
+podman compose -f docker-compose.yml -f docker-compose.yml ps
+podman compose -f docker-compose.yml -f docker-compose.yml logs vikunja-api --tail=50
 
 # Access Vikunja database
-podman compose -f docker-compose.vikunja.yml exec vikunja-db psql -U vikunja -d vikunja
+podman compose -f docker-compose.yml exec vikunja-db psql -U vikunja -d vikunja
 
 # Reload Caddy config (no downtime)
 podman exec xnai_caddy caddy reload -c /etc/caddy/Caddyfile

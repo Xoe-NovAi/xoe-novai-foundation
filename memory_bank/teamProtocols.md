@@ -179,7 +179,7 @@ flowchart LR
 #### Files Created
 - `grok-mc-research-request.md` - Research request for current issues
 - `CLAUDE_VIKUNJA_BLOCKER_REPORT.md` - Comprehensive error analysis
-- `docker-compose.vikunja.yml` - Container orchestration
+- `docker-compose.yml` - Container orchestration
 - `config/postgres.conf` - PostgreSQL configuration
 - `config/vikunja-config.yaml` - Application configuration
 

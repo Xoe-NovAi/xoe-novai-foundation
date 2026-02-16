@@ -70,7 +70,7 @@ echo "Wj1tpswLowpHHLBb+JuH+/qH1uPGB5W+kDhJRg2txxE=" > secrets/vikunja_db_passwor
 podman compose up -d --build rag chainlit redis mkdocs caddy
 
 # 4. (Optional) Vikunja PM hub
-podman compose -f docker-compose.vikunja.yml up -d
+podman compose -f docker-compose.yml up -d
 
 # Access points:
 # • Voice UI          http://localhost:8001

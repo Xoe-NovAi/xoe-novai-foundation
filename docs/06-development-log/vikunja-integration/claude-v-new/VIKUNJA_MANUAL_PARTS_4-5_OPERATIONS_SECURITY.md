@@ -351,7 +351,7 @@ Dependency Scan:
 
 Configuration Scan:
   # Check for security issues
-  trivy config docker-compose_vikunja.yml
+  trivy config docker-compose.yml
 
 Penetration Testing:
 

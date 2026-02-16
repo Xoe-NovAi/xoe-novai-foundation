@@ -84,7 +84,7 @@ wait_for_info() {
 
 start_vikunja() {
   log "Step 3: Start Vikunja (rootless)"
-  podman-compose -f docker-compose.vikunja.yml up -d
+  podman-compose -f docker-compose.yml up -d
   log "Waiting for Vikunja to come up..."
   wait_for_info "http://localhost:3456/api/v1/info" 600 5 || true
 }

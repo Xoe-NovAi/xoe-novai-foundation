@@ -100,7 +100,7 @@ trivy config . --severity HIGH,CRITICAL
 
 **Tasks:**
 ```yaml
-# docker-compose.vikunja.yml fix needed
+# docker-compose.yml fix needed
 services:
   vikunja:
     environment:
@@ -191,7 +191,7 @@ graph TB
 **Insert after Phase 2, before Phase 3**
 
 ```yaml
-# Fix needed in docker-compose.vikunja.yml or docker-compose.yml
+# Fix needed in docker-compose.yml or docker-compose.yml
 services:
   vikunja:
     environment:

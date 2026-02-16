@@ -6,13 +6,13 @@ Overview
 Prerequisites
 - Podman installed; user in podman group (or run with SKIP_DOCKER_PERMISSIONS)
 - Secrets: db-pass and jwt-secret created as Podman secrets
-- docker-compose.vikunja.yml present
+- docker-compose.yml present
 - Python scripts available: memory_bank_export.py, vikunja_importer.py, and recovery script
 
 Spin-Up Steps (idempotent)
 - Prune existing Vikunja resources (pods, containers, networks, volumes)
 - Create secrets if missing (db-pass, jwt-secret)
-- Spin up Vikunja with docker-compose.vikunja.yml
+- Spin up Vikunja with docker-compose.yml
 - Health-check loop to ensure API is reachable
 - Export memory_bank to vikunja-import.json
 - Run importer (dry-run first, then live with token)

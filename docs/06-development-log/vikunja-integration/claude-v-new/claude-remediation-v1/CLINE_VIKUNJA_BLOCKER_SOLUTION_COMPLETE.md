@@ -13,7 +13,7 @@
 
 ### The Problem (Blocker #1 - EXACTLY what we documented!)
 
-Cline's current `docker-compose_vikunja.yml` uses:
+Cline's current `docker-compose.yml` uses:
 
 ```yaml
 environment:
@@ -116,7 +116,7 @@ echo "VIKUNJA_DB_PASSWORD=$VIKUNJA_DB_PASSWORD" >> .env
 echo "VIKUNJA_JWT_SECRET=$VIKUNJA_JWT_SECRET" >> .env
 ```
 
-### Step 3: Update docker-compose_vikunja.yml
+### Step 3: Update docker-compose.yml
 
 Replace the entire file with this corrected version:
 
@@ -269,12 +269,12 @@ ls -la data/vikunja/
 
 ### Step 3: Update Configuration Files (2 minutes)
 
-**Replace**: `docker-compose_vikunja.yml` with corrected version above
+**Replace**: `docker-compose.yml` with corrected version above
 
 **Verify Syntax**:
 ```bash
 # Check if both compose files are valid
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config > /dev/null
+podman-compose -f docker-compose.yml -f docker-compose.yml config > /dev/null
 echo "✅ Configuration valid!" || echo "❌ Syntax error"
 ```
 
@@ -291,7 +291,7 @@ sleep 30
 curl http://localhost:8000/health || echo "Foundation not ready"
 
 # Deploy Vikunja
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Wait for startup
 sleep 45
@@ -446,7 +446,7 @@ networks:
 ☐ Created data/vikunja/{db,files} directories
 ☐ Set permissions: chmod 700 db, chmod 755 files
 ☐ Set ownership: chown 1001:1001 data/vikunja
-☐ Replaced docker-compose_vikunja.yml with corrected version
+☐ Replaced docker-compose.yml with corrected version
 ☐ Verified syntax: podman-compose config
 ☐ Foundation services running (redis, caddy)
 ☐ xnai_network exists and external: true
@@ -575,7 +575,7 @@ $ podman logs xnai_vikunja | tail -20
 ## 🎯 NEXT STEPS
 
 1. ✅ **NOW**: Update .env with generated secrets
-2. ✅ **NOW**: Replace docker-compose_vikunja.yml
+2. ✅ **NOW**: Replace docker-compose.yml
 3. ✅ **NOW**: Run deployment (5 min)
 4. ✅ **NOW**: Verify with checklist (5 min)
 5. **AFTER WORKING**: Test API endpoints
@@ -604,7 +604,7 @@ This is the **exact same solution** documented in:
 ---
 
 **Status**: ✅ **SOLUTION COMPLETE**  
-**Action Required**: Deploy using corrected docker-compose_vikunja.yml  
+**Action Required**: Deploy using corrected docker-compose.yml  
 **Estimated Time**: 20 minutes  
 **Risk Level**: Minimal (environment variables only)  
 

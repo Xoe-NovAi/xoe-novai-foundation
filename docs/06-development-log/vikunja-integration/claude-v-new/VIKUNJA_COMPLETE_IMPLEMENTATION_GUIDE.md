@@ -209,7 +209,7 @@ Create this file at project root:
 - `health_uri` ensures Caddy waits for backend to be ready
 - Order matters: API paths before SPA catch-all
 
-### File 2: docker-compose.vikunja.yml (CORRECTED)
+### File 2: docker-compose.yml (CORRECTED)
 
 ```yaml
 version: '3.8'
@@ -367,7 +367,7 @@ if [ "$MODE" == "fresh" ]; then
     
     # Nuke existing deployment
     log_info "Stopping and removing existing containers..."
-    podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml down --volumes 2>/dev/null || true
+    podman-compose -f docker-compose.yml -f docker-compose.yml down --volumes 2>/dev/null || true
     
     log_info "Clearing data directories..."
     sudo rm -rf ./data/vikunja/*
@@ -398,7 +398,7 @@ fi
 
 # Phase 4: Deploy
 log_info "Phase 4: Deploying Services"
-podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Phase 5: Wait for Initialization
 log_info "Phase 5: Waiting for services to initialize (60s)..."
@@ -447,7 +447,7 @@ log_info "Vikunja Web: http://localhost:3457/vikunja"
 log_info "=========================================="
 
 # Show status
-podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml ps
+podman-compose -f docker-compose.yml -f docker-compose.yml ps
 ```
 
 Make it executable:
@@ -478,7 +478,7 @@ ls -la data/vikunja/ 2>/dev/null || echo "Directories will be created"
 
 # Check 4: Configuration Syntax
 echo "=== Config Validation ==="
-podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml config > /dev/null && echo "✅ Valid" || echo "❌ Invalid"
+podman-compose -f docker-compose.yml -f docker-compose.yml config > /dev/null && echo "✅ Valid" || echo "❌ Invalid"
 
 # Check 5: Port Availability
 echo "=== Port Check ==="
@@ -497,7 +497,7 @@ ss -tlnp | grep -E "3456|3457" || echo "Ports 3456 and 3457 are available"
 
 # Option 2: Manual deployment
 make up  # Start Foundation first
-podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Wait and verify
 sleep 60
@@ -662,7 +662,7 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 echo "Step 1: Stopping all Vikunja containers..."
-podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml down --volumes 2>/dev/null || true
+podman-compose -f docker-compose.yml -f docker-compose.yml down --volumes 2>/dev/null || true
 
 echo "Step 2: Removing containers..."
 podman rm -f vikunja vikunja-db caddy-vikunja 2>/dev/null || true
@@ -701,10 +701,10 @@ Save as `scripts/vikunja_nuke_retry.sh` and make executable.
 
 ```bash
 # Just restart services without data loss
-podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml restart
+podman-compose -f docker-compose.yml -f docker-compose.yml restart
 
 # Or recreate containers (keeps volumes)
-podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml up -d --force-recreate
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d --force-recreate
 ```
 
 ---
@@ -716,7 +716,7 @@ podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml up -d --force
 ```bash
 # Status
 podman ps | grep vikunja
-podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml ps
+podman-compose -f docker-compose.yml -f docker-compose.yml ps
 
 # Logs
 podman logs -f vikunja
@@ -724,7 +724,7 @@ podman logs -f vikunja-db
 podman logs -f caddy-vikunja
 
 # Restart
-podman-compose -f docker-compose.yml -f docker-compose.vikunja.yml restart
+podman-compose -f docker-compose.yml -f docker-compose.yml restart
 
 # Shell access
 podman exec -it vikunja /bin/sh

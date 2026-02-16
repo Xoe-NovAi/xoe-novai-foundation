@@ -1,5 +1,5 @@
 # VIKUNJA DEPLOYMENT - QUICK START GUIDE
-## Using Corrected docker-compose_vikunja.yml (All Blockers Fixed)
+## Using Corrected docker-compose.yml (All Blockers Fixed)
 
 **Status**: Production-Ready Configuration  
 **All Blockers**: RESOLVED ✅  
@@ -29,11 +29,11 @@ podman unshare chown 1000:1000 -R data/vikunja
 chmod 700 data/vikunja/db
 
 # 4. Replace compose file (use corrected version from docker-compose_vikunja_FINAL.yml)
-cp docker-compose_vikunja.yml docker-compose_vikunja.yml.backup
+cp docker-compose.yml docker-compose.yml.backup
 # (Replace with content from docker-compose_vikunja_FINAL.yml)
 
 # 5. Deploy
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # 6. Wait and verify
 sleep 45
@@ -67,7 +67,7 @@ echo "JWT Secret length: ${#VIKUNJA_JWT_SECRET}"
 cat >> .env << 'EOF'
 
 # ============================================================================
-# VIKUNJA CONFIGURATION (FROM CORRECTED docker-compose_vikunja.yml)
+# VIKUNJA CONFIGURATION (FROM CORRECTED docker-compose.yml)
 # ============================================================================
 VIKUNJA_DB_PASSWORD=<paste_generated_password_here>
 VIKUNJA_JWT_SECRET=<paste_generated_secret_here>
@@ -109,8 +109,8 @@ ls -la config/postgres.conf
 
 **Step 2.1: Backup Current File**
 ```bash
-cp docker-compose_vikunja.yml docker-compose_vikunja.yml.backup.$(date +%s)
-ls -la docker-compose_vikunja.yml*
+cp docker-compose.yml docker-compose.yml.backup.$(date +%s)
+ls -la docker-compose.yml*
 ```
 
 **Step 2.2: Replace with Corrected Version**
@@ -123,13 +123,13 @@ Use the corrected `docker-compose_vikunja_FINAL.yml` which includes:
 
 ```bash
 # Option A: Copy from provided final version
-cp docker-compose_vikunja_FINAL.yml docker-compose_vikunja.yml
+cp docker-compose_vikunja_FINAL.yml docker-compose.yml
 
 # Option B: Manually copy content from BLOCKER_RESOLUTION_COMPLETE.md section
 # "COMPLETE CORRECTED CONFIGURATION"
 
 # Verify syntax
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config > /dev/null
+podman-compose -f docker-compose.yml -f docker-compose.yml config > /dev/null
 echo "✅ Syntax valid" || echo "❌ Syntax error"
 ```
 
@@ -173,7 +173,7 @@ podman-compose up -d
 **Step 3.4: Compose Validation**
 ```bash
 # Comprehensive validation
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config > /tmp/config-validate.json
+podman-compose -f docker-compose.yml -f docker-compose.yml config > /tmp/config-validate.json
 
 # Check for errors
 if [ $? -eq 0 ]; then
@@ -190,7 +190,7 @@ fi
 ```bash
 # Start both containers
 echo "🚀 Deploying Vikunja..."
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Show output
 echo "Container startup initiated"
@@ -199,7 +199,7 @@ echo "Container startup initiated"
 **Step 4.2: Monitor Startup**
 ```bash
 # Watch logs in real-time (in another terminal, or use -d and check later)
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml logs -f vikunja-db vikunja
+podman-compose -f docker-compose.yml -f docker-compose.yml logs -f vikunja-db vikunja
 
 # Or check logs after deployment
 sleep 10
@@ -261,7 +261,7 @@ podman exec vikunja env | grep VIKUNJA_REDIS
 ```bash
 # Full status
 echo "=== FULL HEALTH REPORT ==="
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml ps
+podman-compose -f docker-compose.yml -f docker-compose.yml ps
 
 # Should show:
 # vikunja-db  postgres:16-alpine  RUNNING (healthy)
@@ -302,7 +302,7 @@ curl -s http://localhost:3456/api/v1/user/me \
 ```bash
 # Restart services to verify data persists
 echo "Testing data persistence..."
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml restart vikunja vikunja-db
+podman-compose -f docker-compose.yml -f docker-compose.yml restart vikunja vikunja-db
 
 # Wait for restart
 sleep 30
@@ -401,10 +401,10 @@ podman exec vikunja env | grep VIKUNJA_REDIS
 
 ```bash
 # Restore previous version
-cp docker-compose_vikunja.yml.backup.* docker-compose_vikunja.yml
+cp docker-compose.yml.backup.* docker-compose.yml
 
 # Stop Vikunja
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml down
+podman-compose -f docker-compose.yml -f docker-compose.yml down
 
 # Foundation should still be running
 curl http://localhost:8000/health
@@ -420,7 +420,7 @@ curl http://localhost:8000/health
 - [ ] data/vikunja/{db,files} directories created
 - [ ] Permissions set correctly (700 for db, 755 for files)
 - [ ] PostgreSQL config file exists (config/postgres.conf)
-- [ ] docker-compose_vikunja.yml replaced with corrected version
+- [ ] docker-compose.yml replaced with corrected version
 - [ ] Compose file syntax validated (podman-compose config)
 - [ ] Foundation stack running (Redis, RAG API)
 - [ ] Network exists (xnai_network)
@@ -486,7 +486,7 @@ Once Vikunja is running:
 ## 📞 REFERENCE
 
 **Configuration Files**:
-- `docker-compose_vikunja.yml` - Service definition (CORRECTED)
+- `docker-compose.yml` - Service definition (CORRECTED)
 - `.env` - Environment variables (UPDATED)
 - `config/postgres.conf` - PostgreSQL configuration
 - `data/vikunja/db/` - PostgreSQL data directory
@@ -497,10 +497,10 @@ Once Vikunja is running:
 - 5432: PostgreSQL (internal only)
 
 **Useful Commands**:
-- `podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d` - Start
-- `podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml down` - Stop
-- `podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml ps` - Status
-- `podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml logs -f vikunja` - Logs
+- `podman-compose -f docker-compose.yml -f docker-compose.yml up -d` - Start
+- `podman-compose -f docker-compose.yml -f docker-compose.yml down` - Stop
+- `podman-compose -f docker-compose.yml -f docker-compose.yml ps` - Status
+- `podman-compose -f docker-compose.yml -f docker-compose.yml logs -f vikunja` - Logs
 
 ---
 

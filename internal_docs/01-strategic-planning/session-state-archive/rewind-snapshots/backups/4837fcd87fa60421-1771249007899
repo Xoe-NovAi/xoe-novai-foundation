@@ -49,7 +49,7 @@ Duration: 6h 50m | Leader: Copilot CLI | Dependencies: None
 - **Location**: MASTER-PLAN-v3.1.md (Phase 2.5 addendum) + EXPANDED-PLAN.md
 - **Deliverables**: Redis enabled for Vikunja, caching functional
 - **Success Criteria**: Vikunja health upgraded from 85% to 95%+
-- **Resource**: docker-compose.vikunja.yml modification, Redis ACL
+- **Resource**: docker-compose.yml modification, Redis ACL
 - **Checkpoint**: Hour 2.92 validation
 
 #### **Phase 3: Caddy Routing Debug**

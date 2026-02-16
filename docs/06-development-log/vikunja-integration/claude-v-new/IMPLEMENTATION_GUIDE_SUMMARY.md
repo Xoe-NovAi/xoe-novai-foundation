@@ -31,7 +31,7 @@ This comprehensive guide includes:
 
 ### Phase 2: Configuration Files
 - **Caddyfile.vikunja** with named matchers (`@vikunja-api`, `@vikunja-spa`)
-- **docker-compose.vikunja.yml** with optimized health checks
+- **docker-compose.yml** with optimized health checks
 - **Deployment script** (`scripts/deploy_vikunja.sh`) with fresh/update modes
 
 ### Phase 3: Pre-Deployment Checks
@@ -145,7 +145,7 @@ Before using this guide, verify:
 
 - [ ] File exists: `docs/06-development-log/vikunja-integration/claude-v-new/VIKUNJA_COMPLETE_IMPLEMENTATION_GUIDE.md`
 - [ ] File exists: `Caddyfile.vikunja` (updated with named matchers)
-- [ ] File exists: `docker-compose.vikunja.yml` (updated health checks)
+- [ ] File exists: `docker-compose.yml` (updated health checks)
 - [ ] Script created: `scripts/deploy_vikunja.sh`
 - [ ] Script created: `scripts/vikunja_nuke_retry.sh`
 - [ ] All 5 blockers documented with solutions
@@ -166,7 +166,7 @@ Before using this guide, verify:
 ## 📁 RELATED FILES
 
 - `Caddyfile.vikunja` - Updated proxy configuration
-- `docker-compose.vikunja.yml` - Updated service definitions
+- `docker-compose.yml` - Updated service definitions
 - `scripts/deploy_vikunja.sh` - Automated deployment
 - `scripts/vikunja_nuke_retry.sh` - Reset procedure
 - `grok-mc-comprehensive-research-request.md` - Research context

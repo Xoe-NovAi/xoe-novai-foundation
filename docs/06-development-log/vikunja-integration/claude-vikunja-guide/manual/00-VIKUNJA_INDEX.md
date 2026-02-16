@@ -77,7 +77,7 @@ cat 01-VIKUNJA_ARCHITECTURE_GAPS.md | less
 bash 02-VIKUNJA_PREDEPLOYMENT.md  # Contains executable blocks
 
 # Step 3: Deploy via Part 3 (1 hour deployment)
-# Copy docker-compose.vikunja.yml + Caddyfile + configs
+# Copy docker-compose.yml + Caddyfile + configs
 # Then: make up-vikunja
 
 # Step 4: Test via Part 4 (30 min validation)
@@ -132,7 +132,7 @@ bash 02-VIKUNJA_PREDEPLOYMENT.md  # Contains executable blocks
 
 ### Gap 4: "Vikunja needs manual proxy configuration"
 **Reality**: Environment variables override config files (VIKUNJA_ prefix)
-**Solution**: Use env-only approach in docker-compose.vikunja.yml
+**Solution**: Use env-only approach in docker-compose.yml
 
 ### Gap 5: "Secrets go in docker-compose.yml"
 **Reality**: Plaintext secrets in compose is a security risk

@@ -35,7 +35,7 @@ This roadmap implements Grok MCA's **Elite Strategy**—prioritizing rootless Po
 ## Phase 1: Migration & Deployment (Week 1-2)
 
 ### 1.1 Vikunja Rootless Deployment
-- [ ] Create `docker-compose.vikunja.yml` with:
+- [ ] Create `docker-compose.yml` with:
   - `userns_mode: keep-id` for rootless security
   - Postgres 16 backend with persistent volumes
   - Vikunja API (latest, scanned via Trinity)
@@ -151,7 +151,7 @@ This roadmap implements Grok MCA's **Elite Strategy**—prioritizing rootless Po
 ---
 
 **Status**: 🚀 **Ready for Implementation (Elite Strategy)**  
-**Next Action**: Create `memory_bank_export.py` and `docker-compose.vikunja.yml`  
+**Next Action**: Create `memory_bank_export.py` and `docker-compose.yml`  
 **Owner**: Cline-Kat (with Trinity for security audits)
 
 *"From scattered memory to centralized harmony — the temple rises."*

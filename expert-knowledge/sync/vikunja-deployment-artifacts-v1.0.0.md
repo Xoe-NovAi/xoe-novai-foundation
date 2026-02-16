@@ -7,7 +7,7 @@ status: 🚀 Ready for Deployment
 ma_at_ideals: [7, 18, 41]
 tags: [vikunja, deployment, artifacts, mcp, memory-bank, migration]
 ekb_links:
-  - docker-compose.vikunja.yml
+  - docker-compose.yml
   - scripts/memory_bank_export.py
   - docs/05-research/vikunja-implementation-roadmap.md
   - docs/06-development-log/vikunja-integration/
@@ -22,7 +22,7 @@ This document captures all deployment artifacts for Vikunja integration as part 
 ## Artifacts Inventory
 
 ### 1. Deployment Configuration
-**File**: `docker-compose.vikunja.yml`
+**File**: `docker-compose.yml`
 **Purpose**: Rootless Podman deployment with health checks
 **Key Features**:
 - Postgres 16 backend with persistent volumes
@@ -64,7 +64,7 @@ This document captures all deployment artifacts for Vikunja integration as part 
 ```mermaid
 graph TD
     subgraph "Deployment Layer"
-        A[docker-compose.vikunja.yml]
+        A[docker-compose.yml]
         B[.env configuration]
     end
     
@@ -102,10 +102,10 @@ graph TD
 export VIKUNJA_DB_PASSWORD=$(openssl rand -hex 16)
 
 # Start Vikunja quad (rootless)
-podman-compose -f docker-compose.vikunja.yml up -d --userns=keep-id
+podman-compose -f docker-compose.yml up -d --userns=keep-id
 
 # Verify health
-podman-compose -f docker-compose.vikunja.yml logs
+podman-compose -f docker-compose.yml logs
 ```
 
 ### Memory Bank Export
@@ -138,7 +138,7 @@ curl -X POST http://localhost:8080/api/v1/tools/create_vikunja_task \
 
 ## EKB Links
 
-- **Docker Compose**: `/home/arcana-novai/Documents/xnai-foundation/docker-compose.vikunja.yml`
+- **Docker Compose**: `/home/arcana-novai/Documents/xnai-foundation/docker-compose.yml`
 - **Export Script**: `/home/arcana-novai/Documents/xnai-foundation/scripts/memory_bank_export.py`
 - **Roadmap**: `/home/arcana-novai/Documents/xnai-foundation/docs/05-research/vikunja-implementation-roadmap.md`
 - **Research Logs**: `/home/arcana-novai/Documents/xnai-foundation/docs/06-development-log/vikunja-integration/`
