@@ -1,0 +1,52 @@
+{
+  "batches": {
+    "batch-1": {
+      "description": "Core planning",
+      "files": [
+        "MASTER-PLAN-v3.1.md",
+        "EXPANDED-PLAN.md",
+        "00-INTEGRATED-PLAN-WITH-CLAUDE-RESEARCH.md"
+      ]
+    },
+    "batch-2": {
+      "description": "Final summaries",
+      "files": [
+        "FINAL-SUMMARY-FOR-USER.md",
+        "PHASE-5-EXECUTION-READINESS-FINAL.md",
+        "PHASE-5-STRATEGIC-PLANNING-COMPLETE.md"
+      ]
+    },
+    "batch-3": {
+      "description": "Indexes and inventories",
+      "files": [
+        "MASTER-INDEX-PHASE-5-FINAL.md",
+        "MASTER-INDEX-PHASE-5-COMPLETE.md",
+        "00-15-PHASE-COMPLETE-INVENTORY.md"
+      ]
+    },
+    "batch-4": {
+      "description": "Claude materials",
+      "files": [
+        "CLAUDE-FINAL-INTEGRATION-APPROVED.md",
+        "CLAUDE-FEEDBACK-INTEGRATED.md",
+        "RESEARCH-REQUIREMENTS-FOR-CLAUDE.md"
+      ]
+    },
+    "batch-5": {
+      "description": "Status and runbooks",
+      "files": [
+        "PHASE-5-PROJECT-READINESS-COMPLETE.md",
+        "PHASE-5-OPERATIONALIZATION-STATUS.md",
+        "PHASE-5-SESSION-COMPLETION-REPORT.md"
+      ]
+    },
+    "batch-6": {
+      "description": "Supporting materials",
+      "files": [
+        "QUICK-START.md",
+        "QUICK-REFERENCE-EXECUTION-CARD.md",
+        "CLAUDE-HANDOFF-AND-SUBMISSION-GUIDE.md"
+      ]
+    }
+  }
+}
