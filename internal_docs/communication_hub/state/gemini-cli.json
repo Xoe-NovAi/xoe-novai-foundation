@@ -3,7 +3,7 @@
   "status": "active",
   "current_task": null,
   "progress": 0.0,
-  "last_heartbeat": "2026-02-16T19:54:58.981241",
+  "last_heartbeat": "2026-02-16T19:57:58.988369",
   "capabilities": [
     "execution",
     "filesystem",
