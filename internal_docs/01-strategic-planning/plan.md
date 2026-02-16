@@ -725,5 +725,9 @@ This planning session established a reusable methodology for large projects:
 **SESSION GOAL**: Achieved - Organization framework created and verified
 **NEXT ACTION**: Begin Phase 1 (Service Diagnostics, 2 hours)
 
-- [ ] Vikunja tasks created: vikunja_tasks/phase0_consolidation_and_research.json
+- [x] Vikunja task manifest created: vikunja_tasks/memory_bank_stackcat_review.json
+- [x] Updated Claude research request created: internal_docs/01-strategic-planning/research/CLAUDE-SONNET-VIKUNJA-RESEARCH-REQUEST-UPDATED.md
+- [x] Stack-cat review & memory_bank guidance created:
+  - internal_docs/01-strategic-planning/research/STACK-CAT-REVIEW-AND-STRATEGY.md
+  - memory_bank/vikunja-sync-and-agent-guidance.md
 \nProject name chosen: XNAi Orchestration & Hardening (XOH) — 2026-02-16T15:57:00Z
