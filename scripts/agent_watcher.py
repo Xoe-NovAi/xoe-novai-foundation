@@ -12,6 +12,13 @@ import sys
 import re
 from pathlib import Path
 
+# Optional Redis adapter for agent state
+try:
+    from scripts.agent_state_redis import RedisAgentStateAdapter
+    _redis_adapter = RedisAgentStateAdapter()
+except Exception:
+    _redis_adapter = None
+
 # Configuration
 INBOX_DIR = Path("internal_docs/communication_hub/inbox")
 OUTBOX_DIR = Path("internal_docs/communication_hub/outbox")
@@ -56,8 +63,17 @@ def update_agent_state(agent_name, status, task_id=None, extra=None):
     }
     if extra:
         state.update(extra)
-    with open(state_file, 'w') as f:
-        json.dump(state, f, indent=2)
+    # Persist to Redis if available, else filesystem fallback
+    if _redis_adapter:
+        try:
+            _redis_adapter.save_state(agent_name, state)
+        except Exception as e:
+            print(f"{log_prefix} Redis save failed: {e}")
+            with open(state_file, 'w') as f:
+                json.dump(state, f, indent=2)
+    else:
+        with open(state_file, 'w') as f:
+            json.dump(state, f, indent=2)
 
 def process_message(agent_name, message_path):
     print(f"\n[!] ALERT: Processing {message_path.name}...")
