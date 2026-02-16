@@ -189,7 +189,7 @@ podman exec xnai_vikunja env | grep REDIS
 
 ## FILES CURRENTLY IN USE
 
-**docker-compose.vikunja.yml** (current):
+**docker-compose.yml** (current):
 ```yaml
 version: '3.8'
 
@@ -267,7 +267,7 @@ networks:
 ## NEXT ACTIONS NEEDED
 
 1. **Identify correct Redis configuration format** for Vikunja 0.24.1
-2. **Test the fix** by updating docker-compose.vikunja.yml
+2. **Test the fix** by updating docker-compose.yml
 3. **Verify deployment** - check if Vikunja container stays running
 4. **Test API endpoint** - curl http://localhost:3456/api/v1/info
 5. **Test via Caddy proxy** - http://localhost:8000/vikunja
