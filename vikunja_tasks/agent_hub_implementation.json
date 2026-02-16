@@ -1,0 +1,8 @@
+{
+  "title": "Implement XNAi Agent Bus: Agent Automation Hub",
+  "description": "Implement and standardize the XNAi Agent Bus with Redis state, Consul registration, Ed25519 handshakes, AnyIO TaskGroups migration, FRQ boosting, onboarding flow, tests, and PR-ready artifacts. Ensure zero-telemetry and Ryzen-optimized embed batching.",
+  "labels": ["xoh","agent","infrastructure","priority-critical"],
+  "project": "Engineering",
+  "priority": 1,
+  "assignee": "grok-mc"
+}

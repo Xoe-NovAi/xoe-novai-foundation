@@ -740,3 +740,17 @@ This planning session established a reusable methodology for large projects:
 - Outputs: Consolidation report, suggested plan.md edits, Vikunja task manifests, prioritized action list, and PR recommendations.
 - Scheduling: Create Vikunja task 'Gemini 3 Pro Holistic XOH Review' and assign to the gemini-cli team for a dry-run review before Phase-0 execution.
 
+
+### Agent automation audit & refactor
+- Objective: Align agent_watcher.py and agent_coordinator.py with XOH standards (Redis-backed state, Consul registration, Ed25519 identity handshake, AnyIO TaskGroups, zero-telemetry).
+- Next steps: Create Redis state adapter, add Consul service registration, implement Ed25519 identity on registration, migrate watchers to AnyIO TaskGroups (or provide an AnyIO adapter), add unit/integration tests, and open a refactor PR.
+- Deliverables: design doc, vikunja task manifest, tests, PR.
+
+
+## CURRENT PRIORITY: Implement XNAi Agent Bus (Agent Automation Hub)
+- Goal: Get the multi-agent communication & automation hub operational, standardized, and able to onboard agents instantly for XOH execution.
+- Canonical name: XNAi Agent Bus (primary); alias: XOH Agent Bus.
+- Reference design: internal_docs/01-strategic-planning/agent_hub_STANDARDIZATION.md
+- Immediate steps: Redis adapter -> Ed25519 identity -> Consul registration -> AnyIO TaskGroups migration -> FRQ priority queue -> tests & PR.
+- Scheduling: Vikunja task: vikunja_tasks/agent_hub_implementation.json. Once initial hub is functional, delegate Gemini 3 Pro (gemini-cli) to perform an end-to-end XOH strategy & PM review using its 1M token context (see vikunja_tasks/gemini_holistic_review.json).
+
