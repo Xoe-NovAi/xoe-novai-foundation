@@ -1,34 +1,39 @@
 #!/usr/bin/env bash
 # xnai-zram-init.sh
-# Calculate safe zRAM size and start zram device. Supports --dry-run.
+# Final Working Version for XNAi Foundation
+# Version: 1.3.0
 
-DRY_RUN=0
-for arg in "$@"; do
-  case "$arg" in
-    --dry-run) DRY_RUN=1 ;;
-  esac
+set -e
+
+# Calculate optimal size (12GB for stability)
+ZRAM_MB=12288
+
+echo "XNAi zRAM Init: Activating 12GB zstd swap..."
+
+# 1. Cleanup
+for dev in /dev/zram*; do
+    if [ -e "$dev" ]; then
+        /usr/sbin/swapoff "$dev" 2>/dev/null || true
+        /usr/sbin/zramctl --reset "$dev" 2>/dev/null || true
+    fi
 done
 
-RAM_KB=$(awk '/MemTotal/ {print $2}' /proc/meminfo)
-RAM_MB=$(( RAM_KB / 1024 ))
-# Default: 50% of RAM, min 2048MB, max RAM-2048MB
-ZRAM_MB=$(( RAM_MB / 2 ))
-if [ "$ZRAM_MB" -lt 2048 ]; then ZRAM_MB=2048; fi
-if [ $((RAM_MB - 2048)) -lt "$ZRAM_MB" ]; then ZRAM_MB=$((RAM_MB - 2048)); fi
-if [ "$ZRAM_MB" -lt 1024 ]; then ZRAM_MB=1024; fi
-STREAMS=$(nproc)
+# 2. Reload module
+/usr/sbin/modprobe -r zram 2>/dev/null || true
+/usr/sbin/modprobe zram num_devices=1
 
-echo "Calculated zRAM size: ${ZRAM_MB}M (physical RAM: ${RAM_MB}MB)"
-echo "Compression streams: ${STREAMS}"
+# 3. Configure using working --find method
+/usr/sbin/zramctl --find --size "${ZRAM_MB}M" --algorithm zstd
 
-if [ "$DRY_RUN" -eq 1 ]; then
-  echo "Dry run mode; exiting"
-  exit 0
-fi
+# 4. Activate
+/usr/sbin/mkswap /dev/zram0
+/usr/sbin/swapon -p 100 /dev/zram0
 
-# Create zRAM device
-/usr/bin/zramctl --find --size "${ZRAM_MB}M" --algorithm zstd --streams ${STREAMS} || exit 1
-/bin/swapon /dev/zram0 || exit 1
+# 5. Kernel Tuning (ML Optimized)
+echo "Setting vm.swappiness=180 and vm.page-cluster=0..."
+/usr/sbin/sysctl -w vm.swappiness=180
+/usr/sbin/sysctl -w vm.page-cluster=0
 
-# Done
+echo "✅ zRAM active."
+/usr/sbin/zramctl
 exit 0

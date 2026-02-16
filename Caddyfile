@@ -18,9 +18,10 @@
 
   # Foundation RAG API
   @rag-api {
-    path /api/v1*
+    path /api/v1/*
   }
   handle @rag-api {
+    uri strip_prefix /api/v1
     reverse_proxy xnai_rag_api:8000 {
       health_uri /health
     }
@@ -39,6 +40,7 @@
     path /vikunja/*
   }
   handle @vikunja {
+    uri strip_prefix /vikunja
     reverse_proxy xnai_vikunja:3456
   }
 

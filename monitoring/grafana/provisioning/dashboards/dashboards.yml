@@ -1,0 +1,9 @@
+apiVersion: 1
+providers:
+  - name: 'xnai-dashboards'
+    orgId: 1
+    folder: 'Phase-5A'
+    type: file
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards/

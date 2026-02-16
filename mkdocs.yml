@@ -169,3 +169,4 @@ nav:
       - 🧪 ML Research Labs:
           - Vulkan Native Inference: 05-research/labs/01-vulkan-native-inference.md
           - AWQ Production Report: 05-research/labs/AWQ Quantization Production Implementation Research Report.md
+  - 📦 Archive: _archive/

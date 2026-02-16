@@ -10,7 +10,7 @@
 ### Part A: Immediate Issue Resolution
 1. **Redis Connection Refused** - Investigate why Redis is giving connection refused (was up, now down)
 2. **Chainlit Error Logs** - Inspect what error Chainlit showed at 8001
-3. **docker-compose.vikunja.yml** - Why hasn't this been built yet?
+3. **docker-compose.yml** - Why hasn't this been built yet?
 
 ### Part B: Build System Analysis & Improvement
 1. **Makefile Review** - Is it well-structured? Needs optimization? Size concerns?
@@ -71,7 +71,7 @@
 
 3. **Docker-Compose/YAML Review**:
    - Review docker-compose.yml for consistency
-   - Check if vikunja has separate compose file (docker-compose.vikunja.yml)
+   - Check if vikunja has separate compose file (docker-compose.yml)
    - Validate all volume mounts, environment variables, resource limits
 
 ---

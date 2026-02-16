@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-unknown",
+  "timestamp": "2026-02-15T16:02:25Z",
+  "sender": "copilot",
+  "target": null,
+  "type": "task_completion",
+  "content": {
+    "status": "success",
+    "exit_code": 0,
+    "output_summary": "I'm ready to help, but I don't see a task description. Could you please provide details about what you'd like me to do? For example:\n\n- Fix a bug or issue\n- Implement a feature\n- Review or refactor code\n- Set up or configure something\n- Analyze code or documentation\n- Any other specific task\n\nOnce you share the task details, I'll get started right away.\n\n"
+  }
+}

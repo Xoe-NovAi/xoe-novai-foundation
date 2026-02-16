@@ -346,7 +346,7 @@ Contains:
 - ✅ Blocker #3: Shared xnai_network instead of isolated
 - ✅ Blocker #4: Clean YAML with proper dependencies
 
-**Use When**: Replacing your docker-compose_vikunja.yml file
+**Use When**: Replacing your docker-compose.yml file
 
 ---
 
@@ -397,7 +397,7 @@ Before starting, verify you have these documents:
 
 ### Path 1: FAST DEPLOYMENT (30 minutes)
 ```
-1. Copy: docker-compose_vikunja_FINAL.yml → docker-compose_vikunja.yml
+1. Copy: docker-compose_vikunja_FINAL.yml → docker-compose.yml
 2. Follow: DEPLOYMENT_QUICK_START.md (phases 1-6)
 3. Verify: PART 8 checklist
 4. Done!

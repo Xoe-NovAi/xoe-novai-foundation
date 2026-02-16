@@ -36,7 +36,7 @@ Vikunja 0.24.1 is an **all-in-one image** serving both API and frontend on port 
 
 ### Current Broken Configuration
 
-**docker-compose.vikunja.yml**:
+**docker-compose.yml**:
 ```yaml
 services:
   vikunja:
@@ -480,6 +480,6 @@ For each research question, please provide:
 **Files for Reference**:
 - `COMPREHENSIVE_STACK_INVESTIGATION.md` - Full analysis
 - `docker-compose.yml` - Foundation stack
-- `docker-compose.vikunja.yml` - Vikunja stack
+- `docker-compose.yml` - Vikunja stack
 - `Caddyfile` - Reverse proxy config
 - `.env` - Environment variables

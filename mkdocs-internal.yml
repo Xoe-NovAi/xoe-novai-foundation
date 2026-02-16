@@ -93,19 +93,19 @@ nav:
   - Home: index.md
   
   - 🎯 System & Navigation:
+      - Master Strategy: 00-system/MASTER-STRATEGY-XOE-NOVAI.md
       - Documentation Strategy: 00-system/DOCUMENTATION-SYSTEM-STRATEGY.md
       - Genealogy Tracker: 00-system/GENEALOGY.md
       - File Explorer Index: 00-system/INDEX.md
   
   - 📊 Strategic Planning:
-      - Overview: 01-strategic-planning/ROADMAP-MASTER-INDEX.md
+      - Roadmap Master Index: 01-strategic-planning/ROADMAP-MASTER-INDEX.md
       - Execution Pillars:
           - Operational Stability: 01-strategic-planning/PILLARS/PILLAR-1-OPERATIONAL-STABILITY.md
           - Scholar Differentiation: 01-strategic-planning/PILLARS/PILLAR-2-SCHOLAR-DIFFERENTIATION.md
           - Modular Excellence: 01-strategic-planning/PILLARS/PILLAR-3-MODULAR-EXCELLENCE.md
       - Research Index: 01-strategic-planning/RESEARCH-MASTER-INDEX.md
-      - Phase Summaries: 01-strategic-planning/PHASE-COMPLETION-SUMMARY.md
-      - Executive Summary: 01-strategic-planning/EXECUTIVE-SUMMARY-2026-02-11.md
+      - Arcana Strategy: 01-strategic-planning/arcana-strategy/
   
   - 🔬 Research Lab:
       - Critical Path (P0): 02-research-lab/RESEARCH-P0-CRITICAL-PATH.md
@@ -116,18 +116,36 @@ nav:
       - Research Request Templates: 02-research-lab/RESEARCH-REQUEST-TEMPLATES/
   
   - ⚙️ Infrastructure & Operations:
-      - Deployment Reports:
-          - Deployment Debug Report: 03-infrastructure-ops/DEPLOYMENT-DEBUG-REPORT-2026-02-12.md
-          - Build Deployment Report: 03-infrastructure-ops/BUILD-DEPLOYMENT-REPORT-20260212.md
-          - Incident Resolution: 03-infrastructure-ops/INCIDENT-RESOLUTION-20260212.md
+      - Deployment Reports: 03-infrastructure-ops/
       - Build System Analysis: 03-infrastructure-ops/BUILD-SYSTEM-AUDIT-REPORT.md
+      - Incident Resolution: 03-infrastructure-ops/INCIDENT-RESOLUTION-20260212.md
+      - Ansible: 03-infrastructure-ops/ansible/
   
   - 🏗️ Code Quality & Architecture:
+      - Phase 4.2 Sovereign Trinity:
+          - Agent IAM Database: 04-code-quality/04-iam-database-management.md
+          - Sovereign Handshake: 04-code-quality/05-sovereign-handshake-protocol.md
+          - Redis State Persistence: 04-code-quality/06-redis-state-management.md
       - Codebase Audit: 04-code-quality/comprehensive-deep-codebase-audit-v2.0.0.md
       - Error Handling Audit: 04-code-quality/systematic-error-code-audit-20260211.md
-      - Security & Permissions Audit: 04-code-quality/systematic-permissions-security-audit-v1.0.0.md
+      - Security Audit: 04-code-quality/systematic-permissions-security-audit-v1.0.0.md
       - Implementation Manual: 04-code-quality/IMPLEMENTATION-GUIDES/xnai-code-audit-implementation-manual.md
+      - CLI Orchestration Audit: 04-code-quality/CLI-ORCHESTRATION-AUDIT.md
+      - CLI Automation Framework: 04-code-quality/CLI-AUTOMATION-REVIEW-FRAMEWORK.md
+      - Code Reviews: 04-code-quality/reviews/
   
-  - 📁 Client Projects: 05-client-projects/index.md
-  - 👥 Team Knowledge: 06-team-knowledge/index.md
-  - 📦 Archives: 07-archives/index.md
+  - 🧠 Frontier Expert Knowledge:
+      - AnyIO Structured Concurrency: ../expert-knowledge/agent-tooling/anyio-structured-concurrency.md
+      - Ryzen 7 5700U Tuning: ../expert-knowledge/environment/ryzen-5700u-optimization.md
+      - .clinerules Audit: .clinerules/
+  
+  - 📁 Client Projects: 05-client-projects/
+  
+  - 👥 Team Knowledge:
+      - AI Assistant Onboarding: 06-team-knowledge/onboarding/AI-ASSISTANT-ONBOARDING.md
+      - Tactical Review Start: 06-team-knowledge/TACTICAL-REVIEW-QUICK-START.md
+      - Agent Bus Protocol: communication_hub/AGENT-BUS-PROTOCOL.md
+      - Grok MC Strategy: 06-team-knowledge/grok-mc/
+      - Handoffs: 06-team-knowledge/handoffs/
+  
+  - 📦 Archives: 07-archives/

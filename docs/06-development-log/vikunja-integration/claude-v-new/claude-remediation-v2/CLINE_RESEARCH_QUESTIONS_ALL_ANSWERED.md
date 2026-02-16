@@ -115,11 +115,11 @@ If you want to test whether the issue is Redis or something else:
 
 ```bash
 # Step 1: Disable Redis
-# In docker-compose_vikunja.yml:
+# In docker-compose.yml:
 VIKUNJA_REDIS_ENABLED: "false"
 
 # Step 2: Deploy
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Step 3: Test
 curl http://localhost:3456/api/v1/info
@@ -267,10 +267,10 @@ REDIS_PASSWORD=changeme123
 # 1. Verify .env file exists and has all 3 passwords
 grep -E "VIKUNJA_DB_PASSWORD|VIKUNJA_JWT_SECRET|REDIS_PASSWORD" .env
 
-# 2. Use the configuration above for docker-compose_vikunja.yml
+# 2. Use the configuration above for docker-compose.yml
 
 # 3. Deploy
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # 4. Wait for startup
 sleep 60
@@ -441,7 +441,7 @@ Your configuration is CORRECT, but the error "dial tcp: address redis: missing p
 2. **Verify `.env` has REDIS_PASSWORD** set
 3. **Run docker-compose from that directory**:
    ```bash
-   podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+   podman-compose -f docker-compose.yml -f docker-compose.yml up -d
    ```
 
 4. **Verify variables are passed**:
@@ -487,7 +487,7 @@ Before assuming there's a configuration problem:
 ☐ 2. .env has REDIS_PASSWORD=<something>
 ☐ 3. .env has VIKUNJA_DB_PASSWORD=<something>
 ☐ 4. .env has VIKUNJA_JWT_SECRET=<something>
-☐ 5. docker-compose_vikunja.yml has all 5 REDIS variables
+☐ 5. docker-compose.yml has all 5 REDIS variables
 ☐ 6. Redis is running and healthy
 ☐ 7. Both containers are on xnai_network
 ☐ 8. Verify variables in container: podman exec xnai_vikunja env | grep REDIS
@@ -511,11 +511,11 @@ Follow these steps in order:
    echo "VIKUNJA_JWT_SECRET=$VIKUNJA_JWT_SECRET" >> .env
    ```
 
-2. **Use the complete working configuration** above for your docker-compose_vikunja.yml
+2. **Use the complete working configuration** above for your docker-compose.yml
 
 3. **Deploy**:
    ```bash
-   podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+   podman-compose -f docker-compose.yml -f docker-compose.yml up -d
    ```
 
 4. **Verify immediately**:

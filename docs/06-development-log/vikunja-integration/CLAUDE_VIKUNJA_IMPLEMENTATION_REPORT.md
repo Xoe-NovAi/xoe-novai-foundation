@@ -81,15 +81,15 @@ The Vikunja implementation has been partially completed but is currently blocked
 - ✅ Created Vikunja database password secret
 - ✅ Created Vikunja JWT secret
 - ✅ Verified all secrets
-- ✅ Reviewed Claude guide for docker-compose.vikunja.yml
-- ✅ Created docker-compose.vikunja.yml
+- ✅ Reviewed Claude guide for docker-compose.yml
+- ✅ Created docker-compose.yml
 - ✅ Ran pre-flight checks
 - ✅ Fixed PostgreSQL config permissions
 - ✅ Cleaned up system logs
 - ✅ Checked disk space after cleanup
 
 ### Phase 3: Container Integration (Partially Complete)
-- ✅ Deployed Vikunja service using docker-compose.vikunja.yml
+- ✅ Deployed Vikunja service using docker-compose.yml
 - ✅ Fixed YAML boolean syntax issues
 - ✅ Deployed Vikunja service again with fixed syntax
 - ✅ Removed Redis dependency from Vikunja service
@@ -100,7 +100,7 @@ The Vikunja implementation has been partially completed but is currently blocked
 - ✅ Checked Claude's Dockerfile recommendations
 - ✅ Read deployment guide
 - ✅ Removed custom Dockerfile.vikunja
-- ✅ Updated docker-compose.vikunja.yml to use official Vikunja image
+- ✅ Updated docker-compose.yml to use official Vikunja image
 - ✅ Deployed Vikunja service with official image
 - ✅ Removed Redis dependency from Vikunja service
 - ✅ Deployed Vikunja service again
@@ -112,8 +112,8 @@ The Vikunja implementation has been partially completed but is currently blocked
 - ✅ Restarted Vikunja services
 - ✅ Checked Vikunja service status after restart
 - ✅ Checked Vikunja service logs after restart
-- ✅ Checked current docker-compose.vikunja.yml configuration
-- ✅ Fixed docker-compose.vikunja.yml configuration issues
+- ✅ Checked current docker-compose.yml configuration
+- ✅ Fixed docker-compose.yml configuration issues
 - ✅ Deployed Vikunja service with fixed configuration
 - ✅ Fixed network configuration
 - ✅ Deployed Vikunja service again
@@ -141,7 +141,7 @@ The Vikunja implementation has been partially completed but is currently blocked
 
 ### 4. Duplicate Configuration Entries
 **Error**: Duplicate `condition:` lines in `depends_on` section
-**Location**: docker-compose.vikunja.yml
+**Location**: docker-compose.yml
 **Impact**: YAML parsing errors
 **Root Cause**: Manual editing introduced syntax errors
 
@@ -209,7 +209,7 @@ Add debugging capabilities to containers:
 ## Files Created During Implementation
 
 ### Core Configuration Files
-- `docker-compose.vikunja.yml` - Isolated Vikunja service definition
+- `docker-compose.yml` - Isolated Vikunja service definition
 - `config/postgres.conf` - PostgreSQL 16 Ryzen optimization
 - `config/vikunja-config.yaml` - Vikunja application configuration
 - `Caddyfile` - Unified reverse proxy configuration

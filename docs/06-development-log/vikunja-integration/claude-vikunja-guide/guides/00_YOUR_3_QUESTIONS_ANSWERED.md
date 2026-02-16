@@ -49,7 +49,7 @@ COMPONENT BREAKDOWN:
   - Dockerfile family (BuildKit caching)
 
 ⚠️ CRITICAL ISSUE (F Grade - MUST FIX):
-  - docker-compose_vikunja.yml Podman secrets mounting
+  - docker-compose.yml Podman secrets mounting
     └─ Error: `/run/secrets/vikunja_db_password: No such file or directory`
     └─ Solution: Use environment variables instead (15 min fix)
 
@@ -77,7 +77,7 @@ COMPONENT BREAKDOWN:
 
 ### What's Broken
 
-Your `docker-compose_vikunja.yml` uses **Podman's external secrets**:
+Your `docker-compose.yml` uses **Podman's external secrets**:
 
 ```yaml
 # Lines 11, 37, 40 - CURRENT (BROKEN):
@@ -134,7 +134,7 @@ environment:
 | # | What | Action | Time | Impact |
 |---|------|--------|------|--------|
 | 1 | requirements-vikunja.txt | DELETE | 1 min | Cleanup |
-| 2 | docker-compose_vikunja.yml | REPLACE | 5 min | BLOCKER FIX |
+| 2 | docker-compose.yml | REPLACE | 5 min | BLOCKER FIX |
 | 3 | .env file | ADD 2 LINES | 2 min | ENV VARS |
 
 **Total Time**: ~8 minutes of editing
@@ -143,8 +143,8 @@ environment:
 
 | # | What | Action | Time | Impact |
 |---|------|--------|------|--------|
-| 4 | docker-compose_vikunja.yml | Enhance security | 5 min | A+ hardening |
-| 5 | docker-compose_vikunja.yml | Share xnai_network | 2 min | Enable Redis |
+| 4 | docker-compose.yml | Enhance security | 5 min | A+ hardening |
+| 5 | docker-compose.yml | Share xnai_network | 2 min | Enable Redis |
 | 6 | Makefile | Add targets | 5 min | Convenience |
 
 **Total Optional**: ~12 minutes
@@ -262,7 +262,7 @@ IMPLEMENTATION PHASE
 ├─ Delete requirements-vikunja.txt:  1 minute
 ├─ Generate secrets:                 2 minutes
 ├─ Update .env:                      2 minutes
-├─ Replace docker-compose_vikunja.yml:  5 minutes
+├─ Replace docker-compose.yml:  5 minutes
 ├─ Create data directories:          2 minutes
 ├─ Pre-deployment verification:      3 minutes
 └─ Total Editing:                   15 minutes
@@ -297,7 +297,7 @@ TOTAL TIME: ~62 minutes (30 min read + 15 min edit + 17 min deploy)
 1. **Read**: UPDATED_VIKUNJA_BLOCKER_RESOLUTION.md (25 min)
    - Full context on all issues
    - Detailed solutions
-   - Complete corrected docker-compose_vikunja.yml
+   - Complete corrected docker-compose.yml
 
 2. **Implement**: QUICK_DEPLOY_CHECKLIST.md (15 min)
    - Copy-paste ready commands
@@ -360,10 +360,10 @@ In `/mnt/user-data/outputs/`:
 **Next 15 Minutes**:
 - [ ] Execute deletion of requirements-vikunja.txt
 - [ ] Update .env with VIKUNJA_ variables
-- [ ] Replace docker-compose_vikunja.yml
+- [ ] Replace docker-compose.yml
 
 **Next 20 Minutes**:
-- [ ] Deploy: `podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d`
+- [ ] Deploy: `podman-compose -f docker-compose.yml -f docker-compose.yml up -d`
 - [ ] Verify health checks pass
 - [ ] Commit to git
 
@@ -391,6 +391,6 @@ When complete, you'll have:
 **Time to Production**: ~62 minutes  
 **Risk Level**: Minimal (easy rollback if needed)
 
-Next: Open **UPDATED_VIKUNJA_BLOCKER_RESOLUTION.md** and follow the corrected docker-compose_vikunja.yml.
+Next: Open **UPDATED_VIKUNJA_BLOCKER_RESOLUTION.md** and follow the corrected docker-compose.yml.
 
 ---

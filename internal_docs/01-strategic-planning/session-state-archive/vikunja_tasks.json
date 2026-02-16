@@ -1,0 +1,38 @@
+[
+  {
+    "title": "PHASE-0: Documentation Indexing & Embeddings",
+    "assignee": "agent:cline-kat",
+    "labels": ["agent:cline-kat", "phase-0", "documentation"],
+    "estimated_minutes": 90,
+    "description": "Analyze assigned batch, produce findings, store decisions in Redis keys (doc-consolidation:*, doc-update:*, doc-archive:*). Use the batch manifest to claim work.",
+    "acceptance_criteria": [
+      "PHASE-0-AUDIT-FINDINGS.md updated with batch findings",
+      "Redis keys created for all decisions",
+      "Uncertain items flagged for Copilot review"
+    ]
+  },
+  {
+    "title": "PHASE-0: Heavy-context Synthesis & Merge Proposals",
+    "assignee": "agent:gemini-cli",
+    "labels": ["agent:gemini-cli", "phase-0", "synthesis"],
+    "estimated_minutes": 60,
+    "description": "Using full-context capability, review flagged merges and produce merge proposals (include snippets, confidence scores, and merge plan). Persist proposals to Redis and to PHASE-0-AUDIT-FINDINGS.md.",
+    "acceptance_criteria": [
+      "Merge proposals created for all flagged items",
+      "Confidence scores included",
+      "Proposals stored in Redis and linked in findings doc"
+    ]
+  },
+  {
+    "title": "PHASE-0: Copilot Orchestration & Remediation Execution",
+    "assignee": "agent:copilot",
+    "labels": ["agent:copilot", "phase-0", "orchestration"],
+    "estimated_minutes": 60,
+    "description": "Prepare Qdrant collection, run embeddings (or stage scripts), persist overlap matrix, and execute approved merges and archives as non-destructive operations. Build MkDocs audit site.",
+    "acceptance_criteria": [
+      "Qdrant collection staged or embeddings prepared in session-state",
+      "PHASE-0-REMEDIATION-LOG.md contains all actions",
+      "MkDocs audit site builds without broken links"
+    ]
+  }
+]

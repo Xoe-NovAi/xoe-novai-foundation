@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-02-13",
+  "queue_status": {
+    "pending": 3,
+    "prioritized": 0,
+    "assigned": 0,
+    "in_progress": 0,
+    "completed": 0,
+    "integrated": 0,
+    "archived": 0
+  },
+  "active_requests": [
+    {
+      "id": "REQ-2026-02-13-001",
+      "title": "Big Pickle Model - Comprehensive Analysis",
+      "status": "PENDING",
+      "priority": "high",
+      "assigned_to": "",
+      "submitted_by": "OpenCode-Kimi-X",
+      "due_date": "2026-02-20",
+      "tags": ["opencode", "big-pickle", "model-research"]
+    },
+    {
+      "id": "REQ-2026-02-13-002",
+      "title": "GPT-5 Nano - Efficiency & Speed Analysis",
+      "status": "PENDING",
+      "priority": "medium",
+      "assigned_to": "",
+      "submitted_by": "OpenCode-Kimi-X",
+      "due_date": "2026-02-27",
+      "tags": ["opencode", "gpt-5-nano", "efficiency"]
+    },
+    {
+      "id": "REQ-2026-02-13-003",
+      "title": "OpenCode Model Comparison Matrix",
+      "status": "PENDING",
+      "priority": "high",
+      "assigned_to": "",
+      "submitted_by": "OpenCode-Kimi-X",
+      "due_date": "2026-02-28",
+      "tags": ["opencode", "comparison", "strategy"],
+      "blocked_by": ["REQ-2026-02-13-001", "REQ-2026-02-13-002"]
+    }
+  ],
+  "recently_completed": [],
+  "stats": {
+    "total_submitted": 3,
+    "this_month": 3,
+    "completion_rate": 0,
+    "average_resolution_time_days": null
+  },
+  "notes": "Initial queue populated with OpenCode model research requests. System operational."
+}

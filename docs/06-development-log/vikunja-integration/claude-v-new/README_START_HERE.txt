@@ -56,7 +56,7 @@ PRODUCTION-READY CONFIGURATION:
 🎯 QUICK START (Choose Your Path)
 
 FAST DEPLOYMENT (30 minutes):
-  1. Copy: docker-compose_vikunja_FINAL.yml → docker-compose_vikunja.yml
+  1. Copy: docker-compose_vikunja_FINAL.yml → docker-compose.yml
   2. Follow: DEPLOYMENT_QUICK_START.md
   3. Done! Production-ready ✅
 

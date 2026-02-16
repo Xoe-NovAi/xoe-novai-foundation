@@ -88,7 +88,7 @@ FILES YOU NEED:
 
 USE IMMEDIATELY:
   1. CLINE_DEPLOYMENT_COPY_PASTE_COMMANDS.md (follow this!)
-  2. docker-compose_vikunja_CORRECTED.yml (copy to docker-compose_vikunja.yml)
+  2. docker-compose_vikunja_CORRECTED.yml (copy to docker-compose.yml)
   3. .env_VIKUNJA_TEMPLATE (reference for your .env)
 
 UNDERSTAND THE FIX:

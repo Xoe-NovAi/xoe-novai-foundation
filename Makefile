@@ -709,6 +709,13 @@ setup-permissions: ## 🔐 Setup Podman permissions and directories (run once)
 	@bash scripts/setup_permissions.sh
 
 
+setup-consul: ## 🔧 Fix Consul permissions for rootless Podman
+	@echo "$(CYAN)🔧 Setting up Consul permissions...$(NC)"
+	@mkdir -p data/consul
+	@chmod 777 data/consul
+	@echo "$(GREEN)✅ Consul data directory configured$(NC)"
+
+
 setup-directories: ## 📁 Create and own required directories
 	@echo "$(CYAN)📁 Setting up directories...$(NC)"
 	@HOST_UID=$$(id -u); HOST_GID=$$(id -g); \

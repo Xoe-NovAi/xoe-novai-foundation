@@ -27,7 +27,9 @@ class RAGService:
         self,
         query: str,
         top_k: Optional[int] = None,
-        similarity_threshold: Optional[float] = None
+        similarity_threshold: Optional[float] = None,
+        max_context_chars: Optional[int] = None,
+        per_doc_chars: Optional[int] = None
     ) -> Tuple[str, List[str]]:
         """
         Retrieve relevant documents from vectorstore with performance tracking.
@@ -50,7 +52,7 @@ class RAGService:
                 logger.warning(f"No documents retrieved for query: {query[:50]}...")
                 return "", []
             
-            context, sources = self._build_truncated_context(docs)
+            context, sources = self._build_truncated_context(docs, max_context_chars, per_doc_chars)
             
             logger.info(f"Retrieved {len(sources)} documents in {retrieval_ms:.2f}ms")
             return context, sources
@@ -60,12 +62,17 @@ class RAGService:
             record_error("rag_retrieval", "vectorstore")
             return "", []
 
-    def _build_truncated_context(self, docs: List[Any]) -> Tuple[str, List[str]]:
+    def _build_truncated_context(
+        self, 
+        docs: List[Any], 
+        max_context_chars: Optional[int] = None,
+        per_doc_chars: Optional[int] = None
+    ) -> Tuple[str, List[str]]:
         """
         Enforce strict character limits to maintain CPU/RAM targets.
         """
-        per_doc_limit = get_config_value('performance.per_doc_chars', 500)
-        total_limit = get_config_value('performance.total_chars', 2048)
+        per_doc_limit = per_doc_chars or get_config_value('performance.per_doc_chars', 500)
+        total_limit = max_context_chars or get_config_value('performance.total_chars', 2048)
         
         context_parts = []
         sources = []

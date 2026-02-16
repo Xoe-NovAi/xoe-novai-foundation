@@ -36,10 +36,10 @@ curl -I http://localhost/vikunja/
 **If fails** (404 or 502):
 ```bash
 # Check Vikunja API container
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml logs vikunja-api --tail=20
+podman compose -f docker-compose.yml -f docker-compose.yml logs vikunja-api --tail=20
 
 # Check if Vikunja listening on port 3456
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml exec -T vikunja-api \
+podman compose -f docker-compose.yml -f docker-compose.yml exec -T vikunja-api \
   netstat -tlnp | grep 3456 || echo "Not listening on 3456"
 ```
 
@@ -67,7 +67,7 @@ curl -s http://localhost/vikunja/api/v1/info | jq .
 curl -s http://vikunja-api:3456/api/v1/info | jq . || echo "Direct connection failed"
 
 # Check PostgreSQL connection
-podman compose -f docker-compose.vikunja.yml exec vikunja-api \
+podman compose -f docker-compose.yml exec vikunja-api \
   curl -s http://localhost:3456/api/v1/info | jq . || echo "API not responding"
 ```
 
@@ -167,7 +167,7 @@ TASK_COUNT_BEFORE=$(curl -s "$VIKUNJA_API/tasks/all?sort_by=id&order_by=asc" \
 echo "Tasks before restart: $TASK_COUNT_BEFORE"
 
 # 2. Restart Vikunja containers
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml restart vikunja-api vikunja-db
+podman compose -f docker-compose.yml -f docker-compose.yml restart vikunja-api vikunja-db
 
 # 3. Wait for restart
 sleep 30
@@ -214,11 +214,11 @@ podman stats --no-stream --format "table {{.Names}}\t{{.MemUsage}}" | \
 **Action if over budget**:
 ```bash
 # Review PostgreSQL tuning
-podman compose -f docker-compose.vikunja.yml exec vikunja-db \
+podman compose -f docker-compose.yml exec vikunja-db \
   ps aux | grep postgres
 
 # Check Vikunja database connections
-podman compose -f docker-compose.vikunja.yml exec vikunja-db \
+podman compose -f docker-compose.yml exec vikunja-db \
   psql -U vikunja -d vikunja -c "SELECT count(*) FROM pg_stat_activity;"
 ```
 
@@ -262,7 +262,7 @@ du -sh data/vikunja/db
 # Expected: 10-50MB (grows with tasks)
 
 # Monitor active queries
-podman compose -f docker-compose.vikunja.yml exec vikunja-db \
+podman compose -f docker-compose.yml exec vikunja-db \
   psql -U vikunja -d vikunja -c "SELECT pid, query, state FROM pg_stat_activity WHERE query NOT LIKE '%idle%';"
 ```
 
@@ -274,15 +274,15 @@ podman compose -f docker-compose.vikunja.yml exec vikunja-db \
 
 ```bash
 # Cline: Verify secrets are NOT in plaintext in containers
-podman compose -f docker-compose.yml -f docker-compose.vikunja.yml exec vikunja-api \
+podman compose -f docker-compose.yml -f docker-compose.yml exec vikunja-api \
   env | grep -E "PASSWORD|SECRET|TOKEN" || echo "✅ No secrets in environment (good!)"
 
 # Verify secrets are injected correctly
-podman compose -f docker-compose.vikunja.yml exec vikunja-db \
+podman compose -f docker-compose.yml exec vikunja-db \
   cat /run/secrets/vikunja_db_password > /dev/null && echo "✅ Secrets accessible in container"
 
 # Verify compose file doesn't contain plaintext secrets
-grep -E "password|secret|token" docker-compose.yml docker-compose.vikunja.yml Caddyfile || \
+grep -E "password|secret|token" docker-compose.yml docker-compose.yml Caddyfile || \
   echo "✅ No hardcoded secrets in configuration files"
 ```
 
@@ -420,7 +420,7 @@ curl -s "http://localhost/vikunja/api/v1/tasks/1" \
 
 ```bash
 # A: Use pg_dump (PostgreSQL backup tool)
-podman compose -f docker-compose.vikunja.yml exec vikunja-db \
+podman compose -f docker-compose.yml exec vikunja-db \
   pg_dump -U vikunja -d vikunja > vikunja_backup_$(date +%Y%m%d).sql
 
 # Or backup filesystem directly
@@ -438,13 +438,13 @@ tar czf vikunja_files_backup_$(date +%Y%m%d).tar.gz data/vikunja/files/
 **Diagnosis**:
 ```bash
 # Step 1: Check Vikunja logs
-podman compose -f docker-compose.vikunja.yml logs vikunja-api --tail=30
+podman compose -f docker-compose.yml logs vikunja-api --tail=30
 
 # Step 2: Check PostgreSQL connectivity
-podman compose -f docker-compose.vikunja.yml logs vikunja-api | grep "database\|postgres\|connection"
+podman compose -f docker-compose.yml logs vikunja-api | grep "database\|postgres\|connection"
 
 # Step 3: Test PostgreSQL directly
-podman compose -f docker-compose.vikunja.yml exec vikunja-db \
+podman compose -f docker-compose.yml exec vikunja-db \
   psql -U vikunja -d vikunja -c "SELECT 1"
 ```
 
@@ -452,13 +452,13 @@ podman compose -f docker-compose.vikunja.yml exec vikunja-db \
 ```bash
 # If PostgreSQL not ready: Wait 60s for initialization
 sleep 60
-podman compose -f docker-compose.vikunja.yml restart vikunja-api
+podman compose -f docker-compose.yml restart vikunja-api
 
 # If connection string wrong: Verify environment variables
-podman compose -f docker-compose.vikunja.yml exec vikunja-api env | grep DATABASE
+podman compose -f docker-compose.yml exec vikunja-api env | grep DATABASE
 
 # If database not initialized: Force migration
-podman compose -f docker-compose.vikunja.yml exec vikunja-api \
+podman compose -f docker-compose.yml exec vikunja-api \
   vikunja migrate
 ```
 
@@ -471,11 +471,11 @@ podman compose -f docker-compose.vikunja.yml exec vikunja-api \
 **Diagnosis**:
 ```bash
 # Check if Vikunja can write to /app/vikunja/files
-podman compose -f docker-compose.vikunja.yml exec vikunja-api \
+podman compose -f docker-compose.yml exec vikunja-api \
   touch /app/vikunja/files/test.txt && echo "✅ Can write" || echo "❌ Cannot write"
 
 # Check directory permissions from inside container
-podman compose -f docker-compose.vikunja.yml exec vikunja-api \
+podman compose -f docker-compose.yml exec vikunja-api \
   ls -la /app/vikunja/
 ```
 
@@ -497,11 +497,11 @@ chmod 755 data/vikunja/files
 **Diagnosis**:
 ```bash
 # Check current settings
-podman compose -f docker-compose.vikunja.yml exec vikunja-db \
+podman compose -f docker-compose.yml exec vikunja-db \
   postgres -C shared_buffers
 
 # Check active connections
-podman compose -f docker-compose.vikunja.yml exec vikunja-db \
+podman compose -f docker-compose.yml exec vikunja-db \
   psql -U vikunja -d vikunja -c "SELECT count(*) FROM pg_stat_activity;"
 ```
 
@@ -513,7 +513,7 @@ shared_buffers = 64MB           # Reduce from 128MB
 effective_cache_size = 128MB    # Reduce from 256MB
 
 # Restart PostgreSQL
-podman compose -f docker-compose.vikunja.yml restart vikunja-db
+podman compose -f docker-compose.yml restart vikunja-db
 ```
 
 ---
@@ -525,7 +525,7 @@ podman compose -f docker-compose.vikunja.yml restart vikunja-db
 **Diagnosis**:
 ```bash
 # Check if Vikunja API is running
-podman compose -f docker-compose.vikunja.yml ps | grep vikunja-api
+podman compose -f docker-compose.yml ps | grep vikunja-api
 
 # Check if Caddy can reach Vikunja internally
 podman exec xnai_caddy curl -s http://vikunja-api:3456/api/v1/info | jq . || \
@@ -538,7 +538,7 @@ podman logs xnai_caddy --tail=20
 **Solutions**:
 ```bash
 # Restart Vikunja API
-podman compose -f docker-compose.vikunja.yml restart vikunja-api
+podman compose -f docker-compose.yml restart vikunja-api
 
 # Reload Caddy config (no downtime)
 podman exec xnai_caddy caddy reload -c /etc/caddy/Caddyfile

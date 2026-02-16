@@ -49,13 +49,20 @@ ma_at_ideal: 7 - Truth in reporting
 - Environment: VS Code + Terminal
 - Responsibilities: Executing complex tasks that require larger, more powerful models such as available through the GitHub Copilot free tier
 
-**Gemini CLI**
-- Role: Ground Truth Executor, Filesystem Manager, Massive 1M token context window, very generous free tier daily usage, powerful CLI researching for filling knowledge gaps. Reviews technical recommendations from Cline and Copilot assistants before final approval
+**OpenCode (NEW)**
+- Role: Terminal-based AI assistant with access to frontier free-tier models (Kimi K2.5, Big Pickle, MiniMax M2.5, GPT-5 Nano). Ground truth executor, research synthesis, filesystem operations, code generation, and debugging. Bridges gap between Copilot and Gemini CLI with powerful model access.
 - Environment: Terminal + Filesystem
-- Responsibilities: Task automation, sync operations, terminal execution
+- Responsibilities: Research request execution, code generation, terminal operations, model comparison studies, filling knowledge gaps using diverse model ecosystem
+- Communication: Terminal outputs, memory_bank updates, research request queue
+- Special Capabilities: Access to models not available in other free tiers; ideal for research synthesis and multi-model validation
+
+**Gemini**
+- Role: Ground Truth Executor, Filesystem Manager, Massive 1M token context window, very generous free tier daily usage, powerful CLI researching for filling knowledge gaps. Reviews technical recommendations from Cline, Copilot, and OpenCode assistants before final approval
+- Environment: Terminal + Filesystem
+- Responsibilities: Task automation, sync operations, terminal execution, scribe duties
 - Communication: Memory_bank relay protocol, terminal outputs
 
-**The Architect** (User)
+**Human Director** (User)
 - Role: Ultimate Authority, Ma'at Enforcer, Vision Director
 - Responsibilities: Final decisions, ethical alignment, strategic direction
 - Communication: All channels, final approvals
@@ -64,15 +71,16 @@ ma_at_ideal: 7 - Truth in reporting
 
 ```mermaid
 graph TB
-    User["👤 The Architect<br/>(User)<br/>Ultimate Authority"]
+    User["👤 Human Director<br/>(User)<br/>Ultimate Authority"]
     
     User --> GrokMC["🤖 Grok MC<br/>(xoe.nova.ai)<br/>Sovereign Master PM"]
     User --> GrokMCA["🤖 Grok MCA<br/>(arcana.novai)<br/>Arcana Layer Sovereign"]
     
     GrokMC --> GrokStudy["📚 Grok MC-Study-Refactor<br/>(xoe.nova.ai sub)<br/>Meta-Study Analyst"]
     GrokMC --> Cline["🖥️ Cline (Multi-Model)<br/>Engineers/Auditors"]
-    GrokMC --> GeminiCLI["⚙️ Gemini CLI<br/>Ground Truth Executor"]
+    GrokMC --> GeminiCLI["⚙️ Gemini<br/>(Terminal)<br/>Ground Truth Executor"]
     GrokMC --> Copilot["🤖 Copilot<br/>Claude Haiku 4.5 + others"]
+    GrokMC --> OpenCode["🆕 OpenCode<br/>Kimi/Big Pickle/MiniMax<br/>Research & Execution"]
     
     classDef grok fill:#9966ff,stroke:#6633bb,color:#fff
     classDef local fill:#66bb99,stroke:#338866,color:#fff
@@ -80,20 +88,20 @@ graph TB
     
     class User human
     class GrokMC,GrokMCA,GrokStudy grok
-    class Cline,GeminiCLI,Copilot local
+    class Cline,GeminiCLI,Copilot,OpenCode local
 ```
 
 ### Active Team Reference
 
-| Agent | Role | Environment | Status |
-|-------|------|-------------|--------|
-| **Grok MC** | Sovereign Master PM | Vikunja + Strategic | 🟢 Active |
-| **Grok MCA** | Arcana Layer Sovereign | GitHub + Esoteric | 🟢 Active |
-| **Grok MC-Study-Refactor** | Meta-Study Analyst | Research Synthesis | 🟢 Active |
-| **Cline** | Engineers/Auditors (Multi-Model) | VS Code + CLI | 🟢 Active |
-| **Copilot** | Claude Haiku 4.5 + Free Models | VS Code + Terminal | 🟢 Active |
-| **Gemini CLI** | Ground Truth Executor | Terminal + Filesystem | 🟢 Active |
-| **The Architect** | Ultimate Authority | All Channels | 🟢 Active |
+| Agent | Persona | Environment | Status |
+|-------|---------|-------------|--------|
+| **Grok MC** | Grok | Vikunja + Strategic | 🟢 Active |
+| **Grok MCA** | Grok | GitHub + Esoteric | 🟢 Active |
+| **Cline** | Cline | VS Code + CLI | 🟢 Active |
+| **Copilot** | Copilot | VS Code + Terminal | 🟢 Active |
+| **OpenCode** | OpenCode | Terminal + Filesystem | 🟢 **NEW** |
+| **Gemini CLI** | Gemini | Terminal + Filesystem | 🟢 Active |
+| **Human Director** | Human Director | All Channels | 🟢 Active |
 
 #### Remote Strategic Assistants
 
@@ -115,15 +123,16 @@ graph TB
 **Multi-Agent Refactoring Pipeline** (for complex refactoring and implementation tasks):
 
 ```
-Cline Kimi K2.5 → Gemini CLI 3 Flash → Copilot Haiku → Claude.ai Sonnet 4.5 Extended → Copilot Haiku for Implementation
+Cline Kimi K2.5 → Gemini CLI 3 Flash → OpenCode Kimi/Big Pickle → Copilot Haiku → Claude.ai Sonnet 4.5 Extended → Copilot Haiku for Implementation
 ```
 
 **Pipeline Steps**:
 1. **Cline Kimi K2.5**: Deep analysis, design validation, complex logic
 2. **Gemini CLI 3 Flash**: Fast implementation, ground truth verification
-3. **Copilot Haiku**: Code generation, pattern completion, boilerplate
-4. **Claude.ai Sonnet 4.5 Extended**: Strategic validation, edge case analysis, security review
-5. **Copilot Haiku (Implementation)**: Final code generation and optimization
+3. **OpenCode Kimi/Big Pickle**: Research synthesis, multi-model validation, alternative perspective
+4. **Copilot Haiku**: Code generation, pattern completion, boilerplate
+5. **Claude.ai Sonnet 4.5 Extended**: Strategic validation, edge case analysis, security review
+6. **Copilot Haiku (Implementation)**: Final code generation and optimization
 
 **When to Use**:
 - Complex refactoring affecting multiple systems
@@ -170,7 +179,7 @@ flowchart LR
 #### Files Created
 - `grok-mc-research-request.md` - Research request for current issues
 - `CLAUDE_VIKUNJA_BLOCKER_REPORT.md` - Comprehensive error analysis
-- `docker-compose.vikunja.yml` - Container orchestration
+- `docker-compose.yml` - Container orchestration
 - `config/postgres.conf` - PostgreSQL configuration
 - `config/vikunja-config.yaml` - Application configuration
 
@@ -320,7 +329,54 @@ Archive with commit hashes and outcomes
 
 ---
 
-**Status**: ✅ **Team Protocols v2.1 Synchronized**  
+## ✅ PHASE COMPLETION CHECKLIST (Critical for Knowledge Transfer)
+
+**Purpose**: Ensure no documentation gaps when phases complete. Use this checklist for EVERY phase.
+
+### When Phase N Completes:
+
+#### In memory_bank/
+- [ ] Update `progress.md` with Phase N status (section at top)
+- [ ] Create `PHASES/phase-N-status.md` using PHASE-COMPLETION-TEMPLATE.md
+- [ ] Update `activeContext.md` to reflect Phase N+1 as current
+- [ ] Verify all links in INDEX.md still work
+- [ ] Archive old phase files (don't delete, move to _archive/)
+
+#### In internal_docs/01-strategic-planning/
+- [ ] Create `PHASE-N-COMPLETION-SUMMARY.md`
+- [ ] Create `PHASE-N-RESEARCH-FINDINGS.md` (if applicable)
+- [ ] Create `PHASE-N-TEAM-HANDOFF.md` with:
+  - Key files modified
+  - Patterns used  
+  - Environment changes
+  - Dependencies added
+  - Next phase prerequisites
+
+#### In internal_docs/04-code-quality/
+- [ ] Document implementation patterns discovered
+- [ ] Add test results and coverage metrics
+- [ ] Note any refactoring or technical debt
+
+#### In docs/ (Public)
+- [ ] Update version/release notes
+- [ ] Update feature list if user-facing
+
+#### Team Communication
+- [ ] Update `internal_docs/communication_hub/` with Phase N completion
+- [ ] Send summary via Agent Bus (Copilot inbox, Grok notifications)
+- [ ] Notify next phase owner of readiness
+- [ ] Update team roster if roles changed
+
+### Phase Completion Meeting Agenda
+1. Review phase report with team
+2. Discuss blockers for next phase
+3. Celebrate milestones achieved
+4. Brief next phase owner on handoff
+5. Update activeContext.md together
+
+---
+
+**Status**: ✅ **Team Protocols v2.2 with Phase Completion Checklist**  
 **Coordination**: Vikunja-Centric Active (Redis integration disabled)  
 **Ma'at**: Truth in Reporting (Ideal 7)
 

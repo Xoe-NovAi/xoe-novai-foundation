@@ -52,7 +52,7 @@ Create your admin account through the web interface, then get your API token fro
 
 | File | Purpose | Security |
 |------|---------|----------|
-| `docker-compose.vikunja.yml` | Rootless deployment configuration | Hardened with no-new-privileges, SELinux labels |
+| `docker-compose.yml` | Rootless deployment configuration | Hardened with no-new-privileges, SELinux labels |
 | `Caddyfile` | Local reverse proxy configuration | Local-only access, no external exposure |
 
 ## 🔒 Security Features
@@ -105,17 +105,17 @@ python3 scripts/vikunja_importer.py vikunja-import.json --token YOUR_API_TOKEN
 
 ### View Logs
 ```bash
-podman-compose -f docker-compose.vikunja.yml logs
+podman-compose -f docker-compose.yml logs
 ```
 
 ### Stop Services
 ```bash
-podman-compose -f docker-compose.vikunja.yml down
+podman-compose -f docker-compose.yml down
 ```
 
 ### Restart Services
 ```bash
-podman-compose -f docker-compose.vikunja.yml restart
+podman-compose -f docker-compose.yml restart
 ```
 
 ### Clean Deployment (Remove Everything)
@@ -213,7 +213,7 @@ python3 scripts/setup_vikunja_secrets.py
 **Complete Recovery**
 ```bash
 # Stop and remove everything
-podman-compose -f docker-compose.vikunja.yml down
+podman-compose -f docker-compose.yml down
 podman system prune -a
 
 # Clean up secrets

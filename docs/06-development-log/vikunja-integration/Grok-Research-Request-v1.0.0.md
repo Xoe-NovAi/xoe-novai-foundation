@@ -17,7 +17,7 @@ Scope and objectives
 Inputs to Grok (host data to collect)
 - Host/OS: distro, kernel, Podman/compose versions, group membership, subuids, user namespaces
 - Podman state: current containers, pods, networks, external secrets, volumes
-- docker-compose.vikunja.yml and docker-compose.yml content (sanitized for sensitive fields)
+- docker-compose.yml and docker-compose.yml content (sanitized for sensitive fields)
 - Vikunja stack state: DB container health, API container health, frontend/container health, proxy status
 - Secrets: presence, mounting strategy (file-based vs env), external secrets flags
 - Tokens: admin bootstrap status, migration-live token availability and scopes

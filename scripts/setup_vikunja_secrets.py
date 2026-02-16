@@ -93,7 +93,7 @@ def setup_secrets():
     
     print("\n✓ All Podman secrets have been set up successfully!")
     print("You can now deploy Vikunja with:")
-    print("  podman-compose -f docker-compose.vikunja.yml up -d")
+    print("  podman-compose -f docker-compose.yml up -d")
 
 
 def cleanup_secrets():

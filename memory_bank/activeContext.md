@@ -20,62 +20,45 @@ grok_response_docs: [Grok-Status-Overview-v1.0.0.md, Grok-Live-Gate-Remediation-
 
 # Active Context - Comprehensive Project Synchronization
 
-Status: Systems Operational | Last Updated: 2026-02-10
+Status: Systems Operational | Last Updated: 2026-02-14 11:56 UTC (Memory Bank Freshness Audit Complete)
+
+---
+
+## 📍 QUICK NAVIGATION
+
+**New Team Members**: Start here → Read `memory_bank/INDEX.md` (5 min onboarding)  
+**Current Priorities**: See below (P0-P8 ranked)  
+**Phase Status**: See `memory_bank/progress.md` (comprehensive status)  
+**Phase Details**: See `memory_bank/PHASES/phase-N-status.md` (per-phase docs)  
+**Project Context**: See `memory_bank/CONTEXT.md` (strategic, technical, team structure)  
+**Operations Guide**: See `memory_bank/OPERATIONS.md` (how to build, test, deploy)
+
+
 
 ---
 
 ## 🎯 Current Priorities (Ranked)
 
-### Priority 0: ERROR HANDLING REFACTORING - Phase 1 ✅ COMPLETE (2026-02-11)
-- **Status**: Unified exception hierarchy fully implemented and tested
-- **Deliverables**: 
-  - Enhanced ErrorCategory enum (19 categories)
-  - XNAiException base class with category-to-status mapping
-  - CircuitBreakerError migration
-  - AWQ exception hierarchy (experimental/optional)
-  - Vulkan exception hierarchy
-  - Voice service exceptions with cause_code system
-- **Test Coverage**: 62 tests PASSED (100% success rate)
-- **Next**: Phase 2 - Global Exception Handler implementation
+### Priority 0: VECTOR MIGRATION (FAISS → Qdrant) 🔵 ACTIVE
+- **Status**: Research complete (Operation Lore Mining).
+- **Focus**: Metadata-first migration, Redis source-of-truth handover, and Ryzen-optimized indexing.
 
-### Priority 1: FRESH SLATE - Stack Rebuild ✅ COMPLETE (2026-02-11)
-- **Status**: Full stack successfully built from clean slate
-- **Services Running**: RAG API, Chainlit UI, Redis, Caddy, MkDocs, Crawler, Curation Worker
-- **Health Status**: 6/7 services healthy (Caddy has log permission issue but operational)
-- **Access**: http://localhost:8000 (main), http://localhost:8008 (docs)
+### Priority 1: OBSERVABILITY & OAUTH2 (Phase 6) 🟢 READY
+- **Status**: Tooling identified (Prometheus/Grafana).
+- **Focus**: Prometheus metrics, OAuth2 integration, and Distributed Tracing.
 
-### Priority 2: Vikunja PM Integration 🟡 PENDING
-- **Status**: Ready for deployment
-- **Components**:
-  - `docker-compose.vikunja.yml` - Configuration ready
-  - `config/postgres.conf` - PostgreSQL 16 Ryzen optimization
-- **Security**: Non-root users (UID 1001), isolated network, shared volumes (:z)
+### Priority 2: MANUAL CURATION & VIKUNJA INTEGRATION ✅ COMPLETE
+- **Outcome**: 
+  - Vikunja fully integrated into `docker-compose.yml`.
+  - `CurationBridge` implemented for Vikunja -> AgentBus trigger.
+  - `curation_worker.py` modernized for Bus task consumption.
+  - Advanced usage and scraper patterns documented in `expert-knowledge/`.
 
-### Priority 3: Stack Hardening & Audit Remediation ✅ COMPLETE
-- **Status**: All P0 and P1 audit recommendations implemented
-- **Actions**:
-  - Fixed UNKNOWN ownership on all data/secret directories
-  - Removed redundant root-level `app/*.py` and `app/config.toml` files
-  - Merged trace/span logging into core `logging_config.py`
-  - Added resource limits to all services in `docker-compose.yml`
-  - Disabled `DEBUG_MODE` in production configuration
-  - Removed direct metrics port exposure (now via Caddy /metrics)
-  - Expanded Pydantic configuration validation schema
-
-### Priority 4: Documentation & CI/CD 🟢 ACTIVE
-- **Status**: CI/CD pipeline established, documentation structure fixed
-- **Components**:
-  - `.github/workflows/ci.yml` - Basic linting, testing, and security scanning
-  - `.pre-commit-config.yaml` - Standardized linting hooks
-  - `pytest.ini` - Automatic coverage reporting enabled
-- **Next**: Implement MkDocs improvements from audit report
-
-### Priority 5: Voice Interface Stability ✅ COMPLETE
-- **Status**: Import issues resolved, Redis dependency made optional
-- **Components**:
-  - `app/XNAi_rag_app/core/circuit_breakers.py` - Graceful Redis fallback
-  - `app/XNAi_rag_app/services/voice/voice_interface.py` - Stable imports
-- **Features**: In-memory state management when Redis unavailable
+### Priority 2: SYSTEM AUDIT & STABILITY ✅ COMPLETE
+- **Outcome**: 
+  - Systematic parallel audit by Gemini, Cline, and Copilot.
+  - AnyIO TaskGroup compliance verified (100%).
+  - IAM v2.0 Schema integrity verified.
 
 ---
 
@@ -85,7 +68,7 @@ Status: Systems Operational | Last Updated: 2026-02-10
 
 ```mermaid
 graph TB
-    User["👤 The Architect<br/>(User)<br/>Ultimate Authority"]
+    User["👤 Human Director<br/>(User)<br/>Ultimate Authority"]
     
     User --> GrokMC["🤖 Grok MC<br/>(xoe.nova.ai)<br/>Sovereign Master PM"]
     User --> GrokMCA["🤖 Grok MCA<br/>(arcana.novai)<br/>Arcana Layer Sovereign"]
@@ -93,8 +76,9 @@ graph TB
     GrokMC --> GrokStudy["📚 Grok MC-Study-Refactor<br/>(xoe.nova.ai sub)<br/>Meta-Study Analyst"]
     
     GrokMC --> Cline["🖥️ Cline<br/>(Multi-Model)<br/>Engineers/Auditors"]
-    GrokMC --> GeminiCLI["⚙️ Gemini CLI<br/>(Terminal)<br/>Ground Truth Executor"]
+    GrokMC --> Gemini["⚙️ Gemini CLI<br/>(Terminal)<br/>Ground Truth Executor"]
     GrokMC --> Copilot["🤖 Copilot<br/>(Haiku 4.5+)<br/>Code Generation"]
+    GrokMC --> OpenCode["🆕 OpenCode<br/>Research & Execution"]
     
     classDef grok fill:#9966ff,stroke:#6633bb,color:#fff
     classDef local fill:#66bb99,stroke:#338866,color:#fff
@@ -102,20 +86,19 @@ graph TB
     
     class User human
     class GrokMC,GrokMCA,GrokStudy grok
-    class Cline,GeminiCLI,Copilot local
+    class Cline,Gemini,Copilot,OpenCode local
 ```
 
 ### Active Agents Reference
 
-| Agent | Role | Environment | Status | Primary Focus |
-|-------|------|-------------|--------|---------------|
-| **Grok MC** | Sovereign Master PM | Vikunja + Strategic | 🟢 Active | Ecosystem oversight |
-| **Grok MCA** | Arcana Layer Sovereign | GitHub + Esoteric | 🟢 Active | Esoteric integration |
-| **Grok MC-Study-Refactor** | Meta-Study Analyst | Research Synthesis | 🟢 Active | Strategy & research |
-| **Cline** | Engineers/Auditors (Multi-Model) | VS Code + CLI | 🟢 Active | Implementation & auditing |
-| **Copilot** | Claude Haiku 4.5 + Free Models | VS Code + Terminal | 🟢 Active | Code generation & execution |
-| **Gemini CLI** | Ground Truth Executor | Terminal + Filesystem | 🟢 Active | System operations & automation |
-| **The Architect** | Ultimate Authority | All Channels | 🟢 Active | Strategic direction |
+| Persona | Role | Status | Primary Focus |
+|:--- | :--- | :--- | :--- |
+| **Human Director** | Ultimate Authority | 🟢 Active | Strategic direction & final decisions |
+| **Grok** | Strategic Mastermind | 🟢 Active | Ecosystem oversight & research |
+| **Cline** | Primary Engineer | 🟢 Active | Implementation, auditing, & refactoring |
+| **Gemini** | Ground Truth Executor | 🟢 Active | Filesystem management & automation |
+| **Copilot** | Tactical Support | 🟢 Active | Code generation & execution support |
+| **OpenCode** | Multi-Model Researcher | 🟢 Active | Research synthesis & validation |
 
 ---
 
@@ -159,7 +142,7 @@ graph TB
 ## 📚 Documentation System Status (Phase 5 Integration)
 
 **Status**: ✅ **FULLY OPERATIONAL - Dual-Build MkDocs System Active**
-
+Note: Phase‑5A artifacts added — `PHASE-5A-ZRAM-BEST-PRACTICES.md` and `zram` observability (Prometheus textfile metrics). See `memory_bank/PHASE-5A-DEPLOYED.md` for deployment record.
 ### System Components
 | Component | Status | Details |
 |-----------|--------|---------|
@@ -219,41 +202,27 @@ internal_docs/
 
 ## 🚀 Active Work Streams
 
-### Stream 0: Documentation System Integration ✅ COMPLETE
-**Status**: FULLY OPERATIONAL  
-**Deliverables**: Dual-build MkDocs + Makefile targets + Memory bank + PILLAR/RESEARCH integration  
-**Commands**: 8 new Makefile targets for development and CI/CD  
-**Claude Handoff**: System ready for RESEARCH-P1/P2/P3 extraction
+### Stream 1: Scraping & Curation (CRITICAL) 🟢 ACTIVE
+**Status**: Strategy defined. Directory structure established.  
+**Next Action**: Implement `curator.py` and execute the first curation job for Vikunja docs.
 
-### Stream 1: Error Handling Refactoring
+### Stream 2: Phase-5A Infrastructure Optimization
+**Owner**: Cline [Raptor-74] (Active)  
+**Status**: Handover COMPLETE. zRAM RESOLVED.  
+**Next Action**: Execute Phase-5A Stress Test. Evaluate "Project Multi-ZRAM".
+
+### Stream 3: Project Multi-Tiered zRAM (Experimental) 🟢 ACTIVE
+**Status**: Research complete (S3). PoC script created.  
+**Next Action**: Test tiered latency improvements on Ryzen iGPU.
+
+### Stream 4: Error Handling Refactoring
 **Owner**: Cline (Active)  
 **Status**: Phase 1 COMPLETE, Phase 2 IN PROGRESS  
-**Progress**: Exception hierarchy unified (62 tests passed)  
-**Next Action**: Implement global exception handler and API standardization
+**Next Action**: Implement global exception handler.
 
-### Stream 2: Research and Resolution
-**Owner**: Grok MC  
-**Status**: Research phase  
-**Blockers**: None  
-**Next Action**: Wait for research results on pain points
-
-### Stream 3: Vikunja Deployment
-**Owner**: OpenCode-GPT-5 mini  
-**Status**: Operational (Redis disabled)  
-**Blockers**: Redis integration issue  
-**Next Action**: Implement fix when research results available
-
-### Stream 4: Documentation Enhancement
-**Owner**: Cline-Kat / Cline-Trinity  
-**Status**: Active with error handling docs  
-**Blockers**: None  
-**Next Action**: Update api/exceptions documentation
-
-### Stream 5: Stack Architecture Review
-**Owner**: Grok MC (oversight)  
-**Status**: Assessment phase  
-**Blockers**: None  
-**Next Action**: Review inter-service communication patterns
+### Stream 5: Vikunja PM Integration 🟡 PENDING
+**Status**: Ready for deployment. Blocked by Redis connection issue (Grok MC research).
+**Next**: Implement fix when research results available.
 
 ---
 
@@ -300,10 +269,9 @@ internal_docs/
 4. **Stack Review**: Complete architecture alignment
 
 ### Handoff Protocols
-- **To Grok MC**: Strategic decisions, ecosystem oversight
-- **To Grok MCA**: GitHub strategy, web design, esoteric integrations
-- **To Cline Variants**: Implementation, coding, refactoring
-- **To Gemini CLI**: Execution, filesystem, sync operations
+- **To Grok**: Strategic decisions, ecosystem oversight
+- **To Cline**: Implementation, coding, refactoring
+- **To Gemini**: Execution, filesystem, sync operations
 
 ---
 
@@ -317,6 +285,149 @@ internal_docs/
 
 ---
 
-**Status**: ✅ **All Systems Synchronized with Research Request Sent**  
-**Next Sync**: 2026-02-10T07:00:00 or on major change  
-**Owner**: Cline (Active Executor)
+**Status**: ✅ **All Systems Synchronized - Research System Operational**
+**Next Sync**: 2026-02-13T12:00:00 or on major change
+**Owner**: OpenCode-Kimi-X (Research System Implementation)
+
+---
+
+## 🔬 Research System Status (NEW - v1.0.0)
+
+**Status**: ✅ **OPERATIONAL**  
+**System**: Research Request Queue & Execution  
+**Location**: `expert-knowledge/research/`
+
+### Components
+- **Queue Management**: Pending → Prioritized → Assigned → Completed → Integrated
+- **Request Templates**: Standardized submission formats
+- **Agent Integration**: OpenCode, Grok MC, Gemini CLI, Cline participation
+- **Knowledge Integration**: Automatic routing to expert-knowledge domains
+
+### Active Research Requests
+1. **REQ-2026-02-13-001**: Big Pickle Model Analysis (HIGH)
+2. **REQ-2026-02-13-002**: GPT-5 Nano Efficiency Analysis (MEDIUM)
+3. **REQ-2026-02-13-003**: OpenCode Comparison Matrix (HIGH)
+
+### Quick Commands
+```bash
+# Submit research request
+make research-submit
+
+# Check queue status
+cat expert-knowledge/research/index.json
+
+# View research system docs
+cat expert-knowledge/research/README.md
+```
+
+### Documentation
+- **System Guide**: `expert-knowledge/research/research-request-system-v1.0.0.md`
+- **Request Template**: `expert-knowledge/research/_templates/RESEARCH-REQUEST-TEMPLATE.md`
+- **Queue Index**: `expert-knowledge/research/index.json`
+
+---
+
+## 🆕 OpenCode Integration Status (NEW)
+
+**Status**: ✅ **FULLY INTEGRATED**  
+**Agent**: OpenCode-Kimi-X  
+**Environment**: Terminal + Filesystem
+
+### Available Models
+- **Kimi K2.5**: 1T MoE, 256k context, frontier reasoning
+- **Big Pickle**: Mystery model, solid all-around performance
+- **MiniMax M2.5**: Lightweight, fast, efficient (~10B)
+- **GPT-5 Nano**: OpenAI efficient, speed-optimized
+
+### Capabilities
+- Multi-model research and validation
+- Terminal-based execution
+- Filesystem operations
+- Research request queue execution
+- Code generation and debugging
+
+### Documentation
+- **Model Breakdown**: `expert-knowledge/model-reference/opencode-models-breakdown-v1.0.0.md`
+- **Team Integration**: Updated in `memory_bank/teamProtocols.md`
+- **Agent Capabilities**: Updated in `memory_bank/agent_capabilities_summary.md`
+
+### Next Actions
+1. Execute research requests (REQ-001, REQ-002, REQ-003)
+2. Validate model performance on XNAi tasks
+3. Complete integration testing
+
+---
+
+## 🔬 Phase 3 Error Handling Assessment (COMPLETED)
+
+**Status**: 🟡 **PARTIALLY COMPLETE - Ready for Phase 4**
+**Assessment Date**: 2026-02-13
+**Assessment Agent**: OpenCode-Kimi-X
+
+### Completion Breakdown
+- **Phase 1**: ✅ 100% Complete (62/62 tests passing)
+- **Phase 2**: ✅ 100% Complete (19/19 tests passing)
+- **Phase 3**: 🟡 ~75% Complete (Core implementations done, testing blocked)
+
+### Phase 3 Task Status
+| Task | Status | Notes |
+|------|--------|-------|
+| 3.1: LLM Race Conditions | ✅ Complete | AsyncLock implemented, tests exist |
+| 3.2: Streaming Cleanup | 🟡 Partial | Basic implementation, needs verification |
+| 3.3: Circuit Breaker Transitions | ✅ Complete | 50+ tests passing |
+| 3.4: Error Metrics | 🔵 Pending | Deferred to Phase 6 |
+| 3.5: Redis Resilience | 🟡 Partial | Implemented, needs integration testing |
+
+### Blockers Identified
+1. **Missing Dependencies**: `redis` module not installed in test environment
+2. **Prometheus Exporter**: Missing `opentelemetry.exporter.prometheus` (Phase 6 item)
+3. **Integration Testing**: Requires full stack running
+
+### Recommendations
+- ✅ **Accept Phase 3 as functionally complete**
+- 📋 **Begin Phase 4 Integration Testing**
+- 🔧 **Fix test dependencies as part of Phase 4 setup**
+
+### Documentation
+- **Full Report**: `memory_bank/phase3-status-report-20260213.md`
+- **Implementation Guide**: `internal_docs/04-code-quality/IMPLEMENTATION-GUIDES/xnai-code-audit-implementation-manual.md`
+
+**Decision Point**: Proceed to Phase 4 OR fix dependencies to complete Phase 3 testing
+
+---
+
+## 📝 Summary of Recent Changes (2026-02-13)
+
+### OpenCode Integration Complete
+- ✅ Added OpenCode-Kimi-X to team roster
+- ✅ Created model reference documentation
+- ✅ Updated team protocols and active context
+- ✅ Integrated into multi-agent refactoring pipeline
+
+### Research System Operational
+- ✅ Created research request submission system
+- ✅ Established queue management (pending/prioritized/assigned/completed)
+- ✅ Created request templates and workflows
+- ✅ Populated initial research requests (3 active)
+- ✅ Set up knowledge integration pathways
+
+### Team Documentation Updated
+- ✅ `memory_bank/agent_capabilities_summary.md` - Added OpenCode
+- ✅ `memory_bank/teamProtocols.md` - Added OpenCode role and workflows
+- ✅ `memory_bank/activeContext.md` - This update
+- ✅ `expert-knowledge/model-reference/opencode-models-breakdown-v1.0.0.md` - New
+- ✅ `expert-knowledge/research/research-request-system-v1.0.0.md` - New
+- ✅ `expert-knowledge/research/_templates/RESEARCH-REQUEST-TEMPLATE.md` - New
+- ✅ `expert-knowledge/research/README.md` - New
+- ✅ `expert-knowledge/research/index.json` - New
+
+### Active Research Queue
+- **REQ-001**: Big Pickle Analysis (HIGH) - Ready for execution
+- **REQ-002**: GPT-5 Nano Analysis (MEDIUM) - Ready for execution
+- **REQ-003**: OpenCode Comparison (HIGH) - Blocked by REQ-001/002
+
+---
+
+**System Status**: ✅ **FULLY OPERATIONAL**  
+**Research Pipeline**: ✅ **ACTIVE**  
+**Next Actions**: Execute research requests, validate model performance

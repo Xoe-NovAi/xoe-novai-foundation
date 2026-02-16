@@ -31,6 +31,7 @@ from dataclasses import dataclass
 from contextlib import contextmanager, asynccontextmanager
 import time
 import threading
+import gc
 from pathlib import Path
 from collections import deque
 
@@ -97,6 +98,7 @@ from ...core.circuit_breakers import (
     voice_tts_breaker,
     get_circuit_breaker_status
 )
+from ...core.tier_config import get_current_voice_config, tier_config_factory
 from .voice_degradation import voice_degradation
 from .voice_recovery import process_voice_with_recovery, VoiceRecoveryConfig
 
@@ -1083,6 +1085,7 @@ class VoiceInterface:
         self.stt_model = None
         self.tts_model = None
         self.stt_provider_name = "faster_whisper"
+        self.loaded_model_name = None
         self.tts_provider_name = "piper_onnx"
 
         # Barge-in control
@@ -1124,6 +1127,7 @@ class VoiceInterface:
             "awq_accuracy_retention": 0.0,
         }
 
+        self.loaded_tier = None
         self._initialize_models()
         self._initialize_awq_system()
 
@@ -1287,46 +1291,80 @@ class VoiceInterface:
             logger.error(f"AWQ model initialization failed: {e}")
             return {'success': False, 'error': str(e)}
     
-    def _initialize_models(self):
-        if self.config.offline_mode and not self.config.preload_models:
-            logger.info("Offline mode: Deferring model loading")
-            return
+    def _select_whisper_model(self, tier: int) -> str:
+        """Select appropriate Whisper model based on degradation tier."""
+        from ...core.tier_config import WhisperModel as TierWhisperModel
         
-        # STT model loading
-        if self.config.stt_provider == STTProvider.FASTER_WHISPER and FASTER_WHISPER_AVAILABLE:
-            try:
-                # Check for local models in current working directory
-                current_dir = Path(__file__).parent.parent.parent.parent
-                local_whisper_path = current_dir / "models" / self.config.whisper_model.value
-                
-                if self.config.offline_mode:
-                    if not local_whisper_path.exists():
-                        logger.warning(f"Offline mode: Local Whisper model not found at {local_whisper_path}. Skipping.")
-                        self.stt_model = None
+        # Map tier to model
+        model_mapping = {
+            1: TierWhisperModel.DISTIL_LARGE.value,  # Tier 1: distil-large-v3
+            2: TierWhisperModel.BASE.value,          # Tier 2: base
+            3: TierWhisperModel.TINY.value,          # Tier 3: tiny
+            4: TierWhisperModel.TINY.value           # Tier 4: tiny (fallback)
+        }
+        
+        selected_model = model_mapping.get(tier, TierWhisperModel.DISTIL_LARGE.value)
+        logger.info(f"Selected Whisper model for tier {tier}: {selected_model}")
+        return selected_model
+
+    def _initialize_models(self):
+        # Get current degradation tier and select appropriate model
+        try:
+            from ...core.tier_config import tier_config_factory
+            current_tier = tier_config_factory.get_current_tier()
+            selected_model_name = self._select_whisper_model(current_tier)
+            
+            # Skip if already loaded
+            if self.stt_model is not None and getattr(self, "loaded_model_name", None) == selected_model_name:
+                return
+            
+            # STT model loading with tier-aware model selection
+            if self.config.stt_provider == STTProvider.FASTER_WHISPER and FASTER_WHISPER_AVAILABLE:
+                # CLAUDE CRITICAL: Memory cleanup before reloading
+                if self.stt_model is not None:
+                    logger.info(f"Unloading model {self.loaded_model_name} to load {selected_model_name} (Tier {current_tier})...")
+                    del self.stt_model
+                    self.stt_model = None
+                    gc.collect()
+                    time.sleep(0.1)
+
+                try:
+                    # Check for local models in current working directory
+                    current_dir = Path(__file__).parent.parent.parent.parent
+                    local_whisper_path = current_dir / "models" / selected_model_name
+                    
+                    if self.config.offline_mode:
+                        if not local_whisper_path.exists():
+                            logger.warning(f"Offline mode: Local Whisper model not found at {local_whisper_path}. Skipping.")
+                            self.stt_model = None
+                        else:
+                            logger.info(f"Loading local Faster Whisper from: {local_whisper_path} (Tier {current_tier})")
+                            self.stt_model = WhisperModel(
+                                str(local_whisper_path),
+                                device=self.config.stt_device,
+                                compute_type=self.config.stt_compute_type,
+                            )
                     else:
-                        logger.info(f"Loading local Faster Whisper from: {local_whisper_path}")
+                        model_path = str(local_whisper_path) if local_whisper_path.exists() else selected_model_name
+                        logger.info(f"Loading Faster Whisper from: {model_path} (Tier {current_tier})")
                         self.stt_model = WhisperModel(
-                            str(local_whisper_path),
+                            model_path,
                             device=self.config.stt_device,
                             compute_type=self.config.stt_compute_type,
                         )
-                else:
-                    model_path = str(local_whisper_path) if local_whisper_path.exists() else self.config.whisper_model.value
-                    logger.info(f"Loading Faster Whisper from: {model_path}")
-                    self.stt_model = WhisperModel(
-                        model_path,
-                        device=self.config.stt_device,
-                        compute_type=self.config.stt_compute_type,
-                    )
-                
-                if self.stt_model:
-                    voice_metrics.update_model_loaded("stt", self.stt_provider_name, True)
-                    logger.info("Faster Whisper loaded successfully.")
-            except Exception as e:
-                logger.error(f"Failed to load Faster Whisper: {e}")
-                voice_metrics.update_model_loaded("stt", self.stt_provider_name, False)
-
-        # TTS: Use available models with fallback to simple text-to-speech
+                    
+                    if self.stt_model:
+                        self.loaded_model_name = selected_model_name
+                        self.loaded_tier = current_tier
+                        voice_metrics.update_model_loaded("stt", self.stt_provider_name, True)
+                        logger.info(f"Faster Whisper {selected_model_name} loaded successfully (Tier {current_tier})")
+                        
+                except Exception as e:
+                    logger.error(f"Failed to load Faster Whisper: {e}")
+                    voice_metrics.update_model_loaded("stt", self.stt_provider_name, False)
+        except Exception as e:
+            logger.warning(f"Failed to get degradation tier for model selection: {e}")
+            self._load_original_stt_model()
         if self.config.tts_provider == TTSProvider.PIPER_ONNX:
             try:
                 # Try multiple model paths - updated to use current working directory
@@ -1373,6 +1411,8 @@ class VoiceInterface:
 
     async def transcribe_audio(self, audio_data: bytes, audio_format: str = "wav") -> Tuple[str, float]:
         """Transcribe audio with timeout protection and circuit breaker."""
+        # Ensure models are appropriate for current degradation tier
+        self._initialize_models()
         if not audio_data:
             return "[No audio data]", 0.0
         

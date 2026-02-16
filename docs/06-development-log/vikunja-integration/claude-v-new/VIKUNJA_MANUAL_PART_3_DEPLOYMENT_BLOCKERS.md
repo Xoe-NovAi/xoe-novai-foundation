@@ -18,7 +18,7 @@
 ☐ Set permissions: chmod 700 data/vikunja/db
 ☐ Foundation stack running: make up
 ☐ Syntax validation: podman-compose config
-☐ docker-compose_vikunja.yml replaced with FINAL version
+☐ docker-compose.yml replaced with FINAL version
 ```
 
 ### Deployment Commands
@@ -35,10 +35,10 @@ podman unshare chown 1000:1000 -R data/vikunja
 chmod 700 data/vikunja/db
 
 # 3. Validate (1 min)
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config > /dev/null && echo "✅ Valid"
+podman-compose -f docker-compose.yml -f docker-compose.yml config > /dev/null && echo "✅ Valid"
 
 # 4. Deploy (5 min)
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # 5. Wait & Verify (5 min)
 sleep 45
@@ -189,7 +189,7 @@ depends_on:
 
 **Verification**:
 ```bash
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config > /tmp/config.json
+podman-compose -f docker-compose.yml -f docker-compose.yml config > /tmp/config.json
 # No YAML errors should appear
 ```
 
@@ -314,7 +314,7 @@ time curl -s http://localhost:3456/api/v1/tasks \
 
 ```bash
 # 1. Restart Vikunja
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml restart vikunja
+podman-compose -f docker-compose.yml -f docker-compose.yml restart vikunja
 
 # 2. Wait for restart
 sleep 30
@@ -326,7 +326,7 @@ curl -s -X POST http://localhost:3456/api/v1/login \
 # Should return same USER_ID as before
 
 # 4. Full restart (both services)
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml restart
+podman-compose -f docker-compose.yml -f docker-compose.yml restart
 
 # 5. Verify again
 echo "Testing after full restart..."
@@ -520,7 +520,7 @@ echo "✅ Recovery complete"
 BACKUP_FILE="/backups/vikunja/pre_upgrade_$(date +%Y%m%d).sql.gz"
 podman exec vikunja-db pg_dump -U vikunja vikunja | gzip > $BACKUP_FILE
 
-# 2. Update docker-compose.vikunja.yml
+# 2. Update docker-compose.yml
 # Change: image: vikunja/vikunja:0.24.1
 # To:     image: vikunja/vikunja:0.24.2
 
@@ -528,7 +528,7 @@ podman exec vikunja-db pg_dump -U vikunja vikunja | gzip > $BACKUP_FILE
 podman pull vikunja/vikunja:0.24.2
 
 # 4. Restart with new image
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # 5. Wait for migrations
 sleep 30

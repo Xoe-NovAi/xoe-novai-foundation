@@ -139,7 +139,7 @@ STEP 2: Generate Secrets (2 minutes)
 
 STEP 3: Update Configuration (3 minutes)
   └─ Add secrets to .env
-  └─ Replace docker-compose_vikunja.yml
+  └─ Replace docker-compose.yml
 
 STEP 4: Deploy (5 minutes)
   └─ podman-compose up -d

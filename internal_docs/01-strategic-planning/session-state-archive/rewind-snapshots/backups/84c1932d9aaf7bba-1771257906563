@@ -1,0 +1,80 @@
+{
+  "manifest": "XOH Additional Foundations Research",
+  "created_at": "2026-02-16T15:57:00Z",
+  "tasks": [
+    {
+      "title": "Gemini 3 Pro: XOH holistic plan review",
+      "assignee": "agent:gemini-cli",
+      "estimate_minutes": 240,
+      "priority": "critical",
+      "tags": ["review","plan","xoh"],
+      "description": "Using full context, review internal_docs/01-strategic-planning, session-state, model-cards, and Vikunja manifests; produce gemini_xoh_review.md with findings, gaps, and remediation recommendations.",
+      "acceptance_criteria": "gemini_xoh_review.md in session-state with explicit gap list, suggested task list, and updated master plan."
+    },
+    {
+      "title": "CI Strategy: Stack-holistic CI & Testing",
+      "assignee": "agent:copilot",
+      "co_assignee": "agent:cline-kat",
+      "estimate_minutes": 360,
+      "priority": "high",
+      "tags": ["ci","automation","models"],
+      "description": "Design CI pipelines that cover model conversion, model provenance verification, embedding tests, Qdrant/FAISS build, smoke tests, and mkdocs/link-checks. Include sample GitHub Actions/Makefile/podman rootless runbooks.",
+      "acceptance_criteria": "CI design doc + example GitHub Actions workflows and test harness PR."
+    },
+    {
+      "title": "Redis ACL & RBAC design for Agent Bus",
+      "assignee": "agent:copilot",
+      "estimate_minutes": 180,
+      "priority": "high",
+      "tags": ["redis","acl","agent-bus"],
+      "description": "Design ACLs for agent roles (copilot, cline, gemini, grok, vikunja, monitor) with least privilege and sample config snippets.",
+      "acceptance_criteria": "redis_acl_design.md in internal_docs with sample ACL commands and RBAC mapping."
+    },
+    {
+      "title": "Ed25519 agent identity & handshake research",
+      "assignee": "agent:copilot",
+      "estimate_minutes": 120,
+      "priority": "high",
+      "tags": ["identity","ed25519"],
+      "description": "Document handshake protocol, key rotation, enrollment, and storage; provide sample code and migration steps.",
+      "acceptance_criteria": "ed25519_handshake.md in internal_docs with example code and integration points."
+    },
+    {
+      "title": "Qdrant/FAISS backup & restore strategy",
+      "assignee": "agent:gemini-cli",
+      "estimate_minutes": 180,
+      "priority": "high",
+      "tags": ["qdrant","faiss","backup"],
+      "description": "Define backup cadence, index export/import process, FAISS disk snapshots, and restore runbook.",
+      "acceptance_criteria": "qdrant_faiss_backup.md with runbook and sample scripts."
+    },
+    {
+      "title": "Model provenance & license audit",
+      "assignee": "agent:copilot",
+      "estimate_minutes": 240,
+      "priority": "high",
+      "tags": ["models","license","provenance"],
+      "description": "Audit all local models for provenance, license, and upload provenance to model-cards; produce audit report.",
+      "acceptance_criteria": "model_provenance_audit.md and updated model-cards with provenance entries."
+    },
+    {
+      "title": "Monitoring & Alerts for model/memory failures",
+      "assignee": "agent:copilot",
+      "estimate_minutes": 180,
+      "priority": "high",
+      "tags": ["monitoring","alerts"],
+      "description": "Design monitoring checks for memory, model crashes, Qdrant/Redis service health; add Prometheus alert rules and runbook.",
+      "acceptance_criteria": "monitoring_runbook.md and Prometheus alert rules in internal_docs."
+    },
+    {
+      "title": "Create CI pipelines for model conversion & tests (implementation)",
+      "assignee": "agent:copilot",
+      "co_assignee": "agent:gemini-cli",
+      "estimate_minutes": 360,
+      "priority": "high",
+      "tags": ["ci","implementation"],
+      "description": "Implement pipelines (GitHub Actions / local runners) for artifact conversion, quantization, embedding smoke tests and push artifacts to /models.",
+      "acceptance_criteria": "Working CI workflows and a demo action run log."
+    }
+  ]
+}

@@ -120,7 +120,7 @@ def deploy_vikunja():
     """Deploy Vikunja using the hardened docker-compose file."""
     print("Deploying Vikunja with security hardening...")
     
-    compose_file = "docker-compose.vikunja.yml"
+    compose_file = "docker-compose.yml"
     if not Path(compose_file).exists():
         print(f"✗ Error: {compose_file} not found")
         return False
@@ -228,9 +228,9 @@ def display_summary():
     print("  - Local-only access (no external exposure)")
     print()
     print("Management Commands:")
-    print("  View logs: podman-compose -f docker-compose.vikunja.yml logs")
-    print("  Stop: podman-compose -f docker-compose.vikunja.yml down")
-    print("  Restart: podman-compose -f docker-compose.vikunja.yml restart")
+    print("  View logs: podman-compose -f docker-compose.yml logs")
+    print("  Stop: podman-compose -f docker-compose.yml down")
+    print("  Restart: podman-compose -f docker-compose.yml restart")
     print("="*60)
 
 
@@ -267,7 +267,7 @@ def main():
     # Step 6: Wait for health
     if not wait_for_health():
         print("Warning: Services may not be fully ready. Check logs with:")
-        print("podman-compose -f docker-compose.vikunja.yml logs")
+        print("podman-compose -f docker-compose.yml logs")
     
     # Step 7: Run security scan
     if not args.skip_scan:

@@ -166,9 +166,9 @@ Advanced:        stack-cat, enterprise-*, wheel-*, docs-buildkit
 - Caddy configured for reverse proxy but endpoints may need configuration
 - Health check timeouts are appropriate (30s interval, 15s timeout)
 
-#### Vikunja Compose File (docker-compose.vikunja.yml)
+#### Vikunja Compose File (docker-compose.yml)
 **Status**: Separate deployment file (not built by docker-compose up)  
-**Usage**: `podman-compose -f docker-compose.vikunja.yml up -d`  
+**Usage**: `podman-compose -f docker-compose.yml up -d`  
 
 **Configuration**:
 - Uses external images (postgres:16-alpine, vikunja/vikunja:0.24.1)
@@ -252,7 +252,7 @@ podman build -f Dockerfile.chainlit -t xnai-chainlit:test
 
 ## VIKUNJA DEPLOYMENT
 
-### Q: Why isn't docker-compose.vikunja.yml being built?
+### Q: Why isn't docker-compose.yml being built?
 
 **A**: By design. It's a separate composition file for optional PM tool integration.
 
@@ -262,7 +262,7 @@ podman build -f Dockerfile.chainlit -t xnai-chainlit:test
 podman network create xnai_network  # (if not exists)
 
 # Deploy vikunja separately
-podman-compose -f docker-compose.vikunja.yml up -d
+podman-compose -f docker-compose.yml up -d
 
 # Verify
 podman ps | grep vikunja

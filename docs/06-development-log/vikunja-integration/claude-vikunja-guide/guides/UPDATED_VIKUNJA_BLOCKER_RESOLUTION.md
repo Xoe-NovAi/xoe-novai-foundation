@@ -38,7 +38,7 @@ rm requirements-vikunja.txt
 | Component | Status | Grade | Notes |
 |-----------|--------|-------|-------|
 | **docker-compose.yml** | ✅ | A | Foundation stack solid |
-| **docker-compose_vikunja.yml overlay** | ❌ BROKEN | F | Podman secrets not working in overlay |
+| **docker-compose.yml overlay** | ❌ BROKEN | F | Podman secrets not working in overlay |
 | **Dockerfile family** | ✅ | A | Good BuildKit caching |
 | **Security hardening** | ✅ | A+ | Excellent (cap_drop, rootless, user isolation) |
 | **Network architecture** | ⚠️ CHOICE | B | Isolated vikunja-net prevents Redis access |
@@ -58,7 +58,7 @@ rm requirements-vikunja.txt
 
 ### The Problem
 
-Your `docker-compose_vikunja.yml` uses **external Podman secrets** which don't work properly in rootless mode with docker-compose provider:
+Your `docker-compose.yml` uses **external Podman secrets** which don't work properly in rootless mode with docker-compose provider:
 
 ```yaml
 # Lines 11, 37, 40 - BROKEN APPROACH:
@@ -154,9 +154,9 @@ networks:
 
 ## ✅ COMPLETE SOLUTION: Fixed Configuration Files
 
-### SOLUTION: Updated docker-compose_vikunja.yml
+### SOLUTION: Updated docker-compose.yml
 
-**Replace your current `docker-compose_vikunja.yml` with this:**
+**Replace your current `docker-compose.yml` with this:**
 
 ```yaml
 version: '3.8'
@@ -319,24 +319,24 @@ up-vikunja: up _check_vikunja_env
 	@mkdir -p data/vikunja/{db,files}
 	@podman unshare chown 1000:1000 -R data/vikunja 2>/dev/null || true
 	@chmod 700 data/vikunja/db
-	@podman compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+	@podman compose -f docker-compose.yml -f docker-compose.yml up -d
 	@echo "⏳ Waiting for services to stabilize..."
 	@sleep 45
 	@$(MAKE) health-vikunja
 
 down-vikunja:
 	@echo "🛑 Stopping Vikunja overlay..."
-	@podman compose -f docker-compose.yml -f docker-compose_vikunja.yml down
+	@podman compose -f docker-compose.yml -f docker-compose.yml down
 
 restart-vikunja: down-vikunja up-vikunja
 
 logs-vikunja:
-	@podman compose -f docker-compose.yml -f docker-compose_vikunja.yml logs -f vikunja-db vikunja
+	@podman compose -f docker-compose.yml -f docker-compose.yml logs -f vikunja-db vikunja
 
 health-vikunja:
 	@echo "🏥 Vikunja Health Check"
 	@echo "─────────────────────────"
-	@podman compose -f docker-compose.yml -f docker-compose_vikunja.yml ps
+	@podman compose -f docker-compose.yml -f docker-compose.yml ps
 	@echo ""
 	@echo "Testing Vikunja API..."
 	@curl -s http://localhost:3456/api/v1/info | jq . && echo "✅ Vikunja API healthy" || echo "⚠️ Vikunja API not responding yet"
@@ -371,7 +371,7 @@ _check_vikunja_env:
   VIKUNJA_JWT_SECRET=$(cat secrets/vikunja_jwt_secret.txt)
   ```
 
-- [ ] **Replace docker-compose_vikunja.yml** (use corrected version above)
+- [ ] **Replace docker-compose.yml** (use corrected version above)
 
 - [ ] **Create data directories**
   ```bash
@@ -393,7 +393,7 @@ _check_vikunja_env:
   ```bash
   make up-vikunja
   # or:
-  podman compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+  podman compose -f docker-compose.yml -f docker-compose.yml up -d
   ```
 
 - [ ] **Wait for startup**
@@ -466,7 +466,7 @@ AFTER (Fixed - READY)
 
 | File | Change | Time | Status |
 |------|--------|------|--------|
-| `docker-compose_vikunja.yml` | Replace entire file | 5 min | CRITICAL |
+| `docker-compose.yml` | Replace entire file | 5 min | CRITICAL |
 | `.env` | Add 2 lines | 2 min | CRITICAL |
 | `requirements-vikunja.txt` | DELETE | 1 min | CLEANUP |
 | `Makefile` | Add targets (optional) | 5 min | HELPFUL |
@@ -492,7 +492,7 @@ AFTER (Fixed - READY)
 
 1. **Read** this document (already done ✅)
 2. **Delete** requirements-vikunja.txt
-3. **Replace** docker-compose_vikunja.yml (use corrected version above)
+3. **Replace** docker-compose.yml (use corrected version above)
 4. **Update** .env with VIKUNJA_ variables
 5. **Deploy**: `make up-vikunja` (or use podman compose directly)
 6. **Verify**: Health checks pass, API responds

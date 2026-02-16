@@ -89,18 +89,18 @@ ls -la data/vikunja/
 
 ```bash
 # Backup your current file (just in case)
-cp docker-compose_vikunja.yml docker-compose_vikunja.yml.backup
-echo "✅ Backed up current docker-compose_vikunja.yml"
+cp docker-compose.yml docker-compose.yml.backup
+echo "✅ Backed up current docker-compose.yml"
 
 # Copy the corrected file
 # (Use the file: docker-compose_vikunja_CORRECTED.yml from outputs)
-cp docker-compose_vikunja_CORRECTED.yml docker-compose_vikunja.yml
-echo "✅ Replaced docker-compose_vikunja.yml with corrected version"
+cp docker-compose_vikunja_CORRECTED.yml docker-compose.yml
+echo "✅ Replaced docker-compose.yml with corrected version"
 
 # Verify syntax
 echo ""
 echo "✅ Validating compose file syntax..."
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config > /dev/null
+podman-compose -f docker-compose.yml -f docker-compose.yml config > /dev/null
 echo "✅ Syntax is valid!"
 ```
 
@@ -136,7 +136,7 @@ curl -s http://127.0.0.1:2019/ | head -c 50
 ```bash
 # Start both compose files (Foundation + Vikunja)
 echo "🚀 Starting Vikunja services..."
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Wait for services to start
 echo "⏳ Waiting for services to start (60 seconds)..."
@@ -281,7 +281,7 @@ echo "VIKUNJA_DB_PASSWORD=$VIKUNJA_DB_PASSWORD" >> .env
 
 # Reload:
 podman-compose down
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 ```
 
 ### Problem: "password authentication failed"
@@ -300,7 +300,7 @@ podman exec xnai_vikunja_db psql -U vikunja -d postgres \
   -c "ALTER USER vikunja WITH PASSWORD '$(grep VIKUNJA_DB_PASSWORD .env | cut -d= -f2)';"
 
 # Restart
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml restart vikunja
+podman-compose -f docker-compose.yml -f docker-compose.yml restart vikunja
 ```
 
 ---

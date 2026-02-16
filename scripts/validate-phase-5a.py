@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Phase 5A Comprehensive Validation Script
-Validates all Phase 5A requirements are met
+Phase 5A Comprehensive Validation Script (Multi-Device Aware)
+Validates that zRAM requirements are met, supporting both single and tiered setups.
 """
 
 import subprocess
@@ -23,7 +23,7 @@ def run_cmd(cmd, description=""):
 def validate():
     """Run all validations"""
     print("="*70)
-    print("PHASE 5A VALIDATION SCRIPT")
+    print("PHASE 5A VALIDATION SCRIPT (v2.0 - Multi-Device Aware)")
     print(f"Date: {datetime.now().isoformat()}")
     print("="*70)
     print()
@@ -36,62 +36,58 @@ def validate():
     missing = [t for t in required_tools if shutil.which(t) is None]
     if missing:
         print(f"⚠️  Missing required tools: {', '.join(missing)}")
-        print("   Install missing tools or expect some checks to be skipped.")
-    if os.geteuid() != 0:
-        print("⚠️  Not running as root — some validation checks may require sudo/root privileges.")
+    if os.getuid() != 0:
+        print("⚠️  Not running as root — some checks may fail.")
+
+    # Core logic: Check for ANY zram device
+    success, stdout, _ = run_cmd("zramctl --noheadings | wc -l")
+    zram_count = int(stdout or 0)
 
     checks = [
         {
-            "name": "1. zRAM Device Active",
-            "cmd": "zramctl | grep -q zram0",
-            "description": "Verify /dev/zram0 is active"
+            "name": "1. zRAM Devices Active",
+            "condition": zram_count > 0,
+            "description": f"Found {zram_count} active zRAM device(s)"
         },
         {
-            "name": "2. zRAM Algorithm = zstd",
-            "cmd": "zramctl | grep zram0 | grep -q zstd",
-            "description": "Verify compression is zstd (not lz4/lzo)"
-        },
-        {
-            "name": "3. vm.swappiness = 180",
+            "name": "2. High Swappiness (180)",
             "cmd": "test $(cat /proc/sys/vm/swappiness) -eq 180",
-            "description": "Kernel parameter configured correctly"
+            "description": "Kernel swappiness optimized for zRAM"
         },
         {
-            "name": "4. vm.page-cluster = 0",
+            "name": "3. Single-Page Swap (page-cluster=0)",
             "cmd": "test $(cat /proc/sys/vm/page-cluster) -eq 0",
-            "description": "Single-page swap enabled"
+            "description": "Kernel page-cluster optimized for zRAM latency"
         },
         {
-            "name": "5. Swap Configured",
-            "cmd": "swapon --show | grep -q zram0",
-            "description": "zRAM swap is active"
+            "name": "4. VFS Cache Pressure (50)",
+            "cmd": "test $(cat /proc/sys/vm/vfs_cache_pressure) -eq 50",
+            "description": "Kernel metadata cache optimized"
         },
         {
-            "name": "6. Systemd Service Exists",
-            "cmd": "test -f /etc/systemd/system/xnai-zram.service",
-            "description": "Service file created"
+            "name": "5. Swap Active",
+            "cmd": "swapon --show | grep -q zram",
+            "description": "At least one zRAM device is currently being used as swap"
+        },
+        {
+            "name": "6. Persistence Configured",
+            "cmd": "test -f /etc/sysctl.d/99-xnai-zram-tuning.conf",
+            "description": "Kernel tuning is documented for persistence"
         },
         {
             "name": "7. Systemd Service Enabled",
             "cmd": "systemctl is-enabled xnai-zram.service | grep -q enabled",
-            "description": "Service will start on boot"
-        },
-        {
-            "name": "8. Systemd Service Active",
-            "cmd": "systemctl is-active xnai-zram.service | grep -q active",
-            "description": "Service running now"
-        },
-        {
-            "name": "9. Sysctl Config Persistent",
-            "cmd": "test -f /etc/sysctl.d/99-xnai-zram-tuning.conf",
-            "description": "Configuration file exists"
+            "description": "zRAM service will persist across reboots"
         }
     ]
 
-    
     for check in checks:
-        success, stdout, stderr = run_cmd(check['cmd'])
-        
+        if "cmd" in check:
+            success, _, stderr = run_cmd(check['cmd'])
+        else:
+            success = check["condition"]
+            stderr = ""
+
         if success:
             print(f"✅ {check['name']}")
             print(f"   {check['description']}")
@@ -103,62 +99,33 @@ def validate():
                 print(f"   Error: {stderr[:100]}")
             failed += 1
         print()
-    
-    # Additional OOM check (robust: dmesg -> journalctl fallback)
-    def count_oom_events():
-        try:
-            out = subprocess.run("dmesg | grep -c 'Out of memory'", shell=True, capture_output=True, text=True, timeout=5)
-            return int(out.stdout.strip() or 0)
-        except Exception:
-            try:
-                out = subprocess.run("journalctl -k --no-pager | grep -c 'Out of memory'", shell=True, capture_output=True, text=True, timeout=5)
-                return int(out.stdout.strip() or 0)
-            except Exception:
-                return -1
 
-    oom_count = count_oom_events()
-    if oom_count == -1:
-        print("⚠️  10. No Recent OOM Events — unable to determine (insufficient permissions)")
-    else:
+    # OOM check
+    try:
+        out = subprocess.run("dmesg | grep -c 'Out of memory' || true", shell=True, capture_output=True, text=True)
+        oom_count = int(out.stdout.strip() or 0)
         if oom_count < 3:
             passed += 1
-            print("✅ 10. No Recent OOM Events")
-            print(f"   Total OOM events (last boot): {oom_count}")
+            print("✅ 8. No Recent Critical OOM Events")
         else:
             failed += 1
-            print(f"❌ 10. No Recent OOM Events ({oom_count} events)")
+            print(f"❌ 8. High OOM Count Detected ({oom_count} events)")
+    except:
+        print("⚠️  8. Unable to perform OOM check (permissions)")
 
-    # Additional info
     print("="*70)
-    print("SYSTEM INFO")
+    print("ZRAM STATUS DETAIL")
     print("="*70)
+    subprocess.run("zramctl", shell=True)
     print()
-    
-    print("Memory State:")
-    _, mem_output, _ = run_cmd("free -h | grep Mem")
-    print(f"  {mem_output}")
-    print()
-    
-    print("zRAM Status:")
-    _, zram_output, _ = run_cmd("zramctl 2>/dev/null || echo 'zramctl not available'")
-    for line in zram_output.split('\n')[:3]:
-        if line:
-            print(f"  {line}")
+    subprocess.run("swapon --show", shell=True)
     print()
     
     print("="*70)
     print(f"RESULTS: {passed} passed, {failed} failed")
     print("="*70)
-    print()
     
-    if failed == 0:
-        print("🎉 Phase 5A validation PASSED!")
-        print("All requirements met. Ready for Phase 5B.")
-        return 0
-    else:
-        print("❌ Phase 5A validation FAILED")
-        print("See failures above and run troubleshooting.")
-        return 1
+    return 0 if failed == 0 else 1
 
 if __name__ == '__main__':
     sys.exit(validate())

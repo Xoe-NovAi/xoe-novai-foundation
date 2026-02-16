@@ -15,7 +15,7 @@ Research Questions
 - RQ3: How can memory_bank → Vikunja migration be automated end-to-end with minimal human intervention (frontmatter mapping, bulk import, error handling)?
 
 Approach & Outputs
-- Review current docker-compose.vikunja.yml and secrets flow; validate against best practices for rootless Podman.
+- Review current docker-compose.yml and secrets flow; validate against best practices for rootless Podman.
 - Produce a proposed runbook for fresh spin-up, including prerequisites, secrets, and health checks.
 - Propose code/config changes (if any) to scripts/memory_bank_export.py and scripts/vikunja_importer.py to support a robust pipeline.
 

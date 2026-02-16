@@ -1,0 +1,9 @@
+# runtime_probe metrics — generated: 2026-02-16T00:06:22.449836Z
+host_cpu_cores 16
+host_mem_total_bytes 7068631040
+podman_present 1
+docker_present 1
+vulkan_present 1
+vulkan_host_visible_memory_types_count 0
+vulkan_device_local_memory_types_count 0
+runtime_probe_probe_success 1

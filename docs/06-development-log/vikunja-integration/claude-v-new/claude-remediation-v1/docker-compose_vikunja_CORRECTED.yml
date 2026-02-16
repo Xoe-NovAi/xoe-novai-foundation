@@ -269,13 +269,13 @@ networks:
 #    chmod 700 data/vikunja/db && chmod 755 data/vikunja/files
 #
 # 3. Validate Configuration (1 min)
-#    podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config
+#    podman-compose -f docker-compose.yml -f docker-compose.yml config
 #
 # 4. Start Foundation (if not running) (5 min)
 #    podman-compose -f docker-compose.yml up -d
 #
 # 5. Deploy Vikunja (5 min)
-#    podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+#    podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 #
 # 6. Wait for Startup (2 min)
 #    sleep 60

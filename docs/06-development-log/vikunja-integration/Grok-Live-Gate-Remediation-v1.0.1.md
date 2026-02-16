@@ -26,7 +26,7 @@ Stack Data to Collect (Inputs for Grok)
   - podman secret ls
   - podman volume ls
 - Docker-compose config and stack state:
-  - docker-compose.vikunja.yml contents (sensitive fields redacted as needed)
+  - docker-compose.yml contents (sensitive fields redacted as needed)
   - docker-compose.yml contents (if relevant for live gate)
 - Vikunja stack state:
   - Vikunja DB container (vikunja-db) status
@@ -35,7 +35,7 @@ Stack Data to Collect (Inputs for Grok)
   - Vikunja-proxy (caddy or nginx) status and port mappings
 - Secrets:
   - List of Podman secrets present (db-pass, jwt-secret) and how they're mounted
-  - Confirm external: true semantics in docker-compose.vikunja.yml
+  - Confirm external: true semantics in docker-compose.yml
 - Tokens:
   - Admin bootstrap token state and process to create migration-live token
   - Token scope: full access for POST /tasks, plus ability to create projects

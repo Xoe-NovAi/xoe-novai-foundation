@@ -206,7 +206,7 @@ Host System
 │   │   ├── rag
 │   │   └── ui
 │
-├── docker-compose_vikunja.yml (overlay)
+├── docker-compose.yml (overlay)
 │   └── vikunja-net (ISOLATED - can't reach Redis)
 │       ├── vikunja-db
 │       └── vikunja (Redis disabled workaround)
@@ -223,7 +223,7 @@ Host System
 │       ├── vikunja-db  (ADDED)
 │       └── vikunja     (ADDED)
 │
-├── docker-compose_vikunja.yml (overlay)
+├── docker-compose.yml (overlay)
 │   └── References external xnai_network
 │       (Same containers from above)
 ```
@@ -406,7 +406,7 @@ depends_on:
 
 After applying changes, verify:
 
-- [ ] No syntax errors: `podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml config`
+- [ ] No syntax errors: `podman-compose -f docker-compose.yml -f docker-compose.yml config`
 - [ ] Environment variables set: `env | grep VIKUNJA`
 - [ ] Network exists: `podman network ls | grep xnai_network`
 - [ ] Foundation Redis running: `redis-cli ping`

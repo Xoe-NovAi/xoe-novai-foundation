@@ -18,11 +18,11 @@ podman ps | grep vikunja
 curl http://localhost:3456/api/v1/info
 
 # Restart All Services
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml restart
+podman-compose -f docker-compose.yml -f docker-compose.yml restart
 
 # Full Restart (clear everything)
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml down
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml down
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # Emergency Logs
 podman logs -f vikunja
@@ -460,13 +460,13 @@ Start: "API slow or timing out?"
 ☐ CONFIGURATION FILES
   ☐ config/postgres.conf exists
   ☐ PostgreSQL config optimized for Ryzen
-  ☐ docker-compose_vikunja.yml replaced with FINAL version
+  ☐ docker-compose.yml replaced with FINAL version
   ☐ All 4 blockers fixed in config
 
 ☐ VALIDATION
   ☐ Compose syntax valid
     podman-compose -f docker-compose.yml \
-      -f docker-compose_vikunja.yml config > /dev/null
+      -f docker-compose.yml config > /dev/null
   ☐ No obvious configuration errors
   ☐ All required files present
   ☐ Foundation services ready (Redis, etc.)
@@ -478,7 +478,7 @@ Start: "API slow or timing out?"
 ☐ DEPLOYMENT
   ☐ Services started
     podman-compose -f docker-compose.yml \
-      -f docker-compose_vikunja.yml up -d
+      -f docker-compose.yml up -d
   ☐ Wait for services (45 seconds minimum)
   ☐ Containers showing as "Running"
     podman ps | grep vikunja
@@ -762,7 +762,7 @@ podman unshare chown 1000:1000 -R data/vikunja
 chmod 700 data/vikunja/db
 
 # 3. Deploy (5 min)
-podman-compose -f docker-compose.yml -f docker-compose_vikunja.yml up -d
+podman-compose -f docker-compose.yml -f docker-compose.yml up -d
 
 # 4. Wait & Verify (5 min)
 sleep 45
