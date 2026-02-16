@@ -754,3 +754,9 @@ This planning session established a reusable methodology for large projects:
 - Immediate steps: Redis adapter -> Ed25519 identity -> Consul registration -> AnyIO TaskGroups migration -> FRQ priority queue -> tests & PR.
 - Scheduling: Vikunja task: vikunja_tasks/agent_hub_implementation.json. Once initial hub is functional, delegate Gemini 3 Pro (gemini-cli) to perform an end-to-end XOH strategy & PM review using its 1M token context (see vikunja_tasks/gemini_holistic_review.json).
 
+
+### High-priority model integration
+- Integrate ruvltra-claude-code-0.5b-q4_k_m.gguf as a prioritized local model for structured agent tasking.
+- Memory bank entry: memory_bank/ruvltra-claude-code-0.5b-q4_k_m.md
+- Vikunja task: vikunja_tasks/integrate_ruvltra_model.json
+

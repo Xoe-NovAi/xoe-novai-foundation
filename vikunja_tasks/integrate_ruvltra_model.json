@@ -1,0 +1,8 @@
+{
+  "title": "Integrate ruvltra-claude-code-0.5b-q4_k_m.gguf into XNAi Agent Bus",
+  "description": "Validate GGUF model, register in models/registry.json, add runtime wrapper for agents, and add tests and onboarding docs.",
+  "labels": ["model","integration","priority-high"],
+  "project": "Engineering",
+  "priority": 1,
+  "assignee": "grok-mc"
+}
