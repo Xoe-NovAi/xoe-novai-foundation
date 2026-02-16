@@ -131,7 +131,8 @@ def execute_task(agent_name, task_desc, model_name=None):
     elif agent_name.startswith('cline') or 'kat' in agent_name.lower():
         # Cline/Kat dispatch support with model_preference
         model = model_name or 'kwaipilot/kat-coder-pro'
-        cmd = ['cline', '--yolo', task_desc, '--silent', '--model', model]
+        # Some cline builds do not accept --silent; prefer model before prompt and no --silent
+        cmd = ['cline', '--yolo', '--model', model, task_desc]
         log_prefix = f'[{agent_name.upper()}]'
         return stream_command(cmd, log_prefix=log_prefix)
     elif agent_name == "copilot" or agent_name == "haiku":
