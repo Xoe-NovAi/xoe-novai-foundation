@@ -1,0 +1,8 @@
+{
+  "title": "Gemini 3 Pro Holistic XOH Review",
+  "description": "Use Gemini 3 Pro (Gemini CLI) with 1M token context to review internal_docs, memory_bank, scripts, and vikunja_tasks; spawn agents as needed and assign Cline CLI tasks using kat-coder-pro or moonshotai/kimi-k-2.5. Produce a consolidation report, Vikunja task manifests, and PR recommendations.",
+  "labels": ["research","gemini","priority-high"],
+  "project": "Research",
+  "priority": 1,
+  "assignee": "gemini-cli"
+}

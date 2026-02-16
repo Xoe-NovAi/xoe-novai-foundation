@@ -732,3 +732,11 @@ This planning session established a reusable methodology for large projects:
   - memory_bank/vikunja-sync-and-agent-guidance.md
 \nProject name chosen: XNAi Orchestration & Hardening (XOH) — 2026-02-16T15:57:00Z
 - [x] Merged branch phase5a/account-naming-onboarding into main (commit 350f004) at 2026-02-16T17:34:05Z
+
+### Task: Gemini 3 Pro Holistic XOH Review
+- Assigned: Gemini CLI (Gemini 3 Pro, 1M token context)
+- Objective: Use Gemini 3 Pro to review XOH artifacts (internal_docs/01-strategic-planning/, memory_bank/, scripts/, vikunja_tasks/) and produce a consolidation report, gap analysis, recommended merges/PRs, and Vikunja task manifests.
+- Instructions: Encourage Gemini to spawn its own agents for parallel subtasks and to assign Cline CLI tasks using kat-coder-pro or moonshotai/kimi-k-2.5 for assistant work; provide filesystem access to the paths above.
+- Outputs: Consolidation report, suggested plan.md edits, Vikunja task manifests, prioritized action list, and PR recommendations.
+- Scheduling: Create Vikunja task 'Gemini 3 Pro Holistic XOH Review' and assign to the gemini-cli team for a dry-run review before Phase-0 execution.
+
