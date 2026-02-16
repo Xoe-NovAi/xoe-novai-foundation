@@ -731,3 +731,4 @@ This planning session established a reusable methodology for large projects:
   - internal_docs/01-strategic-planning/research/STACK-CAT-REVIEW-AND-STRATEGY.md
   - memory_bank/vikunja-sync-and-agent-guidance.md
 \nProject name chosen: XNAi Orchestration & Hardening (XOH) — 2026-02-16T15:57:00Z
+- [x] Merged branch phase5a/account-naming-onboarding into main (commit 350f004) at 2026-02-16T17:34:05Z
