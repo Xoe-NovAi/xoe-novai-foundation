@@ -27,7 +27,10 @@ class RedisConnectionManager:
         password: Optional[str] = None,
         db: int = 0,
         max_connections: int = 50,
-        health_check_interval: int = 30
+        health_check_interval: int = 30,
+        adaptive_timeout: bool = True,
+        connection_timeout: int = 5,
+        socket_timeout: int = 10
     ):
         self.redis_url = redis_url
         self.host = host
@@ -36,6 +39,9 @@ class RedisConnectionManager:
         self.db = db
         self.max_connections = max_connections
         self.health_check_interval = health_check_interval
+        self.adaptive_timeout = adaptive_timeout
+        self.connection_timeout = connection_timeout
+        self.socket_timeout = socket_timeout
         
         self._redis_client: Optional[Redis] = None
         self._connection_pool: Optional[ConnectionPool] = None
@@ -47,7 +53,18 @@ class RedisConnectionManager:
         self._retry_attempts = 3
         self._retry_delay = 1.0  # seconds
         
-        logger.info(f"Redis Connection Manager initialized for {host}:{port}")
+        # Performance metrics
+        self._connection_latency = []
+        self._health_check_latency = []
+        self._last_health_check = 0.0
+        self._health_check_failures = 0
+        
+        # Adaptive timeout settings
+        self._base_timeout = connection_timeout
+        self._max_timeout = 30  # Maximum timeout for adaptive mode
+        self._timeout_multiplier = 1.5  # Multiplier for failed connections
+        
+        logger.info(f"Redis Connection Manager initialized for {host}:{port} with adaptive timeout: {adaptive_timeout}")
     
     async def connect(self) -> bool:
         """Establish Redis connection with retry logic"""

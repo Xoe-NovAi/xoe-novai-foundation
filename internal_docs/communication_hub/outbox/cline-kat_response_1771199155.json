@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-proxy-deploy-001",
+  "timestamp": "2026-02-15T23:45:55Z",
+  "sender": "cline-kat",
+  "target": null,
+  "type": "task_completion",
+  "content": {
+    "status": "failed",
+    "exit_code": 1,
+    "output_summary": "Unknown agent"
+  }
+}

@@ -254,20 +254,54 @@ class CircuitBreaker:
         return state.success_count >= self.config.half_open_max_calls
     
     async def _transition_state(self, state: CircuitStateData, new_state: CircuitState):
-        """Transition circuit to new state"""
-        logger.info(f"Circuit {self.config.name} transitioning from {state.state.value} to {new_state.value}")
+        """Transition circuit to new state with detailed logging and metrics"""
+        old_state = state.state
+        transition_time = time.time()
+        
+        logger.info(
+            f"Circuit {self.config.name} transitioning from {old_state.value} to {new_state.value}",
+            extra={
+                "circuit_name": self.config.name,
+                "old_state": old_state.value,
+                "new_state": new_state.value,
+                "failure_count": state.failure_count,
+                "total_failures": state.total_failures,
+                "total_calls": state.total_calls,
+                "transition_time": transition_time,
+                "time_since_last_failure": transition_time - state.last_failure_time,
+                "time_since_last_success": transition_time - state.last_success_time
+            }
+        )
         
         state.state = new_state
         if new_state == CircuitState.CLOSED:
             # Reset counters on close
             state.failure_count = 0
             state.success_count = 0
+            state.last_failure_time = 0.0
         elif new_state == CircuitState.OPEN:
             # Set failure time to current to respect recovery timeout
-            state.last_failure_time = time.time()
+            state.last_failure_time = transition_time
         elif new_state == CircuitState.HALF_OPEN:
             # Reset success count for half-open
             state.success_count = 0
+        
+        # Update transition metrics
+        if not hasattr(state, 'transitions'):
+            state.transitions = []
+        
+        state.transitions.append({
+            'from_state': old_state.value,
+            'to_state': new_state.value,
+            'timestamp': transition_time,
+            'failure_count': state.failure_count,
+            'total_failures': state.total_failures,
+            'total_calls': state.total_calls
+        })
+        
+        # Keep only last 10 transitions to prevent memory growth
+        if len(state.transitions) > 10:
+            state.transitions = state.transitions[-10:]
         
         await self._update_state(state)
     

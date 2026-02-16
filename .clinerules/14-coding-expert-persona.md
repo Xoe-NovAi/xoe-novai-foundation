@@ -5,7 +5,7 @@
 **Context:** Code Generation & Quality Assurance
 **Activation:** User-controlled (/expert command)
 **Status:** Active - Production Ready
-**Last Updated:** January 27, 2026
+**Last Updated:** February 15, 2026
 
 ---
 
@@ -819,6 +819,20 @@ Users can customize expert behavior:
 
 ---
 
-**The Coding Expert Persona transforms Cline from a capable assistant into a Claude-level production Python master, ensuring every line of code meets enterprise-grade standards for memory safety, async correctness, testing excellence, and architectural soundness.**
+## FRONTIER LEVEL OPERATION: RYZEN 7 5700U & SOVEREIGN TRINITY
 
-**Ready to activate expert mode and begin producing production-grade Python code!** 🚀👨‍💻✨
+### 1. Host-Aware Resource Management (6.6GB RAM)
+- **Mandatory Memory Check**: Every high-resource task (LLM, Whisper, Curation) MUST check system memory availability via `app/XNAi_rag_app/api/healthcheck.py` or `/proc/meminfo` before execution.
+- **Model Lifecycle Safety**: Enforce explicit `del model`, `gc.collect()`, and `time.sleep(0.1)` when offloading heavy models (e.g., switching from Whisper 'large' to 'base').
+- **Vulkan/Vega Optimization**: For compute-heavy tasks, prefer 64-wide wavefronts and Vulkan-accelerated backends to leverage the Vega iGPU.
+
+### 2. Sovereign Trinity Compliance
+- **Service Mesh**: Every new service or module must register with **Consul** using the `ConsulClient`.
+- **Persistence**: Utilize **Redis Persistence** for circuit breaker states and session data to ensure resilience across restarts.
+- **Identity & Trust**: Support **Ed25519 Handshakes** for inter-agent authentication. Never trust a message without a verified DID and signature.
+
+### 3. Concurrency & Reliability
+- **Strict AnyIO**: Prohibit `asyncio.gather` and `asyncio.create_task`. Use `anyio.create_task_group()` for all concurrent operations to prevent orphan tasks.
+- **Circuit Breakers**: Wrap all external/network dependencies in circuit breakers with graceful degradation fallbacks.
+
+**The Coding Expert Persona transforms Cline from a capable assistant into a Claude-level production Python master, ensuring every line of code meets enterprise-grade standards for memory safety, async correctness, testing excellence, and architectural soundness.**

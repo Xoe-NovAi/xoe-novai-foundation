@@ -251,6 +251,8 @@ prometheus-client==0.23.1
     # via
     #   -r requirements-api.in
     #   opentelemetry-exporter-prometheus
+prometheus-fastapi-instrumentator==7.0.0
+    # via -r requirements-api.in
 propcache==0.4.1
     # via
     #   aiohttp
@@ -410,3 +412,4 @@ zstandard==0.25.0
 # The following packages are considered to be unsafe in a requirements file:
 # pip
 # setuptools
+dnspython==2.7.0

@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-unknown",
+  "timestamp": "2026-02-15T16:38:45Z",
+  "sender": "cline",
+  "target": null,
+  "type": "task_completion",
+  "content": {
+    "status": "failed",
+    "exit_code": 1,
+    "output_summary": "sationHistoryDeletedRange\":[2,63]}\n{\"ts\":1771173524996,\"type\":\"say\",\"say\":\"tool\",\"text\":\"{\\\"tool\\\":\\\"readFile\\\",\\\"path\\\":\\\"tests/integration/test_websocket_streaming.py\\\",\\\"content\\\":\\\"/home/arcana-novai/Documents/xnai-foundation/tests/integration/test_websocket_streaming.py\\\",\\\"operationIsLocatedInWorkspace\\\":true}\",\"partial\":false,\"modelInfo\":{\"providerId\":\"cline\",\"modelId\":\"kwaipilot/kat-coder-pro\",\"mode\":\"act\"},\"conversationHistoryIndex\":92,\"conversationHistoryDeletedRange\":[2,63]}\n{\"ts\":1771173525349,\"type\":\"say\",\"say\":\"error\",\"text\":\"Error executing read_file: File not found: /home/arcana-novai/Documents/xnai-foundation/tests/integration/test_websocket_streaming.py\",\"modelInfo\":{\"providerId\":\"cline\",\"modelId\":\"kwaipilot/kat-coder-pro\",\"mode\":\"act\"},\"conversationHistoryIndex\":92,\"conversationHistoryDeletedRange\":[2,63]}\n{\"type\":\"error\",\"message\":\"Error executing read_file: File not found: /home/arcana-novai/Documents/xnai-foundation/tests/integration/test_websocket_streaming.py\"}\n"
+  }
+}

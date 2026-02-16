@@ -39,112 +39,26 @@ Status: Systems Operational | Last Updated: 2026-02-14 11:56 UTC (Memory Bank Fr
 
 ## 🎯 Current Priorities (Ranked)
 
-### Priority 0: SERVICE STABILITY - Circuit Breakers & Redis Resilience (P0 CRITICAL)
-- **Status**: Charter generated, implementation planning complete
-- **Focus**: Comprehensive service stability and error handling
-- **Key Components**:
-  - Circuit breaker implementation for all services
-  - Redis resilience patterns with graceful degradation
-  - Health monitoring and automated recovery
-  - Error handling patterns across all subsystems
-- **Implementation**: Week 1 priority - immediate execution required
+### Priority 0: VECTOR MIGRATION (FAISS → Qdrant) 🔵 ACTIVE
+- **Status**: Research complete (Operation Lore Mining).
+- **Focus**: Metadata-first migration, Redis source-of-truth handover, and Ryzen-optimized indexing.
 
-### Priority 1: VIKUNJA UTILIZATION - API Integration & Documentation (P1 HIGH)
-- **Status**: Charter generated, API documentation pipeline planned
-- **Focus**: Complete Vikunja integration and utilization
-- **Key Components**:
-  - Redis resilience patterns for Vikunja integration
-  - Memory bank migration to Vikunja
-  - Complete API documentation in `library/manuals/vikunja-api.md`
-  - Integration testing and validation
-- **Implementation**: Week 2 priority - follows service stability
+### Priority 1: OBSERVABILITY & OAUTH2 (Phase 6) 🟢 READY
+- **Status**: Tooling identified (Prometheus/Grafana).
+- **Focus**: Prometheus metrics, OAuth2 integration, and Distributed Tracing.
 
-### Priority 2: CLI COMMUNICATIONS - Agent Bus Enhancement (P1 HIGH)
-- **Status**: Charter generated, watcher scripts planned
-- **Focus**: Enhanced Agent Bus communication system
-- **Key Components**:
-  - Watcher scripts for autonomous monitoring
-  - Enhanced health integration with Agent Bus
-  - Automated handoff protocols
-  - Performance optimization for communication latency
-- **Implementation**: Week 3 priority - communication infrastructure
+### Priority 2: MANUAL CURATION & VIKUNJA INTEGRATION ✅ COMPLETE
+- **Outcome**: 
+  - Vikunja fully integrated into `docker-compose.yml`.
+  - `CurationBridge` implemented for Vikunja -> AgentBus trigger.
+  - `curation_worker.py` modernized for Bus task consumption.
+  - Advanced usage and scraper patterns documented in `expert-knowledge/`.
 
-### Priority 3: KNOWLEDGE CURATION - Automated Pipeline (P1 HIGH)
-- **Status**: Charter generated, curation pipeline designed
-- **Focus**: Automated knowledge curation pipeline
-- **Key Components**:
-  - Vikunja API scraping for documentation
-  - Agent Bus triggers for automated curation
-  - Library organization and categorization
-  - Integration with existing documentation system
-- **Implementation**: Week 4 priority - knowledge management
-
-### Priority 4: ERROR HANDLING REFACTORING - Phase 3 🟡 PARTIALLY COMPLETE (2026-02-13)
-- **Status**: Phase 1 & 2 complete (81 tests passing), Phase 3 core implementations done
-- **Phase 1 Deliverables** (✅ Complete):
-  - Enhanced ErrorCategory enum (19 categories)
-  - XNAiException base class with category-to-status mapping
-  - CircuitBreakerError migration
-  - AWQ exception hierarchy (experimental/optional)
-  - Vulkan exception hierarchy
-  - Voice service exceptions with cause_code system
-  - **Test Coverage**: 62 tests PASSED (100% success rate)
-- **Phase 2 Deliverables** (✅ Complete):
-  - Global exception handler in entrypoint.py
-  - ErrorResponse and SSEErrorMessage schemas
-  - Request ID correlation tracking
-  - **Test Coverage**: 19 tests PASSED (100% success rate)
-- **Phase 3 Status** (🟡 Partial):
-  - ✅ LLM race condition handling (implemented & tested)
-  - ✅ Circuit breaker state transitions (50+ tests passing)
-  - 🟡 Streaming resource cleanup (implemented, needs verification)
-  - 🟡 Error metrics collection (pending Phase 6)
-  - 🟡 Redis resilience patterns (implemented, needs integration testing)
-- **Blockers**: Missing redis module in test environment
-- **Next**: Phase 4 Integration Testing OR complete Phase 3 testing with dependency fix
-- **Full Status**: See `memory_bank/phase3-status-report-20260213.md`
-
-### Priority 5: FRESH SLATE - Stack Rebuild ✅ COMPLETE (2026-02-11)
-- **Status**: Full stack successfully built from clean slate
-- **Services Running**: RAG API, Chainlit UI, Redis, Caddy, MkDocs, Crawler, Curation Worker
-- **Health Status**: 6/7 services healthy (Caddy has log permission issue but operational)
-- **Access**: http://localhost:8000 (main), http://localhost:8008 (docs)
-
-### Priority 6: Stack Hardening & Audit Remediation ✅ COMPLETE
-- **Status**: All P0 and P1 audit recommendations implemented
-- **Actions**:
-  - Fixed UNKNOWN ownership on all data/secret directories
-  - Removed redundant root-level `app/*.py` and `app/config.toml` files
-  - Merged trace/span logging into core `logging_config.py`
-  - Added resource limits to all services in `docker-compose.yml`
-  - Disabled `DEBUG_MODE` in production configuration
-  - Removed direct metrics port exposure (now via Caddy /metrics)
-  - Expanded Pydantic configuration validation schema
-
-### Priority 7: Hardware Mastery & Local Inference (Ryzen 7 5700U) ✅ COMPLETE
-- **Status**: Optimizing for Zen 2 Architecture / Vega iGPU.
-- **Outcome**:
-  - Implemented `vm.swappiness = 180` and `vm.page-cluster = 0`.
-  - Configured **64-wide wavefronts** for Vega iGPU (Vulkan).
-  - Adopted **Multi-Tiered zRAM** (lz4 + zstd) production standard.
-
-### Priority 8: Automated Multi-Agent Pipeline ✅ COMPLETE
-- **Status**: The "Thinking-Scout-Engineer" loop is operational.
-- **Artifacts**:
-  - `scripts/agent_watcher.py`: Centralized dispatcher.
-  - `.github/skills/spec-auditor/`: Copilot skills for automated reviews.
-  - `.github/instructions/`: Path-specific hyper-local guidance.
-  - `.clinerules/10-spec-listener.md`: Cline proactive implementation.
-- **Phase 4.1 Execution**:
-  - ✅ Phase 1: Test Infrastructure Implementation (conftest.py + test_hw_preflight.py).
-  - 🔄 Phase 2: Connectivity & Gateway Testing (Assigning to Cline).
-
-### Priority 9: Voice Interface Stability ✅ COMPLETE
-- **Status**: Import issues resolved, Redis dependency made optional
-- **Components**:
-  - `app/XNAi_rag_app/core/circuit_breakers.py` - Graceful Redis fallback
-  - `app/XNAi_rag_app/services/voice/voice_interface.py` - Stable imports
-- **Features**: In-memory state management when Redis unavailable
+### Priority 2: SYSTEM AUDIT & STABILITY ✅ COMPLETE
+- **Outcome**: 
+  - Systematic parallel audit by Gemini, Cline, and Copilot.
+  - AnyIO TaskGroup compliance verified (100%).
+  - IAM v2.0 Schema integrity verified.
 
 ---
 

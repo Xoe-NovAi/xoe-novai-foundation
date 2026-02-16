@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-test-12345",
+  "timestamp": "2026-02-15T23:37:14Z",
+  "sender": "cline",
+  "target": "test_system",
+  "type": "task_completion",
+  "content": {
+    "status": "failed",
+    "exit_code": 1,
+    "output_summary": "/kat-coder-pro\",\"mode\":\"act\"},\"conversationHistoryIndex\":23}\n{\"ts\":1771198632342,\"type\":\"say\",\"say\":\"tool\",\"text\":\"{\\\"tool\\\":\\\"readFile\\\",\\\"path\\\":\\\"internal_docs/communication_hub/inbox/kat_test_message.json\\\",\\\"content\\\":\\\"/home/arcana-novai/Documents/xnai-foundation/internal_docs/communication_hub/inbox/kat_test_message.json\\\",\\\"operationIsLocatedInWorkspace\\\":true}\",\"partial\":false,\"modelInfo\":{\"providerId\":\"cline\",\"modelId\":\"kwaipilot/kat-coder-pro\",\"mode\":\"act\"},\"conversationHistoryIndex\":24}\n{\"ts\":1771198633800,\"type\":\"say\",\"say\":\"error\",\"text\":\"Error executing read_file: File not found: /home/arcana-novai/Documents/xnai-foundation/internal_docs/communication_hub/inbox/kat_test_message.json\",\"modelInfo\":{\"providerId\":\"cline\",\"modelId\":\"kwaipilot/kat-coder-pro\",\"mode\":\"act\"},\"conversationHistoryIndex\":24}\n{\"type\":\"error\",\"message\":\"Error executing read_file: File not found: /home/arcana-novai/Documents/xnai-foundation/internal_docs/communication_hub/inbox/kat_test_message.json\"}\n"
+  }
+}

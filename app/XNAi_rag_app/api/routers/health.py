@@ -12,6 +12,7 @@ from fastapi import APIRouter, Request
 from ...schemas import HealthResponse
 from ...core.config_loader import load_config
 from ...core.circuit_breakers import get_circuit_breaker_status
+from ...core.tier_config import tier_config_factory
 
 logger = logging.getLogger(__name__)
 CONFIG = load_config()
@@ -39,8 +40,8 @@ async def health_check(request: Request):
 
     # Add circuit breaker status
     try:
-        # get_circuit_breaker_status is a synchronous snapshot helper; run it in a thread
-        breaker_status = await asyncio.to_thread(get_circuit_breaker_status)
+        # get_circuit_breaker_status is an async function
+        breaker_status = await get_circuit_breaker_status()
         # breaker_status is a flat mapping: name -> {state, fail_count, ...}
         healthy = all(info.get('state') == 'closed' for info in breaker_status.values()) if isinstance(breaker_status, dict) else False
         components.update({
@@ -68,7 +69,12 @@ async def health_check(request: Request):
         pass
     
     # Determine status
-    if memory_gb > CONFIG['performance']['memory_limit_gb']:
+    current_tier = tier_config_factory.get_current_tier()
+    tier_summary = tier_config_factory.get_tier_summary()
+    
+    if current_tier >= 3:
+        status = "degraded"
+    elif memory_gb > CONFIG['performance']['memory_limit_gb']:
         status = "degraded"
     elif not components['embeddings']:
         status = "degraded"
@@ -78,6 +84,10 @@ async def health_check(request: Request):
         status = "partial"
     else:
         status = "healthy"
+    
+    # Enrich components with tier info
+    components["degradation_tier"] = current_tier
+    components["tier_name"] = tier_summary["tier_name"]
     
     return HealthResponse(
         status=status,

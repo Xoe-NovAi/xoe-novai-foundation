@@ -122,6 +122,10 @@ nav:
       - Ansible: 03-infrastructure-ops/ansible/
   
   - 🏗️ Code Quality & Architecture:
+      - Phase 4.2 Sovereign Trinity:
+          - Agent IAM Database: 04-code-quality/04-iam-database-management.md
+          - Sovereign Handshake: 04-code-quality/05-sovereign-handshake-protocol.md
+          - Redis State Persistence: 04-code-quality/06-redis-state-management.md
       - Codebase Audit: 04-code-quality/comprehensive-deep-codebase-audit-v2.0.0.md
       - Error Handling Audit: 04-code-quality/systematic-error-code-audit-20260211.md
       - Security Audit: 04-code-quality/systematic-permissions-security-audit-v1.0.0.md
@@ -129,6 +133,11 @@ nav:
       - CLI Orchestration Audit: 04-code-quality/CLI-ORCHESTRATION-AUDIT.md
       - CLI Automation Framework: 04-code-quality/CLI-AUTOMATION-REVIEW-FRAMEWORK.md
       - Code Reviews: 04-code-quality/reviews/
+  
+  - 🧠 Frontier Expert Knowledge:
+      - AnyIO Structured Concurrency: ../expert-knowledge/agent-tooling/anyio-structured-concurrency.md
+      - Ryzen 7 5700U Tuning: ../expert-knowledge/environment/ryzen-5700u-optimization.md
+      - .clinerules Audit: .clinerules/
   
   - 📁 Client Projects: 05-client-projects/
   

@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-kat-test-123",
+  "timestamp": "2026-02-15T23:37:07Z",
+  "sender": "kat",
+  "target": "test_system",
+  "type": "task_completion",
+  "content": {
+    "status": "failed",
+    "exit_code": 1,
+    "output_summary": "error: unknown option '--silent'\n"
+  }
+}

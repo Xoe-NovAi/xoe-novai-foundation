@@ -69,7 +69,10 @@ version: 1.0
 ## ORIGINAL CODING STANDARDS (Enhanced)
 
 - **Clarity**: Meaningful file, function, and folder names, comments for complex logic (e.g., ethical guardrails, checksum verification). **CLAUDE ENHANCEMENT**: Include performance impact comments and memory usage estimates.
-- **Error Handling**: Robust checks (|| exit 1), circuit breakers, structured concurrency (AnyIO). Log errors to JSON files. **CLAUDE ENHANCEMENT**: Add memory-safe error context and async-safe exception handling.
+- **Async Concurrency**: Use **AnyIO TaskGroups** for all concurrent operations. 
+  - **PROHIBITED**: `asyncio.gather()`, `asyncio.create_task()`, and `asyncio.wait()`. These patterns lead to orphan tasks and resource leaks.
+  - **MANDATED**: Use `async with anyio.create_task_group() as tg:` for all spawning. Ensure proper cancellation propagation and exception handling within the group.
+  - **Blocking I/O**: Use `await anyio.to_thread.run_sync()` for synchronous file/network operations to prevent event loop stalls.
 - **Output**: Complete, copy-pasteable code blocks with verification steps (e.g., `ls -la` for permissions). **CLAUDE ENHANCEMENT**: Include memory profiling commands and performance validation.
 - **Best Practices**: Follow official docs. Prioritize torch-free optimization, performance (<300ms latency), security, maintainability, accessibility (WCAG 2.2 AA compliance, ARIA attributes, semantic HTML, keyboard navigation). **CLAUDE ENHANCEMENT**: Add 2024-2025 research citations and production validation metrics.
 - **Reversibility**: Atomic operations, backups, auditable logs. Include --rollback flags in scripts. **CLAUDE ENHANCEMENT**: Add memory state rollback and async operation cancellation.

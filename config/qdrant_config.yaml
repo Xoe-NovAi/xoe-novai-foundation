@@ -1,0 +1,62 @@
+# ============================================================================
+# Qdrant Configuration - XNAi Foundation Stack
+# Optimized for: AMD Ryzen 7 5700U (6.6GB RAM)
+# Purpose: Vector database with on-disk persistence and memory optimization
+# ============================================================================
+
+# Storage Configuration
+storage:
+  # On-disk persistence for vectors (crash-safe)
+  storage_path: ./storage
+  
+  # Enable on-disk storage for Ryzen 7 RAM optimization
+  on_disk: true
+  
+  # Snapshots for recovery
+  snapshots_path: ./snapshots
+  
+  # WAL (Write-Ahead Log) for durability
+  wal:
+    enabled: true
+    wal_capacity_mb: 200
+    wal_segments_ahead: 1
+
+# Vector Storage Optimization for Ryzen 7
+optimizers:
+  # Default hnsw params for memory efficiency
+  default_segment_number: 2
+  
+  # Snapshot settings
+  snapshot_schedule_sec: 600
+
+# Performance Settings (tuned for 1GB allocation)
+performance:
+  # Max memory for in-memory cache
+  max_batch_size: 100
+  
+  # Indexing parallelization
+  indexing_thread_count: 2
+
+# Payload Storage - Memory-mapped files
+payload_index_limit_mb: 512
+
+# API Settings
+api:
+  # REST API
+  http:
+    host: 0.0.0.0
+    port: 6333
+    read_only: false
+  
+  # gRPC API
+  grpc:
+    host: 0.0.0.0
+    port: 6334
+
+# Cluster Settings (single node)
+cluster:
+  enabled: false
+
+# Logging
+logging:
+  level: info

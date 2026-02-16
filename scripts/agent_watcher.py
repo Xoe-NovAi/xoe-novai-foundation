@@ -66,10 +66,12 @@ def process_message(agent_name, message_path):
             msg = json.load(f)
         
         task_id = msg.get("message_id", "unknown")
-        content = msg.get("content", {})
+        # Check for description at root or in content
+        task_desc = msg.get("description") or msg.get("content", {}).get("description", "No description provided")
+        model_name = msg.get("model_preference") or msg.get("content", {}).get("model_preference")
         
         update_agent_state(agent_name, "busy", task_id=task_id)
-        output, code = execute_task(agent_name, content)
+        output, code = execute_task(agent_name, task_desc, model_name)
         
         # Write response to outbox
         response_file = OUTBOX_DIR / f"{agent_name}_response_{int(time.time())}.json"
@@ -96,16 +98,25 @@ def process_message(agent_name, message_path):
         print(f"[!] Error in loop: {e}")
         update_agent_state(agent_name, "error", extra={"error": str(e)})
 
-def execute_task(agent_name, content):
-    task_desc = content.get("description", "No description provided")
-    
+def execute_task(agent_name, task_desc, model_name=None):
     if agent_name == "cline":
         # Using JSON output and YOLO for maximum automation
-        cmd = ["cline", "--yolo", "--json", task_desc]
+        cmd = ["cline", "--yolo", "--json"]
+        if model_name:
+            cmd.extend(["--model", model_name])
+        cmd.append(task_desc)
     elif agent_name == "gemini":
         cmd = ["gemini", "--prompt", task_desc, "--yolo", "--output-format", "json"]
+    elif agent_name.startswith('cline') or 'kat' in agent_name.lower():
+        # Cline/Kat dispatch support with model_preference
+        model = model_name or 'kwaipilot/kat-coder-pro'
+        cmd = ['cline', '--yolo', task_desc, '--silent', '--model', model]
+        log_prefix = f'[{agent_name.upper()}]'
+        return stream_command(cmd, log_prefix=log_prefix)
     elif agent_name == "copilot" or agent_name == "haiku":
-        cmd = ["copilot", "--yolo", "--prompt", task_desc, "--silent", "--model", "claude-haiku-4.5"]
+        # Force Haiku 4.5 for free tier reliability
+        model = "claude-haiku-4.5"
+        cmd = ["copilot", "--yolo", "--prompt", task_desc, "--silent", "--model", model]
     else:
         print(f"[!] Unknown agent: {agent_name}")
         return "Unknown agent", 1

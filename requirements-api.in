@@ -6,6 +6,7 @@
 langchain
 langchain-community
 faiss-cpu
+qdrant-client
 
 # Voice stack (UPDATED for turbo performance)
 faster-whisper
@@ -26,6 +27,7 @@ opentelemetry-sdk
 opentelemetry-exporter-prometheus
 opentelemetry-instrumentation
 opentelemetry-instrumentation-fastapi
+prometheus_fastapi_instrumentator
 
 # Existing dependencies
 annotated-doc
@@ -74,3 +76,4 @@ bcrypt
 pyjwt
 cryptography
 sqlite-utils
+dnspython==2.7.0

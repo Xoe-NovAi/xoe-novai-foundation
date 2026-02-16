@@ -5,3 +5,4 @@
 
 # Dev tools
 # -r requirements-dev.in
+python-consul2>=0.1.5

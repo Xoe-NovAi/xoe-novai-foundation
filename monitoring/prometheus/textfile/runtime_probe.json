@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-02-16T00:06:22.449836Z",
+  "host_cpu_cores": 16,
+  "host_mem_total_bytes": 7068631040,
+  "podman_present": true,
+  "docker_present": true,
+  "vulkan": {
+    "present": true,
+    "host_visible_count": 0,
+    "device_local_count": 0
+  }
+}

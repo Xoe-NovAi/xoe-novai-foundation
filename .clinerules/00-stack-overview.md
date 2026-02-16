@@ -21,6 +21,8 @@ version: 1.0
 - Privacy-first: Zero external data transmission.
 - Ethical Guardrails: Ma'at's 42 Ideals (truth, justice, compassion, sovereignty, wisdom).
 - Evolution: Automatic research/gap analysis when capabilities are insufficient.
+- Sovereign Trinity (Phase 4.2): Mandates Consul service mesh, Redis persistent circuit breakers, and Ed25519 agent handshakes.
+- Resource Mastery: Strictly optimized for Ryzen 7 5700U (6.6GB RAM) using Multi-Tiered zRAM (lz4+zstd).
 - Documentation: Torch-free MkDocs enterprise platform with Diátaxis structure, atomic migrations, strict validation.
 
 **Performance Targets**: <500ms text / <300ms voice latency, <6GB RAM, atomic durability.

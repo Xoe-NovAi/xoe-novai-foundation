@@ -16,10 +16,9 @@ import pytest_asyncio
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from app.XNAi_rag_app import app as rag_app
-from app.config import settings
+# Import from project root
+from app.XNAi_rag_app.api.entrypoint import app as rag_app
 from tests.integration.conftest import (
-    create_test_service,
     get_gateway_client,
     wait_for_service_health,
     cleanup_test_services

@@ -20,10 +20,9 @@ from fastapi.testclient import TestClient
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 
-from app.XNAi_rag_app import app as rag_app
-from app.config import settings
+# Import from project root
+from app.XNAi_rag_app.api.entrypoint import app as rag_app
 from tests.integration.conftest import (
-    create_test_service,
     get_postgres_client,
     get_redis_client,
     wait_for_service_health,

@@ -38,8 +38,9 @@ try:
 except ImportError:
     psycopg2 = None
 
-# Add app directory to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent.parent / "app" / "XNAi_rag_app"))
+# Add project root to path for imports
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root))
 
 # ============================================================================
 # INTEGRATION TEST FIXTURES

@@ -23,6 +23,8 @@ from ...core.metrics import (
 )
 from ...core.logging_config import PerformanceLogger, get_logger
 from ...core.circuit_breakers import CircuitBreakerError
+from ...core.tier_config import get_current_rag_config, get_current_llm_config, tier_config_factory
+from ...core.transaction_logger import transaction_logger
 
 logger = get_logger(__name__)
 perf_logger = PerformanceLogger(logger)
@@ -30,7 +32,7 @@ router = APIRouter()
 
 @router.post("/query", response_model=QueryResponse)
 async def query_endpoint(request: Request, query_req: QueryRequest):
-    """Synchronous query endpoint."""
+    """Synchronous query endpoint with tiered degradation support."""
     # Get services from app state (already initialized during startup)
     services = getattr(request.app.state, 'services', {})
     rag_service = services.get('rag')
@@ -47,22 +49,35 @@ async def query_endpoint(request: Request, query_req: QueryRequest):
             if ep.llm is None:
                 ep.llm = await ep.load_llm_with_circuit_breaker()
             
-            # Retrieve context
+            # Get current tier configuration
+            rag_config = get_current_rag_config()
+            llm_config = get_current_llm_config()
+            
+            # Retrieve context with tier-aware parameters
             sources = []
             context = ""
-            if query_req.use_rag and vectorstore:
-                context, sources = await rag_service.retrieve_context(query_req.query)
+            if query_req.use_rag and vectorstore and rag_config.retrieval_enabled:
+                # Use tier-specific top_k and context limits
+                context, sources = await rag_service.retrieve_context(
+                    query=query_req.query,
+                    top_k=rag_config.top_k,
+                    max_context_chars=rag_config.max_context_chars
+                )
             
             # Generate prompt
             prompt = rag_service.generate_prompt(query_req.query, context)
             
-            # Generate response
+            # Generate response with tier-aware token limits
             gen_start = time.time()
+            
+            # Apply tier-based max_tokens override
+            effective_max_tokens = min(query_req.max_tokens, llm_config.max_tokens)
+            
             response = ep.llm.invoke(
                 prompt,
-                max_tokens=query_req.max_tokens,
-                temperature=query_req.temperature,
-                top_p=query_req.top_p
+                max_tokens=effective_max_tokens,
+                temperature=llm_config.temperature,
+                top_p=llm_config.top_p
             )
             gen_duration = time.time() - gen_start
             
@@ -77,6 +92,25 @@ async def query_endpoint(request: Request, query_req: QueryRequest):
             perf_logger.log_token_generation(tokens=tokens_approx, duration_s=gen_duration)
             
             total_duration_ms = (time.time() - start_time) * 1000
+            
+            # Log tier information for observability
+            current_tier = tier_config_factory.get_current_tier()
+            logger.info(f"Query processed with tier {current_tier}: max_tokens={effective_max_tokens}, top_k={rag_config.top_k}, context_chars={len(context)}")
+            
+            # Audit Trail Logging
+            await transaction_logger.log_transaction(
+                transaction_type="query",
+                query=query_req.query,
+                response=response,
+                sources=sources,
+                metrics={
+                    "tokens": tokens_approx,
+                    "duration_ms": total_duration_ms,
+                    "token_rate": token_rate
+                },
+                metadata={"tier": current_tier}
+            )
+            
             return QueryResponse(
                 response=response,
                 sources=sources,
@@ -97,7 +131,7 @@ async def query_endpoint(request: Request, query_req: QueryRequest):
 
 @router.post("/stream")
 async def stream_endpoint(request: Request, query_req: QueryRequest):
-    """Streaming query endpoint."""
+    """Streaming query endpoint with tiered degradation support."""
     services = getattr(request.app.state, 'services', {})
     rag_service = services.get('rag')
     vectorstore = services.get('vectorstore')
@@ -108,21 +142,33 @@ async def stream_endpoint(request: Request, query_req: QueryRequest):
             if ep.llm is None:
                 ep.llm = await ep.load_llm_with_circuit_breaker()
             
+            # Get current tier configuration
+            rag_config = get_current_rag_config()
+            llm_config = get_current_llm_config()
+            
             sources = []
             context = ""
-            if query_req.use_rag and vectorstore:
-                context, sources = await rag_service.retrieve_context(query_req.query)
+            if query_req.use_rag and vectorstore and rag_config.retrieval_enabled:
+                # Use tier-specific top_k and context limits
+                context, sources = await rag_service.retrieve_context(
+                    query=query_req.query,
+                    top_k=rag_config.top_k,
+                    max_context_chars=rag_config.max_context_chars
+                )
                 yield f"data: {json.dumps({'type': 'sources', 'sources': sources})}\\n\\n"
             
             prompt = rag_service.generate_prompt(query_req.query, context)
             token_count = 0
             gen_start = time.time()
             
+            # Apply tier-based max_tokens override
+            effective_max_tokens = min(query_req.max_tokens, llm_config.max_tokens)
+            
             for token in ep.llm.stream(
                 prompt,
-                max_tokens=query_req.max_tokens,
-                temperature=query_req.temperature,
-                top_p=query_req.top_p
+                max_tokens=effective_max_tokens,
+                temperature=llm_config.temperature,
+                top_p=llm_config.top_p
             ):
                 yield f"data: {json.dumps({'type': 'token', 'content': token})}\\n\\n"
                 token_count += 1
@@ -131,7 +177,25 @@ async def stream_endpoint(request: Request, query_req: QueryRequest):
             
             gen_duration = time.time() - gen_start
             latency_ms = gen_duration * 1000
+            
+            # Log tier information for observability
+            current_tier = tier_config_factory.get_current_tier()
+            logger.info(f"Stream processed with tier {current_tier}: max_tokens={effective_max_tokens}, top_k={rag_config.top_k}, context_chars={len(context)}")
+            
             yield f"data: {json.dumps({'type': 'done', 'tokens': token_count, 'latency_ms': latency_ms})}\\n\\n"
+            
+            # Audit Trail Logging (Async)
+            await transaction_logger.log_transaction(
+                transaction_type="stream",
+                query=query_req.query,
+                response="[STREAMED]", 
+                sources=sources,
+                metrics={
+                    "tokens": token_count,
+                    "duration_ms": latency_ms
+                },
+                metadata={"tier": current_tier}
+            )
             
         except CircuitBreakerError:
             yield f"data: {json.dumps({'type': 'error', 'error': 'Circuit open'})}\\n\\n"

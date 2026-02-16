@@ -9,12 +9,28 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from .routers import router as api_router
+from .middleware import query_transaction_log_middleware
 from ..core.services_init import ServiceOrchestrator
+from ..core.degradation import degradation_manager
 from .exceptions import XNAiException
 from ..schemas.responses import ErrorResponse
 from ..schemas.errors import ErrorCategory
 import logging
 import uuid
+import time
+
+try:
+    from prometheus_fastapi_instrumentator import Instrumentator
+    from prometheus_client import Counter, Histogram
+    PROMETHEUS_AVAILABLE = True
+    vector_lookup_latency = Histogram(
+        'vector_lookup_latency_seconds',
+        'Latency of vector search operations',
+        ['source']
+    )
+except ImportError:
+    PROMETHEUS_AVAILABLE = False
+    vector_lookup_latency = None
 
 logger = logging.getLogger(__name__)
 
@@ -45,6 +61,13 @@ app = FastAPI(
     description="Foundation RAG API for Xoe-NovAi stack.",
     version="0.1.0-alpha"
 )
+
+# Initialize Prometheus instrumentation (optional)
+if PROMETHEUS_AVAILABLE:
+    instrumentator = Instrumentator()
+    instrumentator.instrument(app).expose(app, endpoint="/metrics")
+else:
+    logger.info("Prometheus not available - metrics disabled")
 
 # Include all API routers
 app.include_router(api_router)
@@ -193,16 +216,28 @@ async def add_request_id_middleware(request: Request, call_next):
     
     return response
 
+@app.middleware("http")
+async def query_txn_middleware_wrapper(request: Request, call_next):
+    return await query_transaction_log_middleware(request, call_next)
+
 
 @app.on_event("startup")
 async def on_startup():
     logger.info("[Startup] Initializing all services via ServiceOrchestrator...")
     services = await orchestrator.initialize_all()
     app.state.services = services
+    
+    # Start degradation monitor
+    await degradation_manager.start_monitoring()
+    
     logger.info("[Startup] All services initialized.")
 
 @app.on_event("shutdown")
 async def on_shutdown():
     logger.info("[Shutdown] Shutting down all services via ServiceOrchestrator...")
+    
+    # Stop degradation monitor
+    await degradation_manager.stop_monitoring()
+    
     await orchestrator.shutdown_all()
     logger.info("[Shutdown] All services shut down.")

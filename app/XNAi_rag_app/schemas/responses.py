@@ -83,4 +83,4 @@ class HealthResponse(BaseModel):
     version: str = Field(..., description="Stack version")
     memory_gb: float = Field(..., description="Current memory usage in GB")
     vectorstore_loaded: bool = Field(..., description="Whether vectorstore is available")
-    components: Dict[str, bool] = Field(..., description="Component status map")
+    components: Dict[str, Any] = Field(..., description="Component status map")

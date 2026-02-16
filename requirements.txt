@@ -1333,3 +1333,5 @@ zstandard==0.25.0
 # The following packages are considered to be unsafe in a requirements file:
 # pip
 # setuptools
+python-consul2>=0.1.5
+qdrant-client==1.13.2

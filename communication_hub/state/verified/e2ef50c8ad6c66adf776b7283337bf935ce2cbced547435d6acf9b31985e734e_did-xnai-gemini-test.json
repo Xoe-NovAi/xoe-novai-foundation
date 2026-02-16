@@ -1,0 +1,8 @@
+{
+  "type": "challenge",
+  "challenger_did": "did:xnai:gemini-test",
+  "challenge_nonce": "e2ef50c8ad6c66adf776b7283337bf935ce2cbced547435d6acf9b31985e734e",
+  "timestamp": "2026-02-15T17:24:48.271931+00:00",
+  "expires_at": "2026-02-15T17:29:48.271939+00:00",
+  "signature": "8d6087e2b22ad09df76e08e1f923932440c34503fbec42d11814d5bb51333e8b7f9955f5dfdd5bf125bb0017a519d81ddab9d51207ccb05b2db9fb5d9a877b0b"
+}

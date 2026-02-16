@@ -8,6 +8,7 @@ Ensures dependencies are resolved before dependent services start.
 import logging
 import time
 import asyncio
+import socket
 from typing import Dict, Any, Optional, List
 
 # Core imports
@@ -29,6 +30,8 @@ from ..services.rag.rag_service import RAGService
 from ..services.voice.voice_interface import setup_voice_interface
 from ..services.research_agent import get_research_agent
 
+from .consul_client import consul_client
+
 logger = get_logger(__name__)
 
 class ServiceOrchestrator:
@@ -42,32 +45,29 @@ class ServiceOrchestrator:
         self._initialized = False
         self._ready = False
         self._background_tasks: List[asyncio.Task] = []
+        self._service_id = f"rag-api-{socket.gethostname()}" if hasattr(socket, 'gethostname') else "rag-api-unknown"
         # Lock and cache for LLM initialization to prevent race conditions
         self._llm_init_lock = asyncio.Lock()
         self._llm_cache = None
 
-    async def _initialize_llm(self):
-        """Thread-safe LLM initialization with double-check pattern."""
-        # Fast path
-        if self._llm_cache is not None:
-            return self._llm_cache
-
-        async with self._llm_init_lock:
-            if self._llm_cache is not None:
-                return self._llm_cache
-
-            # Lazy import to avoid circular deps at module import time
-            from .dependencies import get_llm_async
-
-            logger.info("[LLM Init] Priming LLM (this may take a few seconds)...")
-            try:
-                self._llm_cache = await get_llm_async()
-                logger.info("[LLM Init] LLM primed successfully")
-                return self._llm_cache
-            except Exception as e:
-                logger.warning(f"[LLM Init] Failed to prime LLM: {e}")
-                self._llm_cache = None
-                raise
+    async def _register_with_consul(self):
+        """Register the RAG API with Consul."""
+        try:
+            # Get port from config or default to 8000
+            port = self.config.get('api', {}).get('port', 8000)
+            # Use container name 'rag' or hostname as address
+            import socket
+            hostname = socket.gethostname()
+            
+            await consul_client.register_service(
+                name="rag-api",
+                service_id=self._service_id,
+                address=hostname,
+                port=port,
+                check_url=f"http://{hostname}:{port}/health"
+            )
+        except Exception as e:
+            logger.warning(f"⚠ Consul registration failed: {e}")
 
     async def initialize_all(self) -> Dict[str, Any]:
         """
@@ -91,9 +91,14 @@ class ServiceOrchestrator:
             # 2. Metrics & Observability
             start_metrics_server()
             
-            # 2.1 Circuit Breakers (Redis needed)
+            # 2.1 Consul Registration (Optional foundation)
+            await self._register_with_consul()
+            logger.info("✓ Consul registration initiated")
+            
+            # 2.2 Circuit Breakers (Redis needed)
             redis_url = f"redis://:{self.config.get('redis', {}).get('password', '')}@{self.config.get('redis', {}).get('host', 'redis')}:{self.config.get('redis', {}).get('port', 6379)}/0"
             try:
+                await initialize_circuit_breakers(redis_url)
                 await initialize_voice_circuit_breakers(redis_url)
                 logger.info("✓ Circuit breakers initialized")
             except Exception as e:
@@ -157,6 +162,12 @@ class ServiceOrchestrator:
         """
         logger.info("Shutting down Xoe-NovAi services...")
         
+        # Deregister from Consul
+        try:
+            await consul_client.deregister_service(self._service_id)
+        except Exception as e:
+            logger.warning(f"⚠ Failed to deregister from Consul: {e}")
+
         # Stop research agent if it was running
         if 'research' in self.services:
             self.services['research'].stop_monitoring()
@@ -181,6 +192,28 @@ class ServiceOrchestrator:
     def is_ready(self) -> bool:
         """Return True when background initialization has completed."""
         return self._ready
+
+    async def _initialize_llm(self) -> Any:
+        """
+        Thread-safe lazy initialization of the LLM.
+        """
+        if self._llm_cache is not None:
+            return self._llm_cache
+
+        async with self._llm_init_lock:
+            # Double-checked locking pattern
+            if self._llm_cache is not None:
+                return self._llm_cache
+
+            try:
+                from .dependencies import get_llm_async
+                logger.info("Initializing LLM (lazy loading)...")
+                self._llm_cache = await get_llm_async()
+                self.services['llm'] = self._llm_cache
+                return self._llm_cache
+            except Exception as e:
+                logger.error(f"Failed to initialize LLM: {e}")
+                raise
 
     async def _background_init_models(self):
         """Background task to initialize embeddings, vectorstore, and LLM."""
