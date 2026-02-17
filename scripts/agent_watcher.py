@@ -145,8 +145,21 @@ def execute_task(agent_name, task_desc, model_name=None):
 
     return stream_command(cmd, log_prefix=f"[{agent_name.upper()}]")
 
+import threading
+
+# Global dictionary to track active agent threads
+active_threads = {}
+
+def process_message_async(agent_name, message_path):
+    """Wrapper to run process_message in a thread."""
+    try:
+        process_message(agent_name, message_path)
+    finally:
+        if agent_name in active_threads:
+            del active_threads[agent_name]
+
 def main():
-    print(f"[*] Xoe-NovAi Sovereign Engine Watcher v2.1")
+    print(f"[*] Xoe-NovAi Sovereign Engine Watcher v2.1 (Multi-Threaded)")
     print(f"[*] Architecture: Ryzen 7 5700U | Role: Dispatcher")
     print(f"[*] Monitoring {INBOX_DIR}...")
     
@@ -157,15 +170,34 @@ def main():
     try:
         while True:
             found = False
-            for msg_file in INBOX_DIR.glob("*.json"):
+            # Get list of messages and sort to ensure deterministic processing
+            msg_files = sorted(list(INBOX_DIR.glob("*.json")))
+            
+            for msg_file in msg_files:
                 agent_name = msg_file.name.split('_')[0]
-                process_message(agent_name, msg_file)
+                
+                # Check if this agent is already busy with a thread
+                if agent_name in active_threads:
+                    continue
+                
+                # Start new thread for this agent
+                thread = threading.Thread(
+                    target=process_message_async, 
+                    args=(agent_name, msg_file),
+                    name=f"AgentThread-{agent_name}"
+                )
+                active_threads[agent_name] = thread
+                thread.start()
                 found = True
             
-            if not found:
+            if not found and not active_threads:
                 heartbeat_count += 1
                 if heartbeat_count % 6 == 0: # Every 60s
-                    print(f"[*] Pulse... (Monitoring {INBOX_DIR})")
+                    print(f"[*] Pulse... (Monitoring {INBOX_DIR}, Active: {list(active_threads.keys())})")
+            elif active_threads:
+                heartbeat_count += 1
+                if heartbeat_count % 6 == 0:
+                    print(f"[*] Working... (Active: {list(active_threads.keys())})")
                 
             time.sleep(POLL_INTERVAL)
     except KeyboardInterrupt:

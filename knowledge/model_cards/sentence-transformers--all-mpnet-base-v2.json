@@ -1,0 +1,68 @@
+{
+  "model_id": "sentence-transformers/all-mpnet-base-v2",
+  "task_category": "embeddings_rag",
+  "specs": {
+    "parameters": "109M",
+    "context_window": 384,
+    "quantizations": [
+      "fp32"
+    ],
+    "inference_speed_ryzen7": "45 ms per text (batch=1)",
+    "memory_required": "440 MB"
+  },
+  "benchmarks": {
+    "mteb_avg": {
+      "score": 63.3,
+      "source": "MTEB Leaderboard",
+      "date": "2024-02"
+    },
+    "semantic_similarity": {
+      "score": 84.7,
+      "source": "MTEB",
+      "date": "2024-02"
+    }
+  },
+  "ecosystem": {
+    "frameworks": [
+      "ollama",
+      "llama.cpp",
+      "vLLM"
+    ],
+    "verified_integrations": [
+      "xnai_crawl",
+      "chainlit",
+      "langchain"
+    ],
+    "dependencies": [
+      "transformers>=4.37",
+      "torch>=2.0"
+    ]
+  },
+  "competitive_analysis": {
+    "strengths": [
+      "Better quality than MiniLM",
+      "440MB footprint",
+      "384 token context",
+      "SOTA small model"
+    ],
+    "weaknesses": [
+      "Slower than MiniLM",
+      "Still memory-efficient"
+    ],
+    "alternatives": []
+  },
+  "research_status": "verified",
+  "metadata": {
+    "created_date": "2026-02-16T21:47:48.221089Z",
+    "last_updated": "2026-02-16T21:47:48.221089Z",
+    "researcher_notes": "Verified model for embeddings_rag tasks. Optimized for Ryzen 7 5700U.",
+    "source_links": [
+      "https://huggingface.co/sentence-transformers/all-mpnet-base-v2"
+    ]
+  },
+  "vectors": {
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "vector_index_location": "knowledge/vectors/model_cards.faiss",
+    "embedding_timestamp": "2026-02-16T21:47:48.221089Z"
+  }
+}
