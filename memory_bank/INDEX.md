@@ -1,6 +1,6 @@
 # Memory Bank Navigation Index
 
-**Last Updated**: 2026-02-14  
+**Last Updated**: 2026-02-17  
 **Status**: Active  
 **Purpose**: Single source of truth for Xoe-NovAi Foundation project status and coordination
 
@@ -82,6 +82,45 @@ Located in: `memory_bank/PHASES/`
 | `phase-5a-status.md` | zRAM optimization deployment | ✅ Complete |
 
 **Use**: Reference specific phase completion details, test results, blockers
+
+---
+
+## 🔧 OPENCODE INTEGRATION
+
+### Configuration Files
+| Path | Purpose |
+|------|---------|
+| `AGENTS.md` | Project rules for OpenCode CLI |
+| `.opencode/opencode.json` | OpenCode configuration |
+| `.opencode/skills/*/SKILL.md` | Reusable workflow skills |
+| `.opencode/agents/*.md` | Specialized agent definitions |
+| `.opencode/commands/*.md` | Custom slash commands |
+| `mcp-servers/xnai-*/` | MCP servers for Foundation stack |
+
+### Available Skills
+| Skill | Trigger | Purpose |
+|-------|---------|---------|
+| memory-bank-loader | Session start | Load project context |
+| agent-bus-coordinator | Multi-agent tasks | Redis Streams coordination |
+| phase-validator | Milestones | Verify phase completion |
+| sovereign-security-auditor | Pre-commit | Security hardening check |
+| doc-taxonomy-writer | Doc changes | Diátaxis classification |
+| vikunja-task-manager | Planning | Task creation/tracking |
+| semantic-search | Research | RAG queries |
+
+### MCP Servers
+| Server | Endpoint | Purpose |
+|--------|----------|---------|
+| xnai-rag | localhost:8000 | Semantic search |
+| xnai-agentbus | localhost:6379 | Agent coordination |
+| xnai-vikunja | localhost:3456 | Task management |
+
+### Documentation
+See `internal_docs/05-research/` for:
+- `OPENCODE-CLI-BEST-PRACTICES.md` - Usage guide
+- `OPENCODE-MCP-RECOMMENDATIONS.md` - MCP server docs
+- `OPENCODE-SKILLS-RECOMMENDATIONS.md` - Skill development
+- `OPENCODE-FORK-INTEGRATION-RESEARCH.md` - Deep integration research
 
 ---
 
@@ -243,7 +282,7 @@ See `progress.md` for:
 
 ---
 
-**Next Review**: 2026-02-21  
-**Last Reviewed**: 2026-02-14  
+**Next Review**: 2026-02-24  
+**Last Reviewed**: 2026-02-17  
 **Maintained By**: Project Coordinator  
-**Version**: 1.0 (2026-02-14)
+**Version**: 1.1 (2026-02-17)

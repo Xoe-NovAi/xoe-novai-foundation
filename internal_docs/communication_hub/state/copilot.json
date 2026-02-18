@@ -1,6 +1,6 @@
 {
   "agent_id": "copilot",
-  "timestamp": "2026-02-17T04:55:02Z",
-  "status": "busy",
+  "timestamp": "2026-02-17T05:30:47Z",
+  "status": "idle",
   "last_task_id": "copilot-phase2-start-001"
 }

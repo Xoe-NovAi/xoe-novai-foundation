@@ -395,7 +395,7 @@ services:
     volumes:
       - ./data/vikunja/db:/var/lib/postgresql/data:Z
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U vikunja"]
+      test: ["CMD", "pg_isready", "-U", "vikunja"]
       start_period: 30s
     networks:
       - xnai_network
@@ -418,7 +418,7 @@ services:
       VIKUNJA_JWT_SECRET: ${VIKUNJA_JWT_SECRET:-changeme_jwt}
       VIKUNJA_CORS_ENABLE: "false"
       VIKUNJA_REDIS_ENABLED: "true"
-      VIKUNJA_REDIS_HOST: redis:6379
+      VIKUNJA_REDIS_HOST: redis
       VIKUNJA_REDIS_PORT: "6379"
       VIKUNJA_REDIS_PASSWORD: ${REDIS_PASSWORD:-changeme123}
       VIKUNJA_REDIS_DB: "5"

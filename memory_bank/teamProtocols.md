@@ -56,6 +56,56 @@ ma_at_ideal: 7 - Truth in reporting
 - Communication: Terminal outputs, memory_bank updates, research request queue
 - Special Capabilities: Access to models not available in other free tiers; ideal for research synthesis and multi-model validation
 
+### Documentation Excellence Agents (NEW - v2.0)
+
+**Librarian Agent**
+- Role: Primary documentation maintenance and quality assurance agent
+- Environment: Agent Bus (Redis Streams) + Vikunja
+- Responsibilities:
+  - Monitor documentation freshness (stale detection >90 days)
+  - Validate frontmatter compliance
+  - Coordinate archival processes
+  - Update genealogy tracker
+  - Generate freshness reports
+- Triggers: Every 6 hours (scheduled), document.created/updated events, manual
+- Communication: Redis Stream `doc:events`, Vikunja tasks, Memory Bank updates
+- Protocol: `expert-knowledge/protocols/LIBRARIAN-AGENT-PROTOCOL.md`
+
+**QA Agent**
+- Role: Content quality and consistency validation
+- Environment: Agent Bus (Redis Streams) + Vale linter
+- Responsibilities:
+  - Content quality scoring (0.0-1.0 scale)
+  - Style consistency enforcement
+  - Technical accuracy verification
+  - Link validation
+  - Format compliance checking
+- Triggers: document.ready_for_review events, daily quality scan
+- Communication: Redis Stream `doc:quality`, Vikunja quality issues
+
+**Search Agent**
+- Role: Index optimization and search relevance
+- Environment: Agent Bus (Redis Streams) + Qdrant
+- Responsibilities:
+  - Maintain search index
+  - Optimize query performance
+  - Tune relevance rankings
+  - Monitor search analytics
+  - ZRAM-aware index management
+- Triggers: document.indexed events, weekly optimization
+- Communication: Redis Stream `search:events`, Qdrant updates
+
+**Integration Agent**
+- Role: Cross-project standardization and template management
+- Environment: Agent Bus (Redis Streams) + Template system
+- Responsibilities:
+  - Maintain documentation templates
+  - Ensure cross-project consistency
+  - Manage documentation versions
+  - Coordinate multi-project updates
+- Triggers: project.created events, monthly standardization check
+- Communication: Redis Stream `integration:events`, Vikunja tasks
+
 **Gemini**
 - Role: Ground Truth Executor, Filesystem Manager, Massive 1M token context window, very generous free tier daily usage, powerful CLI researching for filling knowledge gaps. Reviews technical recommendations from Cline, Copilot, and OpenCode assistants before final approval
 - Environment: Terminal + Filesystem

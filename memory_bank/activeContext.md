@@ -91,14 +91,14 @@ graph TB
 
 ### Active Agents Reference
 
-| Persona | Role | Status | Primary Focus |
-|:--- | :--- | :--- | :--- |
-| **Human Director** | Ultimate Authority | 🟢 Active | Strategic direction & final decisions |
-| **Grok** | Strategic Mastermind | 🟢 Active | Ecosystem oversight & research |
-| **Cline** | Primary Engineer | 🟢 Active | Implementation, auditing, & refactoring |
-| **Gemini** | Ground Truth Executor | 🟢 Active | Filesystem management & automation |
-| **Copilot** | Tactical Support | 🟢 Active | Code generation & execution support |
-| **OpenCode** | Multi-Model Researcher | 🟢 Active | Research synthesis & validation |
+| Persona | Role | Status | Primary Focus | Model Assignment |
+|:--- | :--- | :--- | :--- | :--- |
+| **Human Director** | Ultimate Authority | 🟢 Active | Strategic direction & final decisions | N/A |
+| **Grok** | Strategic Mastermind | 🟢 Active | Ecosystem oversight & research | N/A |
+| **Cline** | Primary Engineer | 🟢 Active | Implementation, auditing, & refactoring | **Claude Opus 4.6** (reasoning) / **Kimi K2.5** (large context) |
+| **Gemini** | Ground Truth Executor | 🟢 Active | Filesystem management & automation | Gemini 3 Pro (1M context) |
+| **Copilot** | Tactical Support | 🟢 Active | Code generation & execution support | **Claude Haiku 4.5** (fast) / **GPT-5.1-Codex** (code) |
+| **OpenCode** | Multi-Model Researcher | 🟢 Active | Research synthesis & validation | **Kimi K2.5** (lead) / **Big Pickle** (validation) |
 
 ---
 
@@ -139,9 +139,31 @@ graph TB
 
 ---
 
-## 📚 Documentation System Status (Phase 5 Integration)
+## 📚 Documentation System Status (Phase 5 Integration + Excellence Initiative)
 
 **Status**: ✅ **FULLY OPERATIONAL - Dual-Build MkDocs System Active**
+**Initiative**: 🚀 **DOCUMENTATION EXCELLENCE v2.0 - ACTIVE IMPLEMENTATION**
+
+### Excellence Initiative Status
+| Phase | Status | Start Date | Key Deliverables |
+|-------|--------|------------|------------------|
+| Phase 1: Foundation | 🟡 IN PROGRESS | 2026-02-17 | Frontmatter validation, Janitor service, Vikunja integration |
+| Phase 2: Optimization | ⏳ PENDING | 2026-02-22 | ZRAM indexing, Librarian Agent, Hardware templates |
+| Phase 3: Advanced | ⏳ PENDING | 2026-02-27 | Zero-telemetry pipeline, Multi-project standardization |
+
+### Active Research Requests
+| Request | Assigned To | Priority | Status |
+|---------|-------------|----------|--------|
+| REQ-DOC-001: Documentation System Audit | Gemini CLI | P0 | PENDING |
+| REQ-DOC-002: Multi-Agent Documentation Protocols | Copilot | P0 | PENDING |
+| REQ-DOC-003: ZRAM-Aware Search Optimization | Gemini CLI | P1 | PENDING |
+| REQ-DOC-004: AI-Powered Documentation Quality | Copilot | P1 | PENDING |
+
+### Key Strategy Documents
+- **Master Strategy**: `internal_docs/00-system/DOCUMENTATION-EXCELLENCE-STRATEGY-v2.0.md`
+- **Librarian Protocol**: `expert-knowledge/protocols/LIBRARIAN-AGENT-PROTOCOL.md`
+- **Research Requests**: `internal_docs/02-research-lab/RESEARCH-REQUESTS-DOCUMENTATION-EXCELLENCE.md`
+
 Note: Phase‑5A artifacts added — `PHASE-5A-ZRAM-BEST-PRACTICES.md` and `zram` observability (Prometheus textfile metrics). See `memory_bank/PHASE-5A-DEPLOYED.md` for deployment record.
 ### System Components
 | Component | Status | Details |
@@ -358,7 +380,65 @@ cat expert-knowledge/research/README.md
 
 ---
 
-## 🔬 Phase 3 Error Handling Assessment (COMPLETED)
+## 🆓 Free Models Integration (NEW - v1.0.0)
+
+**Status**: ✅ **FULLY DOCUMENTED - 30+ Free Frontier Models**  
+**Date**: 2026-02-17  
+**Documentation**: `expert-knowledge/model-reference/`
+
+### Available Free Models Across CLIs
+
+**OpenCode Terminal** (5 models):
+- Kimi K2.5 Free (262k context, frontier reasoning)
+- Big Pickle (200k context, reliable)
+- GPT-5 Nano (400k context, fast)
+- MiniMax M2.5 Free (204.8k context, speed)
+- GLM-5 Free (204.8k context, logic specialist)
+
+**Cline IDE** (9 models):
+- Claude Haiku 4.5 (fast, thinking)
+- Claude Opus 4.6 (frontier, thinking)
+- Claude Sonnet 4.5 (balanced)
+- GPT-5 Mini (ultra-fast)
+- GPT-5.1-Codex (code-optimized, 8k output)
+- Grok Code Fast 1 (code frontier, 8k output)
+- Gemini 2.5 Pro (multimodal)
+- Trinity Large (agentic)
+- MiniMax M2.1 (lightweight)
+
+**Copilot CLI** (12+ models):
+- Claude Haiku/Opus/Sonnet (Anthropic suite)
+- GPT-5/5.1/5.2, Codex variants (OpenAI suite, 8k-32k output)
+- Gemini 2.5/3 Pro/Flash (Google multimodal)
+- Grok Code Fast 1 (xAI code specialist)
+
+### Quick Selection Guide
+
+| Task | Recommended | Alternative |
+|------|-------------|-------------|
+| **Real-time terminal** | Copilot: GPT-5-Mini | OpenCode: MiniMax M2.5 |
+| **Complex reasoning** | Cline: Claude Opus | OpenCode: Kimi K2.5 |
+| **Code generation** | Copilot: GPT-5.1-Codex-32k | Cline: Kimi K2.5 |
+| **Large context (>200k)** | Cline: Kimi K2.5 (262k) | Copilot: GPT-5 Nano (400k) |
+| **Research synthesis** | OpenCode: Multi-model | Cline: Kimi K2.5 |
+| **Visual/design tasks** | Cline: Kimi K2.5 | Copilot: Gemini 2.5 Pro |
+
+### Documentation
+- **OpenCode Models**: `expert-knowledge/model-reference/opencode-free-models-v1.0.0.md`
+- **Cline Models**: `expert-knowledge/model-reference/cline-cli-models-v1.0.0.md`
+- **Copilot CLI Models**: `expert-knowledge/model-reference/copilot-cli-models-v1.0.0.md`
+- **Unified Strategy**: `expert-knowledge/cli-model-selection-strategy-v1.0.0.md`
+
+### Key Metrics
+- **Total Free Models**: 30+
+- **Cost**: $0 (all free)
+- **Largest Context**: GPT-5 Nano (400k) or Kimi K2.5 (262k)
+- **Fastest Inference**: GPT-5-Mini, Claude Haiku, Gemini 3 Flash (<3s)
+- **Best Code Quality**: GPT-5.1-Codex variants or Grok Code Fast 1
+- **Best Reasoning**: Claude Opus, Kimi K2.5, GPT-5
+- **Best Multimodal**: Kimi K2.5 or Gemini 2.5 Pro
+
+
 
 **Status**: 🟡 **PARTIALLY COMPLETE - Ready for Phase 4**
 **Assessment Date**: 2026-02-13
