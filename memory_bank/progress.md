@@ -1,11 +1,12 @@
 # Progress: Sovereign AI Stack - Production-Ready Release
 
-**Last Updated**: 2026-02-17 07:44 UTC
+**Last Updated**: 2026-02-18 04:30 UTC
 **Completion Status**: **PHASE 7 COMPLETE: Semantic Search Agent Bus Ready**
 **Current Phase**: PHASE 7: Deployment & Agent Bus Integration
 **Active Sub-Phase**: Production Deployment Ready
 **Memory Bank Status**: ✅ CURRENT - All Phases 2-7 documented, knowledge locked
 **Next Phase**: PHASE 8: Advanced Features (Redis Streams, Qdrant, Fine-Tuning)
+**Primary CLI**: **OpenCode CLI** (replaces Copilot CLI)
 
 ---
 

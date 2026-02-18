@@ -380,63 +380,65 @@ cat expert-knowledge/research/README.md
 
 ---
 
-## 🆓 Free Models Integration (NEW - v1.0.0)
+## 🆓 Free Models Integration (UPDATED - v2.0.0)
 
-**Status**: ✅ **FULLY DOCUMENTED - 30+ Free Frontier Models**  
-**Date**: 2026-02-17  
-**Documentation**: `expert-knowledge/model-reference/`
+**Status**: ✅ **FULLY DOCUMENTED - 35+ Free Frontier Models**  
+**Date**: 2026-02-18  
+**Documentation**: `expert-knowledge/OPENCODE-CLI-COMPREHENSIVE-GUIDE-v1.0.0.md`
+**Primary CLI**: **OpenCode CLI** (replaces Copilot CLI)
 
-### Available Free Models Across CLIs
+### OpenCode CLI Built-in Free Models (5 models)
 
-**OpenCode Terminal** (5 models):
-- Kimi K2.5 Free (262k context, frontier reasoning)
-- Big Pickle (200k context, reliable)
-- GPT-5 Nano (400k context, fast)
-- MiniMax M2.5 Free (204.8k context, speed)
-- GLM-5 Free (204.8k context, logic specialist)
+| Model | Context | Best For | Rate Limit |
+|-------|---------|----------|------------|
+| `opencode/big-pickle` | 200K | General coding, reasoning | Shared pool |
+| `opencode/glm-5-free` | 200K | Logic, structured tasks | Shared pool |
+| `opencode/gpt-5-nano` | 400K | Speed, large context | Shared pool |
+| `opencode/kimi-k2.5-free` | 262K | Research, large context | Shared pool |
+| `opencode/minimax-m2.5-free` | 204K | Speed, efficiency | Shared pool |
 
-**Cline IDE** (9 models):
-- Claude Haiku 4.5 (fast, thinking)
-- Claude Opus 4.6 (frontier, thinking)
-- Claude Sonnet 4.5 (balanced)
-- GPT-5 Mini (ultra-fast)
-- GPT-5.1-Codex (code-optimized, 8k output)
-- Grok Code Fast 1 (code frontier, 8k output)
-- Gemini 2.5 Pro (multimodal)
-- Trinity Large (agentic)
-- MiniMax M2.1 (lightweight)
+### GitHub Copilot Models (Requires PAID Subscription)
 
-**Copilot CLI** (12+ models):
-- Claude Haiku/Opus/Sonnet (Anthropic suite)
-- GPT-5/5.1/5.2, Codex variants (OpenAI suite, 8k-32k output)
-- Gemini 2.5/3 Pro/Flash (Google multimodal)
-- Grok Code Fast 1 (xAI code specialist)
+⚠️ **IMPORTANT**: GitHub Copilot Free tier does NOT work with OpenCode. Requires Pro/Pro+/Business/Enterprise.
 
-### Quick Selection Guide
+| Model | Context | Best For |
+|-------|---------|----------|
+| `github-copilot/claude-opus-4.6` | 200K | Complex reasoning |
+| `github-copilot/claude-sonnet-4.6` | 200K | Balanced tasks |
+| `github-copilot/gpt-5.2-codex` | 200K | Code generation |
+| `github-copilot/gemini-3-pro-preview` | 1M | Large context |
 
-| Task | Recommended | Alternative |
-|------|-------------|-------------|
-| **Real-time terminal** | Copilot: GPT-5-Mini | OpenCode: MiniMax M2.5 |
-| **Complex reasoning** | Cline: Claude Opus | OpenCode: Kimi K2.5 |
-| **Code generation** | Copilot: GPT-5.1-Codex-32k | Cline: Kimi K2.5 |
-| **Large context (>200k)** | Cline: Kimi K2.5 (262k) | Copilot: GPT-5 Nano (400k) |
-| **Research synthesis** | OpenCode: Multi-model | Cline: Kimi K2.5 |
-| **Visual/design tasks** | Cline: Kimi K2.5 | Copilot: Gemini 2.5 Pro |
+### OpenRouter Free Models (31+ via Cline Extension)
+
+**Top picks**:
+- `arcee-ai/trinity-large-preview:free` (131K, agentic)
+- `stepfun/step-3.5-flash:free` (256K, reasoning)
+- `deepseek/deepseek-r1-0528:free` (164K, reasoning)
+- `qwen/qwen3-coder:free` (262K, coding)
+
+### Local Models (Ollama)
+
+**Recommended for Ryzen 5700U (8GB RAM)**:
+- `qwen2.5:7b` (4.4GB, multilingual + code)
+- `mistral:7b` (4.1GB, fast responses)
+
+### Quick Selection Guide (UPDATED)
+
+| Task | CLI | Model | Notes |
+|------|-----|-------|-------|
+| Complex reasoning | OpenCode | `opencode/big-pickle` | Free, 200K context |
+| Research/synthesis | OpenCode | `opencode/kimi-k2.5-free` | Free, 262K context |
+| Fast prototyping | OpenCode | `opencode/minimax-m2.5-free` | Free, speed optimized |
+| Large context (400K) | OpenCode | `opencode/gpt-5-nano` | Free |
+| Offline/air-gap | OpenCode + Ollama | `qwen2.5:7b` | Local, no network |
+| Claude Opus 4.6 | Cline Extension | claude-opus-4.6 | **FREE PROMO** (limited time) |
+| Multi-provider | Cline + OpenRouter | 31+ free models | Requires OpenRouter key |
 
 ### Documentation
-- **OpenCode Models**: `expert-knowledge/model-reference/opencode-free-models-v1.0.0.md`
-- **Cline Models**: `expert-knowledge/model-reference/cline-cli-models-v1.0.0.md`
-- **Copilot CLI Models**: `expert-knowledge/model-reference/copilot-cli-models-v1.0.0.md`
-- **Unified Strategy**: `expert-knowledge/cli-model-selection-strategy-v1.0.0.md`
 
-### Key Metrics
-- **Total Free Models**: 30+
-- **Cost**: $0 (all free)
-- **Largest Context**: GPT-5 Nano (400k) or Kimi K2.5 (262k)
-- **Fastest Inference**: GPT-5-Mini, Claude Haiku, Gemini 3 Flash (<3s)
-- **Best Code Quality**: GPT-5.1-Codex variants or Grok Code Fast 1
-- **Best Reasoning**: Claude Opus, Kimi K2.5, GPT-5
-- **Best Multimodal**: Kimi K2.5 or Gemini 2.5 Pro
+- **OpenCode Comprehensive Guide**: `expert-knowledge/OPENCODE-CLI-COMPREHENSIVE-GUIDE-v1.0.0.md`
+- **OpenCode Config**: `.opencode/opencode.json`
+- **Local Models Setup**: Install via `curl -fsSL https://ollama.com/install.sh | sh`
 
 
 
