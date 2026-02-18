@@ -1,6 +1,6 @@
 # XNAi FOUNDATION: MASTER PROJECT & STRATEGY INDEX
-**Version**: 1.0.0 | **Status**: ACTIVE | **Priority**: CRITICAL  
-**Created**: 2026-02-17T22:00:00Z | **Last Updated**: 2026-02-17T22:00:00Z
+**Version**: 1.1.0 | **Status**: ACTIVE | **Priority**: CRITICAL  
+**Created**: 2026-02-17T22:00:00Z | **Last Updated**: 2026-02-18T05:25:00Z
 
 ---
 
@@ -11,7 +11,8 @@ This master index consolidates all active projects, strategies, and session-stat
 **Total Active Projects**: 6 major initiatives  
 **Total Documentation Files**: 400+ markdown files  
 **Total Code Files**: 200+ Python files  
-**Current Branch**: `xnai-agent-bus/harden-infra` (8 unpushed commits)
+**Current Branch**: `xnai-agent-bus/harden-infra` (10 unpushed commits)
+**Primary CLI**: **OpenCode CLI** (replaces Copilot CLI)
 
 ---
 
@@ -22,11 +23,11 @@ This master index consolidates all active projects, strategies, and session-stat
 **Focus**: OpenCode & Multi-CLI Hardening
 
 **Key Decisions Made**:
-1. **Copilot CLI**: Use free tier (limited models, no cost)
-2. **Cline CLI**: Use OpenRouter free tier (300+ models, limited quota)
+1. **OpenCode CLI**: PRIMARY CLI (5 built-in free models + 75+ provider support)
+2. **Cline Extension**: FREE Claude Opus 4.6 access (limited-time promo)
 3. **Gemini CLI**: Use Google AI Studio (gemini-3-flash-preview)
-4. **OpenCode CLI**: Use built-in 5 free models
-5. **MC Position**: Migrate from Grok.com to Claude.ai Project (for GitHub sync)
+4. **GitHub Copilot**: REQUIRES PAID SUBSCRIPTION (Pro/Pro+/Business)
+5. **MC Architecture**: Sovereign Stack as MC (Claude.ai for high-level strategy only)
 
 **Proposed Architecture**:
 ```
@@ -106,7 +107,7 @@ This master index consolidates all active projects, strategies, and session-stat
 | Phase | Status | Tasks |
 |-------|--------|-------|
 | 1 (Foundation) | 🟡 60% | Frontmatter validation (PENDING), Janitor service (PENDING) |
-| 2 (MkDocs Internal) | ⏳ Pending | `mkdocs-internal.yml` NOT CREATED |
+| 2 (MkDocs Internal) | ✅ COMPLETE | `mkdocs-internal.yml` CREATED AND CONFIGURED |
 | 3 (Doc Updates) | ⏳ Pending | PILLAR docs need MkDocs sections |
 
 **6 Research Requests Pending**:
@@ -234,15 +235,15 @@ Phase 8 consists of advanced capabilities that extend the core stack:
 ### Infrastructure
 | Issue | Severity | Resolution |
 |-------|----------|------------|
-| Containers stopped | 🔴 CRITICAL | Run `make up` after fix |
-| CMD_SHELL error | 🔴 FIXED | Changed to CMD format |
-| Vikunja not responding | 🟡 MEDIUM | Start services first |
-| Consul not responding | 🟡 MEDIUM | Start services first |
+| Redis permissions | 🔴 CRITICAL | Run `sudo ./scripts/fix-permissions.sh` |
+| Qdrant permissions | 🔴 CRITICAL | Run `sudo ./scripts/fix-permissions.sh` |
+| Vikunja not responding | 🟡 MEDIUM | Depends on Redis |
+| Consul unhealthy | 🟢 LOW | Health check timing issue |
 
 ### Documentation
 | Issue | Severity | Resolution |
 |-------|----------|------------|
-| `mkdocs-internal.yml` missing | 🟠 HIGH | Create from template |
+| ~~`mkdocs-internal.yml` missing~~ | ✅ FIXED | File exists and configured |
 | Phase READMEs are templates | 🟡 MEDIUM | Populate with content |
 | PILLAR docs missing MkDocs sections | 🟡 MEDIUM | Add integration sections |
 
