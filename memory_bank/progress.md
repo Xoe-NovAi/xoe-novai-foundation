@@ -1,12 +1,62 @@
 # Progress: Sovereign AI Stack - Production-Ready Release
 
-**Last Updated**: 2026-02-18 04:30 UTC
-**Completion Status**: **PHASE 7 COMPLETE: Semantic Search Agent Bus Ready**
+**Last Updated**: 2026-02-19 17:00 UTC (Sprint 7 complete)
+**Completion Status**: **PHASE 7 COMPLETE + SPRINT 7 COMPLETE**
 **Current Phase**: PHASE 7: Deployment & Agent Bus Integration
-**Active Sub-Phase**: Production Deployment Ready
-**Memory Bank Status**: ✅ CURRENT - All Phases 2-7 documented, knowledge locked
+**Active Sub-Phase**: Sprint 8 planning — architect defining priorities
+**Memory Bank Status**: ✅ CURRENT - Sprints 5-7 complete, benchmark framework shipped
 **Next Phase**: PHASE 8: Advanced Features (Redis Streams, Qdrant, Fine-Tuning)
-**Primary CLI**: **OpenCode CLI** (replaces Copilot CLI)
+**Primary CLI**: **OpenCode CLI** — ACTIVE (fork planned: arcana-novai/opencode-xnai)
+
+---
+
+## ✅ **SPRINT 7 COMPLETE — 2026-02-19**
+
+> Sprint 7 covered two sessions: (1) new tools research (Cline, Feb 18), (2) Opus onboarding + context engineering benchmark (OpenCode, Feb 18-19).
+
+| Deliverable | Status |
+|-------------|--------|
+| Crush/Charm/iFlow/Cerebras/SambaNova research (3 docs) | ✅ |
+| free-providers-catalog.yaml v1.1.0 | ✅ |
+| XNAI-AGENT-TAXONOMY.md v1.1.0 | ✅ |
+| Full Opus 4.6 project onboarding (L5 comprehension, 79.7K tokens) | ✅ |
+| Case study: OPUS-ONBOARDING-CASE-STUDY-2026-02-18.md (593 lines) | ✅ |
+| Architecture analysis: XNAI-CONTEXT-ENGINEERING-BENCHMARK-2026-02-19.md (646 lines) | ✅ |
+| Benchmark framework: `benchmarks/` (10 files, 6 tests, 5 environments) | ✅ |
+| Benchmark runner: `scripts/run-benchmark.sh` v1.1.0 (worktree + stack integration) | ✅ |
+| Cognitive enhancement tracker: `benchmarks/COGNITIVE-ENHANCEMENTS.md` (CE-001 through CE-007) | ✅ |
+| Rule 22b: Cognitive feedback loop in `.opencode/RULES.md` | ✅ |
+| Benchmark tag: `benchmark/context-engineering-v1.0.0` | ✅ |
+| Sovereign MC Agent spec + app code + MC oversight + 15-item gap tracker | ✅ |
+| CI workflow: `.github/workflows/model-intelligence-update.yml` | ✅ |
+| Infrastructure configs: agent-identity.yaml, model-router.yaml, free-providers-catalog.yaml | ✅ |
+
+**Handover (Cline session)**: `memory_bank/activeContext/sprint-7-handover-2026-02-18.md`
+**Handover (Opus session)**: `memory_bank/activeContext/sprint-7-handover-2026-02-19.md`
+
+**Sprint 8 backlog**: XNAI-STACK-OVERVIEW.md, FREE-AI-PROVIDERS guide, README update, MkDocs Mermaid config, cognitive enhancements CE-001 through CE-006 + architect's high-priority items.
+
+---
+
+## ✅ **SPRINT 6 COMPLETE — 2026-02-18**
+
+> Sprint 6 was a correction sprint — no new features, only fixes to Sprint 5 output errors.
+
+| Fix | Status |
+|-----|--------|
+| Model signature mass-patch (`claude-opus-4-5` → `claude-sonnet-4-6`) across 10 files | ✅ |
+| `harvest-cli-sessions.sh` duplicate `main()` removed, v1.1.0 clean rewrite | ✅ |
+| Antigravity taxonomy corrected (plugin-in-OpenCode, GitHub OAuth, not separate CLI) | ✅ |
+| OpenCode active status enforced, ARCHIVED file reframed as UPSTREAM-ARCHIVE-CONTEXT | ✅ |
+| `configs/agent-identity.yaml` created (authoritative per-agent model/account registry) | ✅ |
+| `sign-document.sh` v1.1.0 — reads agent-identity.yaml, interactive prompt fallback | ✅ |
+| `docs/architecture/XNAI-AGENT-TAXONOMY.md` created (Mermaid diagrams) | ✅ |
+| `OPENCODE-XNAI-FORK-PLAN.md` created (5-phase fork plan) | ✅ |
+
+**Full handover**: `memory_bank/activeContext/sprint-6-handover-2026-02-18.md`
+
+**Sprint 7 backlog**: XNAI-STACK-OVERVIEW.md, FREE-AI-PROVIDERS guide, README update, MkDocs Mermaid config + incoming user queue items.
+
 
 ---
 
@@ -213,27 +263,49 @@
 
 ## 🚀 **NEXT STEPS**
 
-### Immediate (Next 24h)
-1. **Observable Implementation (Phase 5)**: Install prometheus exporter, add metrics collection
-2. **Memory Profiling Analysis**: Determine if 94% usage is startup spike or steady state
-3. **Caddy Configuration Finalization**: Document routing patterns and log rotation
-4. **Services Integration Testing**: Final validation of all service APIs and workflows
+### Immediate (Sprint 8 — Architect to prioritize)
+1. **Architect's high-priority items**: Planning and strategy tasks (pending definition)
+2. **Cognitive enhancements CE-001–CE-006**: Memory bank improvements from benchmark analysis
+3. **XNAI-STACK-OVERVIEW.md**: C4 Mermaid system diagram (deferred from Sprint 6)
+4. **README.md update**: Project overview refresh
 
 ### Week 2
-5. **Authentication Implementation (Phase 6)**: OAuth2 with JWT tokens
-6. **Distributed Tracing**: OpenTelemetry + Jaeger integration
-7. **Load Testing Framework**: Create load profiles and identify bottlenecks
-8. **Documentation Completion**: Finalize troubleshooting guide and deployment runbooks
+5. **First benchmark run**: Execute test battery against a second model (e.g., Gemini 3 Pro) with `./scripts/run-benchmark.sh --integrate -m gemini-3-pro`
+6. **FREE-AI-PROVIDERS-COMPLETE-GUIDE.md**: Tutorial for provider selection
+7. **MkDocs superfences Mermaid config**: Verify rendering
+8. **MkDocs benchmark section**: Add `benchmarks/` to docs nav
 
 ### Month 2
-9. **Multi-Instance Support**: Design horizontal scaling
-10. **Voice Quality Enhancement**: Evaluate STT alternatives
-11. **Security Audit**: Penetration testing and compliance validation
-12. **Production Hardening**: Final security and performance tuning
+9. **Multi-model benchmark results**: Run full 10-model battery, publish results
+10. **Benchmark v1.1.0**: Implement CE-001 through CE-006, re-tag, re-run
+11. **OpenCode fork**: Begin arcana-novai/opencode-xnai implementation
+12. **Phase 8 planning**: Redis Streams production, Qdrant migration, fine-tuning prep
 
 ---
 
-## 📈 **RECENT ACHIEVEMENTS (Last 3 Days)**
+## 📈 **RECENT ACHIEVEMENTS (Last 7 Days)**
+
+### 2026-02-19: Context Engineering Benchmark Shipped ✅
+- **Benchmark Framework**: Complete `benchmarks/` directory with 10 files — test battery, ground truth, scoring rubric, 5 context packs (E1-E5), cognitive enhancement tracker.
+- **Runner Script v1.1.0**: `scripts/run-benchmark.sh` with git worktree isolation and optional Foundation stack integration (pre-flight health check, Redis result publishing, RAG ingestion, session harvesting).
+- **Cognitive Enhancements**: CE-001 through CE-007 cataloged. CE-007 (stack integration) completed.
+- **Rule 22b**: Agents now required to log cognitive architecture weaknesses to enhancement tracker.
+- **Benchmark Tag**: `benchmark/context-engineering-v1.0.0` created and pushed.
+- **15 commits pushed**: 4 logical groups (infra, app/scripts, research, benchmark) on `xnai-agent-bus/harden-infra`.
+
+### 2026-02-18: Opus 4.6 Onboarding & Case Study ✅
+- **Full Project Onboarding**: Claude Opus 4.6 Thinking achieved L5 Architectural Intuition in 2 prompts / 79.7K tokens. First agent to surface the esoteric philosophical layer.
+- **Case Study**: 593-line document proving the XNAi memory bank is an effective LLM context engine.
+- **Architecture Analysis**: 646-line document identifying 8 architectural differentiators, defining 5 comprehension levels, designing a 300-cell benchmark matrix.
+- **12+ Gaps Identified**: Triple phase numbering, crashed services (UID cascade), memory at 94%, torch-free tension, empty Spirit of Lilith section, and more.
+
+### 2026-02-18: Sprint 7 Research Session ✅
+- **Crush/Charm ecosystem**: OpenCode remains primary, Crush experimental only.
+- **Cerebras/SambaNova**: Added to free provider waterfall.
+- **iFlow**: Excluded (CN backend sovereignty concern).
+- **Charm tools installed**: mods, gum, glow (production-ready).
+
+### 2026-02-18: Sprint 6 Corrections ✅
 
 ### 2026-02-13: Curation, zRAM, & Raptor-74 Handover ✅
 - **Scraping & Curation Strategy**: Established "The Curator" pipeline as a new critical feature.
@@ -359,7 +431,7 @@
 
 ---
 
-**Status**: 🟢 **Production-Ready Release Candidate with Research Request**  
-**Confidence**: **95%**  
+**Status**: 🟢 **Production-Ready with Context Engineering Benchmark**  
+**Confidence**: **97%**  
 **Risk Level**: **Low**  
-**Next Milestone**: Phase 3 Completion (2026-02-10)
+**Next Milestone**: Sprint 8 (Architect's priority items) + First multi-model benchmark run
