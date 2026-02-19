@@ -1,478 +1,370 @@
-# Sovereign MC Agent Specification v1.0.0
-
-**Status**: DRAFT  
-**Created**: 2026-02-18T05:35:00Z  
-**Author**: OpenCode CLI (GLM-5-free)  
-**Target Implementation**: TASK-021b (Cline/Opus 4.6)
-
----
-
-## 1. Executive Summary
-
-The Sovereign MC Agent is a locally-running orchestration agent that uses the XNAi Foundation Stack as its cognitive infrastructure. It serves as the daily project manager for all XNAi initiatives, delegating tasks to CLI agents and maintaining strategic context.
-
-**Key Principle**: Zero external data transmission for internal project decisions. The stack IS the Mission Control.
+# Sovereign MC Agent — Technical Specification v1.0.0
+**Status**: ✅ IMPLEMENTED  
+**Implementation**: `app/XNAi_rag_app/core/sovereign_mc_agent.py`  
+**Date**: 2026-02-18  
+**Author**: Claude Opus 4.6 (Cline) — Session Opus-Sprint-001  
+**Task Reference**: TASK-021b from `internal_docs/00-system/STRATEGIC-REVIEW-CLINE-2026-02-18.md`
 
 ---
 
-## 2. Architecture Overview
+## 1. Overview
+
+The **Sovereign MC Agent** is the self-directing intelligence layer of the XNAi Foundation stack. It enables the XNAi Foundation to direct, monitor, and coordinate itself — delegating tasks to AI agents, tracking decisions in semantic memory, managing project tasks via Vikunja, and maintaining strategic context via the memory bank.
+
+### Design Principles
+1. **Sovereign**: No external dependencies for core function — can operate air-gap with Ollama fallback
+2. **AnyIO-first**: Zero `asyncio.gather`, zero `asyncio.*` — all concurrency via AnyIO TaskGroups
+3. **ONNX/GGUF only**: No PyTorch, no CUDA, no Triton, no sentence-transformers
+4. **Memory-persistent**: Decisions stored in Qdrant for recall across sessions
+5. **Observable**: Health via Consul, logs to stdout/structured logging
+
+---
+
+## 2. Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    SOVEREIGN MC AGENT                                │
-│                                                                      │
-│  ┌──────────────┐   ┌─────────────┐   ┌───────────────┐            │
-│  │  CONTEXT     │   │   TASK      │   │  DELEGATION   │            │
-│  │  MANAGER     │   │  MANAGER    │   │  ENGINE       │            │
-│  │              │   │             │   │               │            │
-│  │ • Qdrant RAG │   │ • Vikunja   │   │ • Agent Bus   │            │
-│  │ • memory_bank│   │ • Redis     │   │ • CLI routing │            │
-│  │ • Git state  │   │ • Priorities│   │ • Handshakes  │            │
-│  └──────────────┘   └─────────────┘   └───────────────┘            │
-│          │                  │                  │                    │
-│          └──────────────────┼──────────────────┘                    │
-│                             ▼                                        │
-│  ┌──────────────────────────────────────────────────────────────┐  │
-│  │                    HEALTH MONITOR                             │  │
-│  │              (Consul + Prometheus + Circuit Breakers)         │  │
-│  └──────────────────────────────────────────────────────────────┘  │
-│                                                                      │
-└─────────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼ MCP Interface
-        ┌─────────────────────────────────────────────┐
-        │          Cline IDE / CLI Agents              │
-        │  (xnai-agentbus, xnai-rag, xnai-vikunja)     │
-        └─────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────┐
+│                   SovereignMCAgent                      │
+│                                                         │
+│  ┌──────────────────┐  ┌──────────────────────────┐    │
+│  │  MemoryBankReader │  │      VikunjaClient        │    │
+│  │                  │  │                          │    │
+│  │ reads/writes     │  │ async httpx              │    │
+│  │ memory_bank/*.md │  │ → localhost:3456/api/v1  │    │
+│  └──────────────────┘  └──────────────────────────┘    │
+│                                                         │
+│  ┌──────────────────┐  ┌──────────────────────────┐    │
+│  │   QdrantMemory   │  │   OpenCodeDispatcher      │    │
+│  │                  │  │                          │    │
+│  │ AsyncQdrantClient│  │ anyio.run_process         │    │
+│  │ collection:      │  │ → opencode CLI           │    │
+│  │ sovereign_mc_    │  │ with model selection     │    │
+│  │ decisions        │  └──────────────────────────┘    │
+│  │ dim: 384, COSINE │                                   │
+│  └──────────────────┘                                   │
+│                                                         │
+│  ┌──────────────────────────────────────────────────┐  │
+│  │              Redis AgentBus                      │  │
+│  │         stream: xnai:agent_bus                   │  │
+│  └──────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────┘
+         ↕                    ↕                  ↕
+    memory_bank/         Vikunja PM          Consul
+    (strategic ctx)    (task tracking)    (health data)
 ```
 
 ---
 
-## 3. Core Components
+## 3. Component Specifications
 
-### 3.1 Context Manager
+### 3.1 MemoryBankReader
+**Purpose**: Read and write strategic context from `memory_bank/*.md` files.
 
-**Purpose**: Load and maintain project context from multiple sources.
-
-**Data Sources**:
-
-| Source | Type | Purpose | Refresh |
-|--------|------|---------|---------|
-| `memory_bank/activeContext.md` | Strategic | Current priorities, agent assignments | On session start |
-| `memory_bank/progress.md` | Status | Phase completion, milestones | On session start |
-| Qdrant collections | Semantic | Past decisions, patterns, knowledge | On demand |
-| Redis state | Session | Circuit breaker states, agent health | Real-time |
-| Git status | Operational | Branch, uncommitted changes | On demand |
-
-**Python Interface**:
 ```python
-@dataclass
-class ProjectContext:
-    current_phase: str
-    active_priorities: list[Priority]
-    agent_assignments: dict[str, AgentRole]
-    service_health: SystemHealth
-    pending_research: list[ResearchRequest]
-    git_state: GitState
-    memory_bank_version: str
-
-class ContextManager:
-    async def load_context() -> ProjectContext
-    async def refresh_memory_bank() -> None
-    async def query_qdrant(query: str, limit: int) -> list[SearchResult]
-    async def get_service_health() -> SystemHealth
-    async def get_git_state() -> GitState
+class MemoryBankReader:
+    def __init__(self, memory_bank_path: str = "memory_bank")
+    async def read_file(self, filename: str) -> str
+    async def read_all(self) -> dict[str, str]
+    async def write_file(self, filename: str, content: str) -> None
 ```
+
+**Behavior**:
+- In-memory cache: once read, files cached in `self._cache: dict[str, str]`
+- Reads: `anyio.Path` async file I/O
+- Writes: full file replacement (not append)
+- Error handling: returns `""` on FileNotFoundError (graceful degradation)
+
+**Key files read**:
+- `activeContext.md` — current priorities, phase status
+- `projectbrief.md` — project identity, constraints
+- `techContext.md` — stack specs, tech choices
+- `systemPatterns.md` — architecture patterns
+- `teamProtocols.md` — agent protocols
 
 ---
 
-### 3.2 Task Manager
+### 3.2 VikunjaClient
+**Purpose**: Async REST client for Vikunja project management API.
 
-**Purpose**: Create, update, and prioritize tasks in Vikunja.
-
-**Vikunja Integration**:
-- Base URL: `http://localhost:3456/api/v1`
-- Auth: API token from environment
-- Projects: Map to XNAi initiatives
-
-**Python Interface**:
 ```python
-@dataclass
-class VikunjaTask:
-    id: int
-    title: str
-    description: str
-    project_id: int
-    priority: int  # 1-5
-    assignee: str | None
-    labels: list[str]
-    due_date: datetime | None
-    status: TaskStatus
-
-class TaskManager:
-    async def create_task(spec: TaskSpec) -> VikunjaTask
-    async def update_task(task_id: int, updates: dict) -> VikunjaTask
-    async def get_tasks_by_project(project_id: int) -> list[VikunjaTask]
-    async def get_tasks_by_priority(min_priority: int) -> list[VikunjaTask]
-    async def complete_task(task_id: int) -> None
-    async def sync_with_mc_oversight() -> None  # Generate dashboard files
+class VikunjaClient:
+    def __init__(self, base_url: str, api_token: str)
+    async def get_projects(self) -> list[dict]
+    async def create_task(self, project_id: int, title: str, 
+                          description: str = "", priority: int = 0,
+                          due_date: str | None = None) -> dict
+    async def get_tasks(self, project_id: int) -> list[dict]
+    async def update_task(self, task_id: int, **kwargs) -> dict
 ```
 
-**Project Mapping**:
-| Vikunja Project ID | Initiative |
-|-------------------|------------|
-| 1 | XNAi Core Stack |
-| 2 | Documentation Excellence |
-| 3 | Sovereign MC Agent |
-| 4 | Phase 8 Execution |
-| 5 | Research Queue |
+**Configuration**:
+- Default URL: `http://localhost:3456` (host-mapped since this session)
+- Auth: Bearer token in `Authorization` header
+- Client: `httpx.AsyncClient` with 30s timeout
+
+**Vikunja API endpoints used**:
+- `GET /api/v1/projects` — list all projects
+- `POST /api/v1/projects/{id}/tasks` — create task
+- `GET /api/v1/projects/{id}/tasks` — list tasks
+- `POST /api/v1/tasks/{id}` — update task
 
 ---
 
-### 3.3 Delegation Engine
+### 3.3 QdrantMemory
+**Purpose**: Semantic memory for past decisions, enabling recall across sessions.
 
-**Purpose**: Route tasks to appropriate CLI agents via Agent Bus.
-
-**Agent Routing Logic**:
 ```python
-def select_agent(task: Task, context: ProjectContext) -> AgentAssignment:
-    complexity = score_complexity(task)
+class QdrantMemory:
+    COLLECTION = "sovereign_mc_decisions"
+    VECTOR_SIZE = 384  # ONNX all-MiniLM-L6-v2 compatible
     
-    if complexity >= 8 and "opus_free" in context.promotions:
-        return AgentAssignment(
-            agent="cline",
-            model="claude-opus-4.6",
-            reason="High complexity + free Opus promotion"
-        )
-    
-    if task.type == TaskType.RESEARCH and task.estimated_tokens > 100000:
-        return AgentAssignment(
-            agent="opencode",
-            model="kimi-k2.5-free",
-            reason="Large context research task"
-        )
-    
-    if task.type == TaskType.STRUCTURED_ANALYSIS:
-        return AgentAssignment(
-            agent="opencode",
-            model="glm-5-free",
-            reason="Structured reasoning specialist"
-        )
-    
-    if task.type == TaskType.VALIDATION:
-        return AgentAssignment(
-            agent="opencode",
-            model="big-pickle",
-            reason="Validation with reasoning variants"
-        )
-    
-    if task.requires_offline:
-        return AgentAssignment(
-            agent="ollama",
-            model="qwen2.5:7b",
-            reason="Offline/sovereign requirement"
-        )
-    
-    return AgentAssignment(
-        agent="opencode",
-        model="big-pickle",
-        reason="Default balanced choice"
-    )
+    def __init__(self, qdrant_url: str = "http://localhost:6333")
+    async def initialize(self) -> None  # creates collection if not exists
+    async def store_decision(self, decision: str, metadata: dict) -> str
+    async def recall_similar(self, query: str, limit: int = 5) -> list[dict]
 ```
 
-**Python Interface**:
-```python
-@dataclass
-class AgentAssignment:
-    agent: str  # "cline", "opencode", "gemini", "ollama"
-    model: str
-    reason: str
-    priority: int
-    deadline: datetime | None
+**Vector storage**:
+- Client: `AsyncQdrantClient` (qdrant-client v1.16.2+)
+- Collection: `sovereign_mc_decisions`
+- Distance: `COSINE` (normalized 384-dim embeddings)
+- Payload: `{decision, agent, timestamp, session, tags[]}`
 
-class DelegationEngine:
-    async def delegate(task: VikunjaTask, context: ProjectContext) -> AgentBusMessage
-    async def track_delegation(message_id: str) -> DelegationStatus
-    async def handle_result(result: AgentResult) -> None
-    async def retry_failed(message_id: str) -> None
-```
-
-**Agent Bus Message Format**:
-```python
-@dataclass
-class AgentBusMessage:
-    id: str  # UUID
-    timestamp: datetime
-    task_id: int  # Vikunja task ID
-    target_agent: str
-    model: str
-    prompt: str
-    context_files: list[str]
-    expected_output: OutputSpec
-    priority: int
-    retry_count: int = 0
-    max_retries: int = 3
-```
+**Embedding approach**: TF-IDF-based hashing for offline operation (no sentence-transformers). For production, replace with ONNX embedding model.
 
 ---
 
-### 3.4 Health Monitor
+### 3.4 OpenCodeDispatcher
+**Purpose**: Delegate complex tasks to OpenCode CLI with model selection.
 
-**Purpose**: Track system health and service availability.
-
-**Health Checks**:
-
-| Service | Endpoint | Frequency |
-|---------|----------|-----------|
-| Consul | `localhost:8500/v1/status/leader` | 30s |
-| Redis | `PING` | 30s |
-| Qdrant | `localhost:6333/health` | 30s |
-| Vikunja | `localhost:3456/api/v1/info` | 60s |
-
-**Python Interface**:
 ```python
-@dataclass
-class SystemHealth:
-    consul: ServiceHealth
-    redis: ServiceHealth
-    qdrant: ServiceHealth
-    vikunja: ServiceHealth
-    overall_status: str  # "healthy", "degraded", "down"
-
-class HealthMonitor:
-    async def check_all() -> SystemHealth
-    async def check_service(service: str) -> ServiceHealth
-    async def get_circuit_breaker_states() -> dict[str, BreakerState]
-    async def get_prometheus_metrics() -> dict[str, float]
+class OpenCodeDispatcher:
+    def __init__(self, working_dir: str)
+    async def dispatch(self, prompt: str, model: str = "opencode/big-pickle",
+                       timeout: float = 120.0) -> str
 ```
+
+**Subprocess management**:
+- Command: `["opencode", "--model", model, "--print", prompt]`
+- Async spawn: `anyio.run_process()` — never `asyncio.create_subprocess_exec`
+- Stdout captured, stderr logged
+- Timeout: configurable, default 120s
+
+**Available models**:
+- `opencode/big-pickle` — general reasoning (default)
+- `opencode/kimi-k2.5-free` — research, large context
+- `opencode/gpt-5-nano` — fast, 400K context
+- `antigravity/gemini-3-pro` — 1M context (after `opencode auth login`)
+- `antigravity/claude-opus-4-5-thinking` — extended reasoning
+- `ollama/qwen2.5:7b` — offline/air-gap fallback
 
 ---
 
-## 4. MCP Server Interface
-
-### 4.1 MCP Tools
-
-The Sovereign MC Agent exposes these tools via MCP for Cline IDE:
+### 3.5 SovereignMCAgent (Main Orchestrator)
+**Purpose**: Top-level coordinator using AnyIO TaskGroups for all concurrent operations.
 
 ```python
-# Tool: mc_get_status
-# Description: Get current project status summary
-# Parameters: None
-# Returns: ProjectContext as JSON
-
-# Tool: mc_create_task
-# Description: Create a new task in Vikunja
-# Parameters: title, description, priority, project
-# Returns: VikunjaTask
-
-# Tool: mc_delegate_task
-# Description: Delegate a task to a CLI agent
-# Parameters: task_id, agent (optional), model (optional)
-# Returns: AgentBusMessage ID
-
-# Tool: mc_get_health
-# Description: Get system health status
-# Parameters: None
-# Returns: SystemHealth
-
-# Tool: mc_search_knowledge
-# Description: Search Qdrant for past decisions/patterns
-# Parameters: query, limit
-# Returns: list[SearchResult]
-
-# Tool: mc_update_memory_bank
-# Description: Update memory bank files
-# Parameters: file, content
-# Returns: Success/failure
+class SovereignMCAgent:
+    def __init__(self, memory_reader, vikunja_client, qdrant_memory,
+                 opencode_dispatcher, redis_url, consul_url)
+    
+    # Context loading
+    async def load_context(self) -> dict  # parallel: memory + consul health
+    
+    # Project management
+    async def get_project_status(self) -> list[dict]
+    async def create_vikunja_task(self, title, description, priority, due_date) -> dict
+    
+    # Agent delegation
+    async def delegate_to_opencode(self, prompt, model) -> str
+    async def route_via_agent_bus(self, task_type, payload) -> str
+    
+    # Memory operations
+    async def update_memory(self, filename, content) -> None
+    async def recall_decisions(self, query, limit) -> list[dict]
+    
+    # Health & reporting
+    async def get_service_health(self) -> dict
+    async def generate_status_report(self) -> str
+    async def write_status_report(self, output_path) -> None
 ```
 
-### 4.2 MCP Configuration
+**AnyIO TaskGroup usage** — all parallel operations use:
+```python
+async with anyio.create_task_group() as tg:
+    tg.start_soon(task_a)
+    tg.start_soon(task_b)
+```
+**NEVER**: `await asyncio.gather(task_a(), task_b())`
 
-```json
+---
+
+### 3.6 Factory Function
+```python
+async def create_sovereign_mc(
+    memory_bank_path: str = "memory_bank",
+    vikunja_url: str = "http://localhost:3456",
+    vikunja_token: str = "",
+    qdrant_url: str = "http://localhost:6333",
+    redis_url: str = "redis://localhost:6379",
+    consul_url: str = "http://localhost:8500",
+    opencode_working_dir: str = ".",
+) -> SovereignMCAgent:
+```
+Initializes all sub-clients, calls `qdrant_memory.initialize()`, returns configured agent.
+
+---
+
+## 4. Data Models
+
+### Decision Record (Qdrant payload)
+```python
 {
-  "mcpServers": {
-    "xnai-mc-agent": {
-      "command": "python",
-      "args": ["mcp-servers/xnai-mc-agent/server.py"],
-      "env": {
-        "QDRANT_URL": "http://localhost:6333",
-        "REDIS_URL": "redis://localhost:6379",
-        "VIKUNJA_URL": "http://localhost:3456",
-        "CONSUL_URL": "http://localhost:8500",
-        "MEMORY_BANK_PATH": "./memory_bank"
-      }
-    }
-  }
+    "decision": str,          # The decision text
+    "agent": str,             # "claude-opus-4.6-cline"
+    "timestamp": str,         # ISO 8601
+    "session": str,           # "Opus-Sprint-001"
+    "tags": list[str],        # ["architecture", "agent-bus", "qdrant"]
+    "rationale": str,         # Why this decision was made
+    "outcome": str | None,    # Filled in on resolution
+}
+```
+
+### Task Creation Request (Vikunja)
+```python
+{
+    "title": str,             # Task title
+    "description": str,       # Markdown description
+    "priority": int,          # 0-5 (5=highest)
+    "due_date": str | None,   # ISO 8601 datetime
+    "project_id": int,        # Vikunja project ID
+}
+```
+
+### Agent Bus Message (Redis Streams)
+```python
+{
+    "task_type": str,         # "research", "implement", "review", "delegate"
+    "payload": dict,          # Task-specific data
+    "agent_target": str,      # "opencode", "gemini", "cline", "broadcast"
+    "priority": str,          # "critical", "high", "medium", "low"
+    "session_id": str,        # For response correlation
 }
 ```
 
 ---
 
-## 5. Implementation Plan
+## 5. Configuration
 
-### Phase 1: Core Agent (TASK-021b)
-**Assignee**: Cline/Opus 4.6  
-**Duration**: 2-3 days  
-**Files**:
-- `app/XNAi_rag_app/core/sovereign_mc_agent.py`
-- `app/XNAi_rag_app/core/context_manager.py`
-- `app/XNAi_rag_app/core/task_manager.py`
-- `app/XNAi_rag_app/core/delegation_engine.py`
+### Environment Variables
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `SOVEREIGN_MC_MEMORY_PATH` | `memory_bank` | Path to memory bank dir |
+| `SOVEREIGN_MC_VIKUNJA_URL` | `http://localhost:3456` | Vikunja API base URL |
+| `SOVEREIGN_MC_VIKUNJA_TOKEN` | `""` | Vikunja auth token |
+| `SOVEREIGN_MC_QDRANT_URL` | `http://localhost:6333` | Qdrant URL |
+| `SOVEREIGN_MC_REDIS_URL` | `redis://localhost:6379` | Redis URL |
+| `SOVEREIGN_MC_CONSUL_URL` | `http://localhost:8500` | Consul URL |
 
-**Dependencies**:
-- Services operational (Redis, Qdrant, Vikunja)
-- Existing Agent Bus infrastructure
-- Existing IAM handshake system
-
-### Phase 2: MCP Server (TASK-021c)
-**Assignee**: Cline  
-**Duration**: 1-2 days  
-**Files**:
-- `mcp-servers/xnai-mc-agent/server.py`
-- `mcp-servers/xnai-mc-agent/tools.py`
-
-### Phase 3: MC Oversight Integration (TASK-021d)
-**Assignee**: Sovereign MC Agent (self)  
-**Duration**: 1 day  
-**Files**:
-- Auto-generate `mc-oversight/*.md` files
-- Integrate with existing dashboard files
+### Required Services
+| Service | Port | Required | Notes |
+|---------|------|----------|-------|
+| Redis | 6379 | ✅ Yes | Agent Bus stream |
+| Qdrant | 6333 | ✅ Yes | Decision memory |
+| Vikunja | 3456 | ✅ Yes | Task management (port now exposed) |
+| Consul | 8500 | ⚠️ Optional | Health degraded without it |
+| OpenCode CLI | n/a | ⚠️ Optional | Falls back gracefully |
 
 ---
 
-## 6. API Contracts
+## 6. Usage Examples
 
-### 6.1 Context Manager API
-
-```python
-# GET /mc/context
-# Returns: ProjectContext
-
-# POST /mc/context/refresh
-# Refreshes memory bank and returns updated context
-
-# GET /mc/context/search?q={query}&limit={limit}
-# Searches Qdrant and returns results
+### Standalone (CLI demo)
+```bash
+cd /home/arcana-novai/Documents/xnai-foundation
+python3 -m app.XNAi_rag_app.core.sovereign_mc_agent
 ```
 
-### 6.2 Task Manager API
-
+### Programmatic
 ```python
-# POST /mc/tasks
-# Body: TaskSpec
-# Returns: VikunjaTask
+import anyio
+from app.XNAi_rag_app.core.sovereign_mc_agent import create_sovereign_mc
 
-# GET /mc/tasks?project={id}&priority={min}
-# Returns: list[VikunjaTask]
-
-# PATCH /mc/tasks/{id}
-# Body: updates dict
-# Returns: VikunjaTask
-```
-
-### 6.3 Delegation API
-
-```python
-# POST /mc/delegate
-# Body: { task_id, agent?, model? }
-# Returns: { message_id, agent, model }
-
-# GET /mc/delegate/{message_id}/status
-# Returns: DelegationStatus
-
-# POST /mc/delegate/{message_id}/retry
-# Returns: new message_id
-```
-
----
-
-## 7. Error Handling
-
-### Circuit Breaker Integration
-
-```python
-class MCACircuitBreaker:
-    def __init__(self, service: str, threshold: int = 5, timeout: int = 60):
-        self.service = service
-        self.threshold = threshold
-        self.timeout = timeout
-        self.failures = 0
-        self.state = "closed"
+async def main():
+    agent = await create_sovereign_mc(
+        vikunja_token=os.getenv("VIKUNJA_TOKEN"),
+    )
     
-    async def call(self, func, *args, **kwargs):
-        if self.state == "open":
-            raise ServiceUnavailableError(self.service)
-        
-        try:
-            result = await func(*args, **kwargs)
-            self.failures = 0
-            return result
-        except Exception as e:
-            self.failures += 1
-            if self.failures >= self.threshold:
-                self.state = "open"
-                asyncio.create_task(self._reset_after_timeout())
-            raise
+    # Load strategic context
+    context = await agent.load_context()
+    
+    # Create a task
+    task = await agent.create_vikunja_task(
+        title="Fix Agent Bus stream key split",
+        description="Unify xnai:agent_bus stream key across all components",
+        priority=5,
+    )
+    
+    # Delegate research to OpenCode
+    result = await agent.delegate_to_opencode(
+        "Analyze the Agent Bus architecture and propose stream key unification",
+        model="antigravity/gemini-3-pro",
+    )
+    
+    # Write status report
+    await agent.write_status_report("mc-oversight/status-report.md")
+
+anyio.run(main)
 ```
 
-### Fallback Strategies
+---
 
-| Service | Fallback |
-|---------|----------|
-| Redis | In-memory state (ephemeral) |
-| Qdrant | File-based search (slower) |
-| Vikunja | Local task queue |
-| Consul | Direct service URLs |
+## 7. Known Limitations & Future Work
+
+### Current Limitations
+1. **Embedding is TF-IDF hash** — not semantic. For true semantic search, integrate ONNX all-MiniLM-L6-v2 model
+2. **No auto-boot** — must be explicitly invoked. Future: FastAPI lifespan service
+3. **No retry logic on Qdrant init** — if Qdrant down on start, agent fails entirely
+4. **VikunjaClient has no token refresh** — assumes long-lived token
+
+### Planned Enhancements (from strategic-recommendations.md)
+- **REC-004**: Extract `MemoryBankReader` to `core/memory_bank.py` as shared module
+- **REC-005**: Create `services/sovereign_mc_service.py` as FastAPI lifespan service
+  - REST endpoints: `/mc/status`, `/mc/dispatch`, `/mc/context`
+  - Consul registration as `sovereign-mc`
+- **REC-007**: Write `tests/test_sovereign_mc_agent.py` (Sprint 2)
+
+### TASK-001 Dependency
+The `route_via_agent_bus()` method publishes to `xnai:agent_bus`. However, `mcp-servers/xnai-agentbus/server.py` uses `xnai:tasks` / `xnai:results`. Until TASK-001 (stream key unification) is complete, Agent Bus routing between MCP tools and the Sovereign MC Agent will not connect.
 
 ---
 
-## 8. Security Considerations
+## 8. Testing Guide
 
-### Authentication
-- Uses existing IAM Ed25519 handshake for agent-to-agent communication
-- Vikunja API token stored in environment variable
-- No external API keys in code
+### Unit Tests (Sprint 2 — `tests/test_sovereign_mc_agent.py`)
+```python
+# Recommended test cases:
+async def test_memory_bank_reader_reads_file()
+async def test_memory_bank_reader_returns_empty_on_missing()
+async def test_vikunja_client_creates_task(mock_httpx)
+async def test_qdrant_memory_stores_and_recalls(mock_qdrant)
+async def test_opencode_dispatcher_spawns_process(mock_anyio_run)
+async def test_sovereign_mc_load_context_parallel()
+async def test_sovereign_mc_uses_taskgroup_not_gather()
+async def test_sovereign_mc_integration(running_stack)  # marks: integration
+```
 
-### Authorization
-- All operations require valid agent identity
-- Task creation requires MC Agent role
-- Memory bank updates require write permission
+### Manual Smoke Test
+```bash
+# Ensure stack is running
+docker-compose up -d redis qdrant vikunja
 
-### Data Sovereignty
-- All data stays local
-- No external API calls for core operations
-- Optional: external API calls only for delegated research tasks
+# Run agent demo
+python3 -m app.XNAi_rag_app.core.sovereign_mc_agent
 
----
-
-## 9. Success Criteria
-
-| Criterion | Verification |
-|-----------|--------------|
-| Loads memory bank context | `mc_get_status` returns valid ProjectContext |
-| Creates Vikunja task | Task appears in Vikunja UI |
-| Routes task to agent | Agent Bus message sent, agent receives |
-| Tracks health | Health dashboard shows all services |
-| MCP accessible | Cline can invoke all tools |
-| Zero external transmission | Network monitoring shows no unexpected calls |
+# Expected: status report written to mc-oversight/
+```
 
 ---
 
-## 10. Related Documents
-
-- `expert-knowledge/AGENT-CLI-MODEL-MATRIX-v2.0.0.md` - Agent assignments
-- `internal_docs/00-system/STRATEGIC-REVIEW-CLINE-2026-02-18.md` - Strategic context
-- `mc-oversight/` - Output directory
-- `memory_bank/` - Context directory
-
----
-
-## 11. Revision History
-
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0.0 | 2026-02-18 | Initial specification |
-
----
-
-**Next Step**: TASK-021b - Implementation by Cline/Opus 4.6
+*Spec author: Claude Opus 4.6 (Cline) | Version: 1.0.0 | Date: 2026-02-18*

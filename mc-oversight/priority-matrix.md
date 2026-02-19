@@ -1,112 +1,102 @@
-# Priority Matrix
-
-**Generated**: 2026-02-18T05:30:00Z  
-**Framework**: Impact × Effort / Risk
+# XNAi Foundation — Priority Matrix
+**Last Updated**: 2026-02-18 | **Session**: Opus-Sprint-001 | **Agent**: Claude Opus 4.6 (Cline)
 
 ---
 
-## Phase 8 Priority Matrix
+## Priority Classification Framework
 
-| Component | Impact | Effort | Risk | Dependencies | Score | Priority |
-|-----------|--------|--------|------|--------------|-------|----------|
-| **8B: Qdrant Migration** | HIGH (5) | MEDIUM (3) | LOW (2) | None | 2.5 | **1st** |
-| **8A: Redis Streams** | MEDIUM (3) | MEDIUM (3) | MEDIUM (3) | Phase 5B | 1.0 | **2nd** |
-| **8C: Fine-Tuning** | HIGH (5) | HIGH (5) | MEDIUM (3) | Phase 6D | 0.6 | **3rd** |
-
-**Score Formula**: Impact / (Effort × Risk)
-
-**Recommended Order**: 8B → 8A → 8C
+| Priority | Label | Description | Response Time |
+|----------|-------|-------------|---------------|
+| P0 | CRITICAL | Blocks system operation or correctness | Immediate |
+| P1 | HIGH | Major capability or compliance issue | Next sprint |
+| P2 | MEDIUM | Important improvement, non-blocking | Within 2 sprints |
+| P3 | LOW | Nice-to-have, optimization | Backlog |
 
 ---
 
-## Current Sprint Priorities
+## P0 — CRITICAL (Must Do Now)
 
-### P0: Blockers (Immediate)
-| Task | Why Blocking | Assignee | Status |
-|------|--------------|----------|--------|
-| Fix permissions | Redis/Qdrant can't start | User (sudo) | ⏳ Pending |
-| Start services | All operations blocked | User | ⏳ Pending |
-
-### P1: Critical (This Week)
-| Task | Impact | Assignee | Status |
-|------|--------|----------|--------|
-| TASK-021a: MC Agent Spec | Architecture foundation | OpenCode/GLM-5 | 🟡 In Progress |
-| TASK-021b: MC Agent Core | Core implementation | Cline/Opus 4.6 | ⏳ Pending |
-| TASK-005: Phase 3 Test Deps | Unblock testing | Cline | ⏳ Pending |
-
-### P2: High (Next Week)
-| Task | Impact | Assignee | Status |
-|------|--------|----------|--------|
-| TASK-011: Phase 8B Qdrant | Vector migration | Cline | ⏳ Pending |
-| TASK-009: mc-oversight files | MC outputs | OpenCode | ✅ Complete |
-| TASK-006: REQ-DOC-001 | Doc audit | Gemini CLI | ⏳ Pending |
-
-### P3: Medium (Weeks 3-4)
-| Task | Impact | Assignee | Status |
-|------|--------|----------|--------|
-| TASK-012: Phase 8A Redis Streams | Event architecture | Cline | ⏳ Pending |
-| TASK-007: REQ-DOC-002 | Multi-agent protocols | OpenCode | ⏳ Pending |
-| TASK-014: GitHub Actions CI/CD | Automation | Cline | ⏳ Pending |
+| Task | Issue | Owner | Status |
+|------|-------|-------|--------|
+| TASK-005 | Phase 3 test deps not installed in local env | Cline | ✅ Root cause found — run `pip install redis opentelemetry-exporter-prometheus qdrant-client` |
+| TASK-006 | Vikunja port not exposed → Sovereign MC Agent can't reach API | Cline | ✅ Fixed in docker-compose.yml |
+| TASK-001 | Agent Bus stream key split (`xnai:agent_bus` vs `xnai:tasks`) breaks routing | Cline | 🔴 NOT YET FIXED — next sprint |
 
 ---
 
-## Model Assignment Priority
+## P1 — HIGH (Next Sprint)
 
-| Task Type | Primary Model | Fallback | Notes |
-|-----------|--------------|----------|-------|
-| Complex implementation | **Cline + Opus 4.6 FREE** | OpenCode/big-pickle | **Use NOW while promo lasts** |
-| Research/synthesis | OpenCode/kimi-k2.5-free | Gemini CLI | 262K context |
-| Structured analysis | OpenCode/glm-5-free | OpenCode/big-pickle | Reasoning specialist |
-| Validation | OpenCode/big-pickle | OpenCode/glm-5-free | Reasoning variants |
-| Fast prototyping | OpenCode/minimax-m2.5-free | OpenCode/gpt-5-nano | Speed |
-| Offline/sovereign | Ollama + GGUF | N/A | Air-gap capable |
+| Task | Issue | Effort | Owner |
+|------|-------|--------|-------|
+| TASK-002 | Register `xnai-agentbus` MCP in Cline settings | Low | Cline |
+| TASK-003 | Register `xnai-rag` MCP in Cline settings | Low | Cline |
+| TASK-004 | Register `xnai-vikunja` MCP in Cline settings | Low | Cline |
+| TASK-007 | Fix `asyncio.gather` in OpenCode guide (breaks on AnyIO) | Low | Cline |
+| TASK-008 | Add Antigravity auth section to OpenCode guide | Medium | Cline |
+| TASK-009 | Fix MC diagram in model matrix (still shows Claude.ai as MC) | Low | Cline |
+| TASK-010 | Add Antigravity models to model matrix | Low | Cline |
+| TASK-011 | Add OpenRouter rate limits (50 req/day, 20 rpm) to model matrix | Low | Cline |
+| TASK-012 | Write Antigravity Auth Discovery research doc | Medium | Cline |
 
 ---
 
-## Dependency Graph
+## P2 — MEDIUM (Within 2 Sprints)
+
+| Task | Issue | Effort | Owner |
+|------|-------|--------|-------|
+| Phase 4 | Integration Testing | High | Cline |
+| Agent Bus | Unify stream keys + update MCP server | Medium | Cline |
+| Sovereign MC | Write `tests/test_sovereign_mc_agent.py` | Medium | Cline |
+| FAISS→Qdrant | Complete Phase 3 migration | High | Cline + Gemini |
+| Vikunja | Interactive `opencode auth login` for Antigravity | None (user action) | Human Director |
+| `memory_bank_integration.py` | Upgrade from basic event log to full MemoryBankReader pattern | Medium | Cline |
+
+---
+
+## P3 — LOW (Backlog)
+
+| Task | Notes |
+|------|-------|
+| Phase 6 Observability | Prometheus/Grafana, OAuth2 — after Phase 4 complete |
+| Multi-ZRAM tiers | Experimental — research done, PoC exists |
+| Documentation Excellence Phase 2 | ZRAM indexing, Librarian Agent |
+| Documentation Excellence Phase 3 | Zero-telemetry pipeline |
+| AWQ Production Pipeline | After Qdrant migration stable |
+
+---
+
+## Effort / Impact Matrix
 
 ```
-Permissions Fix (P0)
-       ↓
-Services Start (P0)
-       ↓
-┌──────────────────┬──────────────────┐
-│                  │                  │
-▼                  ▼                  ▼
-MC Agent (P1)   Phase 8B (P2)     Research Queue (P2)
-       │              │                  │
-       ▼              ▼                  ▼
-MC Operational   Qdrant Ready    Docs Improved
-       │              │                  │
-       └──────────────┴──────────────────┘
-                      ↓
-              Phase 8A Redis Streams (P3)
-                      ↓
-              Phase 8C Fine-Tuning (P3)
+HIGH IMPACT  │  P0 Agent Bus fix      │  P1 MCP Registration    │
+             │  P1 asyncio.gather fix │  P1 Antigravity doc     │
+─────────────┼────────────────────────┼─────────────────────────┼──
+LOW IMPACT   │  P3 Multi-ZRAM PoC     │  P3 Phase 6 planning    │
+             │                        │                         │
+             └────────────────────────┴─────────────────────────┘
+                   LOW EFFORT               HIGH EFFORT
 ```
 
 ---
 
-## Resource Constraints
+## Action Queue (Ordered)
 
-| Resource | Constraint | Impact |
-|----------|------------|--------|
-| RAM | 6.6GB available | Limits local model size |
-| Sudo | Required for permissions | Blocking service start |
-| Opus 4.6 Free | Limited-time promo | High-priority tasks only |
-| OpenCode Rate Limits | Shared pool | May need fallback models |
+```
+SPRINT 1 (immediate):
+1. Fix asyncio.gather in OpenCode guide         [15 min]
+2. Register 3 MCP servers in Cline             [10 min]
+3. Add Antigravity section to OpenCode guide   [30 min]
+4. Update model matrix (3 changes)             [20 min]
 
----
+SPRINT 2 (next session):
+5. Fix Agent Bus stream key unification        [45 min]
+6. Write test_sovereign_mc_agent.py            [60 min]
+7. Begin Phase 4 integration testing           [2 hrs]
 
-## Risk Assessment
-
-| Risk | Probability | Impact | Mitigation |
-|------|-------------|--------|------------|
-| Opus promo ends | HIGH | HIGH | Prioritize complex tasks NOW |
-| Permissions recur | MEDIUM | HIGH | Document fix in scripts/ |
-| Rate limits hit | MEDIUM | MEDIUM | Use Ollama fallback |
-| Merge conflicts | LOW | MEDIUM | Clean git debt before Phase 8 |
+USER ACTION REQUIRED:
+- Run `opencode auth login` in terminal for Antigravity Google OAuth
+```
 
 ---
 
-*Matrix will be updated weekly or on priority changes*
+*Matrix owner: Claude Opus 4.6 (Cline) | Review cycle: Per session*
