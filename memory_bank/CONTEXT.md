@@ -1,7 +1,29 @@
 # Strategic Context - Xoe-NovAi Foundation Stack
 
-**Last Updated**: 2026-02-14  
+**Last Updated**: 2026-02-19  
 **Consolidates**: projectbrief, techContext, systemPatterns, teamProtocols, environmentContext, FOUNDATION-OBSERVABILITY
+**Phase Source of Truth**: `memory_bank/progress.md`
+
+---
+
+## ⚠️ PHASE NUMBERING NOTICE
+
+**IMPORTANT**: This document previously contained an outdated phase numbering system. 
+
+The **canonical phase numbering** is now defined in `memory_bank/progress.md`:
+
+| Phase | Name | Status |
+|-------|------|--------|
+| Phase 1 | Import Standardization & Module Skeleton | ✅ COMPLETE |
+| Phase 2 | Service Layer & Rootless Infrastructure | ✅ COMPLETE |
+| Phase 3 | Documentation & Stack Alignment | ✅ COMPLETE |
+| Phase 4 | Integration Testing & Stack Validation | ✅ COMPLETE |
+| Phase 5 | Sovereign Multi-Agent Cloud | ✅ COMPLETE |
+| Phase 6 | Testing & REST API | ✅ COMPLETE |
+| Phase 7 | Deployment & Agent Bus Integration | ✅ COMPLETE |
+| Phase 8 | Advanced Features | 🔵 NEXT |
+
+**Roadmap phases** (5A-8C in `internal_docs/01-strategic-planning/roadmap-v2.md`) are a **separate planning track** for future feature work, not implementation phases. Do not confuse them with the project phases above.
 
 ---
 
@@ -24,12 +46,15 @@ Build a **Sovereign AI Foundation Stack** - a production-ready, self-documenting
 - <6GB memory footprint (resource-constrained)
 - <500ms API response times (performance)
 
-### Project Phases
-1. ✅ **Phase 1**: Circuit Breakers & Health Monitoring
-2. ✅ **Phase 2**: Service Layer & Infrastructure  
-3. 🟡 **Phase 3**: Documentation & Error Handling (75% complete)
-4. 🔵 **Phase 4**: Integration Testing & Stack Validation (In Progress)
-5. 🔵 **Phase 5**: Performance Profiling & Optimization (Staged)
+### Project Phases (Source: progress.md)
+1. ✅ **Phase 1**: Import Standardization & Module Skeleton
+2. ✅ **Phase 2**: Service Layer & Rootless Infrastructure  
+3. ✅ **Phase 3**: Documentation & Stack Alignment
+4. ✅ **Phase 4**: Integration Testing & Stack Validation
+5. ✅ **Phase 5**: Sovereign Multi-Agent Cloud
+6. ✅ **Phase 6**: Testing & REST API
+7. ✅ **Phase 7**: Deployment & Agent Bus Integration
+8. 🔵 **Phase 8**: Advanced Features (NEXT)
 
 ---
 
@@ -304,11 +329,12 @@ GRANT ALL ON DATABASE xnai_foundation TO xnai;
 | Build Repeatability | 100% | 100% | 🟢 |
 | Service Startup | <120s | 60s | 🟢 |
 | API Response Time | <500ms | <100ms | 🟢 |
-| Memory Footprint | <6GB | 5.6GB | 🟢 |
-| Core Services Healthy | 100% | 85% | 🟡 |
+| Memory Footprint | <6GB | 5.2GB | 🟢 |
+| Core Services Healthy | 100% | 100% | 🟢 |
 | Test Pass Rate | >90% | 94%+ | 🟢 |
-| Documentation Complete | 100% | 95% | 🟢 |
+| Documentation Complete | 100% | 95% | 🟡 |
 | Zero-Telemetry Pass | 100% | 100% | 🟢 |
+| Benchmark Framework | Complete | v1.0.0 shipped | 🟢 |
 
 ---
 
@@ -324,20 +350,52 @@ Build the most robust, self-documenting AI infrastructure that can operate compl
 - **Modularity**: Reusable components for other projects
 
 ### Market Position
-Xoe-NovAi Foundation provides the infrastructure layer that other AI projects can build on, enabling rapid deployment of AI systems without vendor lock-in or privacy concerns.
+XNAi Foundation provides the infrastructure layer that other AI projects can build on, enabling rapid deployment of AI systems without vendor lock-in or privacy concerns.
+
+---
+
+## 🏗️ ECOSYSTEM ARCHITECTURE
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           ARCANA-NOVA STACK                                  │
+│                    (Esoteric Consciousness Layer)                           │
+│   • 10 Pillars • Dual Flame • Pantheon Model • 42 Ideals of Ma'at          │
+│   • SEPARATE REPOSITORY - Built ON TOP OF Foundation                        │
+│   • Status: Design Phase                                                    │
+└───────────────────────────────┬─────────────────────────────────────────────┘
+                                │ Depends On
+┌───────────────────────────────▼─────────────────────────────────────────────┐
+│                          XNAi FOUNDATION STACK                               │
+│                      (Sovereign AI Infrastructure)                          │
+│   • RAG Engine • Voice Interface • Security Trinity                         │
+│   • Multi-Agent Orchestration • Vikunja PM Hub                              │
+│   • THIS REPOSITORY - Clean technical foundation                            │
+│   • Status: Phase 7 Complete, Phase 8 Next                                  │
+└───────────────────────────────┬─────────────────────────────────────────────┘
+                                │ Sync Layer
+┌───────────────────────────────▼─────────────────────────────────────────────┐
+│                           xoe-novai-sync                                     │
+│                   (External AI Context Hub)                                 │
+│   • Context packs for Grok/Claude/Gemini                                    │
+│   • EKB exports • Receipt tracking                                          │
+│   • Status: Operational                                                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
 ## 📚 RELATED DOCUMENTATION
 
 ### Strategic Planning
+- `memory_bank/progress.md` - **CANONICAL phase status**
+- `memory_bank/activeContext.md` - Current sprint status
+- `internal_docs/01-strategic-planning/ROADMAP-MASTER-INDEX.md` - Future roadmap (5A-8C)
 - `internal_docs/01-strategic-planning/PILLARS-*.md` - Core strategic pillars
-- `internal_docs/01-strategic-planning/PHASE-*.md` - Phase-specific strategies
-- `internal_docs/01-strategic-planning/ROADMAP.md` - Long-term roadmap
 
 ### Research
-- `internal_docs/02-research-lab/` - Research findings and analyses
 - `expert-knowledge/` - Domain expertise and model catalogs
+- `benchmarks/` - Context engineering benchmark framework
 
 ### Operations
 - `internal_docs/03-infrastructure-ops/` - Deployment, incidents, analysis
@@ -346,8 +404,12 @@ Xoe-NovAi Foundation provides the infrastructure layer that other AI projects ca
 ### Code Quality
 - `internal_docs/04-code-quality/` - Audits, implementation guides, patterns
 
+### Strategy Documents
+- `memory_bank/strategies/UNIFIED-STRATEGY-v1.0.md` - Master strategy plan
+- `memory_bank/strategies/PROJECT-QUEUE.yaml` - Consolidated project queue
+
 ---
 
-**Last Review**: 2026-02-14  
-**Next Review**: Per phase completion  
+**Last Review**: 2026-02-19  
+**Next Review**: Per sprint completion  
 **Owner**: Architect / Project Leadership

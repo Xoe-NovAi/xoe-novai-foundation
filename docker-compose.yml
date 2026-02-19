@@ -419,11 +419,7 @@ services:
       VIKUNJA_SERVICE_PUBLICURL: http://localhost:8000/vikunja
       VIKUNJA_JWT_SECRET: ${VIKUNJA_JWT_SECRET:-changeme_jwt}
       VIKUNJA_CORS_ENABLE: "false"
-      VIKUNJA_REDIS_ENABLED: "true"
-      VIKUNJA_REDIS_HOST: redis
-      VIKUNJA_REDIS_PORT: "6379"
-      VIKUNJA_REDIS_PASSWORD: ${REDIS_PASSWORD:-changeme123}
-      VIKUNJA_REDIS_DB: "5"
+      VIKUNJA_REDIS_ENABLED: "false"
     volumes:
       - ./data/vikunja/files:/app/vikunja/files:Z
     networks:
