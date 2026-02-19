@@ -151,3 +151,6 @@ requests
 bcrypt
 pyjwt
 sqlite-utils
+sounddevice
+pyaudio
+dnspython

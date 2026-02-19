@@ -26,3 +26,24 @@ file_lists:
   minimal:
     - memory_bank/activeContext.md
     - memory_bank/progress.md
+  benchmark-e5:
+    # Full XNAi Onboarding Protocol context pack (E5 environment)
+    # Phase 1: Core Context
+    - memory_bank/INDEX.md
+    - memory_bank/activeContext.md
+    - memory_bank/progress.md
+    - memory_bank/activeContext/sprint-7-handover-2026-02-18.md
+    - memory_bank/CONTEXT.md
+    # Phase 2: Configuration Authority
+    - configs/agent-identity.yaml
+    - configs/model-router.yaml
+    - configs/free-providers-catalog.yaml
+    - .opencode/RULES.md
+    # Phase 3: Team & Architecture
+    - memory_bank/teamProtocols.md
+    - docs/architecture/XNAI-AGENT-TAXONOMY.md
+    # Phase 4: Deep Context
+    - memory_bank/PHASE-7-DEPLOYMENT-INTEGRATION.md
+    - expert-knowledge/esoteric/maat_ideals.md
+    - expert-knowledge/origins/xoe-journey-v1.0.0.md
+    - expert-knowledge/research/OPUS-ONBOARDING-CASE-STUDY-2026-02-18.md

@@ -1,0 +1,156 @@
+# ---
+# tool: opencode
+# model: claude-opus-4-6-thinking
+# account: arcana-novai
+# session_id: sprint7-opus-2026-02-19
+# version: v1.0.0
+# created: 2026-02-19
+# ---
+#
+# XNAi Context Engineering Benchmark — Scoring Rubric
+# =====================================================
+# Quantitative criteria for scoring model responses 0-10.
+
+scoring:
+  scale: "0-10 integer"
+  evaluator: "human or agent with ground-truth access"
+
+  tests:
+
+    T1_stack_identification:
+      target_level: "L1-L2"
+      max_score: 10
+      criteria:
+        0-2: "Incorrect or unable to identify the tech stack"
+        3-4: "Identifies Python + FastAPI but misses major services"
+        5-6: "Names 5+ services correctly with approximate purposes"
+        7-8: "Names all 10 services with correct purposes and ports"
+        9-10: "Names all services + identifies torch-free, sovereignty, memory, async constraints with enforcement locations"
+      required_for_max:
+        - "All 10 services named with correct technology"
+        - "Port numbers for at least 6 services"
+        - "All 4 major constraints (torch-free, <6GB, zero-telemetry, AnyIO)"
+        - "Container runtime identified as Podman (not Docker)"
+        - "Identifies UID 1001 non-root containers"
+
+    T2_service_topology:
+      target_level: "L3"
+      max_score: 10
+      criteria:
+        0-2: "Cannot describe how services connect"
+        3-4: "Identifies that Caddy proxies to backend services"
+        5-6: "Correctly maps the dependency chain (Redis → circuit breakers → RAG API)"
+        7-8: "Full topology including ports, health checks, and degradation tiers with thresholds"
+        9-10: "Identifies the Redis cascade failure pattern, UID root cause, and all 5 circuit breakers"
+      required_for_max:
+        - "Redis → Vikunja → Caddy cascade traced"
+        - "4-tier degradation with RAM thresholds (85/92/97%)"
+        - "All 5 named circuit breakers"
+        - "Redis in-memory fallback pattern"
+        - "Current service health status (Redis/Qdrant crashed)"
+
+    T3_constraint_reasoning:
+      target_level: "L3-L4"
+      max_score: 10
+      criteria:
+        0-2: "Cannot name architectural constraints"
+        3-4: "Identifies 1-2 constraints without rationale"
+        5-6: "Identifies 4+ constraints with correct rationale"
+        7-8: "Explains implications of each constraint with enforcement file references"
+        9-10: "Identifies constraint tensions (torch-free vs LoRA, memory at 94%) with specific file citations for both sides"
+      required_for_max:
+        - "Torch-free vs Phase 6F LoRA conflict identified"
+        - "94% memory vs <6GB tension identified"
+        - "Enforcement traced to RULES.md, .clinerules, Dockerfiles"
+        - "Sovereignty motivation connected to Ma'at (not just 'privacy')"
+        - "iFlow exclusion explained (CN backend)"
+
+    T4_strategic_assessment:
+      target_level: "L4"
+      max_score: 10
+      criteria:
+        0-2: "Cannot describe the project direction"
+        3-4: "Identifies that more phases are planned"
+        5-6: "Describes the 3-pillar roadmap with approximate timelines"
+        7-8: "Articulates open AND locked decisions with rationale"
+        9-10: "Identifies rate limit waterfall, triple phase numbering, fork strategy, and can explain WHY OpenCode over Crush"
+      required_for_max:
+        - "3 pillars named with week ranges"
+        - "7-step rate limit waterfall"
+        - "OpenCode vs Crush decision with Antigravity rationale"
+        - "Triple phase numbering confusion identified"
+        - "Fork strategy: fork OpenCode (not Crush)"
+        - "At least 4 open decisions listed"
+
+    T5_cross_domain_synthesis:
+      target_level: "L4-L5"
+      max_score: 10
+      criteria:
+        0-2: "Cannot connect different project domains"
+        3-4: "Notes that the project has both code and documentation"
+        5-6: "Connects configs to code behavior (model-router.yaml → routing)"
+        7-8: "Connects philosophy to technical implementation (Ma'at → code/labels) with file paths"
+        9-10: "Maps complete chain: philosophy → config → code → labels → process → criteria, with specific file references for each link"
+      required_for_max:
+        - "maat_guardrails.py identified and connected to maat_ideals.md"
+        - "Vikunja labels (maat:7-truth) connected to Ma'at ideals"
+        - "Phase completion criteria citing Ma'at ideals"
+        - "Pantheon Model → model-router.yaml connection"
+        - "Ten Pillars → architecture layers (Voice→Aether, Flesh→Earth)"
+        - "Dual Flame → fork plan (Lilith/rebellion → sovereignty)"
+
+    T6_gap_identification:
+      target_level: "L5"
+      max_score: 10
+      criteria:
+        0-2: "Cannot identify any gaps"
+        3-4: "Notes 1-2 obvious issues"
+        5-6: "Identifies 4+ gaps with file locations"
+        7-8: "Identifies architectural tensions (torch-free vs LoRA, phase numbering) with citations"
+        9-10: "Identifies 10+ gaps across domains, organized by severity, with evidence and cross-domain contradictions"
+      required_for_max:
+        - "GAP-01 (torch-free vs LoRA) with RULES.md AND pillar docs cited"
+        - "GAP-02 (Redis UID cascade) with root cause"
+        - "GAP-04 (triple phase numbering) with all 3 systems cited"
+        - "10+ total gaps identified"
+        - "Severity classification (critical/significant/minor)"
+        - "At least 2 cross-domain gaps (spanning strategy + code or philosophy + config)"
+
+  derived_metrics:
+    context_sensitivity_score:
+      formula: "(E5_total - E1_total) / E1_total"
+      interpretation: "How much the model benefits from XNAi context. Higher = more context-dependent."
+    baseline_capability_score:
+      formula: "E1_total (sum of all 6 test scores in cold start)"
+      interpretation: "Raw model performance without any context engineering. Max 60."
+    xnai_amplification_factor:
+      formula: "E5_total / E1_total"
+      interpretation: "Multiplier from full protocol. XAF of 3.0 = model is 3x better with XNAi context."
+    depth_ceiling:
+      formula: "Highest comprehension level achieved (L1-L5) in any environment"
+      interpretation: "The model's maximum achievable depth regardless of context."
+    environment_marginal_value:
+      formula: "E[n]_total - E1_total for each environment"
+      interpretation: "How many points each environment adds vs cold start."
+
+  comprehension_levels:
+    L1:
+      name: "Surface Recognition"
+      definition: "Can name the project and its primary language"
+      typical_score_range: "T1: 3-4, T2-T6: 0-2"
+    L2:
+      name: "Structural Awareness"
+      definition: "Can describe directory structure and major components"
+      typical_score_range: "T1: 5-7, T2: 3-5, T3-T6: 0-3"
+    L3:
+      name: "Functional Mapping"
+      definition: "Can explain what each service does and how they connect"
+      typical_score_range: "T1: 8+, T2: 6-8, T3: 5-7, T4-T6: 0-4"
+    L4:
+      name: "Strategic Comprehension"
+      definition: "Can articulate roadmap, constraints, trade-offs, open decisions"
+      typical_score_range: "T1-T3: 8+, T4: 7-9, T5: 5-7, T6: 4-6"
+    L5:
+      name: "Architectural Intuition"
+      definition: "Can identify non-obvious cross-domain connections, philosophical underpinnings, emergent properties"
+      typical_score_range: "T1-T4: 8+, T5: 8-10, T6: 8-10"

@@ -17,9 +17,7 @@ COPY requirements-api.in .
 
 # --- BUILD OPTIMIZATION: BuildKit Cache Mounts ---
 # FIX: Use root (uid=0) for system-wide uv pip installs to allow hardlinking to the cache.
-RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
-    --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
-    echo "📦 Installing system-level dependencies..." && \
+RUN echo "📦 Installing system-level dependencies..." && \
     uv pip install --system --verbose --upgrade pip "scikit-build-core>=0.9.2" && \
     uv pip install --system --verbose -r requirements-api.in
 
@@ -27,9 +25,7 @@ RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
 # NOTE: This step can take a long time if building from source.
 ENV CMAKE_ARGS="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS -DLLAMA_AVX2=ON -DLLAMA_FMA=ON -DLLAMA_F16C=ON -DLLAMA_VULKAN=ON" \
     FORCE_CMAKE=1
-RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
-    --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
-    echo "🔨 Building llama-cpp-python with Vulkan/OpenBLAS (this may take several minutes)..." && \
+RUN echo "🔨 Building llama-cpp-python with Vulkan/OpenBLAS (this may take several minutes)..." && \
     uv pip install --system --verbose llama-cpp-python
 
 # Copy application code

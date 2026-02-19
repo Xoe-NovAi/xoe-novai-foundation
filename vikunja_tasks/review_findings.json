@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Fix Curation Bridge Configuration",
+    "description": "Update app/XNAi_rag_app/services/curation_bridge.py to use central configuration (config.toml) instead of hardcoded dummy defaults for Vikunja URL and Token.",
+    "labels": ["bug", "refactor"],
+    "priority": 2
+  },
+  {
+    "title": "Execute Vector Migration",
+    "description": "Run scripts/migrate_to_qdrant.py to move embeddings from FAISS to Qdrant. Monitor memory usage on Ryzen 7.",
+    "labels": ["migration", "phase-6"],
+    "priority": 1
+  },
+  {
+    "title": "Complete Agent Bus Redis Migration",
+    "description": "Ensure all agents (including those using filesystem) are fully migrated to Redis Streams.",
+    "labels": ["infrastructure", "phase-7"],
+    "priority": 3
+  },
+  {
+    "title": "Fix Curation Script API",
+    "description": "scripts/curate.py fails because AsyncWebCrawler.crawl() does not exist. Update to match current crawl4ai API (likely arun() or similar).",
+    "labels": ["bug", "curation"],
+    "priority": 2
+  }
+]

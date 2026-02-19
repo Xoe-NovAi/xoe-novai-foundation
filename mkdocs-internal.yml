@@ -149,3 +149,12 @@ nav:
       - Handoffs: 06-team-knowledge/handoffs/
   
   - 📦 Archives: 07-archives/
+  
+  - 📥 Session-State Archives:
+      - Import Index: session-state-archives/2026-02-17-comprehensive-import/INDEX.md
+      - CLI Hardening (b601691a): session-state-archives/2026-02-17-comprehensive-import/copilot-session-b601691a/USER-DECISIONS-2026-02-17.md
+      - Agent Bus (600a4354): session-state-archives/2026-02-17-comprehensive-import/copilot-session-600a4354/FINAL-EXECUTIVE-SUMMARY.md
+      - Doc Audit (392fed92): session-state-archives/2026-02-17-comprehensive-import/copilot-session-392fed92/PHASE-0-EXTENDED-DOCUMENTATION-AUDIT-PLAN.md
+  
+  - 🎛️ MC Oversight:
+      - Overview: mc-oversight/README.md

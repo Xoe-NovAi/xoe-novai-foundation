@@ -1,0 +1,25 @@
+{
+  "index_type": "faiss_flat",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "model_count": 12,
+  "models_indexed": [
+    "mistral-7b-instruct-v0.2",
+    "starcoder2-3b",
+    "codellama-34b",
+    "gemma-7b-instruct",
+    "qwen-7b-chat",
+    "phi-3-medium-4k",
+    "sentence-transformers/all-minilm-l6-v2",
+    "sentence-transformers/all-mpnet-base-v2",
+    "BAAI/bge-small-en-v1.5",
+    "nomic-ai/nomic-embed-text-v1",
+    "tinyLlama-1.1b",
+    "orca-mini-3b"
+  ],
+  "status": "metadata_ready",
+  "notes": "Full FAISS index deferred to Phase C (vector generation with Qdrant integration)",
+  "created_date": "2026-02-16T21:55:51.396485Z",
+  "vector_index_location": "knowledge/vectors/model_cards.faiss",
+  "fallback_location": "qdrant_collection:model_cards"
+}

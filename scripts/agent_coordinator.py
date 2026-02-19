@@ -14,6 +14,30 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Callable
 from dataclasses import dataclass, asdict
 import threading
+# Optional infra helpers - prefer improved Redis adapter
+_redis_adapter = None
+try:
+    from scripts.agent_state_redis2 import RedisAgentStateAdapter
+    _redis_adapter = RedisAgentStateAdapter()
+except Exception:
+    try:
+        from scripts.agent_state_redis import RedisAgentStateAdapter
+        _redis_adapter = RedisAgentStateAdapter()
+    except Exception:
+        _redis_adapter = None
+
+try:
+    from scripts.consul_registration import ConsulRegistrar
+    _consul_registrar = ConsulRegistrar()
+except Exception:
+    _consul_registrar = None
+
+try:
+    from scripts.identity_ed25519 import generate_keypair_hex
+    _identity_available = True
+except Exception:
+    _identity_available = False
+
 import signal
 import sys
 
@@ -96,6 +120,28 @@ class AgentCoordinator:
         )
         self.agents[agent_name] = state
         self._save_state(agent_name, state)
+        # Generate Ed25519 identity and persist (if available)
+        if _identity_available:
+            try:
+                priv_hex, pub_hex = generate_keypair_hex()
+                iam_path = self.hub_dir.parent / "data" / "iam_agents.db"
+                iam_path.parent.mkdir(parents=True, exist_ok=True)
+                try:
+                    existing = json.loads(iam_path.read_text()) if iam_path.exists() else {}
+                except Exception:
+                    existing = {}
+                existing[agent_name] = {"public_key": pub_hex}
+                iam_path.write_text(json.dumps(existing, indent=2))
+                logger.info(f"Generated identity for agent {agent_name}")
+            except Exception as e:
+                logger.warning(f"Failed to generate identity for {agent_name}: {e}")
+        # Consul registration (best-effort)
+        if _consul_registrar:
+            try:
+                _consul_registrar.register_service(name=agent_name, service_id=agent_name, tags=capabilities)
+                logger.info(f"Registered {agent_name} with Consul")
+            except Exception as e:
+                logger.warning(f"Consul registration failed for {agent_name}: {e}")
         logger.info(f"Registered agent: {agent_name} with capabilities: {capabilities}")
     
     def register_message_handler(self, message_type: str, handler: Callable):
@@ -180,6 +226,13 @@ class AgentCoordinator:
     
     def _save_state(self, agent_name: str, state: AgentState):
         """Save agent state to file"""
+        # Try Redis adapter first
+        try:
+            if _redis_adapter:
+                _redis_adapter.save_state(agent_name, asdict(state))
+                return
+        except Exception as e:
+            logger.warning(f"Redis adapter save failed for {agent_name}: {e}")
         state_file = self.state_dir / f"{agent_name}.json"
         try:
             with open(state_file, 'w') as f:
@@ -189,6 +242,14 @@ class AgentCoordinator:
     
     def _load_state(self, agent_name: str) -> Optional[AgentState]:
         """Load agent state from file"""
+        # Try Redis adapter first
+        try:
+            if _redis_adapter:
+                data = _redis_adapter.load_state(agent_name)
+                if data:
+                    return AgentState(**data)
+        except Exception as e:
+            logger.warning(f"Redis adapter load failed for {agent_name}: {e}")
         state_file = self.state_dir / f"{agent_name}.json"
         if not state_file.exists():
             return None

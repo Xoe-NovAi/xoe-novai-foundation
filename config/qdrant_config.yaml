@@ -13,7 +13,7 @@ storage:
   on_disk: true
   
   # Snapshots for recovery
-  snapshots_path: ./snapshots
+  snapshots_path: ./storage/snapshots_v2
   
   # WAL (Write-Ahead Log) for durability
   wal:

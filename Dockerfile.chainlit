@@ -19,11 +19,9 @@ COPY requirements-chainlit.txt .
 # The previous errors showed uv running as root failing to hardlink to a cache owned by 1001.
 # FIX: Use root (0) for cache mounts during system-wide installation.
 
-RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
-    --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
-    echo "📦 Installing Chainlit UI dependencies..." && \
-    uv pip install --system --verbose --upgrade pip setuptools wheel && \
-    uv pip install --system --verbose -r requirements-chainlit.txt
+RUN echo "📦 Installing Chainlit UI dependencies..." && \
+    uv pip install --system --upgrade pip setuptools wheel && \
+    uv pip install --system -r requirements-chainlit.txt
 
 # Copy application code
 COPY app/XNAi_rag_app /app/XNAi_rag_app
