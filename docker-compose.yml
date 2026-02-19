@@ -408,6 +408,8 @@ services:
     depends_on:
       vikunja-db:
         condition: service_healthy
+    ports:
+      - "3456:3456"  # Exposed for Sovereign MC Agent direct API access
     environment:
       VIKUNJA_DATABASE_TYPE: postgres
       VIKUNJA_DATABASE_HOST: vikunja-db

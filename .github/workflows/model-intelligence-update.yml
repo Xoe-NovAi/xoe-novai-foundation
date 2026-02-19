@@ -1,0 +1,168 @@
+name: Model Intelligence Update
+
+# Runs weekly (Monday 06:00 UTC) and on manual trigger
+# Fetches latest model list from OpenRouter, detects new models,
+# commits the snapshot to the repo, and creates a GitHub Issue if
+# new models are found.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # Every Monday at 06:00 UTC
+  workflow_dispatch:        # Manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write           # To commit snapshot files
+  issues: write             # To create new-model alert issues
+
+jobs:
+  update-model-intelligence:
+    name: Fetch & Diff OpenRouter Models
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # ── 2. Set up Python ───────────────────────────────────────────────────
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # ── 3. Run model intelligence update script ────────────────────────────
+      - name: Fetch OpenRouter model list
+        id: fetch
+        run: |
+          chmod +x scripts/update-model-intelligence.sh
+          ./scripts/update-model-intelligence.sh
+          
+          # Check if new models were detected
+          DATE_SLUG=$(date -u +%Y-%m-%d)
+          NEW_MODELS_FILE="expert-knowledge/model-snapshots/new-models-${DATE_SLUG}.txt"
+          
+          if [[ -f "${NEW_MODELS_FILE}" ]]; then
+            NEW_COUNT=$(wc -l < "${NEW_MODELS_FILE}")
+            echo "new_models_count=${NEW_COUNT}" >> "$GITHUB_OUTPUT"
+            echo "new_models_file=${NEW_MODELS_FILE}" >> "$GITHUB_OUTPUT"
+            # Export the new model IDs for the issue body
+            NEW_MODELS_CONTENT=$(cat "${NEW_MODELS_FILE}")
+            echo "new_models_list<<EOF" >> "$GITHUB_OUTPUT"
+            echo "${NEW_MODELS_CONTENT}" >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
+          else
+            echo "new_models_count=0" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── 4. Commit snapshot files ────────────────────────────────────────────
+      - name: Commit model snapshot
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          DATE_SLUG=$(date -u +%Y-%m-%d)
+          
+          # Stage snapshot files (ignore if no changes)
+          git add expert-knowledge/model-snapshots/ || true
+          
+          if git diff --staged --quiet; then
+            echo "No snapshot changes to commit"
+          else
+            git commit -m "chore(model-intelligence): weekly OpenRouter snapshot ${DATE_SLUG}
+
+          Automated model intelligence update via GitHub Actions.
+          Source: https://openrouter.ai/api/v1/models
+          Run: model-intelligence-update workflow"
+            git push
+            echo "✅ Snapshot committed and pushed"
+          fi
+
+      # ── 5. Create GitHub Issue for new models ──────────────────────────────
+      - name: Create issue for new models
+        if: steps.fetch.outputs.new_models_count > 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const newModelsCount = parseInt('${{ steps.fetch.outputs.new_models_count }}');
+            const newModelsList = `${{ steps.fetch.outputs.new_models_list }}`;
+            const dateSlug = new Date().toISOString().split('T')[0];
+            
+            const modelLines = newModelsList.trim().split('\n').map(m => `- \`${m.trim()}\``).join('\n');
+            
+            const issueBody = `## 🆕 New Models Detected on OpenRouter
+            
+**Date**: ${dateSlug}  
+**Count**: ${newModelsCount} new model(s)  
+**Source**: https://openrouter.ai/api/v1/models
+
+### New Model IDs
+${modelLines}
+
+### Required Actions
+- [ ] Review each new model on OpenRouter (pricing, context, capabilities)
+- [ ] Update \`expert-knowledge/XNAI-MODEL-INTELLIGENCE-REPORT-2026-02-18.md\` with new model cards if significant
+- [ ] Update \`expert-knowledge/AGENT-CLI-MODEL-MATRIX-v3.0.0.md\` task routing if better options exist
+- [ ] Check if any new models offer FREE tier (update MODEL-DISCOVERY-SYSTEM if so)
+- [ ] Update \`.opencode/RULES.md\` confirmed models list if any are newly confirmed real
+- [ ] Consider running RAG ingestion: \`python3 app/XNAi_rag_app/model_intelligence_ingestion.py --ingest expert-knowledge/model-snapshots/openrouter-models-latest.json\`
+
+### Quick Check Command
+\`\`\`bash
+# Get details on a specific new model
+curl https://openrouter.ai/api/v1/models | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+for m in data['data']:
+    if m['id'] in ['MODEL_ID_HERE']:
+        print(json.dumps(m, indent=2))
+"
+\`\`\`
+
+### Snapshot Files
+- Latest: \`expert-knowledge/model-snapshots/openrouter-models-latest.json\`
+- Dated: \`expert-knowledge/model-snapshots/openrouter-models-${dateSlug}.json\`
+- New models list: \`expert-knowledge/model-snapshots/new-models-${dateSlug}.txt\`
+
+---
+*Generated by [model-intelligence-update workflow](../../actions/workflows/model-intelligence-update.yml)*`;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🆕 [Model Intelligence] ${newModelsCount} new OpenRouter model(s) detected — ${dateSlug}`,
+              body: issueBody,
+              labels: ['model-intelligence', 'automated'],
+            });
+            
+            console.log(`✅ Created GitHub Issue for ${newModelsCount} new models`);
+
+      # ── 6. Summary ─────────────────────────────────────────────────────────
+      - name: Workflow summary
+        run: |
+          DATE_SLUG=$(date -u +%Y-%m-%d)
+          echo "## 🔍 Model Intelligence Update Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Date**: ${DATE_SLUG}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Source**: OpenRouter API (https://openrouter.ai/api/v1/models)" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          
+          if [[ -f "expert-knowledge/model-snapshots/openrouter-models-latest.json" ]]; then
+            MODEL_COUNT=$(python3 -c "import json; d=json.load(open('expert-knowledge/model-snapshots/openrouter-models-latest.json')); print(d.get('model_count', 0))")
+            echo "**Total models on OpenRouter**: ${MODEL_COUNT}" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          
+          NEW_COUNT="${{ steps.fetch.outputs.new_models_count }}"
+          if [[ "${NEW_COUNT}" -gt 0 ]]; then
+            echo "**🆕 New models detected**: ${NEW_COUNT}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Action required**: Check GitHub Issues for model review checklist" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "**New models**: None (no changes since last run)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Snapshot Files" >> "$GITHUB_STEP_SUMMARY"
+          echo "- \`expert-knowledge/model-snapshots/openrouter-models-${DATE_SLUG}.json\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- \`expert-knowledge/model-snapshots/openrouter-models-latest.json\`" >> "$GITHUB_STEP_SUMMARY"
