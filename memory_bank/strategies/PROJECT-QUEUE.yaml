@@ -1,13 +1,14 @@
 # XNAi Ecosystem — Consolidated Project Queue
-# Version: v1.0.0
+# Version: v1.1.0
 # Created: 2026-02-19
-# Source: GLM-5 Sprint 8 planning session
+# Source: GLM-5 Sprint 8 planning session + Enhanced Strategy v1.1
 # Purpose: Single source of truth for all active tasks, ready for Vikunja import
 #
 # Structure:
-#   - Each item has: id, tier, title, source, status, labels
+#   - Each item has: id, tier, title, source, status, labels, resource_allocation
 #   - Labels use Vikunja format: tier:P0-P3, project:PROJECT-NNN, etc.
 #   - Items are organized by tier, then by project ID
+#   - Enhanced with FORGE integration and resource allocation
 
 # =============================================================================
 # TIER 1: PRODUCTION BLOCKERS (P0) — Immediate

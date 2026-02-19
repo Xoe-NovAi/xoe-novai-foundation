@@ -96,6 +96,12 @@ Terminal Agents:
 - [ ] CE-005: Esoteric layer summary in CONTEXT.md
 - [ ] CE-006: Token budget metadata for context packs
 
+### Enhanced Strategy Package (NEW - Sprint 8)
+- [x] `memory_bank/strategies/UNIFIED-STRATEGY-ENHANCED-v1.1.md` — Enhanced strategy with Vikunja integration
+- [x] `memory_bank/strategies/PROJECT-QUEUE.yaml` — Enhanced project queue with resource allocation
+- [x] `memory_bank/strategies/IMPLEMENTATION-PLAYBOOK-v1.0.md` — Comprehensive execution guidance
+- [x] `memory_bank/strategies/FINAL-STRATEGY-PACKAGE-v1.0.md` — Consolidation document for Opus review
+
 ### Incoming (User queue)
 - [ ] High priority items — architect to define
 

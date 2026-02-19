@@ -274,12 +274,14 @@
 6. **FREE-AI-PROVIDERS-COMPLETE-GUIDE.md**: Tutorial for provider selection
 7. **MkDocs superfences Mermaid config**: Verify rendering
 8. **MkDocs benchmark section**: Add `benchmarks/` to docs nav
+9. **Enhanced Strategy Package Review**: Opus review of strategy documents and approval for implementation
 
 ### Month 2
-9. **Multi-model benchmark results**: Run full 10-model battery, publish results
-10. **Benchmark v1.1.0**: Implement CE-001 through CE-006, re-tag, re-run
-11. **OpenCode fork**: Begin arcana-novai/opencode-xnai implementation
-12. **Phase 8 planning**: Redis Streams production, Qdrant migration, fine-tuning prep
+10. **Multi-model benchmark results**: Run full 10-model battery, publish results
+11. **Benchmark v1.1.0**: Implement CE-001 through CE-006, re-tag, re-run
+12. **OpenCode fork**: Begin arcana-novai/opencode-xnai implementation
+13. **Phase 8 planning**: Redis Streams production, Qdrant migration, fine-tuning prep
+14. **Strategy Implementation**: Begin Phase 1 execution with Tier 1 blockers (P-001 to P-004)
 
 ---
 
