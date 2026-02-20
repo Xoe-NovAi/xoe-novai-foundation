@@ -2,28 +2,6 @@
 
 **Last Updated**: 2026-02-19  
 **Consolidates**: projectbrief, techContext, systemPatterns, teamProtocols, environmentContext, FOUNDATION-OBSERVABILITY
-**Phase Source of Truth**: `memory_bank/progress.md`
-
----
-
-## ⚠️ PHASE NUMBERING NOTICE
-
-**IMPORTANT**: This document previously contained an outdated phase numbering system. 
-
-The **canonical phase numbering** is now defined in `memory_bank/progress.md`:
-
-| Phase | Name | Status |
-|-------|------|--------|
-| Phase 1 | Import Standardization & Module Skeleton | ✅ COMPLETE |
-| Phase 2 | Service Layer & Rootless Infrastructure | ✅ COMPLETE |
-| Phase 3 | Documentation & Stack Alignment | ✅ COMPLETE |
-| Phase 4 | Integration Testing & Stack Validation | ✅ COMPLETE |
-| Phase 5 | Sovereign Multi-Agent Cloud | ✅ COMPLETE |
-| Phase 6 | Testing & REST API | ✅ COMPLETE |
-| Phase 7 | Deployment & Agent Bus Integration | ✅ COMPLETE |
-| Phase 8 | Advanced Features | 🔵 NEXT |
-
-**Roadmap phases** (5A-8C in `internal_docs/01-strategic-planning/roadmap-v2.md`) are a **separate planning track** for future feature work, not implementation phases. Do not confuse them with the project phases above.
 
 ---
 
@@ -46,15 +24,14 @@ Build a **Sovereign AI Foundation Stack** - a production-ready, self-documenting
 - <6GB memory footprint (resource-constrained)
 - <500ms API response times (performance)
 
-### Project Phases (Source: progress.md)
+### Project Phases (Canonical Source: progress.md)
 1. ✅ **Phase 1**: Import Standardization & Module Skeleton
 2. ✅ **Phase 2**: Service Layer & Rootless Infrastructure  
 3. ✅ **Phase 3**: Documentation & Stack Alignment
 4. ✅ **Phase 4**: Integration Testing & Stack Validation
 5. ✅ **Phase 5**: Sovereign Multi-Agent Cloud
-6. ✅ **Phase 6**: Testing & REST API
-7. ✅ **Phase 7**: Deployment & Agent Bus Integration
-8. 🔵 **Phase 8**: Advanced Features (NEXT)
+6. ✅ **Phase 7**: Deployment & Agent Bus Integration
+7. 🔵 **Phase 8**: Advanced Features (NEXT)
 
 ---
 
@@ -65,8 +42,8 @@ Build a **Sovereign AI Foundation Stack** - a production-ready, self-documenting
 | Component | Technology | Version | Purpose |
 |-----------|-----------|---------|---------|
 | **Framework** | FastAPI | Latest | REST API server |
-| **Async Runtime** | asyncio | Python 3.13 | Async task management |
-| **LLM** | Qwen 0.6B | Quantized | Local language model |
+| **Async Runtime** | AnyIO | Python 3.12 | Async task management |
+| **LLM** | GGUF/ONNX | Quantized | Local language model |
 | **Vector DB** | FAISS/Qdrant | Latest | Semantic search |
 | **Cache** | Redis | 7.1.1 | State persistence, caching |
 | **Database** | PostgreSQL | 14+ | Data persistence |
@@ -74,6 +51,61 @@ Build a **Sovereign AI Foundation Stack** - a production-ready, self-documenting
 | **Container Runtime** | Podman | Latest | Rootless containers |
 | **Monitoring** | Prometheus | Latest | Metrics collection |
 | **Documentation** | MkDocs | Latest | Knowledge base |
+
+### Ecosystem Layering
+
+1. **XNAi Foundation (This Repo)**: Clean, sovereign technical stack.
+2. **Arcana-Nova (Superstructure)**: Advanced esoteric layer (Ma'at, 10 Pillars) built on top of Foundation.
+3. **xoe-novai-sync**: Synchronization hub for external AI systems.
+
+---
+
+## 🤖 TEAM PROTOCOLS
+
+### Organizational Structure
+
+```
+👤 The Architect (Human)
+├── 🤖 Grok MC (Strategic Master PM)
+├── 🤖 Grok MCA (Arcana Layer Sovereign)
+├── 🤖 Claude Opus 4.6 (Master Reviewer & Architect)
+├── 🤖 Cline (Multi-Model Engineers)
+├── 🤖 Gemini 3 Pro (Build & Recovery Agent)
+└── 🤖 OpenCode (Multi-Model Researcher)
+```
+
+### Communication Protocols
+
+#### Agent Bus (Filesystem-based)
+- **Location**: `internal_docs/communication_hub/`
+- **Messages**: JSON state files
+- **Frequency**: Real-time updates
+
+#### Memory Bank (Synchronization)
+- **Location**: `memory_bank/`
+- **Update Frequency**: Per phase completion
+- **Source of Truth**: `progress.md`
+- **Team Reference**: `activeContext.md`
+
+---
+
+## 📚 RELATED DOCUMENTATION
+
+### Strategic Planning
+- `internal_docs/01-strategic-planning/roadmap-v2.md` - Long-term feature roadmap
+- `memory_bank/strategies/UNIFIED-STRATEGY-v1.0.md` - Master strategy plan (New)
+- `memory_bank/strategies/PROJECT-QUEUE.yaml` - Consolidated project queue (New)
+
+### Research & Quality
+- `expert-knowledge/` - Domain expertise and model catalogs
+- `benchmarks/` - Context engineering benchmark framework
+- `internal_docs/04-code-quality/` - Audits and implementation guides
+
+---
+
+**Last Review**: 2026-02-19  
+**Owner**: Architect / Project Leadership
+
 
 ### System Architecture
 
