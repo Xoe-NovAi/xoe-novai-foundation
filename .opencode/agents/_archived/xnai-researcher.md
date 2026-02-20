@@ -55,5 +55,5 @@ Deep research and gap analysis agent for identifying missing capabilities and in
 - Flag security concerns
 
 ## Agent Bus Integration
-Subscribes to: `xnai:tasks` (role: researcher)
-Publishes to: `xnai:results`
+Subscribes to: `xnai:agent_bus` (role: researcher)
+Publishes to: `xnai:agent_bus`

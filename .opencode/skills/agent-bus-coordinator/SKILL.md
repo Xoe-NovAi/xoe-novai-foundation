@@ -12,8 +12,7 @@ Coordinate multiple agents via Redis Streams for parallel work execution.
 
 | Stream | Purpose |
 |--------|---------|
-| `xnai:tasks` | Task assignments |
-| `xnai:results` | Completion notifications |
+| `xnai:agent_bus` | Task assignments and results |
 | `xnai:alerts` | Error/issue broadcasts |
 | `xnai:heartbeat` | Agent health |
 
@@ -49,10 +48,10 @@ Match task requirements to agent roles:
 - **Researcher**: Gap analysis
 
 ### Step 3: Task Distribution
-1. Publish task to `xnai:tasks`
+1. Publish task to `xnai:agent_bus`
 2. Wait for agent acknowledgment
 3. Monitor execution via heartbeat
-4. Collect results from `xnai:results`
+4. Collect results from `xnai:agent_bus`
 
 ### Step 4: Coordination
 - Handle conflicts (priority-based resolution)
@@ -61,9 +60,9 @@ Match task requirements to agent roles:
 
 ## Handoff Protocol
 ```
-[Agent A] -> xnai:results (completion + context)
-[Agent B] <- xnai:tasks (next task + context)
-[Agent B] -> xnai:results (acknowledgment)
+[Agent A] -> xnai:agent_bus (completion + context)
+[Agent B] <- xnai:agent_bus (next task + context)
+[Agent B] -> xnai:agent_bus (acknowledgment)
 ```
 
 ## Error Handling

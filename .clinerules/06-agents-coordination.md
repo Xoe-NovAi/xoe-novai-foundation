@@ -33,17 +33,16 @@ Redis Streams at `localhost:6379` for inter-agent communication.
 ```
 
 ### Stream Channels
-- `xnai:tasks` - Task assignments
-- `xnai:results` - Completion notifications
+- `xnai:agent_bus` - Task assignments and results
 - `xnai:alerts` - Error/issue broadcasts
 - `xnai:heartbeat` - Agent health
 
 ## Coordination Patterns
 
 ### Handoff Protocol
-1. Agent publishes task completion to `xnai:results`
+1. Agent publishes task completion to `xnai:agent_bus`
 2. Includes context summary for next agent
-3. Next agent acknowledges via `xnai:tasks`
+3. Next agent acknowledges via `xnai:agent_bus`
 
 ### Conflict Resolution
 1. Multiple agents claim same task
