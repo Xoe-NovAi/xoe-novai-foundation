@@ -128,6 +128,56 @@ if [ -f "data/iam_agents.db" ]; then
     echo -e "${GREEN}data/iam_agents.db ownership set${NC}"
 fi
 
+# NOTE: Rootless Podman uses UID mapping (subuid/subgid).
+# Container UID 1001 maps to host UID = 1001 + subuid_offset.
+# We set host ownership to 1001 because docker-compose.yml sets
+# user: "${APP_UID:-1001}:${APP_GID:-1001}"
+
+# Fix Caddy logs
+echo ""
+echo "=== Caddy ==="
+fix_directory "logs/caddy" $APP_UID $APP_GID false
+
+# Fix Curation Worker
+echo ""
+echo "=== Curation Worker ==="
+fix_directory "data/curations" $APP_UID $APP_GID false
+fix_directory "logs/curations" $APP_UID $APP_GID false
+
+# Fix Prometheus metrics
+echo ""
+echo "=== Prometheus ==="
+fix_directory "data/prometheus-multiproc" $APP_UID $APP_GID false
+
+# Fix Cache
+echo ""
+echo "=== Cache ==="
+fix_directory "data/cache" $APP_UID $APP_GID false
+
+# Fix Library and Knowledge (read-only OK, but containers need access)
+echo ""
+echo "=== Library & Knowledge ==="
+if [ -d "library" ]; then
+    sudo chown -R $APP_UID:$APP_GID library
+    echo -e "${GREEN}library ownership set${NC}"
+fi
+if [ -d "knowledge" ]; then
+    sudo chown -R $APP_UID:$APP_GID knowledge
+    echo -e "${GREEN}knowledge ownership set${NC}"
+fi
+
+# Fix Vikunja PostgreSQL (runs as postgres user UID 999 inside container)
+echo ""
+echo "=== Vikunja PostgreSQL ==="
+if [ -d "data/vikunja/db" ]; then
+    # Use podman unshare to handle rootless UID mapping correctly for postgres (999)
+    echo -e "${YELLOW}Setting ownership for Vikunja DB via podman unshare (UID 999)${NC}"
+    podman unshare chown -R 999:999 data/vikunja/db || \
+    sudo chown -R 999:999 data/vikunja/db 2>/dev/null || \
+    sudo chown -R $APP_UID:$APP_GID data/vikunja/db
+    echo -e "${GREEN}data/vikunja/db ownership processed${NC}"
+fi
+
 echo ""
 echo -e "${GREEN}=== Permissions Fixed ===${NC}"
 echo ""
