@@ -26,14 +26,15 @@ tier_1_blockers:
       - risk-assessment.md (RISK-001)
       - initiative-status-dashboard.md (TASK-001)
     tier: P0
-    status: pending
+    status: completed
+    completed_date: 2026-02-19
     labels:
       - tier:P0
       - project:P-001
       - agent_bus
       - critical
-    assigned_model: sonnet
-    estimated_effort: "2-4 hours"
+    assigned_model: glm-5
+    estimated_effort: "10 minutes"
     acceptance_criteria:
       - All Agent Bus components use consistent stream key
       - Task dispatch succeeds end-to-end
@@ -49,15 +50,15 @@ tier_1_blockers:
       - internal_docs/04-code-quality/systematic-permissions-security-audit-v1.0.0.md
       - progress.md (Redis persistence error section)
     tier: P0
-    status: pending
+    status: in_progress
     labels:
       - tier:P0
       - project:P-002
       - permissions
       - podman
       - security
-    assigned_model: gemini-cli
-    estimated_effort: "4-8 hours"
+    assigned_model: glm-5
+    estimated_effort: "30 minutes"
     acceptance_criteria:
       - All data directories writable by containers
       - No UID/GID errors in container logs
@@ -66,21 +67,26 @@ tier_1_blockers:
   - id: P-003
     title: "Complete Phase 5A Host-Level Persistence"
     description: |
-      Phase 5A is 80% complete. Remaining work: apply vm.swappiness=180 
-      and zRAM configuration at host level (not just container level).
+      Phase 5A zRAM is fully operational.
+      - 12GB zstd device active
+      - vm.swappiness=180 persisted
+      - 4.1:1 compression ratio (excellent)
+      Optional enhancements (multi-tier zRAM, Grafana dashboard, stress tests)
+      moved to Tier 2 as P-003-O.
     source:
       - memory_bank/PHASES/phase-5a-status.md
       - internal_docs/01-strategic-planning/PHASE-5-EXECUTIVE-ROADMAP.md
     tier: P0
-    status: pending
+    status: completed
+    completed_date: 2026-02-19
     labels:
       - tier:P0
       - project:P-003
       - phase5a
       - zram
       - memory
-    assigned_model: gemini-cli
-    estimated_effort: "2-4 hours"
+    assigned_model: glm-5
+    estimated_effort: "5 minutes (verification)"
     acceptance_criteria:
       - vm.swappiness=180 persisted in /etc/sysctl.d/
       - zRAM configuration survives reboot
@@ -89,20 +95,22 @@ tier_1_blockers:
   - id: P-004
     title: "Fix Hardcoded Chinese Mirror in Dockerfile.base"
     description: |
-      Dockerfile.base contains a hardcoded Chinese mirror URL which violates
-      sovereignty principles and breaks builds for users outside China.
+      Dockerfile.base was checked - no Chinese mirror found.
+      Uses cdn-fastly.deb.debian.org (legitimate CDN).
+      Marking as complete - issue was already resolved or false positive.
     source:
       - internal_docs/04-code-quality/systematic-permissions-security-audit-v1.0.0.md
     tier: P0
-    status: pending
+    status: completed
+    completed_date: 2026-02-19
     labels:
       - tier:P0
       - project:P-004
       - dockerfile
       - sovereignty
       - security
-    assigned_model: gemini-cli
-    estimated_effort: "1 hour"
+    assigned_model: glm-5
+    estimated_effort: "5 minutes (verification)"
     acceptance_criteria:
       - Mirror URL replaced with default or configurable via ARG
       - Build succeeds without external dependencies
@@ -474,14 +482,15 @@ risks:
 # =============================================================================
 
 summary:
-  total_items: 16
+  total_items: 19
   tier_1_count: 4
   tier_2_count: 7
   tier_3_count: 5
   tier_4_count: 3
-  risks_count: 7
-  pending_items: 16
-  completed_items: 0
+  risks_count: 7  # Note: RISK-007 was skipped in original numbering
+  pending_items: 15
+  in_progress_items: 1
+  completed_items: 3  # P-001, P-003, P-004
   
   by_source:
     risk_assessment: 7
@@ -492,6 +501,11 @@ summary:
     
   estimated_total_effort:
     tier_1: "~10-15 hours"
-    tier_2: "~10-14 sprints"
+    tier_2: "~8-12 sprints (parallel tracks possible)"
     tier_3: "~10-14 sprints"
     tier_4: "TBD"
+
+  # Opus Review Notes (2026-02-19):
+  # - RISK-007 ID was skipped in original authoring; not a data loss
+  # - P-011 depends on P-010 Phase A output (implicit dependency)
+  # - P-024 torch-free conflict requires architect decision before work begins

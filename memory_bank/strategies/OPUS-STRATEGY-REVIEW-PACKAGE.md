@@ -117,7 +117,7 @@ All 13 FORGE tasks properly mapped to appropriate tiers:
 - **P-024**: Phase 6 Fine-Tuning Prep
 
 ### **TIER 4: STRATEGIC GROWTH (P3) — Future**
-- **P-030**: Arcana-Nova Stack
+- **P-030**: Arcana-Nova Stack (Future advanced esoteric layer)
 - **P-031**: Phase 8 Market Positioning
 - **P-032**: Specialized Stacks
 

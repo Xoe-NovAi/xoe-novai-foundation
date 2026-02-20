@@ -272,10 +272,10 @@ P-024: Phase 6 Fine-Tuning Prep
 ```
 OBJECTIVE: Strategic growth and positioning
 
-P-030: Arcana-Nova Stack
+P-030: Arcana-Nova Stack (Future Advanced Esoteric Layer)
 ├── Design esoteric layer architecture
-├── Create separate repository
-├── Define interface with Foundation
+├── Create separate repository (NOT in this repo)
+├── Define interface with Foundation stack
 └── Plan integration strategy
 
 P-031: Phase 8 Market Positioning
