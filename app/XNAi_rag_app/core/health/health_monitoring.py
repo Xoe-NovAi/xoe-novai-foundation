@@ -4,11 +4,12 @@ Provides comprehensive health monitoring with Prometheus metrics integration
 and detailed service diagnostics for the Xoe-NovAi Foundation Stack.
 """
 
-import asyncio
+import anyio
+import asyncio  # Still needed for Task type and create_task (migrate to TaskGroups later)
 import logging
 import time
 import psutil
-from typing import Dict, Any, List, Optional, Callable
+from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, asdict
 from datetime import datetime, timedelta
 from collections import deque
@@ -139,11 +140,12 @@ class EnhancedHealthChecker(HealthChecker):
         """Stop health monitoring"""
         logger.info("Stopping enhanced health monitoring")
 
+        cancelled_exc = anyio.get_cancelled_exc_class()
         if self._health_check_task:
             self._health_check_task.cancel()
             try:
                 await self._health_check_task
-            except asyncio.CancelledError:
+            except cancelled_exc:
                 pass
             self._health_check_task = None
 
@@ -151,7 +153,7 @@ class EnhancedHealthChecker(HealthChecker):
             self._metrics_task.cancel()
             try:
                 await self._metrics_task
-            except asyncio.CancelledError:
+            except cancelled_exc:
                 pass
             self._metrics_task = None
 
@@ -160,12 +162,12 @@ class EnhancedHealthChecker(HealthChecker):
         while True:
             try:
                 await self._perform_enhanced_health_checks()
-                await asyncio.sleep(self.config.get("interval_seconds", 30))
-            except asyncio.CancelledError:
+                await anyio.sleep(self.config.get("interval_seconds", 30))
+            except anyio.get_cancelled_exc_class():
                 break
             except Exception as e:
                 logger.error(f"Health check loop error: {e}")
-                await asyncio.sleep(5)  # Short delay before retry
+                await anyio.sleep(5)  # Short delay before retry
 
     async def _perform_enhanced_health_checks(self):
         """Perform enhanced health checks with detailed metrics"""
@@ -518,12 +520,12 @@ class EnhancedHealthChecker(HealthChecker):
         while True:
             try:
                 await self._collect_system_metrics()
-                await asyncio.sleep(10)  # Collect system metrics every 10 seconds
-            except asyncio.CancelledError:
+                await anyio.sleep(10)
+            except anyio.get_cancelled_exc_class():
                 break
             except Exception as e:
                 logger.error(f"Metrics collection error: {e}")
-                await asyncio.sleep(5)
+                await anyio.sleep(5)
 
     async def _collect_system_metrics(self):
         """Collect system-level metrics"""
@@ -558,7 +560,7 @@ class EnhancedHealthChecker(HealthChecker):
         except Exception as e:
             logger.error(f"System metrics collection failed: {e}")
 
-    def get_health_summary(self) -> Dict[str, Any]:
+    async def get_health_summary(self) -> Dict[str, Any]:
         """Get comprehensive health summary"""
         summary = {
             "timestamp": time.time(),
@@ -594,7 +596,7 @@ class EnhancedHealthChecker(HealthChecker):
 
         # Circuit breaker status
         try:
-            summary["circuit_breakers"] = asyncio.run(get_circuit_breaker_status())
+            summary["circuit_breakers"] = await get_circuit_breaker_status()
         except Exception as e:
             logger.warning(f"Failed to get circuit breaker status: {e}")
 
