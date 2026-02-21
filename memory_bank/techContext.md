@@ -25,7 +25,7 @@ version: "1.0"
 | **Database** | PostgreSQL | 14+ | Data persistence |
 | **Reverse Proxy** | Caddy | 2.8 | Load balancing, routing |
 | **Container Runtime** | Podman | Latest | Rootless containers |
-| **Monitoring** | Prometheus | Latest | Metrics collection |
+| **Metrics** | VictoriaMetrics | Latest | Time-series storage (3-4x more efficient than Prometheus) |
 | **Documentation** | MkDocs | 1.6.1 + Material 10.0.2 | Knowledge base |
 
 ## Stack Constraints
@@ -43,7 +43,7 @@ version: "1.0"
 |---------|------|---------|
 | Caddy (main proxy) | 8000 | Public API |
 | MkDocs (internal) | 8001 | Internal KB |
-| Prometheus | 9090 | Metrics |
+| VictoriaMetrics | 8428 | Time-series metrics |
 | Redis | 6379 | Cache/state |
 | PostgreSQL | 5432 | Primary DB |
 | Semantic Search | 8000 | RAG queries |
