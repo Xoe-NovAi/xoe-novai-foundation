@@ -68,6 +68,43 @@ services:
     restart: unless-stopped
 
   # ==========================================================================
+  # VICTORIAMETRICS SERVICE - Time-Series Metrics Storage
+  # ==========================================================================
+  # Replaces Prometheus for 3-4x memory efficiency
+  # 10x compression, air-gap compatible, single binary
+  # ==========================================================================
+  victoriametrics:
+    image: victoriametrics/victoria-metrics:latest
+    container_name: xnai_victoriametrics
+    init: true
+    ports:
+      - "8428:8428"
+    volumes:
+      - victoriametrics-data:/victoria-metrics-data:Z
+      - ./configs/victoriametrics:/etc/victoriametrics:ro,Z
+    command:
+      - "-storageDataPath=/victoria-metrics-data"
+      - "-retentionPeriod=365d"
+      - "-httpListenAddr=:8428"
+      - "-memory.allowedPercent=80"
+      - "-search.maxSeries=1000000"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8428/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - xnai_network
+    restart: unless-stopped
+
+  # ==========================================================================
   # QDRANT SERVICE - Vector Database (Phase 3)
   # ==========================================================================
   qdrant:
@@ -462,6 +499,10 @@ networks:
   xnai_network:
     driver: bridge
     name: xnai_network
+
+volumes:
+  victoriametrics-data:
+    name: xnai_victoriametrics_data
 
 secrets:
   redis_password:
