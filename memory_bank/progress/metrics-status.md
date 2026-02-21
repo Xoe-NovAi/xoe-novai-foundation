@@ -26,7 +26,8 @@ version: "1.0"
 | API (FastAPI) | 🟢 | 95% | v0.9 |
 | Chainlit UI | 🟢 | 100% | v0.9 |
 | VictoriaMetrics | 🟢 | 100% | v1.0 (Replaces Prometheus) |
-| Monitoring Stack | 🟢 | 100% | v1.0 (VM operational) |
+| Grafana | 🟢 | 100% | v11.4.0 (5 dashboards) |
+| Monitoring Stack | 🟢 | 100% | v1.0 (VM + Grafana) |
 | Caddy | 🟢 | 90% | v2.8 (log warnings) |
 | **Production Stack** | **🟢** | **95%** | **Fresh Build** |
 
