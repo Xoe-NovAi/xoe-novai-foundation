@@ -27,7 +27,8 @@ version: "1.0"
 | Chainlit UI | 🟢 | 100% | v0.9 |
 | VictoriaMetrics | 🟢 | 100% | v1.0 (Replaces Prometheus) |
 | Grafana | 🟢 | 100% | v11.4.0 (5 dashboards) |
-| Monitoring Stack | 🟢 | 100% | v1.0 (VM + Grafana) |
+| MCP Server | 🟢 | 100% | v0.1.0 (FastMCP 3.0) |
+| Monitoring Stack | 🟢 | 100% | v1.0 (VM + Grafana + MCP) |
 | Caddy | 🟢 | 90% | v2.8 (log warnings) |
 | **Production Stack** | **🟢** | **95%** | **Fresh Build** |
 

@@ -34,22 +34,24 @@ version: "1.0"
 | 2.3 | Block Detail Dashboard | ✅ Complete | Drill-down with variables |
 | 2.4 | Alerting Rules | ✅ Complete | 3 rules configured |
 
-### Week 3: MCP Server (IN PROGRESS)
+### Week 3: MCP Server ✅ COMPLETE
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 3.1 | Server Skeleton | ⏳ Pending | FastMCP framework |
-| 3.2 | Resource Implementation | ⏳ Pending | URI scheme memory:// |
-| 3.3 | Tool Implementation | ⏳ Pending | 5 memory tools |
-| 3.4 | File Watcher | ⏳ Pending | Real-time notifications |
-| 3.5 | Client Configuration | ⏳ Pending | Claude/Cline config |
+| 3.1 | Server Skeleton | ✅ Complete | FastMCP 3.0 |
+| 3.2 | Resource Implementation | ✅ Complete | memory://bank/{path*} |
+| 3.3 | Tool Implementation | ✅ Complete | 4 tools |
+| 3.4 | File Watcher | ✅ Complete | Built-in notifications |
+| 3.5 | Client Configuration | ✅ Complete | 3 clients |
 
-### Week 4-6: Planning
+### Week 4-5: A2A Protocol (IN PROGRESS)
 
-| Week | Focus | Status |
-|------|-------|--------|
-| 4-5 | A2A Protocol | ⏳ Pending |
-| 6 | Testing & Validation | ⏳ Pending |
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 4.1 | A2A SDK Setup | ⏳ Pending | pip install a2a-sdk |
+| 4.2 | Agent Card Definition | ⏳ Pending | Capability advertisement |
+| 4.3 | Hybrid Bus Adapter | ⏳ Pending | Bridge A2A + legacy |
+| 4.4 | Task Store Migration | ⏳ Pending | InMemoryTaskStore
 
 ### Other Sprint 8 Tasks
 
