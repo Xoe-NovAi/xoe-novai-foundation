@@ -1,7 +1,8 @@
 # Memory Bank Navigation Index
 
-**Last Updated**: 2026-02-17  
+**Last Updated**: 2026-02-20  
 **Status**: Active  
+**Architecture**: MemGPT-style hierarchical memory  
 **Purpose**: Single source of truth for Xoe-NovAi Foundation project status and coordination
 
 ---
@@ -11,60 +12,40 @@
 ### 🎯 IF YOU NEED TO...
 | Need | File | Update Frequency | Purpose |
 |------|------|------------------|---------|
-| See overall project status | `progress.md` | After each phase | Phases 1-5+, milestones, metrics, roadmap |
-| Understand project context | `CONTEXT.md` | Monthly | Mission, constraints, tech stack, team structure |
+| See overall project status | `progress.md` | After each phase | Phases 1-7+, milestones, metrics, roadmap |
+| Understand project mission | `projectbrief.md` | Project start | Mission, values, constraints, scope |
+| Understand why XNAi exists | `productContext.md` | Monthly | Problems solved, UX goals, success metrics |
+| Learn architecture patterns | `systemPatterns.md` | As needed | Design patterns, decisions, code standards |
+| Check tech stack | `techContext.md` | As needed | Technologies, dependencies, setup |
 | Check what's currently being worked on | `activeContext.md` | Weekly | Active priorities, work streams, blockers |
 | Learn project operations | `OPERATIONS.md` | As-needed | MkDocs, build system, common tasks |
 | Review Phase N completion | `PHASES/phase-n-*.md` | Per phase | Objectives, deliverables, tests, handoff notes |
 | Understand team coordination | `teamProtocols.md` | Monthly | Agent roles, workflows, communication protocols |
+| Search historical context | `recall/` | As needed | Sessions, decisions, handovers |
+| Find reference material | `archival/` | As needed | Research, benchmarks, strategies |
 
 ---
 
 ## 📚 CORE MEMORY BANK FILES
 
-### 1. **progress.md** ⭐ PRIMARY
-- **Type**: Status tracking (source of truth)
-- **Update**: Every phase completion
-- **Contains**: Phase status, milestones, metrics, health dashboard, recent achievements
-- **Read if**: You want overall project status or completion metrics
-- **Use for**: Team syncs, reporting, milestones
+### Core Memory Blocks (Always Loaded)
 
-### 2. **CONTEXT.md** (Consolidated)
-- **Type**: Strategic & technical reference
-- **Update**: Monthly or on major architectural change
-- **Contains**: 
-  - Mission, vision, constraints
-  - Technical stack and architecture decisions
-  - System patterns and design patterns
-  - Observability framework
-  - Development environment setup
-- **Read if**: You need background on project decisions
-- **Use for**: New team member onboarding, architecture reviews
+| Block | File | Purpose | Size Limit |
+|-------|------|---------|------------|
+| Project Brief | `projectbrief.md` | Mission, values, constraints | 3KB |
+| Product Context | `productContext.md` | Why XNAi, problems solved, goals | 4KB |
+| System Patterns | `systemPatterns.md` | Architecture, design patterns | 8KB |
+| Tech Context | `techContext.md` | Stack, dependencies, setup | 5KB |
+| Active Context | `activeContext.md` | Current sprint, priorities | 5KB |
+| Progress | `progress.md` | Phase status, milestones | 6KB |
 
-### 3. **activeContext.md**
-- **Type**: Active work tracking
-- **Update**: Weekly
-- **Contains**: Current priorities (ranked P0-P8), active work streams, blockers, team roster
-- **Read if**: You want to know current focus areas or what's blocking progress
-- **Use for**: Daily standups, handoffs between team members
+### Block Configuration
 
-### 4. **OPERATIONS.md** (Consolidated)
-- **Type**: How-to guide
-- **Update**: As-needed
-- **Contains**:
-  - MkDocs build/serve commands
-  - Common operations (test, build, deploy)
-  - Troubleshooting procedures
-  - Agent capabilities reference
-- **Read if**: You need to run a command or do an operation
-- **Use for**: Quick reference while developing
-
-### 5. **teamProtocols.md**
-- **Type**: Team coordination
-- **Update**: When team changes or workflows change
-- **Contains**: Agent roles, reporting structure, communication protocols, workflows
-- **Read if**: You're new to the team or need to understand coordination
-- **Use for**: Understanding who does what, handoff procedures
+See `BLOCKS.yaml` for:
+- Size limits and descriptions
+- Update triggers and relationships
+- Memory tool configurations
+- MCP server settings
 
 ---
 
@@ -82,6 +63,53 @@ Located in: `memory_bank/PHASES/`
 | `phase-5a-status.md` | zRAM optimization deployment | ✅ Complete |
 
 **Use**: Reference specific phase completion details, test results, blockers
+
+---
+
+## 📋 STRATEGIES DIRECTORY
+
+Located in: `memory_bank/strategies/`
+
+| File | Purpose | Status |
+|------|---------|--------|
+| `UNIFIED-STRATEGY-v1.0.md` | Master strategy plan | Active |
+| `PROJECT-QUEUE.yaml` | Consolidated project queue | Active |
+| `IMPLEMENTATION-PLAYBOOK-v1.0.md` | Phase execution playbook | Active |
+| `OPUS-STRATEGIC-REVIEW-2026-02-19.md` | Architecture review | Active |
+| `OPUS-TOKEN-STRATEGY.md` | Token optimization strategy | Active |
+| `P-010-AUDIT-FINDINGS.md` | Code audit findings | Active |
+| `AI-ASSISTANT-QUICKSTART.md` | Session startup protocol | Active |
+| `TIER2-DISCOVERY-AUDIT-TASK.md` | Phase A discovery task | Active |
+
+**Use**: Strategic planning, architectural decisions, roadmap reference
+
+---
+
+## 🔄 RECALL TIER (Searchable History)
+
+Located in: `memory_bank/recall/`
+
+| Directory | Purpose | Retention |
+|-----------|---------|-----------|
+| `conversations/` | Session logs | 90 days |
+| `decisions/` | Architecture decisions | Permanent |
+| `handovers/` | Agent handoff documents | 30 days |
+
+**Use**: Search for historical context, past decisions, session continuity
+
+---
+
+## 🗄️ ARCHIVAL TIER (Long-Term Storage)
+
+Located in: `memory_bank/archival/`
+
+| Directory | Purpose | Source |
+|-----------|---------|--------|
+| `research/` | Research findings | `expert-knowledge/` |
+| `benchmarks/` | Benchmark results | `benchmarks/` |
+| `strategies/` | Strategic documents | `strategies/` |
+
+**Use**: Semantic search for reference material, deep research
 
 ---
 
@@ -159,24 +187,28 @@ See: `expert-knowledge/`
 1. Read: `progress.md` - overall status
 2. Check: `activeContext.md` - current priorities
 3. Review: `PHASES/phase-n-status.md` for specific phase details
+4. Strategic: `strategies/UNIFIED-STRATEGY-v1.0.md` - master plan
 
 ### 🤖 AI Agent / Team Member
-1. Read: `teamProtocols.md` - understand your role
-2. Check: `activeContext.md` - what are you assigned to?
-3. Reference: `OPERATIONS.md` - how to run commands
-4. Details: `PHASES/phase-n-*.md` - phase-specific docs
+1. Read: `projectbrief.md` - understand mission (2 min)
+2. Read: `techContext.md` - stack constraints (2 min)
+3. Check: `activeContext.md` - what are you assigned to?
+4. Reference: `OPERATIONS.md` - how to run commands
+5. Details: `PHASES/phase-n-*.md` - phase-specific docs
 
 ### 🆕 New Team Member
-1. Read: `CONTEXT.md` - understand project (5 min)
-2. Read: `teamProtocols.md` - understand team (5 min)
-3. Read: `OPERATIONS.md` - learn procedures (5 min)
-4. Read: `progress.md` - see current status (5 min)
-5. Total onboarding: ~20 minutes
+1. Read: `projectbrief.md` - understand project (2 min)
+2. Read: `productContext.md` - understand why (2 min)
+3. Read: `techContext.md` - understand stack (2 min)
+4. Read: `teamProtocols.md` - understand team (3 min)
+5. Read: `progress.md` - see current status (3 min)
+6. Total onboarding: ~15 minutes
 
 ### 🔍 Researcher / Analyst
 1. Check: `activeContext.md` - research requests and queue
-2. Review: `expert-knowledge/research/` - research system
-3. Reference: `internal_docs/02-research-lab/` - research templates
+2. Search: `recall/` - historical context
+3. Search: `archival/` - reference material
+4. Reference: `expert-knowledge/` - domain expertise
 
 ---
 
@@ -262,27 +294,71 @@ See `progress.md` for:
 
 ## 🎯 CURRENT STATUS AT A GLANCE
 
-- **Latest Phase**: Phase 4 - Integration Testing & Stack Validation
-- **Current Sub-Phase**: Phase 4.1 - Service Integration Testing (Commencing)
+- **Latest Phase**: Phase 7 Complete, Phase 8 Starting
 - **Overall Health**: 95% ✅
-- **Latest Update**: 2026-02-14 10:20 UTC
+- **Latest Update**: 2026-02-20
 - **Critical Blockers**: None
-- **Active Work Streams**: 8 (See activeContext.md)
+- **Active Work Streams**: Sprint 8 (AnyIO Migration, Memory Bank Enhancement)
+- **Memory Architecture**: MemGPT-style hierarchical (Core → Recall → Archival)
+
+---
+
+## 🏗️ MEMORY ARCHITECTURE
+
+XNAi uses a **MemGPT-style hierarchical memory architecture**:
+
+```
+┌─────────────────────────────────────────────────────┐
+│            CORE MEMORY (Always Loaded)              │
+│  projectbrief • productContext • systemPatterns    │
+│  techContext • activeContext • progress            │
+│  Budget: ~25K tokens (~100KB chars)                 │
+└─────────────────────────────────────────────────────┘
+                         ↓ evict/summarize
+┌─────────────────────────────────────────────────────┐
+│            RECALL TIER (Searchable)                  │
+│  Session logs • Decisions • Handovers              │
+│  recall/ directory • 90-day retention               │
+│  Indexed for semantic search                        │
+└─────────────────────────────────────────────────────┘
+                         ↓ archive
+┌─────────────────────────────────────────────────────┐
+│           ARCHIVAL TIER (On-Demand)                 │
+│  Research • Benchmarks • Strategies                 │
+│  archival/ directory • Permanent storage            │
+│  Retrieved via semantic search                      │
+└─────────────────────────────────────────────────────┘
+```
+
+### Memory Tools (via BLOCKS.yaml)
+
+| Tool | Purpose |
+|------|---------|
+| `memory_replace` | Surgical edit within a block |
+| `memory_append` | Add content to a block |
+| `memory_rethink` | Replace entire block content |
+| `compile_context` | Generate compiled context for LLM |
+
+### MCP Integration (Planned)
+
+- URI scheme: `memory://bank/{path}`
+- Real-time subscriptions for file changes
+- Standardized resource discovery
 
 ---
 
 ## 📞 Need Help?
 
-1. **Can't find something?** → Check "Where to Find What" table above
+1. **Can't find something?** → Check tables above or see `BLOCKS.yaml`
 2. **Need operation instructions?** → See `OPERATIONS.md`
 3. **Need team info?** → See `teamProtocols.md`
 4. **Need phase details?** → See `PHASES/phase-n-*.md`
-5. **Need background?** → See `CONTEXT.md`
+5. **Need background?** → See `projectbrief.md` and `productContext.md`
 6. **Still stuck?** → Check `internal_docs/` for detailed docs
 
 ---
 
-**Next Review**: 2026-02-24  
-**Last Reviewed**: 2026-02-17  
-**Maintained By**: Project Coordinator  
-**Version**: 1.1 (2026-02-17)
+**Next Review**: 2026-02-27
+**Last Reviewed**: 2026-02-20
+**Maintained By**: Project Coordinator
+**Version**: 2.0 (MemGPT Architecture)
