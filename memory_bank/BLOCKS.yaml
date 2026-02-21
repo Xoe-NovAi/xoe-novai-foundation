@@ -109,17 +109,87 @@ core_blocks:
     label: "progress"
     file: "progress.md"
     description: |
-      Phase completion status, milestones, metrics dashboard, and known issues.
-      Historical record of what's been accomplished and what remains.
+      Current sprint status with links to detailed sub-blocks.
+      Entry point for progress tracking - actual data in progress/ subdirectory.
+    limit_chars: 3000
+    limit_tokens: ~750
+    read_only: false
+    tier: core
+    priority: 2
+    update_trigger: "Per sprint/phase completion"
+    relationships:
+      - progress/milestones.md: "phase completions"
+      - progress/metrics-status.md: "health dashboard"
+      - progress/issues-backlog.md: "known issues"
+      - progress/planning.md: "roadmap"
+      - progress/history/: "achievements archive"
+
+# =============================================================================
+# PROGRESS SUB-BLOCKS
+# =============================================================================
+# Detailed progress data split from original progress.md
+
+progress_blocks:
+  
+  progress_milestones:
+    label: "progress_milestones"
+    file: "progress/milestones.md"
+    description: |
+      Phase completions and major achievements.
+      Sprint deliverables and milestone records.
     limit_chars: 6000
     limit_tokens: ~1500
     read_only: false
     tier: core
     priority: 2
-    update_trigger: "Per phase completion"
-    relationships:
-      - activeContext.md: "informs"
-      - PHASES/*.md: "detailed in"
+    
+  progress_metrics:
+    label: "progress_metrics"
+    file: "progress/metrics-status.md"
+    description: |
+      System status, component health, and success metrics.
+      Component status tables and compliance checklist.
+    limit_chars: 4000
+    limit_tokens: ~1000
+    read_only: false
+    tier: core
+    priority: 2
+    
+  progress_issues:
+    label: "progress_issues"
+    file: "progress/issues-backlog.md"
+    description: |
+      Known issues, research requests, and backlog items.
+      Active work streams and current blockers.
+    limit_chars: 4000
+    limit_tokens: ~1000
+    read_only: false
+    tier: core
+    priority: 2
+    
+  progress_planning:
+    label: "progress_planning"
+    file: "progress/planning.md"
+    description: |
+      Next steps, roadmap, and Phase 5+ planning.
+      Sprint backlog and execution schedule.
+    limit_chars: 3000
+    limit_tokens: ~750
+    read_only: false
+    tier: core
+    priority: 2
+    
+  progress_history:
+    label: "progress_history"
+    file: "progress/history/2026-02-achievements.md"
+    description: |
+      Recent achievements and historical milestones.
+      Achievement archive by date.
+    limit_chars: 8000
+    limit_tokens: ~2000
+    read_only: true
+    tier: recall
+    priority: 3
 
 # =============================================================================
 # OPERATIONAL BLOCKS (Loaded on-demand)
