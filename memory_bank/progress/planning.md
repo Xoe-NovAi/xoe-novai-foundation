@@ -13,11 +13,31 @@ version: "1.0"
 
 # Planning & Next Steps
 
-## Immediate (Sprint 8)
+## Immediate (Sprint 8) - Unified Execution Strategy
+
+**6-Week Implementation**: MemGPT Architecture, VictoriaMetrics, Grafana, MCP, A2A
+
+### Week 1: VictoriaMetrics Foundation (IN PROGRESS)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 1.1 | VM Service Startup | ✅ Complete | Health OK, port 8428 |
+| 1.2 | Memory Tools Integration | 🔄 Next | Connect metrics_collector.py |
+| 1.3 | Redis + VM Split | ⏳ Pending | Real-time + historical |
+
+### Week 2-6: Planning
+
+| Week | Focus | Status |
+|------|-------|--------|
+| 2 | Grafana Dashboards | ⏳ Pending |
+| 3 | MCP Server | ⏳ Pending |
+| 4-5 | A2A Protocol | ⏳ Pending |
+| 6 | Testing & Validation | ⏳ Pending |
+
+### Other Sprint 8 Tasks
 
 | # | Task | Owner | Status |
 |---|------|-------|--------|
-| 1 | Architect's high-priority items | Architect | Pending definition |
 | 2 | Cognitive enhancements CE-001–CE-006 | Any Agent | From benchmark analysis |
 | 3 | XNAI-STACK-OVERVIEW.md | Any | C4 Mermaid diagram |
 | 4 | README.md update | Any | Project overview refresh |

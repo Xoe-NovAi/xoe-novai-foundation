@@ -25,7 +25,8 @@ version: "1.0"
 | Vikunja PM | 🟡 | 85% | v1.0 (Redis disabled) |
 | API (FastAPI) | 🟢 | 95% | v0.9 |
 | Chainlit UI | 🟢 | 100% | v0.9 |
-| Monitoring Stack | 🟡 | 75% | v1.0 (Metrics disabled) |
+| VictoriaMetrics | 🟢 | 100% | v1.0 (Replaces Prometheus) |
+| Monitoring Stack | 🟢 | 100% | v1.0 (VM operational) |
 | Caddy | 🟢 | 90% | v2.8 (log warnings) |
 | **Production Stack** | **🟢** | **95%** | **Fresh Build** |
 
