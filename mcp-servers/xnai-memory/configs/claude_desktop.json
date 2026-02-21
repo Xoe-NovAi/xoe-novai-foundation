@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "xnai-memory": {
+      "command": "uv",
+      "args": ["run", "server.py"],
+      "cwd": "/home/arcana-novai/Documents/xnai-foundation/mcp-servers/xnai-memory"
+    }
+  }
+}
