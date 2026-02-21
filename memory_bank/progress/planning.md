@@ -22,8 +22,8 @@ version: "1.0"
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | 1.1 | VM Service Startup | ✅ Complete | Health OK, port 8428 |
-| 1.2 | Memory Tools Integration | 🔄 Next | Connect metrics_collector.py |
-| 1.3 | Redis + VM Split | ⏳ Pending | Real-time + historical |
+| 1.2 | Memory Tools Integration | ✅ Complete | Dual Redis+VM storage |
+| 1.3 | Redis + VM Split | ✅ Complete | Real-time + historical |
 
 ### Week 2-6: Planning
 
