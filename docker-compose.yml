@@ -492,6 +492,52 @@ services:
       retries: 3
       start_period: 10s
 
+  # ==========================================================================
+  # GRAFANA SERVICE - Observability Dashboards
+  # ==========================================================================
+  # VictoriaMetrics as datasource (Prometheus-compatible)
+  # Provisioning via GitOps from monitoring/grafana/
+  # ==========================================================================
+  grafana:
+    image: grafana/grafana:11.4.0
+    container_name: xnai_grafana
+    init: true
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro,Z
+      - ./monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro,Z
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro,Z
+      - grafana-data:/var/lib/grafana:Z
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=false
+      - GF_AUTH_BASIC_ENABLED=true
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_ROOT_URL=http://localhost:3000
+      - GF_INSTALL_PLUGINS=
+      - GF_UNIFIED_ALERTING_ENABLED=true
+      - GF_ALERTING_ENABLED=false
+    networks:
+      - xnai_network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    depends_on:
+      victoriametrics:
+        condition: service_healthy
+
 # ============================================================================ 
 # NETWORKS & VOLUMES
 # ============================================================================ 
@@ -503,6 +549,8 @@ networks:
 volumes:
   victoriametrics-data:
     name: xnai_victoriametrics_data
+  grafana-data:
+    name: xnai_grafana_data
 
 secrets:
   redis_password:

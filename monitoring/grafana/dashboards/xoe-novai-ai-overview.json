@@ -1,120 +1,119 @@
 {
-  "dashboard": {
-    "title": "Xoe-NovAi AI Platform Overview",
-    "tags": ["xoe-novai", "ai", "rag", "observability"],
-    "timezone": "UTC",
-    "panels": [
-      {
-        "title": "AI Response Performance",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "rate(http_request_duration_seconds_sum{job=\"xoe-rag-api\"}[5m]) / rate(http_request_duration_seconds_count{job=\"xoe-rag-api\"}[5m])",
-            "legendFormat": "Avg Response Time"
-          },
-          {
-            "expr": "histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{job=\"xoe-rag-api\"}[5m]))",
-            "legendFormat": "95th Percentile"
-          }
-        ],
-        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
-      },
-      {
-        "title": "Token Generation Rate",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "rate(ai_tokens_generated_total[5m])",
-            "legendFormat": "Tokens/sec"
-          }
-        ],
-        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
-      },
-      {
-        "title": "RAG Retrieval Performance",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "histogram_quantile(0.95, rate(rag_retrieval_duration_seconds_bucket[5m]))",
-            "legendFormat": "95th Percentile Retrieval Time"
-          },
-          {
-            "expr": "rate(rag_retrieval_total[5m])",
-            "legendFormat": "Retrievals/sec"
-          }
-        ],
-        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}
-      },
-      {
-        "title": "Voice Processing Latency",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "histogram_quantile(0.95, rate(voice_processing_duration_seconds_bucket[5m]))",
-            "legendFormat": "95th Percentile"
-          },
-          {
-            "expr": "rate(voice_requests_total[5m])",
-            "legendFormat": "Voice Requests/sec"
-          }
-        ],
-        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}
-      },
-      {
-        "title": "System Resources",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "100 - (avg by(instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
-            "legendFormat": "CPU Usage %"
-          },
-          {
-            "expr": "node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes",
-            "legendFormat": "Memory Used"
-          }
-        ],
-        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}
-      },
-      {
-        "title": "Circuit Breaker Status",
-        "type": "stat",
-        "targets": [
-          {
-            "expr": "circuit_breaker_state{job=\"xoe-rag-api\"}",
-            "legendFormat": "{{state}}"
-          }
-        ],
-        "gridPos": {"h": 4, "w": 6, "x": 12, "y": 16}
-      },
-      {
-        "title": "Error Rate",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "rate(http_requests_total{status=~\"5..\"}[5m]) / rate(http_requests_total[5m]) * 100",
-            "legendFormat": "5xx Error Rate %"
-          }
-        ],
-        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 24}
-      },
-      {
-        "title": "Active Connections",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "sum(http_connections_active)",
-            "legendFormat": "Active HTTP Connections"
-          }
-        ],
-        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 24}
-      }
-    ],
-    "time": {
-      "from": "now-1h",
-      "to": "now"
+  "uid": "xoe-novai-ai-overview",
+  "title": "Xoe-NovAi AI Platform Overview",
+  "tags": ["xoe-novai", "ai", "rag", "observability"],
+  "timezone": "UTC",
+  "panels": [
+    {
+      "title": "AI Response Performance",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "rate(http_request_duration_seconds_sum{job=\"xoe-rag-api\"}[5m]) / rate(http_request_duration_seconds_count{job=\"xoe-rag-api\"}[5m])",
+          "legendFormat": "Avg Response Time"
+        },
+        {
+          "expr": "histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{job=\"xoe-rag-api\"}[5m]))",
+          "legendFormat": "95th Percentile"
+        }
+      ],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
     },
-    "refresh": "30s",
-    "schemaVersion": 27,
-    "version": 1
-  }
+    {
+      "title": "Token Generation Rate",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "rate(ai_tokens_generated_total[5m])",
+          "legendFormat": "Tokens/sec"
+        }
+      ],
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+    },
+    {
+      "title": "RAG Retrieval Performance",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, rate(rag_retrieval_duration_seconds_bucket[5m]))",
+          "legendFormat": "95th Percentile Retrieval Time"
+        },
+        {
+          "expr": "rate(rag_retrieval_total[5m])",
+          "legendFormat": "Retrievals/sec"
+        }
+      ],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}
+    },
+    {
+      "title": "Voice Processing Latency",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, rate(voice_processing_duration_seconds_bucket[5m]))",
+          "legendFormat": "95th Percentile"
+        },
+        {
+          "expr": "rate(voice_requests_total[5m])",
+          "legendFormat": "Voice Requests/sec"
+        }
+      ],
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}
+    },
+    {
+      "title": "System Resources",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "100 - (avg by(instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+          "legendFormat": "CPU Usage %"
+        },
+        {
+          "expr": "node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes",
+          "legendFormat": "Memory Used"
+        }
+      ],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}
+    },
+    {
+      "title": "Circuit Breaker Status",
+      "type": "stat",
+      "targets": [
+        {
+          "expr": "circuit_breaker_state{job=\"xoe-rag-api\"}",
+          "legendFormat": "{{state}}"
+        }
+      ],
+      "gridPos": {"h": 4, "w": 6, "x": 12, "y": 16}
+    },
+    {
+      "title": "Error Rate",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "rate(http_requests_total{status=~\"5..\"}[5m]) / rate(http_requests_total[5m]) * 100",
+          "legendFormat": "5xx Error Rate %"
+        }
+      ],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 24}
+    },
+    {
+      "title": "Active Connections",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "sum(http_connections_active)",
+          "legendFormat": "Active HTTP Connections"
+        }
+      ],
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 24}
+    }
+  ],
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "refresh": "30s",
+  "schemaVersion": 27,
+  "version": 1
 }
