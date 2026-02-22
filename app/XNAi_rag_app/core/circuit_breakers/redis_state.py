@@ -1,11 +1,15 @@
 """
 Redis State Management for Circuit Breakers
 Handles Redis connection management and state persistence with fallback patterns.
+
+CLAUDE STANDARD: Uses AnyIO for structured concurrency.
 """
 
-import asyncio
+import anyio
+import asyncio  # Still needed for Lock compatibility with redis.asyncio
 import logging
 import os
+import time
 from typing import Optional, Dict, Any, Union
 from contextlib import asynccontextmanager
 
@@ -46,7 +50,8 @@ class RedisConnectionManager:
         self._redis_client: Optional[Redis] = None
         self._connection_pool: Optional[ConnectionPool] = None
         self._is_connected = False
-        self._health_check_task: Optional[asyncio.Task] = None
+        self._running = False
+        self._cancel_scope: Optional[anyio.CancelScope] = None
         self._fallback_mode = False
         
         # Connection retry settings
@@ -101,15 +106,18 @@ class RedisConnectionManager:
                 logger.info(f"Redis connection established: {self.host}:{self.port}")
                 
                 # Start health check task
-                if self._health_check_task is None:
-                    self._health_check_task = asyncio.create_task(self._health_check_loop())
+                if not self._running:
+                    self._running = True
+                    async with anyio.create_task_group() as tg:
+                        self._cancel_scope = tg.cancel_scope
+                        tg.start_soon(self._health_check_loop)
                 
                 return True
                 
             except Exception as e:
                 logger.warning(f"Redis connection attempt {attempt + 1} failed: {e}")
                 if attempt < self._retry_attempts - 1:
-                    await asyncio.sleep(self._retry_delay * (2 ** attempt))  # Exponential backoff
+                    await anyio.sleep(self._retry_delay * (2 ** attempt))  # Exponential backoff
         
         logger.error("Failed to establish Redis connection after all attempts")
         self._fallback_mode = True
@@ -117,13 +125,10 @@ class RedisConnectionManager:
     
     async def disconnect(self):
         """Close Redis connection"""
-        if self._health_check_task:
-            self._health_check_task.cancel()
-            try:
-                await self._health_check_task
-            except asyncio.CancelledError:
-                pass
-            self._health_check_task = None
+        self._running = False
+        if self._cancel_scope:
+            self._cancel_scope.cancel()
+            self._cancel_scope = None
         
         if self._redis_client:
             await self._redis_client.close()
@@ -138,7 +143,7 @@ class RedisConnectionManager:
     
     async def _health_check_loop(self):
         """Background health check loop"""
-        while True:
+        while self._running:
             try:
                 if self._is_connected and self._redis_client:
                     await self._redis_client.ping()
@@ -154,7 +159,7 @@ class RedisConnectionManager:
                     logger.warning(f"Redis health check failed: {e}, entering fallback mode")
                     self._fallback_mode = True
             
-            await asyncio.sleep(self.health_check_interval)
+            await anyio.sleep(self.health_check_interval)
     
     @property
     def is_connected(self) -> bool:
