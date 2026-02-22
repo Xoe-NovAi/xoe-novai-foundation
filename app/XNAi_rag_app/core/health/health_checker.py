@@ -3,7 +3,6 @@ Health Checker for Xoe-NovAi Foundation Stack
 Provides comprehensive health monitoring for all services with automated recovery.
 """
 
-import asyncio
 import anyio
 import json
 import logging
@@ -67,8 +66,13 @@ class HealthChecker:
         """Perform health check"""
         start_time = time.time()
         try:
-            # Enforce timeout at the base class level
-            result = await asyncio.wait_for(self._perform_check(), timeout=self.timeout)
+            # CLAUDE STANDARD: Use anyio.move_on_after for timeout
+            with anyio.move_on_after(self.timeout) as cancel_scope:
+                result = await self._perform_check()
+            
+            if cancel_scope.cancelled_caught:
+                raise TimeoutError(f"Health check timeout after {self.timeout}s")
+                
             response_time = time.time() - start_time
 
             return HealthCheckResult(
@@ -83,7 +87,7 @@ class HealthChecker:
 
             # Identify if it was a timeout
             msg = str(e)
-            if isinstance(e, (asyncio.TimeoutError, TimeoutError)):
+            if isinstance(e, TimeoutError):
                 msg = f"Health check timeout after {self.timeout}s"
 
             return HealthCheckResult(
@@ -232,14 +236,17 @@ class CustomHealthChecker(HealthChecker):
 
 
 class HealthMonitor:
-    """Main health monitoring system"""
+    """Main health monitoring system
+    
+    CLAUDE STANDARD: Uses AnyIO for structured concurrency.
+    """
 
     def __init__(self, check_interval: float = 30.0):
         self.check_interval = check_interval
         self.checkers: Dict[str, HealthChecker] = {}
         self.health_states: Dict[str, ServiceHealth] = {}
         self._monitoring = False
-        self._monitor_task: Optional[asyncio.Task] = None
+        self._cancel_scope: Optional[anyio.CancelScope] = None
         self._recovery_callbacks: Dict[str, Callable] = {}
         self._health_callbacks: Dict[str, Callable] = {}
 
@@ -273,13 +280,18 @@ class HealthMonitor:
         logger.info(f"Added health callback for: {service_name}")
 
     async def start_monitoring(self):
-        """Start health monitoring"""
+        """Start health monitoring
+        
+        CLAUDE STANDARD: Uses CancelScope for clean shutdown.
+        """
         if self._monitoring:
             logger.warning("Health monitoring already started")
             return
 
         self._monitoring = True
-        self._monitor_task = asyncio.create_task(self._monitoring_loop())
+        async with anyio.create_task_group() as tg:
+            self._cancel_scope = tg.cancel_scope
+            tg.start_soon(self._monitoring_loop)
         logger.info("Health monitoring started")
 
     async def stop_monitoring(self):
@@ -289,13 +301,9 @@ class HealthMonitor:
             return
 
         self._monitoring = False
-        if self._monitor_task:
-            self._monitor_task.cancel()
-            try:
-                await self._monitor_task
-            except asyncio.CancelledError:
-                pass
-            self._monitor_task = None
+        if self._cancel_scope:
+            self._cancel_scope.cancel()
+            self._cancel_scope = None
 
         logger.info("Health monitoring stopped")
 
@@ -304,10 +312,12 @@ class HealthMonitor:
         while self._monitoring:
             try:
                 await self._perform_health_checks()
-                await asyncio.sleep(self.check_interval)
+                await anyio.sleep(self.check_interval)
+            except anyio.get_cancelled_exc_class():
+                break
             except Exception as e:
                 logger.error(f"Error in health monitoring loop: {e}")
-                await asyncio.sleep(5)  # Wait before retrying
+                await anyio.sleep(5)  # Wait before retrying
 
     async def _perform_health_checks(self):
         """Perform health checks for all services"""
@@ -546,7 +556,7 @@ async def example_usage():
 
     try:
         # Monitor for 5 minutes
-        await asyncio.sleep(300)
+        await anyio.sleep(300)
     finally:
         await monitor.stop_monitoring()
 
