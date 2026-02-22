@@ -272,6 +272,69 @@ tier_2_hardening:
     assigned_model: gemini-pro
     estimated_effort: "1 sprint"
 
+  - id: P-017
+    title: "AWQ Removal & CPU+Vulkan Optimization"
+    description: |
+      Remove AWQ components from XNAi Foundation stack while preserving
+      GPU research knowledge and optimizing for CPU+Vulkan architecture.
+      
+      AWQ requires PyTorch which conflicts with the torch-free mandate.
+      This task creates a refactoring guide for multi-agent parallel execution.
+      
+      Deliverables:
+      - Refactoring guide: plans/AWQ-REMOVAL-REFACTORING-GUIDE.md
+      - GPU research archive: expert-knowledge/_archive/gpu-research/
+      - Memory bank updates documenting the change
+      
+      Task Groups (Parallel Execution):
+      - Group A: File System Cleanup (30 min)
+      - Group B: Memory Bank & Documentation (1 hr)
+      - Group C: Build System Updates (30 min) [depends on A]
+      - Group D: Foundation Stack Integration (1 hr) [depends on A,B,C]
+    source:
+      - plans/AWQ-REMOVAL-REFACTORING-GUIDE.md
+      - Dockerfile.awq analysis
+    tier: P1
+    status: pending
+    labels:
+      - tier:P1
+      - project:P-017
+      - awq-removal
+      - torch-free
+      - vulkan
+      - multi-agent
+    assigned_model: gemini-cli
+    estimated_effort: "3 hours total (parallel execution)"
+    subtasks:
+      - group: A
+        title: "File System Cleanup"
+        model: any
+        status: pending
+        effort: "30 minutes"
+      - group: B
+        title: "Memory Bank & Documentation"
+        model: any
+        status: pending
+        effort: "1 hour"
+      - group: C
+        title: "Build System Updates"
+        model: any
+        status: pending
+        effort: "30 minutes"
+        depends_on: "Group A"
+      - group: D
+        title: "Foundation Stack Integration"
+        model: any
+        status: pending
+        effort: "1 hour"
+        depends_on: "Groups A, B, C"
+    acceptance_criteria:
+      - No AWQ references in codebase (grep -r "awq" returns empty)
+      - Build succeeds without AWQ (make build)
+      - GPU research archived in expert-knowledge/_archive/gpu-research/
+      - Memory bank updated with changes
+      - All tests pass
+
 # =============================================================================
 # TIER 3: FEATURE EXPANSION (P2) — Weeks 7+
 # =============================================================================

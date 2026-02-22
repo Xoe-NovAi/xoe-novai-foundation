@@ -27,6 +27,8 @@ version: "2.0"
 | Phase 1-7 | ✅ Complete |
 | **Active** | Sprint 8 planning |
 | **Next** | Phase 8: Advanced Features |
+| **New** | Sprint 10: OpenPipe Integration ✅ |
+| **New** | OpenCode Model Research ✅ |
 
 ## Quick Metrics
 

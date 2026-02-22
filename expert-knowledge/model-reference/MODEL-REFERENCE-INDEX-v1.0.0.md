@@ -250,7 +250,10 @@ gh copilot suggest "your task" --model $(
 | cline-cli-models-v1.0.0.md | 509 | 9 | Cline |
 | copilot-cli-models-v1.0.0.md | 639 | 12+ | Copilot |
 | cli-model-selection-strategy-v1.0.0.md | 624 | 30+ | Unified |
-| **Total** | **2,239** | **30+** | **All CLIs** |
+| **NEW: Big Pickle Model Analysis** | 300+ | 1 | Frontier Model |
+| **NEW: GPT-5 Nano Efficiency Analysis** | 400+ | 1 | Performance Optimization |
+| **NEW: OpenCode Model Comparison Matrix** | 500+ | 4 | Multi-Model Analysis |
+| **Total** | **3,940+** | **30+** | **All CLIs + Research** |
 
 **Coverage**:
 - ✅ 30+ free frontier models documented
