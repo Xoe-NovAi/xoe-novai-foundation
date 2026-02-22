@@ -373,7 +373,7 @@ class Phase1Validator:
 
             # Run concurrent requests
             async def concurrent_request():
-                await asyncio.sleep(0.001)  # Small delay
+                await anyio.sleep(0.001)  # Small delay
                 return await degradation_manager.call_service(
                     "performance_test", lambda: {"result": "success"}
                 )
@@ -404,7 +404,7 @@ class Phase1Validator:
             for i in range(20):
 
                 async def mock_check():
-                    await asyncio.sleep(0.001)
+                    await anyio.sleep(0.001)
                     return {"service": f"service_{i}", "status": "ok"}
 
                 checker = HealthChecker(f"service_{i}", timeout=1.0)
@@ -414,7 +414,7 @@ class Phase1Validator:
             # Monitor for short time
             monitor_start = time.time()
             await monitor.start_monitoring()
-            await asyncio.sleep(0.2)
+            await anyio.sleep(0.2)
             await monitor.stop_monitoring()
             monitor_end = time.time()
 
@@ -465,7 +465,7 @@ class Phase1Validator:
                 pass  # Expected
 
             # Wait for recovery
-            await asyncio.sleep(0.6)
+            await anyio.sleep(0.6)
 
             # Should be able to recover
             async def success_func():

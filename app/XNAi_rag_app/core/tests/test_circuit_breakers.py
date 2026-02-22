@@ -1,3 +1,4 @@
+import anyio
 """
 Test suite for Circuit Breakers module
 Tests Redis-backed circuit breakers with graceful degradation patterns.
@@ -253,7 +254,7 @@ class TestCircuitBreaker:
                 pass
         
         # Wait for recovery timeout
-        await asyncio.sleep(1.1)
+        await anyio.sleep(1.1)
         
         # Circuit should be half-open now
         async def success_func():
@@ -297,7 +298,7 @@ class TestCircuitBreaker:
         )
         
         async def slow_func():
-            await asyncio.sleep(1.0)  # Longer than timeout
+            await anyio.sleep(1.0)  # Longer than timeout
             return "should_not_return"
         
         # Should timeout
@@ -508,7 +509,7 @@ class TestCircuitBreakerIntegration:
             await circuit_breaker.call(failure_func)
         
         # Wait for recovery
-        await asyncio.sleep(0.6)
+        await anyio.sleep(0.6)
         
         # Should be half-open
         async def success_func():
@@ -529,7 +530,7 @@ class TestCircuitBreakerIntegration:
         circuit_breaker = CircuitBreaker(config, state_store)
         
         async def success_func():
-            await asyncio.sleep(0.01)
+            await anyio.sleep(0.01)
             return "success"
         
         # Run multiple concurrent calls
