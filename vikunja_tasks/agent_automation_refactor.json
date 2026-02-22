@@ -1,0 +1,7 @@
+{
+  "title": "Agent automation audit & refactor",
+  "description": "Refactor agent_watcher.py and agent_coordinator.py to meet XOH standards: Redis-backed state, Consul registration, Ed25519 handshake, AnyIO TaskGroups migration, tests, and PR.",
+  "labels": ["refactor","xoh","priority-high"],
+  "project": "Engineering",
+  "priority": 1
+}

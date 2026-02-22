@@ -1,0 +1,28 @@
+{
+    "memory": {
+        "storage_path": "~/.voice_memory/",
+        "short_term_ttl": 3600,
+        "long_term_ttl": 2592000,
+        "max_short_term_items": 1000,
+        "max_long_term_items": 10000,
+        "enable_semantic_search": true,
+        "embedding_model": "all-MiniLM-L6-v2",
+        "memory_types": {
+            "conversation": {
+                "priority": 1,
+                "ttl": 86400,
+                "context_enabled": true
+            },
+            "fact": {
+                "priority": 2,
+                "ttl": 31536000,
+                "context_enabled": false
+            },
+            "preference": {
+                "priority": 3,
+                "ttl": null,
+                "context_enabled": false
+            }
+        }
+    }
+}

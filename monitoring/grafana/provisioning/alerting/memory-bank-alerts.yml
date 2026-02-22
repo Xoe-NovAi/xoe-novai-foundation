@@ -1,0 +1,103 @@
+# ============================================================================
+# XNAi Memory Bank - Grafana Alerting Rules
+# ============================================================================
+# Alerts for memory bank health monitoring
+# ============================================================================
+
+apiVersion: 1
+
+groups:
+  - name: memory_bank_health
+    folder: Memory Bank
+    interval: 30s
+    rules:
+      - uid: high_block_utilization
+        title: High Block Utilization
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: ${datasource}
+            model:
+              expr: memory_block_utilization > 0.9
+              instant: true
+          - refId: B
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: ${datasource}
+            model:
+              expr: memory_block_utilization
+              instant: true
+          - refId: C
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: "-100"
+            model:
+              type: reduce
+              expression: A
+              reducer: last
+              settings:
+                mode: dropNN
+          - refId: D
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: "-100"
+            model:
+              type: threshold
+              expression: C
+              conditions:
+                - evaluator:
+                    params:
+                      - 0.9
+                    type: gt
+                  operator:
+                    type: and
+        annotations:
+          description: "Block {{ $labels.block }} utilization is {{ $value | printf \"%.1%\" }}"
+          summary: "Memory block approaching size limit"
+        labels:
+          severity: critical
+          component: memory-bank
+
+      - uid: overflow_event_spike
+        title: Overflow Event Spike
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: ${datasource}
+            model:
+              expr: rate(memory_overflow_events_total[5m]) > 1
+              instant: true
+        annotations:
+          description: "Overflow events detected for block {{ $labels.block }}"
+          summary: "Memory overflow events occurring frequently"
+        labels:
+          severity: warning
+          component: memory-bank
+
+      - uid: low_session_continuity
+        title: Low Session Continuity Score
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 900
+              to: 0
+            datasourceUid: ${datasource}
+            model:
+              expr: avg(memory_session_continuity_score) < 50
+              instant: true
+        annotations:
+          description: "Session continuity score is {{ $value }}%"
+          summary: "Memory tool success rate is low"
+        labels:
+          severity: warning
+          component: memory-bank

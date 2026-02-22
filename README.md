@@ -106,7 +106,6 @@ All pieces are designed for surgical replacement or standalone use.
 - **Validation error paths** — Missing fields, bounds checking, type validation
 - **Circuit breaker errors** — State transitions, serialization, retry logic
 - **Voice service errors** — STT, TTS, VAD with specific cause codes and recovery suggestions
-- **Experimental features** — AWQ quantization and Vulkan acceleration error handling
 - **Error consistency** — Response structure validation, request correlation, logging
 - **Recovery guidance** — User-friendly error messages with actionable recovery suggestions
 - **57+ total tests passing** — Complete test suite with 95%+ error path coverage

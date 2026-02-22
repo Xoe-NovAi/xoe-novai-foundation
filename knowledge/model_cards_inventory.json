@@ -1,0 +1,14 @@
+{
+  "total_models": 12,
+  "categories": {
+    "code_generation": 3,
+    "reasoning_synthesis": 3,
+    "embeddings_rag": 4,
+    "lightweight": 2
+  },
+  "metadata": {
+    "created_date": "2026-02-16T21:47:48.225264Z",
+    "last_updated": "2026-02-16T21:47:48.225298Z",
+    "researcher": "Phase B - Model Research Crawler"
+  }
+}

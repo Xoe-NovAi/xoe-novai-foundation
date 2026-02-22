@@ -1,0 +1,100 @@
+---
+block:
+  label: progress_planning
+  description: Next steps, roadmap, and Phase 5 planning
+  chars_limit: 3000
+  read_only: false
+  tier: core
+  priority: 2
+created: 2026-02-20
+modified: 2026-02-20
+version: "1.0"
+---
+
+# Planning & Next Steps
+
+## Immediate (Sprint 8) - Unified Execution Strategy
+
+**6-Week Implementation**: MemGPT Architecture, VictoriaMetrics, Grafana, MCP, A2A
+
+### Week 1: VictoriaMetrics Foundation ✅ COMPLETE
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 1.1 | VM Service Startup | ✅ Complete | Health OK, port 8428 |
+| 1.2 | Memory Tools Integration | ✅ Complete | Dual Redis+VM storage |
+| 1.3 | Redis + VM Split | ✅ Complete | Real-time + historical |
+
+### Week 2: Grafana Dashboards ✅ COMPLETE
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 2.1 | Datasource Configuration | ✅ Complete | VM as Prometheus type |
+| 2.2 | Overview Dashboard | ✅ Complete | 6 panels, all metrics |
+| 2.3 | Block Detail Dashboard | ✅ Complete | Drill-down with variables |
+| 2.4 | Alerting Rules | ✅ Complete | 3 rules configured |
+
+### Week 3: MCP Server ✅ COMPLETE
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 3.1 | Server Skeleton | ✅ Complete | FastMCP 3.0 |
+| 3.2 | Resource Implementation | ✅ Complete | memory://bank/{path*} |
+| 3.3 | Tool Implementation | ✅ Complete | 4 tools |
+| 3.4 | File Watcher | ✅ Complete | Built-in notifications |
+| 3.5 | Client Configuration | ✅ Complete | 3 clients |
+
+### Week 4-5: A2A Protocol (IN PROGRESS)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 4.1 | A2A SDK Setup | ⏳ Pending | pip install a2a-sdk |
+| 4.2 | Agent Card Definition | ⏳ Pending | Capability advertisement |
+| 4.3 | Hybrid Bus Adapter | ⏳ Pending | Bridge A2A + legacy |
+| 4.4 | Task Store Migration | ⏳ Pending | InMemoryTaskStore
+
+### Other Sprint 8 Tasks
+
+| # | Task | Owner | Status |
+|---|------|-------|--------|
+| 2 | Cognitive enhancements CE-001–CE-006 | Any Agent | From benchmark analysis |
+| 3 | XNAI-STACK-OVERVIEW.md | Any | C4 Mermaid diagram |
+| 4 | README.md update | Any | Project overview refresh |
+
+## Week 2
+
+| # | Task | Owner | Status |
+|---|------|-------|--------|
+| 5 | First benchmark run | Any | `./scripts/run-benchmark.sh --integrate -m gemini-3-pro` |
+| 6 | FREE-AI-PROVIDERS-COMPLETE-GUIDE.md | Any | Tutorial for provider selection |
+| 7 | MkDocs superfences Mermaid config | Any | Verify rendering |
+| 8 | MkDocs benchmark section | Any | Add `benchmarks/` to docs nav |
+| 9 | Enhanced Strategy Package Review | Opus | Review and approve for implementation |
+
+## Month 2
+
+| # | Task | Owner | Status |
+|---|------|-------|--------|
+| 10 | Multi-model benchmark results | Any | Run full 10-model battery |
+| 11 | Benchmark v1.1.0 | Any | Implement CE-001 through CE-006 |
+| 12 | OpenCode fork | Architect | Begin arcana-novai/opencode-xnai |
+| 13 | Phase 8 planning | Any | Redis Streams, Qdrant, fine-tuning |
+| 14 | Strategy Implementation | Any | Begin Tier 1 blockers (P-001 to P-004) |
+
+---
+
+## Phase 5 Planning
+
+### Research Materials Generated
+1. **Phase 5 zRAM Optimization Design** - Testing framework ready
+2. **Build System Audit Report** - Makefile and Dockerfile analysis
+3. **Claude Sonnet Research Request** - Makefile modernization, Dockerfile optimization
+
+### Execution Schedule
+- **5.A Baseline Collection**: Terminal session, clean system
+- **5.B Kernel Tuning**: vm.swappiness optimization
+- **5.C Stress Testing**: Concurrent load with profiling
+- **5.D Analysis**: Metrics interpretation and recommendations
+
+---
+**Last Updated**: 2026-02-20

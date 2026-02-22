@@ -1,0 +1,155 @@
+# ---
+# tool: cline
+# model: claude-sonnet-4-6
+# account: arcana-novai
+# git_branch: main
+# session_id: sprint6-2026-02-18
+# version: v1.0.0
+# created: 2026-02-18
+# ---
+# configs/agent-identity.yaml
+#
+# Authoritative registry of every AI agent in the XNAi ecosystem.
+# Used by scripts/sign-document.sh to populate YAML frontmatter accurately.
+# Update this file whenever a model version changes, a new agent is added,
+# or an account/tool binding changes.
+#
+# Format per agent:
+#   tool:      short identifier used in file headers (cline, opencode, copilot, etc.)
+#   model:     exact model name as reported by the provider
+#   account:   GitHub / Google / local account identifier
+#   tier:      free | oauth | local | paid
+#   context_k: approximate context window in thousands of tokens
+#   status:    active | experimental | deprecated
+#   notes:     freeform description
+
+agents:
+
+  # ── IDE Agent ────────────────────────────────────────────────────────────────
+
+  cline:
+    tool: cline
+    display_name: "Cline (VSCodium Extension)"
+    model: claude-sonnet-4-6
+    account: arcana-novai
+    tier: paid
+    context_k: 200          # nominal; "shadow 400K" unconfirmed — see research/CLINE-CONTEXT-WINDOW-RESEARCH
+    status: active
+    notes: >
+      Primary IDE agent. Runs claude-sonnet-4-6 via Anthropic API through the
+      saoudrizwan.claude-dev VSCodium extension. This is the signing agent for
+      all Sprint 5/6 deliverables.
+
+  # ── Terminal Agents ──────────────────────────────────────────────────────────
+
+  opencode:
+    tool: opencode
+    display_name: "OpenCode CLI (Primary TUI)"
+    model: big-pickle        # default free model; overridden by Antigravity Auth
+    account: arcana-novai
+    tier: free
+    context_k: 200
+    status: active
+    notes: >
+      Primary terminal UI for XNAi. ACTIVE — upstream GitHub repo was archived
+      by original maintainers but this does NOT affect use. Fork planned to create
+      XNAi-custom TUI (see internal_docs/01-strategic-planning/OPENCODE-XNAI-FORK-PLAN.md).
+    plugin_antigravity:
+      name: opencode-antigravity-auth
+      type: oauth_plugin       # NOT a separate CLI — runs inside OpenCode
+      auth: github_oauth
+      unlocks:
+        - model: claude-sonnet-4-6
+          context_k: 200
+          tier: free_oauth
+        - model: claude-opus-4-5-thinking
+          context_k: 200
+          tier: free_oauth
+        - model: gemini-3-pro
+          context_k: 1000
+          tier: free_oauth
+        - model: gemini-3-flash
+          context_k: 1000
+          tier: free_oauth
+    builtin_free_models:
+      - model: big-pickle
+        context_k: 200
+        notes: "Best quality among built-in free"
+      - model: kimi-k2.5-free
+        context_k: 262
+        notes: "Largest context among built-in free"
+      - model: minimax-m2.5-free
+        context_k: 204
+        notes: "Fastest among built-in free"
+      - model: glm-5-free
+        context_k: 200
+      - model: gpt-5-nano
+        context_k: 400
+        notes: "OpenCode internal model ID"
+
+  gemini_cli:
+    tool: gemini-cli
+    display_name: "Gemini CLI"
+    model: gemini-2.5-pro    # current as of 2026-02-18; update when version bumped
+    account: arcana-novai    # Google account
+    tier: free_oauth
+    context_k: 1000
+    status: active
+    notes: >
+      Google OAuth authenticated. 1M token context window. Search grounding
+      available. Best for long-document tasks and web research.
+
+  copilot_cli:
+    tool: copilot-cli
+    display_name: "GitHub Copilot CLI"
+    model: gpt-4o            # current default; may vary by GitHub plan
+    account: arcana-novai    # GitHub account
+    tier: paid               # GitHub Copilot subscription
+    context_k: 128
+    status: active
+    notes: >
+      GitHub OAuth authenticated. Best for code review, PR summarization,
+      and GitHub-integrated tasks. 34 sessions confirmed on disk.
+
+  llama_cpp:
+    tool: llama-cpp
+    display_name: "llama-cpp-python (Sovereign Local)"
+    model: null              # varies by loaded .gguf file — set at runtime
+    account: local
+    tier: local
+    context_k: null          # depends on loaded model
+    status: active
+    notes: >
+      Fully sovereign — no network calls, no telemetry. Runs on Vulkan/RDNA2.
+      No API key required. Used for offline/air-gapped tasks and private data.
+
+# ── Signing Defaults ──────────────────────────────────────────────────────────
+# When sign-document.sh cannot determine the signing agent from context,
+# it reads these defaults. Override with --tool flag or interactive prompt.
+
+signing_defaults:
+  default_tool: cline
+  fallback_behavior: interactive   # prompt user if tool not found in agents map
+  frontmatter_fields:
+    - tool
+    - model
+    - account
+    - git_branch
+    - session_id
+    - version
+    - created
+
+# ── Taxonomy Notes ────────────────────────────────────────────────────────────
+# IMPORTANT classification rules — enforced in RULES.md:
+#
+#  1. Antigravity (opencode-antigravity-auth@latest) is an OAuth PLUGIN
+#     that runs INSIDE OpenCode CLI. It is NOT a separate CLI or agent.
+#     Never list it as a top-level tool. Always reference as:
+#       opencode.plugin_antigravity
+#
+#  2. OpenCode CLI status = ACTIVE. The upstream GitHub repository was
+#     archived by original maintainers, but arcana-novai continues using it
+#     and plans to fork it. Never describe it as "archived" in user-facing docs.
+#
+#  3. Cline model = claude-sonnet-4-6 (NOT claude-opus-4-5).
+#     All file signatures must reflect this.

@@ -1,0 +1,76 @@
+{
+  "model_id": "phi-3-medium-4k",
+  "task_category": "reasoning_synthesis",
+  "specs": {
+    "parameters": "14B",
+    "context_window": 4096,
+    "quantizations": [
+      "q4_k_m",
+      "q5_k_m"
+    ],
+    "inference_speed_ryzen7": "0.9 tok/s (q4_k_m)",
+    "memory_required": "8.2 GB (q4_k_m) - MARGINAL"
+  },
+  "benchmarks": {
+    "mmlu": {
+      "score": 67.2,
+      "source": "OpenCompass",
+      "date": "2024-02"
+    },
+    "arc": {
+      "score": 62.1,
+      "source": "OpenCompass",
+      "date": "2024-02"
+    },
+    "gsm8k": {
+      "score": 75.4,
+      "source": "OpenCompass",
+      "date": "2024-02"
+    }
+  },
+  "ecosystem": {
+    "frameworks": [
+      "ollama",
+      "llama.cpp",
+      "vLLM"
+    ],
+    "verified_integrations": [
+      "xnai_crawl",
+      "chainlit",
+      "langchain"
+    ],
+    "dependencies": [
+      "transformers>=4.37",
+      "torch>=2.0"
+    ]
+  },
+  "competitive_analysis": {
+    "strengths": [
+      "Microsoft optimized",
+      "Good reasoning",
+      "Better benchmarks than Phi-2"
+    ],
+    "weaknesses": [
+      "Memory tight for Ryzen 7 (8.2GB peak)",
+      "Limited context window"
+    ],
+    "alternatives": [
+      "Gemma 7B + larger context",
+      "Qwen 7B"
+    ]
+  },
+  "research_status": "verified",
+  "metadata": {
+    "created_date": "2026-02-16T21:47:48.221089Z",
+    "last_updated": "2026-02-16T21:47:48.221089Z",
+    "researcher_notes": "Verified model for reasoning_synthesis tasks. Optimized for Ryzen 7 5700U.",
+    "source_links": [
+      "https://huggingface.co/phi-3-medium-4k"
+    ]
+  },
+  "vectors": {
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "vector_index_location": "knowledge/vectors/model_cards.faiss",
+    "embedding_timestamp": "2026-02-16T21:47:48.221089Z"
+  }
+}

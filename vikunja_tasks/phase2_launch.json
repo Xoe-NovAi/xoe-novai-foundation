@@ -1,0 +1,6 @@
+{
+  "title": "Execute Phase 2: Chainlit Build & Deploy",
+  "description": "Deploy the XNAi Voice Interface (Chainlit) as per Phase 2 of the Master Plan. Build the container, verify the UI, and ensure audio streaming is functional.",
+  "labels": ["phase-2", "frontend", "chainlit"],
+  "priority": 1
+}

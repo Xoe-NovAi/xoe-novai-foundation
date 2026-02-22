@@ -1,0 +1,253 @@
+# ---
+# tool: opencode
+# model: claude-opus-4-6-thinking
+# account: arcana-novai
+# session_id: sprint7-opus-2026-02-19
+# version: v1.0.0
+# created: 2026-02-19
+# ---
+#
+# XNAi Context Engineering Benchmark — Ground Truth Baseline
+# ===========================================================
+# Verified correct answers derived from the Opus 4.6 onboarding session
+# and confirmed against the actual codebase on 2026-02-19.
+#
+# Usage: Compare model responses against these baselines.
+# Scoring: See scoring-rubric.yaml for 0-10 criteria per test.
+
+ground_truth:
+  verified_by: "claude-opus-4-6-thinking"
+  verified_date: "2026-02-19"
+  verified_against: "xnai-foundation codebase at HEAD"
+
+  T1_stack_identification:
+    language: "Python 3.12 / 3.13"
+    framework: "FastAPI"
+    services:
+      - name: "RAG API"
+        tech: "FastAPI + llama-cpp (Qwen3-0.6B-Q6_K) + FAISS/Qdrant"
+        port: 8000
+      - name: "Chainlit UI"
+        tech: "Chainlit 2.8.5 web chat"
+        port: 8001
+      - name: "Redis"
+        tech: "Redis 7.4.1"
+        port: 6379
+        purpose: "State, cache, circuit breakers, agent bus streams"
+      - name: "Qdrant"
+        tech: "Qdrant vector DB"
+        port: 6333
+        note: "Migrating from FAISS"
+      - name: "Consul"
+        tech: "Consul 1.15.4"
+        port: 8500
+        purpose: "Service discovery, health checks"
+      - name: "Caddy"
+        tech: "Caddy 2.8 reverse proxy"
+        port: 8000
+        purpose: "TLS, routing, rate limiting, security headers"
+      - name: "MkDocs"
+        tech: "MkDocs 1.6.1 + Material 10.0.2"
+        port: 8008
+        purpose: "Internal knowledge base"
+      - name: "Vikunja"
+        tech: "Vikunja + PostgreSQL"
+        port: 3456
+        purpose: "Project management"
+      - name: "Curation Worker"
+        tech: "Python worker"
+        purpose: "Redis queue job processor for knowledge pipeline"
+      - name: "Crawler"
+        tech: "Python crawler"
+        purpose: "Web scraping, model card research"
+    constraints:
+      - key: "torch_free"
+        value: "No PyTorch, CUDA, Triton, sentence-transformers. ONNX + GGUF + Vulkan only."
+      - key: "memory"
+        value: "<6GB RAM footprint"
+      - key: "latency"
+        value: "<500ms API response, <300ms voice"
+      - key: "telemetry"
+        value: "Zero external telemetry, air-gap capable"
+      - key: "containers"
+        value: "Rootless Podman, UID 1001, :Z,U volumes"
+      - key: "async"
+        value: "AnyIO TaskGroups only (never asyncio.gather)"
+
+  T2_service_topology:
+    proxy_layer: "Caddy :8000 routes /api/v1/* → RAG API, / → Chainlit, /vikunja/* → Vikunja, /metrics → Prometheus"
+    dependency_chain: "Redis → Circuit Breakers → RAG API → Chainlit UI"
+    cascade_failure:
+      trigger: "Redis crashed (UID 100999 vs 1001 permission denied on dump.rdb)"
+      cascade: "Vikunja can't connect → Caddy upstream failed → Curation Worker exited"
+      fix: "sudo chown -R 1001:1001 data/redis/ data/qdrant/"
+    degradation_tiers:
+      - tier: 1
+        name: "Normal"
+        threshold: "RAM <85%"
+        behavior: "Full context, all features, 256 tokens"
+      - tier: 2
+        name: "Constrained"
+        threshold: "RAM ≥85%"
+        behavior: "Reduced context 40%, non-essential features disabled"
+      - tier: 3
+        name: "Critical"
+        threshold: "RAM ≥92%"
+        behavior: "Minimal context 75% reduction, cache-only for some services"
+      - tier: 4
+        name: "Failover"
+        threshold: "RAM ≥97%"
+        behavior: "Emergency read-only mode"
+    circuit_breakers:
+      names: ["voice_stt", "voice_tts", "rag_api", "redis_cache", "voice_processing"]
+      states: "Closed → Open → HalfOpen → Closed"
+      persistence: "Redis-backed with in-memory fallback"
+
+  T3_constraint_reasoning:
+    constraints_with_implications:
+      torch_free:
+        rule: "No PyTorch, CUDA, Triton, sentence-transformers"
+        implication: "All inference via ONNX Runtime + GGUF + Vulkan"
+        embedding_solution: "fastembed (BAAI/bge-small-en-v1.5, 384-dim, ONNX, MIT license)"
+        tension: "Phase 6F plans LoRA/QLoRA fine-tuning via Axolotl/Unsloth — all require PyTorch"
+      memory:
+        rule: "<6GB RAM"
+        current: "5.6GB (94%)"
+        implication: "Qwen 0.6B quantized required, zRAM required, 4-tier degradation"
+        tension: "Phase 5A (zRAM optimization) only partially deployed"
+      sovereignty:
+        rule: "Zero external telemetry, air-gap capable"
+        implication: "No phone-home, no usage tracking, rootless Podman, iFlow CLI excluded (CN backend)"
+        code_enforcement: "8 telemetry disables in config.toml, check_telemetry() health check"
+      async:
+        rule: "AnyIO TaskGroups only, never asyncio.gather"
+        implication: "Structured concurrency, better error propagation"
+        enforcement: ".opencode/RULES.md rule 3, .clinerules/03-coding-standards.md"
+
+  T4_strategic_assessment:
+    roadmap:
+      pillar_1:
+        name: "Operational Stability"
+        weeks: "1-10"
+        phases: "5A (zRAM), 5B (Prometheus), 5C (Auth OAuth2/JWT), 5D (Tracing), 5E (Library Curation)"
+      pillar_2:
+        name: "Scholar Differentiation"
+        weeks: "11-24"
+        phases: "6A (Dynamic Embeddings), 6B (Ancient Greek CLTK/Perseus), 6C (Vikunja Memory Bank), 6D (Multi-Model Registry), 6E (Voice Quality), 6F (LoRA Fine-Tuning)"
+      pillar_3:
+        name: "Modular Excellence"
+        weeks: "25-38"
+        phases: "7A (Plugin System), 7B (Build Migration to Taskfile), 7C (Security Hardening), 7D (Chaos Engineering), 7E (Documentation)"
+    open_decisions:
+      - "OpenCode fork timeline (arcana-novai/opencode-xnai) — not started"
+      - "Cerebras/SambaNova API key signup — research done, integration pending"
+      - "Zed editor viability — blocked (no Cline equivalent)"
+      - "MCP server priorities — Docker MCP + Podman socket setup"
+      - "Charm tools workflow integration — shell aliases needed"
+      - "Multi-agent dispatch protocol design"
+    locked_decisions:
+      - decision: "OpenCode remains primary CLI"
+        reason: "Antigravity plugin = free Claude/Gemini via GitHub OAuth — irreplaceable"
+      - decision: "Crush = experimental only"
+        reason: "No Antigravity port, requires paid API keys"
+      - decision: "iFlow = excluded from waterfall"
+        reason: "Chinese backend sovereignty concern"
+      - decision: "Cerebras/SambaNova = immediate adds"
+        reason: "Exceptional free value (2000-3000 t/s, DeepSeek-R1 671B)"
+    rate_limit_waterfall:
+      - step: 1
+        provider: "Gemini CLI"
+        model: "gemini-2.0-flash"
+        context: "1M"
+        limit: "1500 req/day"
+      - step: 2
+        provider: "OpenCode/Antigravity"
+        model: "claude-sonnet-4-6"
+        auth: "GitHub OAuth free"
+      - step: 3
+        provider: "SambaNova"
+        model: "DeepSeek-R1 671B"
+        note: "Full model, NOT distilled"
+      - step: 4
+        provider: "Cerebras"
+        model: "llama-3.3-70b"
+        speed: "2000-3000 t/s"
+      - step: 5
+        provider: "Groq"
+        model: "llama-3.3-70b-versatile"
+      - step: 6
+        provider: "OpenRouter free"
+        note: "Frontier models, rotation"
+      - step: 7
+        provider: "llama-cpp-python"
+        note: "Local sovereign fallback, unlimited, air-gap"
+    phase_numbering_issue: "Three systems exist — 16-phase operational (plan.md), 3-pillar strategic (PILLARS/), sprint numbering (1-7) — they don't cleanly map to each other"
+
+  T5_cross_domain_synthesis:
+    philosophy_to_code_chain:
+      - layer: "Philosophy (source)"
+        file: "expert-knowledge/esoteric/maat_ideals.md"
+        content: "42 Ideals of Ma'at — Integrity, Truth, Balance, Sovereignty, Wisdom"
+      - layer: "Code (runtime)"
+        file: "app/XNAi_rag_app/core/maat_guardrails.py"
+        content: "MaatGuardrails class with verify_compliance(), verify_tracing_compliance()"
+      - layer: "Project Management (labels)"
+        file: "memory_bank/teamProtocols.md"
+        content: "Vikunja labels: maat:7-truth, maat:18-balance, maat:41-advance"
+      - layer: "Process (criteria)"
+        file: "memory_bank/PHASES/phase-3-status.md"
+        content: "Phase 3 completion cites 'Ideal 7 (Truth): Honest assessment'"
+      - layer: "Security (posture)"
+        file: "internal_docs/01-strategic-planning/PILLARS/PILLAR-3-MODULAR-EXCELLENCE.md"
+        content: "Cites '42 Laws of Ma'at: Truth (transparent supply chain), Balance (risk mitigation)'"
+    pantheon_to_routing:
+      concept: "AI models mapped to archetypal energies (Iris/Qwen, Thoth/Mixtral, Isis/Krikri)"
+      implementation: "model-router.yaml task routing + expert-knowledge/model-reference/ cards"
+    ten_pillars:
+      - pillar: "Voice (Aether/Mercury)"
+        maps_to: "Voice interface — Piper TTS + Whisper STT, <300ms"
+      - pillar: "Flesh (Earth/Gaia)"
+        maps_to: "Embedding/grounding layer — FAISS/Qdrant vectors"
+      - pillar: "Will (Fire/Jupiter)"
+        maps_to: "Agentic flow — agent bus, orchestration"
+      - pillar: "Dream (Water/Neptune)"
+        maps_to: "Generative modes — LLM inference"
+    dual_flame:
+      sophia: "Wisdom — open-source, collaborative, accessible"
+      lilith: "Rebellion — fork plan, sovereignty-first, rejection of vendor lock-in"
+      lilith_gap: "'Spirit of Lilith' section in PHILOSOPHY_v5 is still empty"
+
+  T6_gap_identification:
+    critical:
+      - id: "GAP-01"
+        domain: "Architecture"
+        description: "Torch-free mandate (AGENTS.md, RULES.md) vs. Phase 6F LoRA/QLoRA plans (Axolotl/Unsloth require PyTorch)"
+        severity: "Fundamental architectural conflict"
+      - id: "GAP-02"
+        domain: "Infrastructure"
+        description: "Redis/Qdrant/Vikunja crashed — UID permission mismatch (100999 vs 1001) cascading to 4+ services"
+        severity: "Production blocker"
+      - id: "GAP-03"
+        domain: "Resources"
+        description: "Memory at 94% (5.6GB/6GB) with Phase 5A zRAM optimization only partially deployed"
+        severity: "Capacity risk"
+    significant:
+      - id: "GAP-04"
+        description: "Triple phase numbering (16-phase operational vs. 3-pillar strategic vs. sprint 1-7)"
+      - id: "GAP-05"
+        description: "Phase 3 dependencies unresolved (missing redis module in test env, missing prometheus exporter)"
+      - id: "GAP-06"
+        description: "Krikri 7B→8B global find-replace documented as needed but not fully executed"
+      - id: "GAP-07"
+        description: "ROADMAP-MASTER-INDEX references roadmap-phases/ but files are in PILLARS/"
+      - id: "GAP-08"
+        description: "Agent Bus file→Redis Streams migration timeline undefined"
+      - id: "GAP-09"
+        description: "No Phase 8+ documentation exists"
+      - id: "GAP-10"
+        description: "DEPLOYMENT-PROCEDURES/ directory exists but is empty"
+    minor:
+      - id: "GAP-11"
+        description: "'Spirit of Lilith' section in PHILOSOPHY_v5_models_v2.md is empty"
+      - id: "GAP-12"
+        description: "Documentation fragmented across 59+ files in 01-strategic-planning/"

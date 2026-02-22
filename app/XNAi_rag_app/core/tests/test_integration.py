@@ -1,3 +1,4 @@
+import anyio
 """
 Integration tests for Xoe-NovAi Foundation Stack Core Module
 Tests end-to-end functionality and real-world usage scenarios.
@@ -298,7 +299,7 @@ class TestRealWorldScenarios:
         
         # Start monitoring
         await monitor.start_monitoring()
-        await asyncio.sleep(1.0)  # Run for a short time
+        await anyio.sleep(1.0)  # Run for a short time
         await monitor.stop_monitoring()
         
         # Check that health checks were performed
@@ -386,7 +387,7 @@ class TestPerformanceAndScalability:
         
         # Run concurrent requests
         async def concurrent_request():
-            await asyncio.sleep(0.01)  # Small delay to spread requests
+            await anyio.sleep(0.01)  # Small delay to spread requests
             return await degradation_manager.call_service(
                 "concurrent_service",
                 lambda: {"result": "success"}
@@ -414,7 +415,7 @@ class TestPerformanceAndScalability:
         checkers = []
         for i in range(10):
             async def mock_check():
-                await asyncio.sleep(0.01)  # Simulate check time
+                await anyio.sleep(0.01)  # Simulate check time
                 return {"service": f"service_{i}", "status": "ok"}
             
             checker = HealthChecker(f"service_{i}", timeout=1.0)
@@ -425,7 +426,7 @@ class TestPerformanceAndScalability:
         # Start monitoring
         start_time = time.time()
         await monitor.start_monitoring()
-        await asyncio.sleep(0.5)  # Monitor for 0.5 seconds
+        await anyio.sleep(0.5)  # Monitor for 0.5 seconds
         await monitor.stop_monitoring()
         end_time = time.time()
         
@@ -494,7 +495,7 @@ class TestErrorHandlingAndRecovery:
             await circuit_breaker.call(failure_func)
         
         # Wait for recovery timeout
-        await asyncio.sleep(0.6)
+        await anyio.sleep(0.6)
         
         # Should be in HALF_OPEN state
         async def success_func():

@@ -19,15 +19,14 @@ import sys
 import os
 
 PROJECT_ROOT = os.getenv(
-    'XOE_NOVAI_ROOT',
-    str(Path(__file__).parent.parent.parent.parent.absolute())
+    "XOE_NOVAI_ROOT", str(Path(__file__).parent.parent.parent.parent.absolute())
 )
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
 import os
 import logging
-import asyncio
+import anyio
 import io
 import base64
 import json
@@ -53,7 +52,7 @@ from XNAi_rag_app.core.circuit_breakers import (
     get_circuit_breaker_status,
     circuit_breaker,
     CircuitBreakerError,
-    initialize_voice_circuit_breakers
+    initialize_voice_circuit_breakers,
 )
 
 # Import FastAPI app for health check
@@ -62,6 +61,7 @@ from XNAi_rag_app.api.entrypoint import app
 try:
     import chainlit as cl
     from chainlit.input_widget import Select, Slider
+
     print("Chainlit imported successfully")
     print(f"Chainlit version: {cl.__version__}")
 
@@ -86,6 +86,7 @@ try:
         VoiceSessionManager,
         VoiceFAISSClient,
     )
+
     VOICE_AVAILABLE = True
 except ImportError as e:
     VOICE_AVAILABLE = False
@@ -94,13 +95,13 @@ except ImportError as e:
 
 try:
     import numpy as np
+
     AUDIO_PROCESSING_AVAILABLE = True
 except ImportError:
     AUDIO_PROCESSING_AVAILABLE = False
 
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
 
@@ -110,8 +111,10 @@ os.environ["CHAINLIT_NO_TELEMETRY"] = "true"
 # UNIFIED ERROR HANDLING FRAMEWORK (Same as main.py)
 # ============================================================================
 
+
 class ErrorCategory:
     """Standardized error categories for consistent classification."""
+
     VALIDATION = "validation_error"
     SERVICE_UNAVAILABLE = "service_unavailable"
     NETWORK_ERROR = "network_error"
@@ -121,13 +124,12 @@ class ErrorCategory:
     INTERNAL_ERROR = "internal_error"
     VOICE_ERROR = "voice_error"
 
+
 # Circuit breaker status is now provided by the centralized circuit_breakers.py module
 
+
 def create_standardized_error_message(
-    error_code: str,
-    message: str,
-    details: str = None,
-    recovery_suggestion: str = None
+    error_code: str, message: str, details: str = None, recovery_suggestion: str = None
 ) -> str:
     """
     Create standardized error message for Chainlit UI display.
@@ -153,6 +155,7 @@ def create_standardized_error_message(
 
     return error_msg
 
+
 # Global state
 _voice_interface: Optional[VoiceInterface] = None
 _wake_word_detector: Optional[WakeWordDetector] = None
@@ -162,7 +165,7 @@ _faiss_client: Optional[VoiceFAISSClient] = None
 
 class VoiceConversationManager:
     """Manages voice conversation state with Redis persistence support."""
-    
+
     def __init__(self, config: Optional[VoiceConfig] = None):
         self.config = config or VoiceConfig()
         self.audio_buffer = deque(maxlen=100)
@@ -201,7 +204,10 @@ class VoiceConversationManager:
                 self.is_listening = True
                 return True
 
-        if self.is_listening and (current_time - self.last_speech_time) > self.silence_threshold:
+        if (
+            self.is_listening
+            and (current_time - self.last_speech_time) > self.silence_threshold
+        ):
             self.is_listening = False
             return True
 
@@ -219,9 +225,9 @@ class VoiceConversationManager:
 
     def get_buffered_audio(self) -> bytes:
         if not self.audio_buffer:
-            return b''
+            return b""
         audio_chunks = [chunk for _, chunk in self.audio_buffer]
-        return b''.join(audio_chunks)
+        return b"".join(audio_chunks)
 
     def clear_buffer(self):
         self.audio_buffer.clear()
@@ -250,7 +256,9 @@ class VoiceConversationManager:
             detected, confidence = _wake_word_detector.detect(transcription)
             if detected:
                 self.wake_word_detected = True
-                logger.info(f"Wake word 'Hey Nova' detected (confidence: {confidence:.2f})")
+                logger.info(
+                    f"Wake word 'Hey Nova' detected (confidence: {confidence:.2f})"
+                )
                 return True
             return False
         return True
@@ -260,6 +268,7 @@ _conversation_manager = VoiceConversationManager()
 
 
 if cl:
+
     @cl.on_chat_start
     async def on_chat_start():
         """Initialize voice chat session with Redis session manager."""
@@ -305,14 +314,23 @@ if cl:
 **Commands:**
 - "Stop voice chat" to end
 - "Voice settings" to adjust"""
-        
+
         main_message = await cl.Message(content=welcome_msg).send()
 
         # Define chat settings for persistent voice toggle
         await cl.ChatSettings(
             [
-                cl.input_widget.Switch(id="voice_enabled", label="Voice Responses", initial=False),
-                cl.input_widget.Slider(id="wake_sensitivity", label="Wake Word Sensitivity", initial=0.8, min=0.5, max=1.0, step=0.05),
+                cl.input_widget.Switch(
+                    id="voice_enabled", label="Voice Responses", initial=False
+                ),
+                cl.input_widget.Slider(
+                    id="wake_sensitivity",
+                    label="Wake Word Sensitivity",
+                    initial=0.8,
+                    min=0.5,
+                    max=1.0,
+                    step=0.05,
+                ),
             ]
         ).send()
 
@@ -321,7 +339,7 @@ if cl:
             # First initialize circuit breakers for voice
             redis_host = os.getenv("REDIS_HOST", "redis")
             raw_port = os.getenv("REDIS_PORT", "6379")
-            
+
             # Robust port parsing to handle corruption like '0MG8IH'
             try:
                 # Filter only digits
@@ -330,19 +348,24 @@ if cl:
             except (ValueError, TypeError):
                 logger.warning(f"Invalid REDIS_PORT '{raw_port}', defaulting to 6379")
                 redis_port = 6379
-                
+
             import urllib.parse
+
             redis_pass = os.getenv("REDIS_PASSWORD", "")
             encoded_pass = urllib.parse.quote_plus(redis_pass)
             redis_url = f"redis://:{encoded_pass}@{redis_host}:{redis_port}/0"
-            logger.info(f"Initializing voice circuit breakers with {redis_host}:{redis_port}")
+            logger.info(
+                f"Initializing voice circuit breakers with {redis_host}:{redis_port}"
+            )
             await initialize_voice_circuit_breakers(redis_url)
-            
+
             await setup_voice_interface()
             cl.user_session.set("conversation_manager", _conversation_manager)
             global _wake_word_detector
             if VOICE_AVAILABLE:
-                _wake_word_detector = WakeWordDetector(wake_word="hey nova", sensitivity=0.8)
+                _wake_word_detector = WakeWordDetector(
+                    wake_word="hey nova", sensitivity=0.8
+                )
                 logger.info("Wake word detector initialized for 'Hey Nova'")
         except Exception as e:
             logger.error(f"Failed to setup voice interface: {e}")
@@ -351,58 +374,92 @@ if cl:
         # BUTLER HEALTH BRIDGE (PHASE 2: COGNITIVE INFRASTRUCTURE)
         # ============================================================================
         try:
-            status_path = Path(__file__).parent.parent.parent / "data" / "infra_status.json"
+            status_path = (
+                Path(__file__).parent.parent.parent / "data" / "infra_status.json"
+            )
             if status_path.exists():
                 with open(status_path, "r") as f:
                     infra_data = json.load(f)
-                
-                zram = infra_data.get("services", {}).get("zram", {}).get("status", "UNKNOWN")
-                cores = infra_data.get("services", {}).get("cores", {}).get("count", "??")
-                
+
+                zram = (
+                    infra_data.get("services", {})
+                    .get("zram", {})
+                    .get("status", "UNKNOWN")
+                )
+                cores = (
+                    infra_data.get("services", {}).get("cores", {}).get("count", "??")
+                )
+
                 status_md = f"🤵 **Butler Status**\n\n"
                 status_md += f"- **ZRAM**: {zram}\n"
                 status_md += f"- **Cores**: {cores} Threads\n"
                 status_md += f"- **Last Sync**: {infra_data.get('timestamp', 'N/A')}"
-                
-                await cl.Text(name="System Status", content=status_md, display="side").send(for_id=main_message.id)
+
+                await cl.Text(
+                    name="System Status", content=status_md, display="side"
+                ).send(for_id=main_message.id)
             else:
-                await cl.Text(name="System Status", content="🤵 **Butler**: Waiting for infra sync...", display="side").send(for_id=main_message.id)
+                await cl.Text(
+                    name="System Status",
+                    content="🤵 **Butler**: Waiting for infra sync...",
+                    display="side",
+                ).send(for_id=main_message.id)
         except Exception as e:
             logger.warning(f"Failed to load Butler status: {e}")
 
-        start_button = cl.Action(name="start_voice_chat", payload={"action": "start"}, label="Start Voice Chat")
-        await cl.Message(content="Click to begin voice conversation:", actions=[start_button]).send()
+        start_button = cl.Action(
+            name="start_voice_chat",
+            payload={"action": "start"},
+            label="Start Voice Chat",
+        )
+        await cl.Message(
+            content="Click to begin voice conversation:", actions=[start_button]
+        ).send()
 
         if cl:
+
             @cl.action_callback("start_voice_chat")
             async def start_voice_chat(action: cl.Action):
                 cl.user_session.set("voice_conversation_active", True)
                 cl.user_session.set("voice_enabled", True)  # Explicitly enable voice
                 _conversation_manager.start_conversation()
 
-                await cl.Message(content="""**Voice Chat Started!**
+                await cl.Message(
+                    content="""**Voice Chat Started!**
 
 I'm listening. Say "Hey Nova" when ready.
 
 **Status:** Listening for wake word... (Voice responses ENABLED)
-                """).send()
+                """
+                ).send()
 
             @cl.action_callback("stop_voice_chat")
             async def stop_voice_chat(action: cl.Action):
                 cl.user_session.set("voice_conversation_active", False)
                 cl.user_session.set("voice_enabled", False)
                 _conversation_manager.end_conversation()
-                
+
                 if _session_manager:
                     _session_manager.clear_session()
-                
-                await cl.Message(content="**Voice Chat Stopped** - Session cleared").send()
+
+                await cl.Message(
+                    content="**Voice Chat Stopped** - Session cleared"
+                ).send()
 
             @cl.action_callback("voice_settings")
             async def voice_settings(action: cl.Action):
                 settings_msg = "**Voice Settings**"
-                sensitivity_slider = cl.Slider(id="wake_sensitivity", label="Wake Sensitivity", initial=0.8, min=0.5, max=1.0, step=0.05)
-                await cl.Message(content=settings_msg, elements=[sensitivity_slider]).send()
+                sensitivity_slider = cl.Slider(
+                    id="wake_sensitivity",
+                    label="Wake Sensitivity",
+                    initial=0.8,
+                    min=0.5,
+                    max=1.0,
+                    step=0.05,
+                )
+                await cl.Message(
+                    content=settings_msg, elements=[sensitivity_slider]
+                ).send()
 
 
 # ============================================================================
@@ -410,6 +467,7 @@ I'm listening. Say "Hey Nova" when ready.
 # ============================================================================
 
 if cl and VOICE_AVAILABLE:
+
     @cl.on_audio_start
     async def on_audio_start():
         """Handle browser microphone stream start."""
@@ -422,7 +480,9 @@ if cl and VOICE_AVAILABLE:
             logger.error(f"Error starting audio stream: {e}")
             return False
 
+
 if cl and VOICE_AVAILABLE:
+
     @cl.on_audio_chunk
     async def on_audio_chunk(cl_chunk):
         """
@@ -435,29 +495,39 @@ if cl and VOICE_AVAILABLE:
 
         # Add chunk to buffer and check for VAD/Speech
         # FIX: Ensure we pass cl_chunk.data (bytes) not the Chunk object
-        audio_data_bytes = getattr(cl_chunk, 'data', cl_chunk) if not isinstance(cl_chunk, bytes) else cl_chunk
-        
+        audio_data_bytes = (
+            getattr(cl_chunk, "data", cl_chunk)
+            if not isinstance(cl_chunk, bytes)
+            else cl_chunk
+        )
+
         should_process = _conversation_manager.add_audio_chunk(audio_data_bytes)
-        
+
         # BARGE-IN LOGIC: If AI is speaking and user starts speaking, interrupt
-        if _conversation_manager.is_speaking and _conversation_manager.stream_processor and _conversation_manager.stream_processor.barge_in_detected:
+        if (
+            _conversation_manager.is_speaking
+            and _conversation_manager.stream_processor
+            and _conversation_manager.stream_processor.barge_in_detected
+        ):
             if _voice_interface:
                 _voice_interface.interrupt()
                 logger.info("Barge-in: Interrupting AI response")
                 await cl.Message(content="👂 **Interrupted - listening...**").send()
-        
+
         # Periodic debug log (every ~50 chunks to avoid noise)
         if _conversation_manager.stats.get("total_chunks", 0) % 50 == 0:
-            logger.info(f"Received audio chunk: {len(audio_data_bytes)} bytes (Total: {_conversation_manager.stats.get('total_bytes', 0)})")
-        
+            logger.info(
+                f"Received audio chunk: {len(audio_data_bytes)} bytes (Total: {_conversation_manager.stats.get('total_bytes', 0)})"
+            )
+
         if should_process and not _conversation_manager.is_speaking:
             # Speech end detected, or wake word check needed
             buffered_audio = _conversation_manager.get_buffered_audio()
-            
+
             if buffered_audio:
                 # 1. Transcribe
                 transcription = await process_voice_input(buffered_audio)
-                
+
                 if transcription and transcription.strip():
                     logger.info(f"Voice interface processing: '{transcription}'")
                     # 2. Check for wake word if not already 'awake'
@@ -471,11 +541,13 @@ if cl and VOICE_AVAILABLE:
                     else:
                         # 3. Already awake, process as AI command/query
                         _conversation_manager.is_speaking = True
-                        await cl.Message(content=f"🗣️ **You said:** {transcription}").send()
-                        
+                        await cl.Message(
+                            content=f"🗣️ **You said:** {transcription}"
+                        ).send()
+
                         # Generate and send AI response
                         response_text = await generate_ai_response(transcription)
-                        
+
                         # Send text
                         msg = cl.Message(content="")
                         await msg.send()
@@ -485,17 +557,21 @@ if cl and VOICE_AVAILABLE:
                                 break
                             await msg.stream_token(word + " ")
                         await msg.update()
-                        
+
                         # Send voice
                         if not (_voice_interface and _voice_interface.is_interrupted):
                             audio_resp = await generate_voice_response(response_text)
                             if audio_resp:
-                                await cl.Audio(name="Nova", content=audio_resp, display="inline").send()
-                        
+                                await cl.Audio(
+                                    name="Nova", content=audio_resp, display="inline"
+                                ).send()
+
                         _conversation_manager.is_speaking = False
                         _conversation_manager.clear_buffer()
 
+
 if cl and VOICE_AVAILABLE:
+
     @cl.on_audio_end
     async def on_audio_end():
         """Handle browser microphone stream end."""
@@ -507,11 +583,11 @@ async def setup_voice_interface():
     """Setup voice interface with all components."""
     global _voice_interface, _wake_word_detector
     logger.info("Setting up voice interface...")
-    
+
     if not VOICE_AVAILABLE:
         logger.warning("Voice interface not available")
         return
-    
+
     config = VoiceConfig(
         stt_provider=STTProvider.FASTER_WHISPER,
         tts_provider=TTSProvider.PIPER_ONNX,
@@ -523,10 +599,12 @@ async def setup_voice_interface():
         preload_models=True,
         stt_compute_type="int8",
     )
-    
+
     _voice_interface = VoiceInterface(config)
-    _wake_word_detector = WakeWordDetector(wake_word=config.wake_word, sensitivity=config.wake_word_sensitivity)
-    
+    _wake_word_detector = WakeWordDetector(
+        wake_word=config.wake_word, sensitivity=config.wake_word_sensitivity
+    )
+
     logger.info("Voice interface initialized")
 
 
@@ -539,10 +617,10 @@ async def process_voice_input(audio_data: bytes) -> Optional[str]:
     try:
         # 1. Transcribe
         transcription, confidence = await _voice_interface.transcribe_audio(audio_data)
-        
+
         # 2. Filter hallucinations (Whisper filler on silence)
         filtered_text = _voice_interface.filter_hallucinations(transcription)
-        
+
         if not filtered_text:
             return None
 
@@ -550,10 +628,11 @@ async def process_voice_input(audio_data: bytes) -> Optional[str]:
 
         # Save to Redis session
         if _session_manager:
-            _session_manager.add_interaction("user", filtered_text, {
-                "confidence": confidence,
-                "model": "distil-large-v3-turbo"
-            })
+            _session_manager.add_interaction(
+                "user",
+                filtered_text,
+                {"confidence": confidence, "model": "distil-large-v3-turbo"},
+            )
 
         return filtered_text
 
@@ -563,37 +642,41 @@ async def process_voice_input(audio_data: bytes) -> Optional[str]:
 
 
 @rag_api_breaker
-async def call_rag_api_with_circuit_breaker(user_input: str, context: str = "", knowledge_context: str = "") -> Dict[str, Any]:
+async def call_rag_api_with_circuit_breaker(
+    user_input: str, context: str = "", knowledge_context: str = ""
+) -> Dict[str, Any]:
     """Call RAG API with circuit breaker protection and authentication."""
     import httpx
+
     rag_api_url = "http://rag:8000"
-    
+
     # 1. Get token from session or login
     token = cl.user_session.get("rag_token")
     if not token:
         try:
-                # Use operator-provided credentials via environment variables; do not fall back to defaults
-                rag_user = os.getenv("RAG_UI_USERNAME")
-                rag_password = os.getenv("RAG_UI_PASSWORD")
+            # Use operator-provided credentials via environment variables; do not fall back to defaults
+            rag_user = os.getenv("RAG_UI_USERNAME")
+            rag_password = os.getenv("RAG_UI_PASSWORD")
 
-                if not rag_user or not rag_password:
-                    logger.warning("RAG UI credentials not provided (RAG_UI_USERNAME / RAG_UI_PASSWORD); skipping UI auto-login")
-                else:
-                    async with httpx.AsyncClient(timeout=10.0) as client:
-                        login_response = await client.post(
-                            f"{rag_api_url}/auth/login",
-                            json={
-                                "username": rag_user,
-                                "password": rag_password
-                            }
+            if not rag_user or not rag_password:
+                logger.warning(
+                    "RAG UI credentials not provided (RAG_UI_USERNAME / RAG_UI_PASSWORD); skipping UI auto-login"
+                )
+            else:
+                async with httpx.AsyncClient(timeout=10.0) as client:
+                    login_response = await client.post(
+                        f"{rag_api_url}/auth/login",
+                        json={"username": rag_user, "password": rag_password},
+                    )
+                    if login_response.status_code == 200:
+                        token_data = login_response.json()
+                        token = token_data.get("access_token")
+                        cl.user_session.set("rag_token", token)
+                        logger.info("UI successfully authenticated with RAG API")
+                    else:
+                        logger.error(
+                            f"RAG API login failed: {login_response.status_code}"
                         )
-                        if login_response.status_code == 200:
-                            token_data = login_response.json()
-                            token = token_data.get("access_token")
-                            cl.user_session.set("rag_token", token)
-                            logger.info("UI successfully authenticated with RAG API")
-                        else:
-                            logger.error(f"RAG API login failed: {login_response.status_code}")
         except Exception as e:
             logger.error(f"RAG API authentication error: {e}")
 
@@ -602,7 +685,7 @@ async def call_rag_api_with_circuit_breaker(user_input: str, context: str = "", 
         headers = {}
         if token:
             headers["Authorization"] = f"Bearer {token}"
-            
+
         response = await client.post(
             f"{rag_api_url}/query",
             headers=headers,
@@ -612,9 +695,9 @@ async def call_rag_api_with_circuit_breaker(user_input: str, context: str = "", 
                 "voice_input": True,
                 "conversation_context": context,
                 "knowledge_context": knowledge_context,
-            }
+            },
         )
-        
+
         if response.status_code == 200:
             result = response.json()
             response_text = result.get("response", "I processed your request.")
@@ -626,6 +709,7 @@ async def call_rag_api_with_circuit_breaker(user_input: str, context: str = "", 
         else:
             raise Exception(f"RAG API returned status {response.status_code}")
 
+
 async def generate_ai_response(user_input: str) -> str:
     """Generate AI response using RAG API with conversation context and circuit breaker protection."""
     try:
@@ -633,9 +717,13 @@ async def generate_ai_response(user_input: str) -> str:
         context = ""
         if _session_manager:
             try:
-                context = redis_breaker(_session_manager.get_conversation_context)(max_turns=5)
+                context = redis_breaker(_session_manager.get_conversation_context)(
+                    max_turns=5
+                )
             except CircuitBreakerError:
-                logger.warning("Redis circuit breaker open - proceeding without conversation context")
+                logger.warning(
+                    "Redis circuit breaker open - proceeding without conversation context"
+                )
                 context = ""  # Fallback: no context
 
         # Get knowledge from FAISS
@@ -644,21 +732,35 @@ async def generate_ai_response(user_input: str) -> str:
             try:
                 results = _faiss_client.search(user_input, top_k=3)
                 if isinstance(results, list) and len(results) > 0:
-                    knowledge_context = "\n".join([r.get("content", "") for r in results[:2] if isinstance(r, dict)])
+                    knowledge_context = "\n".join(
+                        [
+                            r.get("content", "")
+                            for r in results[:2]
+                            if isinstance(r, dict)
+                        ]
+                    )
             except Exception as e:
-                logger.warning(f"FAISS search failed: {e} - proceeding without knowledge context")
+                logger.warning(
+                    f"FAISS search failed: {e} - proceeding without knowledge context"
+                )
 
         # Call RAG API with circuit breaker protection
         try:
-            result = await call_rag_api_with_circuit_breaker(user_input, context, knowledge_context)
+            result = await call_rag_api_with_circuit_breaker(
+                user_input, context, knowledge_context
+            )
             response_text = result["response"]
 
             # Save assistant response to Redis (with circuit breaker)
             if _session_manager:
                 try:
-                    redis_breaker(_session_manager.add_interaction)("assistant", response_text)
+                    redis_breaker(_session_manager.add_interaction)(
+                        "assistant", response_text
+                    )
                 except CircuitBreakerError:
-                    logger.warning("Redis circuit breaker open - could not save assistant response")
+                    logger.warning(
+                        "Redis circuit breaker open - could not save assistant response"
+                    )
 
             return response_text
 
@@ -668,7 +770,7 @@ async def generate_ai_response(user_input: str) -> str:
             fallback_msg = create_standardized_error_message(
                 error_code=ErrorCategory.SERVICE_UNAVAILABLE,
                 message="AI service temporarily unavailable",
-                recovery_suggestion="Please try again in 30 seconds. The service is automatically recovering."
+                recovery_suggestion="Please try again in 30 seconds. The service is automatically recovering.",
             )
             return f"I'm temporarily unable to access my knowledge base. {fallback_msg}"
 
@@ -678,7 +780,7 @@ async def generate_ai_response(user_input: str) -> str:
             error_code=ErrorCategory.INTERNAL_ERROR,
             message="Unable to generate AI response",
             details=str(e),
-            recovery_suggestion="Please try again. If the problem continues, contact support."
+            recovery_suggestion="Please try again. If the problem continues, contact support.",
         )
         return error_msg
 
@@ -687,10 +789,12 @@ async def generate_voice_response(text: str) -> Optional[bytes]:
     """Generate voice response from text."""
     if not VOICE_AVAILABLE or not _voice_interface:
         return None
-    
+
     try:
         audio_data = await _voice_interface.synthesize_speech(text=text, language="en")
-        logger.info(f"Generated voice response: {len(audio_data) if audio_data else 0} bytes")
+        logger.info(
+            f"Generated voice response: {len(audio_data) if audio_data else 0} bytes"
+        )
         return audio_data
     except Exception as e:
         logger.error(f"Voice generation failed: {e}")
@@ -698,6 +802,7 @@ async def generate_voice_response(text: str) -> Optional[bytes]:
 
 
 if cl:
+
     @cl.on_message
     async def on_message(message: cl.Message):
         """Handle incoming messages with voice support."""
@@ -713,10 +818,9 @@ if cl:
         await msg.send()
 
         # Check if voice is explicitly enabled via command/button/session
-        voice_enabled = (
-            cl.user_session.get("voice_enabled", False) or
-            cl.user_session.get("voice_conversation_active", False)
-        )
+        voice_enabled = cl.user_session.get(
+            "voice_enabled", False
+        ) or cl.user_session.get("voice_conversation_active", False)
 
         try:
             response_text = await generate_ai_response(user_query)
@@ -738,9 +842,7 @@ if cl:
                     if audio_data and len(audio_data) > 0:
                         # Send audio to UI
                         await cl.Audio(
-                            name="Nova",
-                            content=audio_data,
-                            display="inline"
+                            name="Nova", content=audio_data, display="inline"
                         ).send()
                         voice_msg.content = "🎤 Voice response ready."
                         await voice_msg.update()
@@ -752,7 +854,9 @@ if cl:
                     await cl.Message(content=f"❌ Voice generation failed: {e}").send()
             else:
                 # Add hint for enabling voice
-                hint_msg = cl.Message(content="\n\n💡 *Tip:* Use `/voice on` or click 'Start Voice Chat' for voice responses")
+                hint_msg = cl.Message(
+                    content="\n\n💡 *Tip:* Use `/voice on` or click 'Start Voice Chat' for voice responses"
+                )
                 await hint_msg.send()
 
         except Exception as e:
@@ -778,8 +882,14 @@ async def handle_command(command: str) -> Optional[str]:
             session_info = f"\nSession: {stats['session_id']}, Turns: {stats['conversation_turns']}"
         return f"Voice: {'Enabled' if voice_enabled else 'Disabled'}{session_info}"
     elif command_lower == "/voice restart":
-        start_button = cl.Action(name="start_voice_chat", payload={"action": "start"}, label="Start Voice Chat")
-        await cl.Message(content="Click to begin voice conversation:", actions=[start_button]).send()
+        start_button = cl.Action(
+            name="start_voice_chat",
+            payload={"action": "start"},
+            label="Start Voice Chat",
+        )
+        await cl.Message(
+            content="Click to begin voice conversation:", actions=[start_button]
+        ).send()
         return "Voice activation button sent."
     elif command_lower == "/session clear":
         if _session_manager:
@@ -789,6 +899,7 @@ async def handle_command(command: str) -> Optional[str]:
 
 
 if cl:
+
     @cl.on_settings_update
     async def on_settings_update(settings):
         """Handle settings updates."""
@@ -812,7 +923,11 @@ async def _health_check_logic():
         session_status = "available" if _session_manager else "unavailable"
 
         # Check FAISS client
-        faiss_status = "available" if _faiss_client and _faiss_client.is_available else "unavailable"
+        faiss_status = (
+            "available"
+            if _faiss_client and _faiss_client.is_available
+            else "unavailable"
+        )
 
         return JSONResponse(
             status_code=200,
@@ -823,28 +938,27 @@ async def _health_check_logic():
                     "circuit_breakers": circuit_status,
                     "session_manager": session_status,
                     "faiss_client": faiss_status,
-                    "version": "0.1.0-alpha"
-                }
-            }
+                    "version": "0.1.0-alpha",
+                },
+            },
         )
     except Exception as e:
         return JSONResponse(
-            status_code=503,
-            content={
-                "status": "unhealthy",
-                "error": str(e)
-            }
+            status_code=503, content={"status": "unhealthy", "error": str(e)}
         )
 
+
 if cl:
+
     @cl.on_app_startup
     def setup_chainlit_app():
         """Set up Chainlit application hooks and routes."""
         cl.app.add_api_route("/health", _health_check_logic, methods=["GET"])
+
     # The @cl.on_app_startup decorator handles when setup_chainlit_app is called.
 
 if __name__ == "__main__":
     if VOICE_AVAILABLE:
-        asyncio.run(setup_voice_interface())
+        anyio.run(setup_voice_interface)
     else:
         logger.error("Voice interface not available")

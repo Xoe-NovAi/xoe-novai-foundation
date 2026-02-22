@@ -1,0 +1,574 @@
+# XNAi Ecosystem — Consolidated Project Queue
+# Version: v1.1.0
+# Created: 2026-02-19
+# Source: GLM-5 Sprint 8 planning session + Enhanced Strategy v1.1
+# Purpose: Single source of truth for all active tasks, ready for Vikunja import
+#
+# Structure:
+#   - Each item has: id, tier, title, source, status, labels, resource_allocation
+#   - Labels use Vikunja format: tier:P0-P3, project:PROJECT-NNN, etc.
+#   - Items are organized by tier, then by project ID
+#   - Enhanced with FORGE integration and resource allocation
+
+# =============================================================================
+# TIER 1: PRODUCTION BLOCKERS (P0) — Immediate
+# =============================================================================
+
+tier_1_blockers:
+  
+  - id: P-001
+    title: "Fix Agent Bus Stream Key Split"
+    description: |
+      The Agent Bus uses inconsistent stream keys across components. 
+      The MCP server uses 'xnai:agent_bus' while the core uses a different key format.
+      This causes task dispatch failures.
+    source: 
+      - risk-assessment.md (RISK-001)
+      - initiative-status-dashboard.md (TASK-001)
+    tier: P0
+    status: completed
+    completed_date: 2026-02-19
+    labels:
+      - tier:P0
+      - project:P-001
+      - agent_bus
+      - critical
+    assigned_model: glm-5
+    estimated_effort: "10 minutes"
+    acceptance_criteria:
+      - All Agent Bus components use consistent stream key
+      - Task dispatch succeeds end-to-end
+      - MCP server can subscribe to agent bus
+
+  - id: P-002
+    title: "Resolve Permission/UID Cascade Issues"
+    description: |
+      Multiple services fail due to UID/GID permission mismatches.
+      Redis, Qdrant, and Vikunja all experienced crashes due to container UID (999)
+      unable to write to host directories owned by UID 1001.
+    source:
+      - internal_docs/04-code-quality/systematic-permissions-security-audit-v1.0.0.md
+      - progress.md (Redis persistence error section)
+    tier: P0
+    status: in_progress
+    labels:
+      - tier:P0
+      - project:P-002
+      - permissions
+      - podman
+      - security
+    assigned_model: glm-5
+    estimated_effort: "30 minutes"
+    acceptance_criteria:
+      - All data directories writable by containers
+      - No UID/GID errors in container logs
+      - scripts/fix-permissions.sh handles all cases
+
+  - id: P-003
+    title: "Complete Phase 5A Host-Level Persistence"
+    description: |
+      Phase 5A zRAM is fully operational.
+      - 12GB zstd device active
+      - vm.swappiness=180 persisted
+      - 4.1:1 compression ratio (excellent)
+      Optional enhancements (multi-tier zRAM, Grafana dashboard, stress tests)
+      moved to Tier 2 as P-003-O.
+    source:
+      - memory_bank/PHASES/phase-5a-status.md
+      - internal_docs/01-strategic-planning/PHASE-5-EXECUTIVE-ROADMAP.md
+    tier: P0
+    status: completed
+    completed_date: 2026-02-19
+    labels:
+      - tier:P0
+      - project:P-003
+      - phase5a
+      - zram
+      - memory
+    assigned_model: glm-5
+    estimated_effort: "5 minutes (verification)"
+    acceptance_criteria:
+      - vm.swappiness=180 persisted in /etc/sysctl.d/
+      - zRAM configuration survives reboot
+      - Integration tests show no OOMs under 5x load
+
+  - id: P-004
+    title: "Fix Hardcoded Chinese Mirror in Dockerfile.base"
+    description: |
+      Dockerfile.base was checked - no Chinese mirror found.
+      Uses cdn-fastly.deb.debian.org (legitimate CDN).
+      Marking as complete - issue was already resolved or false positive.
+    source:
+      - internal_docs/04-code-quality/systematic-permissions-security-audit-v1.0.0.md
+    tier: P0
+    status: completed
+    completed_date: 2026-02-19
+    labels:
+      - tier:P0
+      - project:P-004
+      - dockerfile
+      - sovereignty
+      - security
+    assigned_model: glm-5
+    estimated_effort: "5 minutes (verification)"
+    acceptance_criteria:
+      - Mirror URL replaced with default or configurable via ARG
+      - Build succeeds without external dependencies
+
+# =============================================================================
+# TIER 2: FOUNDATION HARDENING (P1) — Weeks 1-6
+# =============================================================================
+
+tier_2_hardening:
+
+  - id: P-010
+    title: "Codebase-Wide Review Pipeline"
+    description: |
+      Multi-phase review: Security Discovery (Gemini Flash) → 
+      Architecture Planning (Sonnet) → Strategic Review (Opus) → 
+      Implementation (Sonnet/Gemini).
+    source:
+      - architect-directive
+      - This session (GLM-5 strategy)
+    tier: P1
+    status: pending
+    labels:
+      - tier:P1
+      - project:P-010
+      - review
+      - security
+      - performance
+      - opus-review
+    assigned_model: tiered
+    estimated_effort: "4 sprints"
+    subtasks:
+      - phase: A
+        title: "Security Discovery"
+        model: gemini-flash
+        status: pending
+      - phase: B
+        title: "Architecture + Performance Planning"
+        model: sonnet
+        status: pending
+      - phase: C
+        title: "Opus Strategic Review"
+        model: opus
+        status: pending
+      - phase: D
+        title: "Implementation"
+        model: sonnet
+        status: pending
+
+  - id: P-011
+    title: "Security Hardening"
+    description: |
+      API validation, rate limiting, input bounds checking.
+      Address security gaps identified in P-010 Phase A.
+    source:
+      - benchmarks/COGNITIVE-ENHANCEMENTS.md (CE-001 through CE-006)
+    tier: P1
+    status: pending
+    labels:
+      - tier:P1
+      - project:P-011
+      - security
+      - api
+    assigned_model: sonnet
+    estimated_effort: "1-2 sprints"
+
+  - id: P-012
+    title: "Test Coverage Expansion"
+    description: |
+      Expand test coverage from ~30% to 60%+.
+      Focus on RAG, API, and security test gaps.
+    source:
+      - internal_docs/04-code-quality/reviews/FINAL_SYSTEM_REPORT_20260123.md
+    tier: P1
+    status: pending
+    labels:
+      - tier:P1
+      - project:P-012
+      - testing
+      - coverage
+    assigned_model: gemini-flash
+    estimated_effort: "2 sprints"
+
+  - id: P-013
+    title: "Error Handling Unification"
+    description: |
+      Consolidate 5+ independent exception hierarchies into a single
+      unified XNAiException system with consistent error codes.
+    source:
+      - internal_docs/04-code-quality/systematic-error-code-audit-20260211.md
+    tier: P1
+    status: pending
+    labels:
+      - tier:P1
+      - project:P-013
+      - error-handling
+      - refactoring
+    assigned_model: sonnet
+    estimated_effort: "1 sprint"
+
+  - id: P-014
+    title: "Cognitive Enhancements (CE-001 to CE-006)"
+    description: |
+      Implement memory bank architecture improvements:
+      - CE-001: Phase number disambiguation
+      - CE-002: Onboarding protocol config file
+      - CE-003: INDEX.md validation script
+      - CE-004: Handover auto-discovery
+      - CE-005: Esoteric layer summary in CONTEXT.md
+      - CE-006: Token budget metadata
+    source:
+      - benchmarks/COGNITIVE-ENHANCEMENTS.md
+    tier: P1
+    status: pending
+    labels:
+      - tier:P1
+      - project:P-014
+      - cognitive
+      - memory-bank
+    assigned_model: sonnet
+    estimated_effort: "1-2 sprints"
+
+  - id: P-015
+    title: "MC Oversight Tasks (14 pending)"
+    description: |
+      Complete remaining 14 tasks from MC oversight strategic review.
+      Includes MCP server registration, asyncio.gather fix, model matrix updates.
+    source:
+      - mc-oversight/initiative-status-dashboard.md
+      - mc-oversight/strategic-recommendations.md
+    tier: P1
+    status: pending
+    labels:
+      - tier:P1
+      - project:P-015
+      - mc-oversight
+      - mcp
+    assigned_model: mixed
+    estimated_effort: "1-2 sprints"
+
+  - id: P-016
+    title: "Research Queue Resolution (R1-R7)"
+    description: |
+      Resolve CRITICAL and HIGH priority research items:
+      - R1: Cline 400K context window
+      - R2: Qdrant collection state audit
+      - R3: Antigravity CLI complete model list
+      - R4: OpenCode to Antigravity migration
+      - R5: Redis Sentinel vs Standalone
+      - R6: fastembed + ONNX version compat
+      - R7: Gemini 3 CLI availability
+    source:
+      - ADDITIONAL-RESEARCH-NEEDED.md
+    tier: P1
+    status: pending
+    labels:
+      - tier:P1
+      - project:P-016
+      - research
+    assigned_model: gemini-pro
+    estimated_effort: "1 sprint"
+
+  - id: P-017
+    title: "AWQ Removal & CPU+Vulkan Optimization"
+    description: |
+      Remove AWQ components from XNAi Foundation stack while preserving
+      GPU research knowledge and optimizing for CPU+Vulkan architecture.
+      
+      AWQ requires PyTorch which conflicts with the torch-free mandate.
+      This task creates a refactoring guide for multi-agent parallel execution.
+      
+      Deliverables:
+      - Refactoring guide: plans/AWQ-REMOVAL-REFACTORING-GUIDE.md
+      - GPU research archive: expert-knowledge/_archive/gpu-research/
+      - Memory bank updates documenting the change
+      
+      Task Groups (Parallel Execution):
+      - Group A: File System Cleanup (30 min)
+      - Group B: Memory Bank & Documentation (1 hr)
+      - Group C: Build System Updates (30 min) [depends on A]
+      - Group D: Foundation Stack Integration (1 hr) [depends on A,B,C]
+    source:
+      - plans/AWQ-REMOVAL-REFACTORING-GUIDE.md
+      - Dockerfile.awq analysis
+    tier: P1
+    status: pending
+    labels:
+      - tier:P1
+      - project:P-017
+      - awq-removal
+      - torch-free
+      - vulkan
+      - multi-agent
+    assigned_model: gemini-cli
+    estimated_effort: "3 hours total (parallel execution)"
+    subtasks:
+      - group: A
+        title: "File System Cleanup"
+        model: any
+        status: pending
+        effort: "30 minutes"
+      - group: B
+        title: "Memory Bank & Documentation"
+        model: any
+        status: pending
+        effort: "1 hour"
+      - group: C
+        title: "Build System Updates"
+        model: any
+        status: pending
+        effort: "30 minutes"
+        depends_on: "Group A"
+      - group: D
+        title: "Foundation Stack Integration"
+        model: any
+        status: pending
+        effort: "1 hour"
+        depends_on: "Groups A, B, C"
+    acceptance_criteria:
+      - No AWQ references in codebase (grep -r "awq" returns empty)
+      - Build succeeds without AWQ (make build)
+      - GPU research archived in expert-knowledge/_archive/gpu-research/
+      - Memory bank updated with changes
+      - All tests pass
+
+# =============================================================================
+# TIER 3: FEATURE EXPANSION (P2) — Weeks 7+
+# =============================================================================
+
+tier_3_features:
+
+  - id: P-020
+    title: "OpenCode Fork (Phases 1-5)"
+    description: |
+      Fork OpenCode CLI for XNAi integration:
+      - Phase 1: Minimal fork (clone + rename)
+      - Phase 2: XNAi RAG Integration (--rag flag)
+      - Phase 3: Sovereign MC Agent Hooks (--dispatch flag)
+      - Phase 4: Custom RULES Loader
+      - Phase 5: XNAi TUI Branding
+    source:
+      - internal_docs/01-strategic-planning/OPENCODE-XNAI-FORK-PLAN.md
+    tier: P2
+    status: pending
+    labels:
+      - tier:P2
+      - project:P-020
+      - fork
+      - opencode
+    assigned_model: sonnet
+    estimated_effort: "4-6 sprints"
+
+  - id: P-021
+    title: "Vikunja Full Integration"
+    description: |
+      Complete Vikunja integration:
+      - MCP layer for agent workflow
+      - Memory bank export automation
+      - Label schema enforcement
+    source:
+      - docs/05-research/vikunja-implementation-roadmap.md
+    tier: P2
+    status: pending
+    labels:
+      - tier:P2
+      - project:P-021
+      - vikunja
+      - mcp
+    assigned_model: sonnet
+    estimated_effort: "2-3 sprints"
+
+  - id: P-022
+    title: "Qdrant Migration"
+    description: |
+      Migrate from FAISS to Qdrant for vector storage.
+      Scripts already exist: migrate_to_qdrant.py, validate_qdrant_migration.py.
+    source:
+      - memory_bank/PHASES/phase6-status.md
+    tier: P2
+    status: pending
+    labels:
+      - tier:P2
+      - project:P-022
+      - qdrant
+      - vector-db
+    assigned_model: sonnet
+    estimated_effort: "1-2 sprints"
+
+  - id: P-023
+    title: "FORGE Remediation (13 tasks)"
+    description: |
+      Execute 13 tactical remediation tasks from FORGE roadmap:
+      Security, persistence, friction protection, intelligence, performance.
+    source:
+      - internal_docs/04-code-quality/reviews/FORGE_REMEDIATION_ROADMAP_20260123.md
+    tier: P2
+    status: pending
+    labels:
+      - tier:P2
+      - project:P-023
+      - remediation
+      - hardening
+    assigned_model: sonnet
+    estimated_effort: "2-3 sprints"
+
+  - id: P-024
+    title: "Phase 6 Fine-Tuning Prep"
+    description: |
+      Prepare for Phase 6F LoRA/QLoRA fine-tuning:
+      - Dataset curation
+      - LoRA research (conflicts with torch-free mandate)
+      - Resolution strategy needed
+    source:
+      - internal_docs/01-strategic-planning/ROADMAP-MASTER-INDEX.md
+    tier: P2
+    status: pending
+    labels:
+      - tier:P2
+      - project:P-024
+      - fine-tuning
+      - lora
+    assigned_model: sonnet
+    estimated_effort: "2 sprints"
+
+# =============================================================================
+# TIER 4: STRATEGIC GROWTH (P3) — Future
+# =============================================================================
+
+tier_4_strategic:
+
+  - id: P-030
+    title: "Arcana-Nova Stack"
+    description: |
+      Separate repository for esoteric consciousness layer.
+      NOT part of Foundation stack - built on top.
+      Includes: 10 Pillars, Dual Flame, Pantheon Model, 42 Ideals of Ma'at.
+    source:
+      - architect-directive
+    tier: P3
+    status: deferred
+    labels:
+      - tier:P3
+      - project:P-030
+      - arcana-nova
+      - esoteric
+    assigned_model: none
+    estimated_effort: "TBD"
+
+  - id: P-031
+    title: "Phase 8 Market Positioning"
+    description: |
+      Scholar community engagement, academic publishing,
+      open-source community building.
+    source:
+      - internal_docs/01-strategic-planning/ROADMAP-MASTER-INDEX.md
+    tier: P3
+    status: deferred
+    labels:
+      - tier:P3
+      - project:P-031
+      - marketing
+      - community
+    assigned_model: none
+    estimated_effort: "TBD"
+
+  - id: P-032
+    title: "Specialized Stacks"
+    description: |
+      Domain-specific variants: Scientific, Creative, CAD, Music.
+      Build on Foundation stack as templates.
+    source:
+      - architect-directive
+    tier: P3
+    status: deferred
+    labels:
+      - tier:P3
+      - project:P-032
+      - specialized
+      - templates
+    assigned_model: none
+    estimated_effort: "TBD"
+
+# =============================================================================
+# RISKS TRACKING
+# =============================================================================
+
+risks:
+
+  - id: RISK-001
+    title: "Agent Bus Stream Key Split"
+    severity: CRITICAL
+    status: open
+    mitigation: "P-001 assigned to Sprint 8"
+    
+  - id: RISK-002
+    title: "asyncio.gather in OpenCode Guide"
+    severity: HIGH
+    status: open
+    mitigation: "Update guide to use AnyIO TaskGroups"
+    
+  - id: RISK-003
+    title: "Vikunja PUBLICURL Mismatch"
+    severity: MEDIUM
+    status: open
+    mitigation: "Update Caddy routing on next stack restart"
+    
+  - id: RISK-004
+    title: "Qdrant Collection Init"
+    severity: MEDIUM
+    status: open
+    mitigation: "Ensure collection created on startup"
+    
+  - id: RISK-005
+    title: "Memory Bank Integration Is Stub"
+    severity: MEDIUM
+    status: open
+    mitigation: "P-021 will address"
+    
+  - id: RISK-006
+    title: "Vikunja JWT Secret Default"
+    severity: HIGH
+    status: open
+    mitigation: "Rotate before production deployment"
+    
+  - id: RISK-008
+    title: "Antigravity Auth Not Configured"
+    severity: LOW
+    status: open
+    mitigation: "User action required: run `opencode auth login`"
+
+# =============================================================================
+# SUMMARY STATISTICS
+# =============================================================================
+
+summary:
+  total_items: 19
+  tier_1_count: 4
+  tier_2_count: 7
+  tier_3_count: 5
+  tier_4_count: 3
+  risks_count: 7  # Note: RISK-007 was skipped in original numbering
+  pending_items: 15
+  in_progress_items: 1
+  completed_items: 3  # P-001, P-003, P-004
+  
+  by_source:
+    risk_assessment: 7
+    mc_oversight: 14
+    research_queue: 15
+    cognitive_enhancements: 6
+    forge_remediation: 13
+    
+  estimated_total_effort:
+    tier_1: "~10-15 hours"
+    tier_2: "~8-12 sprints (parallel tracks possible)"
+    tier_3: "~10-14 sprints"
+    tier_4: "TBD"
+
+  # Opus Review Notes (2026-02-19):
+  # - RISK-007 ID was skipped in original authoring; not a data loss
+  # - P-011 depends on P-010 Phase A output (implicit dependency)
+  # - P-024 torch-free conflict requires architect decision before work begins

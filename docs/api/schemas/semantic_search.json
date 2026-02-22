@@ -1,0 +1,150 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Xoe-NovAi Semantic Search API",
+    "description": "Vector similarity search API for the Xoe-NovAi Foundation Stack.",
+    "version": "0.1.0-alpha"
+  },
+  "paths": {
+    "/search": {
+      "post": {
+        "summary": "Semantic Search",
+        "description": "Perform semantic vector similarity search against the knowledge base.",
+        "operationId": "semantic_search",
+        "tags": ["Search"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SemanticSearchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SemanticSearchResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health Check",
+        "description": "Returns API health status.",
+        "operationId": "search_health",
+        "tags": ["System"],
+        "responses": {
+          "200": {
+            "description": "Health status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthCheckResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SemanticSearchRequest": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query text"
+          },
+          "top_k": {
+            "type": "integer",
+            "default": 5,
+            "minimum": 1,
+            "maximum": 20,
+            "description": "Number of results to return"
+          },
+          "min_score": {
+            "type": "number",
+            "default": 0.0,
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Minimum similarity score"
+          }
+        }
+      },
+      "SemanticSearchResponse": {
+        "type": "object",
+        "required": ["results", "query", "total"],
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchResultItem"
+            }
+          },
+          "query": {
+            "type": "string",
+            "description": "Original query"
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total results found"
+          }
+        }
+      },
+      "SearchResultItem": {
+        "type": "object",
+        "required": ["content", "score", "source"],
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "Matched content"
+          },
+          "score": {
+            "type": "number",
+            "description": "Similarity score (0-1)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source document path"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Additional metadata"
+          }
+        }
+      },
+      "HealthCheckResponse": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["healthy", "degraded", "unhealthy"]
+          },
+          "version": {
+            "type": "string"
+          },
+          "embedding_model": {
+            "type": "string"
+          },
+          "index_size": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

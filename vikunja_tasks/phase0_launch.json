@@ -1,0 +1,6 @@
+{
+  "title": "Execute Phase 0 Extended: Documentation Audit",
+  "description": "Execute the comprehensive documentation audit plan defined in internal_docs/01-strategic-planning/phases/PHASE-0/PHASE-0-EXTENDED-DOCUMENTATION-AUDIT-PLAN.md. This is a pre-requisite for Phase 1.",
+  "labels": ["phase-0", "documentation", "audit"],
+  "priority": 1
+}

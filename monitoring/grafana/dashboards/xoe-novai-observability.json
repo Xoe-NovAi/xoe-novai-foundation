@@ -1,445 +1,444 @@
 {
-  "dashboard": {
-    "title": "Xoe-NovAi Enterprise Observability (Enhanced Metrics v1.0)",
-    "tags": ["xoe-novai", "enterprise", "claude-v2", "ai-observability", "hardware-benchmarking", "awq"],
-    "timezone": "browser",
-    "panels": [
-      {
-        "id": 1,
-        "title": "Hardware Performance Comparison",
-        "type": "bargauge",
-        "targets": [
-          {
-            "expr": "xnai_hardware_performance",
-            "legendFormat": "{{hardware_type}}/{{model_size}}/{{operation_type}}"
-          }
-        ],
-        "fieldConfig": {
-          "defaults": {
-            "unit": "reqps"
-          }
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "id": 2,
-        "title": "End-to-End Latency by Hardware",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "xnai_end_to_end_latency_ms",
-            "legendFormat": "{{hardware_config}}/{{model_size}}/{{query_complexity}}"
-          }
-        ],
-        "fieldConfig": {
-          "defaults": {
-            "unit": "ms"
-          }
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 12,
-          "y": 0
-        }
-      },
-      {
-        "id": 3,
-        "title": "Vulkan Performance Metrics",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "xnai_vulkan_compute_utilization",
-            "legendFormat": "Compute Utilization - {{gpu_model}}"
-          },
-          {
-            "expr": "xnai_vulkan_memory_mb",
-            "legendFormat": "Memory Usage (MB) - {{memory_type}}/{{gpu_model}}"
-          }
-        ],
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 0,
-          "y": 8
-        }
-      },
-      {
-        "id": 4,
-        "title": "CPU Performance & Utilization",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "xnai_cpu_utilization_percent",
-            "legendFormat": "CPU Utilization - {{core_count}} cores/{{operation_type}}"
-          },
-          {
-            "expr": "xnai_cpu_memory_bandwidth_gb_s",
-            "legendFormat": "Memory Bandwidth - {{memory_operation}}"
-          }
-        ],
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 12,
-          "y": 8
-        }
-      },
-      {
-        "id": 5,
-        "title": "AWQ Quantization Efficiency",
-        "type": "stat",
-        "targets": [
-          {
-            "expr": "xnai_awq_hardware_efficiency",
-            "legendFormat": "{{hardware_type}}/{{model_size}}/{{quantization_level}}"
-          }
-        ],
-        "fieldConfig": {
-          "defaults": {
-            "unit": "none",
-            "mappings": []
-          }
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 8,
-          "x": 0,
-          "y": 16
-        }
-      },
-      {
-        "id": 6,
-        "title": "AWQ Precision Switching Events",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "rate(xnai_awq_precision_switches_total[5m])",
-            "legendFormat": "{{from_precision}}→{{to_precision}} ({{reason}})"
-          }
-        ],
-        "gridPos": {
-          "h": 8,
-          "w": 8,
-          "x": 8,
-          "y": 16
-        }
-      },
-      {
-        "id": 7,
-        "title": "Persona Tuning Performance",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "xnai_persona_accuracy",
-            "legendFormat": "Accuracy - {{persona_name}}/{{domain}}/{{query_type}}"
-          },
-          {
-            "expr": "xnai_persona_context_retention",
-            "legendFormat": "Context Retention - {{persona_name}}/{{conversation_length}}"
-          }
-        ],
-        "gridPos": {
-          "h": 8,
-          "w": 8,
-          "x": 16,
-          "y": 16
-        }
-      },
-      {
-        "id": 8,
-        "title": "Knowledge Base Performance",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "xnai_domain_expertise_accuracy",
-            "legendFormat": "Domain Accuracy - {{domain}}/{{expertise_level}}"
-          },
-          {
-            "expr": "xnai_knowledge_freshness_days",
-            "legendFormat": "Freshness (days) - {{domain}}"
-          },
-          {
-            "expr": "xnai_retrieval_precision",
-            "legendFormat": "Retrieval Precision - {{domain}}/{{query_type}}"
-          }
-        ],
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 0,
-          "y": 24
-        }
-      },
-      {
-        "id": 9,
-        "title": "Domain Performance Trends",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "xnai_domain_performance_trend",
-            "legendFormat": "Trend - {{domain}}/{{metric_type}}"
-          }
-        ],
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 12,
-          "y": 24
-        }
-      },
-      {
-        "id": 10,
-        "title": "Throughput & Energy Efficiency",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "xnai_throughput_tokens_per_sec",
-            "legendFormat": "Throughput - {{hardware_config}}/{{model_size}}/{{precision}}"
-          },
-          {
-            "expr": "xnai_energy_efficiency_tokens_per_watt",
-            "legendFormat": "Energy Efficiency - {{hardware_config}}/{{workload_type}}"
-          }
-        ],
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 0,
-          "y": 32
-        }
-      },
-      {
-        "id": 11,
-        "title": "Circuit Breaker Status",
-        "type": "stat",
-        "targets": [
-          {
-            "expr": "xnai_voice_circuit_breaker_open{component=\"stt\"}",
-            "legendFormat": "STT Circuit Breaker"
-          },
-          {
-            "expr": "xnai_voice_circuit_breaker_open{component=\"tts\"}",
-            "legendFormat": "TTS Circuit Breaker"
-          }
-        ],
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [
-              {
-                "options": {
-                  "0": {
-                    "text": "CLOSED",
-                    "color": "green"
-                  },
-                  "1": {
-                    "text": "OPEN",
-                    "color": "red"
-                  }
-                },
-                "type": "value"
-              }
-            ]
-          }
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 6,
-          "x": 12,
-          "y": 32
-        }
-      },
-      {
-        "id": 12,
-        "title": "Hardware Fallback Events",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "rate(xnai_hardware_fallback_events_total[5m])",
-            "legendFormat": "{{from_hardware}}→{{to_hardware}} ({{reason}}/{{component}})"
-          }
-        ],
-        "gridPos": {
-          "h": 8,
-          "w": 6,
-          "x": 18,
-          "y": 32
-        }
-      },
-      {
-        "id": 13,
-        "title": "Benchmark Run Status",
-        "type": "stat",
-        "targets": [
-          {
-            "expr": "xnai_benchmark_run_status",
-            "legendFormat": "{{benchmark_type}}/{{hardware_config}}"
-          }
-        ],
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [
-              {
-                "options": {
-                  "0": {
-                    "text": "IDLE",
-                    "color": "gray"
-                  },
-                  "1": {
-                    "text": "RUNNING",
-                    "color": "blue"
-                  },
-                  "2": {
-                    "text": "COMPLETED",
-                    "color": "green"
-                  },
-                  "3": {
-                    "text": "FAILED",
-                    "color": "red"
-                  }
-                },
-                "type": "value"
-              }
-            ]
-          }
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 8,
-          "x": 0,
-          "y": 40
-        }
-      },
-      {
-        "id": 14,
-        "title": "System Resource Efficiency",
-        "type": "bargauge",
-        "targets": [
-          {
-            "expr": "xnai_system_resource_efficiency",
-            "legendFormat": "{{resource_type}}/{{workload_type}}/{{optimization_level}}"
-          }
-        ],
-        "fieldConfig": {
-          "defaults": {
-            "unit": "percentunit",
-            "max": 1,
-            "min": 0
-          }
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 8,
-          "x": 8,
-          "y": 40
-        }
-      },
-      {
-        "id": 15,
-        "title": "Logging & Error Context",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "rate(xnai_structured_log_events_total[5m])",
-            "legendFormat": "{{level}}/{{component}}/{{event_type}}"
-          },
-          {
-            "expr": "xnai_error_context_completeness",
-            "legendFormat": "Error Context - {{error_type}}/{{component}}"
-          }
-        ],
-        "gridPos": {
-          "h": 6,
-          "w": 8,
-          "x": 16,
-          "y": 40
-        }
-      },
-      {
-        "id": 16,
-        "title": "Persona Adaptation Events",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "rate(xnai_persona_adaptation_events_total[5m])",
-            "legendFormat": "{{persona_name}}/{{adaptation_type}} ({{trigger_reason}})"
-          }
-        ],
-        "gridPos": {
-          "h": 6,
-          "w": 12,
-          "x": 0,
-          "y": 46
-        }
-      },
-      {
-        "id": 17,
-        "title": "Knowledge Base Updates",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "rate(xnai_knowledge_base_updates_total[5m])",
-            "legendFormat": "{{domain}}/{{update_type}} ({{trigger_source}})"
-          }
-        ],
-        "gridPos": {
-          "h": 6,
-          "w": 12,
-          "x": 12,
-          "y": 46
-        }
-      },
-      {
-        "id": 18,
-        "title": "Legacy System Health Overview",
-        "type": "table",
-        "targets": [
-          {
-            "expr": "up",
-            "legendFormat": "Service Status"
-          },
-          {
-            "expr": "xnai_memory_usage_gb",
-            "legendFormat": "Memory Usage (GB)"
-          }
-        ],
-        "gridPos": {
-          "h": 8,
-          "w": 24,
-          "x": 0,
-          "y": 52
-        }
-      }
-    ],
-    "time": {
-      "from": "now-1h",
-      "to": "now"
-    },
-    "timepicker": {},
-    "templating": {
-      "list": []
-    },
-    "annotations": {
-      "list": [
+  "uid": "xoe-novai-observability",
+  "title": "Xoe-NovAi Enterprise Observability (Enhanced Metrics v1.0)",
+  "tags": ["xoe-novai", "enterprise", "claude-v2", "ai-observability", "hardware-benchmarking", "awq"],
+  "timezone": "browser",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Hardware Performance Comparison",
+      "type": "bargauge",
+      "targets": [
         {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
+          "expr": "xnai_hardware_performance",
+          "legendFormat": "{{hardware_type}}/{{model_size}}/{{operation_type}}"
         }
-      ]
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps"
+        }
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      }
     },
-    "refresh": "30s",
-    "schemaVersion": 27,
-    "version": 1,
-    "links": []
-  }
+    {
+      "id": 2,
+      "title": "End-to-End Latency by Hardware",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "xnai_end_to_end_latency_ms",
+          "legendFormat": "{{hardware_config}}/{{model_size}}/{{query_complexity}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms"
+        }
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      }
+    },
+    {
+      "id": 3,
+      "title": "Vulkan Performance Metrics",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "xnai_vulkan_compute_utilization",
+          "legendFormat": "Compute Utilization - {{gpu_model}}"
+        },
+        {
+          "expr": "xnai_vulkan_memory_mb",
+          "legendFormat": "Memory Usage (MB) - {{memory_type}}/{{gpu_model}}"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      }
+    },
+    {
+      "id": 4,
+      "title": "CPU Performance & Utilization",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "xnai_cpu_utilization_percent",
+          "legendFormat": "CPU Utilization - {{core_count}} cores/{{operation_type}}"
+        },
+        {
+          "expr": "xnai_cpu_memory_bandwidth_gb_s",
+          "legendFormat": "Memory Bandwidth - {{memory_operation}}"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      }
+    },
+    {
+      "id": 5,
+      "title": "AWQ Quantization Efficiency",
+      "type": "stat",
+      "targets": [
+        {
+          "expr": "xnai_awq_hardware_efficiency",
+          "legendFormat": "{{hardware_type}}/{{model_size}}/{{quantization_level}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "mappings": []
+        }
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 16
+      }
+    },
+    {
+      "id": 6,
+      "title": "AWQ Precision Switching Events",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "rate(xnai_awq_precision_switches_total[5m])",
+          "legendFormat": "{{from_precision}}→{{to_precision}} ({{reason}})"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 16
+      }
+    },
+    {
+      "id": 7,
+      "title": "Persona Tuning Performance",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "xnai_persona_accuracy",
+          "legendFormat": "Accuracy - {{persona_name}}/{{domain}}/{{query_type}}"
+        },
+        {
+          "expr": "xnai_persona_context_retention",
+          "legendFormat": "Context Retention - {{persona_name}}/{{conversation_length}}"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": 8,
+      "title": "Knowledge Base Performance",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "xnai_domain_expertise_accuracy",
+          "legendFormat": "Domain Accuracy - {{domain}}/{{expertise_level}}"
+        },
+        {
+          "expr": "xnai_knowledge_freshness_days",
+          "legendFormat": "Freshness (days) - {{domain}}"
+        },
+        {
+          "expr": "xnai_retrieval_precision",
+          "legendFormat": "Retrieval Precision - {{domain}}/{{query_type}}"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      }
+    },
+    {
+      "id": 9,
+      "title": "Domain Performance Trends",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "xnai_domain_performance_trend",
+          "legendFormat": "Trend - {{domain}}/{{metric_type}}"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      }
+    },
+    {
+      "id": 10,
+      "title": "Throughput & Energy Efficiency",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "xnai_throughput_tokens_per_sec",
+          "legendFormat": "Throughput - {{hardware_config}}/{{model_size}}/{{precision}}"
+        },
+        {
+          "expr": "xnai_energy_efficiency_tokens_per_watt",
+          "legendFormat": "Energy Efficiency - {{hardware_config}}/{{workload_type}}"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      }
+    },
+    {
+      "id": 11,
+      "title": "Circuit Breaker Status",
+      "type": "stat",
+      "targets": [
+        {
+          "expr": "xnai_voice_circuit_breaker_open{component=\"stt\"}",
+          "legendFormat": "STT Circuit Breaker"
+        },
+        {
+          "expr": "xnai_voice_circuit_breaker_open{component=\"tts\"}",
+          "legendFormat": "TTS Circuit Breaker"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "CLOSED",
+                  "color": "green"
+                },
+                "1": {
+                  "text": "OPEN",
+                  "color": "red"
+                }
+              },
+              "type": "value"
+            }
+          ]
+        }
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 32
+      }
+    },
+    {
+      "id": 12,
+      "title": "Hardware Fallback Events",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "rate(xnai_hardware_fallback_events_total[5m])",
+          "legendFormat": "{{from_hardware}}→{{to_hardware}} ({{reason}}/{{component}})"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 32
+      }
+    },
+    {
+      "id": 13,
+      "title": "Benchmark Run Status",
+      "type": "stat",
+      "targets": [
+        {
+          "expr": "xnai_benchmark_run_status",
+          "legendFormat": "{{benchmark_type}}/{{hardware_config}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "IDLE",
+                  "color": "gray"
+                },
+                "1": {
+                  "text": "RUNNING",
+                  "color": "blue"
+                },
+                "2": {
+                  "text": "COMPLETED",
+                  "color": "green"
+                },
+                "3": {
+                  "text": "FAILED",
+                  "color": "red"
+                }
+              },
+              "type": "value"
+            }
+          ]
+        }
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 40
+      }
+    },
+    {
+      "id": 14,
+      "title": "System Resource Efficiency",
+      "type": "bargauge",
+      "targets": [
+        {
+          "expr": "xnai_system_resource_efficiency",
+          "legendFormat": "{{resource_type}}/{{workload_type}}/{{optimization_level}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "max": 1,
+          "min": 0
+        }
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 40
+      }
+    },
+    {
+      "id": 15,
+      "title": "Logging & Error Context",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "rate(xnai_structured_log_events_total[5m])",
+          "legendFormat": "{{level}}/{{component}}/{{event_type}}"
+        },
+        {
+          "expr": "xnai_error_context_completeness",
+          "legendFormat": "Error Context - {{error_type}}/{{component}}"
+        }
+      ],
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 40
+      }
+    },
+    {
+      "id": 16,
+      "title": "Persona Adaptation Events",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "rate(xnai_persona_adaptation_events_total[5m])",
+          "legendFormat": "{{persona_name}}/{{adaptation_type}} ({{trigger_reason}})"
+        }
+      ],
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 46
+      }
+    },
+    {
+      "id": 17,
+      "title": "Knowledge Base Updates",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "rate(xnai_knowledge_base_updates_total[5m])",
+          "legendFormat": "{{domain}}/{{update_type}} ({{trigger_source}})"
+        }
+      ],
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 46
+      }
+    },
+    {
+      "id": 18,
+      "title": "Legacy System Health Overview",
+      "type": "table",
+      "targets": [
+        {
+          "expr": "up",
+          "legendFormat": "Service Status"
+        },
+        {
+          "expr": "xnai_memory_usage_gb",
+          "legendFormat": "Memory Usage (GB)"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 52
+      }
+    }
+  ],
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "refresh": "30s",
+  "schemaVersion": 27,
+  "version": 1,
+  "links": []
 }

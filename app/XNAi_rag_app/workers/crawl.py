@@ -47,7 +47,7 @@ import os
 import re
 import sys
 import time
-import asyncio
+import anyio
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -751,7 +751,7 @@ async def crawl_youtube_transcripts(
                 search_query = f"ytsearch{max_items}:{query}"
                 return ydl.extract_info(search_query, download=False)
 
-        info = await asyncio.to_thread(fetch_info)
+        info = await anyio.to_thread(fetch_info)
         
         entries = info.get('entries', [])
         logger.info(f"yt-dlp found {len(entries)} video entries for: {query}")
@@ -1200,7 +1200,7 @@ Usage Examples:
 
 
 if __name__ == '__main__':
-    asyncio.run(main_async())
+    anyio.run(main_async)
 
 
 # Self-Critique: 10/10

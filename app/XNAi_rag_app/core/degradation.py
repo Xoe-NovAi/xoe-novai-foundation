@@ -1,6 +1,6 @@
 import os
 import logging
-import asyncio
+import anyio
 import time
 import psutil
 from typing import Dict, Any, Optional
@@ -17,6 +17,8 @@ class DegradationTierManager:
     2: Constrained - Reduced context window, disabling non-essential features.
     3: Critical - Minimal context, cache-only mode for some services.
     4: Failover - Emergency read-only mode.
+    
+    CLAUDE STANDARD: Uses AnyIO for structured concurrency.
     """
     
     def __init__(self, redis_client=None):
@@ -28,7 +30,8 @@ class DegradationTierManager:
             3: 92.0,  # Tier 3 at 92% RAM
             4: 97.0   # Tier 4 at 97% RAM
         }
-        self._monitor_task: Optional[asyncio.Task] = None
+        self._running = False
+        self._cancel_scope: Optional[anyio.CancelScope] = None
 
     @property
     def redis(self):
@@ -41,27 +44,33 @@ class DegradationTierManager:
         return self._redis
 
     async def start_monitoring(self):
-        """Start the background monitoring task."""
-        if self._monitor_task:
+        """Start the background monitoring task.
+        
+        CLAUDE STANDARD: Uses TaskGroup for structured concurrency.
+        """
+        if self._running:
             return
         
-        self._monitor_task = asyncio.create_task(self._run_monitor())
+        self._running = True
+        async with anyio.create_task_group() as tg:
+            self._cancel_scope = tg.cancel_scope
+            tg.start_soon(self._run_monitor)
         logger.info("🚀 Degradation Monitor started")
 
     async def stop_monitoring(self):
-        """Stop the background monitoring task."""
-        if self._monitor_task:
-            self._monitor_task.cancel()
-            try:
-                await self._monitor_task
-            except asyncio.CancelledError:
-                pass
-            self._monitor_task = None
-            logger.info("🛑 Degradation Monitor stopped")
+        """Stop the background monitoring task.
+        
+        CLAUDE STANDARD: Cancel via CancelScope for clean shutdown.
+        """
+        self._running = False
+        if self._cancel_scope:
+            self._cancel_scope.cancel()
+            self._cancel_scope = None
+        logger.info("🛑 Degradation Monitor stopped")
 
     async def _run_monitor(self):
         """Periodically check resources and broadcast tier changes."""
-        while True:
+        while self._running:
             try:
                 # 1. Check Memory
                 mem = psutil.virtual_memory()
@@ -80,10 +89,12 @@ class DegradationTierManager:
                 if new_tier != self.current_tier:
                     await self._transition_to(new_tier, mem.percent, cpu)
                 
-                await asyncio.sleep(5)  # Poll every 5 seconds
+                await anyio.sleep(5)  # Poll every 5 seconds
+            except anyio.get_cancelled_exc_class():
+                break
             except Exception as e:
                 logger.error(f"Error in degradation monitor: {e}")
-                await asyncio.sleep(10)
+                await anyio.sleep(10)
 
     async def _transition_to(self, tier: int, mem_p: float, cpu_p: float):
         """Broadcast tier transition."""

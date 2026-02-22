@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-test-002",
+  "timestamp": "2026-02-16T19:26:59Z",
+  "sender": "cline-cli",
+  "target": "tester",
+  "type": "task_completion",
+  "content": {
+    "status": "success",
+    "exit_code": 0,
+    "output_summary": "Task started: 1771269993392\nThe echo command was executed successfully, outputting \"hello from cline test 2\" to the terminal.\n"
+  }
+}

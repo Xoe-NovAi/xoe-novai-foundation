@@ -151,6 +151,8 @@ nav:
           - BuildKit Cache Hardlining: expert-knowledge/environment/buildkit_cache_hardlining.md
           - Rootless Podman U-Flag: expert-knowledge/environment/rootless_podman_u_flag.md
   - 📖 Reference:
+      - Configuration: 03-reference/configuration.md
+      - Secrets Management: secrets.md
       - Hardware Mastery: 03-reference/hardware.md
       - Master Plan: 03-reference/master-plan.md
       - API Reference: 03-reference/api.md

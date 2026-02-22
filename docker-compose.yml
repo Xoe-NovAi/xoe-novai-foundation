@@ -68,6 +68,91 @@ services:
     restart: unless-stopped
 
   # ==========================================================================
+  # VICTORIAMETRICS SERVICE - Time-Series Metrics Storage
+  # ==========================================================================
+  # Replaces Prometheus for 3-4x memory efficiency
+  # 10x compression, air-gap compatible, single binary
+  # ==========================================================================
+  victoriametrics:
+    image: victoriametrics/victoria-metrics:latest
+    container_name: xnai_victoriametrics
+    init: true
+    ports:
+      - "8428:8428"
+    volumes:
+      - victoriametrics-data:/victoria-metrics-data:Z
+      - ./configs/victoriametrics:/etc/victoriametrics:ro,Z
+    command:
+      - "-storageDataPath=/victoria-metrics-data"
+      - "-retentionPeriod=365d"
+      - "-httpListenAddr=:8428"
+      - "-memory.allowedPercent=80"
+      - "-search.maxSeries=1000000"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8428/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - xnai_network
+    restart: unless-stopped
+
+  # ==========================================================================
+  # OPENPIPE SERVICE - LLM Optimization Layer
+  # ==========================================================================
+  # Provides intelligent caching, request deduplication, and circuit breakers
+  # 40-60% performance improvement, 50% cost reduction
+  # Sovereign mode: zero telemetry, air-gap capable
+  # ==========================================================================
+  openpipe:
+    image: openpipe/observability:latest
+    container_name: xnai_openpipe
+    init: true
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+        reservations:
+          memory: 512M
+          cpus: '0.25'
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./config/openpipe-config.yaml:/app/config/config.yaml:ro,Z
+      - ./data/openpipe:/app/data:Z,U
+      - ./logs/openpipe:/app/logs:Z,U
+    environment:
+      - OPENPIPE_API_KEY=${OPENPIPE_API_KEY:-}
+      - REDIS_URL=redis://:${REDIS_PASSWORD}@redis:6379/0
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/xnai
+      - CACHE_TTL=${OPENPIPE_CACHE_TTL:-300}
+      - DEDUPLICATION_WINDOW=${OPENPIPE_DEDUPLICATION_WINDOW:-60}
+      - METRICS_ENABLED=true
+      - SOVEREIGN_MODE=${OPENPIPE_SOVEREIGN_MODE:-true}
+      - MEMORY_BUDGET_GB=1.0
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    networks:
+      - xnai_network
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  # ==========================================================================
   # QDRANT SERVICE - Vector Database (Phase 3)
   # ==========================================================================
   qdrant:
@@ -96,7 +181,7 @@ services:
       - QDRANT_GRPC_PORT=6334
       - QDRANT_SNAPSHOT_RECOVERY=true
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/6333"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -395,7 +480,7 @@ services:
     volumes:
       - ./data/vikunja/db:/var/lib/postgresql/data:Z
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U vikunja"]
+      test: ["CMD", "pg_isready", "-U", "vikunja"]
       start_period: 30s
     networks:
       - xnai_network
@@ -408,6 +493,8 @@ services:
     depends_on:
       vikunja-db:
         condition: service_healthy
+    ports:
+      - "3456:3456"  # Exposed for Sovereign MC Agent direct API access
     environment:
       VIKUNJA_DATABASE_TYPE: postgres
       VIKUNJA_DATABASE_HOST: vikunja-db
@@ -419,7 +506,6 @@ services:
       VIKUNJA_CORS_ENABLE: "false"
       VIKUNJA_REDIS_ENABLED: "true"
       VIKUNJA_REDIS_HOST: redis:6379
-      VIKUNJA_REDIS_PORT: "6379"
       VIKUNJA_REDIS_PASSWORD: ${REDIS_PASSWORD:-changeme123}
       VIKUNJA_REDIS_DB: "5"
     volumes:
@@ -454,6 +540,52 @@ services:
       retries: 3
       start_period: 10s
 
+  # ==========================================================================
+  # GRAFANA SERVICE - Observability Dashboards
+  # ==========================================================================
+  # VictoriaMetrics as datasource (Prometheus-compatible)
+  # Provisioning via GitOps from monitoring/grafana/
+  # ==========================================================================
+  grafana:
+    image: grafana/grafana:11.4.0
+    container_name: xnai_grafana
+    init: true
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro,Z
+      - ./monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro,Z
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro,Z
+      - grafana-data:/var/lib/grafana:Z
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=false
+      - GF_AUTH_BASIC_ENABLED=true
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_ROOT_URL=http://localhost:3000
+      - GF_INSTALL_PLUGINS=
+      - GF_UNIFIED_ALERTING_ENABLED=true
+      - GF_ALERTING_ENABLED=false
+    networks:
+      - xnai_network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    depends_on:
+      victoriametrics:
+        condition: service_healthy
+
 # ============================================================================ 
 # NETWORKS & VOLUMES
 # ============================================================================ 
@@ -461,6 +593,12 @@ networks:
   xnai_network:
     driver: bridge
     name: xnai_network
+
+volumes:
+  victoriametrics-data:
+    name: xnai_victoriametrics_data
+  grafana-data:
+    name: xnai_grafana_data
 
 secrets:
   redis_password:

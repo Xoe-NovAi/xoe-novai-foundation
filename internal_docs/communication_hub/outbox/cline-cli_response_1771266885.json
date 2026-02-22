@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-test-001",
+  "timestamp": "2026-02-16T18:34:45Z",
+  "sender": "cline-cli",
+  "target": "tester",
+  "type": "task_completion",
+  "content": {
+    "status": "failed",
+    "exit_code": 1,
+    "output_summary": "error: unknown option '--silent'\n"
+  }
+}

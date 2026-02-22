@@ -1,0 +1,16 @@
+{
+  "agent_name": "cline-cli",
+  "status": "active",
+  "current_task": null,
+  "progress": 0.0,
+  "last_heartbeat": "2026-02-18T07:19:34.093215",
+  "capabilities": [
+    "code_generation",
+    "refactoring",
+    "testing"
+  ],
+  "memory_usage": "",
+  "error_count": 0,
+  "success_count": 0,
+  "total_tasks": 0
+}

@@ -51,6 +51,10 @@ RUN apt-get update && \
         libopenblas-dev \
         libgomp1 \
         procps \
+        # Audio streaming dependencies
+        libportaudio2 \
+        portaudio19-dev \
+        ffmpeg \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
     && echo "✓ Base system dependencies installed"
 

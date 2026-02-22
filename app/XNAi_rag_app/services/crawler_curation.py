@@ -18,7 +18,7 @@ import hashlib
 import json
 import re
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, asdict
 from enum import Enum
 
@@ -461,7 +461,7 @@ async def crawl_and_curate(crawler, url: str) -> Optional[CrawledDocument]:
     """
     try:
         # 1. Crawl with crawl4ai
-        result = await crawler.crawl(url)
+        result = await crawler.arun(url)
         
         if not result or not result.markdown:
             return None
