@@ -5,7 +5,6 @@ and detailed service diagnostics for the Xoe-NovAi Foundation Stack.
 """
 
 import anyio
-import asyncio  # Still needed for Task type and create_task (migrate to TaskGroups later)
 import logging
 import time
 import psutil
@@ -100,14 +99,18 @@ class ServiceHealth:
 
 
 class EnhancedHealthChecker(HealthChecker):
-    """Enhanced health checker with detailed metrics and Prometheus integration"""
+    """Enhanced health checker with detailed metrics and Prometheus integration
+    
+    CLAUDE STANDARD: Uses AnyIO TaskGroups for structured concurrency.
+    No asyncio.create_task or asyncio.gather - use anyio.create_task_group() instead.
+    """
 
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
         self.service_health: Dict[str, ServiceHealth] = {}
         self.health_history: Dict[str, deque] = {}
-        self._health_check_task: Optional[asyncio.Task] = None
-        self._metrics_task: Optional[asyncio.Task] = None
+        self._running = False  # CLAUDE: Use flag instead of task references
+        self._cancel_scope: Optional[anyio.CancelScope] = None
 
         # Performance tracking
         self._response_times: Dict[str, List[float]] = {}
@@ -121,41 +124,39 @@ class EnhancedHealthChecker(HealthChecker):
         self._cpu_threshold = config.get("cpu_threshold", 0.8)  # 80%
 
     async def start_monitoring(self):
-        """Start health monitoring with Prometheus metrics"""
+        """Start health monitoring with Prometheus metrics
+        
+        CLAUDE STANDARD: Uses AnyIO TaskGroup for structured concurrency.
+        """
+        if self._running:
+            logger.warning("Health monitoring already running")
+            return
+            
         logger.info("Starting enhanced health monitoring")
-
-        # Start health check task
-        if self._health_check_task is None:
-            self._health_check_task = asyncio.create_task(self._health_check_loop())
-
-        # Start metrics collection task
-        if self._metrics_task is None:
-            self._metrics_task = asyncio.create_task(self._metrics_collection_loop())
+        self._running = True
 
         # Initialize service start times
         for service in self.config.get("targets", []):
             self._service_start_times[service] = time.time()
 
+        # CLAUDE: Use TaskGroup for structured concurrency
+        async with anyio.create_task_group() as tg:
+            self._cancel_scope = tg.cancel_scope
+            tg.start_soon(self._health_check_loop)
+            tg.start_soon(self._metrics_collection_loop)
+            # TaskGroup waits for all tasks on exit
+
     async def stop_monitoring(self):
-        """Stop health monitoring"""
+        """Stop health monitoring
+        
+        CLAUDE STANDARD: Cancel via CancelScope for clean shutdown.
+        """
         logger.info("Stopping enhanced health monitoring")
-
-        cancelled_exc = anyio.get_cancelled_exc_class()
-        if self._health_check_task:
-            self._health_check_task.cancel()
-            try:
-                await self._health_check_task
-            except cancelled_exc:
-                pass
-            self._health_check_task = None
-
-        if self._metrics_task:
-            self._metrics_task.cancel()
-            try:
-                await self._metrics_task
-            except cancelled_exc:
-                pass
-            self._metrics_task = None
+        self._running = False
+        
+        if self._cancel_scope:
+            self._cancel_scope.cancel()
+            self._cancel_scope = None
 
     async def _health_check_loop(self):
         """Enhanced health check loop with detailed metrics"""
