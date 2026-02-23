@@ -281,3 +281,6 @@ memory_bank/GROK_CONTEXT_PACK_v1.5.0.md
 *.AppImage
 site-internal/
 site/
+scripts/xnai-setup-opencode-credentials.yaml
+~/.config/xnai/opencode-credentials.yaml
+~/.config/xnai/*.credentials.yaml
