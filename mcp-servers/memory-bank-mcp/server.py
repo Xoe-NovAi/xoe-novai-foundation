@@ -13,7 +13,7 @@ Key Features:
 - Event-driven updates for real-time coordination
 """
 
-import asyncio
+import anyio
 import json
 import logging
 import time
@@ -658,4 +658,4 @@ async def main():
         )
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    anyio.run(main)

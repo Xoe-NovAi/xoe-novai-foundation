@@ -5,7 +5,7 @@ Supports multiple CLI modes: standalone, Cline, Copilot, Claude
 Auto-manages services (Ollama, STT, TTS)
 """
 
-import asyncio
+import anyio
 import sys
 import logging
 import argparse
@@ -337,11 +337,11 @@ def main() -> int:
 
     # Handle status/config requests
     if args.status:
-        asyncio.run(app.show_status())
+        anyio.run(app.show_status)
         return 0
 
     if args.config:
-        asyncio.run(app.show_config())
+        anyio.run(app.show_config)
         return 0
 
     # Default: interactive unless specified otherwise
@@ -349,7 +349,7 @@ def main() -> int:
         args.interactive = True
 
     # Run the application
-    return asyncio.run(app.run())
+    return anyio.run(app.run)
 
 
 if __name__ == "__main__":

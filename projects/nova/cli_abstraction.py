@@ -4,7 +4,7 @@ CLI Abstraction Layer - Unified interface for different CLI environments
 Allows the voice app to run via standalone Python, Cline, Copilot, or Claude CLI
 """
 
-import asyncio
+import anyio
 import json
 import logging
 import sys
@@ -931,5 +931,5 @@ async def run_cli(
 
 
 if __name__ == "__main__":
-    exit_code = asyncio.run(run_cli(interactive=True, verbose=True))
+    exit_code = anyio.run(run_cli, interactive=True, verbose=True)
     sys.exit(exit_code)
