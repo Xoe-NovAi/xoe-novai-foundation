@@ -1,0 +1,39 @@
+[Unit]
+Description=XNAi Foundation - Collect Daily Quota Audit
+Documentation=man:xnai-quota-auditor.py
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+
+# User to run as (change if needed)
+User=arcana-novai
+
+# Working directory
+WorkingDirectory=/home/arcana-novai/Documents/xnai-foundation
+
+# Execute the auditor
+ExecStart=/usr/bin/python3 %d/../scripts/xnai-quota-auditor.py --config ~/.config/xnai/opencode-credentials.yaml --output memory_bank
+
+# Standard output/error handling
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=xnai-quota-audit
+
+# Environment variables
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+Environment="PYTHONUNBUFFERED=1"
+
+# Timeout for quota collection
+TimeoutStartSec=2h
+
+# Don't restart on failure (just log)
+Restart=no
+
+# Run with reduced privileges
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
