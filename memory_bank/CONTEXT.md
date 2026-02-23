@@ -29,6 +29,8 @@ version: "2.0"
 ## Quick Navigation
 
 ### For New Team Members
+**For a step-by-step guide, start here: `docs/01-start/ONBOARDING-CHECKLIST.md`**
+
 1. `projectbrief.md` - What is XNAi and why does it exist?
 2. `techContext.md` - What technologies does XNAi use?
 3. `activeContext.md` - What's being worked on right now?

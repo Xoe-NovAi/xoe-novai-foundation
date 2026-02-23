@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "created": "2026-02-23",
+  "last_updated": "2026-02-23T00:00:00Z",
+  "dispatches": [
+    {
+      "dispatch_id": "CLI-20260223-001",
+      "timestamp": "2026-02-23T14:18:00Z",
+      "agent_id": "opencode-1",
+      "model": "glm-5-free",
+      "task_type": "implementation",
+      "priority": "P1-CRITICAL",
+      "task_description": "API Endpoint Tests (JOB-W3-001)",
+      "status": "completed",
+      "duration_seconds": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "total_tokens": null,
+      "deliverables": [
+        "tests/unit/api/test_health.py",
+        "tests/unit/api/test_query.py",
+        "tests/unit/api/test_websocket.py",
+        "tests/unit/api/test_semantic_search.py"
+      ],
+      "errors": [],
+      "account_used": "opencode-free",
+      "notes": "Double dispatch experiment - parallel with CLI-20260223-002"
+    },
+    {
+      "dispatch_id": "CLI-20260223-002",
+      "timestamp": "2026-02-23T14:18:00Z",
+      "agent_id": "opencode-2",
+      "model": "minimax-m2.5-free",
+      "task_type": "implementation",
+      "priority": "P1-HIGH",
+      "task_description": "Edge Case Test Expansion (JOB-W3-002)",
+      "status": "completed",
+      "duration_seconds": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "total_tokens": null,
+      "deliverables": [
+        "tests/unit/security/test_sanitization.py (enhanced)",
+        "tests/unit/core/test_knowledge_access.py (enhanced)",
+        "tests/unit/core/test_redis_streams.py (enhanced)",
+        "tests/unit/core/test_iam.py (new)"
+      ],
+      "errors": [],
+      "account_used": "opencode-free",
+      "notes": "Double dispatch experiment - parallel with CLI-20260223-001"
+    }
+  ],
+  "metrics_summary": {
+    "total_dispatches": 2,
+    "successful": 2,
+    "failed": 0,
+    "avg_duration_seconds": null,
+    "total_tokens_used": null
+  },
+  "learnings": [
+    {
+      "dispatch_id": "CLI-20260223-001+002",
+      "learning": "Parallel dispatch works - multiple instances can run simultaneously",
+      "implication": "Can scale to 4+ instances for larger workloads",
+      "action": "Add explicit file locking for coordination"
+    },
+    {
+      "dispatch_id": "CLI-20260223-001+002",
+      "learning": "No collision detected - file writes were coordinated",
+      "implication": "Memory bank protocol is working",
+      "action": "Add read timestamps for better tracking"
+    },
+    {
+      "dispatch_id": "CLI-20260223-001+002",
+      "learning": "Output capture incomplete - logs not fully captured",
+      "implication": "Missing metrics for optimization",
+      "action": "Improve logging protocol with structured output"
+    },
+    {
+      "dispatch_id": "CLI-20260223-001+002",
+      "learning": "No usage tracking - token usage not recorded",
+      "implication": "Cannot optimize for free tier limits",
+      "action": "Add local telemetry to track usage"
+    }
+  ]
+}

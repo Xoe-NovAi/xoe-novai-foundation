@@ -1,0 +1,82 @@
+# CODEOWNERS - XNAi Foundation
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-for-your-repository-about-code-owners
+
+# Default owners for everything in the repo
+* @arcana-novai
+
+# =============================================================================
+# Core Application
+# =============================================================================
+
+# Main application code
+/app/ @arcana-novai
+
+# Infrastructure layer
+/app/XNAi_rag_app/core/infrastructure/ @arcana-novai
+
+# Distillation module
+/app/XNAi_rag_app/core/distillation/ @arcana-novai
+
+# Voice services
+/app/XNAi_rag_app/services/voice/ @arcana-novai
+
+# UI components
+/app/XNAi_rag_app/ui/ @arcana-novai
+
+# =============================================================================
+# Infrastructure
+# =============================================================================
+
+# Scripts and automation
+/scripts/ @arcana-novai
+
+# CI/CD workflows
+/.github/workflows/ @arcana-novai
+
+# Build configuration
+/Makefile @arcana-novai
+/Dockerfile* @arcana-novai
+/docker-compose*.yml @arcana-novai
+
+# =============================================================================
+# Documentation
+# =============================================================================
+
+# Documentation
+/docs/ @arcana-novai
+/memory_bank/ @arcana-novai
+/expert-knowledge/ @arcana-novai
+
+# Internal documentation
+/internal_docs/ @arcana-novai
+
+# =============================================================================
+# Configuration
+# =============================================================================
+
+# Configuration files
+*.toml @arcana-novai
+*.yaml @arcana-novai
+*.yml @arcana-novai
+.env.example @arcana-novai
+
+# Pre-commit
+/.pre-commit-config.yaml @arcana-novai
+
+# =============================================================================
+# Testing
+# =============================================================================
+
+# Test files
+/tests/ @arcana-novai
+/conftest.py @arcana-novai
+
+# =============================================================================
+# Security
+# =============================================================================
+
+# Security-sensitive files (require explicit review)
+/secrets/ @arcana-novai
+**/*.key @arcana-novai
+**/*.pem @arcana-novai
+**/credentials.json @arcana-novai

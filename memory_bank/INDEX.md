@@ -1,9 +1,10 @@
 # Memory Bank Navigation Index
 
-**Last Updated**: 2026-02-20  
-**Status**: Active  
+**Last Updated**: 2026-02-23  
+**Status**: Wave 1 Complete - Wave 2 Dispatched  
 **Architecture**: MemGPT-style hierarchical memory  
 **Purpose**: Single source of truth for Xoe-NovAi Foundation project status and coordination
+**Coordination Key**: `ACTIVE-TASK-DISPATCH-2026-02-23`
 
 ---
 
@@ -38,6 +39,7 @@
 | Tech Context | `techContext.md` | Stack, dependencies, setup | 5KB |
 | Active Context | `activeContext.md` | Current sprint, priorities | 5KB |
 | Progress | `progress.md` | Phase status, milestones | 6KB |
+| Architecture | `ARCHITECTURE.md` | System architecture with diagrams | 10KB |
 
 ### Block Configuration
 
@@ -53,14 +55,20 @@ See `BLOCKS.yaml` for:
 
 Located in: `memory_bank/PHASES/`
 
+### Infrastructure Phases (Complete)
 | File | Purpose | Status |
 |------|---------|--------|
 | `phase-1-completion.md` | Circuit breakers & health monitoring | ✅ Complete |
-| `phase-2-completion.md` | Service layer & infrastructure | ✅ Complete |
-| `phase-3-status.md` | Error handling main status | 🟡 Partial |
-| `phase-3-error-handling.md` | Error handling detailed progress | 🟡 Partial |
-| `phase-4-status.md` | Integration testing & validation | 🟢 In Progress |
-| `phase-5a-status.md` | zRAM optimization deployment | ✅ Complete |
+| `phase-3-status.md` | Error handling main status | ✅ Complete |
+| `phase-3-error-handling-detailed.md` | Error handling detailed | ✅ Complete |
+| `phase-4-status.md` | Integration testing | ✅ Complete |
+| `phase-5a-status.md` | zRAM optimization | ✅ Complete |
+| `phase6-status.md` | Multi-agent cloud | ✅ Complete |
+
+### Strategy Phases (Current)
+| File | Purpose | Status |
+|------|---------|--------|
+| `PHASE-2-COMPLETION-2026-02-22.md` | Gemini CLI MC Setup | ✅ Complete |
 
 **Use**: Reference specific phase completion details, test results, blockers
 
@@ -197,6 +205,8 @@ See: `expert-knowledge/`
 5. Details: `PHASES/phase-n-*.md` - phase-specific docs
 
 ### 🆕 New Team Member
+**For a step-by-step guide, start here: `docs/01-start/ONBOARDING-CHECKLIST.md`**
+
 1. Read: `projectbrief.md` - understand project (2 min)
 2. Read: `productContext.md` - understand why (2 min)
 3. Read: `techContext.md` - understand stack (2 min)
@@ -294,11 +304,14 @@ See `progress.md` for:
 
 ## 🎯 CURRENT STATUS AT A GLANCE
 
-- **Latest Phase**: Phase 7 Complete, Phase 8 Starting
+- **Current Wave**: Wave 2 Dispatched (32 tasks)
+- **Wave 1**: ✅ Complete (17/17 tasks)
+- **Overall Progress**: 35% (17/49 tasks)
 - **Overall Health**: 95% ✅
-- **Latest Update**: 2026-02-20
+- **Latest Update**: 2026-02-23
 - **Critical Blockers**: None
-- **Active Work Streams**: Sprint 8 (AnyIO Migration, Memory Bank Enhancement)
+- **Active Agents**: CLINE (implementation), GEMINI-MC (research)
+- **Coordination Key**: `ACTIVE-TASK-DISPATCH-2026-02-23`
 - **Memory Architecture**: MemGPT-style hierarchical (Core → Recall → Archival)
 
 ---

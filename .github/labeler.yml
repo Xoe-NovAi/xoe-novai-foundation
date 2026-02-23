@@ -1,0 +1,52 @@
+# PR Labeler Configuration
+# https://github.com/actions/labeler
+
+documentation:
+  - changed-files:
+    - any-glob-to-any-file: ['docs/**', '*.md', 'mkdocs.yml', 'memory_bank/**']
+    - all: ['!app/**']
+    
+python:
+  - changed-files:
+    - any-glob-to-any-file: ['**/*.py', 'pyproject.toml', 'requirements*.txt']
+    - all: ['!app/**']
+    
+docker:
+  - changed-files:
+    - any-glob-to-any-file: ['Dockerfile*', 'docker-compose*.yml', '.dockerignore']
+    - all: ['!app/**']
+
+infrastructure:
+  - changed-files:
+    - any-glob-to-any-file: ['scripts/**', 'Makefile', '.github/workflows/**']
+    - all: ['!app/**']
+
+voice:
+  - changed-files:
+    - any-glob-to-any-file: ['**/voice/**', '**/*voice*', 'app/XNAi_rag_app/services/voice/**']
+    - all: ['!app/**']
+
+rag:
+  - changed-files:
+    - any-glob-to-any-file: ['**/rag/**', '**/*rag*', '**/embeddings*']
+    - all: ['!app/**']
+
+security:
+  - changed-files:
+    - any-glob-to-any-file: ['**/security/**', '.github/workflows/*security*', '**/iam_*']
+    - all: ['!app/**']
+
+tests:
+  - changed-files:
+    - any-glob-to-any-file: ['tests/**', 'conftest.py', 'pytest.ini']
+    - all: ['!app/**']
+
+dependencies:
+  - changed-files:
+    - any-glob-to-any-file: ['requirements*.txt', 'pyproject.toml', 'uv.lock']
+    - all: ['!app/**']
+
+ci:
+  - changed-files:
+    - any-glob-to-any-file: ['.github/workflows/**', '.pre-commit-config.yaml']
+    - all: ['!app/**']

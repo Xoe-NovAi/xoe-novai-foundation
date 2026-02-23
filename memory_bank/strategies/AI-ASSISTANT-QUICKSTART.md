@@ -27,9 +27,10 @@
 
 ## Files You Must Read First
 
-1. `memory_bank/activeContext.md` — Current sprint status
-2. `memory_bank/strategies/OPUS-TOKEN-STRATEGY.md` — Token budgets
-3. `memory_bank/strategies/OPUS-STRATEGIC-REVIEW-2026-02-19.md` — Templates
+1. `docs/01-start/ONBOARDING-CHECKLIST.md` — **NEW AGENT START HERE**
+2. `memory_bank/activeContext.md` — Current sprint status
+3. `memory_bank/strategies/OPUS-TOKEN-STRATEGY.md` — Token budgets
+4. `memory_bank/strategies/OPUS-STRATEGIC-REVIEW-2026-02-19.md` — Templates
 
 ---
 

@@ -156,7 +156,54 @@ maxmemory_policy = "allkeys-lru"
 
 [redis.streams]
 coordination_stream = "xnai_coordination"
+agent_bus_stream = "xnai:agent_bus"
+task_updates_stream = "xnai:task_updates"
+memory_updates_stream = "xnai:memory_updates"
+alerts_stream = "xnai:alerts"
+dead_letter_stream = "xnai:dlq"
 max_len = 1000
+consumer_group = "agent_wavefront"
+consumer_prefix = "consumer_"
+
+[redis.streams.dlq]
+enabled = true
+max_retention_seconds = 86400  # 24 hours
+retry_limit = 3
+retry_backoff_seconds = 60
+
+# Agent Bus Configuration (Phase 4.2.6)
+agent_bus_stream = "xnai:agent_bus"
+task_updates_stream = "xnai:task_updates"
+memory_updates_stream = "xnai:memory_updates"
+alerts_stream = "xnai:alerts"
+
+# Consumer Group Configuration (R011-2)
+consumer_groups = [
+    { name = "agent_wavefront", streams = ["xnai:agent_bus", "xnai:task_updates"] },
+    { name = "memory_sync", streams = ["xnai:memory_updates"] },
+    { name = "alert_handlers", streams = ["xnai:alerts"] }
+]
+
+# Stream Settings
+stream_block_ms = 5000  # Block time for XREADGROUP
+stream_batch_size = 10  # Messages per batch
+stream_claim_idle_ms = 60000  # Idle time before claiming pending messages
+
+# Dead Letter Queue Configuration (R011-3)
+[redis.dlq]
+enabled = true
+dlq_prefix = "xnai:dlq"  # DLQ stream prefix
+dlq_max_len = 10000  # Maximum messages in DLQ
+dlq_retention_hours = 168  # 7 days retention
+
+# Retry Configuration
+max_retries = 3
+retry_backoff_base_ms = 1000  # Exponential backoff base
+retry_backoff_max_ms = 60000  # Max backoff time
+
+# DLQ Processing
+dlq_process_interval_s = 300  # Check DLQ every 5 minutes
+dlq_batch_size = 100  # Process up to 100 messages per run
 
 [redis.cache]
 enabled = true

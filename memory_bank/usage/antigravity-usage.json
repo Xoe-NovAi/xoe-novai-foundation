@@ -1,0 +1,169 @@
+{
+  "version": "1.0.0",
+  "created": "2026-02-23",
+  "last_updated": "2026-02-23T00:00:00Z",
+  "account_pool": [
+    {
+      "id": "antigravity-01",
+      "status": "active",
+      "weekly_tokens_used": 0,
+      "weekly_token_limit": 500000,
+      "reset_day": "sunday",
+      "models_available": [
+        "claude-opus-4.6-thinking",
+        "claude-sonnet-4.6-antigravity",
+        "gemini-3.1-pro",
+        "deepseek-v3",
+        "deepseek-v1",
+        "gpt-4.1",
+        "o3-mini"
+      ],
+      "current_model": "claude-sonnet-4.6-antigravity",
+      "notes": "Primary Antigravity account"
+    },
+    {
+      "id": "antigravity-02",
+      "status": "ready",
+      "weekly_tokens_used": 0,
+      "weekly_token_limit": 500000,
+      "reset_day": "sunday",
+      "models_available": [
+        "claude-opus-4.6-thinking",
+        "claude-sonnet-4.6-antigravity",
+        "gemini-3.1-pro",
+        "deepseek-v3",
+        "deepseek-v1",
+        "gpt-4.1",
+        "o3-mini"
+      ],
+      "current_model": null,
+      "notes": "Secondary Antigravity account"
+    },
+    {
+      "id": "antigravity-03",
+      "status": "ready",
+      "weekly_tokens_used": 0,
+      "weekly_token_limit": 500000,
+      "reset_day": "sunday",
+      "models_available": [
+        "claude-opus-4.6-thinking",
+        "claude-sonnet-4.6-antigravity",
+        "gemini-3.1-pro",
+        "deepseek-v3",
+        "deepseek-v1",
+        "gpt-4.1",
+        "o3-mini"
+      ],
+      "current_model": null,
+      "notes": ""
+    },
+    {
+      "id": "antigravity-04",
+      "status": "ready",
+      "weekly_tokens_used": 0,
+      "weekly_token_limit": 500000,
+      "reset_day": "sunday",
+      "models_available": [
+        "claude-opus-4.6-thinking",
+        "claude-sonnet-4.6-antigravity",
+        "gemini-3.1-pro",
+        "deepseek-v3",
+        "deepseek-v1",
+        "gpt-4.1",
+        "o3-mini"
+      ],
+      "current_model": null,
+      "notes": ""
+    },
+    {
+      "id": "antigravity-05",
+      "status": "ready",
+      "weekly_tokens_used": 0,
+      "weekly_token_limit": 500000,
+      "reset_day": "sunday",
+      "models_available": [
+        "claude-opus-4.6-thinking",
+        "claude-sonnet-4.6-antigravity",
+        "gemini-3.1-pro",
+        "deepseek-v3",
+        "deepseek-v1",
+        "gpt-4.1",
+        "o3-mini"
+      ],
+      "current_model": null,
+      "notes": ""
+    },
+    {
+      "id": "antigravity-06",
+      "status": "ready",
+      "weekly_tokens_used": 0,
+      "weekly_token_limit": 500000,
+      "reset_day": "sunday",
+      "models_available": [
+        "claude-opus-4.6-thinking",
+        "claude-sonnet-4.6-antigravity",
+        "gemini-3.1-pro",
+        "deepseek-v3",
+        "deepseek-v1",
+        "gpt-4.1",
+        "o3-mini"
+      ],
+      "current_model": null,
+      "notes": ""
+    },
+    {
+      "id": "antigravity-07",
+      "status": "ready",
+      "weekly_tokens_used": 0,
+      "weekly_token_limit": 500000,
+      "reset_day": "sunday",
+      "models_available": [
+        "claude-opus-4.6-thinking",
+        "claude-sonnet-4.6-antigravity",
+        "gemini-3.1-pro",
+        "deepseek-v3",
+        "deepseek-v1",
+        "gpt-4.1",
+        "o3-mini"
+      ],
+      "current_model": null,
+      "notes": ""
+    },
+    {
+      "id": "antigravity-08",
+      "status": "ready",
+      "weekly_tokens_used": 0,
+      "weekly_token_limit": 500000,
+      "reset_day": "sunday",
+      "models_available": [
+        "claude-opus-4.6-thinking",
+        "claude-sonnet-4.6-antigravity",
+        "gemini-3.1-pro",
+        "deepseek-v3",
+        "deepseek-v1",
+        "gpt-4.1",
+        "o3-mini"
+      ],
+      "current_model": null,
+      "notes": ""
+    }
+  ],
+  "rotation_strategy": {
+    "method": "limit-based-rotation",
+    "auto_switch": true,
+    "warning_threshold": 0.9,
+    "exhaustion_action": "rotate-to-next-account"
+  },
+  "model_priority": {
+    "deep_reasoning": ["claude-opus-4.6-thinking", "gemini-3.1-pro", "deepseek-v3"],
+    "code_generation": ["claude-sonnet-4.6-antigravity", "deepseek-v3", "gpt-4.1"],
+    "quick_tasks": ["o3-mini", "claude-sonnet-4.6-antigravity"],
+    "research": ["deepseek-v3", "gemini-3.1-pro"],
+    "large_context": ["gemini-3.1-pro", "deepseek-v3"]
+  },
+  "totals": {
+    "total_weekly_tokens_available": 4000000,
+    "total_weekly_tokens_used": 0
+  },
+  "history": []
+}

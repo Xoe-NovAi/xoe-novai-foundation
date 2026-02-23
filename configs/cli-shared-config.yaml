@@ -1,0 +1,357 @@
+# XNAi Foundation - Shared CLI Configuration
+# =============================================
+# This file contains shared configuration for all CLI agents
+# (OpenCode, Cline, Copilot, Gemini CLI)
+#
+# Each CLI should reference this file for common rules and patterns.
+#
+# Last Updated: 2026-02-22
+# Version: 1.0.0
+
+# ============================================================================
+# CORE PRINCIPLES
+# ============================================================================
+
+core_principles:
+  
+  # -------------------------------------------------------------------------
+  # Sovereign Architecture
+  # -------------------------------------------------------------------------
+  sovereignty:
+    description: "Zero external telemetry, air-gap capable"
+    rules:
+      - NO external API calls without explicit user approval
+      - NO data transmission to external servers
+      - All inference must be local (ONNX, GGUF, CTranslate2)
+      - If external API needed, ASK USER FIRST
+  
+  # -------------------------------------------------------------------------
+  # Torch-Free Mandate
+  # -------------------------------------------------------------------------
+  torch_free:
+    description: "No PyTorch dependencies"
+    rules:
+      - NO PyTorch/Torch/Triton/CUDA imports
+      - Use ONNX Runtime for inference
+      - Use GGUF (llama-cpp-python with Vulkan)
+      - Use NumPy for numerical operations
+      - Sentence-transformers requires PyTorch → AVOID
+  
+  # -------------------------------------------------------------------------
+  # Resource Constraints
+  # -------------------------------------------------------------------------
+  resources:
+    description: "Target <6GB RAM, <500ms latency"
+    rules:
+      - Target maximum 6GB RAM usage
+      - Target maximum 500ms response latency
+      - Use memory mapping for large files
+      - Prefer streaming over loading entire files
+      - Always check memory usage before operations
+  
+  # -------------------------------------------------------------------------
+  # Ethical Guardrails
+  # -------------------------------------------------------------------------
+  ethics:
+    description: "Follow Ma'at's 42 Ideals"
+    rules:
+      - No harmful, biased, or unethical code
+      - Respect user privacy and sovereignty
+      - Document security implications
+      - Honor user consent
+
+# ============================================================================
+# ARCHITECTURE PATTERNS
+# ============================================================================
+
+architecture:
+  
+  # -------------------------------------------------------------------------
+  # Feature Flags
+  # -------------------------------------------------------------------------
+  feature_flags:
+    description: "All optional features controlled by feature flags"
+    pattern: |
+      FEATURE_X = os.getenv("FEATURE_X", "false").lower() == "true"
+      
+      try:
+          from optional import Something
+          OPTIONAL_AVAILABLE = True
+      except ImportError:
+          OPTIONAL_AVAILABLE = False
+      
+      # Combined check
+      if FEATURE_X and OPTIONAL_AVAILABLE:
+          # Use feature
+          pass
+    
+    flags:
+      - FEATURE_VOICE: "Enable voice responses (default: false)"
+      - FEATURE_REDIS_SESSIONS: "Redis session persistence (default: true)"
+      - FEATURE_QDRANT: "Qdrant vector search (default: true)"
+      - FEATURE_LOCAL_FALLBACK: "Local LLM fallback (default: true)"
+  
+  # -------------------------------------------------------------------------
+  # Graceful Degradation
+  # -------------------------------------------------------------------------
+  graceful_degradation:
+    description: "Always fall back gracefully when services unavailable"
+    pattern: |
+      async def get_service():
+          if self._use_primary:
+              result = await self._primary_backend()
+              if result:
+                  return result
+          
+          if self._use_fallback:
+              return await self._fallback_backend()
+          
+          return self._last_resort()
+    
+    degradation_chain:
+      - "Redis → In-Memory"
+      - "Qdrant → FAISS → Keyword Search"
+      - "RAG API → Local LLM → Error Message"
+  
+  # -------------------------------------------------------------------------
+  # Async Patterns
+  # -------------------------------------------------------------------------
+  async_patterns:
+    description: "Use AnyIO for structured concurrency"
+    rules:
+      - Use AnyIO for structured concurrency (not asyncio directly)
+      - Use thread pools for CPU-bound operations
+      - Never block the event loop
+    pattern: |
+      import anyio
+      
+      # Timeout pattern
+      async with anyio.move_on_after(timeout):
+          result = await operation()
+      
+      # Thread pool for CPU-bound
+      result = await anyio.to_thread.run_sync(cpu_bound_function)
+
+# ============================================================================
+# MEMORY BANK PROTOCOL
+# ============================================================================
+
+memory_bank:
+  
+  description: "Context persistence across sessions"
+  
+  files:
+    core:
+      - path: "memory_bank/activeContext.md"
+        purpose: "Current priorities and session state"
+      - path: "memory_bank/progress.md"
+        purpose: "Phase completion status"
+      - path: "memory_bank/systemPatterns.md"
+        purpose: "Architectural patterns"
+    
+    strategies:
+      - path: "memory_bank/strategies/"
+        purpose: "Task queues and planning documents"
+    
+    handovers:
+      - path: "memory_bank/recall/handovers/"
+        purpose: "Session handoff documents"
+  
+  when_to_read:
+    - "Start of each session"
+    - "Before making architectural decisions"
+    - "When context is needed"
+  
+  when_to_update:
+    - "After completing significant work"
+    - "When strategy changes"
+    - "Before context window fills"
+
+# ============================================================================
+# INFRASTRUCTURE LAYER
+# ============================================================================
+
+infrastructure:
+  
+  description: "Reusable components for all interfaces"
+  
+  components:
+    session_manager:
+      path: "app/XNAi_rag_app/core/infrastructure/session_manager.py"
+      purpose: "Session persistence with Redis + in-memory fallback"
+      usage: |
+        from XNAi_rag_app.core.infrastructure import SessionManager, create_session_manager
+        
+        session = await create_session_manager()
+        await session.set("key", "value")
+        context = await session.get_conversation_context(max_turns=5)
+    
+    knowledge_client:
+      path: "app/XNAi_rag_app/core/infrastructure/knowledge_client.py"
+      purpose: "Knowledge retrieval with Qdrant + FAISS abstraction"
+      usage: |
+        from XNAi_rag_app.core.infrastructure import KnowledgeClient, create_knowledge_client
+        
+        knowledge = await create_knowledge_client()
+        results = await knowledge.search("query", top_k=5)
+    
+    voice_module:
+      path: "app/XNAi_rag_app/services/voice/voice_module.py"
+      purpose: "Optional voice integration for Chainlit"
+      usage: |
+        from XNAi_rag_app.services.voice import VoiceModule, VoiceModuleConfig
+        
+        if os.getenv("FEATURE_VOICE") == "true":
+            voice = VoiceModule(VoiceModuleConfig())
+            await voice.initialize()
+
+# ============================================================================
+# CODING STANDARDS
+# ============================================================================
+
+coding_standards:
+  
+  # -------------------------------------------------------------------------
+  # Type Hints
+  # -------------------------------------------------------------------------
+  type_hints:
+    description: "Always add type hints"
+    pattern: |
+      from typing import Optional, Dict, Any, List
+      
+      async def process(
+          data: str,
+          options: Optional[Dict[str, Any]] = None,
+      ) -> List[str]:
+          ...
+  
+  # -------------------------------------------------------------------------
+  # Error Handling
+  # -------------------------------------------------------------------------
+  error_handling:
+    description: "Graceful degradation with user-friendly messages"
+    rules:
+      - "NEVER crash on optional feature failure"
+      - "Log warnings for degraded mode"
+      - "Provide user-friendly error messages"
+      - "Use circuit breakers for external services"
+  
+  # -------------------------------------------------------------------------
+  # Import Guards
+  # -------------------------------------------------------------------------
+  import_guards:
+    description: "Always use try/except for optional imports"
+    pattern: |
+      try:
+          from optional_package import Something
+          OPTIONAL_AVAILABLE = True
+      except ImportError:
+          OPTIONAL_AVAILABLE = False
+          Something = None
+
+# ============================================================================
+# TESTING
+# ============================================================================
+
+testing:
+  
+  commands:
+    unit_tests: "pytest tests/"
+    coverage: "pytest --cov=app tests/"
+    linting: "ruff check . && ruff format --check ."
+    type_check: "mypy app/ --ignore-missing-imports"
+  
+  pattern: |
+    import pytest
+    
+    @pytest.mark.asyncio
+    async def test_feature():
+        # Arrange
+        config = Config()
+        
+        # Act
+        result = await process(config)
+        
+        # Assert
+        assert result is not None
+
+# ============================================================================
+# DOCUMENTATION
+# ============================================================================
+
+documentation:
+  
+  key_files:
+    - "docs/api/infrastructure-layer.md"
+    - "docs/api/voice_module.md"
+    - "docs/api/voice_interface.md"
+    - "docs/03-reference/feature-flags.md"
+    - "docs/03-how-to-guides/chainlit-migration.md"
+    - "START-HERE.md"
+
+# ============================================================================
+# QUICK REFERENCE
+# ============================================================================
+
+quick_reference:
+  
+  infrastructure_usage: |
+    from XNAi_rag_app.core.infrastructure import (
+        SessionManager,
+        KnowledgeClient,
+        create_session_manager,
+        create_knowledge_client,
+    )
+    
+    session = await create_session_manager()
+    knowledge = await create_knowledge_client()
+  
+  voice_module_usage: |
+    from XNAi_rag_app.services.voice import VoiceModule, VoiceModuleConfig
+    
+    if os.getenv("FEATURE_VOICE") == "true":
+        voice = VoiceModule(VoiceModuleConfig())
+        await voice.initialize()
+  
+  distillation_usage: |
+    from XNAi_rag_app.core.distillation import distill_content
+    
+    result = await distill_content(
+        source="session_123",
+        source_type="cli_session",
+        raw_content="Content to process..."
+    )
+
+# ============================================================================
+# CLI-SPECIFIC NOTES
+# ============================================================================
+
+cli_notes:
+  
+  opencode:
+    config_dir: ".opencode/"
+    rules_file: ".opencode/RULES.md"
+    agents_dir: ".opencode/agents/"
+    skills_dir: ".opencode/skills/"
+  
+  cline:
+    config_dir: ".clinerules/"
+    numbered_priority: true
+    activation_rules: true
+  
+  gemini:
+    config_dir: ".gemini/"
+    instructions_file: ".gemini/GEMINI.md"
+    agents_dir: ".gemini/agents/"
+  
+  copilot:
+    instructions_file: ".github/copilot-instructions.md"
+    codeowners_file: ".github/CODEOWNERS"
+
+# ============================================================================
+# VERSION
+# ============================================================================
+
+version: "1.0.0"
+last_updated: "2026-02-22"
+maintainer: "MC-Overseer"

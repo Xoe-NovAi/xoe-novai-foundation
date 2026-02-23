@@ -1,0 +1,322 @@
+---
+# ACCOUNT REGISTRY - Wave 4 Multi-Account Orchestration
+# Status: ACTIVE - Daily update required
+# Last Updated: 2026-02-23 (Initial template, awaiting audit)
+# Owner: MC-Overseer via Wave 4 Phase 1 Discovery
+# Coordination Key: WAVE-4-MULTI-ACCOUNT-INTEGRATION-2026-02-23
+
+metadata:
+  version: "1.0"
+  created: "2026-02-23T18:00:00Z"
+  updated: "2026-02-23T19:15:00Z"
+  update_frequency: "daily"
+  audit_status: "in_progress"
+
+# ============================================================================
+# COPILOT ACCOUNTS (8 accounts total)
+# ============================================================================
+
+copilot:
+  pool:
+    total_accounts: 8
+    total_messages: 400
+    total_completions: 16000
+    reset_schedule: "monthly (2026-03-01)"
+    priority: "high"
+    usage_strategy: "preserve_messages_for_high_context"
+    
+  models_available:
+    raptor_mini:
+      context_window: 264000
+      output_tokens: 64000
+      speed: "⚡⚡⚡⚡⚡ 4x faster than comparable models"
+      best_for: "Multi-file refactoring, large codebase analysis, agent mode operations"
+      notes: "PREFERRED FOR WAVE 4 - Use for coding tasks (large context support)"
+    
+    claude_haiku_4_5:
+      context_window: 200000
+      output_tokens: 64000
+      speed: "⚡⚡⚡⚡⚡ Fastest"
+      best_for: "Quick responses, general tasks"
+      notes: "Backup for when Raptor context not needed"
+    
+    gpt_4_preview:
+      context_window: 128000
+      output_tokens: 128000
+      best_for: "Code generation, creative tasks"
+      notes: "Available but less preferred"
+    
+  account_list:
+    # Account 1 - Primary
+    - id: "copilot-01"
+      email: "[Account 1 Email - NEED AUDIT]"
+      status: "active"
+      messages:
+        limit: 50
+        used: 0
+        available: 50
+        reset_date: "2026-03-01"
+      completions:
+        limit: 2000
+        used: 0
+        available: 2000
+        reset_date: "2026-03-01"
+      models:
+        available: ["raptor-mini", "claude-haiku-4.5", "gpt-4-preview"]
+        preferred: "raptor-mini"
+      last_used: null
+      notes: "Primary account - reserve for strategic high-context tasks"
+      
+    - id: "copilot-02"
+      email: "[Account 2 Email - NEED AUDIT]"
+      status: "active"
+      messages:
+        limit: 50
+        used: 0
+        available: 50
+        reset_date: "2026-03-01"
+      completions:
+        limit: 2000
+        used: 0
+        available: 2000
+        reset_date: "2026-03-01"
+      models:
+        available: ["raptor-mini", "claude-haiku-4.5"]
+        preferred: "raptor-mini"
+      last_used: null
+      notes: "Backup account"
+      
+    # Accounts 3-8: Additional accounts added by user
+    # [Template repeats for accounts 3-8]
+
+# ============================================================================
+# ANTIGRAVITY ACCOUNTS (8 accounts total - 3 original + 5 added by user)
+# ============================================================================
+
+antigravity:
+  pool:
+    total_accounts: 8
+    quota_model: "rotating_weekly"
+    reset_schedule: "TBD - NEED AUDIT"
+    priority: "critical"
+    models_tier: "frontier"
+    notes: "Free access to Claude Opus 4.6 Thinking, Gemini 3 Pro, more"
+    
+  account_list:
+    # Original 3 accounts (confirmed present)
+    - id: "antigravity-original-01"
+      email: "[First Original Account - NEED AUDIT]"
+      auth_method: "google_oauth"
+      status: "active"
+      quota:
+        tokens_available: "TBD"
+        tokens_limit: "TBD"
+        reset_schedule: "weekly"
+        last_reset: null
+      models:
+        available: ["gemini-3-pro", "claude-opus-4.6-thinking", "gemini-3-flash"]
+        preferred: "claude-opus-4.6-thinking"
+      last_used: null
+      current_usage_pct: 0
+      
+    - id: "antigravity-original-02"
+      email: "[Second Original Account - NEED AUDIT]"
+      auth_method: "google_oauth"
+      status: "active"
+      quota:
+        tokens_available: "TBD"
+        tokens_limit: "TBD"
+        reset_schedule: "weekly"
+        last_reset: null
+      models:
+        available: ["gemini-3-pro", "claude-opus-4.6-thinking", "gemini-3-flash"]
+        preferred: "claude-opus-4.6-thinking"
+      last_used: null
+      current_usage_pct: 0
+      
+    - id: "antigravity-original-03"
+      email: "[Third Original Account - NEED AUDIT]"
+      auth_method: "google_oauth"
+      status: "active"
+      quota:
+        tokens_available: "TBD"
+        tokens_limit: "TBD"
+        reset_schedule: "weekly"
+        last_reset: null
+      models:
+        available: ["gemini-3-pro", "claude-opus-4.6-thinking", "gemini-3-flash"]
+        preferred: "claude-opus-4.6-thinking"
+      last_used: null
+      current_usage_pct: 0
+      
+    # Additional 5 accounts added by user (CONFIRMED PRESENT but details needed)
+    - id: "antigravity-user-add-01"
+      email: "[User Added Account 1 - NEED AUDIT]"
+      auth_method: "google_oauth"
+      status: "active"
+      quota:
+        tokens_available: "TBD"
+        tokens_limit: "TBD"
+        reset_schedule: "TBD"
+        last_reset: null
+      models:
+        available: ["TBD"]
+        preferred: null
+      last_used: null
+      current_usage_pct: 0
+
+# ============================================================================
+# OTHER PROVIDERS (Currently Connected)
+# ============================================================================
+
+other_providers:
+  opencode_zen:
+    id: "opencode-main"
+    status: "active"
+    api_key_present: true
+    api_key: "sk-9skAIFSp2F9igSxw8D4fWLC4zqpLWrRQHyzXzstPdDwdtgAYUo6D6kmMqghHvdeX"
+    models:
+      available: ["big-pickle", "gpt-5-nano", "kimi-k2.5-free", "glm-5-free", "minimax-m2.5-free"]
+      preferred: "big-pickle"
+    rate_limit_status: "active"
+    last_hit_limit: null
+    notes: "Rate-limited shared pool across all OpenCode free users"
+    
+  cerebras:
+    id: "cerebras-main"
+    status: "connected"
+    api_key_present: true
+    notes: "Available for integration, not yet in active dispatch"
+    
+  llama_cpp_python:
+    id: "llama-cpp-local"
+    status: "active"
+    type: "local_sovereign"
+    port: 8080
+    endpoint: "http://localhost:8080/v1"
+    models:
+      available: ["local-gguf-model"]
+    fallback_priority: "high"
+    notes: "Primary fallback for code completions and offline work"
+
+# ============================================================================
+# TOP 3 MOST POWERFUL FREE-TIER PROVIDERS (To be added Phase 1)
+# ============================================================================
+
+priority_providers:
+  ranking: "TBD - PENDING RESEARCH"
+  note: "Will populate with top 3 most powerful + generous free-tier providers"
+  
+  provider_1:
+    name: "TBD"
+    quota_tokens_month: "TBD"
+    context_window: "TBD"
+    models: []
+    signup_time_minutes: "TBD"
+    integration_complexity: "TBD"
+    xnai_fit: "TBD"
+    
+  provider_2:
+    name: "TBD"
+    quota_tokens_month: "TBD"
+    context_window: "TBD"
+    models: []
+    signup_time_minutes: "TBD"
+    integration_complexity: "TBD"
+    xnai_fit: "TBD"
+    
+  provider_3:
+    name: "TBD"
+    quota_tokens_month: "TBD"
+    context_window: "TBD"
+    models: []
+    signup_time_minutes: "TBD"
+    integration_complexity: "TBD"
+    xnai_fit: "TBD"
+
+# ============================================================================
+# QUOTA TRACKING & METRICS (Daily Update)
+# ============================================================================
+
+daily_metrics:
+  date: "2026-02-23"
+  
+  copilot_total:
+    messages_used: 0
+    messages_available: 400
+    completions_used: 0
+    completions_available: 16000
+    utilization_pct: 0
+    
+  antigravity_total:
+    tokens_used: 0
+    tokens_available: "TBD"
+    utilization_pct: 0
+    
+  opencode_total:
+    rate_limits_hit: 0
+    status: "healthy"
+    
+  dispatch_count: 0
+  active_instances: 0
+
+# ============================================================================
+# ROTATION & FAILOVER RULES
+# ============================================================================
+
+rotation_rules:
+  copilot:
+    strategy: "round_robin"
+    trigger: "when_available"
+    message_warning_threshold: 45
+    message_exhaustion_threshold: 50
+    completion_warning_threshold: 1900
+    completion_exhaustion_threshold: 2000
+    auto_switch: true
+    
+  antigravity:
+    strategy: "lowest_usage_first"
+    trigger: "on_quota_exhaustion"
+    rotation_on_no_availability: true
+    max_retries_per_account: 3
+    
+  opencode:
+    strategy: "fixed_single_account"
+    rate_limit_handling: "queue_and_retry"
+
+# ============================================================================
+# STATUS SUMMARY (Updated Daily)
+# ============================================================================
+
+status:
+  overall_health: "healthy"
+  last_audit_date: "2026-02-23"
+  audit_completeness: "10%"
+  audit_items_needed:
+    - "Confirm all 8 Copilot email addresses"
+    - "Confirm all 8 Antigravity email addresses"
+    - "Get Antigravity quota limits (tokens/month)"
+    - "Get Antigravity reset schedule confirmation"
+    - "Verify models available on each account"
+    - "Establish baseline usage metrics"
+    - "Test account rotation functionality"
+    - "Verify multi-instance spawning works"
+  
+  audit_notes: |
+    Wave 4 Phase 1 discovery in progress.
+    This registry will be populated with complete account data within 2 work sessions.
+    Daily updates will begin after initial audit completion.
+
+---
+# NOTES FOR IMPLEMENTATION
+# 
+# This registry serves as the single source of truth for account management.
+# Daily audit should:
+#   1. Check current usage on all accounts
+#   2. Update quotas and reset dates
+#   3. Log dispatch metrics
+#   4. Trigger warnings when thresholds approached
+#   5. Execute rotations when quotas exhausted
+#
+# Daily audit script: scripts/account-audit-daily.sh (to be created Phase 4)
+# Update frequency: After each dispatch or daily batch (whichever is more frequent)

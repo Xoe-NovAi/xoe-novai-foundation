@@ -1,0 +1,242 @@
+# XNAi Foundation Quick Reference Card
+
+**Version**: 1.0.0 | **Updated**: 2026-02-23
+
+---
+
+## 🚀 Quick Start Commands
+
+### Development
+```bash
+# Start development environment
+make dev
+
+# Run tests
+pytest tests/ -v
+
+# Run tests with coverage
+pytest tests/ --cov=app --cov-report=html
+
+# Type checking
+mypy app/
+
+# Linting
+ruff check app/ tests/
+ruff format app/ tests/
+```
+
+### Docker
+```bash
+# Start all services
+docker compose up -d
+
+# View logs
+docker compose logs -f
+
+# Stop services
+docker compose down
+
+# Rebuild containers
+docker compose up -d --build
+```
+
+### Benchmark
+```bash
+# Run benchmark with all environments
+python scripts/benchmark_runner.py --all --model <model-name>
+
+# Run specific environment
+python scripts/benchmark_runner.py --env E5 --model opus-4.6
+```
+
+---
+
+## 📁 Project Structure
+
+```
+xnai-foundation/
+├── app/XNAi_rag_app/       # Main application
+│   ├── core/               # Core modules
+│   ├── api/                # FastAPI endpoints
+│   └── security/           # Security modules
+├── memory_bank/            # Agent memory system
+├── scripts/                # Utility scripts
+├── tests/                  # Test suite
+├── configs/                # Configuration files
+├── docs/                   # Documentation
+└── expert-knowledge/       # Knowledge base
+```
+
+---
+
+## 🔧 Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `REDIS_HOST` | `localhost` | Redis server host |
+| `REDIS_PORT` | `6379` | Redis server port |
+| `QDRANT_HOST` | `localhost` | Qdrant server host |
+| `QDRANT_PORT` | `6333` | Qdrant server port |
+| `LOG_LEVEL` | `INFO` | Logging level |
+| `METRICS_PORT` | `8002` | Prometheus metrics port |
+
+---
+
+## 🤖 Agent DIDs
+
+| Agent | DID |
+|-------|-----|
+| CLINE | `did:xnai:cline` |
+| GEMINI-MC | `did:xnai:gemini-mc` |
+| MC-Overseer | `did:xnai:mc-overseer-v1` |
+
+---
+
+## 📡 Redis Streams
+
+| Stream | Purpose |
+|--------|---------|
+| `xnai:agent_bus` | Multi-agent coordination |
+| `xnai:task_updates` | Task status updates |
+| `xnai:memory_updates` | Memory sync events |
+| `xnai:alerts` | System alerts |
+| `xnai:dlq` | Dead Letter Queue |
+
+---
+
+## 🔐 Knowledge Permissions
+
+| Permission | Access Level |
+|------------|--------------|
+| `read_only` | Read operations only |
+| `read_write` | Read + Write |
+| `admin` | Full access + delete |
+
+### Collection Permissions
+
+| Collection | Read | Write | Admin |
+|------------|------|-------|-------|
+| `xnai_knowledge` | user, service, admin | service, admin | admin |
+| `xnai_staging` | service, admin | service, admin | admin |
+| `xnai_archive` | admin | admin | admin |
+
+---
+
+## 🧪 Test Commands
+
+```bash
+# Run all tests
+pytest
+
+# Run unit tests only
+pytest tests/unit/
+
+# Run integration tests
+pytest tests/integration/
+
+# Run with markers
+pytest -m "not slow"
+pytest -m "security"
+
+# Coverage report
+pytest --cov=app --cov-report=term-missing
+```
+
+---
+
+## 📊 Metrics Endpoints
+
+| Endpoint | Port | Purpose |
+|----------|------|---------|
+| `/metrics` | 8002 | Prometheus metrics |
+| `/health` | 8000 | Health check |
+| `/ready` | 8000 | Readiness probe |
+
+---
+
+## 🔍 Troubleshooting
+
+### Redis Connection Issues
+```bash
+# Check Redis status
+redis-cli ping
+
+# Check Redis password
+cat secrets/redis_password.txt
+```
+
+### Qdrant Connection Issues
+```bash
+# Check Qdrant status
+curl http://localhost:6333/health
+```
+
+### Test Failures
+```bash
+# Clear test cache
+pytest --cache-clear
+
+# Verbose output
+pytest -vv --tb=long
+```
+
+---
+
+## 📝 Memory Bank Files
+
+| File | Purpose |
+|------|---------|
+| `activeContext.md` | Current work context |
+| `progress.md` | Progress tracking |
+| `INDEX.md` | Memory bank index |
+| `teamProtocols.md` | Agent coordination rules |
+
+---
+
+## 🎯 Performance Targets
+
+| Metric | Target |
+|--------|--------|
+| Memory Usage | < 8 GB |
+| Response Latency | < 500ms P99 |
+| Token Rate | 10-50 tokens/sec |
+| Test Coverage | > 80% |
+
+---
+
+## 🔗 Quick Links
+
+- **Architecture**: `docs/03-reference/architecture/`
+- **API Docs**: `docs/03-reference/api.md`
+- **Configuration**: `docs/03-reference/configuration.md`
+- **Error Handling**: `docs/03-reference/error-handling.md`
+- **Troubleshooting**: `docs/03-reference/TROUBLESHOOTING-GUIDE.md`
+
+---
+
+## 📋 Common Tasks
+
+### Add New Agent
+1. Create DID: `did:xnai:<agent-type>:<agent-name>`
+2. Generate Ed25519 keypair
+3. Register in IAM database
+4. Add to `configs/agent-identity.yaml`
+
+### Add New API Endpoint
+1. Create router in `app/XNAi_rag_app/api/`
+2. Add to `app/XNAi_rag_app/main.py`
+3. Add tests in `tests/unit/api/`
+4. Update OpenAPI docs
+
+### Run Security Scan
+```bash
+# Bandit scan
+bandit -r app/ -ll
+
+# Safety check
+safety check --full-report
+```
+
+---
+
+*Generated by MC-Overseer Agent*

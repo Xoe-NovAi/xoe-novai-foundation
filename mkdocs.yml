@@ -112,6 +112,7 @@ nav:
           - NotebookLM Video Guide: 02-tutorials/prompt-engineering/notebooklm-video-guide.md
   - 🛠️ How-to Guides:
       - PR Readiness Workflow: 03-how-to-guides/pr-readiness-workflow.md
+      - Chainlit Migration: 03-how-to-guides/chainlit-migration.md
       - EKB Contribution Guide: 03-how-to-guides/contributing-to-ekb.md
       - Security DB Management: 03-how-to-guides/security-db-management.md
       - Development Workflow: 03-how-to-guides/dev-workflow.md
@@ -152,10 +153,18 @@ nav:
           - Rootless Podman U-Flag: expert-knowledge/environment/rootless_podman_u_flag.md
   - 📖 Reference:
       - Configuration: 03-reference/configuration.md
+      - Feature Flags: 03-reference/feature-flags.md
       - Secrets Management: secrets.md
       - Hardware Mastery: 03-reference/hardware.md
       - Master Plan: 03-reference/master-plan.md
-      - API Reference: 03-reference/api.md
+      - 📦 API Reference:
+          - Main API: 03-reference/api.md
+          - Infrastructure Layer: api/infrastructure-layer.md
+          - Voice Interface: api/voice_interface.md
+          - Voice Module: api/voice_module.md
+          - Knowledge Access: api/knowledge_access.md
+          - Content Sanitization: api/sanitization.md
+          - Redis Streams: api/redis_streams.md
       - 🏺 Project History:
           - Changelog: 03-reference/project-history/CHANGELOG.md
           - Daily Status Reports: 03-reference/project-history/daily-logs/
