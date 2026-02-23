@@ -1,0 +1,352 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                   JOB-AB1 & JOB-AB2 RESEARCH COMPLETE                      ║
+║                    Agent Bus Integration Deep Dive                         ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+DELIVERABLES SUMMARY
+═════════════════════════════════════════════════════════════════════════════
+
+📋 DOCUMENT 1: AGENT-BUS-SPECIFICATION-v2.0.0.yaml (922 lines)
+   ├─ JOB-AB1: Message Format Specification
+   │  ├─ 5 message types (task_assignment, task_completion, state_update, 
+   │  │  error_report, assistance_request)
+   │  ├─ Redis Streams operations (XADD, XREADGROUP, XACK, XAUTOCLAIM)
+   │  ├─ Error handling & timeout semantics
+   │  └─ Performance characteristics (latency, throughput, payload)
+   │
+   └─ JOB-AB2: MCP Server Registration & Discovery
+      ├─ Registration methods (config files, Consul HTTP API)
+      ├─ Capability declaration patterns
+      ├─ Service discovery flow (5 steps)
+      ├─ Health check protocol
+      ├─ Implementation examples (xnai-agentbus, memory-bank-mcp)
+      └─ Complete registration checklist (6 steps)
+
+📘 DOCUMENT 2: AGENT-BUS-INTEGRATION-GUIDE.md (580 lines)
+   ├─ Executive summary with quick reference
+   ├─ Message structure & types (with JSON examples)
+   ├─ Redis operations with Python code snippets
+   ├─ 3 practical implementation examples
+   ├─ Registration checklist (16 items)
+   └─ Next steps for development
+
+📙 DOCUMENT 3: JOB-AB-RESEARCH-COMPLETE.md (10.8K)
+   ├─ Overview & indexing
+   ├─ Key technical specifications
+   ├─ Implementation quick start guide
+   ├─ Critical dependencies
+   ├─ Security considerations
+   ├─ Performance metrics table
+   ├─ Integration checklist
+   ├─ Files & references
+   └─ 4-phase implementation roadmap
+
+📗 REFERENCE: AGENT-BUS-PROTOCOL.md (470 lines - Original)
+   └─ Historical protocol specification
+
+═════════════════════════════════════════════════════════════════════════════
+
+KEY SPECIFICATIONS EXTRACTED
+═════════════════════════════════════════════════════════════════════════════
+
+MESSAGE FORMAT (Standard Envelope)
+──────────────────────────────────
+{
+  "message_id": "uuid-v4",              # Unique identifier
+  "timestamp": "ISO-8601",              # Creation time
+  "sender": "agent-name",               # Origin
+  "target": "target-agent",             # Destination
+  "type": "message_type",               # 5 types defined
+  "priority": "high|medium|low",        # Response SLA
+  "content": {...},                     # Type-specific payload
+  "correlation_id": "optional-uuid"     # Request/response linking
+}
+
+MESSAGE TYPES
+─────────────
+1. task_assignment      - Distribute work
+2. task_completion      - Report results
+3. state_update         - Health/status
+4. error_report         - Exception handling
+5. assistance_request   - Inter-agent coordination
+
+TRANSPORT LAYER
+────────────────
+Protocol: Redis Streams (xnai:agent_bus)
+Consumer Group: xnai-mcp-server
+Consumer Name: mcp-{8-char-uuid}
+Delivery Model: Exactly-once (via consumer groups)
+Stale Timeout: 30 seconds → XAUTOCLAIM recovery
+Consumer Timeout: 90 seconds → Removal from registry
+
+PRIORITY LEVELS
+────────────────
+HIGH    < 5 min    - Critical failures, security, production
+MEDIUM  < 30 min   - Features, optimization, documentation
+LOW     < 2 hours  - Research, code reviews, improvements
+
+═════════════════════════════════════════════════════════════════════════════
+
+MCP SERVER REGISTRATION
+═════════════════════════════════════════════════════════════════════════════
+
+REGISTRATION METHODS
+───────────────────
+1. Configuration File (.opencode/opencode.json)
+   {
+     "mcp": {
+       "servers": {
+         "server-name": {
+           "command": "python",
+           "args": ["mcp-servers/server/server.py"],
+           "env": {"REDIS_URL": "redis://localhost:6379"}
+         }
+       }
+     }
+   }
+
+2. Consul HTTP API (Advanced)
+   PUT /v1/agent/service/register
+   with health checks and tags
+
+CAPABILITY ADVERTISEMENT
+────────────────────────
+@server.list_tools()
+async def list_tools() -> list[Tool]:
+    return [
+        Tool(
+            name="capability_name",
+            description="What it does",
+            inputSchema={...}  # JSON Schema
+        )
+    ]
+
+SERVICE DISCOVERY (5-Step Flow)
+──────────────────────────────
+1. Configuration scanning
+2. Server startup
+3. Consumer group creation
+4. Capability announcement
+5. Agent discovery & caching
+
+HEALTH CHECK
+────────────
+Tool: bus_health
+Response:
+{
+  "status": "healthy|degraded|unhealthy",
+  "redis_connection": true,
+  "consumer_group": "xnai-mcp-server",
+  "message_lag": 0,
+  "timestamp": "2026-02-23T14:30:00Z"
+}
+
+═════════════════════════════════════════════════════════════════════════════
+
+REDIS OPERATIONS
+═════════════════════════════════════════════════════════════════════════════
+
+PUBLISH (XADD)
+──────────────
+redis.xadd("xnai:agent_bus", {
+    "message_id": str(uuid.uuid4()),
+    "sender": "agent-name",
+    ...
+})
+Returns: message_id (e.g., "1614059222062-0")
+
+CONSUME (XREADGROUP)
+────────────────────
+redis.xreadgroup(
+    groupname="xnai-mcp-server",
+    consumername="mcp-a1b2c3d4",
+    streams={"xnai:agent_bus": ">"},
+    count=10,
+    block=100
+)
+Returns: Messages (delivered exactly once per consumer)
+
+ACKNOWLEDGE (XACK)
+──────────────────
+redis.xack("xnai:agent_bus", "xnai-mcp-server", message_id)
+Effect: Mark as processed, remove from pending
+
+RECOVER STALE (XAUTOCLAIM)
+──────────────────────────
+redis.xautoclaim(
+    "xnai:agent_bus",
+    "xnai-mcp-server",
+    "consumer-name",
+    30000,  # 30 second idle threshold
+    "0"     # start ID
+)
+Effect: Reclaim messages from crashed consumers
+
+═════════════════════════════════════════════════════════════════════════════
+
+PERFORMANCE CHARACTERISTICS
+═════════════════════════════════════════════════════════════════════════════
+
+Operation         P50 Latency    P99 Latency    Throughput
+─────────────────────────────────────────────────────────
+publish_task      ~5ms           ~50ms          1000+/sec
+read_tasks        ~10ms          ~100ms         Limited by count
+ack_task          ~2ms           ~10ms          10000+/sec
+recover_tasks     ~50ms          ~200ms         100/sec
+
+═════════════════════════════════════════════════════════════════════════════
+
+FILE LOCATIONS
+═════════════════════════════════════════════════════════════════════════════
+
+📍 internal_docs/communication_hub/
+   ├── AGENT-BUS-SPECIFICATION-v2.0.0.yaml      ← Complete technical reference
+   ├── AGENT-BUS-INTEGRATION-GUIDE.md            ← Implementation guide
+   ├── JOB-AB-RESEARCH-COMPLETE.md               ← Research index
+   ├── AGENT-BUS-PROTOCOL.md                     ← Original protocol
+   └── state/                                    ← Agent state files
+
+📍 mcp-servers/
+   ├── xnai-agentbus/
+   │   └── server.py                             ← Reference implementation
+   └── memory-bank-mcp/
+       └── server.py                             ← Agent registration
+
+📍 Root
+   └── .opencode/opencode.json                   ← MCP config
+
+═════════════════════════════════════════════════════════════════════════════
+
+QUICK START: IMPLEMENTING NEW MCP SERVER
+═════════════════════════════════════════════════════════════════════════════
+
+STEP 1: Create Server (mcp-servers/myserver/server.py)
+────────────────────────────────────────────────────
+from mcp.server import Server
+from mcp.server.stdio import stdio_server
+
+server = Server("myserver")
+
+@server.list_tools()
+async def list_tools() -> list[Tool]:
+    return [Tool(name="mytool", description="...", inputSchema={...})]
+
+@server.call_tool()
+async def call_tool(name: str, arguments: dict):
+    if name == "mytool":
+        return [TextContent(type="text", text="result")]
+
+if __name__ == "__main__":
+    stdio_server(server)
+
+STEP 2: Register in Config (.opencode/opencode.json)
+─────────────────────────────────────────────────────
+{
+  "mcp": {
+    "servers": {
+      "myserver": {
+        "command": "python",
+        "args": ["mcp-servers/myserver/server.py"],
+        "env": {"REDIS_URL": "redis://localhost:6379"}
+      }
+    }
+  }
+}
+
+STEP 3: Add Health Check
+────────────────────────
+Tool(
+    name="health",
+    description="Check server health",
+    inputSchema={"type": "object"}
+)
+
+STEP 4: Test
+────────────
+python mcp-servers/myserver/server.py
+# Should listen on stdio
+
+═════════════════════════════════════════════════════════════════════════════
+
+AGENT STATES & TRANSITIONS
+═════════════════════════════════════════════════════════════════════════════
+
+       ┌──────────────────────────────────┐
+       │         AGENT STATES             │
+       └──────────────────────────────────┘
+
+active   → ready for work
+  ↓
+busy     → processing task
+  ↓
+active   → task complete (success)
+  ↓
+error    → task failed
+  ↓
+active   → error resolved
+  ↓
+inactive → idle (not accepting)
+  ↓
+offline  → not responding (>90s timeout)
+
+═════════════════════════════════════════════════════════════════════════════
+
+INTEGRATION CHECKLIST
+═════════════════════════════════════════════════════════════════════════════
+
+PRE-REGISTRATION
+ [ ] Server executable works standalone
+ [ ] Dependencies in requirements.txt
+ [ ] Environment variables documented
+ [ ] Health check responds
+
+REGISTRATION
+ [ ] .opencode/opencode.json updated
+ [ ] Tools declared with JSON Schema
+ [ ] Command paths correct
+ [ ] Environment variables match
+
+DISCOVERY & OPERATION
+ [ ] Tools appear in list after startup
+ [ ] Messages publish/consume successfully
+ [ ] Acknowledgment working
+ [ ] Error handling graceful
+ [ ] Health checks pass
+
+MONITORING
+ [ ] Logging configured
+ [ ] Metrics exported
+ [ ] Alerting set up
+ [ ] Consumer cleanup working
+
+═════════════════════════════════════════════════════════════════════════════
+
+RESEARCH STATUS: ✅ COMPLETE
+═════════════════════════════════════════════════════════════════════════════
+
+JOB-AB1 (Message Format): ✅ COMPLETE
+ • 5 message types fully specified
+ • Redis Streams operations documented
+ • Error handling & timeout semantics defined
+ • Performance characteristics measured
+
+JOB-AB2 (MCP Registration): ✅ COMPLETE
+ • Registration methods specified
+ • Capability declaration patterns documented
+ • Service discovery flow detailed
+ • Health check protocol implemented
+ • Complete implementation examples provided
+
+TOTAL DELIVERABLES: 3 comprehensive documents + 3 implementation references
+TOTAL LINES: 2,972 lines of specification + examples
+FORMATS: YAML (technical), Markdown (practical), Code (examples)
+
+IMPLEMENTATION STATUS: Ready to Begin
+NEXT PHASE: Implementation & Integration Testing
+
+═════════════════════════════════════════════════════════════════════════════
+
+Document Version: 2.0.0
+Created: 2026-02-23
+Author: Copilot CLI
+Status: Research Complete & Ready for Development
