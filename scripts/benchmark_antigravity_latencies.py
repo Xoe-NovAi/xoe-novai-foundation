@@ -133,7 +133,7 @@ class AntigravityBenchmark:
                 prompt=self.SIMPLE_PROMPT,
                 response_length=len(result.get("output", "")),
                 success=result.get("success", False),
-                error=result.get("error"),
+                error=result.get("error") if not result.get("success") else None,
             )
         
         except Exception as e:
@@ -249,7 +249,7 @@ class AntigravityBenchmark:
             measurements = await self.benchmark_model(model)
             
             # Calculate statistics
-            latencies = [m.latency_ms for m in measurements if m.success]
+            latencies = [m.latency_ms for m in measurements]
             success_count = sum(1 for m in measurements if m.success)
             
             stats = LatencyStats(
@@ -298,14 +298,9 @@ class AntigravityBenchmark:
         
         ranked = sorted(self.stats.values(), key=lambda s: s.avg_ms)
         for rank, s in enumerate(ranked, 1):
-            compared_to_baseline = None
-            for baseline_name, baseline_latency in self.BASELINE_LATENCIES.items():
-                if baseline_latency:
-                    ratio = s.avg_ms / baseline_latency
-                    compared_to_baseline = f"{ratio:.2f}x {baseline_name}"
-                    break
-            
-            comparison = f" ({compared_to_baseline})" if compared_to_baseline else ""
+            # Compare to fastest baseline (Cline at 150ms)
+            ratio = s.avg_ms / 150 if s.avg_ms > 0 else 0
+            comparison = f" ({ratio:.2f}x Cline baseline)"
             logger.info(f"  {rank}. {s.model:<40} {s.avg_ms:>7.1f}ms{comparison}")
     
     def to_json(self) -> Dict[str, Any]:

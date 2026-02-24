@@ -1,0 +1,281 @@
+{
+  "benchmark": {
+    "timestamp": "2026-02-23T20:30:02.237351",
+    "iterations_per_model": 3,
+    "timeout_sec": 60.0,
+    "models_tested": 6
+  },
+  "baseline_latencies": {
+    "OpenCode built-in": 1000,
+    "Copilot (local)": 200,
+    "Cline": 150
+  },
+  "results": {
+    "claude-opus-4.6-thinking": {
+      "min_ms": 914.5715236663818,
+      "max_ms": 1057.851791381836,
+      "avg_ms": 990.1447296142578,
+      "median_ms": 998.0108737945557,
+      "p50_ms": 998.0108737945557,
+      "p95_ms": 1057.851791381836,
+      "success_rate_percent": 0.0,
+      "latencies_ms": [
+        998.0108737945557,
+        1057.851791381836,
+        914.5715236663818
+      ]
+    },
+    "claude-sonnet-4.6-antigravity": {
+      "min_ms": 840.1038646697998,
+      "max_ms": 881.0961246490479,
+      "avg_ms": 854.3906211853027,
+      "median_ms": 841.9718742370605,
+      "p50_ms": 841.9718742370605,
+      "p95_ms": 881.0961246490479,
+      "success_rate_percent": 0.0,
+      "latencies_ms": [
+        840.1038646697998,
+        881.0961246490479,
+        841.9718742370605
+      ]
+    },
+    "gemini-3.1-pro": {
+      "min_ms": 832.5767517089844,
+      "max_ms": 866.2621974945068,
+      "avg_ms": 851.5200614929199,
+      "median_ms": 855.7212352752686,
+      "p50_ms": 855.7212352752686,
+      "p95_ms": 866.2621974945068,
+      "success_rate_percent": 0.0,
+      "latencies_ms": [
+        866.2621974945068,
+        832.5767517089844,
+        855.7212352752686
+      ]
+    },
+    "gemini-3.1-flash": {
+      "min_ms": 845.9208011627197,
+      "max_ms": 877.5119781494141,
+      "avg_ms": 857.6946258544922,
+      "median_ms": 849.6510982513428,
+      "p50_ms": 849.6510982513428,
+      "p95_ms": 877.5119781494141,
+      "success_rate_percent": 0.0,
+      "latencies_ms": [
+        845.9208011627197,
+        849.6510982513428,
+        877.5119781494141
+      ]
+    },
+    "deepseek-v3": {
+      "min_ms": 846.5898036956787,
+      "max_ms": 892.5633430480957,
+      "avg_ms": 862.9498481750488,
+      "median_ms": 849.6963977813721,
+      "p50_ms": 849.6963977813721,
+      "p95_ms": 892.5633430480957,
+      "success_rate_percent": 0.0,
+      "latencies_ms": [
+        892.5633430480957,
+        846.5898036956787,
+        849.6963977813721
+      ]
+    },
+    "o3-mini": {
+      "min_ms": 835.0377082824707,
+      "max_ms": 859.4620227813721,
+      "avg_ms": 849.6641318003336,
+      "median_ms": 854.4926643371582,
+      "p50_ms": 854.4926643371582,
+      "p95_ms": 859.4620227813721,
+      "success_rate_percent": 0.0,
+      "latencies_ms": [
+        859.4620227813721,
+        835.0377082824707,
+        854.4926643371582
+      ]
+    }
+  },
+  "measurements": [
+    {
+      "model": "claude-opus-4.6-thinking",
+      "iteration": 1,
+      "latency_ms": 998.0108737945557,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:47.431300"
+    },
+    {
+      "model": "claude-opus-4.6-thinking",
+      "iteration": 2,
+      "latency_ms": 1057.851791381836,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:48.489347"
+    },
+    {
+      "model": "claude-opus-4.6-thinking",
+      "iteration": 3,
+      "latency_ms": 914.5715236663818,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:49.404143"
+    },
+    {
+      "model": "claude-sonnet-4.6-antigravity",
+      "iteration": 1,
+      "latency_ms": 840.1038646697998,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:50.244549"
+    },
+    {
+      "model": "claude-sonnet-4.6-antigravity",
+      "iteration": 2,
+      "latency_ms": 881.0961246490479,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:51.125779"
+    },
+    {
+      "model": "claude-sonnet-4.6-antigravity",
+      "iteration": 3,
+      "latency_ms": 841.9718742370605,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:51.967879"
+    },
+    {
+      "model": "gemini-3.1-pro",
+      "iteration": 1,
+      "latency_ms": 866.2621974945068,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:52.834426"
+    },
+    {
+      "model": "gemini-3.1-pro",
+      "iteration": 2,
+      "latency_ms": 832.5767517089844,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:53.667163"
+    },
+    {
+      "model": "gemini-3.1-pro",
+      "iteration": 3,
+      "latency_ms": 855.7212352752686,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:54.523249"
+    },
+    {
+      "model": "gemini-3.1-flash",
+      "iteration": 1,
+      "latency_ms": 845.9208011627197,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:55.369519"
+    },
+    {
+      "model": "gemini-3.1-flash",
+      "iteration": 2,
+      "latency_ms": 849.6510982513428,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:56.219315"
+    },
+    {
+      "model": "gemini-3.1-flash",
+      "iteration": 3,
+      "latency_ms": 877.5119781494141,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:57.096970"
+    },
+    {
+      "model": "deepseek-v3",
+      "iteration": 1,
+      "latency_ms": 892.5633430480957,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:57.989810"
+    },
+    {
+      "model": "deepseek-v3",
+      "iteration": 2,
+      "latency_ms": 846.5898036956787,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:58.836543"
+    },
+    {
+      "model": "deepseek-v3",
+      "iteration": 3,
+      "latency_ms": 849.6963977813721,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:29:59.686383"
+    },
+    {
+      "model": "o3-mini",
+      "iteration": 1,
+      "latency_ms": 859.4620227813721,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:30:00.546153"
+    },
+    {
+      "model": "o3-mini",
+      "iteration": 2,
+      "latency_ms": 835.0377082824707,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:30:01.381332"
+    },
+    {
+      "model": "o3-mini",
+      "iteration": 3,
+      "latency_ms": 854.4926643371582,
+      "prompt": "Return 'ok'.",
+      "response_length": 0,
+      "success": false,
+      "error": "",
+      "timestamp": "2026-02-23T20:30:02.235934"
+    }
+  ]
+}

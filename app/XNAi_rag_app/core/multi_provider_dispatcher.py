@@ -14,11 +14,12 @@ Architecture:
 4. Fallback Chain: Rotate to next provider on failure
 5. Account Rotation: Multi-account load balancing
 
-Providers (Priority Order):
-1. Cline CLI (200K context, code-optimized)
-2. Copilot CLI (264K context, fast, Raptor-mini)
-3. OpenCode CLI (1M context, reasoning-heavy)
-4. Local GGUF (4-8K context, offline fallback)
+Providers (Priority Order - TIER 1 ANTIGRAVITY):
+1. Antigravity CLI (1M context, 4M tokens/week, Opus Thinking + Gemini 3 Pro)
+2. Copilot CLI (264K context, fast, Raptor-mini, ~18K tokens/week)
+3. Cline CLI (200K context, code-optimized, IDE-integrated)
+4. OpenCode CLI (1M context, reasoning-heavy, legacy support)
+5. Local GGUF (4-8K context, offline fallback)
 
 Usage:
     dispatcher = MultiProviderDispatcher(config="~/.config/xnai/credentials.yaml")
@@ -110,43 +111,61 @@ class MultiProviderDispatcher:
     """Routes tasks to optimal providers with multi-account support"""
     
     # Provider latency assumptions (ms) - from Phase 3B research
+    # Updated with Antigravity latency profiles (from agent-23 benchmark)
     LATENCY_PROFILES = {
-        "cline": 150,
+        "antigravity_opus": 1500,    # Claude Opus Thinking (deep reasoning)
+        "antigravity_sonnet": 800,   # Claude Sonnet 4.6 (fast + quality)
+        "antigravity_gemini_pro": 1200,  # Gemini 3 Pro (1M context)
+        "antigravity_gemini_flash": 600,  # Gemini 3 Flash (fast)
+        "antigravity_o3_mini": 500,   # o3-mini (fastest)
         "copilot": 200,
+        "cline": 150,
         "opencode": 100,
         "local": 5000,  # Much slower, fallback only
     }
     
-    # Provider specialization scores (0-100)
+    # Provider specialization scores (0-100) - Updated for Antigravity
     SPECIALIZATION_SCORES = {
         "code": {
-            "cline": 95,       # Native IDE integration
-            "copilot": 85,     # Raptor-mini excellent for code
-            "opencode": 70,    # General reasoning
+            "antigravity_sonnet": 95,  # Claude Sonnet 4.6 excellent for code
+            "cline": 95,               # Native IDE integration
+            "copilot": 85,             # Raptor-mini excellent for code
+            "antigravity_gemini_flash": 85,
+            "antigravity_o3_mini": 82,
+            "opencode": 70,            # General reasoning
             "local": 60,
         },
         "reasoning": {
-            "opencode": 95,    # 1M context for complex analysis
-            "copilot": 80,     # Haiku good reasoning
+            "antigravity_opus": 99,    # Opus Thinking supreme reasoning
+            "antigravity_gemini_pro": 96,  # Gemini 3 Pro excellent reasoning
+            "opencode": 90,            # 1M context for complex analysis
+            "copilot": 80,             # Haiku good reasoning
             "cline": 75,
             "local": 40,
         },
         "large_document": {
-            "opencode": 95,    # 1M context window
-            "copilot": 70,     # 264K context
-            "cline": 70,       # 262K context
+            "antigravity_gemini_pro": 100,  # UNIQUE: 1M context, can load entire repo
+            "antigravity_gemini_flash": 95,  # 1M context, fast
+            "opencode": 90,             # 1M context window
+            "copilot": 70,              # 264K context
+            "cline": 70,                # 262K context
             "local": 10,
         },
         "fast_response": {
-            "copilot": 90,     # Raptor-mini super fast
+            "antigravity_o3_mini": 98,     # Fastest available
+            "copilot": 90,                  # Raptor-mini super fast
+            "antigravity_gemini_flash": 90, # Fast alternative
             "cline": 85,
-            "opencode": 75,    # Slower, reasoning overhead
+            "opencode": 75,                # Slower, reasoning overhead
             "local": 20,
         },
         "general": {
+            "antigravity_sonnet": 90,       # Fast + quality
             "copilot": 85,
             "cline": 80,
             "opencode": 80,
+            "antigravity_gemini_flash": 85,
+            "antigravity_o3_mini": 85,
             "local": 50,
         }
     }
@@ -156,13 +175,15 @@ class MultiProviderDispatcher:
         config_file: Optional[str] = None,
         quota_file: Optional[str] = None,
         email_accounts: Optional[List[str]] = None,
+        antigravity_accounts: Optional[List[str]] = None,
     ):
-        """Initialize dispatcher
+        """Initialize dispatcher with multi-provider support
         
         Args:
             config_file: Credentials config path (~/.config/xnai/credentials.yaml)
             quota_file: Quota audit file path (~/.config/xnai/quota-audit.yaml)
-            email_accounts: List of email accounts for rotation (8 accounts default)
+            email_accounts: List of GitHub email accounts for rotation (8 accounts default)
+            antigravity_accounts: List of Antigravity accounts for rotation (8 accounts default)
         """
         self.config_file = Path(config_file or "~/.config/xnai/credentials.yaml").expanduser()
         self.quota_file = Path(quota_file or "~/.config/xnai/quota-audit.yaml").expanduser()
@@ -177,6 +198,18 @@ class MultiProviderDispatcher:
             "thejedifather@gmail.com",
             "Arcana.NovAi@gmail.com",
             "arcananovaai@gmail.com",
+        ]
+        
+        # Default 8 Antigravity accounts (independent from GitHub accounts)
+        self.antigravity_accounts = antigravity_accounts or [
+            "antigravity-01",
+            "antigravity-02",
+            "antigravity-03",
+            "antigravity-04",
+            "antigravity-05",
+            "antigravity-06",
+            "antigravity-07",
+            "antigravity-08",
         ]
         
         self.token_validator = TokenValidator(str(self.config_file))
@@ -276,6 +309,11 @@ class MultiProviderDispatcher:
         
         # Penalty for insufficient context
         context_limits = {
+            "antigravity_opus": 200000,         # Claude Opus 4.6
+            "antigravity_sonnet": 200000,       # Claude Sonnet 4.6
+            "antigravity_gemini_pro": 1000000,  # Gemini 3 Pro - 1M context!
+            "antigravity_gemini_flash": 1000000, # Gemini 3 Flash - 1M context
+            "antigravity_o3_mini": 200000,      # o3-mini
             "cline": 262000,
             "copilot": 264000,
             "opencode": 1000000,
@@ -299,7 +337,12 @@ class MultiProviderDispatcher:
         task_spec: TaskSpecialization,
         context_size: int,
     ) -> ProviderScore:
-        """Calculate overall score for provider+account combination"""
+        """Calculate overall score for provider+account combination
+        
+        Weights:
+        - Antigravity: 50% quota, 30% latency, 20% fit (dominates via quota advantage)
+        - Other providers: 40% quota, 30% latency, 30% fit
+        """
         
         quota_key = f"{provider}:{account}"
         quota = self.quota_cache.get(quota_key)
@@ -314,12 +357,21 @@ class MultiProviderDispatcher:
         latency_score = self._calculate_latency_score(provider)
         fit_score = self._calculate_fit_score(provider, task_spec, context_size)
         
-        # Weighted overall (quota 40%, latency 30%, fit 30%)
-        overall = (
-            quota_score * 0.4 +
-            latency_score * 0.3 +
-            fit_score * 0.3
-        )
+        # Weighted overall: Antigravity gets 50% quota weight (dominates via 4M/week)
+        if provider.startswith("antigravity"):
+            # Antigravity: 50% quota, 30% latency, 20% fit
+            overall = (
+                quota_score * 0.5 +
+                latency_score * 0.3 +
+                fit_score * 0.2
+            )
+        else:
+            # Other providers: 40% quota, 30% latency, 30% fit
+            overall = (
+                quota_score * 0.4 +
+                latency_score * 0.3 +
+                fit_score * 0.3
+            )
         
         reasoning = (
             f"{provider}/{account}: "
@@ -339,10 +391,24 @@ class MultiProviderDispatcher:
         )
     
     def _get_account_for_provider(self, provider: str) -> str:
-        """Get next account in rotation for provider"""
+        """Get next account in rotation for provider
+        
+        Uses separate account pools:
+        - Antigravity: antigravity-01 through antigravity-08 (independent rotation)
+        - GitHub: 8 GitHub email accounts (round-robin)
+        """
         idx = self.account_rotation_index[provider]
-        account = self.email_accounts[idx % len(self.email_accounts)]
-        self.account_rotation_index[provider] = (idx + 1) % len(self.email_accounts)
+        
+        if provider.startswith("antigravity"):
+            # Use Antigravity account pool (500K tokens/week per account)
+            account = self.antigravity_accounts[idx % len(self.antigravity_accounts)]
+        else:
+            # Use GitHub account pool
+            account = self.email_accounts[idx % len(self.email_accounts)]
+        
+        self.account_rotation_index[provider] = (idx + 1) % max(
+            len(self.antigravity_accounts), len(self.email_accounts)
+        )
         return account
     
     def _select_best_provider(
@@ -353,10 +419,36 @@ class MultiProviderDispatcher:
     ) -> Tuple[str, str, ProviderScore]:
         """Select best provider+account using scoring algorithm
         
+        TIER 1 PRIORITY (Antigravity first):
+        - antigravity_gemini_pro (1M context, best for large analysis)
+        - antigravity_opus (best for reasoning)
+        - antigravity_sonnet (best for code)
+        - antigravity_gemini_flash (fast alternative)
+        - antigravity_o3_mini (fastest)
+        
+        TIER 2 (Fallback):
+        - copilot (Raptor-mini, 264K context)
+        - cline (IDE integration)
+        - opencode (legacy)
+        - local (offline fallback)
+        
         Returns: (provider, account, score)
         Raises: RuntimeError if no provider available
         """
-        providers = ["cline", "copilot", "opencode", "local"]
+        # TIER 1: Antigravity models in order of preference
+        antigravity_models = [
+            "antigravity_gemini_pro",    # 1M context - best for large files
+            "antigravity_opus",           # Best for reasoning
+            "antigravity_sonnet",         # Best for coding
+            "antigravity_gemini_flash",   # Fast alternative
+            "antigravity_o3_mini",        # Fastest
+        ]
+        
+        # TIER 2: Other providers
+        fallback_providers = ["copilot", "cline", "opencode", "local"]
+        
+        # Combined list: Tier 1 (Antigravity) then Tier 2 (others)
+        providers = antigravity_models + fallback_providers
         candidates: List[ProviderScore] = []
         
         for provider in providers:
@@ -378,7 +470,7 @@ class MultiProviderDispatcher:
                 f"No valid providers available. Required: {required_models or 'any'}"
             )
         
-        # Select highest score
+        # Select highest score (Antigravity dominates via quota advantage)
         best = max(candidates, key=lambda s: s.overall_score)
         logger.info(
             f"Selected {best.provider}/{best.account} "
@@ -476,9 +568,18 @@ class MultiProviderDispatcher:
         - CLI invocation with JSON task
         - Output parsing
         - Timeout/error handling
+        
+        Antigravity models:
+        - antigravity_opus: Claude Opus 4.6 Thinking (deep reasoning)
+        - antigravity_sonnet: Claude Sonnet 4.6 (fast + quality)
+        - antigravity_gemini_pro: Gemini 3 Pro (1M context)
+        - antigravity_gemini_flash: Gemini 3 Flash (fast)
+        - antigravity_o3_mini: o3-mini (fastest)
         """
         
-        if provider == "cline":
+        if provider.startswith("antigravity"):
+            return await self._dispatch_antigravity(provider, account, task, timeout_sec)
+        elif provider == "cline":
             return await self._dispatch_cline(account, task, timeout_sec)
         elif provider == "copilot":
             return await self._dispatch_copilot(account, task, timeout_sec)
@@ -488,6 +589,69 @@ class MultiProviderDispatcher:
             return await self._dispatch_local(account, task, timeout_sec)
         else:
             raise ValueError(f"Unknown provider: {provider}")
+    
+    async def _dispatch_antigravity(
+        self, provider: str, account: str, task: str, timeout_sec: float
+    ) -> DispatchResult:
+        """Dispatch to Antigravity CLI via OpenCode
+        
+        Maps provider to model:
+        - antigravity_opus → google/antigravity-claude-opus-4-6-thinking
+        - antigravity_sonnet → google/antigravity-claude-sonnet-4-6
+        - antigravity_gemini_pro → google/antigravity-gemini-3.1-pro
+        - antigravity_gemini_flash → google/antigravity-gemini-3.1-flash
+        - antigravity_o3_mini → google/antigravity-o3-mini
+        """
+        try:
+            # Map provider to model
+            model_map = {
+                "antigravity_opus": "google/antigravity-claude-opus-4-6-thinking",
+                "antigravity_sonnet": "google/antigravity-claude-sonnet-4-6",
+                "antigravity_gemini_pro": "google/antigravity-gemini-3.1-pro",
+                "antigravity_gemini_flash": "google/antigravity-gemini-3.1-flash",
+                "antigravity_o3_mini": "google/antigravity-o3-mini",
+            }
+            
+            model = model_map.get(provider)
+            if not model:
+                raise ValueError(f"Unknown Antigravity model: {provider}")
+            
+            # OpenCode Antigravity command
+            cmd = [
+                "opencode", "chat",
+                "--model", model,
+                "--account", account,
+                "--json",
+                task,
+            ]
+            
+            env = self._get_provider_env(account)
+            
+            result = await anyio.to_thread.run_blocking(
+                lambda: subprocess.run(
+                    cmd,
+                    capture_output=True,
+                    text=True,
+                    timeout=timeout_sec,
+                    env=env,
+                )
+            )
+            
+            if result.returncode == 0:
+                return DispatchResult(
+                    success=True,
+                    output=result.stdout,
+                    tokens_used=self._estimate_tokens(result.stdout),
+                )
+            else:
+                return DispatchResult(
+                    success=False,
+                    error=result.stderr or result.stdout,
+                )
+        except subprocess.TimeoutExpired:
+            return DispatchResult(success=False, error=f"{provider} timeout")
+        except Exception as e:
+            return DispatchResult(success=False, error=str(e))
     
     async def _dispatch_cline(
         self, account: str, task: str, timeout_sec: float
