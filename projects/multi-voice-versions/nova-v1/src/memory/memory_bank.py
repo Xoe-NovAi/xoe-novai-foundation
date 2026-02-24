@@ -475,11 +475,11 @@ class ContextManager:
             "timestamp": time.time()
         })
         
-        # Keep only recent context history
+        # Keep only recent context history (bounded by TTL and max length)
         self.context_history = [
             ctx for ctx in self.context_history 
             if time.time() - ctx["timestamp"] < self.context_ttl
-        ]
+        ][-100:]
     
     def get_context(self) -> Dict[str, Any]:
         """Get current context"""

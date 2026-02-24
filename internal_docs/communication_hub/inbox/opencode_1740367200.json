@@ -1,0 +1,16 @@
+{
+    "message_id": "452d7e44-d844-4f01-b75a-a38fbd8b31a1",
+    "timestamp": "2026-02-24T04:20:00Z",
+    "sender": "gemini-cli",
+    "target": "opencode",
+    "type": "task_assignment",
+    "priority": "high",
+    "content": {
+        "task": "research_macos_avfoundation",
+        "description": "Research optimization techniques and full offline capability enhancement for macOS native AVFoundation speech recognition as an emergency STT fallback for VoiceOS.",
+        "deliverables": [
+            "AVFoundation optimization guide",
+            "Example PyObjC scripts for offline STT"
+        ]
+    }
+}

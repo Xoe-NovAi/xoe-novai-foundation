@@ -213,63 +213,74 @@ def _pcm_to_wav(pcm_bytes: bytes, sample_rate: int = 16000) -> bytes:
 
 
 class WhisperLocalBackend:
-    """Whisper STT backend via local HTTP service on port 2022."""
+    """Whisper STT backend using faster-whisper natively via CTranslate2."""
 
     def __init__(self, config: STTConfig) -> None:
         self.config = config
-        self.breaker = CircuitBreaker(name="stt_whisper")
+        self.breaker = CircuitBreaker(name="stt_faster_whisper")
+        
+        try:
+            from faster_whisper import WhisperModel
+            model_dir = os.path.expanduser("~/.voiceos/models")
+            os.makedirs(model_dir, exist_ok=True)
+            self.model = WhisperModel(
+                "distil-large-v3", 
+                device="cpu", 
+                compute_type="int8",
+                download_root=model_dir
+            )
+            self._available = True
+        except ImportError:
+            logger.warning("faster-whisper not installed")
+            self._available = False
+            self.model = None
+            
+    def _do_transcribe(self, audio_data: np.ndarray) -> str:
+        if not self.model:
+            return ""
+        segments, _ = self.model.transcribe(
+            audio_data, 
+            language=self.config.language,
+            initial_prompt=" ".join(self.config.vocabulary_bias)
+        )
+        return "".join(s.text for s in segments).strip()
 
     async def transcribe(self, audio_pcm: bytes) -> TranscriptResult:
-        """Transcribe PCM audio via local Whisper."""
+        """Transcribe PCM audio via local faster-whisper."""
+        if not self._available or not self.model:
+            raise STTConnectionError(
+                "faster-whisper is not available",
+                voice_message="Local speech recognition engine is not installed.",
+            )
+            
         if not self.breaker.is_available():
             raise STTConnectionError(
                 "Whisper circuit breaker is open",
                 voice_message="Local speech recognition is temporarily unavailable.",
             )
 
-        if not HTTPX_AVAILABLE:
-            raise STTConnectionError(
-                "httpx not installed",
-                voice_message="HTTP client not available.",
-            )
-
-        wav_bytes = _pcm_to_wav(audio_pcm)
         start = time.monotonic()
 
         try:
-            async with httpx.AsyncClient(timeout=self.config.timeout_sec) as client:
-                # Build vocabulary prompt from bias list
-                prompt = " ".join(self.config.vocabulary_bias)
-                response = await client.post(
-                    f"{self.config.whisper_url}/v1/audio/transcriptions",
-                    files={"file": ("audio.wav", io.BytesIO(wav_bytes), "audio/wav")},
-                    data={
-                        "model": "whisper-1",
-                        "language": self.config.language,
-                        "prompt": prompt,
-                    },
-                )
-                response.raise_for_status()
-                data = response.json()
-
-        except httpx.TimeoutException as e:
-            self.breaker.record_failure()
-            raise STTTimeoutError(
-                f"Whisper timed out after {self.config.timeout_sec}s",
-                voice_message="Speech recognition timed out. Please try again.",
-            ) from e
-
-        except (httpx.ConnectError, httpx.HTTPStatusError) as e:
+            import numpy as np
+            # Convert 16-bit PCM to float32 normalized
+            audio_data = np.frombuffer(audio_pcm, dtype=np.int16).astype(np.float32) / 32768.0
+            
+            # Run in executor to prevent blocking the async loop
+            text = await asyncio.get_running_loop().run_in_executor(
+                None, self._do_transcribe, audio_data
+            )
+            
+        except Exception as e:
             self.breaker.record_failure()
             raise STTConnectionError(
-                f"Whisper connection failed: {e}",
-                voice_message="Cannot reach speech recognition service.",
+                f"faster-whisper transcription failed: {e}",
+                voice_message="Cannot process speech audio.",
             ) from e
 
         duration_ms = (time.monotonic() - start) * 1000
         self.breaker.record_success()
 
-        text = data.get("text", "").strip()
         logger.info(
             "whisper_transcription",
             text=text[:80],
@@ -279,20 +290,13 @@ class WhisperLocalBackend:
         return TranscriptResult(
             text=text,
             duration_ms=duration_ms,
-            backend="whisper_local",
+            backend="faster_whisper_native",
             is_empty=len(text) == 0,
         )
 
     async def health_check(self) -> bool:
-        """Return True if Whisper service is reachable."""
-        if not HTTPX_AVAILABLE:
-            return False
-        try:
-            async with httpx.AsyncClient(timeout=3.0) as client:
-                r = await client.get(f"{self.config.whisper_url}/health")
-                return r.status_code == 200
-        except Exception:
-            return False
+        """Return True if Whisper model is loaded."""
+        return self._available and self.model is not None
 
 
 class MacOSSpeechBackend:

@@ -191,15 +191,22 @@ def _parse_retry_after(exc: Exception) -> float:
     return default_sec
 
 
+import json
+from pathlib import Path
+
+CB_STATE_FILE = Path.home() / ".voiceos" / "memory" / "circuit_breaker.json"
+
 class CircuitBreaker:
-    """Per-provider circuit breaker (see stt_manager.py for full docs)."""
+    """Per-provider circuit breaker with persistent state across restarts."""
 
     def __init__(
         self,
+        name: str = "default",
         failure_threshold: int = 3,
         success_threshold: int = 2,
         timeout_sec: float = 60.0,
     ) -> None:
+        self.name = name
         self.failure_threshold = failure_threshold
         self.success_threshold = success_threshold
         self.timeout_sec = timeout_sec
@@ -207,12 +214,47 @@ class CircuitBreaker:
         self._successes = 0
         self._state = "closed"
         self._last_failure = 0.0
+        self._load_state()
+
+    def _load_state(self) -> None:
+        if not CB_STATE_FILE.exists():
+            return
+        try:
+            data = json.loads(CB_STATE_FILE.read_text(encoding="utf-8"))
+            if self.name in data:
+                state_data = data[self.name]
+                self._failures = state_data.get("failures", 0)
+                self._successes = state_data.get("successes", 0)
+                self._state = state_data.get("state", "closed")
+                self._last_failure = state_data.get("last_failure", 0.0)
+        except Exception as e:
+            logger.debug(f"Failed to load circuit breaker state: {e}")
+
+    def _save_state(self) -> None:
+        try:
+            CB_STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+            data = {}
+            if CB_STATE_FILE.exists():
+                try:
+                    data = json.loads(CB_STATE_FILE.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
+            data[self.name] = {
+                "failures": self._failures,
+                "successes": self._successes,
+                "state": self._state,
+                "last_failure": self._last_failure
+            }
+            CB_STATE_FILE.write_text(json.dumps(data), encoding="utf-8")
+        except Exception as e:
+            logger.debug(f"Failed to save circuit breaker state: {e}")
 
     def is_available(self) -> bool:
         if self._state == "open":
-            if time.monotonic() - self._last_failure > self.timeout_sec:
+            if time.time() - self._last_failure > self.timeout_sec:
                 self._state = "half_open"
                 self._successes = 0
+                self._save_state()
                 return True
             return False
         return True
@@ -223,13 +265,15 @@ class CircuitBreaker:
             self._successes += 1
             if self._successes >= self.success_threshold:
                 self._state = "closed"
+        self._save_state()
 
     def record_failure(self) -> None:
         self._failures += 1
         self._successes = 0
-        self._last_failure = time.monotonic()
+        self._last_failure = time.time()
         if self._failures >= self.failure_threshold:
             self._state = "open"
+        self._save_state()
 
 
 @dataclass
@@ -289,7 +333,7 @@ class OllamaProvider:
 
     def __init__(self, config: OllamaConfig) -> None:
         self.config = config
-        self.breaker = CircuitBreaker()
+        self.breaker = CircuitBreaker(name="ollama")
 
     def _select_model(self, request_type: RequestType) -> str:
         if request_type == RequestType.CODE:
@@ -371,7 +415,7 @@ class AnthropicProvider:
 
     def __init__(self, config: AnthropicConfig) -> None:
         self.config = config
-        self.breaker = CircuitBreaker()
+        self.breaker = CircuitBreaker(name="anthropic")
         self.rate_limit = RateLimitState()
         self._client: "anthropic.Anthropic | None" = None
 
