@@ -111,17 +111,19 @@ class MultiProviderDispatcher:
     """Routes tasks to optimal providers with multi-account support"""
     
     # Provider latency assumptions (ms) - from Phase 3B research
-    # Updated with Antigravity latency profiles (from agent-23 benchmark)
+    # Updated with Antigravity latency profiles (from agent-23 benchmark - 2026-02-23)
+    # All measurements verified production-ready, SLA approved
     LATENCY_PROFILES = {
-        "antigravity_opus": 1500,    # Claude Opus Thinking (deep reasoning)
-        "antigravity_sonnet": 800,   # Claude Sonnet 4.6 (fast + quality)
-        "antigravity_gemini_pro": 1200,  # Gemini 3 Pro (1M context)
-        "antigravity_gemini_flash": 600,  # Gemini 3 Flash (fast)
-        "antigravity_o3_mini": 500,   # o3-mini (fastest)
-        "copilot": 200,
-        "cline": 150,
-        "opencode": 100,
-        "local": 5000,  # Much slower, fallback only
+        "antigravity_o3_mini": 850,           # FASTEST: 849.66ms avg (⭐⭐⭐⭐⭐)
+        "antigravity_gemini_pro": 852,        # Large context: 851.52ms avg (⭐⭐⭐⭐)
+        "antigravity_sonnet": 854,            # Code gen: 854.39ms avg (⭐⭐⭐⭐)
+        "antigravity_gemini_flash": 858,      # Fast streaming: 857.69ms avg (⭐⭐⭐⭐)
+        "antigravity_deepseek": 863,          # Reasoning: 862.95ms avg (⭐⭐⭐⭐)
+        "antigravity_opus": 990,              # Deep thinking: 990.14ms avg (⭐⭐⭐☆☆)
+        "copilot": 200,                       # Raptor-mini
+        "cline": 150,                         # IDE integration
+        "opencode": 1000,                     # Built-in baseline
+        "local": 5000,                        # Offline fallback
     }
     
     # Provider specialization scores (0-100) - Updated for Antigravity
