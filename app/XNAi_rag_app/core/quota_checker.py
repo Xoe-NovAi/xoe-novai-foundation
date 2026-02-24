@@ -1,29 +1,20 @@
 """
-Rate Limit Detection & Quota Management System
-Xoe-NovAi Foundation Stack - Phase 3C Integration
+Quota Checking System - Pre-dispatch rate limit detection
+Phase 3C-2: Smart Fallback Orchestration
 
-Provides real-time quota checking for:
-- Gemini (Google API v1beta quotaStatus)
-- Copilot (GitHub API + CLI fallback)
-- Antigravity (cached, per-account tracking)
-
-Features:
-- 5-10 minute caching (configurable TTL)
-- Graceful degradation (pessimistic on API failure)
-- Pre-dispatch quota validation
-- Fallback trigger at 80%+ threshold
-- Full audit trail logging
+Tier 1: Quota API checks (pre-dispatch, cached 5-10 min)
+Tier 2: Circuit breaker (on HTTP 429 errors)
+Tier 3: Response size tracking (post-dispatch validation)
 """
 
 import asyncio
+import time
 import json
-import logging
-import os
-import subprocess
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
-from typing import Optional, Dict, Any
 from enum import Enum
+from typing import Optional, Dict, Any, List
+import logging
 
 import aiohttp
 
@@ -31,415 +22,462 @@ logger = logging.getLogger(__name__)
 
 
 class QuotaStatus(Enum):
-    """Quota status indicators"""
-    HEALTHY = "healthy"          # < 50% used
-    WARNING = "warning"          # 50-80% used
-    CRITICAL = "critical"        # 80-95% used
-    EXHAUSTED = "exhausted"      # > 95% used
+    """Provider quota status"""
+    HEALTHY = "healthy"  # >50% quota remaining
+    WARNING = "warning"  # 20-50% quota remaining
+    CRITICAL = "critical"  # <20% quota remaining
+    EXHAUSTED = "exhausted"  # >95% quota used
+    UNKNOWN = "unknown"  # Cannot determine
 
 
 @dataclass
 class QuotaInfo:
-    """Quota information for a provider"""
+    """Per-account quota information"""
     provider: str
-    account: str
+    account_id: str
     tokens_remaining: int
     tokens_limit: int
-    reset_time: Optional[datetime] = None
-    cached_at: datetime = field(default_factory=datetime.now)
-    cache_ttl: int = 300  # 5 minutes
+    percent_used: float = field(default=0.0)
+    updated_at: datetime = field(default_factory=datetime.utcnow)
+    status: QuotaStatus = QuotaStatus.UNKNOWN
     
-    @property
-    def tokens_used(self) -> int:
-        return self.tokens_limit - self.tokens_remaining
-    
-    @property
-    def quota_percent_used(self) -> float:
-        """Calculate percentage of quota used"""
-        if self.tokens_limit == 0:
-            return 0.0
-        return (self.tokens_used / self.tokens_limit) * 100.0
-    
-    @property
-    def status(self) -> QuotaStatus:
-        """Determine quota status"""
-        percent = self.quota_percent_used
-        if percent >= 95:
-            return QuotaStatus.EXHAUSTED
-        elif percent >= 80:
-            return QuotaStatus.CRITICAL
-        elif percent >= 50:
-            return QuotaStatus.WARNING
+    def __post_init__(self):
+        self.percent_used = 100.0 * (1 - self.tokens_remaining / max(self.tokens_limit, 1))
+        
+        # Determine status based on remaining quota
+        if self.percent_used >= 95:
+            self.status = QuotaStatus.EXHAUSTED
+        elif self.percent_used >= 80:
+            self.status = QuotaStatus.CRITICAL
+        elif self.percent_used >= 50:
+            self.status = QuotaStatus.WARNING
         else:
-            return QuotaStatus.HEALTHY
+            self.status = QuotaStatus.HEALTHY
     
-    @property
-    def is_cached(self) -> bool:
-        """Check if cached data is still valid"""
-        age = (datetime.now() - self.cached_at).total_seconds()
-        return age < self.cache_ttl
+    def is_stale(self, ttl_seconds: int = 300) -> bool:
+        """Check if quota info is stale (>TTL old)"""
+        age = (datetime.utcnow() - self.updated_at).total_seconds()
+        return age > ttl_seconds
     
-    def __repr__(self) -> str:
-        return (
-            f"QuotaInfo({self.provider}/{self.account}: "
-            f"{self.quota_percent_used:.1f}% used, "
-            f"status={self.status.value})"
-        )
+    def should_fallback(self, threshold_percent: float = 95.0) -> bool:
+        """Should we fallback to another provider?"""
+        return self.percent_used >= threshold_percent
 
 
 class GeminiQuotaClient:
-    """Gemini quota API client"""
+    """Gemini API quota checker"""
     
-    QUOTA_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/quotaStatus"
+    API_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/quotaStatus"
     
     def __init__(self, api_key: Optional[str] = None):
-        self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
-        if not self.api_key:
-            logger.warning("GOOGLE_API_KEY not set, quota checks will use pessimistic values")
+        self.api_key = api_key
+        self.logger = logger.getChild("GeminiQuotaClient")
     
-    async def get_quota(self) -> Optional[QuotaInfo]:
-        """Fetch Gemini quota from API
+    async def get_quota(self, api_key: Optional[str] = None) -> Optional[QuotaInfo]:
+        """
+        Fetch quota from Gemini API
         
         Returns:
-            QuotaInfo with current quota status, or None on error
+            QuotaInfo if successful, None if API unavailable
         """
-        if not self.api_key:
-            # Pessimistic fallback: assume 90% used
-            logger.warning("Gemini API key not available, using pessimistic quota estimate")
-            return QuotaInfo(
-                provider="gemini",
-                account="default",
-                tokens_remaining=32000,  # Assume 90% of 320K daily limit
-                tokens_limit=320000,
-            )
+        key = api_key or self.api_key
+        if not key:
+            self.logger.warning("No Gemini API key provided")
+            return None
         
         try:
             async with aiohttp.ClientSession() as session:
-                headers = {"x-goog-api-key": self.api_key}
+                headers = {"x-goog-api-key": key}
                 async with session.get(
-                    self.QUOTA_ENDPOINT,
+                    self.API_ENDPOINT,
                     headers=headers,
-                    timeout=aiohttp.ClientTimeout(total=5),
-                ) as resp:
-                    if resp.status != 200:
-                        logger.warning(f"Gemini quota API returned {resp.status}")
-                        return self._pessimistic_quota()
-                    
-                    data = await resp.json()
-                    return self._parse_gemini_response(data)
-        
+                    timeout=aiohttp.ClientTimeout(total=5)
+                ) as response:
+                    if response.status == 200:
+                        data = await response.json()
+                        
+                        # Parse quota from response
+                        # Gemini returns "current" (tokens used), not remaining
+                        requests_quota = data.get("quotaStatus", {})
+                        current = requests_quota.get("current", 0)
+                        limit = requests_quota.get("limit", 1000000)
+                        
+                        remaining = max(0, limit - current)
+                        
+                        return QuotaInfo(
+                            provider="gemini",
+                            account_id=key[:8] + "...",
+                            tokens_remaining=remaining,
+                            tokens_limit=limit
+                        )
+                    else:
+                        self.logger.warning(f"Gemini API returned {response.status}")
+                        return None
         except asyncio.TimeoutError:
-            logger.warning("Gemini quota API timeout, using pessimistic estimate")
-            return self._pessimistic_quota()
+            self.logger.warning("Gemini quota API timeout")
+            return None
         except Exception as e:
-            logger.warning(f"Failed to fetch Gemini quota: {e}")
-            return self._pessimistic_quota()
+            self.logger.error(f"Error fetching Gemini quota: {e}")
+            return None
     
-    def _parse_gemini_response(self, data: Dict[str, Any]) -> QuotaInfo:
-        """Parse Gemini API response"""
-        try:
-            quota_status = data.get("quota_status", {})
-            tokens_per_minute = quota_status.get("tokens_per_minute", {})
-            
-            limit = tokens_per_minute.get("limit", 32000)
-            current = tokens_per_minute.get("current", 28500)
-            remaining = limit - current
-            
-            reset_time = data.get("reset_time")
-            if reset_time:
-                reset_time = datetime.fromisoformat(reset_time)
-            
-            return QuotaInfo(
-                provider="gemini",
-                account="default",
-                tokens_remaining=remaining,
-                tokens_limit=limit,
-                reset_time=reset_time,
-            )
-        except Exception as e:
-            logger.warning(f"Failed to parse Gemini response: {e}")
-            return self._pessimistic_quota()
-    
-    def _pessimistic_quota(self) -> QuotaInfo:
-        """Return pessimistic quota estimate (assume 90% used)"""
+    async def get_pessimistic_quota(self) -> QuotaInfo:
+        """Return pessimistic quota (assume 90% used) when API unavailable"""
         return QuotaInfo(
             provider="gemini",
-            account="default",
-            tokens_remaining=32000,  # 10% of 320K
-            tokens_limit=320000,
+            account_id="unknown",
+            tokens_remaining=100000,  # Assume 100K remaining (pessimistic)
+            tokens_limit=1000000
         )
 
 
 class CopilotQuotaClient:
-    """Copilot quota detection via CLI and GitHub API"""
+    """Copilot CLI quota checker"""
     
-    def __init__(self, github_token: Optional[str] = None):
-        self.github_token = github_token or os.getenv("GITHUB_TOKEN")
+    GITHUB_API_ENDPOINT = "https://api.github.com/user/copilot_metrics"
     
-    async def get_quota(self) -> Optional[QuotaInfo]:
-        """Fetch Copilot quota
-        
-        Tries methods in order:
-        1. `copilot quota --json` (CLI, fastest)
-        2. GitHub API endpoint (API, most accurate)
-        3. Pessimistic fallback
+    def __init__(self, cli_path: Optional[str] = None, github_token: Optional[str] = None):
+        self.cli_path = cli_path or "/usr/local/bin/copilot"
+        self.github_token = github_token
+        self.logger = logger.getChild("CopilotQuotaClient")
+    
+    async def get_quota_from_cli(self) -> Optional[QuotaInfo]:
         """
-        # Try CLI method first
-        quota = await self._get_quota_from_cli()
-        if quota:
-            return quota
+        Fetch quota from Copilot CLI
         
-        # Try GitHub API method
-        quota = await self._get_quota_from_api()
-        if quota:
-            return quota
-        
-        # Fallback to pessimistic estimate
-        logger.warning("Could not fetch Copilot quota, using pessimistic estimate")
-        return self._pessimistic_quota()
-    
-    async def _get_quota_from_cli(self) -> Optional[QuotaInfo]:
-        """Try to get quota from Copilot CLI"""
+        Returns:
+            QuotaInfo if CLI available and returning quota
+        """
         try:
-            result = await asyncio.to_thread(
-                subprocess.run,
-                ["copilot", "quota", "--json"],
-                capture_output=True,
-                timeout=5,
+            # Try to run copilot CLI
+            proc = await asyncio.create_subprocess_exec(
+                self.cli_path,
+                "quota",
+                "--json",
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE
             )
             
-            if result.returncode != 0:
-                logger.debug("Copilot CLI quota command failed")
+            stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=5.0)
+            
+            if proc.returncode == 0:
+                data = json.loads(stdout.decode())
+                
+                # Parse CLI response
+                remaining = data.get("remaining", 0)
+                limit = data.get("limit", 18750)  # 18.75K per week default
+                
+                return QuotaInfo(
+                    provider="copilot",
+                    account_id="cli_user",
+                    tokens_remaining=remaining,
+                    tokens_limit=limit
+                )
+            else:
+                self.logger.warning(f"Copilot CLI failed: {stderr.decode()}")
                 return None
-            
-            data = json.loads(result.stdout)
-            
-            # Parse Copilot CLI response
-            remaining = data.get("remaining", 0)
-            limit = data.get("limit", 18750)  # Default: 18.75K per week
-            
-            return QuotaInfo(
-                provider="copilot",
-                account="default",
-                tokens_remaining=remaining,
-                tokens_limit=limit,
-            )
-        
-        except (subprocess.TimeoutExpired, FileNotFoundError, json.JSONDecodeError):
-            logger.debug("Failed to get Copilot quota from CLI")
+        except FileNotFoundError:
+            self.logger.warning("Copilot CLI not found")
+            return None
+        except asyncio.TimeoutError:
+            self.logger.warning("Copilot CLI timeout")
             return None
         except Exception as e:
-            logger.debug(f"Copilot CLI error: {e}")
+            self.logger.error(f"Error fetching Copilot quota from CLI: {e}")
             return None
     
-    async def _get_quota_from_api(self) -> Optional[QuotaInfo]:
-        """Try to get quota from GitHub API"""
+    async def get_quota_from_github_api(self) -> Optional[QuotaInfo]:
+        """
+        Fetch quota from GitHub API (fallback)
+        
+        Returns:
+            QuotaInfo if GitHub API available
+        """
         if not self.github_token:
-            logger.debug("GitHub token not available for quota API")
             return None
         
         try:
             async with aiohttp.ClientSession() as session:
-                headers = {
-                    "Authorization": f"token {self.github_token}",
-                    "Accept": "application/vnd.github.v3+json",
-                }
+                headers = {"Authorization": f"token {self.github_token}"}
                 async with session.get(
-                    "https://api.github.com/user/copilot/usage",
+                    self.GITHUB_API_ENDPOINT,
                     headers=headers,
-                    timeout=aiohttp.ClientTimeout(total=5),
-                ) as resp:
-                    if resp.status != 200:
-                        logger.debug(f"GitHub API returned {resp.status}")
+                    timeout=aiohttp.ClientTimeout(total=5)
+                ) as response:
+                    if response.status == 200:
+                        data = await response.json()
+                        
+                        remaining = data.get("quota_remaining", 0)
+                        limit = data.get("quota_limit", 18750)
+                        
+                        return QuotaInfo(
+                            provider="copilot",
+                            account_id="github_user",
+                            tokens_remaining=remaining,
+                            tokens_limit=limit
+                        )
+                    else:
+                        self.logger.warning(f"GitHub API returned {response.status}")
                         return None
-                    
-                    data = await resp.json()
-                    return self._parse_github_response(data)
-        
         except asyncio.TimeoutError:
-            logger.debug("GitHub API timeout")
+            self.logger.warning("GitHub API timeout")
             return None
         except Exception as e:
-            logger.debug(f"GitHub API error: {e}")
+            self.logger.error(f"Error fetching Copilot quota from GitHub: {e}")
             return None
     
-    def _parse_github_response(self, data: Dict[str, Any]) -> QuotaInfo:
-        """Parse GitHub API response"""
-        try:
-            usage = data.get("usage", {})
-            
-            # GitHub API returns usage, not remaining
-            used = usage.get("tokens_used", 0)
-            limit = usage.get("tokens_limit", 18750)
-            remaining = limit - used
-            
-            return QuotaInfo(
-                provider="copilot",
-                account="default",
-                tokens_remaining=max(0, remaining),
-                tokens_limit=limit,
-            )
-        except Exception as e:
-            logger.warning(f"Failed to parse GitHub response: {e}")
-            return self._pessimistic_quota()
+    async def get_quota(self) -> Optional[QuotaInfo]:
+        """Fetch quota from CLI first, then fallback to GitHub API"""
+        # Try CLI first (faster, doesn't require token)
+        quota = await self.get_quota_from_cli()
+        if quota:
+            return quota
+        
+        # Fallback to GitHub API
+        quota = await self.get_quota_from_github_api()
+        if quota:
+            return quota
+        
+        return None
     
-    def _pessimistic_quota(self) -> QuotaInfo:
-        """Return pessimistic quota estimate (assume 80% used)"""
+    async def get_pessimistic_quota(self) -> QuotaInfo:
+        """Return pessimistic quota when both methods fail"""
         return QuotaInfo(
             provider="copilot",
-            account="default",
-            tokens_remaining=3750,  # 20% of 18.75K
-            tokens_limit=18750,
+            account_id="unknown",
+            tokens_remaining=1875,  # Assume 10% remaining (pessimistic)
+            tokens_limit=18750
         )
 
 
 class AntigravityQuotaTracker:
-    """Track Antigravity account quotas (cached, per-account)"""
+    """
+    Antigravity quota tracker (no external API)
+    
+    Tracks quota per account via local state.
+    Each account has ~500K tokens/week.
+    """
     
     def __init__(self):
-        self.quotas: Dict[str, QuotaInfo] = {}
-        self.update_count = 0
+        self.logger = logger.getChild("AntigravityQuotaTracker")
+        # Per-account quota state (would be persisted in Redis in production)
+        self.account_quotas: Dict[str, QuotaInfo] = {}
+        self.reset_day = 7  # Sunday (0=Monday)
+        self.reset_hour = 0  # Midnight UTC
     
-    def update_quota(self, account: str, tokens_used: int, tokens_limit: int = 500000):
-        """Update quota for an account"""
-        remaining = max(0, tokens_limit - tokens_used)
-        self.quotas[account] = QuotaInfo(
-            provider="antigravity",
-            account=account,
-            tokens_remaining=remaining,
-            tokens_limit=tokens_limit,
-        )
-        self.update_count += 1
-    
-    def get_quota(self, account: str) -> Optional[QuotaInfo]:
-        """Get cached quota for account"""
-        return self.quotas.get(account)
-    
-    def get_all_quotas(self) -> Dict[str, QuotaInfo]:
-        """Get all account quotas"""
-        return self.quotas.copy()
-    
-    def get_healthiest_account(self) -> Optional[str]:
-        """Find account with most remaining tokens"""
-        if not self.quotas:
-            return None
+    def update_quota_usage(self, account_id: str, tokens_used: int) -> None:
+        """Update quota after request"""
+        if account_id not in self.account_quotas:
+            # Initialize new account
+            self.account_quotas[account_id] = QuotaInfo(
+                provider="antigravity",
+                account_id=account_id,
+                tokens_remaining=500000,
+                tokens_limit=500000
+            )
         
-        return max(
-            self.quotas.items(),
-            key=lambda x: x[1].tokens_remaining,
-        )[0]
+        quota = self.account_quotas[account_id]
+        quota.tokens_remaining = max(0, quota.tokens_remaining - tokens_used)
+        quota.updated_at = datetime.utcnow()
     
-    def get_accounts_below_threshold(self, percent_threshold: float = 80.0) -> list:
-        """Get accounts above usage threshold (for fallback)"""
-        return [
-            account
-            for account, quota in self.quotas.items()
-            if quota.quota_percent_used >= percent_threshold
-        ]
+    def get_quota(self, account_id: str) -> QuotaInfo:
+        """Get current quota for account"""
+        if account_id not in self.account_quotas:
+            # Return fresh quota for new account
+            return QuotaInfo(
+                provider="antigravity",
+                account_id=account_id,
+                tokens_remaining=500000,
+                tokens_limit=500000
+            )
+        
+        quota = self.account_quotas[account_id]
+        # Recalculate status (in case it changed)
+        quota.__post_init__()
+        return quota
+    
+    def check_reset(self) -> bool:
+        """
+        Check if Sunday reset happened
+        
+        Returns:
+            True if it's Sunday and quotas should reset
+        """
+        now = datetime.utcnow()
+        if now.weekday() == self.reset_day and now.hour == self.reset_hour:
+            # Reset all accounts
+            for account_id in self.account_quotas:
+                self.account_quotas[account_id].tokens_remaining = 500000
+                self.account_quotas[account_id].updated_at = datetime.utcnow()
+            
+            self.logger.info(f"Antigravity quotas reset at {now}")
+            return True
+        
+        return False
 
 
 class QuotaCache:
-    """Central cache for all provider quotas"""
+    """
+    Quota caching layer
+    
+    Caches quota info with TTL to avoid hammering APIs.
+    Gracefully falls back to pessimistic estimates on failure.
+    """
     
     def __init__(self, ttl_seconds: int = 300):
+        """
+        Initialize cache
+        
+        Args:
+            ttl_seconds: Time to live for cached quota info (default 5 min)
+        """
+        self.ttl = ttl_seconds
+        self.cache: Dict[str, QuotaInfo] = {}
+        self.logger = logger.getChild("QuotaCache")
+        
+        # Initialize clients
         self.gemini_client = GeminiQuotaClient()
         self.copilot_client = CopilotQuotaClient()
         self.antigravity_tracker = AntigravityQuotaTracker()
-        self.ttl_seconds = ttl_seconds
-        self.cache: Dict[str, QuotaInfo] = {}
-        self.cache_timestamps: Dict[str, datetime] = {}
     
-    async def get_quota(self, provider: str, account: str = "default") -> Optional[QuotaInfo]:
-        """Get quota for provider (cached if valid)"""
-        cache_key = f"{provider}/{account}"
+    async def get_quota(
+        self,
+        provider: str,
+        account_id: str,
+        force_refresh: bool = False
+    ) -> QuotaInfo:
+        """
+        Get quota for provider/account
+        
+        Returns cached quota if available and fresh, otherwise fetches new.
+        Falls back to pessimistic estimate if fetch fails.
+        
+        Args:
+            provider: Provider name ("gemini", "copilot", "antigravity")
+            account_id: Account identifier
+            force_refresh: Skip cache, always fetch fresh
+        
+        Returns:
+            QuotaInfo with current/estimated quota
+        """
+        cache_key = f"{provider}:{account_id}"
         
         # Check cache first
-        if cache_key in self.cache:
+        if not force_refresh and cache_key in self.cache:
             cached = self.cache[cache_key]
-            age = (datetime.now() - self.cache_timestamps[cache_key]).total_seconds()
-            if age < self.ttl_seconds:
-                logger.debug(f"Using cached quota for {cache_key}")
+            if not cached.is_stale(self.ttl):
+                self.logger.debug(f"Cache hit: {cache_key} ({cached.percent_used:.1f}% used)")
                 return cached
         
         # Fetch fresh quota
+        self.logger.debug(f"Cache miss: {cache_key}, fetching fresh quota")
+        
         if provider == "gemini":
             quota = await self.gemini_client.get_quota()
+            if not quota:
+                quota = await self.gemini_client.get_pessimistic_quota()
+        
         elif provider == "copilot":
             quota = await self.copilot_client.get_quota()
-        elif provider == "antigravity":
-            quota = self.antigravity_tracker.get_quota(account)
-        else:
-            logger.warning(f"Unknown provider: {provider}")
-            return None
+            if not quota:
+                quota = await self.copilot_client.get_pessimistic_quota()
         
-        if quota:
-            self.cache[cache_key] = quota
-            self.cache_timestamps[cache_key] = datetime.now()
+        elif provider == "antigravity":
+            quota = self.antigravity_tracker.get_quota(account_id)
+        
+        else:
+            self.logger.error(f"Unknown provider: {provider}")
+            quota = QuotaInfo(
+                provider=provider,
+                account_id=account_id,
+                tokens_remaining=0,
+                tokens_limit=1
+            )
+        
+        # Cache result
+        self.cache[cache_key] = quota
+        self.logger.info(f"Quota cached: {cache_key} ({quota.percent_used:.1f}% used)")
         
         return quota
     
-    def update_antigravity_quota(
-        self, account: str, tokens_used: int, tokens_limit: int = 500000
-    ):
-        """Update Antigravity account quota after dispatch"""
-        self.antigravity_tracker.update_quota(account, tokens_used, tokens_limit)
+    def clear_cache(self, provider: Optional[str] = None) -> None:
+        """
+        Clear cache
         
-        # Update cache as well
-        quota = self.antigravity_tracker.get_quota(account)
-        if quota:
-            cache_key = f"antigravity/{account}"
-            self.cache[cache_key] = quota
-            self.cache_timestamps[cache_key] = datetime.now()
+        Args:
+            provider: If specified, only clear cache for this provider
+        """
+        if provider:
+            keys_to_delete = [k for k in self.cache if k.startswith(f"{provider}:")]
+            for key in keys_to_delete:
+                del self.cache[key]
+            self.logger.info(f"Cleared {len(keys_to_delete)} cache entries for {provider}")
+        else:
+            self.cache.clear()
+            self.logger.info("Cleared all quota cache")
     
-    def clear_cache(self):
-        """Clear all cached quotas"""
-        self.cache.clear()
-        self.cache_timestamps.clear()
-        logger.info("Quota cache cleared")
+    def get_cache_stats(self) -> Dict[str, Any]:
+        """Get cache statistics"""
+        return {
+            "cached_entries": len(self.cache),
+            "cache_size_bytes": sum(len(str(v)) for v in self.cache.values()),
+            "ttl_seconds": self.ttl
+        }
 
 
-# Global quota cache instance
-_quota_cache_instance: Optional[QuotaCache] = None
+# Global cache instance
+_quota_cache: Optional[QuotaCache] = None
 
 
 def get_quota_cache() -> QuotaCache:
-    """Get or create global quota cache instance"""
-    global _quota_cache_instance
-    if _quota_cache_instance is None:
-        _quota_cache_instance = QuotaCache()
-    return _quota_cache_instance
+    """Get or create global quota cache"""
+    global _quota_cache
+    if _quota_cache is None:
+        _quota_cache = QuotaCache()
+    return _quota_cache
 
 
-if __name__ == "__main__":
-    # Example usage
-    import asyncio
+async def check_provider_quota(
+    provider: str,
+    account_id: str,
+    threshold_percent: float = 95.0
+) -> bool:
+    """
+    Check if provider account has available quota
     
-    async def test():
-        cache = QuotaCache()
-        
-        # Test Gemini quota
-        print("\n=== Gemini Quota ===")
-        gemini = await cache.get_quota("gemini")
-        if gemini:
-            print(f"Status: {gemini.status.value}")
-            print(f"Usage: {gemini.quota_percent_used:.1f}%")
-            print(f"Remaining: {gemini.tokens_remaining}/{gemini.tokens_limit}")
-        
-        # Test Copilot quota
-        print("\n=== Copilot Quota ===")
-        copilot = await cache.get_quota("copilot")
-        if copilot:
-            print(f"Status: {copilot.status.value}")
-            print(f"Usage: {copilot.quota_percent_used:.1f}%")
-            print(f"Remaining: {copilot.tokens_remaining}/{copilot.tokens_limit}")
-        
-        # Test Antigravity quota
-        print("\n=== Antigravity Quota ===")
-        cache.update_antigravity_quota("antigravity-01", 450000)  # 90% used
-        antigravity = await cache.get_quota("antigravity", "antigravity-01")
-        if antigravity:
-            print(f"Status: {antigravity.status.value}")
-            print(f"Usage: {antigravity.quota_percent_used:.1f}%")
-            print(f"Remaining: {antigravity.tokens_remaining}/{antigravity.tokens_limit}")
+    Args:
+        provider: Provider name
+        account_id: Account identifier
+        threshold_percent: Quota threshold for fallback (default 95%)
     
-    asyncio.run(test())
+    Returns:
+        True if quota available (below threshold), False if should fallback
+    """
+    cache = get_quota_cache()
+    quota = await cache.get_quota(provider, account_id)
+    return not quota.should_fallback(threshold_percent)
+
+
+async def get_provider_quota_status(
+    provider: str,
+    account_id: str
+) -> QuotaStatus:
+    """
+    Get quota status for provider account
+    
+    Args:
+        provider: Provider name
+        account_id: Account identifier
+    
+    Returns:
+        QuotaStatus enum value
+    """
+    cache = get_quota_cache()
+    quota = await cache.get_quota(provider, account_id)
+    return quota.status
+
+
+# For Antigravity usage tracking
+def record_antigravity_usage(account_id: str, tokens_used: int) -> None:
+    """Record token usage for Antigravity account"""
+    cache = get_quota_cache()
+    cache.antigravity_tracker.update_quota_usage(account_id, tokens_used)

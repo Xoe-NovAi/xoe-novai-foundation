@@ -1,13 +1,15 @@
 """
-Unit Tests for Quota Checker System
-Tests all quota clients and cache functionality
+Tests for quota_checker.py - Phase 3C-2 Rate Limit Detection
+
+Coverage: QuotaInfo, GeminiQuotaClient, CopilotQuotaClient, 
+          AntigravityQuotaTracker, QuotaCache, integration
 """
 
+import pytest
 import asyncio
 from datetime import datetime, timedelta
-from unittest.mock import AsyncMock, MagicMock, patch
-
-import pytest
+from unittest.mock import Mock, AsyncMock, patch, MagicMock
+import json
 
 from app.XNAi_rag_app.core.quota_checker import (
     QuotaStatus,
@@ -16,300 +18,457 @@ from app.XNAi_rag_app.core.quota_checker import (
     CopilotQuotaClient,
     AntigravityQuotaTracker,
     QuotaCache,
-    get_quota_cache,
+    check_provider_quota,
+    get_provider_quota_status,
+    record_antigravity_usage
 )
 
+
+# ============================================================================
+# QuotaInfo Tests (7 test cases)
+# ============================================================================
 
 class TestQuotaInfo:
     """Tests for QuotaInfo dataclass"""
     
-    def test_quota_percent_calculation(self):
-        """Test quota percentage calculation"""
+    def test_quota_info_initialization(self):
+        """Test basic initialization"""
         quota = QuotaInfo(
-            provider="test",
-            account="account1",
-            tokens_remaining=50000,
-            tokens_limit=100000,
+            provider="gemini",
+            account_id="key123",
+            tokens_remaining=900000,
+            tokens_limit=1000000
         )
-        assert quota.quota_percent_used == 50.0
-        assert quota.tokens_used == 50000
-    
-    def test_quota_status_healthy(self):
-        """Test healthy quota status"""
-        quota = QuotaInfo(
-            provider="test",
-            account="account1",
-            tokens_remaining=60000,
-            tokens_limit=100000,  # 40% used
-        )
+        
+        assert quota.provider == "gemini"
+        assert quota.account_id == "key123"
+        assert quota.percent_used == pytest.approx(10.0, abs=0.1)
         assert quota.status == QuotaStatus.HEALTHY
     
-    def test_quota_status_warning(self):
-        """Test warning quota status"""
+    def test_quota_status_healthy(self):
+        """Test HEALTHY status (>50% remaining)"""
         quota = QuotaInfo(
-            provider="test",
-            account="account1",
-            tokens_remaining=30000,
-            tokens_limit=100000,  # 70% used
+            provider="gemini",
+            account_id="key",
+            tokens_remaining=600000,
+            tokens_limit=1000000
+        )
+        assert quota.status == QuotaStatus.HEALTHY
+        assert quota.percent_used == pytest.approx(40.0, abs=0.1)
+    
+    def test_quota_status_warning(self):
+        """Test WARNING status (20-50% remaining)"""
+        quota = QuotaInfo(
+            provider="gemini",
+            account_id="key",
+            tokens_remaining=300000,
+            tokens_limit=1000000
         )
         assert quota.status == QuotaStatus.WARNING
+        assert quota.percent_used == pytest.approx(70.0, abs=0.1)
     
     def test_quota_status_critical(self):
-        """Test critical quota status"""
+        """Test CRITICAL status (20-80% used)"""
         quota = QuotaInfo(
-            provider="test",
-            account="account1",
-            tokens_remaining=15000,
-            tokens_limit=100000,  # 85% used
+            provider="gemini",
+            account_id="key",
+            tokens_remaining=100000,
+            tokens_limit=1000000
         )
         assert quota.status == QuotaStatus.CRITICAL
+        assert quota.percent_used == pytest.approx(90.0, abs=0.1)
     
     def test_quota_status_exhausted(self):
-        """Test exhausted quota status"""
+        """Test EXHAUSTED status (>95% used)"""
         quota = QuotaInfo(
-            provider="test",
-            account="account1",
-            tokens_remaining=2000,
-            tokens_limit=100000,  # 98% used
+            provider="gemini",
+            account_id="key",
+            tokens_remaining=40000,
+            tokens_limit=1000000
         )
         assert quota.status == QuotaStatus.EXHAUSTED
+        assert quota.percent_used == pytest.approx(96.0, abs=0.1)
     
-    def test_cache_validity_fresh(self):
-        """Test cache validity - fresh data"""
+    def test_is_stale_not_stale(self):
+        """Test is_stale returns False for fresh quota"""
         quota = QuotaInfo(
-            provider="test",
-            account="account1",
-            tokens_remaining=50000,
-            tokens_limit=100000,
-            cache_ttl=300,  # 5 minutes
+            provider="gemini",
+            account_id="key",
+            tokens_remaining=900000,
+            tokens_limit=1000000,
+            updated_at=datetime.utcnow()
         )
-        assert quota.is_cached is True
+        assert not quota.is_stale(ttl_seconds=300)
     
-    def test_cache_validity_stale(self):
-        """Test cache validity - stale data"""
-        old_time = datetime.now() - timedelta(seconds=400)
+    def test_is_stale_stale(self):
+        """Test is_stale returns True for old quota"""
         quota = QuotaInfo(
-            provider="test",
-            account="account1",
-            tokens_remaining=50000,
-            tokens_limit=100000,
-            cached_at=old_time,
-            cache_ttl=300,
+            provider="gemini",
+            account_id="key",
+            tokens_remaining=900000,
+            tokens_limit=1000000,
+            updated_at=datetime.utcnow() - timedelta(seconds=400)
         )
-        assert quota.is_cached is False
+        assert quota.is_stale(ttl_seconds=300)
+    
+    def test_should_fallback_yes(self):
+        """Test should_fallback returns True when >95% used"""
+        quota = QuotaInfo(
+            provider="gemini",
+            account_id="key",
+            tokens_remaining=40000,
+            tokens_limit=1000000
+        )
+        assert quota.should_fallback(threshold_percent=95.0)
+    
+    def test_should_fallback_no(self):
+        """Test should_fallback returns False when <95% used"""
+        quota = QuotaInfo(
+            provider="gemini",
+            account_id="key",
+            tokens_remaining=60000,
+            tokens_limit=1000000
+        )
+        assert not quota.should_fallback(threshold_percent=95.0)
 
+
+# ============================================================================
+# GeminiQuotaClient Tests (3 test cases)
+# ============================================================================
 
 class TestGeminiQuotaClient:
-    """Tests for Gemini quota client"""
-    
-    def test_gemini_client_no_api_key(self):
-        """Test Gemini client with no API key"""
-        with patch.dict("os.environ", {}, clear=True):
-            client = GeminiQuotaClient()
-            assert client.api_key is None
+    """Tests for GeminiQuotaClient"""
     
     @pytest.mark.asyncio
-    async def test_gemini_client_api_failure(self):
-        """Test Gemini client API failure handling"""
-        client = GeminiQuotaClient(api_key="invalid_key")
-        quota = await client.get_quota()
+    async def test_get_quota_success(self):
+        """Test successful quota fetch from Gemini API"""
+        client = GeminiQuotaClient(api_key="test_key")
+        
+        # Mock the HTTP request
+        mock_response = AsyncMock()
+        mock_response.status = 200
+        mock_response.json = AsyncMock(return_value={
+            "quotaStatus": {
+                "current": 100000,
+                "limit": 1000000
+            }
+        })
+        
+        mock_context = AsyncMock()
+        mock_context.__aenter__.return_value = mock_response
+        mock_context.__aexit__.return_value = None
+        
+        with patch("aiohttp.ClientSession.get", return_value=mock_context) as mock_get:
+            quota = await client.get_quota(api_key="test_key")
         
         assert quota is not None
         assert quota.provider == "gemini"
-        assert quota.status == QuotaStatus.CRITICAL  # Pessimistic
+        assert quota.tokens_remaining == 900000
+        assert quota.tokens_limit == 1000000
     
     @pytest.mark.asyncio
-    async def test_gemini_client_no_key_pessimistic(self):
-        """Test Gemini client without API key uses pessimistic estimate"""
-        with patch.dict("os.environ", {}, clear=True):
-            client = GeminiQuotaClient()
-            quota = await client.get_quota()
-            
-            assert quota is not None
-            assert quota.quota_percent_used == 90.0  # Pessimistic
-    
-    def test_gemini_parse_response(self):
-        """Test parsing valid Gemini API response"""
+    async def test_get_quota_api_error(self):
+        """Test quota fetch with API error"""
         client = GeminiQuotaClient(api_key="test_key")
-        # "current" in Gemini API = tokens used (not remaining)
-        # limit=320000, current=40000 used → remaining=280000
-        response = {
-            "quota_status": {
-                "tokens_per_minute": {
-                    "limit": 320000,
-                    "current": 40000,  # Only 40K used, 280K remaining
-                }
-            },
-            "reset_time": "2026-02-25T00:00:00Z",
-        }
         
-        quota = client._parse_gemini_response(response)
-        assert quota.tokens_remaining == 280000
-        assert quota.tokens_limit == 320000
-        assert quota.tokens_used == 40000
-        # 40000 used / 320000 limit = 12.5% used = HEALTHY
-        assert quota.quota_percent_used == 12.5
-        assert quota.status == QuotaStatus.HEALTHY
+        mock_response = AsyncMock()
+        mock_response.status = 500
+        
+        with patch("aiohttp.ClientSession.get", new_callable=AsyncMock) as mock_get:
+            mock_get.return_value.__aenter__.return_value = mock_response
+            
+            quota = await client.get_quota(api_key="test_key")
+        
+        assert quota is None
+    
+    @pytest.mark.asyncio
+    async def test_get_quota_timeout(self):
+        """Test quota fetch with timeout"""
+        client = GeminiQuotaClient(api_key="test_key")
+        
+        with patch("aiohttp.ClientSession.get", new_callable=AsyncMock) as mock_get:
+            mock_get.return_value.__aenter__.side_effect = asyncio.TimeoutError()
+            
+            quota = await client.get_quota(api_key="test_key")
+        
+        assert quota is None
+    
+    @pytest.mark.asyncio
+    async def test_get_pessimistic_quota(self):
+        """Test pessimistic fallback quota"""
+        client = GeminiQuotaClient()
+        quota = await client.get_pessimistic_quota()
+        
+        assert quota is not None
+        assert quota.provider == "gemini"
+        assert quota.tokens_remaining == 100000
+        assert quota.tokens_limit == 1000000
 
+
+# ============================================================================
+# CopilotQuotaClient Tests (2 test cases)
+# ============================================================================
 
 class TestCopilotQuotaClient:
-    """Tests for Copilot quota client"""
+    """Tests for CopilotQuotaClient"""
     
     @pytest.mark.asyncio
-    async def test_copilot_no_methods_available(self):
-        """Test Copilot client fallback when no methods available"""
-        client = CopilotQuotaClient()
-        quota = await client.get_quota()
+    async def test_get_quota_from_cli_success(self):
+        """Test successful quota fetch from Copilot CLI"""
+        client = CopilotQuotaClient(cli_path="/usr/bin/copilot")
+        
+        mock_process = AsyncMock()
+        mock_process.returncode = 0
+        mock_process.communicate = AsyncMock(return_value=(
+            b'{"remaining": 15000, "limit": 18750}',
+            b''
+        ))
+        
+        with patch("asyncio.create_subprocess_exec", new_callable=AsyncMock) as mock_exec:
+            mock_exec.return_value = mock_process
+            
+            quota = await client.get_quota_from_cli()
         
         assert quota is not None
         assert quota.provider == "copilot"
-        assert quota.quota_percent_used == 80.0  # Pessimistic
-    
-    def test_copilot_parse_github_response(self):
-        """Test parsing GitHub API response"""
-        client = CopilotQuotaClient(github_token="test_token")
-        response = {
-            "usage": {
-                "tokens_used": 10000,
-                "tokens_limit": 18750,
-            }
-        }
-        
-        quota = client._parse_github_response(response)
-        assert quota.tokens_remaining == 8750
+        assert quota.tokens_remaining == 15000
         assert quota.tokens_limit == 18750
-        assert quota.quota_percent_used == pytest.approx(53.3, rel=0.1)
+    
+    @pytest.mark.asyncio
+    async def test_get_quota_from_cli_not_found(self):
+        """Test quota fetch when CLI not found"""
+        client = CopilotQuotaClient(cli_path="/nonexistent/copilot")
+        
+        with patch("asyncio.create_subprocess_exec", side_effect=FileNotFoundError()):
+            quota = await client.get_quota_from_cli()
+        
+        assert quota is None
+    
+    @pytest.mark.asyncio
+    async def test_get_pessimistic_quota(self):
+        """Test pessimistic fallback for Copilot"""
+        client = CopilotQuotaClient()
+        quota = await client.get_pessimistic_quota()
+        
+        assert quota is not None
+        assert quota.provider == "copilot"
+        assert quota.tokens_remaining == 1875
+        assert quota.tokens_limit == 18750
 
+
+# ============================================================================
+# AntigravityQuotaTracker Tests (4 test cases)
+# ============================================================================
 
 class TestAntigravityQuotaTracker:
-    """Tests for Antigravity quota tracking"""
+    """Tests for AntigravityQuotaTracker"""
     
-    def test_update_and_get_quota(self):
-        """Test updating and retrieving quota"""
+    def test_track_initial_quota(self):
+        """Test initial quota for new account"""
         tracker = AntigravityQuotaTracker()
-        tracker.update_quota("antigravity-01", 450000)  # 90% used
         
-        quota = tracker.get_quota("antigravity-01")
-        assert quota is not None
-        assert quota.tokens_remaining == 50000
-        assert quota.quota_percent_used == 90.0
+        quota = tracker.get_quota("account1")
+        
+        assert quota.provider == "antigravity"
+        assert quota.account_id == "account1"
+        assert quota.tokens_remaining == 500000
+        assert quota.tokens_limit == 500000
     
-    def test_get_all_quotas(self):
-        """Test retrieving all quotas"""
+    def test_update_quota_usage(self):
+        """Test tracking usage reduces quota"""
         tracker = AntigravityQuotaTracker()
-        tracker.update_quota("antigravity-01", 250000)  # 50% used
-        tracker.update_quota("antigravity-02", 450000)  # 90% used
         
-        all_quotas = tracker.get_all_quotas()
-        assert len(all_quotas) == 2
-        assert all_quotas["antigravity-01"].quota_percent_used == 50.0
-        assert all_quotas["antigravity-02"].quota_percent_used == 90.0
+        tracker.update_quota_usage("account1", 50000)
+        quota = tracker.get_quota("account1")
+        
+        assert quota.tokens_remaining == 450000
+        assert quota.percent_used == pytest.approx(10.0, abs=0.1)
     
-    def test_get_healthiest_account(self):
-        """Test finding healthiest account"""
+    def test_multiple_account_tracking(self):
+        """Test tracking multiple accounts independently"""
         tracker = AntigravityQuotaTracker()
-        tracker.update_quota("antigravity-01", 450000)  # 90% used
-        tracker.update_quota("antigravity-02", 100000)  # 20% used
-        tracker.update_quota("antigravity-03", 250000)  # 50% used
         
-        healthiest = tracker.get_healthiest_account()
-        assert healthiest == "antigravity-02"  # Has most remaining
+        tracker.update_quota_usage("account1", 100000)
+        tracker.update_quota_usage("account2", 200000)
+        
+        quota1 = tracker.get_quota("account1")
+        quota2 = tracker.get_quota("account2")
+        
+        assert quota1.tokens_remaining == 400000
+        assert quota2.tokens_remaining == 300000
     
-    def test_get_accounts_below_threshold(self):
-        """Test finding accounts above usage threshold"""
+    def test_check_reset(self):
+        """Test Sunday reset detection"""
         tracker = AntigravityQuotaTracker()
-        tracker.update_quota("antigravity-01", 450000)  # 90% used
-        tracker.update_quota("antigravity-02", 100000)  # 20% used
-        tracker.update_quota("antigravity-03", 400000)  # 80% used
         
-        above_threshold = tracker.get_accounts_below_threshold(80.0)
-        assert "antigravity-01" in above_threshold
-        assert "antigravity-03" in above_threshold
-        assert "antigravity-02" not in above_threshold
+        # Update account to simulate usage
+        tracker.update_quota_usage("account1", 100000)
+        assert tracker.get_quota("account1").tokens_remaining == 400000
+        
+        # Note: This test would need time mocking for full coverage
+        # For now, verify logic doesn't crash
+        tracker.check_reset()
 
+
+# ============================================================================
+# QuotaCache Tests (3 test cases)
+# ============================================================================
 
 class TestQuotaCache:
-    """Tests for quota cache"""
+    """Tests for QuotaCache"""
     
-    @pytest.mark.asyncio
-    async def test_cache_antigravity_quota(self):
-        """Test caching Antigravity quota"""
+    def test_cache_initialization(self):
+        """Test cache initializes correctly"""
         cache = QuotaCache(ttl_seconds=300)
-        cache.update_antigravity_quota("antigravity-01", 250000)
         
-        quota = await cache.get_quota("antigravity", "antigravity-01")
-        assert quota is not None
-        assert quota.quota_percent_used == 50.0
+        assert cache.ttl == 300
+        assert len(cache.cache) == 0
+        assert cache.gemini_client is not None
+        assert cache.copilot_client is not None
+        assert cache.antigravity_tracker is not None
     
     @pytest.mark.asyncio
-    async def test_cache_ttl_respected(self):
-        """Test that cache TTL is respected"""
-        cache = QuotaCache(ttl_seconds=1)
-        cache.update_antigravity_quota("antigravity-01", 250000)
+    async def test_get_quota_antigravity_cached(self):
+        """Test Antigravity quota caching"""
+        cache = QuotaCache(ttl_seconds=300)
         
-        # First call should use cache
-        quota1 = await cache.get_quota("antigravity", "antigravity-01")
-        assert quota1 is not None
+        quota1 = await cache.get_quota("antigravity", "account1")
+        quota2 = await cache.get_quota("antigravity", "account1")
         
-        # Wait for cache to expire
-        await asyncio.sleep(1.1)
-        
-        # Second call should attempt fresh fetch
-        quota2 = await cache.get_quota("antigravity", "antigravity-01")
-        # Should still work (Antigravity tracker is persistent)
-        assert quota2 is not None
+        # Both should return same object from cache
+        assert quota1.tokens_remaining == quota2.tokens_remaining
+        assert "antigravity:account1" in cache.cache
     
-    def test_clear_cache(self):
-        """Test clearing cache"""
+    def test_clear_cache_all(self):
+        """Test clearing entire cache"""
         cache = QuotaCache()
-        cache.update_antigravity_quota("antigravity-01", 250000)
         
-        assert len(cache.cache) > 0
+        # Add some entries
+        cache.cache["gemini:key1"] = QuotaInfo(
+            provider="gemini",
+            account_id="key1",
+            tokens_remaining=900000,
+            tokens_limit=1000000
+        )
+        cache.cache["copilot:account1"] = QuotaInfo(
+            provider="copilot",
+            account_id="account1",
+            tokens_remaining=15000,
+            tokens_limit=18750
+        )
+        
+        assert len(cache.cache) == 2
+        
         cache.clear_cache()
         assert len(cache.cache) == 0
+    
+    def test_clear_cache_provider_specific(self):
+        """Test clearing cache for specific provider"""
+        cache = QuotaCache()
+        
+        cache.cache["gemini:key1"] = QuotaInfo(
+            provider="gemini",
+            account_id="key1",
+            tokens_remaining=900000,
+            tokens_limit=1000000
+        )
+        cache.cache["copilot:account1"] = QuotaInfo(
+            provider="copilot",
+            account_id="account1",
+            tokens_remaining=15000,
+            tokens_limit=18750
+        )
+        
+        cache.clear_cache(provider="gemini")
+        
+        assert len(cache.cache) == 1
+        assert "copilot:account1" in cache.cache
+        assert "gemini:key1" not in cache.cache
+    
+    def test_get_cache_stats(self):
+        """Test cache statistics"""
+        cache = QuotaCache()
+        
+        cache.cache["gemini:key1"] = QuotaInfo(
+            provider="gemini",
+            account_id="key1",
+            tokens_remaining=900000,
+            tokens_limit=1000000
+        )
+        
+        stats = cache.get_cache_stats()
+        
+        assert stats["cached_entries"] == 1
+        assert stats["ttl_seconds"] == 300
+        assert stats["cache_size_bytes"] > 0
 
+
+# ============================================================================
+# Integration Tests (2 test cases)
+# ============================================================================
 
 class TestIntegration:
-    """Integration tests for quota system"""
+    """Integration tests for quota checking"""
     
     @pytest.mark.asyncio
-    async def test_full_quota_check_flow(self):
-        """Test full quota checking flow"""
-        cache = QuotaCache()
-        
-        # Simulate multiple providers
-        cache.update_antigravity_quota("antigravity-01", 450000)  # 90%
-        cache.update_antigravity_quota("antigravity-02", 100000)  # 20%
-        
-        # Get quotas
-        ag1 = await cache.get_quota("antigravity", "antigravity-01")
-        ag2 = await cache.get_quota("antigravity", "antigravity-02")
-        copilot = await cache.get_quota("copilot")
-        
-        assert ag1.status == QuotaStatus.CRITICAL
-        assert ag2.status == QuotaStatus.HEALTHY
-        assert copilot.status in [QuotaStatus.CRITICAL, QuotaStatus.WARNING]
+    async def test_check_provider_quota_available(self):
+        """Test check_provider_quota returns True when quota available"""
+        with patch("app.XNAi_rag_app.core.quota_checker.get_quota_cache") as mock_get:
+            mock_cache = Mock()
+            mock_cache.get_quota = AsyncMock(return_value=QuotaInfo(
+                provider="gemini",
+                account_id="key1",
+                tokens_remaining=900000,
+                tokens_limit=1000000
+            ))
+            mock_get.return_value = mock_cache
+            
+            result = await check_provider_quota("gemini", "key1")
+            
+            assert result is True
     
     @pytest.mark.asyncio
-    async def test_quota_decision_making(self):
-        """Test using quota for dispatch decisions"""
-        cache = QuotaCache()
+    async def test_check_provider_quota_exhausted(self):
+        """Test check_provider_quota returns False when quota exhausted"""
+        with patch("app.XNAi_rag_app.core.quota_checker.get_quota_cache") as mock_get:
+            mock_cache = Mock()
+            mock_cache.get_quota = AsyncMock(return_value=QuotaInfo(
+                provider="gemini",
+                account_id="key1",
+                tokens_remaining=40000,
+                tokens_limit=1000000
+            ))
+            mock_get.return_value = mock_cache
+            
+            result = await check_provider_quota("gemini", "key1")
+            
+            assert result is False
+
+
+# ============================================================================
+# Performance Tests (1 test case)
+# ============================================================================
+
+class TestPerformance:
+    """Performance tests for quota checking"""
+    
+    def test_quota_info_performance(self):
+        """Test QuotaInfo creation is fast (<1ms)"""
+        import time
         
-        # Setup quotas
-        cache.update_antigravity_quota("antigravity-01", 450000)  # 90% - critical
-        cache.update_antigravity_quota("antigravity-02", 100000)  # 20% - healthy
+        start = time.perf_counter()
+        for _ in range(1000):
+            QuotaInfo(
+                provider="gemini",
+                account_id="key",
+                tokens_remaining=900000,
+                tokens_limit=1000000
+            )
+        elapsed = (time.perf_counter() - start) * 1000
         
-        # Decision: use healthiest account
-        ag1 = await cache.get_quota("antigravity", "antigravity-01")
-        ag2 = await cache.get_quota("antigravity", "antigravity-02")
-        
-        if ag1.status == QuotaStatus.CRITICAL and ag2.status == QuotaStatus.HEALTHY:
-            selected_account = "antigravity-02"
-        else:
-            selected_account = "antigravity-01"
-        
-        assert selected_account == "antigravity-02"
+        # Should be very fast (all 1000 in <10ms)
+        assert elapsed < 10.0
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+    pytest.main([__file__, "-v", "--tb=short"])
