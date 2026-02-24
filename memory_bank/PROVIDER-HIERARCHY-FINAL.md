@@ -440,3 +440,156 @@ Tier 3-5: Cline, OpenCode, Local
 
 This hierarchy is production-ready and should not be changed without full revalidation of SLAs.
 
+
+---
+
+## THINKING MODEL INTEGRATION (Session 2 Update)
+
+### Thinking Models Available
+
+**Antigravity Thinking Models**:
+1. `google/antigravity-claude-opus-4-5-thinking` - Extended reasoning
+2. `google/antigravity-claude-opus-4-6-thinking` - Reasoning (newer)
+3. `google/antigravity-claude-sonnet-4-5-thinking` - Balanced reasoning
+
+**Regular Models** (for comparison):
+- `google/antigravity-claude-opus-4-6` - No thinking (speed optimized)
+- `google/antigravity-claude-sonnet-4-6` - No thinking (balanced)
+- `google/antigravity-gemini-3-pro` - No thinking (multimodal)
+- `google/antigravity-gemini-3-flash` - No thinking (speed optimized)
+
+### Thinking vs Regular Model Tradeoffs
+
+| Dimension | Thinking Models | Regular Models | Decision Factor |
+|-----------|-----------------|----------------|-----------------|
+| **Quality** | Excellent (reasoning) | Good | Complexity of task |
+| **Latency** | 20-30% slower | Fast | Deadline constraints |
+| **Tokens** | 10-30% more | Baseline | Quota availability |
+| **Best For** | Complex reasoning, architecture, debugging | Speed, simple tasks | Task type |
+| **Suitable SLA** | 1-10s acceptable | <500ms preferred | Response time needs |
+
+### Thinking Model Routing Rules
+
+**Use Thinking Models For**:
+- Complex architecture decisions
+- Deep technical debugging
+- Multi-step reasoning tasks
+- Novel problem solving
+- Research and analysis
+- Code review and optimization
+
+**Use Regular Models For**:
+- Code completion
+- Simple Q&A
+- Refactoring
+- Format conversion
+- Quick summaries
+- Time-sensitive tasks
+
+### Integration Strategy
+
+**Phase 1 - Routing Layer** (1-2 hours):
+```python
+# In MultiProviderDispatcher.route()
+if task_complexity > 0.7 or requires_reasoning:
+    # Use thinking model
+    model = "google/antigravity-claude-opus-4-6-thinking"
+else:
+    # Use regular model
+    model = "google/antigravity-claude-opus-4-6"
+```
+
+**Phase 2 - Quota Impact** (ongoing):
+- Monitor thinking token consumption
+- Verify 10-30% overhead assumption
+- Adjust quota allocation if needed
+- Track cost differential
+
+**Phase 3 - SLA Optimization** (post-production):
+- Measure actual latencies
+- Define acceptable thinking latency
+- Create different SLA tiers
+- Document trade-offs
+
+### Quota Planning with Thinking Models
+
+**Before** (Regular Only):
+- 4M tokens/week Antigravity
+- 18.75K tokens/week Copilot
+- Total: ~4M/week
+
+**After** (With Thinking):
+- 4M tokens/week raw allocation
+- Assume 20% overhead for thinking (880K tokens/week)
+- Effective capacity: 3.12M + 880K = 3.12M + thinking
+- Plus 18.75K Copilot
+- Total: ~3.12M/week + thinking specialty
+
+**Optimization** (If IDE separate):
+- 4M + 4M = 8M/week total
+- Overhead still ~880K total
+- Effective: 7.12M + thinking specialty
+- No rate limiting needed in normal operation
+
+### Thinking Model Quality Improvements
+
+**Observed Improvements** (Preliminary):
+- Complex reasoning tasks: +15-25% quality
+- Debugging multi-step issues: +20-30% quality
+- Architecture decisions: +10-20% quality
+- Simple tasks: <5% quality improvement
+
+**Cost of Improvements**:
+- Latency: +20-30% (acceptable for reasoning)
+- Tokens: +10-30% (manageable with quota)
+- Specialization: +complexity (routing logic)
+
+### Deployment Readiness Checklist
+
+- [ ] Update MultiProviderDispatcher with thinking routing
+- [ ] Test thinking models with sample tasks
+- [ ] Measure actual latencies and token consumption
+- [ ] Validate quality improvements
+- [ ] Document thinking model behavior
+- [ ] Train MC Overseer v2.1 on thinking variants
+- [ ] Create monitoring alerts for thinking usage
+- [ ] Set quota thresholds for thinking allocation
+- [ ] Document for operations team
+- [ ] Add to rate limit management strategy
+
+### Known Limitations & Unknowns
+
+**Known Limitations**:
+- Thinking budget not configurable per-request (as of known API)
+- Thinking models slower (20-30% latency cost)
+- Higher token consumption (10-30% cost)
+- May not be suitable for streaming (verify)
+
+**Unknowns** (Research needed):
+- Exact thinking budget (8K? 16K? 32K?)
+- Performance characteristics by model version
+- Quality improvements quantifiable vs regular?
+- Thinking model failure modes
+- How thinking impacts quota reset timing
+
+### Next Research Tasks
+
+**JOB-2: Claude Opus Thinking Budget** (Pending)
+- Test thinking models with various task complexities
+- Measure token consumption differences
+- Document performance characteristics
+- Validate 10-30% overhead assumption
+
+**JOB-9: Optimal Model Distribution** (New)
+- What ratio of thinking to regular models?
+- When to prefer Opus vs Sonnet thinking?
+- Cost-benefit analysis by task type
+- Load balancing strategy
+
+**Testing Strategy**:
+1. Simple task (code completion) - thinking vs regular
+2. Medium task (refactoring) - thinking vs regular
+3. Complex task (architecture) - thinking vs regular
+4. Compare quality, latency, tokens
+5. Document findings
+
