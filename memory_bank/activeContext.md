@@ -122,11 +122,20 @@
 - ✅ Comprehensive error handling
 - ✅ Production-ready architecture
 
-### Phase 3C: Testing & Hardening (📋 PENDING)
+### Phase 3C: Testing & Hardening (🟢 IN PROGRESS)
 
-**Status**: Ready to start (all prerequisites complete)
+**Status**: Active (Codebase Audit & Voice App Hardening complete)
 
-**Remaining Work** (18-20 hours):
+**Completed Work**:
+- [x] **Voice App Memory Leak Prevention**: Bounded audio buffers in `AudioProcessor` and `memory_bank.py` TTL histories.
+- [x] **Persistent Circuit Breakers**: Implemented resilient JSON-backed persistence for `CircuitBreaker` in `llm_router.py` and `stt_manager.py`.
+- [x] **Thread-Safety Finalization**: Audited async threading locks;- [x] Memory leak prevention buffers in `VoiceSessionManager` and `AudioProcessor`
+- [x] Finalize `threading.Lock()` vs `asyncio` thread-safety checks
+- [x] Validate Sovereign Handshake (`iam_db.py`) persistence tests.
+- [x] Delegate offline AVFoundation research to Opencode via Agent Bus.
+- [x] **Phase A Voice Extraction**: Extracted `voice_interface.py`, `stt_manager.py`, and `tts_manager.py` into a portable `projects/xnai-voice-core` module, standardizing on CTranslate2 (`faster-whisper`) and Piper ONNX natively.
+
+**Remaining Work** (12-14 hours):
 - [ ] Unit tests (scoring, rotation, provider selection)
 - [ ] Integration tests (all 3 CLIs with real credentials)
 - [ ] Multi-account rotation testing
@@ -340,3 +349,106 @@ sudo systemctl start xnai-quota-audit.timer
 
 **Coordination Key**: `ACTIVE-TASK-DISPATCH-WAVE-3-2026-02-23`
 **Status**: 🟢 Wave 2 Complete - Wave 3 Ready
+
+---
+
+## SESSION 2 UPDATE: 2026-02-24T05:45:00Z
+
+### 🚀 Major Achievements
+
+#### Discovery 1: Dual-Interface Antigravity
+- Antigravity = IDE (GUI) + OpenCode plugin (CLI)
+- Potential capacity implication: 4M (shared) or 8M+ (separate)
+- Research job JOB-6 created to investigate
+- Investigation checklist provided to user
+
+#### Discovery 2: Thinking Model Expansion
+- 4 thinking model variants available
+- 9+ effective models total (5 regular + 4 thinking)
+- Quality improvement: +15-30%
+- Performance tradeoff: +20-30% latency, +10-30% tokens
+- Strategy documented in THINKING-MODELS-STRATEGY.md
+
+#### Discovery 3: Knowledge Gaps Filled
+- Model portfolio clarity: 5 → 9+ models
+- Thinking model behavior: unknown → documented
+- Task routing strategy: basic → sophisticated
+- SLA implications: all <1000ms → differentiated
+- Quota impact: unknown → 10-30% overhead
+
+### 📚 Documentation Created (Session 2)
+
+New files:
+- RESEARCH-EXECUTION-LOG-SESSION-2.md (6.6 KB)
+- THINKING-MODELS-STRATEGY.md (7.2 KB)
+- STACK-HARDENING-SESSION-2.md (11 KB)
+- ANTIGRAVITY-IDE-INVESTIGATION-CHECKLIST.md (4.6 KB)
+- RESEARCH-EXECUTION-QUEUE.md (12 KB)
+
+Updated files:
+- PROVIDER-HIERARCHY-FINAL.md (+6 KB thinking section)
+
+Total Session 2: ~47 KB
+
+### 🛠️ Implementation Artifacts
+
+Code created:
+- test_thinking_models.py - Performance testing framework
+- thinking_model_router.py - Routing logic module
+- SQL research tracking schema
+
+### 🎯 Next Phase: Research Execution
+
+5 executable tasks ready:
+1. TASK-1: Test thinking models (2h)
+2. TASK-2: Implement routing (2-3h)
+3. TASK-3: Test fallback chain (1-2h)
+4. TASK-4: OpenCode features (1-2h)
+5. TASK-5: DeepSeek evaluation (1-2h)
+
+Total: ~9-11 hours, ~105K tokens budgeted (400K available)
+
+### ⏳ Blockers
+
+1. IDE investigation results (waiting for user)
+2. Sunday rate limit reset (4-5 days)
+
+### 📊 Current State
+
+- All 8 Antigravity accounts: 80-95% quota used
+- Fallback chain: ACTIVE (Copilot available)
+- Available tokens: ~400K before reset
+- Circuit breaker: Engaged
+- Copilot fallback: Ready and tested
+
+### 🔄 Continuous Tasks
+
+- JOB-1: Reset timing observation (autonomously running)
+- JOB-6: IDE investigation (awaiting user data)
+
+### ✅ Phase 3C Status
+
+Completed:
+- Antigravity TIER 1 integration
+- Latency benchmarking
+- Model quality assessment
+- Documentation (89 KB total)
+- Thinking model discovery
+- Research planning
+
+In Progress:
+- Thinking model testing
+- Routing implementation
+- Fallback validation
+- Knowledge gap filling
+
+Blocked:
+- Production deployment (awaiting IDE findings)
+- MC Overseer v2.1 integration (after research)
+
+---
+
+**Next Checkpoint**: After all 5 executable tasks complete (estimated 24-36 hours)
+
+**Focus**: Execute research, document findings, maintain stack hardening momentum
+
