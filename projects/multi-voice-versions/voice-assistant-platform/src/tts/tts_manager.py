@@ -1,0 +1,324 @@
+"""
+TTSManager — Text-to-speech with priority queue and fallback chain.
+
+Backend priority:
+  1. Kokoro local (port 8880) — default, natural voice, offline
+  2. OpenAI TTS API — cloud fallback, highest quality
+  3. macOS `say` subprocess — emergency fallback, always available
+
+Events are queued by priority. Higher-priority events interrupt lower ones.
+An interrupt (priority=3) stops current playback immediately.
+"""
+
+from __future__ import annotations
+
+import asyncio
+import os
+import subprocess
+import time
+from dataclasses import dataclass
+
+import structlog
+
+logger = structlog.get_logger(__name__)
+
+try:
+    import httpx
+    HTTPX_AVAILABLE = True
+except ImportError:
+    HTTPX_AVAILABLE = False
+
+
+@dataclass
+class TTSConfig:
+    """Configuration for the TTSManager."""
+    kokoro_url: str = "http://127.0.0.1:8880"
+    openai_api_key: str = ""
+    voice: str = "af_sky"           # Kokoro voice
+    speed: float = 1.0
+    timeout_sec: float = 15.0
+    fallback_to_say: bool = True    # Always use macOS say as last resort
+
+    @classmethod
+    def from_env(cls) -> "TTSConfig":
+        return cls(
+            kokoro_url=os.getenv("VOICEOS_TTS_URL", "http://127.0.0.1:8880"),
+            openai_api_key=os.getenv("OPENAI_API_KEY", ""),
+            voice=os.getenv("VOICEOS_TTS_VOICE", "af_sky"),
+            speed=float(os.getenv("VOICEOS_TTS_SPEED", "1.0")),
+        )
+
+
+class TTSError(Exception):
+    """Base error for TTS failures."""
+    def __init__(self, message: str, voice_message: str = "", recoverable: bool = True):
+        super().__init__(message)
+        self.voice_message = voice_message
+        self.recoverable = recoverable
+
+
+class KokoroBehind:
+    """Kokoro FastAPI TTS backend (local, port 8880)."""
+
+    def __init__(self, config: TTSConfig) -> None:
+        self.config = config
+
+    async def synthesize(self, text: str) -> bytes:
+        """
+        Synthesize text to audio via Kokoro.
+
+        Returns:
+            Raw audio bytes (WAV)
+        """
+        if not HTTPX_AVAILABLE:
+            raise TTSError("httpx not installed", recoverable=False)
+
+        try:
+            async with httpx.AsyncClient(timeout=self.config.timeout_sec) as client:
+                response = await client.post(
+                    f"{self.config.kokoro_url}/v1/audio/speech",
+                    json={
+                        "model": "kokoro",
+                        "input": text,
+                        "voice": self.config.voice,
+                        "speed": self.config.speed,
+                        "response_format": "wav",
+                    },
+                )
+                response.raise_for_status()
+                return response.content
+
+        except httpx.TimeoutException as e:
+            raise TTSError(
+                f"Kokoro timeout after {self.config.timeout_sec}s",
+                recoverable=True,
+            ) from e
+        except (httpx.ConnectError, httpx.HTTPStatusError) as e:
+            raise TTSError(
+                f"Kokoro connection failed: {e}",
+                recoverable=True,
+            ) from e
+
+    async def health_check(self) -> bool:
+        if not HTTPX_AVAILABLE:
+            return False
+        try:
+            async with httpx.AsyncClient(timeout=3.0) as client:
+                r = await client.get(f"{self.config.kokoro_url}/health")
+                return r.status_code == 200
+        except Exception:
+            return False
+
+
+class MacOSSayBackend:
+    """Emergency fallback: macOS `say` command."""
+
+    def __init__(self, speed: float = 1.0) -> None:
+        # macOS say uses words-per-minute; 180 is roughly natural
+        self.wpm = int(180 * speed)
+
+    async def speak(self, text: str) -> None:
+        """Speak text using macOS `say` (blocking subprocess in executor)."""
+        await asyncio.get_running_loop().run_in_executor(
+            None,
+            lambda: subprocess.run(
+                ["say", "-r", str(self.wpm), text],
+                timeout=60,
+            ),
+        )
+        logger.debug("macos_say_complete", text=text[:40])
+
+
+class TTSManager:
+    """
+    Main TTS manager with priority queue and fallback.
+
+    Maintains a priority queue of text to speak. Events with higher
+    priority play sooner. Priority 3 (interrupt) stops current speech.
+
+    Usage:
+        config = TTSConfig.from_env()
+        tts = TTSManager(config)
+        await tts.start()
+
+        await tts.speak("Opening Terminal.")
+        await tts.speak("Warning: file will be deleted.", priority=2)
+        await tts.speak("Critical error!", priority=3)  # interrupts
+    """
+
+    def __init__(self, config: TTSConfig | None = None) -> None:
+        self.config = config or TTSConfig.from_env()
+        self._kokoro = KokoroBehind(self.config)
+        self._say = MacOSSayBackend(speed=self.config.speed)
+        self._queue: asyncio.PriorityQueue[tuple[int, float, str]] = (
+            asyncio.PriorityQueue()
+        )
+        self._current_task: asyncio.Task | None = None
+        self._running = False
+        self._worker_task: asyncio.Task | None = None
+        self._idle_event: asyncio.Event = asyncio.Event()
+        self._idle_event.set()  # starts idle
+
+    async def start(self) -> None:
+        """Start the TTS worker loop."""
+        self._running = True
+        self._worker_task = asyncio.create_task(
+            self._worker_loop(), name="TTSWorker"
+        )
+        logger.info("tts_manager_started")
+
+    async def stop(self) -> None:
+        """Stop the TTS worker."""
+        self._running = False
+        if self._worker_task:
+            self._worker_task.cancel()
+            try:
+                await self._worker_task
+            except asyncio.CancelledError:
+                pass
+
+    async def speak(self, text: str, priority: int = 1) -> None:
+        """
+        Queue text to be spoken.
+
+        Args:
+            text: Text to speak
+            priority: 0=low, 1=normal, 2=high, 3=interrupt
+
+        Priority 3 interrupts current speech immediately.
+        """
+        text = text.strip()
+        if not text:
+            return
+
+        if priority >= 3:
+            self.interrupt()
+
+        # Mark not-idle as soon as item is queued (before worker picks it up)
+        self._idle_event.clear()
+
+        # Negate priority for min-heap (higher priority = lower heap key)
+        seq = time.monotonic()  # tiebreaker for same-priority items
+        await self._queue.put((-priority, seq, text))
+        logger.debug(
+            "tts_queued",
+            priority=priority,
+            text_preview=text[:50],
+        )
+
+    def interrupt(self) -> None:
+        """Stop current TTS playback immediately."""
+        if self._current_task and not self._current_task.done():
+            self._current_task.cancel()
+            logger.debug("tts_interrupted")
+
+    async def speak_and_wait(self, text: str, priority: int = 1) -> None:
+        """Speak text and wait until it finishes playing."""
+        await self.speak(text, priority)
+        await self.wait_until_idle()
+
+    async def wait_until_idle(self) -> None:
+        """Wait until the TTS queue is empty and no audio is playing."""
+        await self._idle_event.wait()
+
+    @property
+    def is_speaking(self) -> bool:
+        """True if TTS is currently playing audio."""
+        return not self._idle_event.is_set()
+
+    async def _worker_loop(self) -> None:
+        """Main TTS worker — dequeues and speaks events."""
+        while self._running:
+            try:
+                _neg_priority, _seq, text = await asyncio.wait_for(
+                    self._queue.get(), timeout=1.0
+                )
+                self._queue.task_done()
+
+                self._idle_event.clear()  # mark as speaking
+                self._current_task = asyncio.create_task(
+                    self._speak_one(text), name="TTSSpeakOne"
+                )
+                try:
+                    await self._current_task
+                except asyncio.CancelledError:
+                    logger.debug("tts_speak_cancelled")
+                finally:
+                    # Mark idle only when queue is also empty
+                    if self._queue.empty():
+                        self._idle_event.set()
+
+            except asyncio.TimeoutError:
+                self._idle_event.set()  # queue empty, definitely idle
+                continue
+            except Exception as e:
+                self._idle_event.set()
+                logger.error("tts_worker_error", error=str(e))
+
+    async def _speak_one(self, text: str) -> None:
+        """Speak one text item using the best available backend."""
+        start = time.monotonic()
+
+        # Try Kokoro first
+        try:
+            audio_bytes = await self._kokoro.synthesize(text)
+            await self._play_audio(audio_bytes)
+            duration_ms = (time.monotonic() - start) * 1000
+            logger.info(
+                "tts_spoken",
+                backend="kokoro",
+                duration_ms=round(duration_ms),
+                text_preview=text[:50],
+            )
+            return
+        except (TTSError, Exception) as e:
+            logger.warning("kokoro_failed_using_say", error=str(e))
+
+        # Fallback to macOS say
+        if self.config.fallback_to_say:
+            await self._say.speak(text)
+
+    async def _play_audio(self, audio_bytes: bytes) -> None:
+        """Play audio bytes using sounddevice if available, else subprocess."""
+        try:
+            import sounddevice as sd
+            import numpy as np
+            import wave
+            import io
+
+            with wave.open(io.BytesIO(audio_bytes)) as wf:
+                sample_rate = wf.getframerate()
+                channels = wf.getnchannels()
+                audio_data = np.frombuffer(
+                    wf.readframes(wf.getnframes()), dtype=np.int16
+                )
+                if channels > 1:
+                    audio_data = audio_data.reshape(-1, channels)
+
+            await asyncio.get_running_loop().run_in_executor(
+                None,
+                lambda: sd.play(audio_data, samplerate=sample_rate, blocking=True),
+            )
+        except Exception as e:
+            logger.warning("sounddevice_playback_failed", error=str(e))
+            # Write to temp file and play with afplay
+            import tempfile, os
+            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
+                f.write(audio_bytes)
+                tmp_path = f.name
+            try:
+                await asyncio.get_running_loop().run_in_executor(
+                    None,
+                    lambda: subprocess.run(["afplay", tmp_path], timeout=60),
+                )
+            finally:
+                os.unlink(tmp_path)
+
+    async def health_check(self) -> dict[str, bool]:
+        """Check health of all TTS backends."""
+        kokoro_ok = await self._kokoro.health_check()
+        say_ok = True  # macOS say is always available
+        return {
+            "kokoro_local": kokoro_ok,
+            "macos_say": say_ok,
+        }
