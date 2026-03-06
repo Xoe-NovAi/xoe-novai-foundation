@@ -1,0 +1,92 @@
+# XNAi Foundation - Semantic Concept Index (v1.0.0)
+# Mapping relationships between Docs, EKB, and Memory Bank
+
+concepts:
+  - id: security_authentication
+    name: Authentication & Security
+    description: Identity management, access control, and sovereign security protocols.
+    links:
+      docs:
+        - docs/04-explanation/security.md
+        - docs/04-explanation/SECURITY-CHECKLIST.md
+      ekb:
+        - expert-knowledge/security/sovereign-trinity-expert-v1.0.0.md
+        - expert-knowledge/security/iam-v2-schema-design.md
+      memory:
+        - memory_bank/activeContext.md
+        - app/XNAi_rag_app/core/maat_guardrails.py
+
+  - id: model_intelligence
+    name: Model Intelligence
+    description: LLM capabilities, routing, benchmarks, and specialized model research.
+    links:
+      docs:
+        - docs/02-tutorials/gemini-mastery/INDEX.md
+        - docs/03-reference/api.md
+      ekb:
+        - expert-knowledge/model-reference/XNAI-MODEL-INTELLIGENCE-MASTER.md
+        - expert-knowledge/model-reference/QUICK-REFERENCE.md
+      memory:
+        - memory_bank/THINKING-MODELS-STRATEGY.md
+        - memory_bank/research/MODEL-RESEARCH-COMPENDIUM-2026-02-27.md
+
+  - id: infrastructure_orchestration
+    name: Infrastructure & Orchestration
+    description: System architecture, containerization, and service coordination.
+    links:
+      docs:
+        - docs/04-explanation/sovereign-entity-architecture.md
+        - docs/02-tutorials/sovereign-setup.md
+      ekb:
+        - internal_docs/communication_hub/AGENT-BUS-PROTOCOL.md
+        - docs/03-how-to-guides/infrastructure/vikunja-operations.md
+      memory:
+        - memory_bank/ARCHITECTURE.md
+        - memory_bank/strategies/ACTIVE-TASK-DISPATCH-2026-02-23.md
+
+  - id: knowledge_curation_rag
+    name: Knowledge Curation & RAG
+    description: Curation pipeline, semantic search, and expert knowledge absorption.
+    links:
+      docs:
+        - docs/04-explanation/expert-knowledge-system-overview.md
+        - docs/03-how-to-guides/contributing-to-ekb.md
+      ekb:
+        - memory_bank/strategies/KNOWLEDGE-ABSORPTION-SYSTEM-DESIGN.md
+        - app/XNAi_rag_app/services/curation_bridge.py
+      memory:
+        - docs/gnosis/GNOSIS-ENGINE-2026-02-27.md
+        - memory_bank/MEMORY-MANAGEMENT-SYSTEM-2026-02-27.md
+
+  - id: hardware_performance
+    name: Hardware & Performance
+    description: Resource optimization, Vulkan acceleration, and Ryzen performance tuning.
+    links:
+      docs:
+        - docs/03-how-to-guides/hardware-tuning/amd-ryzen-vulkan-mastery.md
+        - docs/03-reference/hardware.md
+      ekb:
+        - expert-knowledge/environment/ryzen-5700u-optimization.md
+        - docs/05-research/labs/01-vulkan-native-inference.md
+      memory:
+        - benchmarks/PERFORMANCE-BASELINES.md
+        - benchmarks/antigravity-latency-results.json
+
+  - id: agent_coordination
+    name: Multi-Agent Coordination
+    description: Collaborative agentic workflows, communication protocols, and task dispatching.
+    links:
+      docs:
+        - docs/02-tutorials/advanced-agent-patterns/cline-implementation-master-guide.md
+        - docs/02-tutorials/onboarding.md
+      ekb:
+        - expert-knowledge/CLI-FEATURE-COMPARISON-MATRIX-2026-02-23.md
+        - internal_docs/communication_hub/AGENT-BUS-PROTOCOL.md
+      memory:
+        - memory_bank/teamProtocols.md
+        - memory_bank/strategies/WORKFLOW-ORCHESTRATION-STRATEGY-v1.0.md
+
+metadata:
+  version: 1.0.0
+  last_updated: 2026-02-28
+  owner: MC-Overseer

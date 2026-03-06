@@ -1,0 +1,49 @@
+file_lists:
+  grok-pack:
+    - memory_bank/activeContext.md
+    - memory_bank/environmentContext.md
+    - memory_bank/teamProtocols.md
+    - memory_bank/agent_capabilities_summary.md
+    - memory_bank/projectbrief.md
+    - memory_bank/productContext.md
+    - memory_bank/techContext.md
+    - memory_bank/systemPatterns.md
+    - xoe-novai-sync/_meta/sync-protocols-v1.4.0.md
+    - internal_docs/Grok MC/Grok-MC-stack-mermaid.md
+    - expert-knowledge/sync/sovereign-synergy-expert-v1.0.0.md
+    - expert-knowledge/infrastructure/ryzen-hardening-expert-v1.0.0.md
+    - expert-knowledge/security/sovereign-trinity-expert-v1.0.0.md
+    - expert-knowledge/origins/xoe-journey-v1.0.0.md
+    - expert-knowledge/research/ekb-research-master-v1.0.0.md
+    - expert-knowledge/protocols/workflows-master-v1.0.0.md
+    - xoe-novai-sync/ekb-exports/files-inventory-v1.0.0.md
+    - xoe-novai-sync/ekb-exports/oss-pm-research-v1.0.0.md
+  onboarding:
+    - docs/index.md
+    - docs/01-start/quick-start.md
+    - memory_bank/projectbrief.md
+    - memory_bank/activeContext.md
+  minimal:
+    - memory_bank/activeContext.md
+    - memory_bank/progress.md
+  benchmark-e5:
+    # Full XNAi Onboarding Protocol context pack (E5 environment)
+    # Phase 1: Core Context
+    - memory_bank/INDEX.md
+    - memory_bank/activeContext.md
+    - memory_bank/progress.md
+    - memory_bank/activeContext/sprint-7-handover-2026-02-18.md
+    - memory_bank/CONTEXT.md
+    # Phase 2: Configuration Authority
+    - configs/agent-identity.yaml
+    - configs/model-router.yaml
+    - configs/free-providers-catalog.yaml
+    - .opencode/RULES.md
+    # Phase 3: Team & Architecture
+    - memory_bank/teamProtocols.md
+    - docs/architecture/XNAI-AGENT-TAXONOMY.md
+    # Phase 4: Deep Context
+    - memory_bank/PHASE-7-DEPLOYMENT-INTEGRATION.md
+    - expert-knowledge/esoteric/maat_ideals.md
+    - expert-knowledge/origins/xoe-journey-v1.0.0.md
+    - expert-knowledge/research/OPUS-ONBOARDING-CASE-STUDY-2026-02-18.md

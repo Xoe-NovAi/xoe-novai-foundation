@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "project": "SEC-Architect-20260120",
+    "domain": "architect",
+    "selection_date": "2026-01-20",
+    "selected_count": 3,
+    "selection_criteria": "Xoe-NovAi relevance, technical depth, authority, currency",
+    "rationale": "Selected URLs provide comprehensive coverage of sovereign AI architecture, torch-free inference, and zero-trust security patterns essential for Xoe-NovAi's mission"
+  },
+  "selected_urls": [
+    {
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "title": "llama.cpp: LLM Inference in Pure C/C++",
+      "selection_score": 10.0,
+      "rationale": "Essential foundation for torch-free GGUF inference with Vulkan acceleration. Provides core patterns for Xoe-NovAi's high-performance local inference targeting <300ms latency.",
+      "research_coverage": [1, 2, 3],
+      "priority": "critical"
+    },
+    {
+      "url": "https://arxiv.org/html/2601.07004v1",
+      "title": "MemTrust: A Zero-Trust Architecture for Unified AI Memory System",
+      "selection_score": 9.6,
+      "rationale": "Cutting-edge zero-trust framework for AI memory management. Directly applicable to sovereign AI systems protecting sensitive RAG data flows without external trust assumptions.",
+      "research_coverage": [1, 5],
+      "priority": "high"
+    },
+    {
+      "url": "https://arxiv.org/html/2508.19870v1",
+      "title": "Secure Multi-LLM Agentic AI and Agentification for Edge General Intelligence",
+      "selection_score": 9.4,
+      "rationale": "Comprehensive zero-trust architecture for multi-agent edge AI systems. Provides patterns for sovereign, privacy-first multi-agent coordination - essential for future Xoe-NovAi agentic flows.",
+      "research_coverage": [1, 4, 5],
+      "priority": "high"
+    }
+  ],
+  "crawl_status": {
+    "pending": 3,
+    "in_progress": 0,
+    "completed": 0,
+    "failed": 0
+  }
+}

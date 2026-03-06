@@ -1,0 +1,172 @@
+{
+  "summary": {
+    "total_tests": 7,
+    "passed_tests": 7,
+    "failed_tests": 0,
+    "success_rate": 100.0
+  },
+  "test_results": [
+    {
+      "test": "Rate limit detection: '429 Too Many Requests...'",
+      "passed": true,
+      "details": "Expected: True, Got: True",
+      "timestamp": "2026-03-05T05:22:20.773538"
+    },
+    {
+      "test": "Rate limit detection: 'Rate limit exceeded...'",
+      "passed": true,
+      "details": "Expected: True, Got: True",
+      "timestamp": "2026-03-05T05:22:20.773755"
+    },
+    {
+      "test": "Rate limit detection: 'DeepSeek rate limit exceeded...'",
+      "passed": true,
+      "details": "Expected: True, Got: True",
+      "timestamp": "2026-03-05T05:22:20.773833"
+    },
+    {
+      "test": "Rate limit detection: 'Minimax quota exceeded...'",
+      "passed": true,
+      "details": "Expected: True, Got: True",
+      "timestamp": "2026-03-05T05:22:20.773934"
+    },
+    {
+      "test": "Rate limit detection: 'OpenCode 429 error...'",
+      "passed": true,
+      "details": "Expected: True, Got: True",
+      "timestamp": "2026-03-05T05:22:20.774011"
+    },
+    {
+      "test": "Rate limit detection: 'Session lost...'",
+      "passed": true,
+      "details": "Expected: False, Got: False",
+      "timestamp": "2026-03-05T05:22:20.774060"
+    },
+    {
+      "test": "Rate limit detection: 'Normal response...'",
+      "passed": true,
+      "details": "Expected: False, Got: False",
+      "timestamp": "2026-03-05T05:22:20.774490"
+    },
+    {
+      "test": "Context loss detection: 'Session lost...'",
+      "passed": true,
+      "details": "Expected: True, Got: True",
+      "timestamp": "2026-03-05T05:22:20.774601"
+    },
+    {
+      "test": "Context loss detection: 'Context lost...'",
+      "passed": true,
+      "details": "Expected: True, Got: True",
+      "timestamp": "2026-03-05T05:22:20.774654"
+    },
+    {
+      "test": "Context loss detection: 'New session started...'",
+      "passed": true,
+      "details": "Expected: True, Got: True",
+      "timestamp": "2026-03-05T05:22:20.774710"
+    },
+    {
+      "test": "Context loss detection: 'Session expired...'",
+      "passed": true,
+      "details": "Expected: True, Got: True",
+      "timestamp": "2026-03-05T05:22:20.774759"
+    },
+    {
+      "test": "Context loss detection: 'Normal response...'",
+      "passed": true,
+      "details": "Expected: False, Got: False",
+      "timestamp": "2026-03-05T05:22:20.774811"
+    },
+    {
+      "test": "Context loss detection: 'Rate limit exceeded...'",
+      "passed": true,
+      "details": "Expected: False, Got: False",
+      "timestamp": "2026-03-05T05:22:20.774910"
+    },
+    {
+      "test": "Retry-after extraction: 'Retry after 60 seconds...'",
+      "passed": true,
+      "details": "Expected: 60, Got: 60",
+      "timestamp": "2026-03-05T05:22:20.775261"
+    },
+    {
+      "test": "Retry-after extraction: 'Try again in 120 seconds...'",
+      "passed": true,
+      "details": "Expected: 120, Got: 120",
+      "timestamp": "2026-03-05T05:22:20.775489"
+    },
+    {
+      "test": "Retry-after extraction: 'Wait 30 seconds...'",
+      "passed": true,
+      "details": "Expected: 30, Got: 30",
+      "timestamp": "2026-03-05T05:22:20.775668"
+    },
+    {
+      "test": "Retry-after extraction: 'Rate limit, retry in 5 minutes...'",
+      "passed": true,
+      "details": "Expected: None, Got: None",
+      "timestamp": "2026-03-05T05:22:20.776019"
+    },
+    {
+      "test": "Retry-after extraction: 'Normal response...'",
+      "passed": true,
+      "details": "Expected: None, Got: None",
+      "timestamp": "2026-03-05T05:22:20.776078"
+    },
+    {
+      "test": "Context save/load",
+      "passed": true,
+      "details": "Context saved and loaded successfully: True",
+      "timestamp": "2026-03-05T05:22:20.777021"
+    },
+    {
+      "test": "Message addition",
+      "passed": true,
+      "details": "Message added to context: True",
+      "timestamp": "2026-03-05T05:22:20.777325"
+    },
+    {
+      "test": "Context prompt generation",
+      "passed": true,
+      "details": "Context prompt generated: True",
+      "timestamp": "2026-03-05T05:22:20.777393"
+    },
+    {
+      "test": "Initial account availability",
+      "passed": true,
+      "details": "Initial account available: account_01",
+      "timestamp": "2026-03-05T05:22:20.777712"
+    },
+    {
+      "test": "Rate limit respect",
+      "passed": true,
+      "details": "Rate limited account not selected: True",
+      "timestamp": "2026-03-05T05:22:20.777875"
+    },
+    {
+      "test": "Account stats",
+      "passed": true,
+      "details": "Stats available with 3 accounts",
+      "timestamp": "2026-03-05T05:22:20.777970"
+    },
+    {
+      "test": "Smart dispatcher fallback",
+      "passed": true,
+      "details": "Dispatcher attempted 1 times, success: True",
+      "timestamp": "2026-03-05T05:22:20.778967"
+    },
+    {
+      "test": "Context preservation",
+      "passed": true,
+      "details": "Context preserved across account switches: True",
+      "timestamp": "2026-03-05T05:22:20.779020"
+    },
+    {
+      "test": "End-to-end scenario",
+      "passed": true,
+      "details": "Scenario completed in 3 attempts using opencode_01",
+      "timestamp": "2026-03-05T05:22:20.780484"
+    }
+  ]
+}

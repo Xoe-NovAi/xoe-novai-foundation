@@ -1,0 +1,24 @@
+# ============================================================================
+# XNAi Foundation - Grafana Datasources
+# ============================================================================
+# VictoriaMetrics replaces Prometheus for 3-4x memory efficiency
+# Uses Prometheus-compatible API endpoint
+# ============================================================================
+
+apiVersion: 1
+
+datasources:
+  # VictoriaMetrics - Primary Metrics Store
+  - name: VictoriaMetrics
+    type: prometheus
+    access: proxy
+    url: http://victoriametrics:8428
+    isDefault: true
+    editable: false
+    jsonData:
+      httpMethod: POST
+      manageAlerts: true
+      prometheusType: VictoriaMetrics
+      prometheusVersion: "1.100.0"
+      cacheLevel: 'High'
+    version: 1

@@ -1,0 +1,21 @@
+[Unit]
+Description=XNAi Foundation - Daily Quota Audit (2 AM UTC)
+Documentation=man:xnai-quota-audit.py
+After=network-online.target
+Wants=network-online.target
+
+[Timer]
+# Run daily at 2 AM UTC
+OnCalendar=*-*-* 02:00:00 UTC
+
+# Run immediately if system was off at scheduled time
+Persistent=true
+
+# Randomize by up to 5 minutes to avoid thundering herd
+RandomizedDelaySec=5min
+
+# Run for up to 2 hours (quota collection can take time)
+RuntimeMaxSec=2h
+
+[Install]
+WantedBy=timers.target

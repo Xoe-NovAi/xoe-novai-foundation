@@ -1,0 +1,165 @@
+# Configuration for Cline CLI multi-account wrapper
+
+accounts:
+  # OAuth Accounts with Domain Mappings
+  gemini_oauth_01:
+    name: "Gemini OAuth Account 1"
+    provider: "gemini"
+    quota_remaining: 1000000
+    quota_limit: 1000000
+    models_preferred: ["gemini-3-pro-preview", "gemini-3-flash-preview"]
+    priority: 1
+    auth_method: "oauth"
+    rate_limit_config:
+      max_retries: 3
+      backoff_factor: 2
+      max_backoff: 3600
+    project_id: "arcana-novai-gemini-1772727596"
+    domains_supported: ["general", "architect", "ui", "voice", "data"]
+    oauth_config:
+      scopes: ["https://www.googleapis.com/auth/cloud-platform"]
+      refresh_interval: 3600
+      credential_file: "~/.xnai/oauth_credentials.json"
+  
+  gemini_oauth_02:
+    name: "Gemini OAuth Account 2"
+    provider: "gemini"
+    quota_remaining: 1000000
+    quota_limit: 1000000
+    models_preferred: ["gemini-3-pro-preview", "gemini-3-flash-preview"]
+    priority: 2
+    auth_method: "oauth"
+    rate_limit_config:
+      max_retries: 3
+      backoff_factor: 2
+      max_backoff: 3600
+    project_id: "arcana-novai-gemini-1772727596"
+    domains_supported: ["general", "architect", "ui", "voice", "data"]
+    oauth_config:
+      scopes: ["https://www.googleapis.com/auth/cloud-platform"]
+      refresh_interval: 3600
+      credential_file: "~/.xnai/oauth_credentials.json"
+  
+  gemini_oauth_03:
+    name: "Gemini OAuth Account 3"
+    provider: "gemini"
+    quota_remaining: 1000000
+    quota_limit: 1000000
+    models_preferred: ["gemini-3-pro-preview", "gemini-3-flash-preview"]
+    priority: 3
+    auth_method: "oauth"
+    rate_limit_config:
+      max_retries: 3
+      backoff_factor: 2
+      max_backoff: 3600
+    project_id: "arcana-novai-gemini-1772727596"
+    domains_supported: ["general", "architect", "ui", "voice", "data"]
+    oauth_config:
+      scopes: ["https://www.googleapis.com/auth/cloud-platform"]
+      refresh_interval: 3600
+      credential_file: "~/.xnai/oauth_credentials.json"
+  
+  opencode_oauth_01:
+    name: "OpenCode OAuth Account 1"
+    provider: "opencode"
+    quota_remaining: 1000000
+    quota_limit: 1000000
+    models_preferred: ["google/antigravity-claude-sonnet-4-6", "google/antigravity-claude-opus-4-6-thinking"]
+    priority: 4
+    auth_method: "oauth"
+    rate_limit_config:
+      max_retries: 3
+      backoff_factor: 2
+      max_backoff: 3600
+    domains_supported: ["general", "architect", "api", "test", "research"]
+    oauth_config:
+      scopes: ["repo", "read:user", "user:email"]
+      refresh_interval: 3600
+      credential_file: "~/.xnai/oauth_credentials.json"
+  
+  opencode_oauth_02:
+    name: "OpenCode OAuth Account 2"
+    provider: "opencode"
+    quota_remaining: 1000000
+    quota_limit: 1000000
+    models_preferred: ["google/antigravity-claude-sonnet-4-6", "google/antigravity-claude-opus-4-6-thinking"]
+    priority: 5
+    auth_method: "oauth"
+    rate_limit_config:
+      max_retries: 3
+      backoff_factor: 2
+      max_backoff: 3600
+    domains_supported: ["general", "architect", "api", "test", "research"]
+    oauth_config:
+      scopes: ["repo", "read:user", "user:email"]
+      refresh_interval: 3600
+      credential_file: "~/.xnai/oauth_credentials.json"
+  
+  opencode_oauth_03:
+    name: "OpenCode OAuth Account 3"
+    provider: "opencode"
+    quota_remaining: 1000000
+    quota_limit: 1000000
+    models_preferred: ["google/antigravity-claude-sonnet-4-6", "google/antigravity-claude-opus-4-6-thinking"]
+    priority: 6
+    auth_method: "oauth"
+    rate_limit_config:
+      max_retries: 3
+      backoff_factor: 2
+      max_backoff: 3600
+    domains_supported: ["general", "architect", "api", "test", "research"]
+    oauth_config:
+      scopes: ["repo", "read:user", "user:email"]
+      refresh_interval: 3600
+      credential_file: "~/.xnai/oauth_credentials.json"
+  
+  copilot_oauth_01:
+    name: "Copilot OAuth Account 1"
+    provider: "copilot"
+    quota_remaining: 1000000
+    quota_limit: 1000000
+    models_preferred: ["claude-haiku-4.5", "gemini-3-flash-preview"]
+    priority: 7
+    auth_method: "oauth"
+    rate_limit_config:
+      max_retries: 3
+      backoff_factor: 2
+      max_backoff: 3600
+    domains_supported: ["general", "api", "test", "ops"]
+    oauth_config:
+      scopes: ["repo", "read:user", "user:email"]
+      refresh_interval: 3600
+      credential_file: "~/.xnai/oauth_credentials.json"
+  
+  copilot_oauth_02:
+    name: "Copilot OAuth Account 2"
+    provider: "copilot"
+    quota_remaining: 1000000
+    quota_limit: 1000000
+    models_preferred: ["claude-haiku-4.5", "gemini-3-flash-preview"]
+    priority: 8
+    auth_method: "oauth"
+    rate_limit_config:
+      max_retries: 3
+      backoff_factor: 2
+      max_backoff: 3600
+    domains_supported: ["general", "api", "test", "ops"]
+    oauth_config:
+      scopes: ["repo", "read:user", "user:email"]
+      refresh_interval: 3600
+      credential_file: "~/.xnai/oauth_credentials.json"
+
+  # Legacy Accounts (Non-OAuth)
+  xna:
+    email: "xoe.nova.ai@gmail.com"
+    model: "kat-coder-pro"
+    runtime: "podman"
+    auth_method: "api_key"
+    domains_supported: ["general", "api", "test"]
+  
+  xna-local:
+    email: "arcananovaai@gmail.com"
+    model: "trinity-large-preview"
+    runtime: "local"
+    auth_method: "api_key"
+    domains_supported: ["general", "research"]

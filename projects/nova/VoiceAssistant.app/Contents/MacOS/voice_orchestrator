@@ -1,0 +1,12 @@
+#!/bin/bash
+# Voice Assistant Launcher Script
+# This script activates the virtual environment and starts the voice orchestrator
+
+# Set working directory
+cd /Users/buck/Documents/voice-setup-project
+
+# Activate the virtual environment
+source /Users/buck/Documents/voice-setup-project/voice_venv/bin/activate
+
+# Run the voice orchestrator
+python3 /Users/buck/Documents/voice-setup-project/voice_orchestrator.py

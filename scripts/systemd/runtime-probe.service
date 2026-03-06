@@ -1,0 +1,10 @@
+[Unit]
+Description=XNAi runtime-probe (writes JSON + Prometheus textfile)
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env python3 ${GIT_WORKTREE:-/home/arcana-novai/Documents/xnai-foundation}/scripts/runtime_probe.py --output-dir /var/lib/node_exporter/textfile_collector
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+{
+  "title": "GitHub accounts & branch protection audit",
+  "description": "Audit GitHub organization membership, team assignments, branch protection rules, and Copilot seat mapping. Produce OWNERS.md and COPILOT-ACCOUNT-MAP.md and a protection-rule checklist.",
+  "labels": ["audit", "security", "priority-high"],
+  "project": "Research",
+  "priority": 1
+}

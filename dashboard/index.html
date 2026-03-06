@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omega Metropolis - 8-Domain Expert Dashboard</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header h1 { margin: 0; color: #38bdf8; font-size: 1.5rem; }
+        .header p { color: #94a3b8; font-size: 0.875rem; }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .account-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+
+        .account-card:hover { transform: translateY(-4px); }
+
+        .account-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .account-name { font-weight: 700; color: #7dd3fc; }
+        
+        .badge {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.active { background: #065f46; color: #34d399; }
+        .badge.inactive { background: #7f1d1d; color: #f87171; }
+
+        .metrics-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .metrics-list li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            padding: 4px 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        .metrics-list li:last-child { border: none; }
+        .metric-label { color: #94a3b8; }
+        .metric-value { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+
+        .overview-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .stat-value { font-size: 1.5rem; font-weight: 800; color: #38bdf8; display: block; }
+        .stat-label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; }
+
+        /* Heatmap Styles */
+        .heatmap-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .heatmap-cell {
+            aspect-ratio: 1;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            font-weight: bold;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .heatmap-cell[data-status="nominal"] { background: #065f46; border: 1px solid #059669; }
+        .heatmap-cell[data-status="approaching_limit"] { background: #92400e; border: 1px solid #d97706; }
+        .heatmap-cell[data-status="limit_reached"] { background: #7f1d1d; border: 1px solid #dc3545; }
+        .heatmap-label { grid-column: span 8; font-size: 0.75rem; color: #94a3b8; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: bold; }
+
+        #alertsContainer { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+        .alert { padding: 12px 20px; border-radius: 8px; margin-top: 10px; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .alert-success { background: #059669; }
+        .alert-info { background: #2563eb; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌌 OMEGA METROPOLIS EXPERT NETWORK</h1>
+        <p>Live Monitoring of 8 Isolated Domain Instances | Last Sync: <span id="lastUpdated">-</span></p>
+    </div>
+
+    <div class="overview-stats">
+        <div class="stat-box">
+            <span class="stat-value" id="totalTokens">0</span>
+            <span class="stat-label">Total Network Tokens</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-value" id="activeAccounts">0</span>
+            <span class="stat-label">Active Expert Domains</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-value" id="totalMessages">0</span>
+            <span class="stat-label">Global Message Count</span>
+        </div>
+    </div>
+
+    <div class="heatmap-grid" id="quotaHeatmap">
+        <div class="heatmap-label">Provider Quota Health Pulse (Instance 1-8)</div>
+        <!-- Heatmap cells injected by JS -->
+    </div>
+
+    <div class="dashboard-grid" id="accountsList">
+        <!-- Cards injected by JS -->
+    </div>
+
+    <div id="alertsContainer"></div>
+
+    <script>
+        async function updateDashboard() {
+            try {
+                // Fetch from artifacts relative to the dashboard root
+                const response = await fetch('./artifacts/omega_instance_metrics.json');
+                const data = await response.json();
+                
+                document.getElementById('lastUpdated').textContent = new Date(data.timestamp).toLocaleTimeString();
+                
+                // Update Heatmap
+                const heatmap = document.getElementById('quotaHeatmap');
+                heatmap.innerHTML = '<div class="heatmap-label">Provider Quota Health Pulse (Instance 1-8)</div>';
+                
+                // Update Main List
+                const container = document.getElementById('accountsList');
+                container.innerHTML = '';
+                
+                let globalMessages = 0;
+
+                Object.keys(data.instances).forEach(key => {
+                    const inst = data.instances[key];
+                    globalMessages += inst.gemini.total_messages;
+
+                    // Add to Heatmap
+                    const cell = document.createElement('div');
+                    cell.className = 'heatmap-cell';
+                    cell.setAttribute('data-status', inst.gemini.quota_status);
+                    cell.innerHTML = `<span>D${key.split('-')[1]}</span><span style="font-size:0.5rem">${inst.gemini.total_requests}</span>`;
+                    cell.title = `${inst.name}: ${inst.gemini.total_requests} requests`;
+                    heatmap.appendChild(cell);
+
+                    // Add to Main List
+                    const card = document.createElement('div');
+                    card.className = 'account-card';
+                    card.innerHTML = `
+                        <div class="account-header">
+                            <span class="account-name">${inst.name}</span>
+                            <span class="badge ${inst.status}">${inst.status.toUpperCase()}</span>
+                        </div>
+                        <ul class="metrics-list">
+                            <li><span class="metric-label">Messages</span> <span class="metric-value">${inst.gemini.total_messages}</span></li>
+                            <li><span class="metric-label">Requests</span> <span class="metric-value">${inst.gemini.total_requests}</span></li>
+                            <li><span class="metric-label">Tokens</span> <span class="metric-value">${inst.gemini.total_tokens.toLocaleString()}</span></li>
+                            <li><span class="metric-label">Status</span> <span class="metric-value">${inst.opencode.active ? 'OpenCode Active' : 'CLI Only'}</span></li>
+                        </ul>
+                    `;
+                    container.appendChild(card);
+                });
+
+                document.getElementById('totalTokens').textContent = (data.total_network_tokens || 0).toLocaleString();
+                document.getElementById('activeAccounts').textContent = Object.values(data.instances).filter(i => i.status === 'active').length;
+                document.getElementById('totalMessages').textContent = globalMessages.toLocaleString();
+                
+            } catch (error) {
+                console.error('Dashboard Sync Error:', error);
+            }
+        }
+
+        updateDashboard();
+        setInterval(updateDashboard, 5000); // 5s pulse
+    </script>
+</body>
+</html>

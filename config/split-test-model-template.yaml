@@ -1,0 +1,77 @@
+# Split Test Model Template
+# ========================
+# Template for adding new models to split tests
+# Copy this file and fill in the details
+
+model:
+  # Unique identifier (used in commands and outputs)
+  id: "my-model-id"
+  
+  # Human-readable name
+  name: "My Model Name"
+  
+  # Provider (e.g., OpenCode, Copilot, Cline, Gemini)
+  provider: "Provider Name"
+  
+  # CLI tool to use
+  cli: "opencode"  # Options: opencode, copilot, cline, gemini
+  
+  # Model ID as passed to CLI
+  model_id: "model-name"
+  
+  # Context window in tokens
+  context_window: 200000
+  
+  # Maximum output tokens
+  max_output: 64000
+  
+  # Capabilities (for documentation)
+  capabilities:
+    - "coding"
+    - "reasoning"
+  
+  # Cost (free, paid, etc.)
+  cost: "free"
+  
+  # Custom CLI template (optional)
+  # Default: "{cli} --model {model_id} \"{prompt}\""
+  cli_template: "{cli} --model {model_id} --system \"{system}\" \"{prompt}\""
+  
+  # Environment variables (optional)
+  env_vars:
+    OPENROUTER_API_KEY: "${OPENROUTER_API_KEY}"
+
+# Test configuration
+test:
+  # Timeout in seconds
+  timeout: 600
+  
+  # Retry settings
+  retry:
+    attempts: 2
+    delay: 5
+  
+  # Required context files
+  context_files:
+    - "context/TASK-INSTRUCTIONS.md"
+    - "context/EVALUATION-CRITERIA.md"
+  
+  # Expected output characteristics
+  expected:
+    min_length: 5000
+    phases: ["5A", "5B", "5C", "5D", "5E"]
+
+# Example: Adding kat-coder-pro
+# ==============================
+# To add kat-coder-pro to your test, use:
+#
+# model:
+#   id: "katcoder-pro"
+#   name: "KAT-Coder-Pro"
+#   provider: "Cline CLI"
+#   cli: "cline"
+#   model_id: "kat-coder-pro"
+#   context_window: 262144
+#   max_output: 32768
+#   capabilities: ["coding", "262K_context", "agentic"]
+#   cost: "free"

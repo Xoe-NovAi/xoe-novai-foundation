@@ -1,0 +1,8 @@
+{
+  "type": "challenge",
+  "challenger_did": "did:xnai:copilot-001",
+  "challenge_nonce": "e720d6a53e787af2fe13e36e21a4c2413c09c3395db95212df4a89be349675f4",
+  "timestamp": "2026-02-15T17:44:56.787703+00:00",
+  "expires_at": "2026-02-15T17:49:56.787714+00:00",
+  "signature": "f69b917634c03fd99bbf5ee12aeb9c05b7d9b81939bdad77644c2de7cd2f766592c071f2da27751d1e0d3f77f3d82a91f78b3926a4f1378626d4116013567c0b"
+}

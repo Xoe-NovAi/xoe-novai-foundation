@@ -1,0 +1,8 @@
+-r requirements-api.in
+-r requirements-chainlit.in
+-r requirements-crawl.in
+-r requirements-curation_worker.in
+
+# Dev tools
+# -r requirements-dev.in
+python-consul2>=0.1.5

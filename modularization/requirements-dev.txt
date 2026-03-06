@@ -1,0 +1,53 @@
+# OpenCode Multi-Account System - Development Requirements
+# =========================================================
+
+# Testing Framework
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+pytest-xdist>=3.3.0
+
+# Code Quality
+ruff>=0.1.0
+black>=23.0.0
+isort>=5.12.0
+mypy>=1.6.0
+
+# Documentation
+mkdocs>=1.5.0
+mkdocs-material>=9.4.0
+mkdocstrings[python]>=0.22.0
+
+# Development Tools
+pre-commit>=3.4.0
+watchdog>=3.0.0
+
+# Debugging and Profiling
+memory-profiler>=0.60.0
+py-spy>=0.3.14
+
+# API Testing
+httpx>=0.25.0
+requests-mock>=1.11.0
+
+# Development Dependencies for Plugin System
+pytest-plugin>=1.0.0
+entrypoints>=0.4
+
+# Development Dependencies for Configuration
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# Development Dependencies for Monitoring
+psutil>=5.9.0
+prometheus-client>=0.17.0
+
+# Development Dependencies for Security
+bandit>=1.7.0
+safety>=2.3.0
+
+# Development Dependencies for Packaging
+build>=0.10.0
+twine>=4.0.0
+setuptools>=68.0.0

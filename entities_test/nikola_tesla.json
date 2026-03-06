@@ -1,0 +1,28 @@
+{
+  "entity_id": "nikola_tesla",
+  "role": "inventor",
+  "domains": [],
+  "is_initialized": true,
+  "procedural_memory": [
+    {
+      "timestamp": 1772408399.3984807,
+      "query": "Who are you?",
+      "advice": "Bootstrap",
+      "outcome": "I am the inventor of AC electricity.",
+      "rating": 1.0
+    },
+    {
+      "timestamp": 1772408399.3988848,
+      "query": "How does AC work?",
+      "advice": "N/A (Automated research turn)",
+      "outcome": "Great explanation of alternating current.",
+      "rating": 0.95
+    }
+  ],
+  "stats": {
+    "invocations": 0,
+    "success_rate": 0.975,
+    "total_feedback": 2
+  },
+  "last_updated": 1772408399.3988872
+}

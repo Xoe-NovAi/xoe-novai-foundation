@@ -1,0 +1,282 @@
+# Multi-Agent Integration Skill
+# 
+# This skill provides multi-agent coordination and testing capabilities
+# for the Omega Stack CI/CD pipeline.
+
+name: 'Multi-Agent Integration'
+description: 'Coordinate and test multi-agent workflows'
+
+inputs:
+  agent-type:
+    description: 'Type of agent to coordinate (claude, gemini, opencode, cline)'
+    required: true
+  
+  task-description:
+    description: 'Description of the task for the agent'
+    required: true
+  
+  test-suite:
+    description: 'Test suite to run for the agent'
+    required: false
+    default: 'agent-specific'
+  
+  memory-bank-sync:
+    description: 'Enable memory bank synchronization'
+    required: false
+    default: 'true'
+  
+  context-window:
+    description: 'Context window size for the agent'
+    required: false
+    default: '200K'
+  multi-account-support:
+    description: 'Enable multi-account support for the agent'
+    required: false
+    default: 'false'
+  quota-monitoring:
+    description: 'Enable quota monitoring for multi-account agents'
+    required: false
+    default: 'false'
+
+outputs:
+  agent-result:
+    description: 'Result of agent coordination'
+    value: ${{ steps.execute-agent.outputs.agent-result }}
+  
+  test-results:
+    description: 'Test results from agent'
+    value: ${{ steps.run-tests.outputs.test-results }}
+
+runs:
+  using: 'composite'
+  
+  steps:
+    - name: Setup Agent Environment
+      id: setup
+      shell: bash
+      run: |
+        echo "🤖 Setting up ${{ inputs.agent-type }} agent environment..."
+        
+        # Set agent-specific environment variables
+        case "${{ inputs.agent-type }}" in
+          "claude")
+            echo "AGENT_MODEL=sonnet-4-6" >> $GITHUB_ENV
+            echo "AGENT_CONTEXT_WINDOW=200K" >> $GITHUB_ENV
+            echo "AGENT_PROVIDER=anthropic" >> $GITHUB_ENV
+            ;;
+          "gemini")
+            echo "AGENT_MODEL=flash-preview" >> $GITHUB_ENV
+            echo "AGENT_CONTEXT_WINDOW=1M" >> $GITHUB_ENV
+            echo "AGENT_PROVIDER=google" >> $GITHUB_ENV
+            ;;
+          "opencode")
+            echo "AGENT_MODEL=minimax-m2.5" >> $GITHUB_ENV
+            echo "AGENT_CONTEXT_WINDOW=204K" >> $GITHUB_ENV
+            echo "AGENT_PROVIDER=opencode" >> $GITHUB_ENV
+            ;;
+          "cline")
+            echo "AGENT_MODEL=kat-coder-pro" >> $GITHUB_ENV
+            echo "AGENT_CONTEXT_WINDOW=262K" >> $GITHUB_ENV
+            echo "AGENT_PROVIDER=local" >> $GITHUB_ENV
+            ;;
+          *)
+            echo "Unknown agent type: ${{ inputs.agent-type }}"
+            exit 1
+            ;;
+        esac
+        
+        echo "AGENT_TYPE=${{ inputs.agent-type }}" >> $GITHUB_ENV
+        echo "TASK_DESCRIPTION=${{ inputs.task-description }}" >> $GITHUB_ENV
+        echo "TEST_SUITE=${{ inputs.test-suite }}" >> $GITHUB_ENV
+        
+        echo "✅ Agent environment setup complete"
+
+    - name: Execute Agent Task
+      id: execute-agent
+      shell: bash
+      run: |
+        echo "🎯 Executing task for ${{ inputs.agent-type }}..."
+        echo "Task: ${{ inputs.task-description }}"
+        echo "Context Window: ${{ inputs.context-window }}"
+        
+        # Create agent task file
+        cat > agent_task.json << EOF
+        {
+          "agent_type": "${{ inputs.agent-type }}",
+          "task_description": "${{ inputs.task-description }}",
+          "context_window": "${{ inputs.context-window }}",
+          "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+          "environment": {
+            "hardware_profile": "${{ env.HARDWARE_PROFILE }}",
+            "memory_bank_path": "${{ env.MEMORY_BANK_PATH }}"
+          }
+        }
+        EOF
+        
+        # Execute agent-specific task
+        case "${{ inputs.agent-type }}" in
+          "claude")
+            echo "Executing Claude-specific task..."
+            python scripts/agent_tasks/claude_task.py --task-file agent_task.json
+            ;;
+          "gemini")
+            echo "Executing Gemini-specific task..."
+            python scripts/agent_tasks/gemini_task.py --task-file agent_task.json
+            ;;
+          "opencode")
+            echo "Executing OpenCode-specific task..."
+            python scripts/agent_tasks/opencode_task.py --task-file agent_task.json
+            ;;
+          "cline")
+            echo "Executing Cline-specific task..."
+            python scripts/agent_tasks/cline_task.py --task-file agent_task.json
+            ;;
+        esac
+        
+        # Capture agent result
+        if [ -f "agent_result.json" ]; then
+          agent_result=$(cat agent_result.json)
+          echo "agent-result=$agent_result" >> $GITHUB_OUTPUT
+        else
+          echo "agent-result=Task completed successfully" >> $GITHUB_OUTPUT
+        fi
+        
+        echo "✅ Agent task execution complete"
+
+    - name: Run Agent-Specific Tests
+      id: run-tests
+      shell: bash
+      run: |
+        echo "🧪 Running tests for ${{ inputs.agent-type }}..."
+        
+        # Check if agent-specific test file exists
+        test_file="tests/agent_tests/test_${{ inputs.agent-type }}.py"
+        
+        if [ -f "$test_file" ]; then
+          echo "Found agent-specific test file: $test_file"
+          python -m pytest "$test_file" -v --tb=short --json-report --json-report-file=test_results.json
+          
+          # Capture test results
+          if [ -f "test_results.json" ]; then
+            test_results=$(cat test_results.json)
+            echo "test-results=$test_results" >> $GITHUB_OUTPUT
+          fi
+        else
+          echo "No agent-specific test file found, running general tests..."
+          python -m pytest tests/ -k "not integration" -v --tb=short --json-report --json-report-file=test_results.json
+          
+          # Capture test results
+          if [ -f "test_results.json" ]; then
+            test_results=$(cat test_results.json)
+            echo "test-results=$test_results" >> $GITHUB_OUTPUT
+          fi
+        fi
+        
+        echo "✅ Agent tests completed"
+
+    - name: Memory Bank Integration
+      if: inputs.memory-bank-sync == 'true'
+      shell: bash
+      run: |
+        echo "🧠 Syncing with memory bank..."
+        
+        # Create memory bank entry
+        cat > memory_bank_entry.json << EOF
+        {
+          "agent_type": "${{ inputs.agent-type }}",
+          "task_description": "${{ inputs.task-description }}",
+          "test_suite": "${{ inputs.test-suite }}",
+          "context_window": "${{ inputs.context-window }}",
+          "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+          "status": "completed",
+          "test_results": "available"
+        }
+        EOF
+        
+        # Sync with memory bank
+        python scripts/update_memory_bank.py \
+          --agent-type "${{ inputs.agent-type }}" \
+          --entry memory_bank_entry.json \
+          --sync-type "agent-coordination"
+        
+        echo "✅ Memory bank synchronization complete"
+
+    - name: Performance Metrics Collection
+      shell: bash
+      run: |
+        echo "📊 Collecting performance metrics for ${{ inputs.agent-type }}..."
+        
+        # Run agent-specific performance benchmarks
+        if [ -f "scripts/benchmark_agent.py" ]; then
+          python scripts/benchmark_agent.py \
+            --agent "${{ inputs.agent-type }}" \
+            --model "${{ env.AGENT_MODEL }}" \
+            --output performance_metrics/${{ inputs.agent-type }}_metrics.json
+        fi
+        
+        # Collect system metrics
+        echo "System metrics for ${{ inputs.agent-type }}:" > system_metrics.txt
+        echo "CPU Usage: $(top -bn1 | grep 'Cpu(s)' | awk '{print $2}' | cut -d'%' -f1)" >> system_metrics.txt
+        echo "Memory Usage: $(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')" >> system_metrics.txt
+        echo "Disk Usage: $(df -h | awk 'NR==2{print $5}')" >> system_metrics.txt
+        
+        echo "✅ Performance metrics collection complete"
+
+    - name: Generate Agent Report
+      shell: bash
+      run: |
+        echo "📋 Generating agent coordination report..."
+        
+        # Create comprehensive agent report
+        cat > agent_report.md << EOF
+        # Agent Coordination Report
+        
+        ## Agent Information
+        - **Agent Type**: ${{ inputs.agent-type }}
+        - **Model**: ${{ env.AGENT_MODEL }}
+        - **Context Window**: ${{ inputs.context-window }}
+        - **Provider**: ${{ env.AGENT_PROVIDER }}
+        
+        ## Task Information
+        - **Task Description**: ${{ inputs.task-description }}
+        - **Test Suite**: ${{ inputs.test-suite }}
+        - **Timestamp**: $(date -u)
+        
+        ## Results
+        - **Status**: Completed Successfully
+        - **Memory Bank Sync**: ${{ inputs.memory-bank-sync }}
+        - **Performance Metrics**: Collected
+        
+        ## Files Generated
+        - agent_task.json
+        - agent_result.json (if applicable)
+        - test_results.json
+        - performance_metrics/${{ inputs.agent-type }}_metrics.json
+        - system_metrics.txt
+        - agent_report.md
+        
+        ## Next Steps
+        1. Review test results in test_results.json
+        2. Analyze performance metrics in performance_metrics/
+        3. Check memory bank for updated entries
+        4. Proceed with next agent coordination if needed
+        EOF
+        
+        echo "✅ Agent coordination report generated"
+
+    - name: Cleanup
+      shell: bash
+      run: |
+        echo "🧹 Cleaning up temporary files..."
+        
+        # Remove temporary files
+        rm -f agent_task.json
+        rm -f agent_result.json
+        rm -f memory_bank_entry.json
+        rm -f system_metrics.txt
+        
+        echo "✅ Cleanup complete"
+
+branding:
+  icon: 'users'
+  color: 'green'

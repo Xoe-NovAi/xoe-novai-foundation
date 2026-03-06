@@ -1,0 +1,63 @@
+# ============================================================================
+# Vikunja Configuration - Xoe-NovAi Integration
+# ============================================================================
+# Reference: https://vikunja.io/docs/config-options/
+# Note: Environment variables (VIKUNJA_*) take precedence over this file
+# Update: 2026-02-07
+# ============================================================================
+
+service:
+  # Public URL for task/calendar sharing and frontend configuration
+  publicurl: "http://localhost/vikunja"
+  
+  # Interface to bind to (handled by Docker, leave as default)
+  interface: ":3456"
+  
+  # Task management features
+  enablecalendar: true              # Calendar sync support
+  enablesync: false                 # CalDAV disabled (air-gap)
+  
+  # File attachments
+  maxfilesize: "20MB"               # Per Vikunja task
+
+# Database configuration (overridden by env vars)
+database:
+  # Type handled by env vars, default to PostgreSQL
+  maxopenconnections: 20            # Keep low for small systems
+  maxidleconnections: 5
+  connmaxlifetime: 0
+
+# Authentication
+auth:
+  # JWT handled via environment variables
+  local:
+    enabled: true                   # Local accounts enabled
+  openid:
+    enabled: false                  # Disable external OAuth (sovereignty)
+
+# File storage
+files:
+  basepath: "/app/vikunja/files"
+
+# CORS (disabled, Caddy handles proxy)
+cors:
+  enabled: false
+
+# Redis (optional, for sessions/cache)
+redis:
+  enabled: true
+  host: "redis"
+  port: 6379
+  db: 5                             # Use DB 5 (Foundation uses 0-4)
+
+# Logging
+logger:
+  level: "info"
+
+# Mailer (disabled for air-gapped deployment)
+mailer:
+  enabled: false
+
+# Legal/Branding
+legalurl: ""
+privacyurl: ""

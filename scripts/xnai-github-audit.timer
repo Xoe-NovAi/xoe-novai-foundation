@@ -1,0 +1,11 @@
+[Unit]
+Description=XNAi GitHub Account Audit Timer
+Documentation=https://github.com/Xoe-NovAi/xoe-novai-foundation
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+Unit=xnai-github-audit.service
+
+[Install]
+WantedBy=timers.target

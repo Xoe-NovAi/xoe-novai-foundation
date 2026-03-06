@@ -1,0 +1,320 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Xoe-NovAi API",
+    "description": "Foundation RAG API for Xoe-NovAi stack.",
+    "version": "0.1.0-alpha"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Health Check",
+        "description": "Health check endpoint.",
+        "operationId": "health_check_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/query": {
+      "post": {
+        "tags": [
+          "query"
+        ],
+        "summary": "Query Endpoint",
+        "description": "Synchronous query endpoint with tiered degradation support.",
+        "operationId": "query_endpoint_query_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stream": {
+      "post": {
+        "tags": [
+          "query"
+        ],
+        "summary": "Stream Endpoint",
+        "description": "Streaming query endpoint with tiered degradation support.",
+        "operationId": "stream_endpoint_stream_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Health status: healthy, degraded, or partial"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version",
+            "description": "Stack version"
+          },
+          "memory_gb": {
+            "type": "number",
+            "title": "Memory Gb",
+            "description": "Current memory usage in GB"
+          },
+          "vectorstore_loaded": {
+            "type": "boolean",
+            "title": "Vectorstore Loaded",
+            "description": "Whether vectorstore is available"
+          },
+          "components": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Components",
+            "description": "Component status map"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "version",
+          "memory_gb",
+          "vectorstore_loaded",
+          "components"
+        ],
+        "title": "HealthResponse",
+        "description": "Health check response model."
+      },
+      "QueryRequest": {
+        "properties": {
+          "query": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Query",
+            "description": "User query",
+            "examples": [
+              "What is Xoe-NovAi?"
+            ]
+          },
+          "use_rag": {
+            "type": "boolean",
+            "title": "Use Rag",
+            "description": "Whether to use RAG context retrieval",
+            "default": true
+          },
+          "max_tokens": {
+            "type": "integer",
+            "maximum": 2048.0,
+            "minimum": 1.0,
+            "title": "Max Tokens",
+            "description": "Maximum tokens to generate",
+            "default": 512
+          },
+          "temperature": {
+            "type": "number",
+            "maximum": 2.0,
+            "minimum": 0.0,
+            "title": "Temperature",
+            "description": "Sampling temperature",
+            "default": 0.7
+          },
+          "top_p": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Top P",
+            "description": "Nucleus sampling parameter",
+            "default": 0.95
+          }
+        },
+        "type": "object",
+        "required": [
+          "query"
+        ],
+        "title": "QueryRequest",
+        "description": "Query request model."
+      },
+      "QueryResponse": {
+        "properties": {
+          "response": {
+            "type": "string",
+            "title": "Response",
+            "description": "Generated response"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Sources",
+            "description": "RAG sources used"
+          },
+          "tokens_generated": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tokens Generated",
+            "description": "Number of tokens generated"
+          },
+          "duration_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration Ms",
+            "description": "Processing time in milliseconds"
+          },
+          "token_rate_tps": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Token Rate Tps",
+            "description": "Tokens per second"
+          }
+        },
+        "type": "object",
+        "required": [
+          "response"
+        ],
+        "title": "QueryResponse",
+        "description": "Query response model."
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

@@ -1,0 +1,310 @@
+# Performance Optimization & Monitoring Configuration
+# ================================================
+#
+# This configuration optimizes context window usage across models
+# and implements comprehensive usage tracking and alerts.
+#
+# Key Features:
+# - Cross-model context window optimization
+# - Real-time usage tracking
+# - Intelligent alerting system
+# - Performance monitoring dashboard
+
+performance_optimization:
+  version: "1.0"
+  enabled: true
+  
+  # Context window optimization
+  context_window_optimization:
+    enabled: true
+    
+    # Model-specific optimization
+    models:
+      minimax_m2_5_free:
+        strategy: "aggressive_compression"
+        compression_ratio: 0.6
+        quality_threshold: 0.8
+        max_context_size: 8192
+        min_context_size: 2048
+        
+      opus_4_6_thinking:
+        strategy: "quality_preservation"
+        compression_ratio: 0.8
+        quality_threshold: 0.95
+        max_context_size: 16384
+        min_context_size: 4096
+        
+      gemini_20b_thinking:
+        strategy: "balanced"
+        compression_ratio: 0.7
+        quality_threshold: 0.9
+        max_context_size: 12288
+        min_context_size: 3072
+        
+      qwen_plus_thinking:
+        strategy: "adaptive"
+        compression_ratio: 0.75
+        quality_threshold: 0.85
+        max_context_size: 14336
+        min_context_size: 3584
+
+    # Cross-model optimization
+    cross_model:
+      enabled: true
+      context_sharing: true
+      memory_linking: true
+      state_synchronization: true
+      
+      # Optimization strategies
+      strategies:
+        - "context_compression"
+        - "semantic_summarization"
+        - "key_point_extraction"
+        - "hierarchical_organization"
+
+  # Usage tracking and monitoring
+  usage_tracking:
+    enabled: true
+    
+    # Tracking metrics
+    metrics:
+      # Token usage
+      token_usage:
+        enabled: true
+        tracking_interval: 60  # seconds
+        aggregation_window: 3600  # 1 hour
+        
+      # Context window utilization
+      context_utilization:
+        enabled: true
+        tracking_interval: 30  # seconds
+        aggregation_window: 1800  # 30 minutes
+        
+      # Model performance
+      model_performance:
+        enabled: true
+        tracking_interval: 120  # seconds
+        aggregation_window: 7200  # 2 hours
+        
+      # Quality metrics
+      quality_metrics:
+        enabled: true
+        tracking_interval: 300  # 5 minutes
+        aggregation_window: 18000  # 5 hours
+
+    # Usage analytics
+    analytics:
+      enabled: true
+      
+      # Trend analysis
+      trend_analysis:
+        enabled: true
+        time_windows:
+          - "1_hour"
+          - "24_hours"
+          - "7_days"
+          - "30_days"
+          
+      # Pattern detection
+      pattern_detection:
+        enabled: true
+        patterns:
+          - "usage_spikes"
+          - "quality_degradation"
+          - "model_preference"
+          - "context_optimization_effectiveness"
+
+  # Alerting system
+  alerting:
+    enabled: true
+    
+    # Alert thresholds
+    thresholds:
+      # Context window alerts
+      context_window:
+        warning: 0.8    # 80% utilization
+        critical: 0.95  # 95% utilization
+        
+      # Quality alerts
+      quality:
+        warning: 0.7    # 70% quality score
+        critical: 0.5   # 50% quality score
+        
+      # Performance alerts
+      performance:
+        response_time_warning: 30   # 30 seconds
+        response_time_critical: 60  # 60 seconds
+        error_rate_warning: 0.05    # 5%
+        error_rate_critical: 0.10   # 10%
+        
+      # Usage alerts
+      usage:
+        daily_quota_warning: 0.8    # 80% of daily quota
+        daily_quota_critical: 0.95  # 95% of daily quota
+        hourly_quota_warning: 0.9   # 90% of hourly quota
+        hourly_quota_critical: 0.95 # 95% of hourly quota
+
+    # Alert channels
+    channels:
+      log:
+        enabled: true
+        level: "INFO"
+        
+      email:
+        enabled: false
+        recipients: []
+        smtp_config: {}
+        
+      webhook:
+        enabled: false
+        url: ""
+        headers: {}
+        
+      dashboard:
+        enabled: true
+        refresh_interval: 60  # seconds
+
+  # Performance monitoring dashboard
+  dashboard:
+    enabled: true
+    port: 8080
+    host: "0.0.0.0"
+    
+    # Dashboard components
+    components:
+      usage_overview:
+        enabled: true
+        refresh_interval: 60
+        
+      model_performance:
+        enabled: true
+        refresh_interval: 120
+        
+      quality_monitoring:
+        enabled: true
+        refresh_interval: 300
+        
+      alert_status:
+        enabled: true
+        refresh_interval: 30
+        
+      optimization_metrics:
+        enabled: true
+        refresh_interval: 180
+
+    # Dashboard security
+    security:
+      authentication: true
+      username: "${DASHBOARD_USERNAME}"
+      password: "${DASHBOARD_PASSWORD}"
+      https_enabled: false
+
+  # Resource optimization
+  resource_optimization:
+    enabled: true
+    
+    # Memory optimization
+    memory:
+      enabled: true
+      strategies:
+        - "context_compression"
+        - "cache_management"
+        - "memory_pooling"
+        
+      limits:
+        max_memory_usage: "4GB"
+        compression_threshold: "2GB"
+        cache_size_limit: "1GB"
+        
+    # CPU optimization
+    cpu:
+      enabled: true
+      strategies:
+        - "load_balancing"
+        - "task_scheduling"
+        - "parallel_processing"
+        
+      limits:
+        max_cpu_usage: "80%"
+        priority_scheduling: true
+        background_processing: true
+        
+    # Network optimization
+    network:
+      enabled: true
+      strategies:
+        - "connection_pooling"
+        - "request_batching"
+        - "bandwidth_optimization"
+        
+      limits:
+        max_bandwidth: "100MB/s"
+        connection_timeout: 30
+        retry_attempts: 3
+
+  # Integration with OpenCode accounts
+  integration:
+    opencode_accounts:
+      enabled: true
+      
+      # Account-specific optimization
+      account_optimization:
+        enabled: true
+        strategies:
+          - "usage_distribution"
+          - "load_balancing"
+          - "health_monitoring"
+          
+      # Multi-account coordination
+      coordination:
+        enabled: true
+        coordination_interval: 300  # 5 minutes
+        synchronization_strategy: "event_driven"
+
+  # Quality validation checkpoints
+  quality_checkpoints:
+    enabled: true
+    
+    # Checkpoint configuration
+    checkpoints:
+      pre_optimization:
+        enabled: true
+        validations:
+          - "context_integrity"
+          - "model_readiness"
+          - "resource_availability"
+          
+      post_optimization:
+        enabled: true
+        validations:
+          - "optimization_effectiveness"
+          - "quality_preservation"
+          - "performance_improvement"
+          
+      continuous:
+        enabled: true
+        interval: 600  # 10 minutes
+        validations:
+          - "system_health"
+          - "optimization_metrics"
+          - "user_satisfaction"
+
+# Usage examples
+usage_examples:
+  # View performance dashboard
+  dashboard_access: |
+    Open browser to: http://localhost:8080
+    Username: ${DASHBOARD_USERNAME}
+    Password: ${DASHBOARD_PASSWORD}
+    
+  # Monitor usage metrics
+  monitor_usage: |
+    curl http://localhost:8080/api/metrics/usage
+    
+  # Check optimization status
+  check_optimization: |
+    curl http://localhost:8080/api/optimization/status
+    
+  # View alerts
+  view_alerts: |
+    curl http://localhost:8080/api/alerts/current

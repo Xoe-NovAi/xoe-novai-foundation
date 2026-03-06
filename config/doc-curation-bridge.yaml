@@ -1,0 +1,409 @@
+# Documentation Curation Bridge Configuration
+# Version: 1.0.0
+# Created: 2026-02-17
+# Purpose: Bridge crawling/curation systems with documentation excellence pipeline
+
+---
+# Bridge Overview
+# This configuration defines how discovered content flows through the curation
+# pipeline and becomes part of the documentation system.
+
+# Source Configuration
+sources:
+  crawler_system:
+    type: crawl4ai
+    output_dir: library/_staging/
+    formats:
+      - markdown
+      - html
+    schedule: "0 2 * * *"  # Daily at 2 AM
+    
+  manual_curation:
+    type: manual
+    input_dir: library/manuals/
+    queue_dir: data/curations/
+    
+  api_ingestion:
+    type: api
+    endpoint: /api/v1/curate
+    auth_required: true
+
+# Content Assessment Pipeline
+assessment:
+  qa_agent:
+    enabled: true
+    criteria:
+      relevance_score:
+        threshold: 0.7
+        weight: 0.4
+        description: "Content relevance to Xoe-NovAi Foundation"
+        
+      quality_score:
+        threshold: 0.6
+        weight: 0.3
+        description: "Content quality and completeness"
+        
+      duplication_check:
+        threshold: 0.8
+        weight: 0.2
+        description: "Avoid duplicate content"
+        
+      format_compliance:
+        threshold: 1.0
+        weight: 0.1
+        description: "Meets format requirements"
+        
+    scoring_weights:
+      clarity: 0.25
+      completeness: 0.25
+      accuracy: 0.25
+      relevance: 0.25
+
+  librarian_agent:
+    enabled: true
+    actions:
+      - extract_metadata
+      - populate_frontmatter
+      - assign_category
+      - link_to_related
+      - update_genealogy
+
+# Content Categories
+categories:
+  tutorials:
+    path: docs/02-tutorials/
+    criteria:
+      - has_step_by_step_instructions
+      - beginner_friendly
+    frontmatter:
+      category: Tutorial
+      status: draft
+      
+  how_to_guides:
+    path: docs/03-how-to-guides/
+    criteria:
+      - task_oriented
+      - practical_solutions
+    frontmatter:
+      category: How-to
+      status: draft
+      
+  reference:
+    path: docs/03-reference/
+    criteria:
+      - technical_specifications
+      - api_documentation
+    frontmatter:
+      category: Reference
+      status: draft
+      
+  explanation:
+    path: docs/04-explanation/
+    criteria:
+      - conceptual_content
+      - background_information
+    frontmatter:
+      category: Explanation
+      status: draft
+      
+  strategic:
+    path: internal_docs/01-strategic-planning/
+    criteria:
+      - strategic_planning
+      - roadmap_content
+    frontmatter:
+      category: Strategic
+      status: draft
+      
+  infrastructure:
+    path: internal_docs/03-infrastructure-ops/
+    criteria:
+      - deployment_content
+      - operations_content
+    frontmatter:
+      category: Infrastructure
+      status: draft
+      
+  research:
+    path: internal_docs/02-research-lab/
+    criteria:
+      - research_findings
+      - analysis_content
+    frontmatter:
+      category: Research
+      status: draft
+
+# Metadata Extraction
+metadata_extraction:
+  automatic:
+    - field: title
+      source: first_heading
+      required: true
+      
+    - field: description
+      source: first_paragraph
+      max_length: 200
+      
+    - field: tags
+      source: content_analysis
+      max_count: 10
+      
+    - field: last_updated
+      source: file_mtime
+      format: "%Y-%m-%d"
+      
+    - field: hardware_context
+      source: content_detection
+      triggers:
+        - "performance"
+        - "benchmark"
+        - "optimization"
+        - "vulkan"
+        - "zram"
+      template:
+        cpu: "AMD Ryzen 5700U (Zen 2)"
+        ram: "6.6GB available"
+        gpu: "AMD Radeon Graphics (RADV RENOIR)"
+        zram: "12GB zstd swap"
+        vulkan: "25.3.5"
+
+  manual_review:
+    required_for:
+      - category_assignment
+      - dependency_mapping
+      - supersedes_identification
+
+# Publication Workflow
+publication:
+  staging_dir: library/_staging/
+  review_required: true
+  auto_publish_threshold: 0.9
+  
+  workflow:
+    - stage: discovered
+      description: "Content discovered by crawler or manual submission"
+      auto_advance: true
+      
+    - stage: assessed
+      description: "Quality assessment complete"
+      auto_advance: true
+      condition: quality_score >= 0.6
+      
+    - stage: enriched
+      description: "Metadata and frontmatter added"
+      auto_advance: true
+      
+    - stage: categorized
+      description: "Category assigned"
+      auto_advance: false
+      
+    - stage: reviewed
+      description: "Human review complete"
+      auto_advance: false
+      
+    - stage: published
+      description: "Content added to documentation"
+      auto_advance: true
+      notification: vikunja_task
+
+# Vikunja Integration
+vikunja_integration:
+  project: documentation-health
+  
+  task_creation:
+    - trigger: content_discovered
+      template: content_review
+      priority: MEDIUM
+      
+    - trigger: quality_low
+      condition: quality_score < 0.6
+      template: quality_improvement
+      priority: HIGH
+      
+    - trigger: category_ambiguous
+      template: categorization_request
+      priority: LOW
+      
+  labels:
+    - curation
+    - content-review
+    - auto-discovered
+
+# Agent Bus Integration
+agent_bus:
+  enabled: true
+  redis_channels:
+    input:
+      - curation:content:discovered
+      - curation:content:assessed
+      - curation:content:published
+      
+    output:
+      - doc:events
+      - doc:quality
+      - search:events
+      
+  event_schema:
+    content_discovered:
+      type: object
+      required: [source, path, format]
+      properties:
+        source: {type: string}
+        path: {type: string}
+        format: {type: string}
+        timestamp: {type: string, format: date-time}
+        
+    content_assessed:
+      type: object
+      required: [path, quality_score, relevance_score]
+      properties:
+        path: {type: string}
+        quality_score: {type: number, minimum: 0, maximum: 1}
+        relevance_score: {type: number, minimum: 0, maximum: 1}
+        recommendations: {type: array}
+        
+    content_published:
+      type: object
+      required: [path, category, destination]
+      properties:
+        path: {type: string}
+        category: {type: string}
+        destination: {type: string}
+        frontmatter: {type: object}
+
+# Curation Bridge Class Implementation Guide
+bridge_implementation:
+  class: DocCurationBridge
+  module: scripts.doc_curation_bridge
+  
+  methods:
+    process_discovered_content:
+      description: "Main entry point for discovered content"
+      parameters:
+        - content_path
+        - source_type
+        - metadata_override
+      returns: ProcessingResult
+      
+    assess_quality:
+      description: "Run quality assessment on content"
+      parameters:
+        - content_path
+      returns: QualityAssessment
+      
+    enrich_metadata:
+      description: "Extract and add metadata"
+      parameters:
+        - content_path
+        - assessment
+      returns: EnrichedContent
+      
+    categorize:
+      description: "Determine appropriate category"
+      parameters:
+        - content_path
+        - assessment
+      returns: CategoryAssignment
+      
+    publish:
+      description: "Move content to documentation"
+      parameters:
+        - content_path
+        - category
+        - frontmatter
+      returns: PublicationResult
+      
+    create_vikunja_task:
+      description: "Create review task in Vikunja"
+      parameters:
+        - template_name
+        - data
+      returns: VikunjaTask
+
+# Quality Scoring Implementation
+quality_scorer:
+  class: DocumentationQualityScorer
+  module: scripts.doc_quality_scorer
+  
+  dimensions:
+    clarity:
+      weight: 0.2
+      metrics:
+        - sentence_length_variance
+        - jargon_usage
+        - readability_score
+        
+    completeness:
+      weight: 0.2
+      metrics:
+        - section_coverage
+        - code_example_presence
+        - link_completeness
+        
+    accuracy:
+      weight: 0.2
+      metrics:
+        - syntax_validation
+        - link_validation
+        - reference_verification
+        
+    consistency:
+      weight: 0.2
+      metrics:
+        - style_compliance
+        - terminology_consistency
+        - format_consistency
+        
+    relevance:
+      weight: 0.2
+      metrics:
+        - topic_alignment
+        - scope_appropriateness
+        - audience_match
+
+# Performance Settings
+performance:
+  batch_size: 20
+  concurrent_workers: 2
+  memory_limit_mb: 256
+  timeout_seconds: 60
+  
+  # Hardware-aware settings
+  hardware_optimization:
+    zram_aware: true
+    openblas_coretype: ZEN
+    thread_count: 4
+
+# Logging and Monitoring
+logging:
+  level: INFO
+  format: json
+  output: logs/curation-bridge.log
+  
+  audit:
+    enabled: true
+    output: logs/curation-audit.log
+    events:
+      - content_discovered
+      - content_assessed
+      - content_published
+      - quality_issue
+
+# Error Handling
+error_handling:
+  retry_attempts: 3
+  retry_delay: 5
+  fallback_action: manual_review
+  
+  error_types:
+    - name: ContentExtractionError
+      action: skip_and_log
+      notification: true
+      
+    - name: QualityAssessmentError
+      action: retry
+      notification: false
+      
+    - name: PublicationError
+      action: manual_review
+      notification: true

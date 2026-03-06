@@ -1,0 +1,189 @@
+# XNAi Split Test — Default Configuration
+# ==========================================
+# Default configuration for split tests
+# Can be overridden per-test via environment variables or test-specific config
+
+# =============================================================================
+# CENTRALIZED CONFIGURATION - Use environment variables or test config
+# =============================================================================
+# Environment Variables:
+#   SPLIT_TEST_OUTPUT_DIR    - Output directory
+#   SPLIT_TEST_REDIS_URL     - Redis connection URL
+#   SPLIT_TEST_QDRANT_URL    - Qdrant connection URL
+#   SPLIT_TEST_TIMEOUT       - Execution timeout in seconds
+#   SPLIT_TEST_VIKUNJA_URL   - Vikunja API URL
+#   SPLIT_TEST_LOG_LEVEL     - Logging level (DEBUG, INFO, WARNING)
+
+# =============================================================================
+# FOUNDATION STACK INTEGRATION
+# =============================================================================
+foundation_stack:
+  # Memory Bank Configuration
+  memory_bank:
+    root: "memory_bank"
+    contexts:
+      - "handovers/split-test/context"
+      - "activeContext.md"
+      - "progress.md"
+    # Test specific contexts loaded per-test
+  
+  # Redis (Metrics & Agent Bus)
+  redis:
+    host: "${SPLIT_TEST_REDIS_HOST:-localhost}"
+    port: 6379
+    db: 0
+    stream_prefix: "xnai:split_test"
+    # Agent Bus integration
+    agent_bus:
+      enabled: true
+      stream: "xnai:agent_bus"
+      channels:
+        - "test_started"
+        - "model_started"
+        - "model_completed"
+        - "test_completed"
+  
+  # Qdrant (Result Storage & Comparison)
+  qdrant:
+    host: "${SPLIT_TEST_QDRANT_HOST:-localhost}"
+    port: 6333
+    collection_prefix: "split_test_"
+    # Similarity search settings
+    similarity:
+      enabled: true
+      top_k: 5
+  
+  # Vikunja (Task Tracking)
+  vikunja:
+    url: "${VIKUNJA_URL:-http://localhost:3456}"
+    api_key: "${VIKUNJA_API_KEY:-}"
+    project: "Split Tests"
+  
+  # Agent Bus (Event Coordination)
+  agent_bus:
+    enabled: true
+    redis_stream: "xnai:agent_bus"
+    event_types:
+      - "test_started"
+      - "model_started"
+      - "model_progress"
+      - "model_completed"
+      - "test_completed"
+      - "test_failed"
+
+# =============================================================================
+# FOUNDATION STACK PERFORMANCE TESTS
+# =============================================================================
+foundation_stack_tests:
+  # Memory Bank Access Tests
+  memory_bank:
+    enabled: true
+    test_types:
+      - "context_loading"      # Time to load context files
+      - "search_performance"   # Search across memory tiers
+      - "compaction_overhead"   # Context compaction time
+    metrics:
+      - "load_time_ms"
+      - "search_latency_ms"
+      - "compaction_time_ms"
+      - "tokens_loaded"
+  
+  # Agent Bus Tests
+  agent_bus:
+    enabled: true
+    test_types:
+      - "publish_latency"       # Time to publish event
+      - "subscribe_latency"     # Time to receive event
+      - "stream_throughput"     # Events per second
+      - "message_ordering"      # FIFO guarantee
+    metrics:
+      - "publish_ms"
+      - "subscribe_ms"
+      - "throughput_epm"       # events per minute
+  
+  # RAG Performance Tests
+  rag:
+    enabled: true
+    test_types:
+      - "query_latency"        # Time for semantic search
+      - "indexing_speed"       # Documents per second
+      - "hybrid_blend"         # BM25 + vector blend
+    metrics:
+      - "query_latency_ms"
+      - "indexing_dps"         # documents per second
+      - "recall_at_k"
+  
+  # Multi-Provider Dispatcher Tests
+  dispatcher:
+    enabled: true
+    test_types:
+      - "provider_selection"    # Time to select provider
+      - "fallback_latency"     # Time for fallback chain
+      - "quota_rotation"       # Time to rotate accounts
+    metrics:
+      - "selection_ms"
+      - "fallback_ms"
+      - "rotation_ms"
+
+# Evaluation criteria weights (must sum to 1.0)
+evaluation_criteria:
+  completeness: 0.25    # All phases covered
+  accuracy: 0.25        # Technical correctness
+  actionability: 0.20   # Executable steps
+  efficiency: 0.15      # Tokens per second
+  structure: 0.15       # Organization
+
+# Scoring thresholds
+scoring:
+  excellent: 4.5
+  good: 4.0
+  acceptable: 3.0
+  poor: 2.0
+
+# Output settings
+output:
+  directory: "memory_bank/handovers/split-test/outputs"
+  save_raw_output: true
+  save_metrics: true
+  save_evaluation: true
+
+# Redis settings
+redis:
+  host: "localhost"
+  port: 6379
+  db: 0
+  stream_prefix: "xnai:split_test"
+
+# Qdrant settings
+qdrant:
+  host: "localhost"
+  port: 6333
+  collection_prefix: "split_test_"
+
+# Model defaults
+defaults:
+  timeout_seconds: 600
+  retry_attempts: 2
+  retry_delay_seconds: 5
+  
+# Context file defaults
+context:
+  directory: "memory_bank/handovers/split-test/context"
+  required_files:
+    - "TASK-INSTRUCTIONS.md"
+    - "EVALUATION-CRITERIA.md"
+
+# Metrics to collect
+metrics:
+  timing:
+    - "total_execution_time"
+    - "first_token_latency"
+    - "token_generation_speed"
+  output:
+    - "output_length"
+    - "output_tokens"
+    - "unique_content_ratio"
+  quality:
+    - "file_path_accuracy"
+    - "phase_coverage"
+    - "structure_score"

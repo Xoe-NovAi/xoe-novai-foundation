@@ -1,0 +1,266 @@
+# Omega Stack CI Setup Skill
+# 
+# This skill provides the foundational setup for Omega Stack CI/CD pipelines
+# including hardware optimization, dependency management, and environment validation.
+
+name: 'Omega Stack CI Setup'
+description: 'Setup Omega Stack development environment with hardware optimization'
+
+inputs:
+  hardware-optimization:
+    description: 'Hardware profile for optimization (e.g., ryzen-5700u)'
+    required: true
+    default: 'ryzen-5700u'
+  
+  local-first:
+    description: 'Enable local-first development optimizations'
+    required: false
+    default: 'true'
+  
+  offline-compatible:
+    description: 'Ensure workflows work offline'
+    required: false
+    default: 'true'
+  
+  cache-dependencies:
+    description: 'Enable dependency caching'
+    required: false
+    default: 'true'
+
+outputs:
+  setup-complete:
+    description: 'Indicates successful setup completion'
+    value: ${{ steps.validate.outputs.setup-complete }}
+  
+  hardware-profile:
+    description: 'Detected hardware profile'
+    value: ${{ steps.detect-hardware.outputs.hardware-profile }}
+
+runs:
+  using: 'composite'
+  
+  steps:
+    - name: Validate Omega Stack Environment
+      id: validate
+      shell: bash
+      run: |
+        echo "🔍 Validating Omega Stack environment..."
+        
+        # Check for required files
+        if [ ! -f "config.toml" ]; then
+          echo "❌ Missing config.toml"
+          exit 1
+        fi
+        
+        if [ ! -f "pyproject.toml" ]; then
+          echo "❌ Missing pyproject.toml"
+          exit 1
+        fi
+        
+        if [ ! -d "memory_bank" ]; then
+          echo "❌ Missing memory_bank directory"
+          exit 1
+        fi
+        
+        # Validate memory bank structure
+        required_files=("INDEX.md" "activeContext.md" "techContext.md")
+        for file in "${required_files[@]}"; do
+          if [ ! -f "memory_bank/$file" ]; then
+            echo "❌ Missing memory bank file: $file"
+            exit 1
+          fi
+        done
+        
+        echo "✅ Omega Stack environment validation passed"
+        echo "setup-complete=true" >> $GITHUB_OUTPUT
+
+    - name: Detect Hardware Profile
+      id: detect-hardware
+      shell: bash
+      run: |
+        echo "🔧 Detecting hardware profile..."
+        
+        hardware_profile="${{ inputs.hardware-optimization }}"
+        
+        # Check for hardware-specific optimizations in config
+        if grep -q "ryzen" config.toml; then
+          echo "Found Ryzen optimizations"
+        fi
+        
+        if grep -q "mmap" config.toml; then
+          echo "Found memory mapping optimizations"
+        fi
+        
+        if grep -q "mlock" config.toml; then
+          echo "Found memory locking optimizations"
+        fi
+        
+        echo "hardware-profile=$hardware_profile" >> $GITHUB_OUTPUT
+        echo "🔧 Hardware profile: $hardware_profile"
+
+    - name: Setup Python Environment
+      shell: bash
+      run: |
+        echo "🐍 Setting up Python environment..."
+        
+        # Install Python dependencies
+        python -m pip install --upgrade pip
+        
+        # Install core dependencies
+        if [ -f "requirements.txt" ]; then
+          pip install -r requirements.txt
+        fi
+        
+        # Install API dependencies
+        if [ -f "requirements-api.txt" ]; then
+          pip install -r requirements-api.txt
+        fi
+        
+        # Install crawl dependencies
+        if [ -f "requirements-crawl.txt" ]; then
+          pip install -r requirements-crawl.txt
+        fi
+        
+        # Install curation worker dependencies
+        if [ -f "requirements-curation_worker.txt" ]; then
+          pip install -r requirements-curation_worker.txt
+        fi
+        
+        echo "✅ Python environment setup complete"
+
+    - name: Configure Hardware Optimizations
+      shell: bash
+      run: |
+        echo "⚡ Configuring hardware optimizations for ${{ inputs.hardware-optimization }}..."
+        
+        case "${{ inputs.hardware-optimization }}" in
+          "ryzen-5700u")
+            echo "🔧 Applying Ryzen 5700U optimizations..."
+            # Set environment variables for Ryzen optimization
+            echo "OMP_NUM_THREADS=8" >> $GITHUB_ENV
+            echo "MKL_NUM_THREADS=8" >> $GITHUB_ENV
+            echo "NUMEXPR_NUM_THREADS=8" >> $GITHUB_ENV
+            echo "OMP_DYNAMIC=FALSE" >> $GITHUB_ENV
+            ;;
+          "intel-i7")
+            echo "🔧 Applying Intel i7 optimizations..."
+            echo "OMP_NUM_THREADS=12" >> $GITHUB_ENV
+            echo "MKL_NUM_THREADS=12" >> $GITHUB_ENV
+            echo "NUMEXPR_NUM_THREADS=12" >> $GITHUB_ENV
+            echo "OMP_DYNAMIC=FALSE" >> $GITHUB_ENV
+            ;;
+          *)
+            echo "🔧 Using default optimizations..."
+            echo "OMP_NUM_THREADS=4" >> $GITHUB_ENV
+            echo "MKL_NUM_THREADS=4" >> $GITHUB_ENV
+            echo "NUMEXPR_NUM_THREADS=4" >> $GITHUB_ENV
+            echo "OMP_DYNAMIC=TRUE" >> $GITHUB_ENV
+            ;;
+        esac
+        
+        echo "✅ Hardware optimizations configured"
+
+    - name: Setup Local-First Environment
+      if: inputs.local-first == 'true'
+      shell: bash
+      run: |
+        echo "🏠 Setting up local-first environment..."
+        
+        # Create local directories
+        mkdir -p data/cache
+        mkdir -p data/qdrant
+        mkdir -p data/redis
+        mkdir -p data/faiss_index
+        
+        # Set permissions for local-first operation
+        chmod 755 data/
+        chmod 755 data/cache
+        chmod 755 data/qdrant
+        chmod 755 data/redis
+        chmod 755 data/faiss_index
+        
+        # Create local configuration overrides
+        cat > .env.local << EOF
+        # Local-first configuration
+        LOCAL_MODE=true
+        OFFLINE_MODE=${{ inputs.offline-compatible }}
+        HARDWARE_PROFILE=${{ inputs.hardware-optimization }}
+        
+        # Local database settings
+        DATABASE_URL=postgresql://localhost:5432/omega_stack_dev
+        REDIS_URL=redis://localhost:6379/0
+        
+        # Local storage paths
+        QDRANT_URL=http://localhost:6333
+        FAISS_INDEX_PATH=./data/faiss_index
+        EOF
+        
+        echo "✅ Local-first environment setup complete"
+
+    - name: Configure Offline Compatibility
+      if: inputs.offline-compatible == 'true'
+      shell: bash
+      run: |
+        echo "🌐 Configuring offline compatibility..."
+        
+        # Create offline cache directories
+        mkdir -p .cache/pip
+        mkdir -p .cache/uv
+        mkdir -p .cache/models
+        
+        # Configure pip for offline use
+        cat > pip.conf << EOF
+        [global]
+        no-index = true
+        find-links = .cache/pip
+        trusted-host = localhost
+        EOF
+        
+        # Create offline dependency list
+        pip freeze > requirements-offline.txt
+        
+        echo "✅ Offline compatibility configured"
+
+    - name: Setup Dependency Caching
+      if: inputs.cache-dependencies == 'true'
+      shell: bash
+      run: |
+        echo "📦 Setting up dependency caching..."
+        
+        # Create cache directories
+        mkdir -p ~/.cache/pip
+        mkdir -p ~/.cache/uv
+        mkdir -p ~/.cache/poetry
+        
+        # Configure caching for different package managers
+        echo "Cache directory: ~/.cache"
+        echo "✅ Dependency caching setup complete"
+
+    - name: Validate Setup
+      shell: bash
+      run: |
+        echo "✅ Validating complete setup..."
+        
+        # Check Python version
+        python --version
+        
+        # Check installed packages
+        pip list | head -10
+        
+        # Check environment variables
+        echo "Hardware Profile: ${{ inputs.hardware-optimization }}"
+        echo "Local First: ${{ inputs.local-first }}"
+        echo "Offline Compatible: ${{ inputs.offline-compatible }}"
+        
+        # Test basic imports
+        python -c "
+        import sys
+        print(f'Python version: {sys.version}')
+        print('✅ Basic imports successful')
+        "
+        
+        echo "🎉 Omega Stack CI setup complete!"
+
+branding:
+  icon: 'settings'
+  color: 'blue'

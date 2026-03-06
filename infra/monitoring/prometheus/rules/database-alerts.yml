@@ -1,0 +1,318 @@
+groups:
+  # =========================================================================
+  # PostgreSQL Monitoring Rules
+  # =========================================================================
+  - name: postgresql.rules
+    interval: 30s
+    rules:
+      # Connection Pool Exhaustion
+      - alert: PostgreSQL_ConnectionPoolExhaustion
+        expr: (pg_stat_activity_count / pg_setting_max_connections) > 0.8
+        for: 5m
+        labels:
+          severity: critical
+          service: postgresql
+        annotations:
+          summary: "PostgreSQL connection pool >80% on {{ $labels.instance }}"
+          description: "Active connections {{ $value | humanizePercentage }} of max ({{ $labels.max_connections }}). Risk of connection exhaustion. Check for connection leaks or increased load."
+
+      # High Query Latency - P95
+      - alert: PostgreSQL_HighQueryLatencyP95
+        expr: histogram_quantile(0.95, rate(pg_query_duration_seconds_bucket[5m])) > 0.5
+        for: 5m
+        labels:
+          severity: warning
+          service: postgresql
+        annotations:
+          summary: "PostgreSQL P95 query latency >500ms on {{ $labels.instance }}"
+          description: "95th percentile query latency is {{ $value | humanizeDuration }}. Check slow query logs, index usage, and table scans."
+
+      # High Query Latency - P99
+      - alert: PostgreSQL_HighQueryLatencyP99
+        expr: histogram_quantile(0.99, rate(pg_query_duration_seconds_bucket[5m])) > 1.0
+        for: 5m
+        labels:
+          severity: critical
+          service: postgresql
+        annotations:
+          summary: "PostgreSQL P99 query latency >1s on {{ $labels.instance }}"
+          description: "99th percentile query latency is {{ $value | humanizeDuration }}. Investigate deadlocks, lock contention, or missing indexes."
+
+      # High Active Query Count
+      - alert: PostgreSQL_HighActiveQueryCount
+        expr: pg_stat_activity_count{state="active"} > 20
+        for: 10m
+        labels:
+          severity: warning
+          service: postgresql
+        annotations:
+          summary: "PostgreSQL high active query count ({{ $value | humanize }}) on {{ $labels.instance }}"
+          description: "More than 20 active queries running for 10m. Check for long-running transactions or missing LIMIT clauses."
+
+      # Low Cache Hit Ratio
+      - alert: PostgreSQL_LowCacheHitRatio
+        expr: (rate(pg_stat_database_blks_hit[5m]) / (rate(pg_stat_database_blks_hit[5m]) + rate(pg_stat_database_blks_read[5m]))) < 0.7
+        for: 10m
+        labels:
+          severity: warning
+          service: postgresql
+        annotations:
+          summary: "PostgreSQL cache hit ratio <70% on {{ $labels.instance }}"
+          description: "Cache hit ratio is {{ $value | humanizePercentage }}. Consider increasing shared_buffers or optimizing queries."
+
+      # Sequential Scans High
+      - alert: PostgreSQL_HighSequentialScans
+        expr: rate(pg_stat_user_tables_seq_scan[5m]) > 10
+        for: 10m
+        labels:
+          severity: warning
+          service: postgresql
+        annotations:
+          summary: "PostgreSQL high sequential scan rate on {{ $labels.instance }}"
+          description: "Sequential scan rate {{ $value | humanize }}/sec. Consider adding indexes on frequently scanned columns."
+
+      # Replication Lag
+      - alert: PostgreSQL_ReplicationLag
+        expr: pg_replication_lag_seconds > 30
+        for: 5m
+        labels:
+          severity: warning
+          service: postgresql
+        annotations:
+          summary: "PostgreSQL replication lag >30s on {{ $labels.instance }}"
+          description: "Replication lag is {{ $value | humanizeDuration }}. Check replica connectivity and network latency."
+
+      # Slow Autovacuum
+      - alert: PostgreSQL_SlowAutovacuum
+        expr: pg_stat_user_tables_autovacuum_count > 0 and pg_stat_user_tables_last_autovacuum_seconds < 300
+        for: 10m
+        labels:
+          severity: warning
+          service: postgresql
+        annotations:
+          summary: "PostgreSQL frequent autovacuum on {{ $labels.instance }}"
+          description: "Autovacuum running frequently. Consider tuning autovacuum_naptime or autovacuum_vacuum_threshold."
+
+      # Database Size Growing Rapidly
+      - alert: PostgreSQL_DatabaseSizeGrowing
+        expr: rate(pg_database_size_bytes[1h]) > 0
+        for: 30m
+        labels:
+          severity: info
+          service: postgresql
+        annotations:
+          summary: "PostgreSQL database size growing on {{ $labels.instance }}"
+          description: "Database size growth rate: {{ $value | humanize }}B/sec. Monitor for bloat or unexpected data accumulation."
+
+  # =========================================================================
+  # Redis Monitoring Rules
+  # =========================================================================
+  - name: redis.rules
+    interval: 30s
+    rules:
+      # Connection Pool Exhaustion
+      - alert: Redis_ConnectionPoolExhaustion
+        expr: (redis_connected_clients / redis_config_maxclients) > 0.8
+        for: 5m
+        labels:
+          severity: critical
+          service: redis
+        annotations:
+          summary: "Redis connection pool >80% on {{ $labels.instance }}"
+          description: "Active connections {{ $value | humanizePercentage }} of maxclients. Risk of connection pool exhaustion."
+
+      # High Memory Usage
+      - alert: Redis_HighMemoryUsage
+        expr: (redis_memory_used_bytes / redis_memory_max_bytes) > 0.85
+        for: 5m
+        labels:
+          severity: warning
+          service: redis
+        annotations:
+          summary: "Redis memory usage >85% on {{ $labels.instance }}"
+          description: "Memory usage {{ $value | humanizePercentage }} of max ({{ $labels.maxmemory }}). Risk of eviction or OOM."
+
+      # Critical Memory Usage
+      - alert: Redis_CriticalMemoryUsage
+        expr: (redis_memory_used_bytes / redis_memory_max_bytes) > 0.95
+        for: 2m
+        labels:
+          severity: critical
+          service: redis
+        annotations:
+          summary: "Redis memory usage critical (>95%) on {{ $labels.instance }}"
+          description: "Memory usage {{ $value | humanizePercentage }} of max. Immediate action required."
+
+      # Low Cache Hit Ratio
+      - alert: Redis_LowHitRatio
+        expr: (rate(redis_keyspace_hits_total[5m]) / (rate(redis_keyspace_hits_total[5m]) + rate(redis_keyspace_misses_total[5m]))) < 0.7
+        for: 10m
+        labels:
+          severity: warning
+          service: redis
+        annotations:
+          summary: "Redis cache hit ratio <70% on {{ $labels.instance }}"
+          description: "Hit ratio {{ $value | humanizePercentage }}. Check working set size vs available memory and key eviction."
+
+      # High Eviction Rate
+      - alert: Redis_HighEvictionRate
+        expr: rate(redis_evicted_keys_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          service: redis
+        annotations:
+          summary: "Redis high eviction rate on {{ $labels.instance }}"
+          description: "Eviction rate {{ $value | humanize }}/sec. Either increase maxmemory or reduce working set size."
+
+      # Command Latency Spike
+      - alert: Redis_HighCommandLatency
+        expr: histogram_quantile(0.95, rate(redis_command_duration_seconds_bucket[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          service: redis
+        annotations:
+          summary: "Redis P95 command latency >100ms on {{ $labels.instance }}"
+          description: "P95 command latency {{ $value | humanizeDuration }}. Check for slow commands, memory pressure, or blocking operations."
+
+      # Blocked Clients
+      - alert: Redis_BlockedClients
+        expr: redis_blocked_clients > 0
+        for: 5m
+        labels:
+          severity: warning
+          service: redis
+        annotations:
+          summary: "Redis has {{ $value }} blocked clients on {{ $labels.instance }}"
+          description: "Blocked clients detected. Check for BLPOP/BRPOP operations and ensure list pushes are happening."
+
+      # Replication Backlog Overflow
+      - alert: Redis_ReplicationBacklogOverflow
+        expr: redis_repl_backlog_first_byte_offset > redis_repl_backlog_size
+        for: 5m
+        labels:
+          severity: critical
+          service: redis
+        annotations:
+          summary: "Redis replication backlog overflow on {{ $labels.instance }}"
+          description: "Backlog overflow detected. Replica(s) may lose sync. Check replica connectivity and repl-backlog-size."
+
+  # =========================================================================
+  # Qdrant Vector Database Monitoring Rules
+  # =========================================================================
+  - name: qdrant.rules
+    interval: 30s
+    rules:
+      # Vector Search Latency High
+      - alert: Qdrant_HighSearchLatency
+        expr: histogram_quantile(0.95, rate(qdrant_search_duration_seconds_bucket[5m])) > 1.0
+        for: 5m
+        labels:
+          severity: warning
+          service: qdrant
+        annotations:
+          summary: "Qdrant P95 search latency >1s on {{ $labels.instance }}"
+          description: "95th percentile search latency {{ $value | humanizeDuration }}. Check index configuration, collection size, or system load."
+
+      # Insertion Throughput Degradation
+      - alert: Qdrant_LowInsertionThroughput
+        expr: rate(qdrant_points_inserted_total[5m]) < 10
+        for: 10m
+        labels:
+          severity: warning
+          service: qdrant
+        annotations:
+          summary: "Qdrant insertion throughput low (<10/sec) on {{ $labels.instance }}"
+          description: "Insertion rate dropped to {{ $value | humanize }}/sec. Check for slow disk I/O or indexing overhead."
+
+      # High Memory Usage
+      - alert: Qdrant_HighMemoryUsage
+        expr: (qdrant_memory_used_bytes / qdrant_memory_limit_bytes) > 0.85
+        for: 5m
+        labels:
+          severity: warning
+          service: qdrant
+        annotations:
+          summary: "Qdrant memory usage >85% on {{ $labels.instance }}"
+          description: "Memory usage {{ $value | humanizePercentage }}. Consider compacting collections or reducing vector dimensionality."
+
+      # Collection Health Degraded
+      - alert: Qdrant_CollectionHealthDegraded
+        expr: qdrant_collection_healthy != 1
+        for: 5m
+        labels:
+          severity: critical
+          service: qdrant
+        annotations:
+          summary: "Qdrant collection health degraded: {{ $labels.collection }} on {{ $labels.instance }}"
+          description: "Collection {{ $labels.collection }} is not healthy. Check for corruption, disk space, or replication issues."
+
+      # Index Size Too Large
+      - alert: Qdrant_IndexSizeTooLarge
+        expr: qdrant_collection_index_size_bytes > (100 * 1024 * 1024 * 1024)
+        for: 10m
+        labels:
+          severity: info
+          service: qdrant
+        annotations:
+          summary: "Qdrant collection index size >100GB on {{ $labels.instance }}"
+          description: "Collection {{ $labels.collection }} index size is {{ $value | humanize1024 }}B. Consider partitioning or archiving old data."
+
+      # Search Error Rate High
+      - alert: Qdrant_HighSearchErrorRate
+        expr: (rate(qdrant_search_errors_total[5m]) / rate(qdrant_search_requests_total[5m])) > 0.01
+        for: 5m
+        labels:
+          severity: warning
+          service: qdrant
+        annotations:
+          summary: "Qdrant search error rate >1% on {{ $labels.instance }}"
+          description: "Error rate {{ $value | humanizePercentage }}. Check collection integrity and recent configuration changes."
+
+      # Replication Lag
+      - alert: Qdrant_ReplicationLag
+        expr: qdrant_replication_lag_seconds > 60
+        for: 5m
+        labels:
+          severity: warning
+          service: qdrant
+        annotations:
+          summary: "Qdrant replication lag >60s on {{ $labels.instance }}"
+          description: "Replication lag {{ $value | humanizeDuration }}. Check network connectivity to replicas."
+
+  # =========================================================================
+  # Cross-Database Monitoring Rules
+  # =========================================================================
+  - name: databases.rules
+    interval: 30s
+    rules:
+      # Any Database Connection Errors
+      - alert: Database_HighConnectionErrors
+        expr: rate(db_connection_errors_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Database connection errors detected on {{ $labels.instance }}"
+          description: "{{ $labels.service }} showing {{ $value | humanize }}/sec connection errors. Check database availability and network."
+
+      # Database Not Accessible
+      - alert: Database_NotAccessible
+        expr: up{job=~"postgres|redis|qdrant"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "{{ $labels.service }} not accessible from Prometheus on {{ $labels.instance }}"
+          description: "{{ $labels.service }} has been unreachable for 2 minutes. Check connectivity and service health."
+
+      # Slow Query Accumulation
+      - alert: SlowQueryAccumulation
+        expr: sum(rate(pg_stat_statements_mean_exec_time[5m])) by (instance) > 100
+        for: 10m
+        labels:
+          severity: info
+        annotations:
+          summary: "High accumulated slow query time on {{ $labels.instance }}"
+          description: "Total slow query time {{ $value | humanize }}ms. Review pg_stat_statements for optimization opportunities."

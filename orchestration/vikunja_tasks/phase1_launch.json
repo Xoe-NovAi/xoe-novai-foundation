@@ -1,0 +1,6 @@
+{
+  "title": "Execute Phase 1: Service Diagnostics",
+  "description": "Execute Phase 1 of the XNAi Operationalization Plan. Run service diagnostics, check health of all stack components (Redis, Qdrant, API, etc.), and report status. Refer to internal_docs/01-strategic-planning/sessions/02_16_2026_phase5_operationalization/MASTER-PLAN-v3.1.md.",
+  "labels": ["phase-1", "diagnostics", "copilot"],
+  "priority": 1
+}

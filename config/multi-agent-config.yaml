@@ -1,0 +1,171 @@
+# Multi-Agent Configuration for XNAi Foundation
+# This configuration enables parallel development using multiple CLI agent accounts
+
+multi_agent:
+  enabled: true
+  coordination_backend: "redis_streams"
+  task_queue: "xnai:agent_tasks"
+  result_aggregator: "xnai:agent_results"
+  heartbeat_interval: 30  # seconds
+  timeout: 300  # seconds (5 minutes)
+  
+  accounts:
+    primary:
+      name: "primary"
+      role: "main_development"
+      capabilities: 
+        - "code_generation"
+        - "documentation"
+        - "testing"
+        - "architecture"
+      rate_limit: "standard"
+      priority: 1
+      
+    subagent:
+      name: "subagent"
+      role: "parallel_processing"
+      capabilities:
+        - "data_processing"
+        - "analysis"
+        - "optimization"
+        - "research"
+      rate_limit: "separate_account"
+      priority: 2
+      
+    coordinator:
+      name: "coordinator"
+      role: "task_management"
+      capabilities:
+        - "task_distribution"
+        - "result_aggregation"
+        - "monitoring"
+        - "error_handling"
+      communication: "redis_streams"
+      priority: 0  # Highest priority
+      
+    validator:
+      name: "validator"
+      role: "quality_assurance"
+      capabilities:
+        - "code_review"
+        - "testing"
+        - "security_check"
+        - "performance_analysis"
+      rate_limit: "standard"
+      priority: 3
+
+  coordination:
+    backend: "redis_streams"
+    task_queue: "agent_tasks"
+    result_aggregator: "agent_results"
+    heartbeat_channel: "agent_heartbeat"
+    alert_channel: "agent_alerts"
+    
+    task_distribution:
+      strategy: "round_robin"  # or "priority", "load_balanced"
+      max_concurrent_tasks: 10
+      task_timeout: 600  # seconds
+      
+    result_aggregation:
+      timeout: 300  # seconds
+      retry_attempts: 3
+      aggregation_strategy: "weighted_average"
+
+  communication:
+    protocol: "redis_streams"
+    message_format: "json"
+    encryption: true
+    compression: true
+    
+    channels:
+      task_distribution: "xnai:task_distribution"
+      result_aggregation: "xnai:result_aggregation"
+      heartbeat: "xnai:heartbeat"
+      alerts: "xnai:alerts"
+      coordination: "xnai:coordination"
+
+  security:
+    authentication: "token_based"
+    authorization: "role_based"
+    encryption: "aes_256_gcm"
+    audit_logging: true
+    
+    tokens:
+      primary: "${PRIMARY_AGENT_TOKEN}"
+      subagent: "${SUBAGENT_TOKEN}"
+      coordinator: "${COORDINATOR_TOKEN}"
+      validator: "${VALIDATOR_TOKEN}"
+
+  monitoring:
+    metrics_enabled: true
+    health_checks: true
+    performance_monitoring: true
+    
+    metrics:
+      collection_interval: 60  # seconds
+      retention_period: 86400  # seconds (24 hours)
+      
+    health_checks:
+      interval: 30  # seconds
+      timeout: 10   # seconds
+      retries: 3
+
+  error_handling:
+    retry_strategy: "exponential_backoff"
+    max_retries: 3
+    backoff_base: 2
+    backoff_max_delay: 60
+    
+    fallback_strategy: "graceful_degradation"
+    circuit_breaker:
+      enabled: true
+      failure_threshold: 5
+      recovery_timeout: 300  # seconds
+
+  performance:
+    parallel_execution: true
+    max_parallel_agents: 4
+    resource_allocation:
+      cpu_shares: 1024
+      memory_limit: "2GB"
+      network_bandwidth: "100MB/s"
+
+  logging:
+    level: "info"
+    format: "json"
+    include_agent_id: true
+    include_task_id: true
+    retention_days: 30
+
+  development:
+    debug_mode: false
+    verbose_logging: false
+    simulation_mode: false
+    dry_run: false
+
+# Environment-specific overrides
+environments:
+  development:
+    multi_agent:
+      enabled: true
+      debug_mode: true
+      verbose_logging: true
+      simulation_mode: true
+      
+  staging:
+    multi_agent:
+      enabled: true
+      debug_mode: false
+      verbose_logging: false
+      simulation_mode: false
+      
+  production:
+    multi_agent:
+      enabled: true
+      debug_mode: false
+      verbose_logging: false
+      simulation_mode: false
+      performance:
+        max_parallel_agents: 8
+        resource_allocation:
+          memory_limit: "4GB"

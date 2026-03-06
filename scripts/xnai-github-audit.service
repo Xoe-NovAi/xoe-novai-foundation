@@ -1,0 +1,22 @@
+[Unit]
+Description=XNAi GitHub Account Audit Service
+Documentation=https://github.com/Xoe-NovAi/xoe-novai-foundation
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/arcana-novai/Documents/xnai-foundation
+ExecStart=/usr/bin/python3 /home/arcana-novai/Documents/xnai-foundation/scripts/github-account-audit.py --save --verbose
+StandardOutput=journal
+StandardError=journal
+
+# Environment
+Environment=HOME=/home/arcana-novai
+Environment=USER=arcana-novai
+
+# Logging
+SyslogIdentifier=xnai-github-audit
+
+[Install]
+WantedBy=multi-user.target

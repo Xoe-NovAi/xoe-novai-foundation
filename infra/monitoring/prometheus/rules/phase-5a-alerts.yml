@@ -1,0 +1,29 @@
+groups:
+  - name: phase-5a-zram.rules
+    rules:
+      - alert: XNAi_zRAM_HighUsage
+        expr: (xnai_zram_used_bytes / machine_memory_bytes) > 0.92
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "zRAM usage critically high on {{ $labels.instance }}"
+          description: "xnai_zram_used_bytes / total memory > 92% for 5m. Check zram device, swap activity and recent OOM events."
+
+      - alert: XNAi_zRAM_CompressionRatioLow
+        expr: xnai_zram_compression_ratio < 1.2
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "zRAM compression ratio dropped below threshold on {{ $labels.instance }}"
+          description: "Compression ratio < 1.2 for 10m — investigate algorithm change, high entropy workloads, or kernel issues."
+
+      - alert: XNAi_IsolatedCoreHighUsage
+        expr: avg by (instance) (rate(node_cpu_seconds_total{cpu=~"2|3|4|5",mode!="idle"}[2m])) > 0.7
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Isolated cores high CPU usage on {{ $labels.instance }}"
+          description: "Reserved/isolated cores showing sustained usage >70% — may indicate mis-pinning or runaway process."

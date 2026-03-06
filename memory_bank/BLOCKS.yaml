@@ -1,0 +1,368 @@
+# =============================================================================
+# XNAi Foundation Memory Bank - Block Manifest
+# =============================================================================
+# Purpose: Defines memory blocks with size limits, descriptions, and access patterns
+# Based on: MemGPT/Letta memory block architecture
+# Last Updated: 2026-02-20
+#
+# This manifest enables:
+# - Token budgeting per block
+# - Self-describing memory for agents
+# - Programmatic memory management via tools
+# =============================================================================
+
+metadata:
+  version: "1.0.0"
+  created: 2026-02-20
+  total_budget_tokens: 25000  # Total core memory budget
+  backend: filesystem
+
+# =============================================================================
+# CORE MEMORY BLOCKS (Always loaded in context)
+# =============================================================================
+# These blocks are always visible to agents and contain essential working memory.
+# Total core budget: ~25K tokens (~100K characters)
+
+core_blocks:
+  
+  projectbrief:
+    label: "project_brief"
+    file: "projectbrief.md"
+    description: |
+      Foundation document defining mission, core values, key constraints, and project scope.
+      Source of truth for what XNAi Foundation is and why it exists.
+    limit_chars: 3000
+    limit_tokens: ~750
+    read_only: false
+    tier: core
+    priority: 1
+    update_trigger: "On mission/scope changes"
+    relationships:
+      - productContext.md: "elaborates purpose"
+      - techContext.md: "constrains technology"
+    
+  productContext:
+    label: "product_context"
+    file: "productContext.md"
+    description: |
+      Why XNAi exists, problems it solves, user experience goals, and success metrics.
+      Defines the product vision and target outcomes.
+    limit_chars: 4000
+    limit_tokens: ~1000
+    read_only: false
+    tier: core
+    priority: 2
+    update_trigger: "On feature roadmap changes"
+    relationships:
+      - projectbrief.md: "derived from"
+      - progress.md: "tracks against"
+  
+  activeContext:
+    label: "active_context"
+    file: "activeContext.md"
+    description: |
+      Current sprint status, active priorities (P0-P8), work streams, blockers, and immediate tasks.
+      The primary working memory for ongoing work.
+    limit_chars: 5000
+    limit_tokens: ~1250
+    read_only: false
+    tier: core
+    priority: 1
+    update_trigger: "Weekly or on task completion"
+    relationships:
+      - progress.md: "feeds into"
+      - strategies/*.md: "guided by"
+  
+  systemPatterns:
+    label: "system_patterns"
+    file: "systemPatterns.md"
+    description: |
+      Architecture patterns, design decisions, code standards, and system design principles.
+      How XNAi is built and why technical decisions were made.
+    limit_chars: 8000
+    limit_tokens: ~2000
+    read_only: false
+    tier: core
+    priority: 3
+    update_trigger: "On architectural changes"
+    relationships:
+      - techContext.md: "implements using"
+      - AGENTS.md: "enforced by"
+  
+  techContext:
+    label: "tech_context"
+    file: "techContext.md"
+    description: |
+      Technology stack, versions, dependencies, compatibility constraints, and setup requirements.
+      What technologies XNAi uses and how they're configured.
+    limit_chars: 5000
+    limit_tokens: ~1250
+    read_only: false
+    tier: core
+    priority: 3
+    update_trigger: "On dependency changes"
+    relationships:
+      - systemPatterns.md: "constrained by"
+      - OPERATIONS.md: "operated via"
+  
+  progress:
+    label: "progress"
+    file: "progress.md"
+    description: |
+      Current sprint status with links to detailed sub-blocks.
+      Entry point for progress tracking - actual data in progress/ subdirectory.
+    limit_chars: 3000
+    limit_tokens: ~750
+    read_only: false
+    tier: core
+    priority: 2
+    update_trigger: "Per sprint/phase completion"
+    relationships:
+      - progress/milestones.md: "phase completions"
+      - progress/metrics-status.md: "health dashboard"
+      - progress/issues-backlog.md: "known issues"
+      - progress/planning.md: "roadmap"
+      - progress/history/: "achievements archive"
+
+# =============================================================================
+# PROGRESS SUB-BLOCKS
+# =============================================================================
+# Detailed progress data split from original progress.md
+
+progress_blocks:
+  
+  progress_milestones:
+    label: "progress_milestones"
+    file: "progress/milestones.md"
+    description: |
+      Phase completions and major achievements.
+      Sprint deliverables and milestone records.
+    limit_chars: 6000
+    limit_tokens: ~1500
+    read_only: false
+    tier: core
+    priority: 2
+    
+  progress_metrics:
+    label: "progress_metrics"
+    file: "progress/metrics-status.md"
+    description: |
+      System status, component health, and success metrics.
+      Component status tables and compliance checklist.
+    limit_chars: 4000
+    limit_tokens: ~1000
+    read_only: false
+    tier: core
+    priority: 2
+    
+  progress_issues:
+    label: "progress_issues"
+    file: "progress/issues-backlog.md"
+    description: |
+      Known issues, research requests, and backlog items.
+      Active work streams and current blockers.
+    limit_chars: 4000
+    limit_tokens: ~1000
+    read_only: false
+    tier: core
+    priority: 2
+    
+  progress_planning:
+    label: "progress_planning"
+    file: "progress/planning.md"
+    description: |
+      Next steps, roadmap, and Phase 5+ planning.
+      Sprint backlog and execution schedule.
+    limit_chars: 3000
+    limit_tokens: ~750
+    read_only: false
+    tier: core
+    priority: 2
+    
+  progress_history:
+    label: "progress_history"
+    file: "progress/history/2026-02-achievements.md"
+    description: |
+      Recent achievements and historical milestones.
+      Achievement archive by date.
+    limit_chars: 8000
+    limit_tokens: ~2000
+    read_only: true
+    tier: recall
+    priority: 3
+
+# =============================================================================
+# OPERATIONAL BLOCKS (Loaded on-demand)
+# =============================================================================
+# These blocks support operations and procedures, loaded when needed.
+
+operational_blocks:
+  
+  operations:
+    label: "operations"
+    file: "OPERATIONS.md"
+    description: |
+      How-to guide for running commands, tests, builds, and common operations.
+      Procedural memory for daily work.
+    limit_chars: 6000
+    limit_tokens: ~1500
+    read_only: false
+    tier: operational
+    priority: 4
+    load_trigger: "When performing operations"
+  
+  teamProtocols:
+    label: "team_protocols"
+    file: "teamProtocols.md"
+    description: |
+      Agent roles, communication protocols, handoff procedures, and team structure.
+      How the multi-agent team coordinates.
+    limit_chars: 4000
+    limit_tokens: ~1000
+    read_only: false
+    tier: operational
+    priority: 4
+    load_trigger: "On team changes or handoffs"
+
+# =============================================================================
+# RECALL TIER (Searchable history)
+# =============================================================================
+# Episodic memory - session logs, decisions, and conversation history.
+# Not loaded by default, searched when context is needed.
+
+recall_config:
+  directory: "recall/"
+  max_total_size_mb: 50
+  indexing: semantic
+  retention_days: 90
+  
+  subdirectories:
+    conversations:
+      description: "Session logs and conversation history"
+      pattern: "*.session.md"
+    decisions:
+      description: "Architectural and strategic decisions"
+      pattern: "*.decision.md"
+    handovers:
+      description: "Agent handoff documents"
+      pattern: "*.handover.md"
+
+# =============================================================================
+# ARCHIVAL TIER (Long-term storage)
+# =============================================================================
+# Semantic memory - research, benchmarks, model cards, and reference material.
+# Retrieved via semantic search when needed.
+
+archival_config:
+  directory: "archival/"
+  max_total_size_mb: 200
+  indexing: semantic
+  
+  subdirectories:
+    research:
+      description: "Research findings and deep dives"
+      source: "expert-knowledge/"
+    benchmarks:
+      description: "Benchmark results and analysis"
+      source: "benchmarks/"
+    strategies:
+      description: "Strategic planning documents"
+      source: "strategies/"
+
+# =============================================================================
+# MEMORY TOOLS CONFIGURATION
+# =============================================================================
+# Defines available memory management operations.
+
+tools:
+  
+  memory_replace:
+    description: "Replace specific text within a memory block"
+    parameters:
+      block_label: "string - target block label"
+      old_content: "string - text to find"
+      new_content: "string - replacement text"
+    validation:
+      - "old_content must exist in block"
+      - "result must not exceed limit_chars"
+  
+  memory_append:
+    description: "Append content to a memory block"
+    parameters:
+      block_label: "string - target block label"
+      content: "string - content to append"
+    validation:
+      - "result must not exceed limit_chars"
+  
+  memory_rethink:
+    description: "Replace entire block content (preserving frontmatter)"
+    parameters:
+      block_label: "string - target block label"
+      new_value: "string - complete new content"
+    validation:
+      - "result must not exceed limit_chars"
+      - "frontmatter must be preserved"
+  
+  compile_context:
+    description: "Compile memory blocks into context window format"
+    parameters:
+      include_recall: "boolean - include recall tier"
+      recall_query: "string? - semantic search query for recall"
+      include_archival: "boolean - include archival tier"
+      archival_query: "string? - semantic search query for archival"
+    output: "XML-formatted context string"
+
+# =============================================================================
+# MCP SERVER CONFIGURATION
+# =============================================================================
+# Model Context Protocol integration settings.
+
+mcp:
+  enabled: true
+  uri_scheme: "memory://bank"
+  
+  resources:
+    - pattern: "{path}"
+      handler: "read_memory_file"
+      mime_type: "text/markdown"
+    
+    - pattern: "blocks/{label}"
+      handler: "read_block_by_label"
+      mime_type: "text/markdown"
+  
+  tools:
+    - name: "update_memory"
+      description: "Update a memory block"
+    - name: "search_recall"
+      description: "Search recall tier for relevant context"
+    - name: "get_block_status"
+      description: "Get size and limit status for all blocks"
+  
+  subscriptions:
+    enabled: true
+    watch_patterns:
+      - "activeContext.md"
+      - "progress.md"
+      - "PHASES/*.md"
+
+# =============================================================================
+# OVERFLOW HANDLING
+# =============================================================================
+# Automatic compression when blocks approach limits.
+
+overflow:
+  warning_threshold: 0.8  # Warn at 80% capacity
+  compression_trigger: 0.9  # Auto-compress at 90%
+  
+  strategies:
+    - name: "summarize_old_entries"
+      description: "Summarize oldest entries in block"
+    - name: "extract_to_recall"
+      description: "Move detailed content to recall tier"
+    - name: "prune_duplicates"
+      description: "Remove redundant information"
+  
+  notification:
+    on_warning: true
+    on_compression: true
+    channels: ["log", "agent_bus"]

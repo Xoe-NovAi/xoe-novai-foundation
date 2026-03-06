@@ -1,0 +1,9 @@
+{
+  "title": "Review memory_bank & stack-cat (grok-pack) and produce enhancement plan",
+  "description": "Review scripts/stack-cat.py and memory_bank layout; propose rename and implementation plan to make pack generation produce Vikunja migrator payloads, agent packages, FRQ metadata, and embedding hooks; deliver a minimal PR patch plan.",
+  "labels": ["research", "priority-high", "agent:copilot"],
+  "custom_fields": {},
+  "project": "Research",
+  "status": "backlog",
+  "priority": 1
+}

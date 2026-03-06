@@ -1,0 +1,129 @@
+# OpenPipe Configuration for XNAi Foundation
+# ================================================
+# Sovereign, offline-first configuration optimized for
+# <6GB RAM, <300ms latency, rootless Podman deployment
+
+openpipe:
+  # Core Configuration
+  api_key: ${OPENPIPE_API_KEY}
+  base_url: http://openpipe:3000
+  sovereign_mode: true
+  offline_mode: true
+  
+  # Caching Configuration
+  cache:
+    enabled: true
+    ttl: 300  # 5 minutes default TTL
+    max_size: 10000  # Maximum cached responses
+    compression: true
+    eviction_policy: "lru"  # Least Recently Used
+    
+    # Task-specific TTLs
+    task_ttls:
+      code_generation: 600    # 10 minutes - code patterns stable
+      research: 300           # 5 minutes - research evolves
+      creative_writing: 180   # 3 minutes - creative content varies
+      daily_coding: 900       # 15 minutes - common patterns
+      fast_prototyping: 120   # 2 minutes - quick iterations
+      architecture_decisions: 1800  # 30 minutes - architecture stable
+      github_workflow: 480    # 8 minutes - workflow patterns
+      multilingual: 240       # 4 minutes - language-specific
+      context_limit_fallback: 60  # 1 minute - fallback responses
+  
+  # Deduplication Configuration
+  deduplication:
+    enabled: true
+    window: 60  # 60 seconds deduplication window
+    similarity_threshold: 0.95  # 95% similarity for cache hits
+    max_pending_requests: 100
+  
+  # Performance Optimization
+  performance:
+    memory_budget_gb: 1.0
+    max_concurrent_requests: 10
+    response_timeout_ms: 30000
+    retry_attempts: 3
+    retry_delay_ms: 1000
+    
+    # Latency targets
+    latency_targets:
+      p50: 200  # 50th percentile
+      p95: 300  # 95th percentile
+      p99: 500  # 99th percentile
+  
+  # Circuit Breaker Configuration
+  circuit_breaker:
+    enabled: true
+    failure_threshold: 5
+    recovery_timeout: 120
+    half_open_max_calls: 3
+    monitoring_window: 60
+  
+  # Monitoring and Metrics
+  monitoring:
+    enabled: true
+    metrics_interval: 30  # seconds
+    prometheus_enabled: true
+    grafana_enabled: true
+    alerting_enabled: true
+    
+    # Custom metrics
+    custom_metrics:
+      - cache_hit_rate
+      - deduplication_rate
+      - avg_latency_reduction
+      - cost_savings
+      - success_rate_by_task_type
+  
+  # Security Configuration
+  security:
+    encryption_enabled: true
+    tls_enabled: true
+    auth_required: true
+    rate_limiting:
+      enabled: true
+      requests_per_minute: 100
+      burst_size: 20
+  
+  # Resource Management
+  resources:
+    memory_limit: "1G"
+    cpu_limit: "0.5"
+    storage_path: "/app/data"
+    log_path: "/app/logs"
+    
+    # Memory optimization for 6GB constraint
+    memory_optimization:
+      aggressive_gc: true
+      cache_compression: true
+      model_offloading: true
+  
+  # Integration Settings
+  integration:
+    redis_url: "redis://redis:6379"
+    database_url: "postgresql://postgres:password@postgres:5432/xnai"
+    fastapi_endpoint: "http://rag:8000"
+    chainlit_endpoint: "http://ui:8001"
+    
+    # Compatibility with existing stack
+    compatibility:
+      torch_free: true
+      anyio_compatible: true
+      rootless_podman: true
+      zero_telemetry: true
+
+# Environment Variables
+# =====================
+# OPENPIPE_API_KEY: Your OpenPipe API key
+# REDIS_PASSWORD: Redis password (inherited from existing config)
+# VIKUNJA_DB_PASSWORD: Database password (inherited from existing config)
+# GRAFANA_ADMIN_PASSWORD: Grafana admin password (inherited from existing config)
+
+# Deployment Notes
+# ================
+# 1. Ensure OPENPIPE_API_KEY is set in environment
+# 2. Redis and PostgreSQL must be available
+# 3. Memory limit set to 1GB to maintain 6GB total constraint
+# 4. Sovereign mode ensures no external telemetry
+# 5. Task-specific TTLs optimize cache performance
+# 6. Circuit breakers integrate with existing patterns

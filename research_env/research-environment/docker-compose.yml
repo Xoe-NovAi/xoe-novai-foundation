@@ -1,0 +1,173 @@
+version: '3.8'
+
+services:
+  # JupyterLab Research Environment
+  jupyterlab:
+    build:
+      context: ./jupyterlab
+      dockerfile: Dockerfile
+    container_name: xnai-jupyterlab
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work/notebooks
+      - ./config:/home/jovyan/work/config
+      - ./scripts:/home/jovyan/work/scripts
+      - jupyterlab_data:/home/jovyan/work/data
+    environment:
+      - VIKUNJA_URL=http://vikunja:3456/api/v1
+      - MODEL_ROUTER_CONFIG=/home/jovyan/work/config/model-router.yaml
+      - JUPYTER_ENABLE_LAB=yes
+    restart: unless-stopped
+    depends_on:
+      - vikunja
+      - redis
+    networks:
+      - xnai-research
+
+  # Vikunja Task Management
+  vikunja:
+    image: vikunja/api:latest
+    container_name: xnai-vikunja
+    ports:
+      - "3456:3456"
+    environment:
+      - VIKUNJA_DATABASE_TYPE=postgres
+      - VIKUNJA_DATABASE_HOST=postgres:5432
+      - VIKUNJA_DATABASE_DATABASE=xnai_research
+      - VIKUNJA_DATABASE_USERNAME=vikunja
+      - VIKUNJA_DATABASE_PASSWORD=vikunja_password
+      - VIKUNJA_SERVICE_JWT_SECRET=research_secret_key
+      - VIKUNJA_SERVICE_FRONTENDURL=http://localhost:8888
+      - VIKUNJA_SERVICE_REGISTER=true
+      - VIKUNJA_SERVICE_MAILFROMADDRESS=noreply@xnai.foundation
+    volumes:
+      - vikunja_data:/app/vikunja
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    networks:
+      - xnai-research
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: xnai-postgres
+    environment:
+      - POSTGRES_DB=xnai_research
+      - POSTGRES_USER=vikunja
+      - POSTGRES_PASSWORD=vikunja_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./config/postgres.conf:/etc/postgresql/postgresql.conf
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - xnai-research
+
+  # Redis for caching and queues
+  redis:
+    image: redis:7-alpine
+    container_name: xnai-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    restart: unless-stopped
+    networks:
+      - xnai-research
+
+  # Research Queue Worker
+  research-queue:
+    build:
+      context: .
+      dockerfile: Dockerfile.research-queue
+    container_name: xnai-research-queue
+    environment:
+      - VIKUNJA_URL=http://vikunja:3456/api/v1
+      - REDIS_URL=redis://redis:6379
+      - MODEL_ROUTER_CONFIG=/app/config/model-router.yaml
+    volumes:
+      - ./config:/app/config
+      - ./scripts:/app/scripts
+    restart: unless-stopped
+    depends_on:
+      - vikunja
+      - redis
+    networks:
+      - xnai-research
+
+  # Model Router Service
+  model-router:
+    build:
+      context: .
+      dockerfile: Dockerfile.model-router
+    container_name: xnai-model-router
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - CONFIG_PATH=/app/config/model-router.yaml
+    volumes:
+      - ./config:/app/config
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    depends_on:
+      - redis
+    networks:
+      - xnai-research
+
+  # Classical Text Processing Service
+  classical-processor:
+    build:
+      context: .
+      dockerfile: Dockerfile.classical-processor
+    container_name: xnai-classical-processor
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - CLTK_DATA_PATH=/app/data/cltk
+    volumes:
+      - cltk_data:/app/data/cltk
+      - ./scripts:/app/scripts
+    restart: unless-stopped
+    networks:
+      - xnai-research
+
+  # Documentation Generator
+  doc-generator:
+    build:
+      context: .
+      dockerfile: Dockerfile.doc-generator
+    container_name: xnai-doc-generator
+    environment:
+      - VIKUNJA_URL=http://vikunja:3456/api/v1
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./docs:/app/docs
+      - ./scripts:/app/scripts
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    depends_on:
+      - vikunja
+      - redis
+    networks:
+      - xnai-research
+
+volumes:
+  jupyterlab_data:
+    driver: local
+  vikunja_data:
+    driver: local
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  cltk_data:
+    driver: local
+
+networks:
+  xnai-research:
+    driver: bridge

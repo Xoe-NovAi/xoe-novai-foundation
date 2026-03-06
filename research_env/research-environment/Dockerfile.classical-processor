@@ -1,0 +1,36 @@
+# Classical Text Processing Service for XNAi Foundation
+FROM python:3.10-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Download CLTK data
+RUN python -c "import cltk; cltk.download('greek', 'cltk_data')"
+
+# Copy application code
+COPY scripts/ ./scripts/
+COPY config/ ./config/
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV REDIS_URL=redis://redis:6379
+ENV CLTK_DATA_PATH=/app/data/cltk
+
+# Create directories
+RUN mkdir -p /app/data/cltk
+
+# Create non-root user
+RUN useradd --create-home --shell /bin/bash appuser
+RUN chown -R appuser:appuser /app
+USER appuser
+
+# Start the classical processor service
+CMD ["python", "-m", "scripts.classical_processor_service"]

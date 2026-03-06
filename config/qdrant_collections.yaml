@@ -1,0 +1,433 @@
+# ============================================================================
+# XNAi Foundation - Qdrant Collections Configuration
+# ============================================================================
+# Purpose: Define and configure 3 optimized Qdrant collections for semantic search
+# Version: 1.0.0
+# Last Updated: 2026-02-25
+# Alignment: Zero-Telemetry, <100ms latency, 500K+ scalability
+# ============================================================================
+
+collections:
+  
+  # =========================================================================
+  # Collection 1: xnai_core
+  # =========================================================================
+  # Purpose: Primary semantic search collection using FastEmbed embeddings
+  # Characteristics: Balanced performance, full precision, general-purpose
+  # Use cases: Document retrieval, knowledge base search, general queries
+  # =========================================================================
+  xnai_core:
+    description: "Primary semantic search collection (FastEmbed)"
+    
+    # Vector Configuration
+    vector_config:
+      size: 384                    # FastEmbed default dimension
+      embedding_type: "fastembed"  # ONNX-based, torch-free
+      distance_metric: "cosine"
+      on_disk: true               # Store vectors on disk for persistence
+      datatype: "float32"          # Full precision
+    
+    # HNSW Index Parameters (optimized for <100ms latency)
+    hnsw_config:
+      m: 16                        # Number of bi-directional links
+      ef_construct: 200           # Construction effort factor
+      ef_search: 100              # Search effort factor
+      max_m: 16
+      max_m0: 32
+      ef: 100                     # Default search parameter
+      seed: 42
+    
+    # Payload Schema with Indexed Fields
+    payload_schema:
+      chunk_id:
+        type: "uuid"
+        indexed: true              # Enable indexing for exact match
+        description: "Unique chunk identifier"
+      
+      doc_id:
+        type: "uuid"
+        indexed: true
+        description: "Parent document ID"
+      
+      domain:
+        type: "string"
+        indexed: true              # Enable filtering by domain
+        description: "Knowledge domain (e.g., 'core', 'research', 'archive')"
+      
+      source:
+        type: "string"
+        indexed: false
+        description: "Document source URL or path"
+      
+      chunk_num:
+        type: "integer"
+        indexed: true              # Enable range queries
+        description: "Sequential chunk number within document"
+      
+      created_at:
+        type: "timestamp"
+        indexed: false
+        description: "Document creation timestamp (ISO 8601)"
+      
+      token_count:
+        type: "integer"
+        indexed: false
+        description: "Token count for the chunk"
+      
+      embedding_model:
+        type: "string"
+        indexed: false
+        description: "Embedding model used (e.g., 'all-MiniLM-L6-v2')"
+    
+    # Search Configuration
+    search_config:
+      default_top_k: 10
+      score_threshold: 0.7
+      ef_search: 100
+    
+    # Quantization (disabled for full precision)
+    quantization: null
+    
+    # Target Metrics
+    target_metrics:
+      max_vectors: 500000
+      avg_search_latency_ms: 50
+      p99_search_latency_ms: 100
+      index_size_mb: ~2000          # Estimated at 500K vectors
+
+
+  # =========================================================================
+  # Collection 2: xnai_linguistic
+  # =========================================================================
+  # Purpose: Ancient Greek and linguistic semantic search
+  # Characteristics: Specialized embeddings, scalar quantization for memory
+  # Use cases: Ancient texts, linguistic analysis, etymology
+  # =========================================================================
+  xnai_linguistic:
+    description: "Linguistic and Ancient Greek semantic search (Ancient-Greek-BERT)"
+    
+    # Vector Configuration
+    vector_config:
+      size: 768                    # Ancient-Greek-BERT dimension
+      embedding_type: "ancient-greek-bert"
+      distance_metric: "cosine"
+      on_disk: true
+      datatype: "float32"
+    
+    # HNSW Index Parameters (slightly conservative for linguistic accuracy)
+    hnsw_config:
+      m: 12                        # Fewer links for memory efficiency
+      ef_construct: 150           # Lower construction effort
+      ef_search: 100
+      max_m: 12
+      max_m0: 24
+      ef: 100
+      seed: 42
+    
+    # Payload Schema (identical to xnai_core)
+    payload_schema:
+      chunk_id:
+        type: "uuid"
+        indexed: true
+        description: "Unique chunk identifier"
+      
+      doc_id:
+        type: "uuid"
+        indexed: true
+        description: "Parent document ID"
+      
+      domain:
+        type: "string"
+        indexed: true
+        description: "Knowledge domain"
+      
+      source:
+        type: "string"
+        indexed: false
+        description: "Document source URL or path"
+      
+      chunk_num:
+        type: "integer"
+        indexed: true
+        description: "Sequential chunk number"
+      
+      created_at:
+        type: "timestamp"
+        indexed: false
+        description: "Document creation timestamp"
+      
+      token_count:
+        type: "integer"
+        indexed: false
+        description: "Token count for chunk"
+      
+      language_code:
+        type: "string"
+        indexed: true
+        description: "Language code (e.g., 'grc' for Ancient Greek)"
+      
+      embedding_model:
+        type: "string"
+        indexed: false
+        description: "Embedding model used"
+    
+    # Search Configuration
+    search_config:
+      default_top_k: 10
+      score_threshold: 0.65        # Slightly lower for linguistic variance
+      ef_search: 100
+    
+    # Quantization: Scalar quantization to reduce memory
+    quantization:
+      type: "scalar"
+      quantile: 0.99
+      keep_vectors: false           # Don't keep original vectors in memory
+    
+    # Target Metrics
+    target_metrics:
+      max_vectors: 500000
+      avg_search_latency_ms: 60
+      p99_search_latency_ms: 110
+      index_size_mb: ~1000          # Reduced by quantization
+
+
+  # =========================================================================
+  # Collection 3: xnai_hybrid
+  # =========================================================================
+  # Purpose: Hybrid embeddings combining multiple models
+  # Characteristics: Combined representations, full precision, highest accuracy
+  # Use cases: Cross-modal search, multi-model ranking
+  # =========================================================================
+  xnai_hybrid:
+    description: "Hybrid semantic search (FastEmbed + Ancient-Greek-BERT concatenated)"
+    
+    # Vector Configuration
+    vector_config:
+      size: 1152                   # 384 (FastEmbed) + 768 (Ancient-Greek-BERT)
+      embedding_type: "hybrid"
+      distance_metric: "cosine"
+      on_disk: true
+      datatype: "float32"
+    
+    # HNSW Index Parameters (balanced for hybrid vectors)
+    hnsw_config:
+      m: 14                        # Mid-range connections
+      ef_construct: 180           # Balanced construction effort
+      ef_search: 100
+      max_m: 14
+      max_m0: 28
+      ef: 100
+      seed: 42
+    
+    # Payload Schema (extended with hybrid-specific fields)
+    payload_schema:
+      chunk_id:
+        type: "uuid"
+        indexed: true
+        description: "Unique chunk identifier"
+      
+      doc_id:
+        type: "uuid"
+        indexed: true
+        description: "Parent document ID"
+      
+      domain:
+        type: "string"
+        indexed: true
+        description: "Knowledge domain"
+      
+      source:
+        type: "string"
+        indexed: false
+        description: "Document source URL or path"
+      
+      chunk_num:
+        type: "integer"
+        indexed: true
+        description: "Sequential chunk number"
+      
+      created_at:
+        type: "timestamp"
+        indexed: false
+        description: "Document creation timestamp"
+      
+      token_count:
+        type: "integer"
+        indexed: false
+        description: "Token count for chunk"
+      
+      embedding_model_1:
+        type: "string"
+        indexed: false
+        description: "First embedding model (all-MiniLM-L6-v2)"
+      
+      embedding_model_2:
+        type: "string"
+        indexed: false
+        description: "Second embedding model (Ancient-Greek-BERT)"
+      
+      hybrid_weight_1:
+        type: "float"
+        indexed: false
+        description: "Weight for first embedding model (default 0.5)"
+      
+      hybrid_weight_2:
+        type: "float"
+        indexed: false
+        description: "Weight for second embedding model (default 0.5)"
+    
+    # Search Configuration
+    search_config:
+      default_top_k: 10
+      score_threshold: 0.72        # Higher threshold due to combined signals
+      ef_search: 100
+    
+    # Quantization: None (full precision for accuracy)
+    quantization: null
+    
+    # Target Metrics
+    target_metrics:
+      max_vectors: 500000
+      avg_search_latency_ms: 70
+      p99_search_latency_ms: 120
+      index_size_mb: ~3000          # Largest collection due to size
+
+
+# ============================================================================
+# Global Configuration
+# ============================================================================
+global_config:
+  
+  # Connection settings
+  connection:
+    url: "${QDRANT_URL:http://localhost:6333}"
+    api_key: "${QDRANT_API_KEY:}"
+    timeout: 30
+    grpc_timeout: 60
+  
+  # Performance tuning
+  performance:
+    batch_size: 1000              # Upsert batch size
+    max_parallel_requests: 10     # Concurrent search requests
+    snapshot_interval: 3600       # Snapshot every 1 hour
+  
+  # Memory management
+  memory:
+    max_memory_percent: 0.80      # Use up to 80% of available RAM
+    prefer_on_disk: true          # Store vectors on disk
+  
+  # Replication (for HA)
+  replication:
+    enabled: false
+    replication_factor: 1
+  
+  # Backup configuration
+  backup:
+    enabled: true
+    interval_hours: 24
+    retention_days: 30
+    path: "/data/qdrant/backups"
+
+# ============================================================================
+# Query Strategy Definitions
+# ============================================================================
+query_strategies:
+  
+  # Generic semantic search
+  semantic_search:
+    description: "Basic semantic search across all collections"
+    collections: ["xnai_core", "xnai_linguistic", "xnai_hybrid"]
+    strategy:
+      - step: "Select collection"
+        logic: "Use xnai_core for general queries, xnai_linguistic for Greek texts"
+      - step: "Embed query"
+        logic: "Generate query vector using appropriate model"
+      - step: "Search with metadata filter"
+        logic: "Apply domain, language, source filters"
+      - step: "Rank and return"
+        logic: "Cosine similarity + score thresholding"
+  
+  # Domain-specific search
+  domain_search:
+    description: "Search within specific knowledge domains"
+    collections: ["xnai_core"]
+    parameters:
+      filters:
+        - field: "domain"
+          operator: "="
+          value: "${domain}"
+      top_k: 20
+      score_threshold: 0.65
+  
+  # Multi-collection re-ranking
+  ensemble_search:
+    description: "Search all collections and ensemble results"
+    collections: ["xnai_core", "xnai_linguistic", "xnai_hybrid"]
+    strategy:
+      - step: "Parallel search"
+        collections: ["xnai_core", "xnai_linguistic", "xnai_hybrid"]
+        top_k: 15
+      - step: "Normalize scores"
+        logic: "Convert all scores to [0, 1] range"
+      - step: "Ensemble"
+        logic: "Average scores across collections"
+      - step: "Rerank"
+        logic: "Sort by ensemble score"
+      - step: "Return top-k"
+        top_k: 10
+  
+  # Linguistic search
+  linguistic_search:
+    description: "Search ancient Greek and linguistic documents"
+    collections: ["xnai_linguistic"]
+    parameters:
+      filters:
+        - field: "language_code"
+          operator: "="
+          value: "grc"
+      top_k: 20
+      score_threshold: 0.60
+
+# ============================================================================
+# Migration & Performance Benchmarks
+# ============================================================================
+benchmarks:
+  
+  # Expected performance (500K vectors per collection)
+  latency_targets:
+    p50_search_ms: 30
+    p95_search_ms: 80
+    p99_search_ms: 100
+  
+  # Memory footprint
+  memory_estimates:
+    xnai_core:
+      vectors_500k: 2000          # MB
+      hnsw_index: 400             # MB
+      payload: 500                # MB (metadata)
+      total: 2900                 # MB
+    
+    xnai_linguistic:
+      vectors_500k: 1536          # MB (quantized)
+      hnsw_index: 300             # MB
+      payload: 500                # MB
+      total: 2336                 # MB
+    
+    xnai_hybrid:
+      vectors_500k: 3072          # MB
+      hnsw_index: 600             # MB
+      payload: 500                # MB
+      total: 4172                 # MB
+    
+    total_estimated_mb: 9408      # ~9.4 GB for all collections
+  
+  # Index creation time
+  creation_time_estimates:
+    xnai_core: "2-4 hours"
+    xnai_linguistic: "1.5-3 hours"
+    xnai_hybrid: "3-5 hours"
+  
+  # Search throughput
+  throughput_targets:
+    max_rps: 1000                 # Requests per second
+    concurrent_searches: 50       # Concurrent active searches

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["opencode-antigravity-auth@latest"],
+  "provider": {
+    "google": {
+      "npm": "@ai-sdk/google",
+      "models": {
+        "antigravity-gemini-3-pro": { "name": "Gemini 3 Pro (Antigravity)", "limit": { "context": 1048576, "output": 65535 } },
+        "antigravity-claude-sonnet-4-5": { "name": "Claude Sonnet 4.5 (Antigravity)", "limit": { "context": 200000, "output": 64000 } },
+        "antigravity-claude-opus-4-6-thinking": { "name": "Claude Opus 4.6 Thinking (Antigravity)", "limit": { "context": 200000, "output": 64000 } }
+      }
+    },
+    "sambanova": {
+      "name": "SambaNova Cloud",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": { 
+        "baseURL": "https://api.sambanova.ai/v1",
+        "apiKey": "9c1e1270-e610-4cb8-9f80-bda1baf2b3bc"
+      },
+      "models": {
+        "Meta-Llama-3.1-405B-Instruct": { "name": "Llama 3.1 405B (SambaNova)" },
+        "Meta-Llama-3.3-70B-Instruct": { "name": "Llama 3.3 70B (SambaNova)" },
+        "DeepSeek-V3.2": { "name": "DeepSeek V3.2 (SambaNova)" },
+        "DeepSeek-R1-Distill-Llama-70B": { "name": "DeepSeek R1 70B Distill", "reasoning": true },
+        "Meta-Llama-3.1-8B-Instruct": { "name": "Llama 3.1 8B (Fast)" },
+        "Llama-4-Maverick-17B-Instruct": { "name": "Llama 4 Preview (SambaNova)" }
+      }
+    },
+    "siliconflow": {
+      "name": "SiliconFlow",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": { "baseURL": "https://api.siliconflow.cn/v1" }
+    },
+    "groq": {
+      "name": "Groq",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": { "baseURL": "https://api.groq.com/openai/v1" }
+    }
+  }
+}

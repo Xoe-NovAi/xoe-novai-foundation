@@ -1,0 +1,196 @@
+# XNAi GitHub Account Registry
+# Updated: 2026-02-26
+# Purpose: Track all GitHub accounts for XNAi Foundation development
+
+version: "1.0.0"
+
+# Total capacity calculation
+total_capacity:
+  copilot_messages_per_month: 350  # 7 accounts × 50 messages (1 pending confirmation)
+  copilot_completions_per_month: 14000  # 7 accounts × 2000 completions
+  
+# Account reset cycle
+reset_cycle:
+  # GitHub Copilot Free: Resets on 1st of each month at 00:00 UTC
+  frequency: "monthly"
+  base_date: "2026-03-01"
+
+# GitHub Accounts
+accounts:
+  # === ADMIN/OWNER ACCOUNT ===
+  - id: "gh-admin-01"
+    email: "xoe.nova.ai@gmail.com"
+    username: null  # To be confirmed
+    role: "admin"
+    daily_driver: true
+    gh_host: "github.com"
+    ssh_key: "~/.ssh/github_xoe"
+    branch_pattern: "main,develop"
+    status: "active"
+    copilot:
+      messages_limit: 50
+      messages_used: 0
+      messages_remaining: 50
+      completions_limit: 2000
+      completions_used: 0
+      reset_date: "2026-03-01"
+    notes: "Primary admin account - owns repository"
+    
+  # === CONTRIBUTOR ACCOUNTS - CONFIRMED ===
+  - id: "gh-contrib-01"
+    email: "arcananovaai@gmail.com"
+    username: null  # To be confirmed
+    role: "contributor"
+    daily_driver: false
+    gh_host: "github.com"
+    ssh_key: "~/.ssh/github_arcananova"
+    branch_pattern: "feature/*"
+    status: "active"
+    copilot:
+      messages_limit: 50
+      messages_used: 25
+      messages_remaining: 25
+      completions_limit: 2000
+      completions_used: 0
+      reset_date: "2026-03-01"
+    notes: "NEW - Just added contributor - 50% usage remaining - READY FOR SPLIT TEST"
+    
+  - id: "gh-contrib-02"
+    email: "thejedifather@gmail.com"
+    username: null  # To be confirmed
+    role: "contributor"
+    daily_driver: false
+    gh_host: "github.com"
+    ssh_key: "~/.ssh/github_jedifather"
+    branch_pattern: "feature/*"
+    status: "ready"
+    copilot:
+      messages_limit: 50
+      messages_used: 0
+      messages_remaining: 50
+      completions_limit: 2000
+      completions_used: 0
+      reset_date: "2026-03-01"
+    notes: "Confirmed contributor - full quota available after reset"
+    
+  - id: "gh-contrib-03"
+    email: "taylorbare27@gmail.com"
+    username: null  # To be confirmed
+    role: "contributor"
+    daily_driver: false
+    gh_host: "github.com"
+    ssh_key: "~/.ssh/github_taylorbare"
+    branch_pattern: "feature/*"
+    status: "ready"
+    copilot:
+      messages_limit: 50
+      messages_used: 0
+      messages_remaining: 50
+      completions_limit: 2000
+      completions_used: 0
+      reset_date: "2026-03-01"
+    notes: "Confirmed contributor - full quota available after reset"
+    
+  - id: "gh-contrib-04"
+    email: "lilithasterion@gmail.com"
+    username: null  # To be confirmed
+    role: "contributor"
+    daily_driver: false
+    gh_host: "github.com"
+    ssh_key: "~/.ssh/github_lilith"
+    branch_pattern: "feature/*,lilith/*"
+    status: "ready"
+    copilot:
+      messages_limit: 50
+      messages_used: 0
+      messages_remaining: 50
+      completions_limit: 2000
+      completions_used: 0
+      reset_date: "2026-03-01"
+    notes: "Confirmed contributor - full quota available after reset"
+    
+  - id: "gh-contrib-05"
+    email: "antipode2727@gmail.com"
+    username: null  # To be confirmed
+    role: "contributor"
+    daily_driver: false
+    gh_host: "github.com"
+    ssh_key: "~/.ssh/github_antipode2727"
+    branch_pattern: "feature/*,antipode2727/*"
+    status: "ready"
+    copilot:
+      messages_limit: 50
+      messages_used: 0
+      messages_remaining: 50
+      completions_limit: 2000
+      completions_used: 0
+      reset_date: "2026-03-01"
+    notes: "Confirmed contributor - full quota available after reset"
+    
+  - id: "gh-contrib-06"
+    email: "antipode74@gmail.com"
+    username: null  # To be confirmed
+    role: "contributor"
+    daily_driver: false
+    gh_host: "github.com"
+    ssh_key: "~/.ssh/github_antipode74"
+    branch_pattern: "feature/*,antipode74/*"
+    status: "ready"
+    copilot:
+      messages_limit: 50
+      messages_used: 0
+      messages_remaining: 50
+      completions_limit: 2000
+      completions_used: 0
+      reset_date: "2026-03-01"
+    notes: "Confirmed contributor - full quota available after reset"
+
+# Current status summary
+current_status:
+  total_accounts: 7
+  active_for_use: 2  # admin + arcananovaai
+  ready_after_reset: 5
+  total_messages_available: 350
+  total_messages_used: 25
+  total_messages_remaining: 325
+  split_test_ready: true
+  recommended_account: "arcananovaai@gmail.com"  # 50% remaining, fresh
+
+# Rotation strategy
+rotation_strategy:
+  method: "lowest-usage-first"
+  auto_switch: true
+  warning_threshold: 40  # Switch when below 40% remaining
+  exhaustion_threshold: 10  # Force switch when below 10%
+  split_test_priority: "arcananovaai"  # Use this account first for split test
+
+# Integration with existing quota system
+integration:
+  quota_auditor_script: "scripts/xnai-quota-audit.py"
+  github_audit_script: "scripts/github-account-audit.py"
+  dispatch_log: "memory_bank/usage/DISPATCH-LOG.json"
+  copilot_usage: "memory_bank/usage/copilot-usage.json"
+  github_usage: "memory_bank/usage/github-audit.json"
+  modular_system: "scripts/account_management/"
+
+# Commands reference
+commands:
+  # Check authentication status
+  check_auth: "gh auth status"
+  
+  # Switch account
+  switch_account: "gh auth switch --user <username>"
+  
+  # Run audit
+  run_audit: "python3 scripts/github-account-audit.py --save"
+  
+  # Check rate limits
+  check_limits: "gh api rate_limit"
+  
+  # Split test - use arcananovaai
+  split_test: "gh auth switch --user arcananovaai && copilot -m raptor-mini-preview '...'"
+
+# Next reset dates
+expected_resets:
+  all_accounts: "2026-03-01T00:00:00Z"
+  note: "Most free tier accounts reset on 1st of month. Run github-account-audit.py to get exact times."

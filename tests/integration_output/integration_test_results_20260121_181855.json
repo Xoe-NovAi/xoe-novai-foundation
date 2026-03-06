@@ -1,0 +1,148 @@
+{
+  "summary": {
+    "total_tests": 16,
+    "successful_tests": 15,
+    "success_rate": 93.75,
+    "duration_seconds": null
+  },
+  "categories": {
+    "project": {
+      "total": 4,
+      "successful": 4
+    },
+    "template": {
+      "total": 3,
+      "successful": 3
+    },
+    "kb": {
+      "total": 3,
+      "successful": 3
+    },
+    "notes": {
+      "total": 1,
+      "successful": 1
+    },
+    "cross": {
+      "total": 1,
+      "successful": 0
+    },
+    "metadata": {
+      "total": 1,
+      "successful": 1
+    },
+    "file": {
+      "total": 1,
+      "successful": 1
+    },
+    "error": {
+      "total": 1,
+      "successful": 1
+    },
+    "json": {
+      "total": 1,
+      "successful": 1
+    }
+  },
+  "detailed_results": [
+    {
+      "test_name": "project_orchestrator_init",
+      "success": true,
+      "message": "Orchestrator initialized successfully",
+      "timestamp": "2026-01-21T18:18:55.176665"
+    },
+    {
+      "test_name": "template_discovery",
+      "success": true,
+      "message": "All templates found: ['development-project', 'research-project', 'experimental-project']",
+      "timestamp": "2026-01-21T18:18:55.176821"
+    },
+    {
+      "test_name": "project_creation",
+      "success": true,
+      "message": "Project 'integration_test_project' created successfully",
+      "timestamp": "2026-01-21T18:18:55.178593"
+    },
+    {
+      "test_name": "project_structure",
+      "success": true,
+      "message": "Project structure validated",
+      "timestamp": "2026-01-21T18:18:55.178685"
+    },
+    {
+      "test_name": "project_cleanup",
+      "success": true,
+      "message": "Test project cleaned up",
+      "timestamp": "2026-01-21T18:18:55.179081"
+    },
+    {
+      "test_name": "kb_structure",
+      "success": true,
+      "message": "Knowledge base structure complete",
+      "timestamp": "2026-01-21T18:18:55.179311"
+    },
+    {
+      "test_name": "template_system",
+      "success": true,
+      "message": "Template system functional",
+      "timestamp": "2026-01-21T18:18:55.179421"
+    },
+    {
+      "test_name": "notes_todo_system",
+      "success": true,
+      "message": "Notes and todo system operational",
+      "timestamp": "2026-01-21T18:18:55.179528"
+    },
+    {
+      "test_name": "cross_component_refs",
+      "success": false,
+      "message": "Missing cross-component references",
+      "timestamp": "2026-01-21T18:18:55.180050"
+    },
+    {
+      "test_name": "template_variable_system",
+      "success": true,
+      "message": "Template variable system functional",
+      "timestamp": "2026-01-21T18:18:55.180270"
+    },
+    {
+      "test_name": "metadata_validation",
+      "success": true,
+      "message": "All 3 metadata files valid",
+      "timestamp": "2026-01-21T18:18:55.181518"
+    },
+    {
+      "test_name": "kb_document_structure",
+      "success": true,
+      "message": "All 32 KB documents properly structured",
+      "timestamp": "2026-01-21T18:18:55.191357"
+    },
+    {
+      "test_name": "file_operation_performance",
+      "success": true,
+      "message": "File operations: 0.000s",
+      "timestamp": "2026-01-21T18:18:55.191957"
+    },
+    {
+      "test_name": "kb_access_performance",
+      "success": true,
+      "message": "KB access (32 files): 0.001s",
+      "timestamp": "2026-01-21T18:18:55.193366"
+    },
+    {
+      "test_name": "error_handling",
+      "success": true,
+      "message": "Properly handled missing file error",
+      "timestamp": "2026-01-21T18:18:55.193575"
+    },
+    {
+      "test_name": "json_error_handling",
+      "success": true,
+      "message": "Properly handled invalid JSON error",
+      "timestamp": "2026-01-21T18:18:55.194055"
+    }
+  ],
+  "recommendations": [
+    "Review and optimize cross-component communication"
+  ],
+  "timestamp": "2026-01-21T18:18:55.194425"
+}

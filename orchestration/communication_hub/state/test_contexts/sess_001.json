@@ -1,0 +1,13 @@
+{
+  "session_id": "sess_001",
+  "agent_did": "did:xnai:agent:gemini:test",
+  "timestamp": "2026-02-15T17:57:41.116076+00:00",
+  "data": {
+    "active_task": "bus_scaling",
+    "history": [
+      "msg1",
+      "msg2"
+    ]
+  },
+  "signature": "21fb558308244a613c6db1b289d23934c0b6cdcbffe81bba4a74af36a1dffa09693d2471dfe657e31cba9b39cbd6f77a39926cdec06359dfe36b8b953f90770c"
+}

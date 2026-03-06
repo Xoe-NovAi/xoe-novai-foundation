@@ -1,0 +1,48 @@
+{
+  "name": "omega-installer",
+  "version": "1.0.0",
+  "description": "Beautiful modular installation system for Xoe-NovAi Omega Stack",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "zustand": "^4.5.0",
+    "tailwind-merge": "^2.2.1",
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.320.0",
+    "framer-motion": "^11.0.28",
+    "chart.js": "^4.4.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-hook-form": "^7.48.2",
+    "zod": "^3.23.8",
+    "@hookform/resolvers": "^3.3.2",
+    "socket.io-client": "^4.7.4",
+    "react-icons": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}

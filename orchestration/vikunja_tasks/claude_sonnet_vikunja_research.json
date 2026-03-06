@@ -1,0 +1,9 @@
+{
+  "title": "Claude Sonnet 4.5: Vikunja Knowledge Gaps Research",
+  "description": "Research and produce an actionable report for programmatic Vikunja integration: auth, migrator/import API, project/label management, performance constraints, and a verification runbook.",
+  "labels": ["research", "priority-high", "agent:claude-sonnet"],
+  "custom_fields": {},
+  "project": "Research",
+  "status": "backlog",
+  "priority": 1
+}

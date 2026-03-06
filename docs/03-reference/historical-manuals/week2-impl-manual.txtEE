@@ -1,0 +1,985 @@
+# ============================================================================
+# INTEGRATION STATUS: CLAUDE IMPLEMENTATION DELIVERABLE
+# ============================================================================
+# Status: NOT INTEGRATED - Requires implementation into Xoe-NovAi codebase
+# Source: Claude Week 2 Session Deliverable
+# Date Received: January 27, 2026
+# Implementation Priority: HIGH (High-concurrency RAG & Neural BM25)
+# Estimated Integration Effort: 3-5 days
+# Dependencies: Redis Sentinel, FAISS, Envoy, Vulkan drivers, Podman rootless
+# Integration Checklist:
+# - [ ] Implement Redis Sentinel session management
+# - [ ] Deploy FAISS index with HNSW for Neural BM25
+# - [ ] Configure Envoy load balancer with circuit breakers
+# - [ ] Implement stateless FastAPI application
+# - [ ] Add Podman autoscaling with Prometheus metrics
+# - [ ] Integrate Vulkan acceleration for embeddings
+# - [ ] Deploy high-concurrency RAG service
+# - [ ] Test end-to-end Neural BM25 retrieval
+# - [ ] Validate 1000+ concurrent user performance
+# - [ ] Implement comprehensive monitoring and alerting
+# Integration Complete: [ ] Date: ___________ By: ___________
+# ============================================================================
+
+# Xoe-NovAi Implementation Manual - Week 2
+## High-Concurrency Architecture & Neural BM25 RAG - Step-by-Step Guide
+
+**Version**: 1.0.0 | **Implementation Date**: January 27, 2026
+**Difficulty**: Advanced | **Time Required**: 3-5 days | **Prerequisites**: Week 1 Complete
+
+---
+
+## Table of Contents
+
+1. [Prerequisites](#1-prerequisites)
+2. [Installation & Setup](#2-installation--setup)
+3. [High-Concurrency Configuration](#3-high-concurrency-configuration)
+4. [Neural BM25 Implementation](#4-neural-bm25-implementation)
+5. [Testing & Validation](#5-testing--validation)
+6. [Deployment](#6-deployment)
+7. [Monitoring & Maintenance](#7-monitoring--maintenance)
+8. [Troubleshooting](#8-troubleshooting)
+
+---
+
+## 1. Prerequisites
+
+### 1.1 Required Software
+
+**System Requirements**:
+- Linux kernel 5.10+ (for rootless Podman)
+- Podman 4.0+ with rootless configuration
+- Python 3.11+
+- Redis 7.0+ (Sentinel cluster recommended)
+- Vulkan drivers (for GPU acceleration)
+
+**Verification**:
+```bash
+# Check Podman version
+podman --version  # Should be 4.0+
+
+# Verify rootless mode
+podman info | grep rootless  # Should show "true"
+
+# Check Vulkan support
+vulkaninfo | grep "deviceName"  # Should show your GPU
+
+# Verify Redis Sentinel
+redis-cli -p 26379 SENTINEL masters  # Should list sentinel masters
+```
+
+### 1.2 Dependencies
+
+**Python Packages** (add to `requirements.txt`):
+```txt
+# Web framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+anyio==4.2.0
+
+# Circuit breakers
+pycircuitbreaker==1.0.0
+
+# Redis client
+redis[hiredis]==5.0.1
+
+# RAG components
+langchain==0.1.5
+langchain-community==0.0.16
+sentence-transformers==2.3.1
+faiss-cpu==1.7.4  # Use faiss-gpu if CUDA available
+
+# Vulkan acceleration
+vulkan==1.3.0
+py-vulkan==0.1.0
+
+# Monitoring
+prometheus-client==0.19.0
+opentelemetry-api==1.22.0
+opentelemetry-sdk==1.22.0
+```
+
+**Install Dependencies**:
+```bash
+# Create virtual environment
+python3.11 -m venv venv
+source venv/bin/activate
+
+# Install with uv (faster)
+pip install uv
+uv pip install -r requirements.txt
+```
+
+### 1.3 Environment Setup
+
+**Directory Structure**:
+```
+xoe-novai/
+├── app/
+│   ├── main.py                 # FastAPI application
+│   ├── session.py              # Session management
+│   ├── scalability/
+│   │   ├── load_balancer.py    # Load balancing logic
+│   │   ├── autoscaler.py       # Auto-scaling controller
+│   │   └── health.py           # Health checks
+│   └── rag/
+│       ├── neural_bm25.py      # Neural BM25 retriever
+│       ├── vulkan_accel.py     # Vulkan acceleration
+│       └── context_manager.py  # Context optimization
+├── config/
+│   ├── envoy.yaml             # Envoy load balancer config
+│   ├── redis.conf             # Redis configuration
+│   └── systemd/               # Quadlet configurations
+├── data/
+│   └── faiss/                 # FAISS index storage
+├── scripts/
+│   ├── setup.sh               # Initial setup script
+│   ├── deploy.sh              # Deployment automation
+│   └── benchmark.sh           # Performance testing
+└── tests/
+    ├── test_scalability.py    # Scalability tests
+    └── test_rag.py            # RAG accuracy tests
+```
+
+---
+
+## 2. Installation & Setup
+
+### 2.1 Redis Sentinel Cluster Setup
+
+**Step 1: Configure Redis Master**:
+```bash
+# /etc/redis/redis-master.conf
+bind 0.0.0.0
+port 6379
+requirepass "your-secure-password"
+maxmemory 2gb
+maxmemory-policy allkeys-lru
+
+# Enable persistence
+save 900 1
+save 300 10
+save 60 10000
+appendonly yes
+appendfsync everysec
+```
+
+**Step 2: Configure Sentinel Nodes** (repeat for 3+ nodes):
+```bash
+# /etc/redis/sentinel.conf
+bind 0.0.0.0
+port 26379
+sentinel monitor xoe-master 192.168.1.100 6379 2
+sentinel auth-pass xoe-master your-secure-password
+sentinel down-after-milliseconds xoe-master 5000
+sentinel parallel-syncs xoe-master 1
+sentinel failover-timeout xoe-master 10000
+```
+
+**Step 3: Start Redis Services**:
+```bash
+# Start master
+systemctl start redis-server
+
+# Start sentinels
+systemctl start redis-sentinel@1
+systemctl start redis-sentinel@2
+systemctl start redis-sentinel@3
+
+# Verify cluster
+redis-cli -p 26379 SENTINEL masters
+```
+
+### 2.2 Podman Network Configuration
+
+**Create Dedicated Network**:
+```bash
+# Create network for Xoe-NovAi pods
+podman network create \
+  --driver bridge \
+  --subnet 10.89.0.0/24 \
+  --gateway 10.89.0.1 \
+  xoe-network
+
+# Verify network
+podman network inspect xoe-network
+```
+
+### 2.3 FAISS Index Initialization
+
+**Create Initial Index**:
+```python
+# scripts/init_faiss_index.py
+import faiss
+import numpy as np
+from pathlib import Path
+
+def create_faiss_index(
+    dimension: int = 384,
+    index_path: Path = Path("data/faiss/index.faiss")
+):
+    """Initialize FAISS index with HNSW for fast similarity search"""
+    
+    # Create HNSW index (Hierarchical Navigable Small World)
+    # M=32 connections per node, ef_construction=200 for quality
+    index = faiss.IndexHNSWFlat(dimension, 32)
+    index.hnsw.efConstruction = 200
+    index.hnsw.efSearch = 64
+    
+    # Add memory mapping for large indexes
+    index_path.parent.mkdir(parents=True, exist_ok=True)
+    faiss.write_index(index, str(index_path))
+    
+    print(f"Created FAISS index at {index_path}")
+    print(f"Dimension: {dimension}, Metric: L2")
+    
+    return index
+
+if __name__ == "__main__":
+    create_faiss_index()
+```
+
+**Run Initialization**:
+```bash
+python scripts/init_faiss_index.py
+```
+
+---
+
+## 3. High-Concurrency Configuration
+
+### 3.1 Stateless Application Implementation
+
+**Step 1: Session Manager with Redis Sentinel**:
+
+```python
+# app/session.py
+import json
+import hashlib
+from typing import Optional, Dict, Any
+from datetime import datetime, timedelta
+from dataclasses import dataclass, asdict
+import redis.sentinel
+from redis.asyncio import Redis
+import anyio
+
+@dataclass
+class SessionContext:
+    """Session context stored in Redis"""
+    session_id: str
+    user_id: str
+    conversation_history: list[Dict[str, str]]
+    rag_context: Dict[str, Any]
+    voice_preferences: Dict[str, Any]
+    created_at: str
+    last_activity: str
+    
+    def to_redis_key(self) -> str:
+        return f"session:{self.session_id}"
+    
+    def serialize(self) -> str:
+        return json.dumps(asdict(self))
+    
+    @classmethod
+    def deserialize(cls, data: str) -> "SessionContext":
+        return cls(**json.loads(data))
+
+
+class SessionManager:
+    """Redis Sentinel-based session management"""
+    
+    def __init__(
+        self,
+        sentinel_hosts: list[tuple[str, int]],
+        master_name: str = "xoe-master",
+        password: Optional[str] = None,
+        ttl_seconds: int = 3600
+    ):
+        self.sentinel_hosts = sentinel_hosts
+        self.master_name = master_name
+        self.password = password
+        self.ttl_seconds = ttl_seconds
+        
+        # Initialize sentinel connection
+        self.sentinel = redis.sentinel.Sentinel(
+            sentinel_hosts,
+            password=password,
+            socket_timeout=0.5,
+            sentinel_kwargs={'password': password}
+        )
+        
+    async def get_redis(self) -> Redis:
+        """Get Redis master connection from Sentinel"""
+        # Discover current master
+        master = self.sentinel.master_for(
+            self.master_name,
+            socket_timeout=0.5,
+            password=self.password,
+            decode_responses=True
+        )
+        return Redis.from_pool(master.connection_pool)
+    
+    async def create_session(
+        self,
+        user_id: str,
+        voice_preferences: Optional[Dict] = None
+    ) -> SessionContext:
+        """Create new session"""
+        
+        # Generate session ID
+        session_id = hashlib.sha256(
+            f"{user_id}:{datetime.utcnow().isoformat()}".encode()
+        ).hexdigest()[:16]
+        
+        # Create session context
+        now = datetime.utcnow().isoformat()
+        session = SessionContext(
+            session_id=session_id,
+            user_id=user_id,
+            conversation_history=[],
+            rag_context={},
+            voice_preferences=voice_preferences or {},
+            created_at=now,
+            last_activity=now
+        )
+        
+        # Store in Redis with TTL
+        redis_client = await self.get_redis()
+        async with anyio.create_task_group() as tg:
+            async def _store():
+                await redis_client.setex(
+                    session.to_redis_key(),
+                    self.ttl_seconds,
+                    session.serialize()
+                )
+            tg.start_soon(_store)
+        
+        return session
+    
+    async def get_session(self, session_id: str) -> Optional[SessionContext]:
+        """Retrieve session from Redis"""
+        
+        redis_client = await self.get_redis()
+        key = f"session:{session_id}"
+        
+        data = await redis_client.get(key)
+        if not data:
+            return None
+        
+        # Refresh TTL on access
+        await redis_client.expire(key, self.ttl_seconds)
+        
+        return SessionContext.deserialize(data)
+    
+    async def update_session(self, session: SessionContext) -> None:
+        """Update session in Redis"""
+        
+        # Update last activity timestamp
+        session.last_activity = datetime.utcnow().isoformat()
+        
+        redis_client = await self.get_redis()
+        await redis_client.setex(
+            session.to_redis_key(),
+            self.ttl_seconds,
+            session.serialize()
+        )
+    
+    async def delete_session(self, session_id: str) -> None:
+        """Delete session from Redis"""
+        
+        redis_client = await self.get_redis()
+        await redis_client.delete(f"session:{session_id}")
+```
+
+**Step 2: FastAPI Application with Stateless Design**:
+
+```python
+# app/main.py
+from fastapi import FastAPI, HTTPException, Header
+from pydantic import BaseModel
+import os
+from typing import Optional
+from app.session import SessionManager
+
+# Initialize FastAPI
+app = FastAPI(title="Xoe-NovAi RAG API", version="1.0.0")
+
+# Session manager (shared across requests)
+SESSION_MANAGER = SessionManager(
+    sentinel_hosts=[
+        (host.split(':')[0], int(host.split(':')[1]))
+        for host in os.getenv('REDIS_SENTINEL_HOSTS', 'localhost:26379').split(',')
+    ],
+    master_name=os.getenv('REDIS_MASTER_NAME', 'xoe-master'),
+    password=os.getenv('REDIS_PASSWORD'),
+    ttl_seconds=int(os.getenv('SESSION_TTL', '3600'))
+)
+
+
+class CreateSessionRequest(BaseModel):
+    user_id: str
+    voice_preferences: Optional[dict] = None
+
+
+class QueryRequest(BaseModel):
+    query: str
+    max_results: int = 10
+
+
+@app.get("/health")
+async def health_check():
+    """Liveness probe"""
+    return {"status": "healthy"}
+
+
+@app.get("/health/ready")
+async def readiness_check():
+    """Readiness probe - verify Redis connection"""
+    try:
+        redis_client = await SESSION_MANAGER.get_redis()
+        await redis_client.ping()
+        return {"status": "ready"}
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Redis unavailable: {e}")
+
+
+@app.post("/api/v1/session")
+async def create_session(request: CreateSessionRequest):
+    """Create new session"""
+    
+    session = await SESSION_MANAGER.create_session(
+        user_id=request.user_id,
+        voice_preferences=request.voice_preferences
+    )
+    
+    return {
+        "session_id": session.session_id,
+        "created_at": session.created_at
+    }
+
+
+@app.get("/api/v1/session/{session_id}")
+async def get_session(session_id: str):
+    """Retrieve session"""
+    
+    session = await SESSION_MANAGER.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    return {
+        "session_id": session.session_id,
+        "user_id": session.user_id,
+        "last_activity": session.last_activity,
+        "message_count": len(session.conversation_history)
+    }
+
+
+@app.post("/api/v1/query")
+async def query_rag(
+    request: QueryRequest,
+    x_session_id: str = Header(..., alias="X-Session-ID")
+):
+    """Process RAG query (stateless - retrieves session from Redis)"""
+    
+    # Retrieve session
+    session = await SESSION_MANAGER.get_session(x_session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    # TODO: Process query with Neural BM25 (next section)
+    # For now, return placeholder
+    results = {
+        "query": request.query,
+        "results": [],
+        "processing_time_ms": 0
+    }
+    
+    # Update session
+    session.conversation_history.append({
+        "role": "user",
+        "content": request.query,
+        "timestamp": datetime.utcnow().isoformat()
+    })
+    await SESSION_MANAGER.update_session(session)
+    
+    return results
+```
+
+### 3.2 Load Balancer Configuration
+
+**Step 1: Install Envoy**:
+```bash
+# Using Podman container
+podman pull envoyproxy/envoy:v1.29-latest
+```
+
+**Step 2: Configure Envoy**:
+
+```yaml
+# config/envoy.yaml
+static_resources:
+  listeners:
+  - name: xoe_listener
+    address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 8080
+    filter_chains:
+    - filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          stat_prefix: ingress_http
+          codec_type: AUTO
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: xoe_backend
+              domains: ["*"]
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: xoe_rag_cluster
+                  timeout: 30s
+          http_filters:
+          - name: envoy.filters.http.router
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+  
+  clusters:
+  - name: xoe_rag_cluster
+    connect_timeout: 0.25s
+    type: STRICT_DNS
+    lb_policy: LEAST_REQUEST
+    least_request_lb_config:
+      choice_count: 2
+    health_checks:
+    - timeout: 1s
+      interval: 5s
+      unhealthy_threshold: 2
+      healthy_threshold: 2
+      http_health_check:
+        path: /health/ready
+        expected_statuses:
+        - start: 200
+          end: 299
+    circuit_breakers:
+      thresholds:
+      - priority: DEFAULT
+        max_connections: 1024
+        max_pending_requests: 1024
+        max_requests: 1024
+        max_retries: 3
+    http2_protocol_options:
+      max_concurrent_streams: 100
+    load_assignment:
+      cluster_name: xoe_rag_cluster
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: xoe-rag-pod-1
+                port_value: 8000
+        - endpoint:
+            address:
+              socket_address:
+                address: xoe-rag-pod-2
+                port_value: 8000
+
+admin:
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 9901
+```
+
+**Step 3: Run Envoy**:
+```bash
+podman run -d \
+  --name xoe-envoy \
+  --network xoe-network \
+  -p 8080:8080 \
+  -p 9901:9901 \
+  -v $(pwd)/config/envoy.yaml:/etc/envoy/envoy.yaml:ro \
+  envoyproxy/envoy:v1.29-latest \
+  -c /etc/envoy/envoy.yaml
+```
+
+### 3.3 Auto-Scaling Implementation
+
+**Step 1: Metrics Collector**:
+
+```python
+# app/scalability/autoscaler.py
+import math
+import asyncio
+from dataclasses import dataclass
+from typing import Optional
+import httpx
+from prometheus_client import Gauge
+
+# Prometheus metrics
+current_replicas = Gauge('xoe_current_replicas', 'Current number of pod replicas')
+desired_replicas = Gauge('xoe_desired_replicas', 'Desired number of pod replicas')
+cpu_usage_percent = Gauge('xoe_cpu_usage_percent', 'Current CPU usage percentage')
+active_sessions_total = Gauge('xoe_active_sessions', 'Total active sessions')
+
+
+@dataclass
+class ScalingMetrics:
+    """Current system metrics for scaling decisions"""
+    current_replicas: int
+    cpu_percent: float
+    memory_mb: float
+    active_sessions: int
+    request_rate: float  # requests per second
+
+
+class PodmanAutoscaler:
+    """Auto-scaling controller for Podman pods"""
+    
+    def __init__(
+        self,
+        pod_name_prefix: str = "xoe-rag-pod",
+        min_replicas: int = 2,
+        max_replicas: int = 20,
+        target_cpu_percent: float = 60.0,
+        sessions_per_pod: int = 50,
+        scale_up_cooldown: int = 30,  # seconds
+        scale_down_cooldown: int = 300  # seconds
+    ):
+        self.pod_name_prefix = pod_name_prefix
+        self.min_replicas = min_replicas
+        self.max_replicas = max_replicas
+        self.target_cpu_percent = target_cpu_percent
+        self.sessions_per_pod = sessions_per_pod
+        self.scale_up_cooldown = scale_up_cooldown
+        self.scale_down_cooldown = scale_down_cooldown
+        
+        self.last_scale_up = 0.0
+        self.last_scale_down = 0.0
+    
+    async def collect_metrics(self) -> ScalingMetrics:
+        """Collect current system metrics"""
+        
+        # Get pod stats using Podman API
+        async with httpx.AsyncClient() as client:
+            response = await client.get("http://localhost:8080/stats/pods")
+            stats = response.json()
+        
+        # Aggregate metrics
+        total_cpu = sum(pod['cpu_percent'] for pod in stats['pods'])
+        avg_cpu = total_cpu / len(stats['pods']) if stats['pods'] else 0
+        total_memory = sum(pod['memory_mb'] for pod in stats['pods'])
+        
+        # Get active sessions from Redis
+        # TODO: Query Redis for active session count
+        active_sessions = 0  # Placeholder
+        
+        return ScalingMetrics(
+            current_replicas=len(stats['pods']),
+            cpu_percent=avg_cpu,
+            memory_mb=total_memory,
+            active_sessions=active_sessions,
+            request_rate=stats.get('request_rate', 0)
+        )
+    
+    def calculate_desired_replicas(self, metrics: ScalingMetrics) -> int:
+        """Calculate optimal replica count"""
+        
+        # CPU-based calculation
+        cpu_based = math.ceil(
+            metrics.current_replicas * (metrics.cpu_percent / self.target_cpu_percent)
+        )
+        
+        # Session-based calculation
+        session_based = math.ceil(metrics.active_sessions / self.sessions_per_pod)
+        
+        # Take maximum to ensure capacity
+        desired = max(cpu_based, session_based)
+        
+        # Apply min/max constraints
+        desired = max(self.min_replicas, min(self.max_replicas, desired))
+        
+        # Update Prometheus metrics
+        desired_replicas.set(desired)
+        current_replicas.set(metrics.current_replicas)
+        cpu_usage_percent.set(metrics.cpu_percent)
+        active_sessions_total.set(metrics.active_sessions)
+        
+        return desired
+    
+    async def scale_pods(self, current: int, desired: int) -> None:
+        """Execute scaling operation"""
+        
+        import time
+        now = time.time()
+        
+        if desired > current:
+            # Scale up
+            if now - self.last_scale_up < self.scale_up_cooldown:
+                print(f"Scale up cooling down ({self.scale_up_cooldown}s)")
+                return
+            
+            pods_to_add = desired - current
+            print(f"Scaling up: Adding {pods_to_add} pods")
+            
+            for i in range(pods_to_add):
+                pod_name = f"{self.pod_name_prefix}-{current + i + 1}"
+                await self._start_pod(pod_name)
+            
+            self.last_scale_up = now
+            
+        elif desired < current:
+            # Scale down
+            if now - self.last_scale_down < self.scale_down_cooldown:
+                print(f"Scale down cooling down ({self.scale_down_cooldown}s)")
+                return
+            
+            pods_to_remove = current - desired
+            print(f"Scaling down: Removing {pods_to_remove} pods")
+            
+            for i in range(pods_to_remove):
+                pod_name = f"{self.pod_name_prefix}-{current - i}"
+                await self._stop_pod(pod_name)
+            
+            self.last_scale_down = now
+    
+    async def _start_pod(self, pod_name: str) -> None:
+        """Start new pod replica"""
+        
+        import subprocess
+        
+        # Use systemctl to start pod
+        result = subprocess.run(
+            ["systemctl", "--user", "start", f"{pod_name}.pod"],
+            capture_output=True,
+            text=True
+        )
+        
+        if result.returncode != 0:
+            print(f"Failed to start {pod_name}: {result.stderr}")
+        else:
+            print(f"Started pod: {pod_name}")
+    
+    async def _stop_pod(self, pod_name: str) -> None:
+        """Stop pod replica gracefully"""
+        
+        import subprocess
+        
+        # Use systemctl to stop pod
+        result = subprocess.run(
+            ["systemctl", "--user", "stop", f"{pod_name}.pod"],
+            capture_output=True,
+            text=True
+        )
+        
+        if result.returncode != 0:
+            print(f"Failed to stop {pod_name}: {result.stderr}")
+        else:
+            print(f"Stopped pod: {pod_name}")
+    
+    async def run(self, interval: int = 10) -> None:
+        """Run autoscaling loop"""
+        
+        print(f"Starting autoscaler (interval: {interval}s)")
+        
+        while True:
+            try:
+                # Collect metrics
+                metrics = await self.collect_metrics()
+                
+                # Calculate desired replicas
+                desired = self.calculate_desired_replicas(metrics)
+                
+                # Execute scaling if needed
+                if desired != metrics.current_replicas:
+                    await self.scale_pods(metrics.current_replicas, desired)
+                
+            except Exception as e:
+                print(f"Autoscaler error: {e}")
+            
+            await asyncio.sleep(interval)
+
+
+# Run autoscaler
+if __name__ == "__main__":
+    autoscaler = PodmanAutoscaler()
+    asyncio.run(autoscaler.run())
+```
+
+---
+
+## 4. Neural BM25 Implementation
+
+### 4.1 Neural BM25 Retriever
+
+**Step 1: Core Retriever Implementation**:
+
+```python
+# app/rag/neural_bm25.py
+import numpy as np
+from typing import List, Tuple, Optional
+from dataclasses import dataclass
+import faiss
+from sentence_transformers import SentenceTransformer
+from pycircuitbreaker import CircuitBreaker
+import time
+
+
+@dataclass
+class Document:
+    """Document with embeddings"""
+    id: str
+    content: str
+    metadata: dict
+    embedding: Optional[np.ndarray] = None
+
+
+class NeuralBM25Retriever:
+    """Neural BM25 retriever with Vulkan acceleration"""
+    
+    def __init__(
+        self,
+        model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
+        index_path: str = "data/faiss/index.faiss",
+        use_vulkan: bool = True,
+        max_memory_mb: int = 3072
+    ):
+        self.model_name = model_name
+        self.index_path = index_path
+        self.use_vulkan = use_vulkan
+        self.max_memory_mb = max_memory_mb
+        
+        # Load embedding model
+        self.encoder = SentenceTransformer(model_name)
+        self.embedding_dim = self.encoder.get_sentence_embedding_dimension()
+        
+        # Load FAISS index
+        self.index = self._load_index()
+        
+        # Initialize Vulkan accelerator if available
+        self.vulkan_accel = None
+        if use_vulkan:
+            try:
+                from app.rag.vulkan_accel import VulkanAccelerator
+                self.vulkan_accel = VulkanAccelerator(self.embedding_dim)
+            except Exception as e:
+                print(f"Vulkan acceleration unavailable: {e}")
+        
+        # Circuit breaker for embedding generation
+        self.embedding_cb = CircuitBreaker(
+            failure_threshold=5,
+            recovery_timeout=30,
+            expected_exception=Exception
+        )
+    
+    def _load_index(self) -> faiss.Index:
+        """Load FAISS index with memory mapping"""
+        
+        try:
+            # Try memory-mapped loading first
+            index = faiss.read_index(self.index_path, faiss.IO_FLAG_MMAP)
+            print(f"Loaded memory-mapped FAISS index from {self.index_path}")
+        except:
+            # Fall back to regular loading
+            index = faiss.read_index(self.index_path)
+            print(f"Loaded FAISS index from {self.index_path}")
+        
+        return index
+    
+    @CircuitBreaker.call
+    async def encode_query(self, query: str) -> np.ndarray:
+        """Encode query to embedding with circuit breaker protection"""
+        
+        start_time = time.time()
+        
+        # Generate embedding
+        embedding = self.encoder.encode(
+            query,
+            convert_to_numpy=True,
+            show_progress_bar=False
+        )
+        
+        # Normalize for cosine similarity
+        embedding = embedding / np.linalg.norm(embedding)
+        
+        elapsed = (time.time() - start_time) * 1000
+        print(f"Query encoding: {elapsed:.2f}ms")
+        
+        return embedding
+    
+    async def retrieve(
+        self,
+        query: str,
+        top_k: int = 10,
+        filter_metadata: Optional[dict] = None
+    ) -> List[Tuple[Document, float]]:
+        """
+        Retrieve top-k documents using Neural BM25
+        
+        Args:
+            query: Search query
+            top_k: Number of results to return
+            filter_metadata: Metadata filters (not yet implemented)
+            
+        Returns:
+            List of (document, score) tuples
+        """
+        
+        start_time = time.time()
+        
+        # Encode query
+        query_embedding = await self.encode_query(query)
+        
+        # Search FAISS index
+        if self.vulkan_accel:
+            # Use Vulkan-accelerated search
+            scores, indices = await self.vulkan_accel.search(
+                self.index,
+                query_embedding,
+                top_k
+            )
+        else:
+            # Standard FAISS search
+            query_embedding = query_embedding.reshape(1, -1)
+            scores, indices = self.index.search(query_embedding, top_k)
+            scores = scores[0]
+            indices = indices[0]
+        
+        # Reconstruct documents (placeholder - actual implementation would
+        # load from document store)
+        results = []
+        for idx, score in zip(indices, scores):
+            if idx == -1:  # FAISS returns -1 for missing results
+                continue
+            
+            # TODO: Load document content from storage
+            doc = Document(
+                id=str(idx),
+                content=f"Document {idx} content",
+                metadata={"source": "faiss"},
+                embedding=None
+            )
+            results.append((doc, float(score)))
+        
+        elapsed = (time.time() - start_time) * 1000
+        print(f"Neural BM25 retrieval: {elapsed:.2f}ms, {len(results)} results")
+        
+        return results
+    
+    async def add_documents(self, documents: List[Document]) -> None:
+        """Add documents to FAISS index"""
+        
+        # Generate embeddings
+        contents = [doc.content for doc in documents]
+        embeddings = self.encoder.encode(
+            contents,
+            convert_to_numpy=True,
+            show_progress_bar=True,
+            batch_size=32
+        )
+        
+        #

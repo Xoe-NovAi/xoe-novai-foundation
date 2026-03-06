@@ -1,0 +1,33 @@
+# .opencodeignore - Prevent OpenCode from indexing large/irrelevant directories
+# Extends .gitignore for OOM prevention
+
+# Version Control & Cache
+.git/
+.pytest_cache/
+.ruff_cache/
+.cache/
+
+# Node Modules
+node_modules/
+.opencode/node_modules/
+
+# Large Data & Archives
+data/
+artifacts/
+_archive/
+backups/
+logs/
+internal_docs/
+
+# Models & Embeddings (Massive files)
+models/
+embeddings/
+
+# System Files
+/tmp/
+/tmp/xnai-instances/
+
+# Output Directories
+site/
+dist/
+build/

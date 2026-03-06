@@ -1,0 +1,8 @@
+{
+  "type": "response",
+  "responder_did": "did:xnai:gemini-001",
+  "challenge_nonce": "110928f0cae2d66393d98bdb44d0b4b020836097d7aeb8da0ab8fcf62a6b1d52",
+  "challenge_signature": "9cca618c6a0f80d4d053ea3da0be81736ebb7e70a0b8d2de235aeafd501efee86f5280b265a310e81f6701ed00d8c5645252c3c576404457b713bcbc30807905",
+  "timestamp": "2026-02-15T17:41:32.585456+00:00",
+  "signature": "9f42302052fd62c1868ef5e89f5f0718c0ba65410fbc0b01281850d64ca3f42ac2de0623279ec87e492a9104c51c94193661c104a53f9fd64bb00fa4b224400a"
+}

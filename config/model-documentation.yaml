@@ -1,0 +1,365 @@
+# Model Documentation Configuration
+# ================================
+# Consolidated configuration for model documentation and management
+
+# Model Catalog
+models:
+  # Google Gemini Models
+  google:
+    gemini-3-flash-preview:
+      name: "Gemini 3 Flash Preview"
+      provider: "Google"
+      context_window: 1000000
+      output_limit: 65000
+      capabilities:
+        - "text"
+        - "code"
+        - "reasoning"
+        - "multimodal"
+      use_cases:
+        - "fast-response-tasks"
+        - "high-volume-processing"
+        - "real-time-interactions"
+      performance:
+        speed: "very_fast"
+        accuracy: "high"
+        cost: "low"
+      integration:
+        cli: "gemini"
+        api: "google-ai"
+        priority: "high"
+    
+    gemini-3-pro-preview:
+      name: "Gemini 3 Pro Preview"
+      provider: "Google"
+      context_window: 1000000
+      output_limit: 65000
+      capabilities:
+        - "text"
+        - "code"
+        - "reasoning"
+        - "multimodal"
+        - "advanced-analysis"
+      use_cases:
+        - "complex-reasoning"
+        - "deep-analysis"
+        - "strategic-planning"
+      performance:
+        speed: "medium"
+        accuracy: "very_high"
+        cost: "medium"
+      integration:
+        cli: "gemini"
+        api: "google-ai"
+        priority: "high"
+    
+    gemini-2.5-pro:
+      name: "Gemini 2.5 Pro"
+      provider: "Google"
+      context_window: 1000000
+      output_limit: 65000
+      capabilities:
+        - "text"
+        - "code"
+        - "reasoning"
+        - "multimodal"
+      use_cases:
+        - "general-purpose"
+        - "balanced-performance"
+      performance:
+        speed: "medium"
+        accuracy: "high"
+        cost: "medium"
+      integration:
+        cli: "gemini"
+        api: "google-ai"
+        priority: "medium"
+    
+    gemini-2.5-flash:
+      name: "Gemini 2.5 Flash"
+      provider: "Google"
+      context_window: 1000000
+      output_limit: 65000
+      capabilities:
+        - "text"
+        - "code"
+        - "reasoning"
+        - "multimodal"
+      use_cases:
+        - "fast-response"
+        - "high-throughput"
+      performance:
+        speed: "very_fast"
+        accuracy: "medium"
+        cost: "low"
+      integration:
+        cli: "gemini"
+        api: "google-ai"
+        priority: "medium"
+
+  # OpenRouter Models
+  openrouter:
+    claude-sonnet-4-6:
+      name: "Claude Sonnet 4.6"
+      provider: "OpenRouter"
+      context_window: 200000
+      output_limit: 100000
+      capabilities:
+        - "text"
+        - "reasoning"
+        - "creative-writing"
+      use_cases:
+        - "strategic-planning"
+        - "creative-content"
+        - "analysis"
+      performance:
+        speed: "medium"
+        accuracy: "very_high"
+        cost: "high"
+      integration:
+        cli: "cline"
+        api: "openrouter"
+        priority: "high"
+    
+    claude-opus-4-6-thinking:
+      name: "Claude Opus 4.6 Thinking"
+      provider: "OpenRouter"
+      context_window: 200000
+      output_limit: 100000
+      capabilities:
+        - "text"
+        - "reasoning"
+        - "deep-analysis"
+        - "thinking-mode"
+      use_cases:
+        - "complex-problem-solving"
+        - "strategic-analysis"
+        - "research"
+      performance:
+        speed: "slow"
+        accuracy: "very_high"
+        cost: "very_high"
+      integration:
+        cli: "cline"
+        api: "openrouter"
+        priority: "high"
+    
+    gpt-5-mini:
+      name: "GPT-5 Mini"
+      provider: "OpenRouter"
+      context_window: 128000
+      output_limit: 64000
+      capabilities:
+        - "text"
+        - "code"
+        - "reasoning"
+      use_cases:
+        - "general-purpose"
+        - "fast-response"
+      performance:
+        speed: "very_fast"
+        accuracy: "medium"
+        cost: "low"
+      integration:
+        cli: "copilot"
+        api: "openrouter"
+        priority: "medium"
+    
+    gpt-5-1-codex-32k:
+      name: "GPT-5.1 Codex 32k"
+      provider: "OpenRouter"
+      context_window: 32000
+      output_limit: 32000
+      capabilities:
+        - "code"
+        - "text"
+        - "reasoning"
+      use_cases:
+        - "code-generation"
+        - "large-output-tasks"
+      performance:
+        speed: "medium"
+        accuracy: "high"
+        cost: "medium"
+      integration:
+        cli: "copilot"
+        api: "openrouter"
+        priority: "medium"
+
+  # OpenCode Models
+  opencode:
+    kimi-k2-5-free:
+      name: "Kimi K2.5 Free"
+      provider: "OpenCode"
+      context_window: 262000
+      output_limit: 131000
+      capabilities:
+        - "text"
+        - "reasoning"
+        - "analysis"
+      use_cases:
+        - "general-purpose"
+        - "analysis"
+        - "research"
+      performance:
+        speed: "medium"
+        accuracy: "high"
+        cost: "free"
+      integration:
+        cli: "opencode"
+        api: "opencode"
+        priority: "high"
+    
+    glm-5-free:
+      name: "GLM-5 Free"
+      provider: "OpenCode"
+      context_window: 200000
+      output_limit: 100000
+      capabilities:
+        - "text"
+        - "reasoning"
+        - "analysis"
+      use_cases:
+        - "general-purpose"
+        - "analysis"
+        - "research"
+      performance:
+        speed: "medium"
+        accuracy: "high"
+        cost: "free"
+      integration:
+        cli: "opencode"
+        api: "opencode"
+        priority: "high"
+    
+    minimax-m2-5-free:
+      name: "MiniMax M2.5 Free"
+      provider: "OpenCode"
+      context_window: 196000
+      output_limit: 98000
+      capabilities:
+        - "text"
+        - "reasoning"
+        - "creative-writing"
+      use_cases:
+        - "general-purpose"
+        - "creative-content"
+        - "analysis"
+      performance:
+        speed: "medium"
+        accuracy: "medium"
+        cost: "free"
+      integration:
+        cli: "opencode"
+        api: "opencode"
+        priority: "medium"
+
+# Model Routing Configuration
+model_routing:
+  enabled: true
+  strategies:
+    performance_based:
+      name: "Performance Based"
+      description: "Route based on model performance metrics"
+      algorithm: "weighted_score"
+      weights:
+        accuracy: 0.4
+        speed: 0.3
+        cost: 0.2
+        reliability: 0.1
+    
+    task_specific:
+      name: "Task Specific"
+      description: "Route based on task type and model capabilities"
+      rules:
+        coding:
+          primary: "claude-sonnet-4-6"
+          fallback: ["gpt-5-1-codex-32k", "gemini-3-pro-preview"]
+        analysis:
+          primary: "gemini-3-pro-preview"
+          fallback: ["kimi-k2-5-free", "glm-5-free"]
+        creative:
+          primary: "claude-opus-4-6-thinking"
+          fallback: ["minimax-m2-5-free", "gemini-3-flash-preview"]
+        general:
+          primary: "gpt-5-mini"
+          fallback: ["gemini-2.5-flash", "kimi-k2-5-free"]
+
+# Documentation Management
+documentation:
+  enabled: true
+  auto_generation: true
+  update_frequency: "weekly"
+  
+  # Documentation categories
+  categories:
+    - name: "model-reference"
+      path: "docs/03-reference/models/"
+      template: "model-reference-template.md"
+      auto_update: true
+    
+    - name: "cli-integration"
+      path: "docs/03-how-to-guides/cli-integration/"
+      template: "cli-integration-template.md"
+      auto_update: true
+    
+    - name: "performance-benchmarks"
+      path: "docs/03-reference/benchmarks/"
+      template: "benchmark-template.md"
+      auto_update: false
+
+# Performance Tracking
+performance_tracking:
+  enabled: true
+  metrics:
+    - "response_time"
+    - "accuracy_score"
+    - "cost_per_token"
+    - "success_rate"
+    - "memory_usage"
+  
+  collection_interval: 3600  # 1 hour
+  retention_days: 90
+  alert_thresholds:
+    response_time: 30
+    accuracy_score: 0.8
+    success_rate: 0.95
+
+# Integration with CLI-Service Bridge
+cli_service_bridge:
+  enabled: true
+  bridge_url: "http://localhost:8080/api/v1"
+  task_types:
+    - "model-routing"
+    - "performance-monitoring"
+    - "documentation-generation"
+  
+  # Model availability monitoring
+  availability_monitoring:
+    enabled: true
+    check_interval: 300  # 5 minutes
+    alert_on_failure: true
+
+# Security and Compliance
+security:
+  enabled: true
+  model_validation: true
+  api_key_management: true
+  audit_logging: true
+  
+  # Compliance tracking
+  compliance:
+    enabled: true
+    requirements:
+      - "data-privacy"
+      - "model-transparency"
+      - "usage-tracking"
+
+# Environment variable overrides
+# ==============================
+# These can be overridden via environment variables:
+# MODEL_ROUTING_ENABLED=true
+# MODEL_ROUTING_STRATEGY=performance_based
+# PERFORMANCE_TRACKING_ENABLED=true
+# CLI_SERVICE_BRIDGE_ENABLED=true
+# CLI_SERVICE_BRIDGE_URL=http://localhost:8080

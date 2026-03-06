@@ -1,0 +1,271 @@
+# Working Memory Handoff Protocol Configuration
+# ==============================================
+#
+# This configuration defines the protocol for handoff from MiniMax m2.5 prime
+# working memory to premium models like Antigravity Opus 4.6 thinking.
+#
+# Key Features:
+# - Context preservation during handoff
+# - Quality validation checkpoints
+# - Seamless model switching
+# - Usage optimization
+
+handoff_protocol:
+  version: "1.0"
+  enabled: true
+  
+  # Handoff triggers
+  triggers:
+    # Context window management
+    context_window_full:
+      enabled: true
+      threshold: 0.9    # Trigger when 90% of context window is used
+      action: "compress_and_handoff"
+      
+    # Complexity detection
+    complex_reasoning_required:
+      enabled: true
+      detection_methods:
+        - "prompt_analysis"
+        - "task_complexity_scoring"
+        - "user_intent_classification"
+      action: "direct_handoff"
+      
+    # Long-form generation
+    long_form_generation:
+      enabled: true
+      min_tokens: 2000
+      action: "streaming_handoff"
+      
+    # Quality degradation
+    quality_degradation:
+      enabled: true
+      metrics:
+        - "response_coherence"
+        - "context_consistency"
+        - "token_efficiency"
+      thresholds:
+        coherence_min: 0.7
+        consistency_min: 0.8
+        efficiency_min: 0.6
+      action: "quality_handoff"
+
+  # Target models for handoff
+  target_models:
+    primary:
+      model: "google/antigravity-claude-opus-4-6-thinking"
+      priority: 1
+      enabled: true
+      max_tokens: 8192
+      temperature: 0.2
+      
+    fallback_1:
+      model: "gemini-20b-thinking"
+      priority: 2
+      enabled: true
+      max_tokens: 8192
+      temperature: 0.2
+      
+    fallback_2:
+      model: "qwen-plus-thinking"
+      priority: 3
+      enabled: true
+      max_tokens: 8192
+      temperature: 0.2
+
+  # Context preservation strategy
+  context_preservation:
+    strategy: "adaptive_compression"
+    
+    # Compression methods
+    compression_methods:
+      - name: "semantic_summarization"
+        enabled: true
+        compression_ratio: 0.5
+        quality_preservation: 0.9
+        
+      - name: "key_point_extraction"
+        enabled: true
+        compression_ratio: 0.3
+        quality_preservation: 0.8
+        
+      - name: "hierarchical_summarization"
+        enabled: true
+        compression_ratio: 0.7
+        quality_preservation: 0.95
+
+    # Context reconstruction
+    reconstruction:
+      enabled: true
+      methods:
+        - "semantic_expansion"
+        - "contextual_enrichment"
+        - "memory_linking"
+
+  # Quality validation checkpoints
+  quality_checkpoints:
+    pre_handoff:
+      enabled: true
+      validations:
+        - name: "context_integrity"
+          check: "validate_context_structure"
+          threshold: 0.9
+          
+        - name: "task_completeness"
+          check: "validate_task_progress"
+          threshold: 0.8
+          
+        - name: "quality_baseline"
+          check: "validate_response_quality"
+          threshold: 0.7
+
+    post_handoff:
+      enabled: true
+      validations:
+        - name: "context_transfer"
+          check: "validate_context_transfer"
+          threshold: 0.95
+          
+        - name: "model_readiness"
+          check: "validate_model_state"
+          threshold: 0.9
+          
+        - name: "response_quality"
+          check: "validate_initial_response"
+          threshold: 0.8
+
+    continuous_monitoring:
+      enabled: true
+      interval: 60  # seconds
+      metrics:
+        - "response_coherence"
+        - "context_consistency"
+        - "task_progress"
+        - "user_satisfaction"
+
+  # Handoff execution strategy
+  execution:
+    strategy: "seamless_transition"
+    
+    # Handoff phases
+    phases:
+      phase_1_preparation:
+        duration: 10  # seconds
+        actions:
+          - "context_analysis"
+          - "compression_preparation"
+          - "target_model_warmup"
+          
+      phase_2_transition:
+        duration: 5   # seconds
+        actions:
+          - "context_transfer"
+          - "state_synchronization"
+          - "user_notification"
+          
+      phase_3_validation:
+        duration: 15  # seconds
+        actions:
+          - "quality_validation"
+          - "response_verification"
+          - "feedback_collection"
+
+    # Error handling
+    error_handling:
+      retry_enabled: true
+      max_retries: 3
+      retry_delay: 30  # seconds
+      
+      fallback_strategy: "return_to_working_memory"
+      escalation_threshold: 2
+
+  # Integration with OpenCode accounts
+  integration:
+    opencode_accounts:
+      rotation_aware: true
+      account_selection:
+        strategy: "health_based"
+        priority: "working_memory_accounts"
+        
+      usage_tracking:
+        enabled: true
+        metrics:
+          - "handoff_frequency"
+          - "account_utilization"
+          - "success_rate"
+          - "response_time"
+
+  # Monitoring and logging
+  monitoring:
+    enabled: true
+    metrics:
+      - "handoff_latency"
+      - "context_preservation_score"
+      - "quality_improvement"
+      - "user_satisfaction"
+      - "error_rate"
+      
+    logging:
+      level: "DEBUG"
+      format: "structured"
+      output: "~/.config/xnai/handoff-protocol.log"
+      
+    alerts:
+      enabled: true
+      conditions:
+        - "handoff_latency_critical"
+        - "context_loss_detected"
+        - "quality_degradation"
+        - "frequent_handoff_failures"
+
+  # Performance optimization
+  optimization:
+    enabled: true
+    
+    # Caching strategy
+    caching:
+      context_cache: true
+      response_cache: true
+      compression_cache: true
+      cache_ttl: 3600  # 1 hour
+      
+    # Resource management
+    resource_management:
+      memory_optimization: true
+      cpu_optimization: true
+      network_optimization: true
+      
+    # Load balancing
+    load_balancing:
+      enabled: true
+      strategy: "adaptive"
+      metrics:
+        - "model_response_time"
+        - "model_availability"
+        - "model_quality_score"
+
+# Usage examples
+usage_examples:
+  # Manual handoff trigger
+  manual_handoff: |
+    XDG_DATA_HOME=/tmp/xnai-opencode-instance-1 opencode chat \
+      --model minimax-m2.5-free \
+      --enable-handoff \
+      --target-model "google/antigravity-claude-opus-4-6-thinking" \
+      --json 'Perform complex analysis...'
+      
+  # Automatic handoff with context preservation
+  automatic_handoff: |
+    XDG_DATA_HOME=/tmp/xnai-opencode-instance-1 opencode chat \
+      --model minimax-m2.5-free \
+      --auto-handoff \
+      --compression-strategy "adaptive" \
+      --json 'Generate comprehensive report...'
+      
+  # Handoff with quality validation
+  quality_handoff: |
+    XDG_DATA_HOME=/tmp/xnai-opencode-instance-1 opencode chat \
+      --model minimax-m2.5-free \
+      --enable-handoff \
+      --quality-validation \
+      --json 'Solve complex mathematical problem...'

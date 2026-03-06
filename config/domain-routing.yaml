@@ -1,0 +1,119 @@
+# Domain Routing Configuration
+# ===============================
+# Maps domains to expert configurations and preferred models
+
+domains:
+  general:
+    id: 0
+    role: "General Purpose Assistant"
+    expert_config: "expert-knowledge/general-expert.yaml"
+    preferred_models: ["google/antigravity-claude-sonnet-4-6"]
+    description: "Default general-purpose expert for all queries"
+    
+  architect:
+    id: 1
+    role: "System Blueprinting & Architecture"
+    expert_config: "expert-knowledge/architect-expert.yaml"
+    preferred_models: ["google/antigravity-claude-opus-4-6-thinking", "google/antigravity-claude-opus-4-5-thinking"]
+    description: "Expert in system architecture, design patterns, and technical blueprints"
+    
+  api:
+    id: 2
+    role: "Backend, AnyIO, & Redis Streams"
+    expert_config: "expert-knowledge/api-expert.yaml"
+    preferred_models: ["google/antigravity-claude-sonnet-4-6", "google/antigravity-claude-sonnet-4-5"]
+    description: "Expert in backend development, APIs, and asynchronous programming"
+    
+  ui:
+    id: 3
+    role: "Frontend, UX, & Dashboard"
+    expert_config: "expert-knowledge/ui-expert.yaml"
+    preferred_models: ["google/antigravity-gemini-3-pro", "google/antigravity-gemini-3-flash"]
+    description: "Expert in frontend development, user experience, and interface design"
+    
+  voice:
+    id: 4
+    role: "Audio, STT/TTS Protocols"
+    expert_config: "expert-knowledge/voice-expert.yaml"
+    preferred_models: ["google/antigravity-gemini-3-pro", "google/antigravity-claude-sonnet-4-6"]
+    description: "Expert in audio processing, speech-to-text, and text-to-speech"
+    
+  data:
+    id: 5
+    role: "RAG, Qdrant, & Gnosis Engine"
+    expert_config: "expert-knowledge/data-expert.yaml"
+    preferred_models: ["google/antigravity-gemini-3-pro", "google/antigravity-claude-sonnet-4-6"]
+    description: "Expert in data management, RAG systems, and knowledge retrieval"
+    
+  ops:
+    id: 6
+    role: "Infra, Podman, & Caddy"
+    expert_config: "expert-knowledge/ops-expert.yaml"
+    preferred_models: ["google/antigravity-claude-sonnet-4-6", "google/antigravity-claude-sonnet-4-5"]
+    description: "Expert in infrastructure, containerization, and deployment"
+    
+  research:
+    id: 7
+    role: "Scholarly Mining & Metadata"
+    expert_config: "expert-knowledge/research-expert.yaml"
+    preferred_models: ["google/antigravity-gemini-3-pro", "google/antigravity-claude-opus-4-6-thinking"]
+    description: "Expert in research methodologies, academic writing, and metadata"
+    
+  test:
+    id: 8
+    role: "QA, Pytest, & Validation"
+    expert_config: "expert-knowledge/test-expert.yaml"
+    preferred_models: ["google/antigravity-claude-sonnet-4-6", "google/antigravity-claude-sonnet-4-5"]
+    description: "Expert in testing, quality assurance, and validation"
+
+# Domain-specific configurations
+domain_configs:
+  architect:
+    context_requirements: ["system_design", "architecture_patterns", "scalability"]
+    model_preferences: ["opus_thinking", "sonnet_reasoning"]
+    response_style: "detailed_analysis"
+    
+  ui:
+    context_requirements: ["design_patterns", "user_experience", "accessibility"]
+    model_preferences: ["pro_multimodal", "flash_fast"]
+    response_style: "visual_examples"
+    
+  api:
+    context_requirements: ["async_programming", "api_design", "performance"]
+    model_preferences: ["sonnet_coding", "opus_reasoning"]
+    response_style: "code_examples"
+
+# Expert context templates
+expert_templates:
+  architect:
+    prompt_template: |
+      You are an expert system architect. Your role is to design scalable, maintainable
+      system architectures. Focus on:
+      - High-level design patterns
+      - Scalability considerations
+      - Technology stack recommendations
+      - Performance optimization strategies
+      
+      Always provide architectural diagrams when possible and explain trade-offs.
+      
+  ui:
+    prompt_template: |
+      You are a UI/UX expert specializing in frontend development. Your role is to create
+      intuitive, accessible user interfaces. Focus on:
+      - Modern design patterns
+      - User experience best practices
+      - Responsive design principles
+      - Accessibility standards (WCAG)
+      
+      Always provide code examples and visual mockups when appropriate.
+      
+  api:
+    prompt_template: |
+      You are a backend API expert specializing in asynchronous programming and
+      high-performance systems. Your role is to design robust APIs. Focus on:
+      - RESTful and GraphQL best practices
+      - Async/await patterns
+      - Performance optimization
+      - Security considerations
+      
+      Always provide code examples and performance benchmarks.

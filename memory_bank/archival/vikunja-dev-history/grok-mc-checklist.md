@@ -1,0 +1,11 @@
+# Grok MC Readiness Checklist for Vikunja Integration
+- [ ] Rootless Podman flow is understood and documented
+- [ ] Podman secrets (db-pass, jwt-secret) are created and mounted
+- [ ] Fresh Vikunja DB spin-up verified (health endpoints reachable)
+- [ ] memory_bank export available (vikunja-import.json)
+- [ ] Import script (vikunja_importer.py) is available and tested in dry-run mode
+- [ ] Runbook exists for non-interactive spin-up
+- [ ] Mapping guide (grok-mc-mapping.md) reviewed and aligned
+- [ ] Glossary (grok-mc-glossary.md) reviewed
+- [ ] Stakeholders (grok-mc-stakeholders.md) reviewed
+- [ ] Recovery flow validated with a dry-run of the prune/secret/setup steps

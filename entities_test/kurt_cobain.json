@@ -1,0 +1,21 @@
+{
+  "entity_id": "kurt_cobain",
+  "role": "musician",
+  "domains": [],
+  "is_initialized": false,
+  "procedural_memory": [
+    {
+      "timestamp": 1772398495.4290438,
+      "query": "Who is Kurt Cobain?",
+      "advice": "Bootstrap identity",
+      "outcome": "Identity established in Omega Stack.",
+      "rating": 1.0
+    }
+  ],
+  "stats": {
+    "invocations": 0,
+    "success_rate": 1.0,
+    "total_feedback": 1
+  },
+  "last_updated": 1772398495.4292042
+}

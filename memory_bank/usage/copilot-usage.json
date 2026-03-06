@@ -1,0 +1,125 @@
+{
+  "version": "1.0.0",
+  "created": "2026-02-23",
+  "last_updated": "2026-02-23T00:00:00Z",
+  "account_pool": [
+    {
+      "id": "copilot-01",
+      "email": "[account-1-email]",
+      "messages_used": 0,
+      "messages_limit": 50,
+      "completions_used": 0,
+      "completions_limit": 2000,
+      "reset_date": "2026-03-01",
+      "models_preferred": ["raptor-mini", "claude-haiku-4.5"],
+      "status": "active",
+      "notes": "Primary account"
+    },
+    {
+      "id": "copilot-02",
+      "email": "[account-2-email]",
+      "messages_used": 0,
+      "messages_limit": 50,
+      "completions_used": 0,
+      "completions_limit": 2000,
+      "reset_date": "2026-03-01",
+      "models_preferred": ["raptor-mini", "claude-haiku-4.5"],
+      "status": "ready",
+      "notes": "Secondary account"
+    },
+    {
+      "id": "copilot-03",
+      "email": "[account-3-email]",
+      "messages_used": 0,
+      "messages_limit": 50,
+      "completions_used": 0,
+      "completions_limit": 2000,
+      "reset_date": "2026-03-01",
+      "models_preferred": ["raptor-mini", "claude-haiku-4.5"],
+      "status": "ready",
+      "notes": "Tertiary account"
+    },
+    {
+      "id": "copilot-04",
+      "email": "[account-4-email]",
+      "messages_used": 0,
+      "messages_limit": 50,
+      "completions_used": 0,
+      "completions_limit": 2000,
+      "reset_date": "2026-03-01",
+      "models_preferred": ["raptor-mini", "claude-haiku-4.5"],
+      "status": "ready",
+      "notes": ""
+    },
+    {
+      "id": "copilot-05",
+      "email": "[account-5-email]",
+      "messages_used": 0,
+      "messages_limit": 50,
+      "completions_used": 0,
+      "completions_limit": 2000,
+      "reset_date": "2026-03-01",
+      "models_preferred": ["raptor-mini", "claude-haiku-4.5"],
+      "status": "ready",
+      "notes": ""
+    },
+    {
+      "id": "copilot-06",
+      "email": "[account-6-email]",
+      "messages_used": 0,
+      "messages_limit": 50,
+      "completions_used": 0,
+      "completions_limit": 2000,
+      "reset_date": "2026-03-01",
+      "models_preferred": ["raptor-mini", "claude-haiku-4.5"],
+      "status": "ready",
+      "notes": ""
+    },
+    {
+      "id": "copilot-07",
+      "email": "[account-7-email]",
+      "messages_used": 0,
+      "messages_limit": 50,
+      "completions_used": 0,
+      "completions_limit": 2000,
+      "reset_date": "2026-03-01",
+      "models_preferred": ["raptor-mini", "claude-haiku-4.5"],
+      "status": "ready",
+      "notes": ""
+    },
+    {
+      "id": "copilot-08",
+      "email": "[account-8-email]",
+      "messages_used": 0,
+      "messages_limit": 50,
+      "completions_used": 0,
+      "completions_limit": 2000,
+      "reset_date": "2026-03-01",
+      "models_preferred": ["raptor-mini", "claude-haiku-4.5"],
+      "status": "ready",
+      "notes": ""
+    }
+  ],
+  "rotation_strategy": {
+    "method": "lowest-usage-first",
+    "auto_switch": true,
+    "warning_threshold": 45,
+    "exhaustion_action": "rotate-to-next"
+  },
+  "message_budget": {
+    "allocation": {
+      "deep_reasoning": 10,
+      "code_generation": 15,
+      "quick_tasks": 10,
+      "research": 10,
+      "reserved": 5
+    }
+  },
+  "totals": {
+    "total_messages_available": 400,
+    "total_messages_used": 0,
+    "total_completions_available": 16000,
+    "total_completions_used": 0
+  },
+  "history": []
+}

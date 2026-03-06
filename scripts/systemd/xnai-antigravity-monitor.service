@@ -1,0 +1,9 @@
+[Unit]
+Description=Antigravity Sovereign Health Monitor & Sync
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/antigravity-maintenance.sh all
+User=arcana-novai
+Group=arcana-novai

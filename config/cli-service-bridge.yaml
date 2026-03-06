@@ -1,0 +1,169 @@
+# CLI-Service Bridge Configuration
+# ================================
+# Configuration for enhanced CLI integration with Foundation stack services
+
+bridge:
+  enabled: true
+  max_concurrent_tasks: 10
+  default_timeout: 300
+  priority_levels: ["high", "normal", "low"]
+  task_queue_size: 100
+  retry_attempts: 3
+  retry_delay: 5
+
+model_routing:
+  enabled: true
+  fallback_strategy: "performance_based"
+  split_testing: true
+  split_test_config: "configs/split-test-defaults.yaml"
+  model_selection_timeout: 30
+  performance_tracking: true
+
+memory_integration:
+  enabled: true
+  context_enhancement: true
+  auto_indexing: true
+  search_top_k: 5
+  context_cache_size: 1000
+  memory_bank_path: "memory_bank/"
+
+security:
+  enabled: true
+  auth_required: true
+  audit_logging: true
+  encryption_enabled: false  # Set to true for production
+  rate_limiting: true
+  rate_limit_requests: 100
+  rate_limit_window: 60
+
+agent_bus:
+  enabled: true
+  stream_name: "xnai:cli_service_integration"
+  group_name: "cli_service_group"
+  message_timeout: 300
+  retry_attempts: 3
+  retry_delay: 2
+
+task_types:
+  version_control:
+    priority: "high"
+    timeout: 600
+    models: ["google/antigravity-claude-sonnet-4-6", "opencode/minimax-m2.5-free"]
+    resource_requirements:
+      cpu_cores: 2
+      memory_mb: 1024
+      network_access: true
+  
+  containerization:
+    priority: "high"
+    timeout: 1200
+    models: ["google/antigravity-gemini-3-pro", "google/antigravity-claude-opus-4-6-thinking"]
+    resource_requirements:
+      cpu_cores: 4
+      memory_mb: 2048
+      disk_space_mb: 1000
+      network_access: true
+  
+  build_execution:
+    priority: "normal"
+    timeout: 900
+    models: ["google/antigravity-claude-sonnet-4-6", "opencode/big-pickle"]
+    resource_requirements:
+      cpu_cores: 2
+      memory_mb: 1024
+      network_access: true
+  
+  file_operations:
+    priority: "low"
+    timeout: 300
+    models: ["opencode/minimax-m2.5-free", "opencode/kimi-k2.5-free"]
+    resource_requirements:
+      cpu_cores: 1
+      memory_mb: 512
+  
+  network_operations:
+    priority: "normal"
+    timeout: 600
+    models: ["google/antigravity-gemini-3-pro", "gemini-2.5-pro"]
+    resource_requirements:
+      cpu_cores: 1
+      memory_mb: 512
+      network_access: true
+  
+  script_execution:
+    priority: "normal"
+    timeout: 600
+    models: ["google/antigravity-claude-sonnet-4-6", "opencode/big-pickle"]
+    resource_requirements:
+      cpu_cores: 2
+      memory_mb: 1024
+  
+  general:
+    priority: "low"
+    timeout: 300
+    models: ["opencode/big-pickle", "google/antigravity-claude-sonnet-4-6"]
+    resource_requirements:
+      cpu_cores: 1
+      memory_mb: 512
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/cli-service-bridge.log"
+  max_file_size: 10485760  # 10MB
+  backup_count: 5
+  console_output: true
+
+monitoring:
+  enabled: true
+  metrics_collection: true
+  health_check_interval: 60
+  performance_monitoring: true
+  alert_thresholds:
+    error_rate: 0.05
+    response_time: 30
+    success_rate: 0.95
+
+performance:
+  caching:
+    enabled: true
+    ttl: 300  # 5 minutes
+    max_size: 1000
+  
+  load_balancing:
+    enabled: true
+    strategy: "round_robin"
+    max_concurrent: 10
+  
+  optimization:
+    context_compression: true
+    model_warmup: true
+    preloading: true
+
+integration:
+  vikunja:
+    enabled: true
+    url: "${VIKUNJA_URL:-http://localhost:3456}"
+    api_key: "${VIKUNJA_API_KEY:-}"
+    project: "CLI Service Integration"
+  
+  qdrant:
+    enabled: true
+    host: "${QDRANT_HOST:-localhost}"
+    port: 6333
+    collection_prefix: "cli_service_"
+  
+  redis:
+    enabled: true
+    host: "${REDIS_HOST:-localhost}"
+    port: 6379
+    db: 0
+    stream_prefix: "xnai:cli_service"
+
+# Environment variable overrides
+# ==============================
+# These can be overridden via environment variables:
+# CLI_SERVICE_BRIDGE_ENABLED=true
+# CLI_SERVICE_BRIDGE_TIMEOUT=600
+# CLI_SERVICE_BRIDGE_MAX_CONCURRENT=20
+# CLI_SERVICE_BRIDGE_LOG_LEVEL=DEBUG

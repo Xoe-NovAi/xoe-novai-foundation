@@ -1,0 +1,64 @@
+{
+  "model_id": "deepseek-coder-6.7b",
+  "task_category": "code_generation",
+  "specs": {
+    "parameters": "6.7B",
+    "context_window": 4096,
+    "quantizations": ["q4_k_m", "q5_k_m", "q8"],
+    "inference_speed_ryzen7": "1.2 tok/s (q4_k_m)",
+    "memory_required": "4.5 GB (q4_k_m)",
+    "vram_optional": "2 GB (VRAM acceleration)"
+  },
+  "benchmarks": {
+    "humaneval": {
+      "score": 73.2,
+      "source": "BigCode Leaderboard",
+      "source_url": "https://huggingface.co/spaces/bigcode/bigcode-models-leaderboard",
+      "date": "2024-02"
+    },
+    "mbpp": {
+      "score": 60.5,
+      "source": "Papers with Code",
+      "source_url": "https://paperswithcode.com/sota/code-generation-on-mbpp",
+      "date": "2024-02"
+    }
+  },
+  "ecosystem": {
+    "frameworks": ["ollama", "vLLM", "llama.cpp", "LM Studio"],
+    "verified_integrations": ["xnai_crawl", "chainlit", "langchain"],
+    "dependencies": ["transformers==4.37", "torch>=2.0"]
+  },
+  "competitive_analysis": {
+    "strengths": [
+      "Best code benchmark for 6B parameter models",
+      "Strong Math and reasoning capabilities",
+      "Efficient inference on commodity hardware",
+      "Good context utilization"
+    ],
+    "weaknesses": [
+      "Weaker than 13B models on complex logic",
+      "Memory footprint challenging on tight budgets",
+      "May struggle with very long context tasks"
+    ],
+    "alternatives": [
+      "Mistral 7B: 7% faster but requires more memory",
+      "StarCoder2: Rust-specific, smaller benchmarks",
+      "CodeLLaMA 7B: Official Meta alternative"
+    ]
+  },
+  "research_status": "verified",
+  "metadata": {
+    "created_date": "2026-02-16T21:00:00Z",
+    "last_updated": "2026-02-16T21:00:00Z",
+    "researcher_notes": "Verified on Ryzen 7 5700U. Optimal balance of performance and resource usage for code generation tasks in XNAi stack.",
+    "source_links": [
+      "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base",
+      "https://github.com/deepseek-ai/DeepSeek-Coder"
+    ]
+  },
+  "vectors": {
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "vector_index_location": "knowledge/vectors/model_cards.faiss",
+    "embedding_timestamp": "2026-02-16T21:00:00Z"
+  }
+}

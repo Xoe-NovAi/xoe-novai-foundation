@@ -1,0 +1,6 @@
+faster-whisper>=1.1.0
+kokoro>=0.9.4
+misaki[en]>=0.9.4
+numpy>=1.26.4
+sounddevice>=0.4.6
+webrtcvad-wheels>=2.0.14

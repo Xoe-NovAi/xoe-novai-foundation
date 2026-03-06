@@ -1,0 +1,173 @@
+{
+  "audit_timestamp": "2026-02-26T21:31:36.695585+00:00",
+  "total_accounts": 7,
+  "accounts": [
+    {
+      "email": "xoe.nova.ai@gmail.com",
+      "gh_host": "github.com",
+      "username": "Xoe-NovAi",
+      "authenticated": true,
+      "rate_limit": null,
+      "remaining": 0,
+      "limit": 0,
+      "used": 0,
+      "reset_date": null,
+      "copilot_usage": {
+        "messages_used": 0,
+        "messages_limit": 50,
+        "messages_remaining": 50,
+        "completions_used": 0,
+        "completions_limit": 2000,
+        "reset_date": "2026-03-01"
+      },
+      "last_check": "2026-02-26T21:31:36.695623+00:00",
+      "daily_driver": true,
+      "role": "admin"
+    },
+    {
+      "email": "arcananovaai@gmail.com",
+      "gh_host": "github.com",
+      "username": "Xoe-NovAi",
+      "authenticated": true,
+      "rate_limit": null,
+      "remaining": 0,
+      "limit": 0,
+      "used": 0,
+      "reset_date": null,
+      "copilot_usage": {
+        "messages_used": 25,
+        "messages_limit": 50,
+        "messages_remaining": 25,
+        "completions_used": 0,
+        "completions_limit": 2000,
+        "reset_date": "2026-03-01"
+      },
+      "last_check": "2026-02-26T21:31:38.155694+00:00",
+      "daily_driver": false,
+      "role": "contributor"
+    },
+    {
+      "email": "thejedifather@gmail.com",
+      "gh_host": "github.com",
+      "username": "Xoe-NovAi",
+      "authenticated": true,
+      "rate_limit": null,
+      "remaining": 0,
+      "limit": 0,
+      "used": 0,
+      "reset_date": null,
+      "copilot_usage": {
+        "messages_used": 0,
+        "messages_limit": 50,
+        "messages_remaining": 50,
+        "completions_used": 0,
+        "completions_limit": 2000,
+        "reset_date": "2026-03-01"
+      },
+      "last_check": "2026-02-26T21:31:40.111812+00:00",
+      "daily_driver": false,
+      "role": "contributor"
+    },
+    {
+      "email": "taylorbare27@gmail.com",
+      "gh_host": "github.com",
+      "username": "Xoe-NovAi",
+      "authenticated": true,
+      "rate_limit": null,
+      "remaining": 0,
+      "limit": 0,
+      "used": 0,
+      "reset_date": null,
+      "copilot_usage": {
+        "messages_used": 0,
+        "messages_limit": 50,
+        "messages_remaining": 50,
+        "completions_used": 0,
+        "completions_limit": 2000,
+        "reset_date": "2026-03-01"
+      },
+      "last_check": "2026-02-26T21:31:41.128275+00:00",
+      "daily_driver": false,
+      "role": "contributor"
+    },
+    {
+      "email": "lilithasterion@gmail.com",
+      "gh_host": "github.com",
+      "username": "Xoe-NovAi",
+      "authenticated": true,
+      "rate_limit": null,
+      "remaining": 0,
+      "limit": 0,
+      "used": 0,
+      "reset_date": null,
+      "copilot_usage": {
+        "messages_used": 0,
+        "messages_limit": 50,
+        "messages_remaining": 50,
+        "completions_used": 0,
+        "completions_limit": 2000,
+        "reset_date": "2026-03-01"
+      },
+      "last_check": "2026-02-26T21:31:42.456453+00:00",
+      "daily_driver": false,
+      "role": "contributor"
+    },
+    {
+      "email": "antipode2727@gmail.com",
+      "gh_host": "github.com",
+      "username": "Xoe-NovAi",
+      "authenticated": true,
+      "rate_limit": null,
+      "remaining": 0,
+      "limit": 0,
+      "used": 0,
+      "reset_date": null,
+      "copilot_usage": {
+        "messages_used": 0,
+        "messages_limit": 50,
+        "messages_remaining": 50,
+        "completions_used": 0,
+        "completions_limit": 2000,
+        "reset_date": "2026-03-01"
+      },
+      "last_check": "2026-02-26T21:31:43.907276+00:00",
+      "daily_driver": false,
+      "role": "contributor"
+    },
+    {
+      "email": "antipode74@gmail.com",
+      "gh_host": "github.com",
+      "username": "Xoe-NovAi",
+      "authenticated": true,
+      "rate_limit": null,
+      "remaining": 0,
+      "limit": 0,
+      "used": 0,
+      "reset_date": null,
+      "copilot_usage": {
+        "messages_used": 0,
+        "messages_limit": 50,
+        "messages_remaining": 50,
+        "completions_used": 0,
+        "completions_limit": 2000,
+        "reset_date": "2026-03-01"
+      },
+      "last_check": "2026-02-26T21:31:45.132772+00:00",
+      "daily_driver": false,
+      "role": "contributor"
+    }
+  ],
+  "recommendations": [
+    {
+      "type": "info",
+      "account": "thejedifather@gmail.com",
+      "message": "Best account for split test",
+      "action": "Use: gh auth switch --user Xoe-NovAi"
+    }
+  ],
+  "summary": {
+    "total_copilot_remaining": 325,
+    "total_api_remaining": 0,
+    "ready_for_split_test": true
+  }
+}

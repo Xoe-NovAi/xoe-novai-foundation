@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xnai-voice-core"
+version = "0.1.0"
+description = "Standalone, plug-and-play voice module for the XNAi Foundation Stack."
+readme = "README.md"
+authors = [
+    { name = "XNAi Enterprise Team", email = "dev@xnai.local" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "sounddevice>=0.4.6",
+    "numpy>=1.24.0",
+    "faster-whisper>=1.0.0",
+    "piper-tts>=1.2.0",
+    "soundfile>=0.12.1",
+    "structlog>=24.1.0",
+    "anyio>=4.0.0",
+    "pyttsx3>=2.90",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.23.0",
+    "tox>=4.11.0"
+]
+radv = [
+    # Optional dependencies for hardware acceleration
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["xnai_voice_core*"]

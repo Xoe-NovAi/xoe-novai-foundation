@@ -1,0 +1,149 @@
+# Wave 5 Strategy Manager Configuration
+# =====================================
+# Configuration for automated model evaluation and strategy management
+
+strategy:
+  enabled: true
+  update_interval_hours: 24
+  test_interval_minutes: 60
+  min_test_samples: 10
+  confidence_threshold: 0.8
+  backup_strategy: true
+  rollback_on_failure: true
+
+split_testing:
+  enabled: true
+  test_types:
+    - "performance"
+    - "accuracy"
+    - "cost"
+  models_per_test: 3
+  tasks_per_model: 5
+  timeout_seconds: 300
+  concurrent_tests: 2
+
+evaluation:
+  metrics:
+    - "execution_time"
+    - "accuracy"
+    - "cost"
+    - "memory_usage"
+  weights:
+    execution_time: 0.3
+    accuracy: 0.4
+    cost: 0.2
+    memory_usage: 0.1
+  normalization: true
+  scoring_algorithm: "weighted_average"
+
+model_ranking:
+  enabled: true
+  history_window_days: 7
+  ranking_algorithm: "weighted_score"
+  min_samples_for_ranking: 5
+  confidence_threshold: 0.8
+
+strategy_updates:
+  auto_apply: true
+  backup_strategy: true
+  rollback_on_failure: true
+  update_types:
+    - "model_ranking"
+    - "fallback_strategy"
+    - "routing_rules"
+  approval_required: false
+
+monitoring:
+  enabled: true
+  performance_alerts: true
+  degradation_threshold: 0.2
+  failure_rate_threshold: 0.1
+  response_time_threshold: 30
+  success_rate_threshold: 0.95
+
+reporting:
+  enabled: true
+  daily_reports: true
+  weekly_reports: true
+  monthly_reports: true
+  report_format: "json"
+  report_storage: "memory_bank/handovers/split-test/outputs/reports"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/wave5-strategy-manager.log"
+  max_file_size: 10485760  # 10MB
+  backup_count: 5
+  console_output: true
+
+# Task Definitions for Split Testing
+test_tasks:
+  coding:
+    description: "Code generation and debugging tasks"
+    complexity: "medium"
+    prompts:
+      - "Write a Python function to implement quicksort algorithm with detailed comments"
+      - "Debug this Python code and explain the issue: [sample code]"
+      - "Implement a binary search tree in JavaScript with all operations"
+  
+  analysis:
+    description: "Text analysis and summarization tasks"
+    complexity: "medium"
+    prompts:
+      - "Analyze the following text and provide a 3-paragraph summary: [sample text]"
+      - "Extract key insights from this research paper abstract: [abstract]"
+      - "Perform sentiment analysis on this customer review: [review text]"
+  
+  reasoning:
+    description: "Logical reasoning and problem solving tasks"
+    complexity: "high"
+    prompts:
+      - "Solve this logic puzzle step by step: [puzzle description]"
+      - "Explain the solution to this mathematical problem: [problem]"
+      - "Analyze this argument and identify any logical fallacies: [argument]"
+  
+  creative:
+    description: "Creative writing and content generation tasks"
+    complexity: "medium"
+    prompts:
+      - "Write a short story about AI and humanity in 500 words"
+      - "Create a marketing copy for a new AI product"
+      - "Generate 10 creative ideas for AI applications in healthcare"
+
+# Model Selection Criteria
+model_selection:
+  primary_model_criteria:
+    - "highest_accuracy"
+    - "lowest_cost"
+    - "best_performance_balance"
+  fallback_models: 3
+  emergency_models: 2
+  model_diversity: true
+
+# Performance Thresholds
+performance_thresholds:
+  min_accuracy: 0.7
+  max_execution_time: 60
+  max_memory_usage: 2048  # MB
+  min_success_rate: 0.8
+
+# Alert Configuration
+alerts:
+  enabled: true
+  email_notifications: false
+  webhook_notifications: false
+  slack_notifications: false
+  alert_channels:
+    - "performance_degradation"
+    - "model_unavailable"
+    - "strategy_update"
+    - "test_failure"
+
+# Environment variable overrides
+# ==============================
+# These can be overridden via environment variables:
+# WAVE5_STRATEGY_ENABLED=true
+# WAVE5_TEST_INTERVAL=120
+# WAVE5_CONFIDENCE_THRESHOLD=0.9
+# WAVE5_LOG_LEVEL=DEBUG

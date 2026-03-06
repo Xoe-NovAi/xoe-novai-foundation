@@ -1,0 +1,85 @@
+manuals:
+  consul:
+    title: HashiCorp Consul Documentation
+    url: https://developer.hashicorp.com/consul/docs
+    status: pending
+    local_path: library/manuals/consul.md
+  redis:
+    title: Redis Documentation
+    url: https://redis.io/docs
+    status: downloaded
+    local_path: library/manuals/redis.md
+    last_downloaded: '2026-02-28T15:35:47.646126'
+    is_deep: true
+    is_scholarly: false
+  victoriametrics:
+    title: VictoriaMetrics Documentation
+    url: https://docs.victoriametrics.com/
+    status: pending
+    local_path: library/manuals/victoriametrics.md
+  openpipe:
+    title: OpenPipe Documentation
+    url: https://docs.openpipe.ai/
+    status: pending
+    local_path: library/manuals/openpipe.md
+  qdrant:
+    title: Qdrant Documentation
+    url: https://qdrant.tech/documentation/
+    status: downloaded
+    local_path: library/manuals/qdrant.md
+    last_downloaded: '2026-02-28T15:13:01.553244'
+  chainlit:
+    title: Chainlit Documentation
+    url: https://docs.chainlit.io/
+    status: pending
+    local_path: library/manuals/chainlit.md
+  crawl4ai:
+    title: Crawl4AI Documentation
+    url: https://docs.crawl4ai.com/
+    status: pending
+    local_path: library/manuals/crawl4ai.md
+  caddy:
+    title: Caddy Server Documentation
+    url: https://caddyserver.com/docs/
+    status: pending
+    local_path: library/manuals/caddy.md
+  grafana:
+    title: Grafana Documentation
+    url: https://grafana.com/docs/
+    status: pending
+    local_path: library/manuals/grafana.md
+  alembic:
+    title: Alembic Documentation
+    url: https://alembic.sqlalchemy.org/
+    status: pending
+    local_path: library/manuals/alembic.md
+  postgres:
+    title: PostgreSQL Documentation
+    url: https://www.postgresql.org/docs/
+    status: pending
+    local_path: library/manuals/postgres.md
+  chainforge:
+    title: ChainForge Documentation
+    url: https://chainforge.ai/docs/
+    status: pending
+    local_path: library/manuals/chainforge.md
+books:
+- id: plato_republic
+  title: The Republic
+  author: Plato
+  url: https://www.gutenberg.org/cache/epub/1497/pg1497-images.html
+  domain: philosophy
+  dewey: '184'
+  status: downloaded
+  local_path: library/books/plato_republic.md
+  last_downloaded: '2026-02-28T15:35:19.363529'
+  is_deep: false
+  is_scholarly: true
+- title: The Pragmatic Programmer
+  author: Andrew Hunt, David Thomas
+  status: pending
+  local_path: library/books/pragmatic-programmer.epub
+- title: Clean Code
+  author: Robert C. Martin
+  status: pending
+  local_path: library/books/clean-code.epub

@@ -1,0 +1,200 @@
+# MiniMax m2.5 prime Working Memory Configuration
+# ===============================================
+#
+# This configuration sets up MiniMax m2.5 prime as the working memory
+# model for the OpenCode multi-account system.
+#
+# Key Features:
+# - Fast response times for working memory operations
+# - Optimized for context window management
+# - Supports multi-instance isolation
+# - Free tier compatible
+
+working_memory:
+  model: "minimax-m2.5-free"
+  provider: "opencode"
+  
+  # Performance settings
+  performance:
+    max_tokens: 4096
+    temperature: 0.1
+    top_p: 0.9
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+    
+  # Context management
+  context:
+    window_size: 8192
+    retention_policy: "sliding_window"
+    compression_enabled: true
+    compression_threshold: 4096
+    
+  # Multi-instance configuration
+  instances:
+    - name: "working_memory_1"
+      xdg_data_home: "/tmp/xnai-opencode-instance-1"
+      port: 10001
+      priority: 1
+      status: "active"
+      
+    - name: "working_memory_2"
+      xdg_data_home: "/tmp/xnai-opencode-instance-2"
+      port: 10002
+      priority: 2
+      status: "active"
+      
+    - name: "working_memory_3"
+      xdg_data_home: "/tmp/xnai-opencode-instance-3"
+      port: 10003
+      priority: 3
+      status: "active"
+      
+    - name: "working_memory_4"
+      xdg_data_home: "/tmp/xnai-opencode-instance-4"
+      port: 10004
+      priority: 4
+      status: "active"
+      
+    - name: "working_memory_5"
+      xdg_data_home: "/tmp/xnai-opencode-instance-5"
+      port: 10005
+      priority: 5
+      status: "active"
+      
+    - name: "working_memory_6"
+      xdg_data_home: "/tmp/xnai-opencode-instance-6"
+      port: 10006
+      priority: 6
+      status: "active"
+      
+    - name: "working_memory_7"
+      xdg_data_home: "/tmp/xnai-opencode-instance-7"
+      port: 10007
+      priority: 7
+      status: "active"
+      
+    - name: "working_memory_8"
+      xdg_data_home: "/tmp/xnai-opencode-instance-8"
+      port: 10008
+      priority: 8
+      status: "active"
+
+  # Working memory operations
+  operations:
+    # Context window management
+    context_window:
+      strategy: "adaptive"
+      min_size: 2048
+      max_size: 8192
+      growth_factor: 1.5
+      shrink_factor: 0.8
+      
+    # Memory handoff to premium models
+    handoff:
+      enabled: true
+      trigger_conditions:
+        - "context_window_full"
+        - "complex_reasoning_required"
+        - "long_form_generation"
+        
+      target_models:
+        - "google/antigravity-claude-opus-4-6-thinking"
+        - "gemini-20b-thinking"
+        - "qwen-plus-thinking"
+        
+      handoff_strategy: "context_preservation"
+      
+    # Quality validation
+    validation:
+      enabled: true
+      checks:
+        - "response_coherence"
+        - "context_consistency"
+        - "token_usage_optimization"
+        
+      thresholds:
+        coherence_min: 0.8
+        consistency_min: 0.9
+        token_efficiency_min: 0.7
+
+  # Integration with OpenCode accounts
+  integration:
+    opencode_accounts:
+      rotation_enabled: true
+      strategy: "round_robin"
+      health_check_interval: 300
+      fallback_enabled: true
+      
+    # Account mapping for working memory
+    account_mapping:
+      working_memory_1: "account_1"
+      working_memory_2: "account_2"
+      working_memory_3: "account_3"
+      working_memory_4: "account_4"
+      working_memory_5: "account_5"
+      working_memory_6: "account_6"
+      working_memory_7: "account_7"
+      working_memory_8: "account_8"
+
+  # Monitoring and logging
+  monitoring:
+    enabled: true
+    metrics:
+      - "response_time"
+      - "token_usage"
+      - "context_window_utilization"
+      - "handoff_frequency"
+      - "error_rate"
+      
+    logging:
+      level: "INFO"
+      format: "json"
+      output: "~/.config/xnai/working_memory.log"
+      
+    alerts:
+      enabled: true
+      thresholds:
+        response_time_warning: 30
+        response_time_critical: 60
+        error_rate_warning: 0.05
+        error_rate_critical: 0.10
+        context_utilization_warning: 0.8
+        context_utilization_critical: 0.95
+
+  # Security and isolation
+  security:
+    isolation: "xdg_data_home"
+    permissions: "0600"
+    encryption: "none"
+    
+    # Per-instance security settings
+    instance_security:
+      enabled: true
+      sandbox_mode: true
+      network_isolation: true
+      resource_limits:
+        memory: "1GB"
+        cpu: "1000m"
+
+# Usage examples
+usage_examples:
+  # Basic working memory query
+  basic_query: |
+    XDG_DATA_HOME=/tmp/xnai-opencode-instance-1 opencode chat \
+      --model minimax-m2.5-free \
+      --json 'What is the capital of France?'
+      
+  # Context window management
+  context_management: |
+    XDG_DATA_HOME=/tmp/xnai-opencode-instance-1 opencode chat \
+      --model minimax-m2.5-free \
+      --context-size 4096 \
+      --json 'Summarize the following text...'
+      
+  # Working memory with handoff
+  with_handoff: |
+    XDG_DATA_HOME=/tmp/xnai-opencode-instance-1 opencode chat \
+      --model minimax-m2.5-free \
+      --enable-handoff \
+      --target-model "google/antigravity-claude-opus-4-6-thinking" \
+      --json 'Perform complex analysis...'

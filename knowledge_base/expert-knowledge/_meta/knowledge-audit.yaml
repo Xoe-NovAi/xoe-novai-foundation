@@ -1,0 +1,17 @@
+# Knowledge Audit - Model Research Synthesis
+last_review: 2026-02-27T12:22:25.115648
+next_review: 2026-05-27T12:22:25.115657
+
+domains:
+  model-reference:
+    files: 1
+    status: current
+    last_reviewed: 2026-02-27T12:22:25.115675
+    new_content: true
+
+synthesis_jobs:
+  rj_synth_models:
+    status: completed
+    completed_at: 2026-02-27T12:22:25.115677
+    outputs:
+      - expert-knowledge/model-reference/MODEL-RESEARCH-COMPENDIUM.md

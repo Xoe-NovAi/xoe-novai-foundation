@@ -1,0 +1,88 @@
+{
+  "voice": {
+    "llm_mode": "auto",
+    "quality_mode": "balanced",
+    "stt_model": "whisper_large_v3_turbo",
+    "tts_model": "kokoro",
+    "ollama_model": "llama3.2",
+    "fallback_timeout": 5.0,
+    "max_concurrent_requests": 3,
+    "enable_voice_cloning": false
+  },
+  "stt": {
+    "model": "whisper_large_v3_turbo",
+    "confidence_threshold": 0.8,
+    "max_audio_duration": 30.0,
+    "silence_timeout": 2.0,
+    "enable_vad": true,
+    "vad_aggressiveness": 2,
+    "language": "en",
+    "fallback_models": [
+      "whisper_base",
+      "piper"
+    ]
+  },
+  "tts": {
+    "model": "kokoro",
+    "voice": "af_sky",
+    "speed": 1.0,
+    "pitch": 1.0,
+    "volume": 1.0,
+    "emotion": "neutral",
+    "enable_voice_cloning": false,
+    "max_text_length": 2000,
+    "streaming_enabled": true,
+    "fallback_models": [
+      "piper"
+    ]
+  },
+  "ollama": {
+    "host": "localhost",
+    "port": 11434,
+    "model": "llama3.2",
+    "timeout": 120,
+    "max_tokens": 2000,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "stream": true,
+    "enable_context": true,
+    "context_size": 10,
+    "fallback_models": [
+      "llama3.1",
+      "mistral",
+      "gemma2"
+    ]
+  },
+  "audio": {
+    "sample_rate": 16000,
+    "channels": 1,
+    "format": "wav",
+    "buffer_size": 1024,
+    "vad_threshold": 0.5,
+    "noise_gate": true,
+    "echo_cancellation": true
+  },
+  "monitoring": {
+    "enabled": true,
+    "metrics_interval": 30,
+    "health_check_interval": 10,
+    "log_level": "INFO",
+    "enable_performance_logging": true
+  },
+  "memory": {
+    "enabled": true,
+    "max_memories": 10000,
+    "ttl_default": 86400,
+    "semantic_search": true,
+    "embedding_model": "all-MiniLM-L6-v2"
+  },
+  "security": {
+    "enable_authentication": false,
+    "api_key": null,
+    "allowed_ips": [
+      "127.0.0.1",
+      "::1"
+    ],
+    "rate_limit": 100
+  }
+}

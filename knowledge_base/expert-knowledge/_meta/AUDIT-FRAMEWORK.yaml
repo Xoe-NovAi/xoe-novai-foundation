@@ -1,0 +1,54 @@
+# Expert Knowledge Audit Framework (v1.0.0)
+# Systematic review schedule for Gold Standard Knowledge
+
+domains:
+  - id: security_iam
+    name: Security & IAM
+    description: OWASP audits, IAM schemas, DID protocols.
+    review_interval_days: 30
+    owner: MC-Overseer
+    last_audit: 2026-02-23
+    status: healthy
+
+  - id: infrastructure_ops
+    name: Infrastructure & Ops
+    description: Podman, Redis, Vikunja, Agent Bus.
+    review_interval_days: 60
+    owner: Architect
+    last_audit: 2026-02-14
+    status: needs_review
+
+  - id: model_intelligence
+    name: Model Intelligence
+    description: Benchmarks, routing strategies, provider tiers.
+    review_interval_days: 15
+    owner: Research-Agent
+    last_audit: 2026-02-28
+    status: healthy
+
+  - id: hardware_tuning
+    name: Hardware Tuning
+    description: Ryzen 5700U, Vulkan acceleration, zRAM.
+    review_interval_days: 90
+    owner: Architect
+    last_audit: 2026-02-11
+    status: healthy
+
+  - id: async_patterns
+    name: Async & AnyIO
+    description: Structured concurrency, circuit breakers.
+    review_interval_days: 60
+    owner: Coder-Agent
+    last_audit: 2026-02-10
+    status: needs_review
+
+audit_criteria:
+  - accuracy: "Does the code match the documentation?"
+  - actionable: "Can an agent or human execute the remediation?"
+  - complete: "Are root causes and mastery lessons included?"
+  - linked: "Is it properly mapped in the Semantic Index?"
+
+metadata:
+  version: 1.0.0
+  last_updated: 2026-02-28
+  managed_by: MC-Overseer

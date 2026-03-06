@@ -1,0 +1,53 @@
+# MkDocs output
+site/
+
+# Build artifacts
+*.egg-info/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment & Secrets
+.env
+.env.local
+*.pem
+secrets/
+*.secret
+.oauth_key
+
+# Large binaries and archives
+*.AppImage
+*.zip
+*.tar.gz
+*.log
+*.dmg
+*.gguf
+*.onnx
+
+# Storage (Models, Instances, Data) - GLOBAL IGNORE
+storage/
+data/
+db/
+internal_docs/
+backups/
+embeddings/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Large Artifacts
+artifacts/*.json
+_archive/**/*.json

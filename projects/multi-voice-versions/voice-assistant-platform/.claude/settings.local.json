@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ollama list:*)",
+      "Bash(python:*)",
+      "Bash(uv run:*)",
+      "Bash(sort:*)",
+      "Bash(# Search broader locations for model files\nfind /Users/buck -type f \\\\\\( -name \"*.gguf\" -o -name \"*.safetensors\" -o -name \"*.ggml\" \\\\\\) -size +1G 2>/dev/null | while read f; do\n  size=$\\(du -sh \"$f\" 2>/dev/null | cut -f1\\)\n  echo \"$size  $f\"\ndone 2>/dev/null)",
+      "Bash(# Show ollama manifests to map blobs to model names find ~/.ollama/models/manifests -type f)",
+      "Bash(while read f)",
+      "Bash(do echo \"=== $f ===\" cat \"$f\")",
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(sleep 1:*)",
+      "Bash(launchctl list:*)",
+      "Bash(grep LISTEN:*)",
+      "Bash(launchctl unload:*)",
+      "Bash(tail:*)",
+      "WebSearch",
+      "Bash(echo repo fetch failed:*)",
+      "Bash(curl -s \"https://api.github.com/repos/Xoe-NovAi/xoe-novai-foundation/git/trees/HEAD?recursive=1\" 2>/dev/null | python3 -c \"\nimport json, sys\nd = json.load\\(sys.stdin\\)\nfiles = [t['path'] for t in d.get\\('tree', []\\) if t['type'] == 'blob']\n# Filter for memory-related files\nmem_files = [f for f in files if any\\(k in f.lower\\(\\) for k in ['memory', 'persist', 'state', 'session', 'brain', 'context']\\)]\nprint\\('Memory-related files:'\\)\nfor f in mem_files:\n    print\\(' ', f\\)\nprint\\(\\)\nprint\\('All top-level dirs:', sorted\\(set\\(f.split\\('/'\\)[0] for f in files if '/' in f\\)\\)\\)\n\" 2>/dev/null)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(echo No matching env vars:*)",
+      "Bash(python3:*)",
+      "Bash(chmod +x:*)",
+      "Bash(echo 2026-02-23T21:43:00Z:*)",
+      "Bash(cat:*)"
+    ]
+  }
+}

@@ -1,0 +1,274 @@
+# Antigravity Free Frontier Models Configuration
+# =============================================
+#
+# This configuration sets up Antigravity free frontier models
+# for premium model access with Google OAuth authentication.
+#
+# Key Features:
+# - Free tier access to frontier models
+# - Google OAuth authentication
+# - Integration with OpenCode multi-account system
+# - Quality validation and monitoring
+
+antigravity:
+  version: "1.0"
+  enabled: true
+  
+  # Authentication configuration
+  authentication:
+    type: "google_oauth"
+    client_id: "${ANTIGRAVITY_CLIENT_ID}"
+    client_secret: "${ANTIGRAVITY_CLIENT_SECRET}"
+    redirect_uri: "http://localhost:8080/callback"
+    
+    # OAuth scopes for frontier model access
+    scopes:
+      - "https://www.googleapis.com/auth/userinfo.email"
+      - "https://www.googleapis.com/auth/userinfo.profile"
+      - "https://www.googleapis.com/auth/cloud-platform"
+      
+    # Token management
+    token_refresh_interval: 3600  # 1 hour
+    token_expiry_warning: 300    # 5 minutes
+    
+  # Free frontier models
+  frontier_models:
+    opus_4_6_thinking:
+      name: "google/antigravity-claude-opus-4-6-thinking"
+      type: "thinking"
+      enabled: true
+      max_tokens: 8192
+      temperature: 0.2
+      top_p: 0.9
+      frequency_penalty: 0.0
+      presence_penalty: 0.0
+      
+      # Free tier limits
+      free_tier:
+        requests_per_day: 100
+        tokens_per_day: 100000
+        concurrent_requests: 5
+        
+      # Quality settings
+      quality:
+        coherence_min: 0.9
+        consistency_min: 0.95
+        response_time_max: 60
+        
+    gemini_20b_thinking:
+      name: "gemini-20b-thinking"
+      type: "thinking"
+      enabled: true
+      max_tokens: 8192
+      temperature: 0.2
+      top_p: 0.9
+      
+      # Free tier limits
+      free_tier:
+        requests_per_day: 50
+        tokens_per_day: 50000
+        concurrent_requests: 3
+        
+    qwen_plus_thinking:
+      name: "qwen-plus-thinking"
+      type: "thinking"
+      enabled: true
+      max_tokens: 8192
+      temperature: 0.2
+      top_p: 0.9
+      
+      # Free tier limits
+      free_tier:
+        requests_per_day: 75
+        tokens_per_day: 75000
+        concurrent_requests: 4
+
+  # Integration with OpenCode accounts
+  integration:
+    opencode_accounts:
+      enabled: true
+      account_mapping:
+        account_1: "opus_4_6_thinking"
+        account_2: "gemini_20b_thinking"
+        account_3: "qwen_plus_thinking"
+        account_4: "opus_4_6_thinking"
+        account_5: "gemini_20b_thinking"
+        account_6: "qwen_plus_thinking"
+        account_7: "opus_4_6_thinking"
+        account_8: "gemini_20b_thinking"
+        
+      rotation_strategy: "model_based"
+      usage_tracking: true
+      
+    # Working memory integration
+    working_memory:
+      enabled: true
+      handoff_protocol: "working-memory-handoff-protocol.yaml"
+      context_preservation: true
+      quality_validation: true
+
+  # Quality validation checkpoints
+  quality_validation:
+    enabled: true
+    
+    # Pre-request validation
+    pre_request:
+      checks:
+        - "model_availability"
+        - "quota_availability"
+        - "authentication_valid"
+        - "context_readiness"
+        
+      thresholds:
+        model_availability_min: 0.95
+        quota_availability_min: 0.8
+        authentication_valid: true
+        
+    # Post-response validation
+    post_response:
+      checks:
+        - "response_quality"
+        - "context_consistency"
+        - "token_efficiency"
+        - "user_satisfaction"
+        
+      thresholds:
+        response_quality_min: 0.85
+        context_consistency_min: 0.9
+        token_efficiency_min: 0.7
+        user_satisfaction_min: 0.8
+
+  # Monitoring and usage tracking
+  monitoring:
+    enabled: true
+    
+    # Usage metrics
+    metrics:
+      - "requests_per_model"
+      - "tokens_per_model"
+      - "response_time"
+      - "error_rate"
+      - "quality_score"
+      - "quota_utilization"
+      
+    # Real-time monitoring
+    real_time:
+      enabled: true
+      update_interval: 60  # seconds
+      dashboard_enabled: true
+      
+    # Alerts and notifications
+    alerts:
+      enabled: true
+      conditions:
+        - "quota_exceeded"
+        - "model_unavailable"
+        - "quality_degradation"
+        - "authentication_failure"
+        
+      notification_channels:
+        - "log"
+        - "email"
+        - "webhook"
+
+  # Performance optimization
+  performance:
+    enabled: true
+    
+    # Caching strategy
+    caching:
+      enabled: true
+      cache_types:
+        - "response_cache"
+        - "context_cache"
+        - "model_state_cache"
+      cache_ttl: 1800  # 30 minutes
+      
+    # Load balancing
+    load_balancing:
+      enabled: true
+      strategy: "adaptive"
+      metrics:
+        - "model_response_time"
+        - "model_availability"
+        - "model_quality_score"
+        - "quota_utilization"
+        
+    # Resource optimization
+    resource_optimization:
+      enabled: true
+      memory_optimization: true
+      cpu_optimization: true
+      network_optimization: true
+
+  # Security and compliance
+  security:
+    enabled: true
+    
+    # Authentication security
+    auth_security:
+      token_encryption: true
+      secure_storage: true
+      session_timeout: 3600  # 1 hour
+      
+    # Data protection
+    data_protection:
+      encryption_at_rest: true
+      encryption_in_transit: true
+      data_retention_days: 30
+      
+    # Access control
+    access_control:
+      role_based: true
+      permission_levels: ["read", "write", "admin"]
+      audit_logging: true
+
+  # Error handling and recovery
+  error_handling:
+    enabled: true
+    
+    # Retry strategy
+    retry_strategy:
+      enabled: true
+      max_retries: 3
+      retry_delay: 60  # seconds
+      exponential_backoff: true
+      
+    # Fallback models
+    fallback_models:
+      enabled: true
+      fallback_chain:
+        - "opus_4_6_thinking"
+        - "gemini_20b_thinking"
+        - "qwen_plus_thinking"
+        - "minimax-m2.5-free"
+        
+    # Recovery procedures
+    recovery:
+      enabled: true
+      auto_recovery: true
+      manual_recovery: true
+      recovery_timeout: 300  # 5 minutes
+
+# Usage examples
+usage_examples:
+  # Basic Antigravity model usage
+  basic_usage: |
+    XDG_DATA_HOME=/tmp/xnai-opencode-instance-1 opencode chat \
+      --model "google/antigravity-claude-opus-4-6-thinking" \
+      --json 'Perform complex analysis...'
+      
+  # With quality validation
+  with_validation: |
+    XDG_DATA_HOME=/tmp/xnai-opencode-instance-1 opencode chat \
+      --model "google/antigravity-claude-opus-4-6-thinking" \
+      --enable-quality-validation \
+      --json 'Generate comprehensive report...'
+      
+  # With working memory handoff
+  with_handoff: |
+    XDG_DATA_HOME=/tmp/xnai-opencode-instance-1 opencode chat \
+      --model "minimax-m2.5-free" \
+      --enable-handoff \
+      --target-model "google/antigravity-claude-opus-4-6-thinking" \
+      --json 'Solve complex mathematical problem...'

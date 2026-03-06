@@ -1,0 +1,9 @@
+domains:
+  architect: { id: 1, role: "System Blueprinting & Architecture" }
+  api:       { id: 2, role: "Backend, AnyIO, & Redis Streams" }
+  ui:        { id: 3, role: "Frontend, UX, & Dashboard" }
+  voice:     { id: 4, role: "Audio, STT/TTS Protocols" }
+  data:      { id: 5, role: "RAG, Qdrant, & Gnosis Engine" }
+  ops:       { id: 6, role: "Infra, Podman, & Caddy" }
+  research:  { id: 7, role: "Scholarly Mining & Metadata" }
+  test:      { id: 8, role: "QA, Pytest, & Validation" }

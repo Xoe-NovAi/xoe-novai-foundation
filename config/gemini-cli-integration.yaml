@@ -1,0 +1,225 @@
+# Gemini CLI Integration Configuration
+# ================================
+# Consolidated configuration for Gemini CLI integration with CLI-Service Bridge
+
+# Gemini CLI Configuration
+gemini:
+  enabled: true
+  api_key_file: secrets/gemini_api_key.txt
+  default_model: "gemini-3-flash-preview"
+  available_models:
+    - "gemini-3-flash-preview"
+    - "gemini-3-pro-preview"
+    - "gemini-2.5-pro"
+    - "gemini-2.5-flash"
+    - "gemini-1.5-pro"
+    - "gemini-1.5-flash"
+  
+  # Rate limiting
+  rate_limits:
+    requests_per_minute: 15
+    concurrent_requests: 3
+    timeout_seconds: 300
+  
+  # Context management
+  context:
+    max_tokens: 1000000  # 1M tokens
+    compression_enabled: true
+    memory_tier: "global"
+    auto_summarization: true
+
+# CLI-Service Bridge Integration
+cli_service_bridge:
+  enabled: true
+  bridge_url: "http://localhost:8080/api/v1"
+  task_type: "general"
+  priority: "normal"
+  timeout: 300
+  
+  # Model routing integration
+  model_routing:
+    enabled: true
+    fallback_models:
+      - "gemini-2.5-flash"
+      - "gemini-1.5-pro"
+    performance_tracking: true
+
+# Session Management
+session_management:
+  enabled: true
+  storage_path: ".gemini/sessions/"
+  auto_save: true
+  session_timeout: 3600  # 1 hour
+  max_sessions: 10
+  
+  # Session types
+  session_types:
+    - name: "project-specific"
+      description: "Project-specific sessions with context isolation"
+      auto_create: true
+      context_isolation: true
+    
+    - name: "global"
+      description: "Global sessions with cross-project context"
+      auto_create: false
+      context_isolation: false
+
+# Memory Integration
+memory_integration:
+  enabled: true
+  memory_bank_path: "memory_bank/"
+  context_enhancement: true
+  auto_indexing: true
+  search_top_k: 5
+  memory_cache_size: 1000
+  
+  # Memory tiers
+  memory_tiers:
+    global:
+      enabled: true
+      retention_days: 365
+      priority: "high"
+    
+    project:
+      enabled: true
+      retention_days: 90
+      priority: "medium"
+    
+    session:
+      enabled: true
+      retention_days: 7
+      priority: "low"
+
+# Task Automation
+task_automation:
+  enabled: true
+  auto_tasks:
+    - name: "project_discovery"
+      trigger: "project_change"
+      description: "Discover and index project structure"
+      enabled: true
+    
+    - name: "context_enhancement"
+      trigger: "session_start"
+      description: "Enhance session with relevant context"
+      enabled: true
+    
+    - name: "memory_sync"
+      trigger: "session_end"
+      description: "Sync session data to memory bank"
+      enabled: true
+
+# Command Integration
+commands:
+  # Project management
+  project:
+    discover:
+      description: "Discover project structure and dependencies"
+      model: "gemini-3-pro-preview"
+      context: "project"
+      timeout: 120
+    
+    analyze:
+      description: "Analyze project for patterns and issues"
+      model: "gemini-3-pro-preview"
+      context: "project"
+      timeout: 300
+  
+  # Code operations
+  code:
+    review:
+      description: "Review code for quality and best practices"
+      model: "gemini-3-pro-preview"
+      context: "code"
+      timeout: 180
+    
+    refactor:
+      description: "Refactor code for better structure"
+      model: "gemini-3-pro-preview"
+      context: "code"
+      timeout: 300
+  
+  # Documentation
+  docs:
+    generate:
+      description: "Generate documentation from code"
+      model: "gemini-3-pro-preview"
+      context: "documentation"
+      timeout: 240
+    
+    update:
+      description: "Update existing documentation"
+      model: "gemini-3-pro-preview"
+      context: "documentation"
+      timeout: 180
+
+# Integration with Foundation Stack
+foundation_stack:
+  enabled: true
+  
+  # Agent Bus integration
+  agent_bus:
+    enabled: true
+    stream_name: "xnai:gemini_cli_integration"
+    group_name: "gemini_cli_group"
+    message_timeout: 300
+    retry_attempts: 3
+    retry_delay: 2
+  
+  # Model Router integration
+  model_router:
+    enabled: true
+    routing_strategy: "performance_based"
+    fallback_strategy: "model_ranking"
+    performance_tracking: true
+  
+  # Memory Bank integration
+  memory_bank:
+    enabled: true
+    auto_indexing: true
+    context_enhancement: true
+    search_integration: true
+
+# Security Configuration
+security:
+  enabled: true
+  encryption_enabled: false  # Set to true for production
+  audit_logging: true
+  content_validation: true
+  rate_limiting: true
+  rate_limit_requests: 100
+  rate_limit_window: 60
+
+# Monitoring and Logging
+monitoring:
+  enabled: true
+  metrics_collection: true
+  performance_monitoring: true
+  alert_thresholds:
+    error_rate: 0.05
+    response_time: 30
+    success_rate: 0.95
+  
+  notifications:
+    enabled: false
+    email: ""
+    webhook: ""
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/gemini-cli-integration.log"
+  max_file_size: 10485760  # 10MB
+  backup_count: 5
+  console_output: true
+
+# Environment variable overrides
+# ==============================
+# These can be overridden via environment variables:
+# GEMINI_API_KEY=your-api-key-here
+# GEMINI_DEFAULT_MODEL=gemini-3-pro-preview
+# GEMINI_RATE_LIMIT=20
+# GEMINI_TIMEOUT=600
+# CLI_SERVICE_BRIDGE_ENABLED=true
+# CLI_SERVICE_BRIDGE_URL=http://localhost:8080
+# MEMORY_BANK_PATH=/custom/memory/bank/path

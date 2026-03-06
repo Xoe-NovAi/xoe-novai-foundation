@@ -1,0 +1,23 @@
+[Unit]
+Description=XNAi zRAM health check (runs scripts/zram-health-check.sh)
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/zram-health-check.sh
+User=root
+Nice=10
+# Advanced CPU affinity / QoS examples (uncomment and adjust for extreme optimization):
+# Enable CPU accounting so systemd enforces CPU affinity/quotas
+#CPUAccounting=yes
+# Pin this light-weight health-check to system cores (example: cores 0 and 1)
+#CPUAffinity=0 1
+# Limit CPU usage to avoid interfering with model-serving cores (e.g., 5% of a CPU)
+#CPUQuota=5%
+# Adjust CPU shares for container/cgroup scheduling priorities
+#CPUShares=128
+# If you prefer the health-check to *avoid* isolated model cores, put the health-check on low-priority CPUs
+#CPUAffinity=0
+
+[Install]
+WantedBy=multi-user.target

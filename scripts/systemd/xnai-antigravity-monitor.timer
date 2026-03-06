@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Antigravity Health Monitor every 15 minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=15min
+Unit=xnai-antigravity-monitor.service
+
+[Install]
+WantedBy=timers.target

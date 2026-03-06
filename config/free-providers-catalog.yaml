@@ -1,0 +1,422 @@
+# ---
+# tool: cline
+# model: claude-sonnet-4-6
+# account: arcana-novai
+# git_branch: main
+# session_id: sprint5-2026-02-18
+# version: v1.0.0
+# created: 2026-02-18
+# ---
+#
+# free-providers-catalog.yaml
+# Focused catalog of FREE and free-tier AI providers for the XNAi stack
+# Companion to configs/model-router.yaml (full provider registry)
+# See: docs/tutorials/FREE-AI-PROVIDERS-COMPLETE-GUIDE.md
+
+metadata:
+  version: "1.1.0"
+  updated: "2026-02-18"
+  sprint: "sprint7-2026-02-18"
+  additions: "Cerebras (3000 t/s), SambaNova (DeepSeek-R1 671B free), iFlow (CN backend)"
+  description: "Free and free-tier AI providers — no credit card required"
+  note: "Limits are approximate and change frequently. Verify at provider sites."
+
+# ─── Tier 0: Truly Free (No Key / OAuth Only) ─────────────────────────────────
+
+tier_0_no_key_required:
+
+  gemini_cli:
+    name: "Google Gemini CLI"
+    website: "https://ai.google.dev/gemini-api/docs/gemini-cli"
+    install: "npm install -g @google/gemini-cli"
+    auth: "Google OAuth (browser)"
+    models:
+      - id: gemini-2.0-flash
+        context_window: 1_000_000
+        rate_limit: "free tier: 1500 req/day"
+        notes: "Best free model available. Recommended default."
+      - id: gemini-2.5-pro
+        context_window: 2_000_000
+        rate_limit: "free tier: 50 req/day"
+        notes: "Complex reasoning tasks. Use sparingly."
+      - id: gemini-2.0-flash-thinking
+        context_window: 32_000
+        rate_limit: "free tier: 500 req/day"
+        notes: "Extended thinking mode."
+    best_for:
+      - Long context tasks (1M+ tokens)
+      - Deep research
+      - Complex reasoning (2.5-pro)
+    limitations:
+      - Sessions not persisted across restarts (use --resume)
+      - Rate limits hit quickly for heavy users
+    xnai_integration:
+      recommended_tasks: [research, summarization, long_context_analysis]
+      config_key: gemini_cli
+
+  opencode_with_antigravity:
+    name: "OpenCode CLI + Antigravity Auth Plugin (GitHub OAuth → Premium Models)"
+    # ─── TAXONOMY NOTE ─────────────────────────────────────────────────────────
+    # Antigravity (opencode-antigravity-auth@latest) is an OAuth PLUGIN that runs
+    # INSIDE OpenCode CLI. It is NOT a separate installable CLI or pip package.
+    # OpenCode is the host. Antigravity unlocks premium GitHub-OAuth models within it.
+    # OpenCode CLI: ACTIVE — upstream repo archived by original maintainers,
+    # but arcana-novai uses it actively and plans to fork for XNAi custom TUI.
+    # ───────────────────────────────────────────────────────────────────────────
+    website: "https://opencode.ai"
+    install: "npm install -g opencode-ai && opencode install opencode-antigravity-auth@latest"
+    auth: "GitHub OAuth (no credit card) — browser opens on first run"
+    auth_setup: |
+      opencode install opencode-antigravity-auth@latest
+      # On first run, OpenCode will open browser for GitHub OAuth
+      # 3-account rotation supported for higher daily limits
+    models:
+      - id: claude-sonnet-4-6
+        context_window: 200_000
+        rate_limit: "generous free tier via GitHub OAuth"
+        notes: "Full Claude Sonnet 4.6 via GitHub auth. No API key or billing."
+      - id: claude-opus-4-5-thinking
+        context_window: 200_000
+        rate_limit: "moderate — use for high-stakes reasoning only"
+        notes: "Extended thinking mode. Best for architecture decisions."
+      - id: gemini-3-pro
+        context_window: 1_000_000
+        rate_limit: "generous"
+        notes: "1M context, multimodal. Best for full-codebase analysis."
+      - id: gemini-3-flash
+        context_window: 1_000_000
+        rate_limit: "generous, higher than Pro"
+        notes: "Fast 1M context. Best for large-context fallback."
+    best_for:
+      - Claude access without Anthropic billing
+      - 1M context tasks (via Gemini 3 models)
+      - Architecture and deep reasoning (Opus thinking)
+      - Primary terminal TUI for daily XNAi work
+    xnai_integration:
+      recommended_tasks: [code_generation, architecture, full_codebase_audit, large_context]
+      config_key: opencode_antigravity
+      model_router_id: opencode_antigravity
+
+  copilot_cli:
+    name: "GitHub Copilot CLI"
+    website: "https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line"
+    install: "gh extension install github/gh-copilot"
+    auth: "GitHub account (free tier available)"
+    models:
+      - id: gpt-4o
+        context_window: 128_000
+        notes: "Primary Copilot model"
+      - id: claude-sonnet-4-5
+        context_window: 200_000
+        notes: "Available in Copilot Pro"
+    free_tier_limits:
+      monthly_completions: 2000
+      monthly_chat: 50
+    notes: "Copilot free tier announced 2024. Limited but usable."
+    session_storage: "~/.copilot/session-state/<UUID>/events.jsonl"
+    xnai_integration:
+      recommended_tasks: [code_generation, debugging, pr_review]
+      harvest_script: "scripts/harvest-cli-sessions.sh"
+
+# ─── Tier 1: Free API Key (No Credit Card for Basic Tier) ─────────────────────
+
+tier_1_free_api_key:
+
+  google_ai_studio:
+    name: "Google AI Studio (API)"
+    website: "https://aistudio.google.com"
+    auth: "API key (free, no credit card)"
+    models:
+      - id: gemini-2.0-flash
+        context_window: 1_000_000
+        rate_limit: "15 req/min, 1500 req/day (free)"
+      - id: gemini-2.5-pro
+        context_window: 2_000_000
+        rate_limit: "2 req/min, 50 req/day (free)"
+      - id: gemini-1.5-flash-8b
+        context_window: 1_000_000
+        rate_limit: "15 req/min, 1500 req/day (free)"
+        notes: "Smallest/fastest Gemini. Good for high-volume tasks."
+    env_var: GEMINI_API_KEY
+    get_key: "https://aistudio.google.com/app/apikey"
+    xnai_integration:
+      recommended_tasks: [research, embeddings, long_context]
+
+  openrouter_free:
+    name: "OpenRouter (Free Models)"
+    website: "https://openrouter.ai"
+    auth: "API key (free account, credit card optional for paid models)"
+    free_models:
+      - id: "google/gemini-2.0-flash-exp:free"
+        context_window: 1_000_000
+        notes: "Gemini 2.0 Flash experimental — FREE"
+      - id: "google/gemini-3-flash:free"
+        context_window: 1_000_000
+        notes: "Gemini 3 Flash — NOW PUBLIC on OpenRouter (2026-02-18)"
+      - id: "meta-llama/llama-3.3-70b-instruct:free"
+        context_window: 131_000
+        notes: "Best open-source via OpenRouter free tier"
+      - id: "deepseek/deepseek-chat:free"
+        context_window: 64_000
+        notes: "DeepSeek V3 free tier"
+      - id: "moonshotai/kimi-k2.5:free"
+        context_window: 131_000
+        notes: "Kimi K2.5 — CONFIRMED REAL (2026-02-18)"
+      - id: "thudm/glm-5:free"
+        context_window: 131_000
+        notes: "GLM-5 — CONFIRMED REAL (2026-02-18)"
+      - id: "minimax/minimax-m2.5:free"
+        context_window: 131_000
+        notes: "MiniMax M2.5 — CONFIRMED REAL (2026-02-18)"
+    env_var: OPENROUTER_API_KEY
+    get_key: "https://openrouter.ai/keys"
+    notes: |
+      Free models have ':free' suffix. Check openrouter.ai/models?q=free for latest.
+      Rate limits vary by model — typically 10-200 req/day for free tier.
+    xnai_integration:
+      recommended_tasks: [general, research, code_generation]
+      note: "Best for accessing frontier models (Kimi, GLM-5, MiniMax) for free"
+
+  groq_free:
+    name: "Groq (Free Tier)"
+    website: "https://groq.com"
+    auth: "API key (free, no credit card)"
+    models:
+      - id: llama-3.3-70b-versatile
+        context_window: 128_000
+        rate_limit: "14400 tokens/min (free)"
+        notes: "Fastest inference available. Llama 3.3 70B."
+      - id: llama-3.1-8b-instant
+        context_window: 128_000
+        rate_limit: "131072 tokens/min (free)"
+        notes: "Extremely fast. Good for high-volume tasks."
+      - id: mixtral-8x7b-32768
+        context_window: 32_000
+        rate_limit: "5000 tokens/min (free)"
+    env_var: GROQ_API_KEY
+    get_key: "https://console.groq.com/keys"
+    best_for:
+      - High-speed inference
+      - Real-time applications
+      - High-volume batch processing
+    xnai_integration:
+      recommended_tasks: [fast_inference, batch_processing, classification]
+
+  together_ai_free:
+    name: "Together AI (Free Tier)"
+    website: "https://www.together.ai"
+    auth: "API key ($1 free credit, no card)"
+    models:
+      - id: meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo
+        context_window: 130_815
+        notes: "Llama 405B — largest open model via free credit"
+      - id: mistralai/Mixtral-8x22B-Instruct-v0.1
+        context_window: 65_536
+    env_var: TOGETHER_API_KEY
+    get_key: "https://api.together.ai"
+    notes: "$1 free credit on signup. Not ongoing free tier."
+
+  huggingface_inference:
+    name: "HuggingFace Inference API"
+    website: "https://huggingface.co/inference-api"
+    auth: "HF token (free tier available)"
+    notes: "Rate-limited free tier for public models"
+    env_var: HUGGINGFACE_API_KEY
+    best_for:
+      - Specialized/niche models
+      - Embedding models
+      - Custom fine-tuned models
+
+  # ─── Sprint 7 Additions (2026-02-18) ────────────────────────────────────────
+  
+  cerebras:
+    name: "Cerebras Cloud (Fastest Inference)"
+    website: "https://cloud.cerebras.ai"
+    auth: "API key (free, no credit card)"
+    models:
+      - id: llama-3.3-70b
+        context_window: 128_000
+        rate_limit: "~10K-30K tokens/min (free)"
+        notes: "2,000-3,000 tokens/second — FASTEST inference available"
+      - id: llama-4-scout-17b-16e-instruct
+        context_window: 128_000
+        notes: "Llama 4 Scout model"
+      - id: qwen-3-32b
+        context_window: 128_000
+        notes: "Excellent coding model at blazing speed"
+    env_var: CEREBRAS_API_KEY
+    get_key: "https://cloud.cerebras.ai"
+    api_endpoint: "https://api.cerebras.ai/v1"
+    best_for:
+      - Ultra-fast iteration loops
+      - Bulk code generation
+      - Pipeline processing (pair with mods)
+    xnai_integration:
+      recommended_tasks: [fast_iteration, bulk_processing, real_time_streaming]
+      config_key: cerebras
+      speed_notes: "~20x faster than Claude, ~4x faster than Groq"
+
+  sambanova:
+    name: "SambaNova Cloud (DeepSeek-R1 Free)"
+    website: "https://cloud.sambanova.ai"
+    auth: "API key (free, no credit card)"
+    models:
+      - id: DeepSeek-R1
+        context_window: 128_000
+        notes: "FULL 671B parameter model — best reasoning model free"
+      - id: DeepSeek-V3
+        context_window: 128_000
+        notes: "Frontier reasoning model"
+      - id: Meta-Llama-3.1-405B-Instruct
+        context_window: 128_000
+        notes: "Largest open model available"
+    env_var: SAMBANOVA_API_KEY
+    get_key: "https://cloud.sambanova.ai"
+    best_for:
+      - Complex reasoning tasks
+      - Architecture decisions
+      - Research synthesis
+      - Multi-step code review
+    xnai_integration:
+      recommended_tasks: [complex_reasoning, architecture_decisions, research_tasks]
+      config_key: sambanova
+      notes: "DeepSeek-R1 671B free is extraordinary value for reasoning"
+
+  iflow_cli:
+    name: "iFlow CLI (⚠️ CN Backend — Non-Sovereign)"
+    website: "https://cli.iflow.cn"
+    github: "https://github.com/iflow-ai/iflow-cli"
+    install: "npm install -g @iflow-ai/iflow-cli"
+    auth: "iFlow account (Google OAuth or CN phone)"
+    models:
+      - id: kimi-k2
+        context_window: 128_000
+        notes: "MoonshotAI frontier model — excellent"
+      - id: qwen3-coder
+        context_window: 128_000
+        notes: "Alibaba coding model — strong"
+      - id: deepseek-v3
+        context_window: 128_000
+        notes: "DeepSeek V3 free via iFlow"
+    # ─── SOVEREIGNTY WARNING ─────────────────────────────────────────────────
+    sovereignty_warning: |
+      ALL requests processed on Chinese infrastructure (apis.iflow.cn).
+      NOT suitable for sensitive, proprietary, or sovereign-first work.
+      Use only for: public projects, experimentation, non-sensitive testing.
+    # ─────────────────────────────────────────────────────────────────────────
+    mcp_support: true
+    open_market: true
+    best_for:
+      - Model experimentation
+      - Public/open-source projects
+      - Non-sensitive testing
+    xnai_integration:
+      recommended_tasks: [experimental, public_projects_only]
+      config_key: iflow_cli
+      sovereignty_tier: "non-sovereign"
+      waterfall_position: "EXCLUDED from sovereign waterfall"
+
+# ─── Tier 2: Local / Sovereign (No External Calls) ────────────────────────────
+
+tier_2_local_sovereign:
+
+  llama_cpp_python:
+    name: "llama-cpp-python (Local GGUF)"
+    install: "pip install llama-cpp-python"
+    auth: "none — fully local"
+    cost: "electricity only"
+    models_on_system:
+      - id: Qwen3-0.6B-Q4_K_M
+        path: "models/Qwen3-0.6B-Q4_K_M.gguf"
+        context_window: 32_000
+        notes: "Fast local model. Good for classification and routing."
+      - id: embedding-gemma-300m
+        path: "models/embedding-gemma-300m.gguf"
+        notes: "Local embedding model fallback."
+    recommended_use:
+      - Offline operation
+      - Privacy-sensitive tasks
+      - Cost-zero inference
+      - Agent orchestration decisions (small, frequent calls)
+    config_key: "llama_cpp_python"
+    xnai_config: "config.toml → [llama_cpp] section"
+
+  ollama:
+    name: "Ollama"
+    website: "https://ollama.ai"
+    install: "curl -fsSL https://ollama.ai/install.sh | sh"
+    auth: "none — fully local"
+    recommended_models:
+      - id: llama3.2:3b
+        size: "~2GB"
+        notes: "Small, fast"
+      - id: qwen2.5:7b
+        size: "~5GB"
+        notes: "Good reasoning, compact"
+      - id: phi4:14b
+        size: "~9GB"
+        notes: "Microsoft Phi-4, strong reasoning"
+      - id: nomic-embed-text
+        size: "~300MB"
+        notes: "Local embedding model (compatible with fastembed)"
+    best_for:
+      - Privacy-critical tasks
+      - Offline development
+      - Fast iteration without API costs
+
+# ─── Strategic Usage Matrix ───────────────────────────────────────────────────
+
+strategic_usage_matrix:
+  # When to use which free provider
+  
+  long_context_research: "gemini_cli (1M context free)"
+  fast_coding: "antigravity (claude-sonnet-4-5 free)"
+  frontier_models_free: "openrouter_free (Kimi K2.5, GLM-5, Gemini 3)"
+  high_speed_inference: "groq_free (fastest tokens/sec)"
+  privacy_sensitive: "llama_cpp_python or ollama (local)"
+  high_volume_batch: "groq_free or google_ai_studio"
+  embeddings: "llama_cpp_python (local) or google_ai_studio"
+  code_review_pr: "copilot_cli (GitHub integrated)"
+  
+  daily_workflow_recommendation:
+    morning_research: "gemini_cli --model gemini-2.5-pro"
+    coding_tasks: "antigravity --model claude-sonnet-4-5"
+    quick_queries: "groq_free (llama-3.3-70b)"
+    experimental: "openrouter_free (new models)"
+    offline: "ollama (qwen2.5:7b)"
+
+# ─── Rate Limit Waterfall (Free Only) ────────────────────────────────────────
+
+free_rate_limit_waterfall:
+  # Order of fallback when rate limits hit (all free, sovereign-compatible)
+  # Updated Sprint 7: Added Cerebras (speed) and SambaNova (reasoning)
+  # Note: iFlow EXCLUDED due to CN backend — see sovereignty_warning above
+  
+  - step: 1
+    provider: gemini_cli
+    model: gemini-2.0-flash
+    reason: "Best free default — 1M context, 1500 req/day"
+  - step: 2
+    provider: opencode_antigravity
+    model: claude-sonnet-4-6
+    reason: "Claude quality, GitHub OAuth free"
+  - step: 3
+    provider: sambanova
+    model: DeepSeek-R1
+    reason: "Best reasoning model free — 671B params for complex tasks"
+  - step: 4
+    provider: cerebras
+    model: llama-3.3-70b
+    reason: "FASTEST inference — 3000 t/s for rapid iteration"
+  - step: 5
+    provider: groq_free
+    model: llama-3.3-70b-versatile
+    reason: "Fast inference, high rate limits"
+  - step: 6
+    provider: openrouter_free
+    model: "google/gemini-2.0-flash-exp:free"
+    reason: "OpenRouter free tier frontier models"
+  - step: 7
+    provider: llama_cpp_python
+    model: Qwen3-0.6B-Q4_K_M
+    reason: "Local fallback — always available, fully sovereign"

@@ -1,0 +1,31 @@
+# OpenCode Account Rotation Rules
+# Copy to ~/.config/xnai/opencode-rotation-rules.yaml
+
+rotation:
+  enable: true
+  strategy: "round-robin" # or "least-used" or "quota-aware"
+  
+  antigravity:
+    accounts:
+      - email: "user1@example.com"
+        quota_used: 45000
+        quota_total: 100000
+        last_used: "2026-02-23T14:00:00Z"
+        
+      - email: "user2@example.com"
+        quota_used: 12000
+        quota_total: 100000
+        last_used: "2026-02-23T12:30:00Z"
+        
+      - email: "user3@example.com"
+        quota_used: 98000 # Nearly full
+        quota_total: 100000
+        last_used: "2026-02-22T08:00:00Z"
+        
+    next_to_use: "user2@example.com"
+    rotation_interval: "72h" # Rotate accounts every 3 days
+    
+  openrouter:
+    quota_used: 2500000
+    quota_total: 3500000
+    percentage_used: 71%

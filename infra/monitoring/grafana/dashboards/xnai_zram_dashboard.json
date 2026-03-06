@@ -1,0 +1,129 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "#00B894",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "XNAi zRAM health dashboard — compression, usage, streams and algorithm.",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1625363280134,
+  "links": [],
+  "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 6, "w": 6, "x": 0, "y": 0},
+      "id": 2,
+      "options": {"colorMode": "value", "graphMode": "area", "justifyMode": "auto"},
+      "pluginVersion": "9.0.0",
+      "targets": [
+        {"expr": "xnai_zram_compression_ratio", "legendFormat": "compression ratio", "refId": "A"}
+      ],
+      "title": "Compression Ratio",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {"defaults": {"unit": "bytes"}, "overrides": []},
+      "gridPos": {"h": 6, "w": 6, "x": 6, "y": 0},
+      "id": 4,
+      "options": {},
+      "targets": [
+        {"expr": "xnai_zram_used_bytes", "legendFormat": "used bytes", "refId": "A"},
+        {"expr": "xnai_zram_uncompressed_bytes_total", "legendFormat": "uncompressed bytes", "refId": "B"}
+      ],
+      "title": "zRAM Size / Used / Uncompressed",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {"defaults": {}, "overrides": []},
+      "gridPos": {"h": 4, "w": 4, "x": 0, "y": 6},
+      "id": 6,
+      "options": {},
+      "targets": [{"expr": "xnai_zram_streams", "legendFormat": "streams", "refId": "A"}],
+      "title": "Compression Streams",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {"defaults": {}, "overrides": []},
+      "gridPos": {"h": 4, "w": 8, "x": 4, "y": 6},
+      "id": 8,
+      "options": {},
+      "targets": [
+        {
+          "expr": "max by (alg) (xnai_zram_algorithm)",
+          "legendFormat": "algorithm: {{alg}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Active Compression Algorithm",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {"defaults": {}, "overrides": []},
+      "gridPos": {"h": 4, "w": 12, "x": 0, "y": 10},
+      "id": 10,
+      "options": {},
+      "targets": [
+        {"expr": "rate(node_cpu_seconds_total[1m])", "legendFormat": "cpu"}
+      ],
+      "title": "System CPU (context) — helpful when stress-testing",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {"defaults": {}, "overrides": []},
+      "gridPos": {"h": 6, "w": 12, "x": 0, "y": 14},
+      "id": 12,
+      "options": {},
+      "targets": [
+        {"expr": "sum by (cpu, mode) (rate(node_cpu_seconds_total[5m]))", "legendFormat": "cpu {{cpu}} - {{mode}}", "refId": "A"}
+      ],
+      "title": "Per‑core CPU (stacked by mode)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {"defaults": {"unit": "percent"}, "overrides": []},
+      "gridPos": {"h": 4, "w": 6, "x": 0, "y": 20},
+      "id": 14,
+      "options": {},
+      "targets": [
+        {"expr": "avg by (instance) (rate(node_cpu_seconds_total{cpu=~\"2|3|4|5\",mode!=\"idle\"}[2m])) * 100", "legendFormat": "isolated-core avg %", "refId": "A"}
+      ],
+      "title": "Isolated‑core avg utilization (example cores 2–5)",
+      "type": "stat"
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": ["phase5", "zram", "memory"],
+  "templating": {"list": []},
+  "time": {"from": "now-5m", "to": "now"},
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "XNAi — zRAM Health",
+  "uid": "xnai-zram-health",
+  "version": 1
+}

@@ -1,0 +1,263 @@
+version: '3.8'
+
+services:
+  # Documentation Generation Service
+  docgen:
+    build:
+      context: .
+      dockerfile: Dockerfile.docgen
+    ports:
+      - "8002:8002"
+    environment:
+      - DOCGEN_PORT=8002
+      - DOCGEN_TEMPLATE_DIR=/app/templates
+      - DOCGEN_GIT_REPO=/app
+      - DOCGEN_MODEL_PATH=/models/Qwen3-0.6B-Q6_K.gguf
+      - PROJECT_NAME=Xoe-NovAi
+      - PROJECT_VERSION=1.0.0
+    volumes:
+      - ./docs:/app/docs:rw
+      - ./docs/templates:/app/templates:rw
+      - ./models:/models:ro
+      - ./memory_bank:/app/memory_bank:ro
+    networks:
+      - docs-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Documentation Validation Service
+  docvalidator:
+    build:
+      context: .
+      dockerfile: Dockerfile.docvalidator
+    ports:
+      - "8003:8003"
+    environment:
+      - DOCVALIDATOR_PORT=8003
+      - DOCVALIDATOR_STRICT_MODE=false
+      - DOCVALIDATOR_ACCESSIBILITY_CHECKS=true
+    volumes:
+      - ./docs:/app/docs:rw
+      - ./docs/style-guides:/app/style-guides:ro
+      - ./docs/templates:/app/templates:ro
+    networks:
+      - docs-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Documentation Search Service
+  docsearch:
+    build:
+      context: .
+      dockerfile: Dockerfile.docsearch
+    ports:
+      - "8004:8004"
+    environment:
+      - DOCSEARCH_PORT=8004
+      - DOCSEARCH_INDEX_DIR=/app/index
+      - DOCSEARCH_EMBEDDING_MODEL=/models/all-MiniLM-L6-v2
+      - DOCSEARCH_QDRANT_URL=http://qdrant:6333
+    volumes:
+      - ./docs:/app/docs:ro
+      - ./docs/search-index:/app/index:rw
+      - ./models:/models:ro
+    networks:
+      - docs-network
+      - qdrant-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Documentation Analytics Service
+  docanalytics:
+    build:
+      context: .
+      dockerfile: Dockerfile.docanalytics
+    ports:
+      - "8005:8005"
+    environment:
+      - DOCANALYTICS_PORT=8005
+      - DOCANALYTICS_DB_URL=postgresql://postgres:postgres@postgres:5432/doc_analytics
+      - DOCANALYTICS_REDIS_URL=redis://redis:6379/1
+    volumes:
+      - ./docs:/app/docs:ro
+      - ./docs/analytics:/app/analytics:rw
+    networks:
+      - docs-network
+      - postgres-network
+      - redis-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Documentation Sync Service
+  docsync:
+    build:
+      context: .
+      dockerfile: Dockerfile.docsync
+    environment:
+      - DOCSYNC_PORT=8006
+      - DOCSYNC_GIT_REPO=/app
+      - DOCSYNC_REMOTE_URL=https://github.com/Xoe-NovAi/xoe-novai-foundation.git
+      - DOCSYNC_BRANCH=main
+      - DOCSYNC_AUTO_SYNC=true
+    volumes:
+      - ./docs:/app/docs:rw
+      - ./memory_bank:/app/memory_bank:rw
+      - ~/.ssh:/root/.ssh:ro
+    networks:
+      - docs-network
+    restart: unless-stopped
+    depends_on:
+      - docgen
+      - docvalidator
+
+  # Documentation Gateway (API Gateway)
+  docgateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.docgateway
+    ports:
+      - "8001:8001"
+    environment:
+      - DOCGATEWAY_PORT=8001
+      - DOCSERVICES_URLS=http://docgen:8002,http://docvalidator:8003,http://docsearch:8004,http://docanalytics:8005
+      - DOCSERVICES_TIMEOUT=30
+    networks:
+      - docs-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Qdrant Vector Database (for search)
+  qdrant:
+    image: qdrant/qdrant:v1.11.0
+    ports:
+      - "6333:6333"
+    environment:
+      - QDRANT__SERVICE__HTTP_PORT=6333
+      - QDRANT__SERVICE__GRPC_PORT=6334
+      - QDRANT__LOG__LEVEL=INFO
+    volumes:
+      - ./docs/search-index:/qdrant/storage:rw
+    networks:
+      - qdrant-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/readyz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # PostgreSQL for analytics
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_DB=doc_analytics
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./docs/analytics/postgres:/var/lib/postgresql/data:rw
+    networks:
+      - postgres-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./docs/analytics/redis:/data:rw
+    networks:
+      - redis-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Prometheus for monitoring
+  prometheus:
+    image: prom/prometheus:v2.50.0
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docs/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./docs/monitoring/rules:/etc/prometheus/rules:ro
+      - ./docs/monitoring/data:/prometheus:rw
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - docs-network
+    restart: unless-stopped
+
+  # Grafana for visualization
+  grafana:
+    image: grafana/grafana:10.4.0
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./docs/monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./docs/monitoring/grafana/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./docs/monitoring/grafana/data:/var/lib/grafana:rw
+    networks:
+      - docs-network
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+
+networks:
+  docs-network:
+    driver: bridge
+  qdrant-network:
+    driver: bridge
+  postgres-network:
+    driver: bridge
+  redis-network:
+    driver: bridge
+
+volumes:
+  qdrant-storage:
+  postgres-data:
+  redis-data:
+  grafana-data:
