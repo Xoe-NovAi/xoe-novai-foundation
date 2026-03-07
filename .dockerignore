@@ -1,26 +1,10 @@
-# Data directories
-data/
-knowledge/
-library/
-embeddings/
-models/
-backups/
-logs/
-
-# IDE
-.idea/
-.vscode/
-
-# Environment
+storage/data/*
+logs/*
+.git
+.venv*
+node_modules
+*.pyc
+__pycache__
+.pytest_cache
 .env
 .env.local
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Build
-site/
-*.egg-info/
-__pycache__/
-.pytest_cache/
