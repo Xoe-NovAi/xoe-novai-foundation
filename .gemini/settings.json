@@ -1,7 +1,3 @@
 {
-  "mcpServers": {
-    "memory-bank": {
-      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/run_server.sh"
-    }
-  }
+  "mcpServers": {}
 }
