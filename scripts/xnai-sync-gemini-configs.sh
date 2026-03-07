@@ -6,8 +6,8 @@
 # 8 isolated expert instances to ensure a consistent UX.
 
 MASTER_CONFIG_DIR="${HOME}/.config/gemini"
-# Fallback to /tmp if INSTANCE_ROOT is not set in environment
-INSTANCE_ROOT="${INSTANCE_ROOT:-/tmp/xnai-instances}"
+# Fallback to persistent storage if INSTANCE_ROOT is not set in environment
+INSTANCE_ROOT="${INSTANCE_ROOT:-${HOME}/Documents/Xoe-NovAi/omega-stack/storage/instances}"
 
 # Ensure master exists
 mkdir -p "$MASTER_CONFIG_DIR"
@@ -40,28 +40,34 @@ EOF
 fi
 # ---------------------------------------------
 
-echo "🔗 Syncing Master Gemini Configurations to 8 Expert Domains..."
+# Master Overrides
+MASTER_SETTINGS_FILE="${MASTER_CONFIG_DIR}/settings.json"
+export GEMINI_CLI_SYSTEM_SETTINGS_PATH="${MASTER_SETTINGS_FILE}"
 
+echo "🔗 Syncing Master Gemini Configurations to 9 Expert Domains (0-8)..."
+
+# 1. Sync Instance 0 (General / Oversoul)
+TARGET_DIR_0="${INSTANCE_ROOT}/general/gemini-cli/.gemini"
+mkdir -p "$TARGET_DIR_0"
+for f in settings.json mcp_config.json instructions.md; do
+    if [[ -f "${MASTER_CONFIG_DIR}/$f" ]]; then
+        ln -sf "${MASTER_CONFIG_DIR}/$f" "${TARGET_DIR_0}/$f"
+    fi
+done
+echo "✅ Instance-0 (General) synchronized."
+
+# 2. Sync Instances 1-8 (Facets)
 for i in {1..8}; do
-    TARGET_DIR="${INSTANCE_ROOT}/instance-${i}/gemini-cli/.gemini"
+    TARGET_DIR="${INSTANCE_ROOT}/facets/instance-${i}/gemini-cli/.gemini"
     mkdir -p "$TARGET_DIR"
     
-    # 1. Sync Settings (Context usage, theme, etc.)
-    if [[ -f "${MASTER_CONFIG_DIR}/settings.json" ]]; then
-        ln -sf "${MASTER_CONFIG_DIR}/settings.json" "${TARGET_DIR}/settings.json"
-    fi
-    
-    # 2. Sync MCP Configurations
-    if [[ -f "${MASTER_CONFIG_DIR}/mcp_config.json" ]]; then
-        ln -sf "${MASTER_CONFIG_DIR}/mcp_config.json" "${TARGET_DIR}/mcp_config.json"
-    fi
-    
-    # 3. Sync Custom Instructions
-    if [[ -f "${MASTER_CONFIG_DIR}/instructions.md" ]]; then
-        ln -sf "${MASTER_CONFIG_DIR}/instructions.md" "${TARGET_DIR}/instructions.md"
-    fi
+    for f in settings.json mcp_config.json instructions.md; do
+        if [[ -f "${MASTER_CONFIG_DIR}/$f" ]]; then
+            ln -sf "${MASTER_CONFIG_DIR}/$f" "${TARGET_DIR}/$f"
+        fi
+    done
     
     echo "✅ Instance-${i} synchronized."
 done
 
-echo "🎉 All 8 Expert Domains are now unified with Master Settings."
+echo "🎉 All Expert Domains are now unified with Master Settings."

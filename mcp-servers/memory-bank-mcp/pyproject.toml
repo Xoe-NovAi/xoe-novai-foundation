@@ -13,7 +13,8 @@ dependencies = [
     "pyyaml>=6.0",
     "httpx>=0.24.0",
     "aiofiles>=23.1.0",
-    "cryptography>=41.0.0"
+    "cryptography>=41.0.0",
+    "aiosqlite>=3.13.0"
 ]
 requires-python = ">=3.10"
 

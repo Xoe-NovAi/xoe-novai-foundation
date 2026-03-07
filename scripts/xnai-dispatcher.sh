@@ -70,17 +70,29 @@ if [[ "$TOOL" == "gemini" ]]; then
     fi
 fi
 
-# 8. Pulse Filter (Output scrubbing)
+# 8. Centralized Session Logging (Observability)
+LOG_DIR="${OMEGA_ROOT}/logs/sessions/${DOMAIN_NAME}"
+mkdir -p "$LOG_DIR"
+SESSION_LOG="${LOG_DIR}/$(date +%Y-%m-%d_%H-%M-%S)_${TOOL}_${INSTANCE_ID}.log"
+
+# Log start of session
+echo "[$(date -u)] START session for ${TOOL} in domain ${DOMAIN_NAME} (Instance ${INSTANCE_ID})" > "$SESSION_LOG"
+echo "Command: $0 $*" >> "$SESSION_LOG"
+
+# 9. Pulse Filter (Output scrubbing) & Execution
 BLUE='\033[0;34m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
 echo -e "${BLUE}[Omega] Routing ${TOOL} to Domain: ${CYAN}${DOMAIN_NAME}${BLUE} (Instance ${INSTANCE_ID})${NC}"
 
-# 9. Execute Original Binary
+# Execute and tee to log
 if [[ "$*" == *"--format json"* ]]; then
     # Headless pulse active
-    "$TOOL_BINARY" "$@" | grep --line-buffered -E '"type":"(step_start|tool_use|error|step_finish)"' | sed -u "s/.*\"type\":\"\([^\"]*\)\".*/[Pulse: $TOOL: \1]/"
+    "$TOOL_BINARY" "$@" 2>&1 | tee -a "$SESSION_LOG" | grep --line-buffered -E '"type":"(step_start|tool_use|error|step_finish)"' | sed -u "s/.*\"type\":\"\([^\"]*\)\".*/[Pulse: $TOOL: \1]/"
 else
-    "$TOOL_BINARY" "$@"
+    "$TOOL_BINARY" "$@" 2>&1 | tee -a "$SESSION_LOG"
 fi
+
+# Log end of session
+echo "[$(date -u)] END session" >> "$SESSION_LOG"

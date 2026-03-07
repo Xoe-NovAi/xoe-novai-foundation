@@ -4,7 +4,7 @@
 
 resolve_domain() {
     local flag="$1"
-    INSTANCE_ID=1
+    INSTANCE_ID=0
     DOMAIN_NAME="General"
 
     # 1. Resolve OMEGA_ROOT
@@ -12,14 +12,21 @@ resolve_domain() {
         OMEGA_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
     fi
 
-    # 2. Check for direct instance flag: --instance-N
-    if [[ "$flag" =~ ^--instance-([1-8])$ ]]; then
+    # 2. Handle --general explicitly
+    if [[ "$flag" == "--general" ]]; then
+        INSTANCE_ID=0
+        DOMAIN_NAME="General"
+        return 0
+    fi
+
+    # 3. Check for direct instance flag: --instance-N
+    if [[ "$flag" =~ ^--instance-([0-8])$ ]]; then
         INSTANCE_ID="${BASH_REMATCH[1]}"
         DOMAIN_NAME="Direct (Instance $INSTANCE_ID)"
         return 0
     fi
 
-    # 3. Check for domain flags (e.g., --architect, --api)
+    # 4. Check for domain flags (e.g., --architect, --api)
     if [[ "$flag" =~ ^--([a-zA-Z0-9_-]+)$ ]]; then
         local domain="${BASH_REMATCH[1]}"
         

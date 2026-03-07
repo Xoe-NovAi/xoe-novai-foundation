@@ -27,5 +27,11 @@ The v0.1.0-alpha Foundation consists of 7 modular services:
 - [🧠 **Explanation**](04-explanation/sovereign-toolkit-philosophy.md): Understand the "Why" and "How" of the system.
 - [🎓 **Expert Knowledge**](../expert-knowledge/README.md): Deep-dives into hardware and environment mastery.
 
+## 🔄 Infrastructure & Reliability
+- [📊 **Memory Bank Fallback System**](MEMORY_BANK_FALLBACK_SYSTEM.md): Automatic failover from Redis to SQLite for zero data loss.
+- [🔐 **Secrets Management**](secrets.md): Secure credential handling and encryption.
+- [📈 **Rate Limit Handling**](RATE_LIMIT_HANDLING_SOLUTION.md): Graceful degradation under load.
+- [🔍 **Monitoring & Observability**](knowledge-management/04-operational-procedures.md): System health and alerting.
+
 ---
 *Origin: AI-Native System | Direction: The User/Architect | Version: v0.1.0-alpha*

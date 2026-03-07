@@ -106,6 +106,8 @@ nav:
           - Extension Guide: 02-tutorials/gemini-mastery/Top 10 Gemini CLI extensions for stack management and dev.md
       - 🤖 Advanced Agent Patterns:
           - Memory Bank MCP: ../mcp-servers/xnai-memory/README.md
+          - Phronetic Iterative Chain: docs/ODE_MASTER_MANUAL.md
+          - Brigid Ennead Flow: docs/ANTIGRAVITY_SOVEREIGN_OPS.md
           - Agentic Multi-Role Workflows: 02-tutorials/advanced-agent-patterns/CR - Agentic Multi-Role Workflows in Cline (2026 Edition).md
           - Cline Implementation Master Guide: 02-tutorials/advanced-agent-patterns/cline-implementation-master-guide.md
           - SPARC Framework: 02-tutorials/advanced-agent-patterns/CR - The SPARC Framework in Cline (2026 Edition).md
@@ -138,6 +140,7 @@ nav:
   - 🧠 Explanation:
       - Sovereign Toolkit Philosophy: 04-explanation/sovereign-toolkit-philosophy.md
       - System Architecture: 04-explanation/sovereign-entity-architecture.md
+      - ODE Entity Registry: ODE_ENTITY_REGISTRY.md
       - Security Model: 04-explanation/security.md
       - Expert Knowledge System: 04-explanation/expert-knowledge-system-overview.md
       - 📑 Engineering Deep-Dives:
@@ -176,6 +179,9 @@ nav:
           - Content Sanitization: api/sanitization.md
           - Redis Streams: api/redis_streams.md
       - 🏺 Project History:
+          - The XNA Genesis: THE_XNA_GENESIS.md
+          - The Dream of Gem: 03-reference/project-history/visionary-logs/2026-03-06_The_Dream_of_Gem.md
+          - The Epitaph of ODE: 03-reference/project-history/daily-logs/SESSION_EPITAPH_ODE_GENESIS.md
           - Changelog: 03-reference/project-history/CHANGELOG.md
           - Daily Status Reports: 03-reference/project-history/daily-logs/
       - 🚀 Releases:

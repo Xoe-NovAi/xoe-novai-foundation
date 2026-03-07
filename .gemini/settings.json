@@ -1,0 +1,11 @@
+{
+  "ui": {
+    "showContextUsage": true,
+    "showTokenPercentage": true,
+    "theme": "dark"
+  },
+  "behavior": {
+    "autoSave": true,
+    "maxHistoryItems": 100
+  }
+}

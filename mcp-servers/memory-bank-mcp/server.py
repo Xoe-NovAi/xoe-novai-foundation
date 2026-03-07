@@ -29,14 +29,11 @@ import yaml
 
 # MCP Server imports
 from mcp.server import Server
-from mcp.server.models import (
-    InitializationOptions,
+from mcp.types import (
     Tool,
-    ToolCallResult,
     TextContent,
-    ToolUseContent,
+    ToolResultContent,
 )
-from mcp.server.server import Server as MCPServer
 from mcp.server.stdio import stdio_server
 
 # XNAi Foundation imports
@@ -561,7 +558,7 @@ class MemoryBankMCP:
             )
         ]
 
-    async def handle_tool_call(self, name: str, arguments: Dict[str, Any]) -> ToolCallResult:
+    async def handle_tool_call(self, name: str, arguments: Dict[str, Any]) -> List[ToolResultContent]:
         """Handle MCP tool calls."""
         try:
             if name == "register_agent":
@@ -570,10 +567,11 @@ class MemoryBankMCP:
                     arguments["capabilities"],
                     arguments["memory_limit_gb"]
                 )
-                return ToolCallResult(
-                    content=json.dumps(result),
+                return [ToolResultContent(
+                    type="text",
+                    text=json.dumps(result),
                     isError=result.get("status") == "error"
-                )
+                )]
             
             elif name == "get_context":
                 result = await self.get_context(
@@ -581,10 +579,11 @@ class MemoryBankMCP:
                     arguments["context_type"],
                     arguments.get("tier", "hot")
                 )
-                return ToolCallResult(
-                    content=json.dumps(result),
+                return [ToolResultContent(
+                    type="text",
+                    text=json.dumps(result),
                     isError=result.get("status") == "error"
-                )
+                )]
             
             elif name == "update_context":
                 result = await self.update_context(
@@ -592,10 +591,11 @@ class MemoryBankMCP:
                     arguments["context_type"],
                     arguments["context_data"]
                 )
-                return ToolCallResult(
-                    content=json.dumps(result),
+                return [ToolResultContent(
+                    type="text",
+                    text=json.dumps(result),
                     isError=result.get("status") == "error"
-                )
+                )]
             
             elif name == "sync_context":
                 result = await self.sync_context(
@@ -604,29 +604,33 @@ class MemoryBankMCP:
                     arguments["context_id"],
                     arguments.get("sync_type", "full")
                 )
-                return ToolCallResult(
-                    content=json.dumps(result),
+                return [ToolResultContent(
+                    type="text",
+                    text=json.dumps(result),
                     isError=result.get("status") == "error"
-                )
+                )]
             
             elif name == "get_performance_metrics":
-                return ToolCallResult(
-                    content=json.dumps(self.performance_metrics),
+                return [ToolResultContent(
+                    type="text",
+                    text=json.dumps(self.performance_metrics),
                     isError=False
-                )
+                )]
             
             else:
-                return ToolCallResult(
-                    content=json.dumps({"status": "error", "message": f"Unknown tool: {name}"}),
+                return [ToolResultContent(
+                    type="text",
+                    text=json.dumps({"status": "error", "message": f"Unknown tool: {name}"}),
                     isError=True
-                )
+                )]
                 
         except Exception as e:
             logger.error(f"Tool call error: {e}")
-            return ToolCallResult(
-                content=json.dumps({"status": "error", "message": str(e)}),
+            return [ToolResultContent(
+                type="text",
+                text=json.dumps({"status": "error", "message": str(e)}),
                 isError=True
-            )
+            )]
 
 async def main():
     """Main entry point for Memory Bank MCP Server."""
