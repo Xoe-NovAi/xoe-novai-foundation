@@ -71,8 +71,10 @@ if [[ "$TOOL" == "gemini" ]]; then
 fi
 
 # 8. Centralized Session Logging (Observability)
-LOG_DIR="${OMEGA_ROOT}/logs/sessions/${DOMAIN_NAME}"
-mkdir -p "$LOG_DIR"
+# Note: Using .logs instead of logs due to permission constraints on shared system
+LOG_DIR="${OMEGA_ROOT}/.logs/sessions/${DOMAIN_NAME}"
+mkdir -p "$LOG_DIR" 2>/dev/null || LOG_DIR="/tmp/omega-gemini-${DOMAIN_NAME}-$$"
+mkdir -p "$LOG_DIR" 2>/dev/null || LOG_DIR="/dev/null"  # Fallback if no write permission
 SESSION_LOG="${LOG_DIR}/$(date +%Y-%m-%d_%H-%M-%S)_${TOOL}_${INSTANCE_ID}.log"
 
 # Log start of session

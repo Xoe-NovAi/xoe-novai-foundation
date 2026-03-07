@@ -1,11 +1,7 @@
 {
-  "ui": {
-    "showContextUsage": true,
-    "showTokenPercentage": true,
-    "theme": "dark"
-  },
-  "behavior": {
-    "autoSave": true,
-    "maxHistoryItems": 100
+  "mcpServers": {
+    "memory-bank": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/run_server.sh"
+    }
   }
 }
