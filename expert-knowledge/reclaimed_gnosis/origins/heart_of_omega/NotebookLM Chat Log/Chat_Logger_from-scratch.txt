@@ -1,0 +1,58 @@
+# [CELL 1] - First cell: Define the ChatLogger class
+from datetime import datetime
+
+class ChatLogger:
+    def __init__(self):
+        self.chat_history = []
+        self.session_start = datetime.now()
+    
+    def log_user_message(self, message: str):
+        self._add_entry('user', message)
+    
+    def log_bot_response(self, response: str):
+        self._add_entry('bot', response)
+    
+    def _add_entry(self, sender: str, content: str):
+        self.chat_history.append({
+            'timestamp': datetime.now(),
+            'sender': sender,
+            'content': content.strip()
+        })
+    
+    def export_chat(self):
+        print(f"\n{' CHAT HISTORY ':=^50}")
+        for entry in self.chat_history:
+            prefix = "User: " if entry['sender'] == 'user' else "Chatbot: "
+            print(f"[{entry['timestamp'].strftime('%H:%M:%S')}] {prefix}{entry['content']}")
+        print("=" * 50 + "\n")
+
+# [CELL 2] - Second cell: Initialize chatbot and logger
+# Initialize components
+logger = ChatLogger()
+
+# Simplified chatbot function (replace with your actual chatbot)
+def chatbot_response(message: str) -> str:
+    """Example response generator"""
+    return f"Received: {message}"
+
+# [CELL 3] - Third cell: Chat interface loop
+while True:
+    # Get user input
+    user_input = input("\nYou: ")
+    
+    # Handle special commands first
+    if user_input.lower() in ["exit", "quit"]:
+        print("Ending chat session...")
+        logger.export_chat()
+        break
+    if user_input.lower() == "export log":
+        logger.export_chat()
+        continue
+    
+    # Log user message and get response
+    logger.log_user_message(user_input)
+    response = chatbot_response(user_input)
+    
+    # Log and display bot response
+    logger.log_bot_response(response)
+    print(f"Chatbot: {response}")

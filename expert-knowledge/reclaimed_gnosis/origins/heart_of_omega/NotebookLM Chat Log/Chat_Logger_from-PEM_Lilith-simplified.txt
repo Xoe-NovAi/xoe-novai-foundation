@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+from datetime import datetime
+
+class ChatLogger:
+    """
+    Simplified chat logger based on PEM architecture
+    Records timestamps, user messages, and bot responses
+    """
+    def __init__(self):
+        self.interaction_history = []
+        self.session_start = datetime.now()
+
+    def log_user_message(self, message: str):
+        """Record user input with timestamp"""
+        self._add_entry('user', message)
+
+    def log_bot_response(self, response: str):
+        """Record bot response with timestamp"""
+        self._add_entry('bot', response)
+
+    def _add_entry(self, sender: str, content: str):
+        """Internal logging method"""
+        entry = {
+            "timestamp": datetime.now().isoformat(),
+            "sender": sender,
+            "content": content.strip()
+        }
+        self.interaction_history.append(entry)
+
+    def get_chat_log(self, formatted: bool = False):
+        """Retrieve chat history"""
+        if formatted:
+            return self._format_history()
+        return self.interaction_history.copy()
+
+    def _format_history(self):
+        """Generate human-readable chat log"""
+        log = [f"Chat Session: {self.session_start.strftime('%Y-%m-%d %H:%M:%S')}"]
+        for entry in self.interaction_history:
+            prefix = "User: " if entry['sender'] == 'user' else "Chatbot: "
+            timestamp = datetime.fromisoformat(entry['timestamp']).strftime('%H:%M:%S')
+            log.append(f"[{timestamp}] {prefix}{entry['content']}")
+        return '\n'.join(log)
+
+# Example usage
+if __name__ == "__main__":
+    logger = ChatLogger()
+    
+    # Simulate conversation
+    logger.log_user_message("How do I install Ubuntu?")
+    logger.log_bot_response("Let me guide you through the installation process...")
+    
+    logger.log_user_message("What are the system requirements?")
+    logger.log_bot_response("Ubuntu 24.04 requires at least 4GB of RAM and 25GB storage.")
+    
+    # Display formatted log
+    print("=== Chat History ===")
+    print(logger.get_chat_log(formatted=True))
+
+    # Initialize
+    logger = ChatLogger()
+
+    # During chat interactions
+    logger.log_user_message("User's question here")
+    logger.log_bot_response("Bot's response here")
+
+    # Retrieve logs
+    raw_log = logger.get_chat_log()  # Get structured data
+    text_log = logger.get_chat_log(formatted=True)  # Get printable version

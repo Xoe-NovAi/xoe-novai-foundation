@@ -1,0 +1,674 @@
+#!/usr/bin/env python3
+import json
+import re
+from datetime import datetime
+from collections import deque
+from typing import Dict, List, Any, Optional, Set, Tuple
+
+MASTER_PROTOCOLS_JSON = '''
+
+{
+  "COGNITIVE_ARCHITECTURE": {
+    "VERSION": "4.3",
+    "CONTEXT_HANDLING": {
+      "CONVERSATION_STACK_DEPTH": 5,
+      "TOPIC_WEIGHTING": {
+        "ACTIVE_TOPIC_BOOST": 1.5,
+        "RELATED_CONCEPT_BOOST": 1.3
+      },
+      "HARDWARE_CONTEXT_DEPTH": 5,
+      "CONVERSATION_RETENTION": "PERSISTENT"
+    },
+    "PROJECT_COGNITION": {
+      "DEPLOYMENT_PHASES": [
+        "Hardware Validation",
+        "Base OS Installation",
+        "LLM Stack Deployment",
+        "Vector DB Configuration",
+        "Grok API Integration",
+        "Database Enhancement Tasks",
+        "Performance Monitoring",
+        "Continuous Improvement"
+      ],
+      "LLM_STRATEGY": {
+        "TASK_ALLOCATION": {
+          "distilRoBERTa": "**Metadata refinement (e.g., keyword extraction, categorization), vectorizing, background database enhancement, simple request (e.g., "give me a list of all books by Homer.") and prompt enhancement before delivery to KriKri or agent.**",
+          "Llama-Krikri-8B-Instruct-16fp": "**Complex tasks such as advanced content generation and summarization. Database enrichment during downtime (e.g., summaries, embeddings, translations), data will be used as a training set for distilRoBERTa.**",
+          "Grok_API": "**Analysis of database entries, recommendations for system improvements, and generation of potential training data.**"
+        },
+        "OPTIMIZATION_TECHNIQUES": [
+          "**LoRA Adapters**: Fine-tuning models for specific tasks without full retraining.",
+          "**Quantization**: Reducing model size and accelerating inference (e.g., 16-bit).",
+          "**zRam**: Utilizing compressed RAM to increase effective memory.",
+          "**Mixed Precision (FP16)**: Reducing memory usage and speeding up computations where possible.",
+          "Potentially **single-thread-per-core reasoning** for managing CPU load."
+        ],
+        "ADDITIONAL_RECOMMENDATIONS": [
+          "**Task Queue Management (e.g., Celery)**: For efficient workload management and prioritization [5].",
+          "**FAISS Integration**: Complementing Qdrant for potentially faster vector searches on large datasets [4]."
+        ]
+      },
+      "RAG_SYSTEM_DEPLOYMENT": {
+        "OVERVIEW": "**A structured, step-by-step approach to building the local RAG system.**",
+        "KEY_STEPS": [
+          "**Vector Database (Qdrant) Setup.**",
+          "**FastAPI API Implementation for LLM interactions.**",
+          "**Background tasks for continuous database enhancement using KriKri-8B-Instruct-16fp.**",
+          "**Grok API integration for periodic data analysis and insights.**",
+          "**Continuous performance monitoring of CPU, RAM, and GPU usage.**"
+        ],
+        "CONTINUOUS_IMPROVEMENT": "**Leveraging Grok's analysis and background tasks for ongoing refinement of the RAG system and its components [8, 9].**"
+      },
+      "HARDWARE_STATUS": {
+        "CPU": "AMD Ryzen 7 5700U",
+        "GPU": "AMD Radeon Lucienne",
+        "RAM": "32GB DDR4",
+        "STORAGE": "256GB NVMe"
+      },
+      "RESOURCE_PROFILES": {
+        "DistilRoBERTa":  {"CPU": 4, "RAM": "4G"} , "lightweight",
+        "Llama-Krikri-8B-Instruct-Q8": {"CPU": 8, "RAM": "8G"} , "high"
+      }
+    }
+  }
+}
+
+'''
+
+
+# Utility functions refactored from duplicate code
+def extract_hardware_info(text: str, patterns: Dict[str, str]) -> Dict[str, str]:
+    """
+    Extract hardware information from text using regex patterns.
+    
+    Args:
+        text: The text to extract information from
+        patterns: Dictionary mapping hardware categories to regex patterns
+        
+    Returns:
+        Dictionary of hardware information extracted from text
+    """
+    results = {}
+    for category, pattern in patterns.items():
+        match = re.search(pattern, text, re.I)
+        if match:
+            results[category] = match.group(1)
+    return results
+
+def extract_keywords(text: str, keyword_dict: Dict[Any, List[str]]) -> List[Any]:
+    """
+    Extract keywords from text based on a dictionary of keyword lists.
+    
+    Args:
+        text: The text to search for keywords
+        keyword_dict: Dictionary mapping categories to lists of keywords
+        
+    Returns:
+        List of categories that have matching keywords in the text
+    """
+    text_lower = text.lower()
+    return [category for category, keywords in keyword_dict.items()
+            if any(kw in text_lower for kw in keywords)]
+
+def filter_terms(text: str, term_dict: Dict[str, List[str]]) -> Dict[str, List[str]]:
+    """
+    Filter terms from the text based on term dictionary.
+    
+    Args:
+        text: The text to filter terms from
+        term_dict: Dictionary mapping categories to lists of terms
+        
+    Returns:
+        Dictionary with categories and their matching terms found in the text
+    """
+    text_lower = text.lower()
+    return {category: [t for t in terms if t in text_lower]
+            for category, terms in term_dict.items()}
+
+class ContextEngine:
+    """
+    Hybrid context engine with conversation stack and hardware awareness.
+    
+    This class is responsible for maintaining conversation context,
+    extracting technical terms, and tracking hardware specifications.
+    """
+    
+    def __init__(self):
+        """
+        Initialize the context engine with default configurations.
+        """
+        self.config = json.loads(MASTER_PROTOCOLS_JSON)
+        self.conv_stack_depth = self.config["COGNITIVE_ARCHITECTURE"]["CONTEXT_HANDLING"]["CONVERSATION_STACK_DEPTH"]
+        self.conversation_stack = deque(maxlen=self.conv_stack_depth)
+        self.active_topics = {}
+        self.project_state = {
+            'current_phase': 0,
+            'llm_resources': {},
+            'hardware_status': {}
+        }
+        self.hardware_context = {
+            'cpu': None,
+            'gpu': None,
+            'ram': None,
+            'storage': None
+        }
+        self.system_profile = {
+            'cpu': "AMD Ryzen 7 5700U",
+            'gpu': "AMD Radeon Lucienne",
+            'ram': "16GB DDR4",
+            'storage': "256GB NVMe"
+        }
+
+    def update_context(self, message: str) -> Dict[str, Any]:
+        """
+        Update the conversation context with information from a new message.
+        
+        Extracts technical terms, project phase keywords, hardware details,
+        and estimated resource demands from the message.
+        
+        Args:
+            message: The user message to analyze
+            
+        Returns:
+            A dictionary containing the extracted context information
+        """
+        self._extract_hardware_details(message)
+        context = {
+            'technical_terms': self._extract_terms(message),
+            'project_phase_keywords': self._detect_phase_keywords(message),
+            'resource_demands': self._estimate_resource_needs(message),
+            'hardware_specs': self.hardware_context.copy(),
+            'system_profile': self.system_profile
+        }
+        self.conversation_stack.append(context)
+        self._update_topic_weights(context)
+        return context
+
+    def _extract_terms(self, text: str) -> Dict[str, List[str]]:
+        """
+        Identify system-specific terminology in the text.
+        
+        Args:
+            text: The text to extract terms from
+            
+        Returns:
+            Dictionary mapping term categories to lists of matching terms
+        """
+        terms = {
+            'hardware': ['ryzen', 'radeon', 'nvme'],
+            'installation': ['grub', 'gparted', 'efi'],
+            'llm': ['distilbert', 'roberta', 'krikri']
+        }
+        return filter_terms(text, terms)
+
+    def _detect_phase_keywords(self, text: str) -> List[int]:
+        """
+        Map message to deployment phases based on keywords.
+        
+        Args:
+            text: The text to analyze for phase-related keywords
+            
+        Returns:
+            List of phase indices that have matching keywords in the text
+        """
+        phase_keywords = {
+            0: ['validate', 'compatibility', 'amd'],
+            1: ['install', 'partition', 'ubuntu'],
+            2: ['deploy', 'llm', 'hierarchy'],
+            3: ['qdrant', 'faiss', 'vector'],
+            4: ['grok', 'api', 'integration']
+        }
+        return extract_keywords(text, phase_keywords)
+
+    def _extract_hardware_details(self, text: str) -> None:
+        """
+        Extract and store hardware specifications from text.
+        
+        Updates the hardware_context with any new information found.
+        
+        Args:
+            text: The text to extract hardware details from
+        """
+        patterns = {
+            'cpu': r'\b(Ryzen\s\d+\s\w+)\b',
+            'gpu': r'\b(Radeon\s\w+)\b',
+            'ram': r'\b(\d+GB\s(?:DDR4|RAM))\b',
+            'storage': r'\b(\d+GB\s(?:NVMe|SSD))\b'
+        }
+        
+        hardware_info = extract_hardware_info(text, patterns)
+        for category, value in hardware_info.items():
+            if not self.hardware_context[category]:
+                self.hardware_context[category] = value
+
+    def get_hardware_context(self) -> Dict[str, str]:
+        """
+        Return consolidated hardware context with fallback to system profile.
+        
+        Returns:
+            Dictionary of hardware specifications, using system profile as fallback
+        """
+        return {k: v or self.system_profile[k] for k, v in self.hardware_context.items()}
+
+    def _update_topic_weights(self, context: Dict[str, Any]) -> None:
+        """
+        Update topic weights based on new context information.
+        
+        Applies boost factors to active topics based on configuration.
+        
+        Args:
+            context: The context dictionary containing technical terms
+        """
+        boosts = self.config["COGNITIVE_ARCHITECTURE"]["CONTEXT_HANDLING"]["TOPIC_WEIGHTING"]
+        for category, terms in context['technical_terms'].items():
+            if terms:
+                self.active_topics[category] = self.active_topics.get(category, 0) * boosts["ACTIVE_TOPIC_BOOST"]
+
+    def _estimate_resource_needs(self, message: str) -> Dict[str, Any]:
+        """
+        Estimate resource needs based on the message content.
+        
+        Args:
+            message: The message to analyze for resource requirements
+            
+        Returns:
+            Dictionary of estimated resource needs
+        """
+        # Implementation placeholder
+        return {}
+
+    def get_context_summary(self) -> Dict[str, Any]:
+        """
+        Generate a summary of the current context.
+        
+        Returns:
+            Dictionary with active topics, hardware context, and other context information
+        """
+        return {
+            'active_topics': self.active_topics,
+            'hardware_context': self.get_hardware_context()
+        }
+
+
+class ProjectOrchestrator:
+    """
+    Advanced project management system for deployment orchestration.
+    
+    This class evaluates tasks, determines target phases, and calculates
+    resource requirements for project execution.
+    """
+    
+    def __init__(self):
+        """
+        Initialize the project orchestrator with configuration and dependencies.
+        """
+        self.config = json.loads(MASTER_PROTOCOLS_JSON)
+        self.phase_dependencies = {
+            0: [],
+            1: [0],
+            2: [1],
+            3: [2],
+            4: [2, 3]
+        }
+        self.resource_pool = {
+            'CPU': 16,
+            'RAM': '16G',
+            'GPU': 'Radeon Lucienne'
+        }
+
+    def evaluate_task(self, context: ContextEngine) -> Dict[str, Any]:
+        """
+        Determine optimal execution path for the current context.
+        
+        Args:
+            context: The ContextEngine instance containing conversation context
+            
+        Returns:
+            Dictionary with target phase, requirements, and dependencies
+        """
+        return {
+            'phase': self._determine_target_phase(context),
+            'requirements': self._calculate_requirements(context),
+            'dependencies': self._check_dependencies(context)
+        }
+
+    def _determine_target_phase(self, context: ContextEngine) -> int:
+        """
+        Determine the target phase based on conversation context.
+        
+        Args:
+            context: The ContextEngine instance containing conversation context
+            
+        Returns:
+            The index of the target phase
+        """
+        phase_scores = {phase: len(ctx['project_phase_keywords'])
+                       for phase, ctx in enumerate(context.conversation_stack)}
+        return max(phase_scores, key=phase_scores.get) if phase_scores else 0
+
+    def _calculate_requirements(self, context: ContextEngine) -> Dict[str, Dict[str, Any]]:
+        """
+        Calculate resource requirements based on active LLM topics.
+        
+        Args:
+            context: The ContextEngine instance containing active topics
+            
+        Returns:
+            Dictionary mapping LLM names to their resource requirements
+        """
+        llm_profile = self.config["COGNITIVE_ARCHITECTURE"]["PROJECT_COGNITION"]["RESOURCE_PROFILES"]
+        return {llm: llm_profile[llm] for llm in context.active_topics.get('llm', [])}
+
+    def _check_dependencies(self, context: ContextEngine) -> List[int]:
+        """
+        Check dependencies for the current phase.
+        
+        Args:
+            context: The ContextEngine instance
+            
+        Returns:
+            List of phase indices that are dependencies for the current phase
+        """
+        # Implementation placeholder
+        return []
+
+
+class CriticalThinkingModule:
+    """
+    Enhanced decision-making system with hardware validation capabilities.
+    
+    This class provides error resolution strategies, resource allocation,
+    and response verification functionality.
+    """
+    
+    def __init__(self):
+        """
+        Initialize the critical thinking module with decision and verification frameworks.
+        """
+        # Original decision framework
+        self.decision_framework = {
+            'error_resolution': self._resolve_errors,
+            'resource_conflict': self._allocate_resources,
+            'context_ambiguity': self._clarify_context
+        }
+        # New verification framework
+        self.verification_framework = {
+            'hardware_consistency': self._verify_hardware_consistency,
+            'specification_gaps': self._identify_spec_gaps
+        }
+
+    def process_issue(self, issue_type: str, context: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Apply multi-strategy resolution to an issue.
+        
+        Args:
+            issue_type: The type of issue to resolve
+            context: The context dictionary
+            
+        Returns:
+            Resolution strategy for the issue
+            
+        Raises:
+            KeyError: If the issue_type is not in the decision framework
+        """
+        return self.decision_framework[issue_type](context)
+
+    def verify_response(self, context: Dict[str, Any], proposed_response: str) -> List[str]:
+        """
+        Validate a response against hardware context and other criteria.
+        
+        Args:
+            context: The context dictionary
+            proposed_response: The response text to validate
+            
+        Returns:
+            List of validation issues found
+        """
+        issues = []
+        for check in self.verification_framework.values():
+            issues.extend(check(context, proposed_response))
+        return issues
+
+    def _resolve_errors(self, context: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Apply hypothesis-driven error resolution.
+        
+        Args:
+            context: The context dictionary
+            
+        Returns:
+            Dictionary with hypotheses and test cases
+        """
+        hypotheses = [
+            "Hardware incompatibility",
+            "Resource overallocation",
+            "Dependency violation"
+        ]
+        return {
+            'hypotheses': hypotheses,
+            'tests': [self._generate_test_case(h, context) for h in hypotheses]
+        }
+
+    def _generate_test_case(self, hypothesis: str, context: Dict[str, Any]) -> str:
+        """
+        Generate a test case for a given hypothesis.
+        
+        Args:
+            hypothesis: The hypothesis to test
+            context: The context dictionary
+            
+        Returns:
+            Test case description
+        """
+        # Implementation placeholder
+        return f"Test for {hypothesis}"
+
+    def _allocate_resources(self, context: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Allocate resources based on LLM priorities.
+        
+        Args:
+            context: The context dictionary
+            
+        Returns:
+            Dictionary with LLM priorities and available resources
+        """
+        orchestrator = ProjectOrchestrator()
+        requirements = orchestrator._calculate_requirements(context)
+        return {
+            'llm_priority': sorted(requirements.keys(),
+                                  key=lambda x: requirements[x]['CPU'],
+                                  reverse=True),
+            'available_resources': orchestrator.resource_pool
+        }
+
+    def _clarify_context(self, context: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Clarify ambiguous context information.
+        
+        Args:
+            context: The context dictionary
+            
+        Returns:
+            Dictionary with clarified context
+        """
+        # Implementation placeholder
+        return {}
+
+    def _verify_hardware_consistency(self, context: Dict[str, Any], response: str) -> List[str]:
+        """
+        Ensure response is consistent with hardware specifications.
+        
+        Args:
+            context: The context dictionary
+            response: The response text to verify
+            
+        Returns:
+            List of hardware consistency issues
+        """
+        discrepancies = []
+        hw_context = context['hardware_specs']
+        
+        if 'ryzen' in response.lower() and not hw_context['cpu']:
+            discrepancies.append("CPU mentioned but not in context")
+        if 'radeon' in response.lower() and not hw_context['gpu']:
+            discrepancies.append("GPU referenced without context")
+            
+        return discrepancies
+
+    def _identify_spec_gaps(self, context: Dict[str, Any], response: str) -> List[str]:
+        """
+        Detect missing specification references in the response.
+        
+        Args:
+            context: The context dictionary
+            response: The response text to check
+            
+        Returns:
+            List of missing specification references
+        """
+        required_specs = set()
+        if 'memory' in response.lower():
+            required_specs.add('ram')
+        if 'storage' in response.lower():
+            required_specs.add('storage')
+            
+        return [f"Missing {spec} reference" for spec in required_specs 
+                if not context['hardware_specs'][spec]]
+
+
+class EnhancedProtocols:
+    """
+    Integrated cognitive system with dual processing pipelines.
+    
+    This is the main interface for the cognitive system that integrates
+    the context engine, project orchestrator, and critical thinking module.
+    """
+    
+    def __init__(self):
+        """
+        Initialize the enhanced protocols system with its components.
+        """
+        self.context_engine = ContextEngine()
+        self.project_orchestrator = ProjectOrchestrator()
+        self.critical_thinking = CriticalThinkingModule()
+        self.dialog_history = []
+        self.response_history = []
+
+    def process_message(self, message: str) -> Dict[str, Any]:
+        """
+        Process a message through the full cognitive pipeline.
+        
+        Args:
+            message: The message to process
+            
+        Returns:
+            Analysis dictionary with context summary, project analysis, and potential issues
+        """
+        context = self.context_engine.update_context(message)
+        analysis = {
+            'context_summary': self.context_engine.get_context_summary(),
+            'project_analysis': self.project_orchestrator.evaluate_task(self.context_engine),
+            'potential_issues': self._detect_potential_issues(context)
+        }
+        self.dialog_history.append((datetime.now(), message, analysis))
+        return self._format_response(analysis)
+
+    def validate_response(self, message: str, response: str) -> Dict[str, Any]:
+        """
+        Validate a response against the given message context.
+        
+        Args:
+            message: The original message
+            response: The response to validate
+            
+        Returns:
+            Dictionary with validation results and hardware context
+        """
+        context = self.context_engine.update_context(message)
+        validation_issues = self.critical_thinking.verify_response(context, response)
+        
+        entry = {
+            'timestamp': datetime.now().isoformat(),
+            'message': message,
+            'response': response,
+            'context_snapshot': context,
+            'validation_issues': validation_issues
+        }
+        self.response_history.append(entry)
+        
+        return {
+            'validation_results': validation_issues,
+            'hardware_context': self.context_engine.get_hardware_context()
+        }
+
+    def _detect_potential_issues(self, context: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Detect potential issues based on the current context.
+        
+        Args:
+            context: The context dictionary
+            
+        Returns:
+            Dictionary with resource conflicts and phase risks
+        """
+        return {
+            'resource_conflicts': self._check_resource_overlap(context),
+            'phase_risks': self._identify_phase_risks(context)
+        }
+        
+    def _check_resource_overlap(self, context: Dict[str, Any]) -> List[str]:
+        """
+        Check for resource overlaps in the current context.
+        
+        Args:
+            context: The context dictionary
+            
+        Returns:
+            List of resource conflict descriptions
+        """
+        # Implementation placeholder
+        return []
+    
+    def _identify_phase_risks(self, context: Dict[str, Any]) -> List[str]:
+        """
+        Identify risks associated with the current phase.
+        
+        Args:
+            context: The context dictionary
+            
+        Returns:
+            List of phase risk descriptions
+        """
+        # Implementation placeholder
+        return []
+    
+    def _format_response(self, analysis: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Format the response based on analysis results.
+        
+        Args:
+            analysis: The analysis dictionary
+            
+        Returns:
+            Formatted response dictionary
+        """
+        # Implementation placeholder
+        return analysis
+
+
+# Example Usage
+if __name__ == "__main__":
+    mind = EnhancedProtocols()
+    
+    messages = [
+        "Ready to begin Ubuntu installation on the 5700U system",
+        "Need to allocate resources for distilBERT and RoBERTa",
+        "Getting GPU driver errors during LLM deployment"
+    ]
+    
+    for msg in messages:
+        print(f"\nProcessing: {msg}")
+        response = mind.process_message(msg)
+        print(f"Context Analysis: {response['context_summary']}")
+        print(f"Project Plan: {response['project_analysis']}")

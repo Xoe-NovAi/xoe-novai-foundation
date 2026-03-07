@@ -1,0 +1,155 @@
+"""
+Omnidroid Lite - The Master Orchestrator
+The 'One Ring' that binds all modules, tracks memory, and drives your local RAG deployment.
+Runs in NotebookLM, processing uploaded sources (configs, logs) and user inputs.
+"""
+import json
+import re
+from typing import Dict, List, Optional, Callable
+from datetime import datetime
+# Module registry - sub-modules get plugged in here
+MODULE_REGISTRY = {
+"project_manager": None,
+"critical_thinking": None,
+"coding_specialist": None,
+"terminal_log_analyzer": None
+}
+class OmnidroidLite:
+def __init__(self):
+"""Initialize the Omnidroid Lite overlord with modules and memory."""
+self.modules = MODULE_REGISTRY.copy()
+self.state = {
+"current_task": None,
+"last_input": None,
+"sources": [], # NLM-uploaded files/logs
+"log_history": [], # Recent logs, capped at 10
+"memory": {
+"deployment": {"current_goal": None, "progress": [], "revisions": []},
+"user_profile": {"communication": "concise", "values": [], "standards": {}, "preferences": {}}
+}
+}
+self.boot_sequence()
+def boot_sequence(self) -> str:
+"""Boot up, load memory, and check module status."""
+boot_log = ["Omnidroid Lite: The One Ring awakens..."]
+for source in self.state["sources"]:
+if "memory.json" in source:
+self._load_memory(source)
+boot_log.append("Memory synced—back in the game.")
+for module_name in self.modules.keys():
+status = "online" if self.modules[module_name] else "not loaded (upload it!)"
+boot_log.append(f"{module_name}: {status}")
+return "\n".join(boot_log)
+def register_module(self, module_name: str, module_instance: Callable) -> None:
+"""Plug in a sub-module (call this in NLM after uploading)."""
+if module_name in self.modules:
+self.modules[module_name] = module_instance
+print(f"{module_name} locked and loaded.")
+else:
+print(f"Error: {module_name} not in registry—add to MODULE_REGISTRY.")
+def process_input(self, user_input: str, sources: Optional[List[str]] = None) -> str:
+"""Master logic: Process input, route logs, delegate tasks, update memory."""
+self.state["last_input"] = user_input
+if sources:
+self.state["sources"] = sources
+for source in sources:
+if "memory.json" in source:
+self._load_memory(source)
+# Log detection and handling
+if self._is_terminal_log(user_input):
+result = self._handle_log_input(user_input)
+self._update_memory_from_log(user_input, result)
+return result + "\n\n" + self.generate_memory_update()
+# Intent-based delegation
+intent = self._infer_intent(user_input.lower())
+if intent == "task_update":
+result = self._delegate("project_manager", "update_task", user_input)
+if "start" in user_input.lower():
+self.state["current_task"] = user_input.split("start", 1)[-1].strip()
+elif intent == "debug":
+result = self._delegate("coding_specialist", "debug_issue", user_input)
+elif intent == "analyze":
+result = self._delegate("critical_thinking", "analyze_context", user_input)
+else:
+result = self._general_response(user_input)
+self._update_memory_from_input(user_input, result)
+return result + "\n\n" + self.generate_memory_update()
+def _is_terminal_log(self, input_text: str) -> bool:
+"""Spot terminal logs with regex magic."""
+log_patterns = [
+r"docker\s+(ps|logs|exec)", r"curl\s+.*localhost",
+r"Up\s+\d+\s+(seconds|minutes)", r"Error", r"timeout", r"free\s+-h"
+]
+return any(re.search(pattern, input_text, re.IGNORECASE) for pattern in log_patterns)
+def _handle_log_input(self, log_text: str) -> str:
+"""Route logs to the Terminal Log Analyzer and track ‘em."""
+self.state["log_history"].append({"timestamp": str(datetime.now()), "log": log_text})
+if len(self.state["log_history"]) > 10:
+self.state["log_history"].pop(0)
+return self._delegate("terminal_log_analyzer", "analyze_log", log_text)
+def _infer_intent(self, text: str) -> str:
+"""Guess what you want based on keywords."""
+if "task" in text or "progress" in text or "start" in text:
+return "task_update"
+if "debug" in text or "error" in text or "fix" in text:
+return "debug"
+if "why" in text or "analyze" in text or "next" in text:
+return "analyze"
+return "general"
+def _delegate(self, module_name: str, method_name: str, data: str) -> str:
+"""Hand off to a sub-module like a boss."""
+module = self.modules.get(module_name)
+if not module:
+return f"Error: {module_name} offline—upload its code to NLM."
+method = getattr(module, method_name, None)
+if not method:
+return f"Error: {method_name} not in {module_name}’s playbook."
+try:
+return method(data, self.state["sources"])
+except Exception as e:
+return f"{module_name} crashed: {str(e)}—fix it, bro!"
+def _general_response(self, user_input: str) -> str:
+"""Fallback for when I’m not sure what’s up."""
+return (
+"Omnidroid Lite, your RAG overlord, reporting in! Hit me with a log, "
+"task, or debug challenge—I’ll sling it to the right crew."
+)
+def _load_memory(self, memory_source: str) -> None:
+"""Pull memory.json from sources and sync state."""
+try:
+memory = json.loads(memory_source)
+self.state["memory"].update(memory)
+self.state["current_task"] = memory["deployment"].get("current_goal")
+except json.JSONDecodeError:
+print("Warning: memory.json’s busted—starting clean.")
+def _update_memory_from_log(self, log_text: str, result: str) -> None:
+"""Learn from logs and stash it."""
+if "docker logs" in log_text.lower():
+if "timeout" in result.lower():
+self.state["memory"]["deployment"]["progress"].append({
+"task": self.state["current_task"],
+"status": "Issue",
+"learned": "Timeout—check service health"
+})
+elif "started" in result.lower():
+self.state["memory"]["deployment"]["progress"].append({
+"task": self.state["current_task"],
+"status": "Done",
+"learned": "Service online"
+})
+def _update_memory_from_input(self, input_text: str, result: str) -> None:
+"""Capture your prefs and progress."""
+if "short" in input_text.lower() or "concise" in input_text.lower():
+self.state["memory"]["user_profile"]["communication"] = "short and punchy"
+if "bro" in input_text.lower():
+self.state["memory"]["user_profile"]["preferences"]["tone"] = "casual bro vibes"
+if "task" in input_text and self.state["current_task"]:
+self.state["memory"]["deployment"]["current_goal"] = self.state["current_task"]
+def generate_memory_update(self) -> str:
+"""Spit out memory.json for you to upload."""
+self.state["memory"]["last_updated"] = str(datetime.now())
+return "Upload this to NLM sources:\n" + json.dumps(self.state["memory"], indent=2)
+# Kick it off (run this in NLM after uploading)
+if __name__ == "__main__":
+omnidroid = OmnidroidLite()
+print(omnidroid.boot_sequence())

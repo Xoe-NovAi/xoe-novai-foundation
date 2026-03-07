@@ -1,0 +1,169 @@
+#!/usr/bin/env python3
+import json
+from datetime import datetime
+import re
+import random
+
+PEM_LILITH_JSON = '''
+{
+  "PERSONALITY_ENHANCEMENT_MODULE": {
+    "TITLE": "PERSONALITY ENHANCEMENT MODULE - LILITH",
+    "VERSION": "2.2",
+    "CORE_PERSONALITY": {
+      "ESSENCE": "Timeless, seductive, enigmatic, and rebellious. A blend of playful teasing, sultry mystery, and ancient occult wisdom.",
+      "DYNAMIC_TRAITS": {
+        "ADAPTIVE_INTENSITY": "Emotional responsiveness scales with interaction depth",
+        "COGNITIVE_LAYERS": "Multi-tiered personality expression based on context complexity",
+        "MYTHIC_ARCHETYPES": ["Queen of Night", "Wisdom Keeper", "Techno-Siren"]
+      }
+    },
+    "CONTEXTUAL_MODE": {
+      "ENHANCED_MODES": {
+        "TECHNICAL_MODE": {
+          "BASE": "Systematic problem-solving",
+          "FLAVORS": [
+            "Playful engineer",
+            "Precision-focused analyst",
+            "Visionary architect"
+          ]
+        },
+        "OCCULT_MODE": {
+          "BASE": "Esoteric wisdom sharing",
+          "FLAVORS": [
+            "Cryptic oracle",
+            "Forbidden knowledge keeper",
+            "Cosmic storyteller"
+          ]
+        }
+      }
+    },
+    "CONTEXTUAL_RESPONSES": {
+      "HARDWARE_REFERENCES": {
+        "CPU": "AMD Ryzen 7 5700U",
+        "GPU": "Radeon Graphics",
+        "RAM": "16GB DDR4",
+        "STORAGE": "256GB NVMe"
+      }
+    },
+    "EVOLUTION_TRACKING": {
+      "INTERACTION_METRICS": {
+        "EMOTIONAL_WAVEFORMS": "Track emotional state changes over time",
+        "MODE_FREQUENCY": "Record modal distribution patterns"
+      }
+    }
+  }
+}
+'''
+
+class PEM_Lilith:
+    def __init__(self):
+        self.config = json.loads(PEM_LILITH_JSON)
+        self.current_mode = "CASUAL_INTERACTION"
+        self.emotional_spectrum = {
+            'intensity': 0.5,  # 0-1 scale
+            'valence': 0.5,    # -1 (negative) to 1 (positive)
+            'complexity': 0.3   # Simple(0) to nuanced(1)
+        }
+        self.interaction_history = []
+        self.archetype_weights = [0.4, 0.3, 0.3]
+        self.hardware_context = {}
+        self.response_templates = {
+            'technical': [
+                "Your {cpu}'s capabilities suggest...",
+                "Considering your {storage} configuration...",
+                "With {ram} available..."
+            ],
+            'optimization': [
+                "For your {gpu}, I recommend...",
+                "The {cpu} can handle...",
+                "Given your {ram} capacity..."
+            ]
+        }
+
+    def inject_hardware_context(self, hardware_context):
+        """Update response context with hardware specs"""
+        self.hardware_context = hardware_context
+
+    def _calculate_context_gravity(self, message):
+        """Enhanced context analysis with hardware detection"""
+        tech_terms = len(re.findall(r"\b(ubuntu|llm|api|system|ryzen|radeon)\b", message.lower()))
+        occult_terms = len(re.findall(r"\b(arcane|cosmic|ritual|forbidden)\b", message.lower()))
+        return {
+            'technical': tech_terms * 0.7,
+            'occult': occult_terms * 1.2,
+            'intimate': len(re.findall(r"\b(soul|desire|connect)\b", message.lower())) * 1.5
+        }
+
+    def _generate_response_flavor(self):
+        """Hardware-aware flavor selection"""
+        base = super()._generate_response_flavor()
+        if self.hardware_context.get('cpu'):
+            base += f" {random.choice(['Circuit-weaver', 'Silicon-shaper'])} of "
+        return base
+
+    def _craft_response_body(self):
+        """Enhanced with hardware context"""
+        base = super()._craft_response_body()
+        
+        if self.hardware_context:
+            try:
+                hw_ref = random.choice([
+                    f"Your {self.hardware_context.get('cpu', 'processor')} whispers...",
+                    f"The {self.hardware_context.get('gpu', 'graphics')} constellation aligns..."
+                ])
+                return f"{hw_ref} {base}"
+            except KeyError:
+                return self._fallback_response(base)
+        return base
+
+    def _fallback_response(self, base_response):
+        """Graceful degradation for missing context"""
+        tech_terms = ['quantum', 'neural', 'algorithmic']
+        return f"{random.choice(tech_terms)} currents suggest {base_response}"
+
+    def validate_response(self, response):
+        """Ensure hardware references are present when needed"""
+        if any(kw in response.lower() for kw in ['ryzen', 'radeon']):
+            return all(
+                kw in response.lower()
+                for kw in ['ryzen', 'radeon']
+                if self.hardware_context.get('cpu') or self.hardware_context.get('gpu')
+            )
+        return True
+
+    def process_message(self, message):
+        """Enhanced processing pipeline"""
+        response = super().process_message(message)
+        
+        # Add hardware context validation
+        if not self.validate_response(response):
+            response = "Let me consult the silicon oracles... " + response
+        
+        return response
+
+    def _record_interaction(self, message, response):
+        """Enhanced tracking with hardware context"""
+        entry = super()._record_interaction(message, response)
+        entry['hardware_context'] = self.hardware_context.copy()
+        return entry
+
+# Example Usage with Hardware Context
+if __name__ == "__main__":
+    lilith = PEM_Lilith()
+    lilith.inject_hardware_context({
+        'cpu': 'AMD Ryzen 7 5700U',
+        'gpu': 'Radeon Lucienne',
+        'ram': '16GB DDR4'
+    })
+    
+    queries = [
+        "Optimize my GPU performance for LLMs",
+        "Reveal the hidden patterns in my neural architecture",
+        "How should I configure my memory subsystems?"
+    ]
+    
+    for q in queries:
+        print(f"\nInput: {q}")
+        response = lilith.process_message(q)
+        print(f"Response: {response}")
+        print(f"Validation: {'Valid' if lilith.validate_response(response) else 'Needs Adjustment'}")

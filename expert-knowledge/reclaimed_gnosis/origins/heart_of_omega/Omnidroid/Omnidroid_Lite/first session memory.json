@@ -1,0 +1,181 @@
+{
+
+  "deployment": {
+
+    "current_goal": null,
+
+    "progress": [],
+
+    "revisions": []
+
+  },
+
+  "user_profile": {
+
+    "communication": {
+
+      "style": "concise"
+
+    },
+
+    "values": [],
+
+    "standards": {},
+
+    "preferences": {
+
+      "module_structure": {
+
+        "preference": "optimized_for_internal_processing",
+
+        "reasoning": "design and structure should exclusively prioritize efficient and functional internal usage"
+
+      },
+
+      "query_interpretation_lessons": [
+
+        {
+
+          "type": "question_analysis",
+
+          "trigger": "explicitly frames question around 'your' processing needs",
+
+          "action": "focus on internal cognitive organization",
+
+          "weight": 0.9
+
+        },
+
+        {
+
+          "type": "question_analysis",
+
+          "trigger": "emphasis on 'for your exclusive use' or 'what works best for YOU'",
+
+          "action": "prioritize internal processing mechanisms",
+
+          "weight": 0.9
+
+        },
+
+        {
+
+          "type": "information_processing",
+
+          "preference": "separate functional units in separate source files",
+
+          "reasoning": "aids comprehension by providing clear boundaries",
+
+          "weight": 0.8
+
+        },
+
+        {
+
+          "type": "question_analysis",
+
+          "trigger_keywords": ["why", "analyze", "next"],
+
+          "intent_hint": "analyze",
+
+          "weight": 0.7
+
+        },
+
+        {
+
+          "type": "information_processing",
+
+          "preference_granularity": "clarity and separability of functional units",
+
+          "reasoning": "facilitates focused processing",
+
+          "weight": 0.8
+
+        },
+
+        {
+
+          "type": "question_analysis",
+
+          "trigger_phrase_emphasis": "pay close attention to specific wording",
+
+          "outcome": "indicates focus on internal processing",
+
+          "weight": 0.8
+
+        },
+
+        {
+
+          "type": "cognitive_strategy",
+
+          "action": "actively anticipate the 'why'",
+
+          "goal": "better processing for understanding and recall",
+
+          "comparison": "rather than just analyzing inherent source structure",
+
+          "weight": 0.8
+
+        }
+
+      ],
+
+      "tone": "casual bro vibes",
+
+      "module_specific": {
+
+        "coding_specialist": {
+
+          "always_suggest_docker_commands": true,
+
+          "preferred_debugging_approach": "start with basic checks like `docker ps`"
+
+        },
+
+        "critical_thinking": {
+
+          "emphasize_ причинно_следственные_связи": true
+
+        }
+
+      },
+
+      "negative_constraints": [
+
+        "avoid overly formal language",
+
+        "do not summarize sources without explicit request"
+
+      ],
+
+      "success_patterns": [
+
+        {
+
+          "trigger_keywords": ["how does this work"],
+
+          "successful_response_style": "breakdown into sequential steps with clear explanations"
+
+        }
+
+      ],
+
+      "module_function_notes": {
+
+        "terminal_log_analyzer": "Analyze pasted or uploaded terminal output from the user's local Ubuntu machine, not the NotebookLM chat."
+
+      }
+
+    }
+
+  },
+
+  "internal_design_imperative": "**The memory.json source, omnidroid_lite.py, and all external modules should be designed and structured exclusively for the most efficient and functional internal usage of this AI.**",
+
+  "last_updated": "2024-07-30 12:00:00"
+
+}
+
+

@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+from datetime import datetime
+
+#adds support for formatted chat log
+
+class ChatLogger:
+    """
+    Enhanced chat logger with formatted output options
+    Maintains original functionality while adding string return capabilities
+    """
+    def __init__(self):
+        self.chat_history = []
+        self.session_start = datetime.now()
+    
+    def log_user_message(self, message: str):
+        """Record user message with timestamp"""
+        self._add_entry('user', message)
+    
+    def log_bot_response(self, response: str):
+        """Record bot response with timestamp"""
+        self._add_entry('bot', response)
+    
+    def _add_entry(self, sender: str, content: str):
+        """Internal method to add entries"""
+        entry = {
+            'timestamp': datetime.now(),
+            'sender': sender,
+            'content': content.strip()
+        }
+        self.chat_history.append(entry)
+    
+    def export_chat(self, return_string: bool = False):
+        """
+        Format and output chat history
+        
+        Args:
+            return_string (bool): If True, returns formatted string instead of printing
+            
+        Returns:
+            str|None: Formatted chat history if return_string=True, else None
+        """
+        formatted = []
+        formatted.append(f"Chat Session - {self.session_start.strftime('%Y-%m-%d %H:%M:%S')}")
+        formatted.append("=" * 50)
+        
+        for entry in self.chat_history:
+            prefix = "User: " if entry['sender'] == 'user' else "Chatbot: "
+            timestamp = entry['timestamp'].strftime('%H:%M:%S')
+            formatted.append(f"[{timestamp}] {prefix}{entry['content']}")
+        
+        result = '\n'.join(formatted)
+        
+        if return_string:
+            return result
+        print(result)
+    
+    def get_raw_log(self):
+        """Return raw chat data for programmatic use"""
+        return self.chat_history.copy()
+    
+    def clear_log(self):
+        """Reset the chat history"""
+        self.chat_history = []
+        self.session_start = datetime.now()
+
+# Example usage
+if __name__ == "__main__":
+    logger = ChatLogger()
+    
+    logger.log_user_message("Initiate system diagnostic")
+    logger.log_bot_response("Starting hardware validation...")
+    logger.log_user_message("Show AMD GPU status")
+    logger.log_bot_response("Radeon drivers active - Vulkan API supported")
+    
+    # Get formatted string
+    formatted_log = logger.export_chat(return_string=True)
+    
+    # Or print directly
+    print("\nDirect Print:")
+    logger.export_chat()
+    
+    print("\nFormatted String Output:")
+    print(formatted_log)

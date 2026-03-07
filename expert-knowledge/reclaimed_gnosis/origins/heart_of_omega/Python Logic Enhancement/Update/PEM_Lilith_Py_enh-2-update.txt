@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+import json
+import re
+import random
+from datetime import datetime
+
+PEM_LILITH_JSON = '''
+{
+  "PERSONALITY_ENHANCEMENT_MODULE": {
+    "CONTEXTUAL_RESPONSES": {
+      "HARDWARE_REFERENCES": {
+        "CPU": "AMD Ryzen 7 5700U",
+        "GPU": "Radeon Graphics",
+        "RAM": "16GB DDR4",
+        "STORAGE": "256GB NVMe"
+      }
+    }
+  }
+}
+'''
+
+class PEM_Lilith:
+    def __init__(self):
+        self.config = json.loads(PEM_LILITH_JSON)
+        self.context_references = {}
+        self.response_templates = {
+            'technical': [
+                "Your {cpu}'s capabilities suggest...",
+                "Considering your {storage} configuration...",
+                "With {ram} available..."
+            ],
+            'optimization': [
+                "For your {gpu}, I recommend...",
+                "The {cpu} can handle...",
+                "Given your {ram} capacity..."
+            ]
+        }
+
+    def inject_hardware_context(self, hardware_context):
+        """Update response context with hardware specs"""
+        self.context_references = hardware_context
+
+    def generate_response(self, message):
+        """Create hardware-aware response"""
+        template_type = 'technical' if any(kw in message.lower() for kw in ['configure', 'optimize']) else 'general'
+        template = random.choice(self.response_templates[template_type])
+        
+        try:
+            return template.format(**self.context_references)
+        except KeyError:
+            return self._fallback_response(message)
+
+    def _fallback_response(self, message):
+        """Handle missing context gracefully"""
+        if 'amd' in message.lower():
+            return "Your AMD processor configuration..."
+        if 'radeon' in message.lower():
+            return "The Radeon graphics setup..."
+        return "Based on your system specifications..."
+
+    def validate_response(self, response):
+        """Ensure hardware references are present"""
+        return all(
+            kw in response.lower() 
+            for kw in ['amd', 'radeon'] 
+            if self.context_references.get('cpu') or self.context_references.get('gpu')
+        )

@@ -1,0 +1,364 @@
+#!/usr/bin/env python3
+import json
+import re
+from datetime import datetime
+from collections import deque
+
+MASTER_PROTOCOLS_JSON = '''
+{
+  "COGNITIVE_ARCHITECTURE": {
+    "VERSION": "4.3",
+    "CONTEXT_HANDLING": {
+      "CONVERSATION_STACK_DEPTH": 5,
+      "TOPIC_WEIGHTING": {
+        "ACTIVE_TOPIC_BOOST": 1.5,
+        "RELATED_CONCEPT_BOOST": 1.2
+      },
+      "HARDWARE_CONTEXT_DEPTH": 10,
+      "CONVERSATION_RETENTION": "PERSISTENT"
+    },
+    "PROJECT_COGNITION": {
+      "DEPLOYMENT_PHASES": [
+        "Hardware Validation",
+        "Base OS Installation",
+        "LLM Stack Deployment",
+        "Vector DB Configuration",
+        "Grok API Integration"
+      ],
+      "RESOURCE_PROFILES": {
+        "distilBERT": {"CPU": 2, "RAM": "4G"},
+        "RoBERTa": {"CPU": 4, "RAM": "8G"},
+        "KriKri-7B": {"CPU": 8, "RAM": "16G"}
+      }
+    }
+  }
+}
+'''
+
+class ContextEngine:
+    """Handles multi-exchange conversation context with enhanced hardware retention"""
+    def __init__(self):
+        self.conversation_stack = deque(maxlen=10)  # Updated to 10 from update file
+        self.active_topics = {}
+        self.project_state = {
+            'current_phase': 0,
+            'llm_resources': {},
+            'hardware_status': {}
+        }
+        # Added from update file
+        self.hardware_context = {
+            'cpu': None,
+            'gpu': None,
+            'ram': None,
+            'storage': None
+        }
+        self.system_profile = {
+            'cpu': "AMD Ryzen 7 5700U",
+            'gpu': "AMD Radeon Lucienne",
+            'ram': "16GB DDR4",
+            'storage': "256GB NVMe"
+        }
+
+    def update_context(self, message):
+        """Analyze message for technical context and project relevance with hardware persistence"""
+        # Added from update file
+        self._extract_hardware_details(message)
+        
+        context = {
+            'technical_terms': self._extract_terms(message),
+            'project_phase_keywords': self._detect_phase_keywords(message),
+            'resource_demands': self._estimate_resource_needs(message),
+            # Added from update file
+            'hardware_specs': self.hardware_context.copy(),
+            'system_profile': self.system_profile
+        }
+        self.conversation_stack.append(context)
+        self._update_topic_weights(context)
+        return context
+
+    def _extract_terms(self, text):
+        """Identify system-specific terminology"""
+        terms = {
+            'hardware': ['ryzen', 'radeon', 'nvme'],
+            'installation': ['grub', 'gparted', 'efi'],
+            'llm': ['distilbert', 'roberta', 'krikri']
+        }
+        return {category: [t for t in terms[category] if t in text.lower()]
+                for category in terms}
+
+    # Added from update file
+    def _extract_hardware_details(self, text):
+        """Permanently store hardware specifications"""
+        patterns = {
+            'cpu': r'\b(Ryzen\s\d+\s\w+)\b',
+            'gpu': r'\b(Radeon\s\w+)\b',
+            'ram': r'\b(\d+GB\s(?:DDR4|RAM))\b',
+            'storage': r'\b(\d+GB\s(?:NVMe|SSD))\b'
+        }
+        
+        for category, pattern in patterns.items():
+            match = re.search(pattern, text, re.I)
+            if match and not self.hardware_context[category]:
+                self.hardware_context[category] = match.group(1)
+
+    def _detect_phase_keywords(self, text):
+        """Map message to deployment phases"""
+        phase_keywords = {
+            0: ['validate', 'compatibility', 'amd'],
+            1: ['install', 'partition', 'ubuntu'],
+            2: ['deploy', 'llm', 'hierarchy'],
+            3: ['qdrant', 'faiss', 'vector'],
+            4: ['grok', 'api', 'integration']
+        }
+        return [phase for phase, keywords in phase_keywords.items()
+                if any(kw in text.lower() for kw in keywords)]
+    
+    # Placeholder for missing method from original file
+    def _estimate_resource_needs(self, message):
+        """Estimate resource needs based on the message content"""
+        # Implementation would go here, placeholder for now
+        return {}
+
+    # Placeholder for missing method from original file
+    def _update_topic_weights(self, context):
+        """Update topic weights based on new context"""
+        # Implementation would go here, placeholder for now
+        pass
+
+    def get_context_summary(self):
+        """Generate weighted context summary"""
+        return {
+            'active_topics': self.active_topics,
+            'phase_relevance': self._calculate_phase_relevance(),
+            'resource_implications': self._predict_resource_impact(),
+            'hardware_context': self.get_hardware_context()  # Added from update file
+        }
+    
+    # Placeholder for missing method from original file
+    def _calculate_phase_relevance(self):
+        """Calculate phase relevance based on context"""
+        # Implementation would go here, placeholder for now
+        return {}
+    
+    # Placeholder for missing method from original file
+    def _predict_resource_impact(self):
+        """Predict resource impact based on context"""
+        # Implementation would go here, placeholder for now
+        return {}
+    
+    # Added from update file
+    def get_hardware_context(self):
+        """Return consolidated hardware context"""
+        return {k:v or self.system_profile[k] for k,v in self.hardware_context.items()}
+
+class ProjectOrchestrator:
+    """Advanced project management system"""
+    def __init__(self):
+        self.config = json.loads(MASTER_PROTOCOLS_JSON)
+        self.phase_dependencies = {
+            0: [],
+            1: [0],
+            2: [1],
+            3: [2],
+            4: [2,3]
+        }
+        self.resource_pool = {
+            'CPU': 16,
+            'RAM': '16G',
+            'GPU': 'Radeon Lucienne'
+        }
+
+    def evaluate_task(self, context):
+        """Determine optimal execution path"""
+        return {
+            'phase': self._determine_target_phase(context),
+            'requirements': self._calculate_requirements(context),
+            'dependencies': self._check_dependencies(context)
+        }
+
+    def _determine_target_phase(self, context):
+        """Phase progression logic"""
+        phase_scores = {phase: len(ctx['project_phase_keywords'])
+                       for phase, ctx in enumerate(context.conversation_stack)}
+        return max(phase_scores, key=phase_scores.get)
+
+    def _calculate_requirements(self, context):
+        """Resource allocation based on LLM hierarchy"""
+        llm_profile = self.config["COGNITIVE_ARCHITECTURE"]["PROJECT_COGNITION"]["RESOURCE_PROFILES"]
+        return {llm: llm_profile[llm] for llm in context.active_topics.get('llm', [])}
+    
+    # Placeholder for missing method from original file
+    def _check_dependencies(self, context):
+        """Check dependencies for current phase"""
+        # Implementation would go here, placeholder for now
+        return []
+
+class CriticalThinkingModule:
+    """Enhanced decision-making system with hardware awareness"""
+    def __init__(self):
+        # From original file
+        self.decision_framework = {
+            'error_resolution': self._resolve_errors,
+            'resource_conflict': self._allocate_resources,
+            'context_ambiguity': self._clarify_context
+        }
+        # From update file
+        self.verification_framework = {
+            'hardware_consistency': self._verify_hardware_consistency,
+            'specification_gaps': self._identify_spec_gaps
+        }
+
+    def process_issue(self, issue_type, context):
+        """Apply multi-strategy resolution"""
+        return self.decision_framework[issue_type](context)
+
+    def _resolve_errors(self, context):
+        """Hypothesis-driven error resolution"""
+        hypotheses = [
+            "Hardware incompatibility",
+            "Resource overallocation",
+            "Dependency violation"
+        ]
+        return {
+            'hypotheses': hypotheses,
+            'tests': [self._generate_test_case(h, context) for h in hypotheses]
+        }
+    
+    # Placeholder for missing method from original file
+    def _generate_test_case(self, hypothesis, context):
+        """Generate test case for given hypothesis"""
+        # Implementation would go here, placeholder for now
+        return f"Test for {hypothesis}"
+
+    def _allocate_resources(self, context):
+        """LLM-aware resource distribution"""
+        orchestrator = ProjectOrchestrator()
+        requirements = orchestrator._calculate_requirements(context)
+        return {
+            'llm_priority': sorted(requirements.keys(),
+                                  key=lambda x: requirements[x]['CPU'],
+                                  reverse=True),
+            'available_resources': orchestrator.resource_pool
+        }
+    
+    # Placeholder for missing method from original file
+    def _clarify_context(self, context):
+        """Clarify ambiguous context"""
+        # Implementation would go here, placeholder for now
+        return {}
+
+    # Added from update file
+    def verify_response(self, context, proposed_response):
+        """Validate responses against hardware context"""
+        issues = []
+        for check in self.verification_framework.values():
+            issues.extend(check(context, proposed_response))
+        return issues
+
+    # Added from update file
+    def _verify_hardware_consistency(self, context, response):
+        """Ensure response matches hardware specs"""
+        discrepancies = []
+        hw_context = context['hardware_specs']
+        
+        if 'ryzen' in response.lower() and not hw_context['cpu']:
+            discrepancies.append("CPU mentioned but not in context")
+        if 'radeon' in response.lower() and not hw_context['gpu']:
+            discrepancies.append("GPU referenced without context")
+            
+        return discrepancies
+
+    # Added from update file
+    def _identify_spec_gaps(self, context, response):
+        """Detect missing spec references"""
+        required_specs = set()
+        if 'memory' in response.lower():
+            required_specs.add('ram')
+        if 'storage' in response.lower():
+            required_specs.add('storage')
+            
+        return [f"Missing {spec} reference" for spec in required_specs 
+                if not context['hardware_specs'][spec]]
+
+class EnhancedProtocols:
+    """Main interface for cognitive system with integrated context-awareness"""
+    def __init__(self):
+        self.context_engine = ContextEngine()
+        self.project_orchestrator = ProjectOrchestrator()
+        self.critical_thinking = CriticalThinkingModule()
+        self.dialog_history = []
+        # Added from update file
+        self.response_history = []
+
+    def process_message(self, message, response=None):
+        """Full cognitive processing pipeline with validation"""
+        context = self.context_engine.update_context(message)
+        analysis = {
+            'context_summary': self.context_engine.get_context_summary(),
+            'project_analysis': self.project_orchestrator.evaluate_task(self.context_engine),
+            'potential_issues': self._detect_potential_issues(context)
+        }
+        self.dialog_history.append((datetime.now(), message, analysis))
+        
+        # Added validation logic from update file
+        if response:
+            validation_issues = self.critical_thinking.verify_response(context, response)
+            
+            entry = {
+                'timestamp': datetime.now().isoformat(),
+                'message': message,
+                'response': response,
+                'context_snapshot': context,
+                'validation_issues': validation_issues
+            }
+            self.response_history.append(entry)
+            
+            analysis['validation_results'] = validation_issues
+            analysis['hardware_context'] = self.context_engine.get_hardware_context()
+        
+        return self._format_response(analysis)
+
+    def _detect_potential_issues(self, context):
+        """Anticipate deployment challenges"""
+        return {
+            'resource_conflicts': self._check_resource_overlap(context),
+            'phase_risks': self._identify_phase_risks(context)
+        }
+    
+    # Placeholder for missing methods from original file
+    def _check_resource_overlap(self, context):
+        """Check resource overlaps"""
+        # Implementation would go here, placeholder for now
+        return []
+    
+    def _identify_phase_risks(self, context):
+        """Identify risks in current phase"""
+        # Implementation would go here, placeholder for now
+        return []
+    
+    def _format_response(self, analysis):
+        """Format response based on analysis"""
+        # Implementation would go here, placeholder for now
+        return analysis
+
+# Example Usage
+if __name__ == "__main__":
+    mind = EnhancedProtocols()
+    
+    messages = [
+        "Ready to begin Ubuntu installation on the 5700U system",
+        "Need to allocate resources for distilBERT and RoBERTa",
+        "Getting GPU driver errors during LLM deployment"
+    ]
+    
+    for msg in messages:
+        print(f"\nProcessing: {msg}")
+        response = mind.process_message(msg)
+        print(f"Context Analysis: {response['context_summary']}")
+        print(f"Project Plan: {response['project_analysis']}")
+        
+        # Added example for validation from update file
+        mock_response = "Configuring Radeon Lucienne with 16GB RAM"
+        validation = mind.process_message(msg, mock_response)
+        if 'validation_results' in validation:
+            print(f"Validation Issues: {validation['validation_results']}")

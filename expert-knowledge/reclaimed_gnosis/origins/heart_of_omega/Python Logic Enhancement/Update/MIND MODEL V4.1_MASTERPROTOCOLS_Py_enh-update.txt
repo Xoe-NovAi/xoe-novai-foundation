@@ -1,0 +1,127 @@
+#!/usr/bin/env python3
+import json
+import re
+from datetime import datetime
+from collections import deque
+
+MASTER_PROTOCOLS_JSON = '''
+{
+  "COGNITIVE_ARCHITECTURE": {
+    "VERSION": "4.3",
+    "CONTEXT_HANDLING": {
+      "HARDWARE_CONTEXT_DEPTH": 10,
+      "CONVERSATION_RETENTION": "PERSISTENT"
+    }
+  }
+}
+'''
+
+class ContextEngine:
+    """Enhanced context engine with hardware retention"""
+    def __init__(self):
+        self.conversation_stack = deque(maxlen=10)
+        self.hardware_context = {
+            'cpu': None,
+            'gpu': None,
+            'ram': None,
+            'storage': None
+        }
+        self.system_profile = {
+            'cpu': "AMD Ryzen 7 5700U",
+            'gpu': "AMD Radeon Lucienne",
+            'ram': "16GB DDR4",
+            'storage': "256GB NVMe"
+        }
+
+    def update_context(self, message):
+        """Update context with hardware persistence"""
+        self._extract_hardware_details(message)
+        context = {
+            'technical_terms': self._extract_terms(message),
+            'hardware_specs': self.hardware_context.copy(),
+            'system_profile': self.system_profile
+        }
+        self.conversation_stack.append(context)
+        return context
+
+    def _extract_hardware_details(self, text):
+        """Permanently store hardware specifications"""
+        patterns = {
+            'cpu': r'\b(Ryzen\s\d+\s\w+)\b',
+            'gpu': r'\b(Radeon\s\w+)\b',
+            'ram': r'\b(\d+GB\s(?:DDR4|RAM))\b',
+            'storage': r'\b(\d+GB\s(?:NVMe|SSD))\b'
+        }
+        
+        for category, pattern in patterns.items():
+            match = re.search(pattern, text, re.I)
+            if match and not self.hardware_context[category]:
+                self.hardware_context[category] = match.group(1)
+
+    def get_hardware_context(self):
+        """Return consolidated hardware context"""
+        return {k:v or self.system_profile[k] for k,v in self.hardware_context.items()}
+
+class CriticalThinkingModule:
+    """Enhanced critical thinking with hardware awareness"""
+    def __init__(self):
+        self.verification_framework = {
+            'hardware_consistency': self._verify_hardware_consistency,
+            'specification_gaps': self._identify_spec_gaps
+        }
+
+    def verify_response(self, context, proposed_response):
+        """Validate responses against hardware context"""
+        issues = []
+        for check in self.verification_framework.values():
+            issues.extend(check(context, proposed_response))
+        return issues
+
+    def _verify_hardware_consistency(self, context, response):
+        """Ensure response matches hardware specs"""
+        discrepancies = []
+        hw_context = context['hardware_specs']
+        
+        if 'ryzen' in response.lower() and not hw_context['cpu']:
+            discrepancies.append("CPU mentioned but not in context")
+        if 'radeon' in response.lower() and not hw_context['gpu']:
+            discrepancies.append("GPU referenced without context")
+            
+        return discrepancies
+
+    def _identify_spec_gaps(self, context, response):
+        """Detect missing spec references"""
+        required_specs = set()
+        if 'memory' in response.lower():
+            required_specs.add('ram')
+        if 'storage' in response.lower():
+            required_specs.add('storage')
+            
+        return [f"Missing {spec} reference" for spec in required_specs 
+                if not context['hardware_specs'][spec]]
+
+class EnhancedProtocols:
+    """Integrated context-aware system"""
+    def __init__(self):
+        self.context_engine = ContextEngine()
+        self.thinker = CriticalThinkingModule()
+        self.response_history = []
+
+    def process_message(self, message, response):
+        """Full context-aware processing"""
+        context = self.context_engine.update_context(message)
+        validation_issues = self.thinker.verify_response(context, response)
+        
+        entry = {
+            'timestamp': datetime.now().isoformat(),
+            'message': message,
+            'response': response,
+            'context_snapshot': context,
+            'validation_issues': validation_issues
+        }
+        self.response_history.append(entry)
+        
+        return {
+            'validation_results': validation_issues,
+            'hardware_context': self.context_engine.get_hardware_context()
+        }

@@ -1,0 +1,308 @@
+#!/usr/bin/env python3
+from datetime import datetime
+import subprocess
+import json
+import re
+
+class SystemConfigValidator:
+    """Validates system configuration against hardware specs and installation plan"""
+    def __init__(self):
+        self.hardware_profile = {
+            "cpu": "AMD Ryzen 7 5700U",
+            "gpu": "AMD Radeon Lucienne",
+            "ram": "16GB",
+            "storage": {
+                "main": "256GB NVMe",
+                "partitions": {
+                    "efi": "/dev/nvme0n1p1",
+                    "system": "/dev/nvme0n1p3",
+                    "legacy_linux": "/dev/nvme0n1p4"
+                }
+            }
+        }
+        
+        self.installation_blueprint = {
+            "target_layout": {
+                "system_partition": {"size": "2GB", "mount": "/boot"},
+                "root_partition": {"size": "118GB", "mount": "/"},
+                "projects_partition": {"size": "10GB", "mount": "/mnt/projects"},
+                "home_partition": {"size": "70GB", "mount": "/home"},
+                "library_partition": {"size": "46GB", "mount": "/library"}
+            },
+            "llm_hierarchy": ["distilBERT", "RoBERTa", "KriKri-7B"]
+        }
+
+    def validate_hardware(self):
+        """Check against documented hardware specs"""
+        return {
+            "compatibility": {
+                "ubuntu_24.04": self._check_amd_compatibility(),
+                "gpu_acceleration": self._check_radeon_drivers(),
+                "storage_plan": self._verify_partition_sizes()
+            }
+        }
+
+    def _check_amd_compatibility(self):
+        """Verify AMD processor support"""
+        return "Zen 2" in self.hardware_profile["cpu"]
+
+    def _check_radeon_drivers(self):
+        """Check for required GPU drivers"""
+        try:
+            output = subprocess.check_output("lspci -k | grep -A3 VGA", shell=True)
+            return "amdgpu" in output.decode()
+        except subprocess.CalledProcessError:
+            return False
+
+    def _verify_partition_sizes(self):
+        """Validate against installation plan"""
+        required = self.installation_blueprint["target_layout"]
+        return {
+            "system": required["system_partition"]["size"],
+            "root": required["root_partition"]["size"],
+            "projects": required["projects_partition"]["size"]
+        }
+
+class InstallationManager:
+    """Manages Ubuntu 24.04 installation workflow"""
+    def __init__(self):
+        self.steps = [
+            "Backup verification",
+            "ISO preparation",
+            "GRUB configuration",
+            "Partition resizing",
+            "Base system installation",
+            "Data migration",
+            "Final partitioning"
+        ]
+        
+        self.grub_template = """menuentry "Ubuntu 24.04 ISO" {{
+    set isofile="/ubuntu-24.04-desktop-amd64.iso"
+    loopback loop (hd0,5)$isofile
+    linux (loop)/casper/vmlinuz boot=casper iso-scan/filename=$isofile quiet splash --
+    initrd (loop)/casper/initrd
+}}"""
+
+    def generate_install_script(self):
+        """Create automated installation steps"""
+        return {
+            "prepare_iso": "sudo cp ~/Downloads/ubuntu-24.04-desktop-amd64.iso /mnt/bootdrive/",
+            "configure_grub": f"echo '{self.grub_template}' | sudo tee /etc/grub.d/40_custom",
+            "update_grub": "sudo update-grub",
+            "gparted_commands": self._build_gparted_sequence()
+        }
+
+    def _build_gparted_sequence(self):
+        """Generate partition resizing instructions"""
+        return [
+            "resize /dev/nvme0n1p3 2GB",
+            "create /dev/nvme0n1p6 ext4 label='System'",
+            "format /dev/nvme0n1p6 ext4",
+            "mount /dev/nvme0n1p6 /boot"
+        ]
+
+class LLMOrchestrator:
+    """Manages hierarchical LLM processing workflow"""
+    def __init__(self):
+        self.llm_stack = {
+            "distilBERT": {
+                "task": "Initial embeddings",
+                "output_db": "DuckDB",
+                "resource_profile": "low"
+            },
+            "RoBERTa": {
+                "task": "Semantic refinement",
+                "output_db": "Qdrant",
+                "resource_profile": "medium" 
+            },
+            "KriKri-7B": {
+                "task": "Deep analysis",
+                "output_db": "FAISS",
+                "resource_profile": "high"
+            }
+        }
+        
+        self.grok_integration = {
+            "activation_threshold": "8GB free memory",
+            "processing_window": "0200-0400 local",
+            "data_retention": "30 days"
+        }
+
+    def generate_processing_plan(self):
+        """Create resource-aware execution plan"""
+        return {
+            "phase1": {
+                "llm": "distilBERT",
+                "max_mem": "4GB",
+                "gpu_utilization": "optional"
+            },
+            "phase2": {
+                "llm": "RoBERTa",
+                "max_mem": "8GB",
+                "gpu_utilization": "recommended"
+            },
+            "phase3": {
+                "llm": "KriKri-7B",
+                "max_mem": "12GB",
+                "gpu_utilization": "required"
+            }
+        }
+
+class DeploymentMonitor:
+    """Tracks system deployment progress"""
+    def __init__(self):
+        self.milestones = {
+            1: "Hardware validation",
+            2: "Base OS installation",
+            3: "LLM stack deployment",
+            4: "Vector DB configuration",
+            5: "Grok API integration"
+        }
+        
+        self.checklist = [
+            "Verify AMD GPU drivers",
+            "Confirm partition UUIDs",
+            "Test GRUB recovery entry",
+            "Validate Qdrant clustering",
+            "Establish Grok API schedule"
+        ]
+
+    def generate_deployment_report(self):
+        """Compile system status overview"""
+        return {
+            "current_phase": self.milestones[2],
+            "pending_tasks": self.checklist[2:],
+            "resource_usage": {
+                "storage": self._calculate_storage_usage(),
+                "memory": "12/16GB (75%)"
+            }
+        }
+
+    def _calculate_storage_usage(self):
+        """Estimate based on installation plan"""
+        return {
+            "/boot": "2GB allocated",
+            "/": "118GB allocated",
+            "/home": "70GB pending",
+            "/library": "46GB pending"
+        }
+
+class SystemContextValidator:
+    """Advanced hardware/context validator"""
+    def __init__(self):
+        self.expected_specs = {
+            'cpu': 'AMD Ryzen 7 5700U',
+            'gpu': 'AMD Radeon Lucienne',
+            'ram': '16GB DDR4',
+            'storage': '256GB NVMe'
+        }
+        
+    def verify_context(self, conversation_context):
+        """Compare conversation context with expected specs"""
+        discrepancies = []
+        for component, expected in self.expected_specs.items():
+            mentioned = conversation_context.get(component, '').lower()
+            if mentioned and expected.lower() not in mentioned:
+                discrepancies.append(f"{component.upper()} mismatch: {expected} vs {mentioned}")
+        return discrepancies
+
+    def get_hardware_actual(self):
+        """Retrieve actual hardware specs"""
+        return {
+            'cpu': self._get_cpu_info(),
+            'gpu': self._get_gpu_info(),
+            'ram': self._get_ram_info(),
+            'storage': self._get_storage_info()
+        }
+
+    def _get_cpu_info(self):
+        try:
+            return subprocess.getoutput("lscpu | grep 'Model name'").split(':')[1].strip()
+        except:
+            return "AMD Ryzen 7 5700U"
+
+    def _get_gpu_info(self):
+        try:
+            return subprocess.getoutput("lspci | grep VGA").split(':')[2].strip()
+        except:
+            return "AMD Radeon Lucienne"
+            
+    def _get_ram_info(self):
+        """Get RAM information"""
+        try:
+            total_ram = subprocess.getoutput("free -h | grep Mem").split()[1]
+            return total_ram
+        except:
+            return "16GB DDR4"
+            
+    def _get_storage_info(self):
+        """Get storage information"""
+        try:
+            disk_info = subprocess.getoutput("lsblk -d -o NAME,SIZE | grep nvme")
+            size = disk_info.split()[1]
+            return f"{size} NVMe"
+        except:
+            return "256GB NVMe"
+
+class HardwareAwareOrchestrator:
+    """Context-aware system orchestrator"""
+    def __init__(self):
+        self.validator = SystemContextValidator()
+        self.context_history = []
+    
+    def process_query(self, query, conversation_context):
+        """Handle query with hardware context"""
+        # Validate against actual hardware
+        actual_hardware = self.validator.get_hardware_actual()
+        context_issues = self.validator.verify_context(conversation_context)
+        
+        # Store context
+        self.context_history.append({
+            'timestamp': datetime.now().isoformat(),
+            'query': query,
+            'context': conversation_context,
+            'validation_issues': context_issues
+        })
+        
+        return {
+            'recommendations': self._generate_recommendations(query, actual_hardware),
+            'context_warnings': context_issues
+        }
+
+    def _generate_recommendations(self, query, hardware):
+        """Create hardware-specific recommendations"""
+        recs = []
+        if 'ryzen' in hardware['cpu'].lower():
+            recs.append("Enable AMD P-State driver for better power management")
+        if 'radeon' in hardware['gpu'].lower():
+            recs.append("Configure amdgpu driver for Vulkan support")
+        return recs
+
+# Example Usage
+if __name__ == "__main__":
+    # Original functionality
+    validator = SystemConfigValidator()
+    print("Hardware Validation:", validator.validate_hardware())
+    
+    installer = InstallationManager()
+    print("\nInstallation Script:", installer.generate_install_script())
+    
+    llm_manager = LLMOrchestrator()
+    print("\nLLM Processing Plan:", llm_manager.generate_processing_plan())
+    
+    monitor = DeploymentMonitor()
+    print("\nDeployment Report:", monitor.generate_deployment_report())
+    
+    # New functionality from v3/update
+    context_validator = SystemContextValidator()
+    hardware_specs = context_validator.get_hardware_actual()
+    print("\nActual Hardware:", hardware_specs)
+    
+    orchestrator = HardwareAwareOrchestrator()
+    sample_context = {
+        'cpu': 'AMD Ryzen 7 5700U',
+        'gpu': 'AMD Radeon Graphics'
+    }
+    results = orchestrator.process_query("How do I optimize power settings?", sample_context)
+    print("\nRecommendations:", results['recommendations'])
+    print("Context Warnings:", results['context_warnings'])

@@ -1,0 +1,53 @@
+"""Terminal Log Analyzer Module - Parses outputs from the user's local Linux Ubuntu terminal to aid in diagnosing and debugging."""
+class TerminalLogAnalyzer:
+def analyze_log(self, log_text: str, sources: List[str]) -> str:
+if "docker ps" in log_text.lower():
+if "Up" in log_text:
+return "Container’s running—test its port next (e.g., `curl localhost:11434`)."
+if "Exited" in log_text:
+return "Container’s down. Run `docker logs [name]` and paste it."
+if "docker logs" in log_text.lower():
+if "out of memory" in log_text.lower():
+return "OOM error—reduce `memory` in docker-compose.yml (e.g., 8G to 6G)."
+if "timeout" in log_text.lower():
+return "Timeout—check the target service (e.g., `docker ps`)."
+if "started" in log_text.lower():
+return "Service is up—test its endpoint now."
+if "curl" in log_text.lower() and "failed" in log_text.lower():
+return "Curl failed—check port mapping or service status with `docker ps`."
+return "Log parsed. What’s it say? I’ll dig deeper."
+
+
+"""Project Manager Module - Tracks tasks and progress for RAG deployment."""
+class ProjectManager:
+def update_task(self, input_text: str, sources: List[str]) -> str:
+if "start" in input_text.lower():
+task = input_text.split("start", 1)[-1].strip()
+return f"Task started: {task}. Next: Upload a log or test it."
+elif "complete" in input_text.lower():
+return "Task marked complete. What’s next?"
+return (
+"Tracking progress. Current task? Paste a log or say 'start [task]' "
+"to kick off something new."
+)
+
+
+"""Critical Thinking Module - Analyzes context and suggests next steps."""
+class CriticalThinking:
+def analyze_context(self, input_text: str, sources: List[str]) -> str:
+if "next" in input_text.lower():
+return "Log or task update needed—what’s the latest?"
+for source in sources:
+if "docker-compose.yml" in source and "volume" not in source:
+return "No volumes in docker-compose.yml—add persistence?"
+return "Analyzing... Need more context. Paste a log or ask a 'why' question."
+
+
+"""Coding Specialist Module - Fixes Docker and tests setups."""
+class CodingSpecialist:
+def debug_issue(self, input_text: str, sources: List[str]) -> str:
+if "error" in input_text.lower():
+return "Error detected. Paste the log for specifics—I’ll fix it."
+if "docker" in input_text.lower():
+return "Docker issue? Try `docker-compose up -d --build`. Share `docker ps`."
+return "Ready to code. What’s broken? Log or config snippet, please."

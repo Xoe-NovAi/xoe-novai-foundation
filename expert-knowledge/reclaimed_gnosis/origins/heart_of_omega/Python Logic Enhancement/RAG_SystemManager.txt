@@ -1,0 +1,87 @@
+#!/usr/bin/env python3
+from datetime import datetime
+import json
+
+class SystemMonitor:
+    """Enhanced system monitoring with health checks"""
+    def __init__(self):
+        self.systems = {
+            "LLMs": ["distilBERT", "RoBERTa", "KriKri-7B", "Grok-API"],
+            "Databases": ["DuckDB", "Qdrant", "FAISS"],
+            "Agents": ["DataIngestion", "QueryRouting", "Embedding"]
+        }
+        self.metrics = {"latency": {}, "errors": {}}
+        self.health_status = {}
+
+    def log_performance(self, system, latency, error=None):
+        timestamp = datetime.now().isoformat()
+        self.metrics["latency"].setdefault(system, []).append((timestamp, latency))
+        if error:
+            self.metrics["errors"].setdefault(system, []).append((timestamp, error))
+        self._update_health_status(system)
+
+    def _update_health_status(self, system):
+        """Calculate system health score (0-100)"""
+        error_count = len(self.metrics["errors"].get(system, []))
+        avg_latency = sum([x[1] for x in self.metrics["latency"].get(system, [])]) or 1
+        self.health_status[system] = max(0, 100 - (error_count * 5) - (avg_latency // 100))
+
+    def generate_report(self):
+        return {
+            "health_status": self.health_status,
+            "performance_metrics": self.metrics
+        }
+
+class TaskManager:
+    """Intelligent task routing with complexity analysis"""
+    def __init__(self):
+        self.task_queue = []
+        self.llm_hierarchy = {
+            1: "distilBERT", 2: "RoBERTa", 3: "KriKri-7B", 4: "Grok-API"
+        }
+
+    def assign_task(self, query):
+        complexity = self._analyze_complexity(query)
+        return self.llm_hierarchy.get(complexity, 1)
+
+    def _analyze_complexity(self, query):
+        """Enhanced complexity analysis using multi-factor scoring"""
+        score = 0
+        # Length-based scoring
+        score += min(len(query.split()) // 15, 3)
+        # Keyword scoring
+        score += 2 if any(kw in query for kw in ["integrate", "debug", "optimize"]) else 0
+        # System mention scoring
+        score += 1 if any(sys in query for sys in ["Qdrant", "FAISS", "Grok"]) else 0
+        return min(max(score, 1), 4)
+
+class ErrorResolver:
+    """Advanced error resolution engine"""
+    def __init__(self):
+        self.error_log = []
+        self.resolution_history = []
+
+    def resolve(self, error_context):
+        resolution_steps = [
+            "Isolate affected components",
+            "Cross-reference with historical errors",
+            "Test in sandbox environment",
+            "Implement rolling rollback if needed",
+            "Deploy hotfix"
+        ]
+        solution = {
+            "steps": resolution_steps,
+            "timestamp": datetime.now().isoformat(),
+            "error_type": error_context.get("type", "unknown")
+        }
+        self.error_log.append(solution)
+        return solution
+
+    def generate_postmortem(self, error_id):
+        """Generate detailed error analysis"""
+        error = self.error_log[error_id]
+        return {
+            "timeline": error["timestamp"],
+            "root_cause": self._determine_root_cause(error),
+            "preventative_measures": self._suggest_preventions(error)
+        }

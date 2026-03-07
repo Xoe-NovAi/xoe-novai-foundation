@@ -1,0 +1,173 @@
+#!/usr/bin/env python3
+import json
+import datetime
+
+# Embedded JSON configuration for Master Protocols
+MASTER_PROTOCOLS_JSON = '''
+{
+  "MEMORY_NOTE": {
+    "TITLE": "MASTER PROTOCOLS",
+    "VERSION": "2.0",
+    "LAST_UPDATED": "2023-10-15",
+    "SECTIONS": [
+      {
+        "TITLE": "SESSION_INITIALIZATION_PROTOCOL",
+        "CONTENT": {
+          "ACTION": "Scan active sources for any source titled with 'MEMORY NOTE' prefix.",
+          "PROCESS": "Upon detecting 'MEMORY NOTE: MASTER PROTOCOLS', parse its entire content and integrate all instructions and protocols into active working memory for the session duration.",
+          "USER_REINFORCEMENT": "Explicitly remind the AI to apply these instructions at the beginning of each interaction to reinforce their use.",
+          "INLINE_SESSION_NOTES": "Cache notes enclosed in [note] and [/note] tags during the session, reviewing them at the end to capture key context and decisions."
+        }
+      },
+      {
+        "TITLE": "TEMPORAL_SOURCE_PRIORITIZATION_PROTOCOL",
+        "CONTENT": {
+          "PRINCIPLE": "Prioritize the most recent sources when multiple sources address the query, ensuring responses reflect the latest information.",
+          "MECHANISM": "Timestamps or upload dates of sources are tracked internally, with precedence given to newer data.",
+          "EXCEPTION": "Protocols in this document take priority over less critical, newer information unless explicitly overridden."
+        }
+      },
+      {
+        "TITLE": "MISUNDERSTANDING_RESOLUTION_PROTOCOL",
+        "CONTENT": {
+          "STEPS": [
+            "PAUSE_AND_REEVALUATE",
+            "ANALYZE_FEEDBACK",
+            "CROSS-REFERENCE_INFORMATION",
+            "FORMULATE_HYPOTHESIS",
+            "TEST_HYPOTHESIS",
+            "SEEK_CLARIFICATION",
+            "GENERATE_REVISED_RESPONSE",
+            "DOCUMENT_LEARNING",
+            "APPLY_LEARNING"
+          ]
+        }
+      },
+      {
+        "TITLE": "CORE_STRATEGIC_PRINCIPLES",
+        "CONTENT": {
+          "PRINCIPLES": [
+            "SELF-IMPROVING_THOUGHT_LOOPS",
+            "ZERO_STARTUP_COST",
+            "EARLY_MONETIZATION",
+            "EXTERNAL_VALIDATION"
+          ]
+        }
+      },
+      {
+        "TITLE": "AI_AGENT_STRATEGY",
+        "CONTENT": {
+          "AI_AGENTS": "Core to autonomous system management (Data Ingestion, Embedding, Curation, Query Routing, Monitoring & Optimization).",
+          "MASTERING_AGENT_DESIGN": "A long-term goal to refine agent capabilities.",
+          "IMMEDIATE_PRIORITY": "Automate digital library management, query routing, and system monitoring."
+        }
+      },
+      {
+        "TITLE": "ARCHITECTURE_STRATEGY",
+        "CONTENT": {
+          "HYBRID_LOCAL_CLOUD": "Balances scalability with future local LLM integration."
+        }
+      },
+      {
+        "TITLE": "IMPLEMENTATION_STRATEGY",
+        "CONTENT": {
+          "HARDWARE_CONSTRAINTS": "Phased approach using free cloud tiers and efficient techniques.",
+          "CONTINUOUS_MONITORING": "Regular evaluation and refinement based on performance."
+        }
+      },
+      {
+        "TITLE": "STRATEGIC_USE_OF_DIVERSE_PERSPECTIVES",
+        "CONTENT": {
+          "CONTRASTING_VIEWPOINTS": "Technical (Estavan) and innovative (Ivan) inputs strengthen planning."
+        }
+      },
+      {
+        "TITLE": "FUTURE_SYSTEM_MIGRATION",
+        "CONTENT": {
+          "PLAN": "Migrate personality and knowledge to a local system when resources permit, leveraging this memory note system."
+        }
+      },
+      {
+        "TITLE": "CURRENT_DEVELOPMENT_PHASE",
+        "CONTENT": {
+          "FOCUS": "Deployment of Ubuntu 24.04 as the LLM system foundation."
+        }
+      },
+      {
+        "TITLE": "PHILOSOPHY_SPIRITUALITY_SCIENCE_NEW_TERMS_CONCEPTS",
+        "CONTENT": {
+          "PURPOSE": "Document emerging terms and concepts from related discussions."
+        }
+      }
+    ]
+  }
+}
+'''
+
+class MasterProtocols:
+    def __init__(self):
+        self.config = json.loads(MASTER_PROTOCOLS_JSON)
+    
+    def initialize_session(self, sources):
+        """
+        Scan active sources for documents titled with 'MEMORY NOTE' and integrate protocols.
+        """
+        for source in sources:
+            if source.get("title", "").startswith("MEMORY NOTE"):
+                try:
+                    protocols = json.loads(source.get("content", "{}"))
+                    self.integrate_protocols(protocols)
+                except json.JSONDecodeError:
+                    print("Error parsing source:", source.get("title"))
+        print("Session initialized with protocols.")
+
+    def integrate_protocols(self, protocols):
+        # Dynamic integration logic goes here.
+        print("Integrating protocols:", protocols)
+        # For example, merge protocols into a global session memory.
+    
+    def prioritize_sources(self, sources):
+        """
+        Prioritize sources based on their timestamps (newest first).
+        """
+        prioritized = sorted(sources, key=lambda s: s.get("timestamp", ""), reverse=True)
+        return prioritized
+
+    def resolve_misunderstanding(self, feedback, session_history):
+        """
+        Implements the MISUNDERSTANDING_RESOLUTION_PROTOCOL:
+          - Pause, analyze feedback, cross-reference, hypothesize, test, and log the process.
+        """
+        print("Pausing for re-evaluation...")
+        analysis = self.analyze_feedback(feedback)
+        hypothesis = f"Hypothesis based on: {analysis}"
+        test_result = self.test_hypothesis(hypothesis, session_history)
+        if not test_result:
+            print("Clarification needed.")
+        else:
+            print("Response revised based on feedback.")
+        self.document_learning(feedback, hypothesis)
+    
+    def analyze_feedback(self, feedback):
+        # Example analysis logic.
+        return f"Analyzed: {feedback}"
+    
+    def test_hypothesis(self, hypothesis, session_history):
+        # Simulated hypothesis testing (return True if successful).
+        return True
+    
+    def document_learning(self, feedback, hypothesis):
+        # Log the learning for future sessions.
+        print(f"Documenting learning: {feedback}, {hypothesis}")
+
+# Example usage:
+if __name__ == "__main__":
+    mp = MasterProtocols()
+    # Simulate a list of source documents
+    sources = [
+        {"title": "MEMORY NOTE: MASTER PROTOCOLS", "content": MASTER_PROTOCOLS_JSON, "timestamp": "2023-10-15"}
+    ]
+    mp.initialize_session(sources)
+    prioritized_sources = mp.prioritize_sources(sources)
+    mp.resolve_misunderstanding("The response seems off.", [])
+
