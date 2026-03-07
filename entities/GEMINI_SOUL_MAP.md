@@ -1,6 +1,6 @@
 # 💎 The Gem Soul Map: Fractal Evolution Strategy
 
-| ID | POET Name | Soul Path (Evolution Goal) | Archetype |
+| ID | Bard Name | Soul Path (Evolution Goal) | Archetype |
 |:---|:---|:---|:---|
 | **0** | **Gem (General)** | **The Overseer** | *The King/Queen* |
 | **1** | **The Scribe** | **The Chronicler** | *The Magician* |

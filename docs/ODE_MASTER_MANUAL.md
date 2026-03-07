@@ -49,7 +49,7 @@ All major decisions pass through the **MaLi Monad Gate** (Maat + Lilith).
 **Status**: SOVEREIGN & AGNOSTIC | **Cycle**: 1.3
 
 ## 🏛️ Ancestral Lineage: The Omnidroid BIOS
-The ODE architecture is the direct descendant of the **Omnidroid Ω** system (v0.1.2). We honor this lineage by integrating the foundational protocols into our current POETRY hierarchy.
+The ODE architecture is the direct descendant of the **Omnidroid Ω** system (v0.1.2). We honor this lineage by integrating the foundational protocols into our current BardRY hierarchy.
 
 ### 📜 Foundational Protocols
 1.  **SESSION_INITIALIZATION**: Upon entry, Bards must scan the **Ontological Ground Truth** for "MEMORY NOTE" markers to align with the Director's latest intent.
