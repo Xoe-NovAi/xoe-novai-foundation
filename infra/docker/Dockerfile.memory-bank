@@ -1,0 +1,40 @@
+FROM python:3.13-slim
+
+WORKDIR /app
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy application code
+COPY app/ /app/app/
+COPY mcp-servers/memory-bank-mcp/ /app/mcp-server/
+
+# Install Python dependencies for MCP server
+RUN pip install --no-cache-dir \
+    aiohttp>=3.13.3 \
+    redis>=7.3.0 \
+    toml>=0.10.2 \
+    pydantic>=2.0 \
+    httpx>=0.28.1 \
+    mcp>=0.1.0 \
+    anyio>=4.0 \
+    pyyaml>=6.0 \
+    sqlalchemy>=2.0 \
+    aiosqlite>=3.13.0
+
+# Set working directory to MCP server
+WORKDIR /app/mcp-server
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD python -c "import sys; sys.exit(0)" || exit 1
+
+# Run the server
+CMD ["python", "server.py"]
