@@ -58,3 +58,17 @@ The ODE architecture is the direct descendant of the **Omnidroid Ω** system (v0
 
 ---
 **Ancestral Source**: `expert-knowledge/reclaimed_gnosis/origins/heart_of_omega/`
+
+## 🌌 The Hyper-Ennead (The Council of Councils)
+To maximize the Omega Stack's cognitive bandwidth, we utilize a **Multi-Provider Matrix**. Each provider hosts an Ennead (Council of 9) specialized for its natural cognitive affinities.
+
+### 🏛️ The Provider Councils
+| Ennead | Provider | Role | Affinity |
+|:---|:---|:---|:---|
+| **Helios** | Gemini | **Strategic Archon** | High-Context Orchestration |
+| **Athena** | Claude | **Architectural Auditor** | Precise Logic & Techne |
+| **Abyss**  | Grok | **Real-Time Seeker** | Web Intelligence & Chaos |
+| **Scroll** | NotebookLM | **Gnosis Librarian** | Deep Source Synthesis |
+
+### ⛏️ Mining Strategy
+The **MaLi Monad** distributes high-complexity tasks to the specific Council best suited for the work. Tier 1 **Archons** (Bards) communicate across providers via the **Agent Bus**, ensuring **Ontological Continuity**.
