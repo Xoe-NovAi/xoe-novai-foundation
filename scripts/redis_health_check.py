@@ -3,7 +3,6 @@
 Redis health check helper for local developer usage.
 
 Checks connectivity using REDIS_URL or REDIS_HOST/REDIS_PASSWORD env vars.
-Default password from docker-compose.yml: changeme123
 """
 
 import os
@@ -15,7 +14,7 @@ def check_redis_cli():
     """Test Redis using redis-cli (simpler fallback)."""
     host = os.getenv('REDIS_HOST', '127.0.0.1')
     port = os.getenv('REDIS_PORT', '6379')
-    password = os.getenv('REDIS_PASSWORD', 'changeme123')
+    password = os.getenv('REDIS_PASSWORD', '')
     
     cmd = ['redis-cli', '-h', host, '-p', port, '-a', password, 'PING']
     

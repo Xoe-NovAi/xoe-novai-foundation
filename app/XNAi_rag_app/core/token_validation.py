@@ -30,6 +30,7 @@ from typing import Dict, Any, Optional, Tuple
 from dataclasses import dataclass
 from enum import Enum
 import yaml
+import jwt
 
 logger = logging.getLogger(__name__)
 
@@ -328,15 +329,49 @@ class TokenValidator:
             )
         
         try:
-            # Try to decode JWT payload (without verification - signature check happens at server)
-            import base64
-            _, payload, _ = access_token.split('.')
+            # S1: Implement JWT signature verification
+            public_key = os.getenv("JWT_PUBLIC_KEY")
+            public_key_path = os.getenv("JWT_PUBLIC_KEY_PATH")
             
-            # Add padding if needed
-            payload += '=' * (4 - len(payload) % 4)
-            decoded = json.loads(base64.urlsafe_b64decode(payload))
+            if not public_key and public_key_path:
+                try:
+                    with open(public_key_path, 'r') as f:
+                        public_key = f.read()
+                except Exception as fe:
+                    logger.warning(f"XNAI IAM: Could not read public key from {public_key_path}: {fe}")
+
+            if public_key:
+                try:
+                    # Verify signature and expiration
+                    decoded = jwt.decode(access_token, public_key, algorithms=["RS256"])
+                    logger.debug("XNAI IAM: Token signature verified")
+                except jwt.ExpiredSignatureError:
+                    logger.warning("XNAI IAM: Token expired (signature verification)")
+                    return TokenStatus(
+                        provider=ProviderType.XNAI_IAM,
+                        account="iam",
+                        is_valid=False,
+                        result=TokenValidationResult.EXPIRED,
+                        message="Token expired"
+                    )
+                except jwt.InvalidTokenError as ite:
+                    logger.warning(f"XNAI IAM: Invalid token signature: {ite}")
+                    return TokenStatus(
+                        provider=ProviderType.XNAI_IAM,
+                        account="iam",
+                        is_valid=False,
+                        result=TokenValidationResult.INVALID_FORMAT,
+                        message=f"Invalid token signature: {ite}"
+                    )
+            else:
+                logger.warning("XNAI IAM: Public key not available, skipping signature verification")
+                # Fallback to manual payload decode for expiry check
+                import base64
+                _, payload, _ = access_token.split('.')
+                payload += '=' * (4 - len(payload) % 4)
+                decoded = json.loads(base64.urlsafe_b64decode(payload))
             
-            # Check expiry
+            # Check expiry (if not already handled by jwt.decode)
             if 'exp' in decoded:
                 exp_time = datetime.fromtimestamp(decoded['exp'], tz=timezone.utc)
                 now = datetime.now(timezone.utc)

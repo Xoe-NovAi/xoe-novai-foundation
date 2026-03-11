@@ -4,54 +4,65 @@ Memory Bank MCP Server
 ======================
 Provides sovereign, offline-first memory bank access for deep inter-agent communication.
 Implements progressive loading, context engineering, and A2A protocol patterns.
-
-Key Features:
-- Progressive context loading (Hot/Warm/Cold tiers)
-- Agent capability discovery and registration
-- Context versioning and synchronization
-- Memory isolation with cross-agent sharing
-- Event-driven updates for real-time coordination
+Refactored for SSE transport using FastAPI.
 """
 
-import anyio
+import asyncio
 import json
 import logging
 import time
 import hashlib
+import sys
+import os
+from collections import OrderedDict
 from typing import Dict, Any, List, Optional, AsyncGenerator, Generator
 from pathlib import Path
 from dataclasses import dataclass, asdict
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from enum import Enum
 import httpx
 from redis.asyncio import Redis
-import yaml
+from pydantic import BaseModel, Field
 
-# MCP Server imports
+# FastAPI and MCP Server imports
+from fastapi import FastAPI, Request
+from starlette.responses import Response
 from mcp.server import Server
 from mcp.types import (
     Tool,
     TextContent,
-    ToolResultContent,
 )
-from mcp.server.stdio import stdio_server
+from mcp.server.sse import SseServerTransport
 
 # XNAi Foundation imports
-from app.XNAi_rag_app.core.config_loader import load_config
-from app.XNAi_rag_app.core.logging_config import get_logger
-from app.XNAi_rag_app.core.dependencies import get_vectorstore, get_llm_async
-from app.XNAi_rag_app.core.agent_bus import AgentBusClient
+from XNAi_rag_app.core.config_loader import load_config
+from XNAi_rag_app.core.logging_config import get_logger
 
+try:
+    from XNAi_rag_app.core.dependencies import get_vectorstore, get_llm_async
+except ImportError:
+    get_vectorstore = None
+    get_llm_async = None
+
+try:
+    from XNAi_rag_app.core.agent_bus import AgentBusClient
+except ImportError:
+    AgentBusClient = None
+
+from memory_bank_fallback import MemoryBankFallbackWrapper
+from memory_bank_store import MemoryBankStore
+
+# Setup logging
+logging.basicConfig(level=logging.INFO, stream=sys.stderr)
 logger = get_logger(__name__)
+logger.info("Memory Bank MCP Script Started")
 
 class ContextTier(str, Enum):
-    """Memory bank context tiers for progressive loading."""
-    HOT = "hot"      # Frequently accessed, <100MB
-    WARM = "warm"    # Moderately accessed, <500MB  
-    COLD = "cold"    # Rarely accessed, <2GB
+    HOT = "hot"
+    WARM = "warm"
+    COLD = "cold"
 
 class ContextType(str, Enum):
-    """Types of context stored in memory bank."""
     PROJECT = "project"
     TECHNICAL = "technical"
     STRATEGIC = "strategic"
@@ -60,606 +71,330 @@ class ContextType(str, Enum):
 
 @dataclass
 class AgentCapability:
-    """Agent capability registration."""
     agent_id: str
     capabilities: List[str]
     memory_limit_gb: float
     last_seen: datetime
     performance_score: float = 0.0
 
-@dataclass
-class ContextMetadata:
-    """Metadata for context entries."""
-    context_id: str
-    agent_id: str
-    context_type: ContextType
-    tier: ContextTier
-    version: int
-    created_at: datetime
-    last_modified: datetime
-    size_bytes: int
-    access_count: int = 0
-    relevance_score: float = 0.0
-
-@dataclass
-class ContextSync:
-    """Context synchronization request."""
-    source_agent: str
-    target_agent: str
-    context_id: str
-    sync_type: str  # "full", "delta", "stream"
-    priority: int = 1
-
 class MemoryBankMCP:
-    """Memory Bank MCP Server implementation."""
-    
     def __init__(self):
-        self.config = load_config()
-        self.redis_url = self.config.get('redis', {}).get('url', 'redis://localhost:6379')
-        self.memory_bank_path = Path(self.config.get('paths', {}).get('memory_bank', './memory_bank'))
-        self.max_memory_gb = 4.0  # Conservative limit for 6GB constraint
-        
-        # Redis connection
-        self.redis: Optional[Redis] = None
-        
-        # Agent registry
+        try:
+            self.config = load_config()
+        except:
+            self.config = {}
+        self.redis_url = self._get_redis_url()
+        self.redis = None
         self.agents: Dict[str, AgentCapability] = {}
-        self.agent_heartbeat_interval = 30  # seconds
-        
-        # Context management
-        self.context_cache: Dict[str, Dict] = {}
-        self.context_versions: Dict[str, int] = {}
-        
-        # Progressive loading
-        self.tier_thresholds = {
-            ContextTier.HOT: 100 * 1024 * 1024,    # 100MB
-            ContextTier.WARM: 500 * 1024 * 1024,   # 500MB
-            ContextTier.COLD: 2 * 1024 * 1024 * 1024  # 2GB
-        }
-        
-        # Performance tracking
+        # SESS-01: Synchronized storage path to /storage
+        self.memory_bank_path = Path("/storage/memory_bank")
+        # SESS-02: LRU Cache for context
+        self.context_cache = OrderedDict()
+        self.cache_limit = 100 # Max 100 context objects in memory
         self.performance_metrics = {
-            'context_loads': 0,
-            'sync_operations': 0,
-            'agent_registrations': 0,
-            'memory_efficiency': 0.0
+            "hits": 0,
+            "misses": 0,
+            "latency_ms": []
         }
-        
-        logger.info("Memory Bank MCP Server initialized")
 
-    async def initialize(self):
-        """Initialize server components."""
+    def _get_redis_url(self) -> str:
+        host = os.getenv("REDIS_HOST", "localhost")
+        port = os.getenv("REDIS_PORT", 6379)
+        password = os.getenv("REDIS_PASSWORD", "")
+        # SESS-02: Enforce rediss:// and ssl_cert_reqs=none for Metropolis Mesh
+        protocol = "rediss" if password else "redis"
+        url = f"{protocol}://:{password}@{host}:{port}/0"
+        if protocol == "rediss":
+            url += "?ssl_cert_reqs=none"
+        return url
+
+    async def initialize(self) -> bool:
+        """Initialize connections and storage."""
         try:
-            # Initialize Redis connection
-            self.redis = Redis.from_url(self.redis_url)
+            if not self.redis:
+                # SESS-02: Standardize decode_responses=True and handle TLS
+                self.redis = Redis.from_url(
+                    self.redis_url, 
+                    decode_responses=True,
+                    socket_connect_timeout=5,
+                    socket_timeout=5
+                )
+            
+            # Test connection
             await self.redis.ping()
-            logger.info("Redis connection established")
             
-            # Initialize memory bank directory
+            # SESS-01: Synchronized storage path
             self.memory_bank_path.mkdir(parents=True, exist_ok=True)
-            
-            # Start background tasks
-            asyncio.create_task(self._agent_heartbeat_monitor())
-            asyncio.create_task(self._context_cleanup_task())
-            
-            logger.info("Memory Bank MCP Server fully initialized")
-            
+            logger.info("Memory Bank MCP initialized with Redis backend")
+            return True
         except Exception as e:
-            logger.error(f"Failed to initialize Memory Bank MCP: {e}")
-            raise
+            logger.error(f"Redis initialization failed: {e}")
+            self.redis = None # Reset so next call tries again
+            return False
 
-    async def _agent_heartbeat_monitor(self):
-        """Monitor agent heartbeats and clean up stale agents."""
-        while True:
+    async def _ensure_redis(self) -> bool:
+        """Ensure Redis is connected, attempt reconnection if not."""
+        if self.redis:
             try:
-                current_time = datetime.now()
-                stale_threshold = timedelta(seconds=self.agent_heartbeat_interval * 3)
-                
-                # Remove stale agents
-                stale_agents = [
-                    agent_id for agent_id, agent in self.agents.items()
-                    if current_time - agent.last_seen > stale_threshold
-                ]
-                
-                for agent_id in stale_agents:
-                    del self.agents[agent_id]
-                    logger.info(f"Removed stale agent: {agent_id}")
-                
-                await asyncio.sleep(self.agent_heartbeat_interval)
-                
+                await self.redis.ping()
+                return True
+            except:
+                logger.warning("Redis connection lost, attempting to reconnect...")
+                self.redis = None
+        
+        return await self.initialize()
+
+    async def register_agent(self, agent_id: str, capabilities: list, memory_limit_gb: float) -> dict:
+        """Register an agent and persist metadata in Redis."""
+        now = datetime.now(timezone.utc)
+        capability = AgentCapability(
+            agent_id=agent_id,
+            capabilities=capabilities,
+            memory_limit_gb=memory_limit_gb,
+            last_seen=now
+        )
+        self.agents[agent_id] = capability
+        
+        # SESS-02: Persist in Redis
+        if await self._ensure_redis():
+            try:
+                agent_data = asdict(capability)
+                agent_data["last_seen"] = now.isoformat()
+                await self.redis.hset("xnai:agents", agent_id, json.dumps(agent_data))
             except Exception as e:
-                logger.error(f"Agent heartbeat monitor error: {e}")
-                await asyncio.sleep(5)
+                logger.warning(f"Failed to persist agent in Redis: {e}")
 
-    async def _context_cleanup_task(self):
-        """Clean up old context versions and optimize memory usage."""
-        while True:
+        return {"status": "success", "agent_id": agent_id}
+
+    async def get_context(self, agent_id: str, context_type: str, tier: str = "hot", keys: list = None) -> dict:
+        """Get context from LRU Cache, Redis, or Filesystem."""
+        context_id = f"{agent_id}:{context_type}:{tier}"
+        redis_key = f"xnai:ctx:{context_id}"
+        
+        # 1. Try LRU Cache
+        if context_id in self.context_cache:
+            self.performance_metrics["hits"] += 1
+            self.context_cache.move_to_end(context_id)
+            data = self.context_cache[context_id]
+            if keys:
+                return {k: data.get(k) for k in keys if k in data}
+            return data
+
+        self.performance_metrics["misses"] += 1
+        
+        # 2. Try Redis
+        data = None
+        if await self._ensure_redis():
             try:
-                # Clean up old context versions (keep last 3 versions)
-                for context_id, version in self.context_versions.items():
-                    if version > 3:
-                        # Remove old versions from Redis
-                        for old_version in range(1, version - 2):
-                            key = f"memory_bank:context:{context_id}:v{old_version}"
-                            await self.redis.delete(key)
-                
-                # Update memory efficiency metrics
-                total_memory = sum(meta.get('size_bytes', 0) for meta in self.context_cache.values())
-                self.performance_metrics['memory_efficiency'] = min(1.0, total_memory / (self.max_memory_gb * 1024**3))
-                
-                await asyncio.sleep(300)  # Run every 5 minutes
-                
+                data_str = await self.redis.get(redis_key)
+                if data_str:
+                    data = json.loads(data_str)
             except Exception as e:
-                logger.error(f"Context cleanup task error: {e}")
-                await asyncio.sleep(30)
+                logger.warning(f"Redis get_context failed: {e}")
 
-    async def register_agent(self, agent_id: str, capabilities: List[str], memory_limit_gb: float) -> Dict[str, Any]:
-        """Register an agent with its capabilities."""
-        try:
-            capability = AgentCapability(
-                agent_id=agent_id,
-                capabilities=capabilities,
-                memory_limit_gb=memory_limit_gb,
-                last_seen=datetime.now(),
-                performance_score=0.0
-            )
-            
-            self.agents[agent_id] = capability
-            
-            # Store in Redis for persistence
-            await self.redis.hset(
-                f"memory_bank:agents:{agent_id}",
-                mapping=asdict(capability)
-            )
-            
-            self.performance_metrics['agent_registrations'] += 1
-            
-            logger.info(f"Registered agent: {agent_id} with capabilities: {capabilities}")
-            
-            return {
-                "status": "success",
-                "agent_id": agent_id,
-                "capabilities": capabilities,
-                "memory_limit_gb": memory_limit_gb,
-                "registration_time": datetime.now().isoformat()
-            }
-            
-        except Exception as e:
-            logger.error(f"Failed to register agent {agent_id}: {e}")
-            return {"status": "error", "message": str(e)}
-
-    async def get_context(self, agent_id: str, context_type: str, tier: str = "hot") -> Dict[str, Any]:
-        """Get context for an agent with progressive loading."""
-        try:
-            self.performance_metrics['context_loads'] += 1
-            
-            # Validate agent
-            if agent_id not in self.agents:
-                return {"status": "error", "message": f"Agent {agent_id} not registered"}
-            
-            # Determine context tier
-            try:
-                context_tier = ContextTier(tier)
-            except ValueError:
-                context_tier = ContextTier.HOT
-            
-            # Generate context ID
-            context_id = f"{agent_id}:{context_type}:{context_tier.value}"
-            
-            # Check cache first
-            if context_id in self.context_cache:
-                cached_context = self.context_cache[context_id]
-                cached_context['access_count'] += 1
-                cached_context['last_accessed'] = datetime.now().isoformat()
-                
-                logger.info(f"Cache hit for context: {context_id}")
-                return {
-                    "status": "success",
-                    "context_id": context_id,
-                    "context": cached_context,
-                    "source": "cache",
-                    "tier": context_tier.value
-                }
-            
-            # Load from persistent storage
-            context_data = await self._load_context_from_storage(context_id, context_tier)
-            
-            if context_data:
-                # Cache the loaded context
-                self.context_cache[context_id] = context_data
-                self.context_versions[context_id] = context_data.get('version', 1)
-                
-                logger.info(f"Loaded context from storage: {context_id}")
-                return {
-                    "status": "success",
-                    "context_id": context_id,
-                    "context": context_data,
-                    "source": "storage",
-                    "tier": context_tier.value
-                }
-            
-            # If not found, create empty context
-            empty_context = {
-                "context_id": context_id,
-                "agent_id": agent_id,
-                "context_type": context_type,
-                "tier": context_tier.value,
-                "version": 1,
-                "created_at": datetime.now().isoformat(),
-                "last_modified": datetime.now().isoformat(),
-                "size_bytes": 0,
-                "access_count": 1,
-                "relevance_score": 0.0,
-                "content": {}
-            }
-            
-            self.context_cache[context_id] = empty_context
-            self.context_versions[context_id] = 1
-            
-            logger.info(f"Created empty context: {context_id}")
-            return {
-                "status": "success",
-                "context_id": context_id,
-                "context": empty_context,
-                "source": "empty",
-                "tier": context_tier.value
-            }
-            
-        except Exception as e:
-            logger.error(f"Failed to get context for {agent_id}: {e}")
-            return {"status": "error", "message": str(e)}
-
-    async def update_context(self, agent_id: str, context_type: str, context_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Update context for an agent."""
-        try:
-            # Validate agent
-            if agent_id not in self.agents:
-                return {"status": "error", "message": f"Agent {agent_id} not registered"}
-            
-            # Generate context ID
-            context_id = f"{agent_id}:{context_type}:hot"
-            
-            # Update version
-            current_version = self.context_versions.get(context_id, 0) + 1
-            
-            # Create updated context
-            updated_context = {
-                "context_id": context_id,
-                "agent_id": agent_id,
-                "context_type": context_type,
-                "tier": "hot",
-                "version": current_version,
-                "created_at": datetime.now().isoformat(),
-                "last_modified": datetime.now().isoformat(),
-                "size_bytes": len(json.dumps(context_data).encode()),
-                "access_count": 0,
-                "relevance_score": context_data.get('relevance_score', 0.0),
-                "content": context_data
-            }
-            
-            # Update cache
-            self.context_cache[context_id] = updated_context
-            self.context_versions[context_id] = current_version
-            
-            # Store in Redis
-            await self.redis.set(
-                f"memory_bank:context:{context_id}:v{current_version}",
-                json.dumps(updated_context)
-            )
-            
-            # Publish update event
-            await self.redis.publish(
-                "memory_bank:context_updates",
-                json.dumps({
-                    "event_type": "context_updated",
-                    "context_id": context_id,
-                    "agent_id": agent_id,
-                    "version": current_version,
-                    "timestamp": datetime.now().isoformat()
-                })
-            )
-            
-            logger.info(f"Updated context: {context_id} (version {current_version})")
-            
-            return {
-                "status": "success",
-                "context_id": context_id,
-                "version": current_version,
-                "updated_at": datetime.now().isoformat()
-            }
-            
-        except Exception as e:
-            logger.error(f"Failed to update context for {agent_id}: {e}")
-            return {"status": "error", "message": str(e)}
-
-    async def sync_context(self, source_agent: str, target_agent: str, context_id: str, sync_type: str = "full") -> Dict[str, Any]:
-        """Synchronize context between agents."""
-        try:
-            self.performance_metrics['sync_operations'] += 1
-            
-            # Validate agents
-            if source_agent not in self.agents:
-                return {"status": "error", "message": f"Source agent {source_agent} not registered"}
-            if target_agent not in self.agents:
-                return {"status": "error", "message": f"Target agent {target_agent} not registered"}
-            
-            # Get source context
-            source_context = self.context_cache.get(context_id)
-            if not source_context:
-                return {"status": "error", "message": f"Context {context_id} not found"}
-            
-            # Create sync request
-            sync_request = ContextSync(
-                source_agent=source_agent,
-                target_agent=target_agent,
-                context_id=context_id,
-                sync_type=sync_type
-            )
-            
-            # Store sync request in Redis
-            sync_key = f"memory_bank:sync:{context_id}:{target_agent}"
-            await self.redis.set(
-                sync_key,
-                json.dumps(asdict(sync_request))
-            )
-            
-            # Publish sync event
-            await self.redis.publish(
-                "memory_bank:sync_requests",
-                json.dumps({
-                    "event_type": "sync_requested",
-                    "sync_request": asdict(sync_request),
-                    "timestamp": datetime.now().isoformat()
-                })
-            )
-            
-            logger.info(f"Context sync requested: {context_id} from {source_agent} to {target_agent}")
-            
-            return {
-                "status": "success",
-                "sync_request": asdict(sync_request),
-                "message": "Sync request queued"
-            }
-            
-        except Exception as e:
-            logger.error(f"Failed to sync context: {e}")
-            return {"status": "error", "message": str(e)}
-
-    async def _load_context_from_storage(self, context_id: str, tier: ContextTier) -> Optional[Dict[str, Any]]:
-        """Load context from persistent storage with tier-specific optimization."""
-        try:
-            # Try to load from Redis first
-            for version in range(self.context_versions.get(context_id, 1), 0, -1):
-                key = f"memory_bank:context:{context_id}:v{version}"
-                data = await self.redis.get(key)
-                if data:
-                    return json.loads(data)
-            
-            # If not in Redis, try file system
-            context_file = self.memory_bank_path / f"{context_id}.json"
+        # 3. Fallback to Filesystem
+        if not data:
+            context_file = self.memory_bank_path / f"{agent_id}_{context_type}_{tier}.json"
             if context_file.exists():
-                with open(context_file, 'r') as f:
-                    return json.load(f)
+                try:
+                    with open(context_file, 'r') as f:
+                        data = json.load(f)
+                        # Sync back to Redis
+                        if self.redis:
+                            await self.redis.set(redis_key, json.dumps(data))
+                except Exception as e:
+                    logger.error(f"Filesystem read failed: {e}")
+
+        if data:
+            # Update LRU Cache
+            self.context_cache[context_id] = data
+            if len(self.context_cache) > self.cache_limit:
+                self.context_cache.popitem(last=False)
             
-            return None
-            
+            if keys:
+                return {k: data.get(k) for k in keys if k in data}
+            return data
+
+        return {"status": "success", "content": {}, "source": "empty"}
+
+    async def update_context(self, agent_id: str, context_type: str, context_data: dict, tier: str = "hot") -> dict:
+        """Update context with Write-Through (LRU + Redis + Filesystem)."""
+        context_id = f"{agent_id}:{context_type}:{tier}"
+        redis_key = f"xnai:ctx:{context_id}"
+        context_file = self.memory_bank_path / f"{agent_id}_{context_type}_{tier}.json"
+        
+        # Load existing data (Try Cache -> Redis -> Filesystem)
+        existing_data = await self.get_context(agent_id, context_type, tier)
+        if isinstance(existing_data, dict) and "status" in existing_data and existing_data["status"] == "success" and "content" in existing_data:
+            existing_data = {} # Reset if it was just the empty template
+        
+        # Update
+        existing_data.update(context_data)
+        data_json = json.dumps(existing_data)
+        
+        # 1. Update LRU Cache
+        self.context_cache[context_id] = existing_data
+        self.context_cache.move_to_end(context_id)
+        if len(self.context_cache) > self.cache_limit:
+            self.context_cache.popitem(last=False)
+        
+        # 2. Update Redis
+        if await self._ensure_redis():
+            try:
+                await self.redis.set(redis_key, data_json)
+            except Exception as e:
+                logger.error(f"Redis update failed: {e}")
+
+        # 3. Update Filesystem (Durability)
+        try:
+            with open(context_file, 'w') as f:
+                f.write(data_json)
         except Exception as e:
-            logger.error(f"Failed to load context {context_id} from storage: {e}")
-            return None
+            logger.error(f"Filesystem write failed: {e}")
+        
+        return {"status": "success", "context_id": context_id}
+
+    async def checkpoint_session(self, session_id: str, agent_id: str) -> dict:
+        """Trigger a manual checkpoint/summary for a session via Agent Bus."""
+        if AgentBusClient:
+            async with AgentBusClient(agent_id) as bus:
+                payload = {"session_id": session_id, "agent_id": agent_id, "timestamp": datetime.now().isoformat()}
+                task_id = await bus.send_task(target_did="worker:librarian:*", task_type="manual_checkpoint", payload=payload)
+                return {"status": "success", "task_id": task_id, "message": f"Checkpoint task {task_id} sent to Librarian."}
+        return {"status": "error", "message": "AgentBusClient not available"}
+
+    async def rehydrate_session(self, session_id: str, agent_id: str) -> dict:
+        """Request the Librarian to rehydrate a session from archives."""
+        if AgentBusClient:
+            async with AgentBusClient(agent_id) as bus:
+                payload = {"session_id": session_id, "agent_id": agent_id, "timestamp": datetime.now().isoformat()}
+                task_id = await bus.send_task(target_did="worker:librarian:*", task_type="rehydrate_session", payload=payload)
+                return {"status": "success", "task_id": task_id, "message": f"Rehydration task {task_id} sent to Librarian."}
+        return {"status": "error", "message": "AgentBusClient not available"}
 
     async def get_capabilities(self) -> List[Tool]:
-        """Get MCP server capabilities."""
+        """Return list of available tools."""
         return [
             Tool(
                 name="register_agent",
-                description="Register an agent with its capabilities for memory bank access",
+                description="Register a new agent with capabilities and memory limits",
                 inputSchema={
                     "type": "object",
                     "properties": {
-                        "agent_id": {
-                            "type": "string",
-                            "description": "Unique identifier for the agent"
-                        },
-                        "capabilities": {
-                            "type": "array",
-                            "items": {"type": "string"},
-                            "description": "List of capabilities the agent supports"
-                        },
-                        "memory_limit_gb": {
-                            "type": "number",
-                            "description": "Maximum memory the agent can use in GB"
-                        }
+                        "agent_id": {"type": "string"},
+                        "capabilities": {"type": "array", "items": {"type": "string"}},
+                        "memory_limit_gb": {"type": "number"}
                     },
                     "required": ["agent_id", "capabilities", "memory_limit_gb"]
                 }
             ),
             Tool(
                 name="get_context",
-                description="Get context for an agent with progressive loading support",
+                description="Retrieve context for an agent",
                 inputSchema={
                     "type": "object",
                     "properties": {
-                        "agent_id": {
-                            "type": "string",
-                            "description": "Agent identifier"
-                        },
-                        "context_type": {
-                            "type": "string",
-                            "enum": [ct.value for ct in ContextType],
-                            "description": "Type of context to retrieve"
-                        },
-                        "tier": {
-                            "type": "string",
-                            "enum": [ct.value for ct in ContextTier],
-                            "description": "Memory tier (hot/warm/cold) for progressive loading"
-                        }
+                        "agent_id": {"type": "string"},
+                        "context_type": {"type": "string"},
+                        "tier": {"type": "string", "enum": ["hot", "warm", "cold"]},
+                        "keys": {"type": "array", "items": {"type": "string"}}
                     },
                     "required": ["agent_id", "context_type"]
                 }
             ),
             Tool(
                 name="update_context",
-                description="Update context for an agent with versioning",
+                description="Update context with new data",
                 inputSchema={
                     "type": "object",
                     "properties": {
-                        "agent_id": {
-                            "type": "string",
-                            "description": "Agent identifier"
-                        },
-                        "context_type": {
-                            "type": "string",
-                            "enum": [ct.value for ct in ContextType],
-                            "description": "Type of context to update"
-                        },
-                        "context_data": {
-                            "type": "object",
-                            "description": "Context data to store"
-                        }
+                        "agent_id": {"type": "string"},
+                        "context_type": {"type": "string"},
+                        "context_data": {"type": "object"},
+                        "tier": {"type": "string", "enum": ["hot", "warm", "cold"]}
                     },
                     "required": ["agent_id", "context_type", "context_data"]
                 }
             ),
             Tool(
-                name="sync_context",
-                description="Synchronize context between agents",
+                name="checkpoint_session",
+                description="Trigger a manual checkpoint/summary for a session",
                 inputSchema={
                     "type": "object",
                     "properties": {
-                        "source_agent": {
-                            "type": "string",
-                            "description": "Source agent identifier"
-                        },
-                        "target_agent": {
-                            "type": "string",
-                            "description": "Target agent identifier"
-                        },
-                        "context_id": {
-                            "type": "string",
-                            "description": "Context identifier to sync"
-                        },
-                        "sync_type": {
-                            "type": "string",
-                            "enum": ["full", "delta", "stream"],
-                            "description": "Type of synchronization"
-                        }
+                        "session_id": {"type": "string"},
+                        "agent_id": {"type": "string"}
                     },
-                    "required": ["source_agent", "target_agent", "context_id"]
+                    "required": ["session_id", "agent_id"]
                 }
             ),
             Tool(
-                name="get_performance_metrics",
-                description="Get performance metrics for memory bank operations",
+                name="rehydrate_session",
+                description="Rehydrate a session from archives",
                 inputSchema={
                     "type": "object",
-                    "properties": {},
-                    "required": []
+                    "properties": {
+                        "session_id": {"type": "string"},
+                        "agent_id": {"type": "string"}
+                    },
+                    "required": ["session_id", "agent_id"]
                 }
             )
         ]
 
-    async def handle_tool_call(self, name: str, arguments: Dict[str, Any]) -> List[ToolResultContent]:
-        """Handle MCP tool calls."""
-        try:
-            if name == "register_agent":
-                result = await self.register_agent(
-                    arguments["agent_id"],
-                    arguments["capabilities"],
-                    arguments["memory_limit_gb"]
-                )
-                return [ToolResultContent(
-                    type="text",
-                    text=json.dumps(result),
-                    isError=result.get("status") == "error"
-                )]
-            
-            elif name == "get_context":
-                result = await self.get_context(
-                    arguments["agent_id"],
-                    arguments["context_type"],
-                    arguments.get("tier", "hot")
-                )
-                return [ToolResultContent(
-                    type="text",
-                    text=json.dumps(result),
-                    isError=result.get("status") == "error"
-                )]
-            
-            elif name == "update_context":
-                result = await self.update_context(
-                    arguments["agent_id"],
-                    arguments["context_type"],
-                    arguments["context_data"]
-                )
-                return [ToolResultContent(
-                    type="text",
-                    text=json.dumps(result),
-                    isError=result.get("status") == "error"
-                )]
-            
-            elif name == "sync_context":
-                result = await self.sync_context(
-                    arguments["source_agent"],
-                    arguments["target_agent"],
-                    arguments["context_id"],
-                    arguments.get("sync_type", "full")
-                )
-                return [ToolResultContent(
-                    type="text",
-                    text=json.dumps(result),
-                    isError=result.get("status") == "error"
-                )]
-            
-            elif name == "get_performance_metrics":
-                return [ToolResultContent(
-                    type="text",
-                    text=json.dumps(self.performance_metrics),
-                    isError=False
-                )]
-            
-            else:
-                return [ToolResultContent(
-                    type="text",
-                    text=json.dumps({"status": "error", "message": f"Unknown tool: {name}"}),
-                    isError=True
-                )]
-                
-        except Exception as e:
-            logger.error(f"Tool call error: {e}")
-            return [ToolResultContent(
-                type="text",
-                text=json.dumps({"status": "error", "message": str(e)}),
-                isError=True
-            )]
-
-async def main():
-    """Main entry point for Memory Bank MCP Server."""
+async def create_mcp_server():
     server = Server("memory-bank-mcp")
+    mcp_instance = MemoryBankMCP()
+    fallback_store = MemoryBankStore()
+    memory_bank_mcp = MemoryBankFallbackWrapper(mcp_instance, fallback_store)
     
-    # Initialize memory bank MCP
-    memory_bank_mcp = MemoryBankMCP()
-    await memory_bank_mcp.initialize()
+    _initialized = False
     
-    # Register capabilities
-    capabilities = await memory_bank_mcp.get_capabilities()
-    for tool in capabilities:
-        server.add_tool(tool)
-    
-    # Handle tool calls
+    async def _ensure_initialized():
+        nonlocal _initialized
+        if not _initialized:
+            try:
+                await memory_bank_mcp.initialize()
+                _initialized = True
+            except Exception as e:
+                logger.error(f"Initialization failed: {e}")
+                _initialized = True
+
     @server.list_tools()
     async def list_tools():
-        return await memory_bank_mcp.get_capabilities()
-    
+        return await mcp_instance.get_capabilities()
+
     @server.call_tool()
     async def call_tool(name: str, arguments: Dict[str, Any]):
+        await _ensure_initialized()
         return await memory_bank_mcp.handle_tool_call(name, arguments)
     
-    # Start server
-    async with stdio_server() as (read_stream, write_stream):
+    return server
+
+app = FastAPI(title="Memory Bank MCP Server (SSE)")
+sse = SseServerTransport("/messages/")
+
+@app.get("/sse")
+async def handle_sse(request: Request):
+    server = await create_mcp_server()
+    async with sse.connect_sse(
+        request.scope, request.receive, request._send
+    ) as streams:
         await server.run(
-            read_stream,
-            write_stream,
+            streams[0],
+            streams[1],
+            server.create_initialization_options()
         )
 
+@app.post("/messages/")
+async def handle_messages(request: Request):
+    await sse.handle_post_message(request.scope, request.receive, request._send)
+    return Response(status_code=204)
+
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
 if __name__ == "__main__":
-    anyio.run(main)
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000, timeout_keep_alive=65)

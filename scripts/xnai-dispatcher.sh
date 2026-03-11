@@ -88,11 +88,16 @@ NC='\033[0m'
 
 echo -e "${BLUE}[Omega] Routing ${TOOL} to Domain: ${CYAN}${DOMAIN_NAME}${BLUE} (Instance ${INSTANCE_ID})${NC}"
 
-# Execute and tee to log
+# Execute with TTY preserved for interactive TUI mode
+# Both stdin.isTTY AND stdout.isTTY must be true for Gemini CLI TUI
 if [[ "$*" == *"--format json"* ]]; then
     # Headless pulse active
     "$TOOL_BINARY" "$@" 2>&1 | tee -a "$SESSION_LOG" | grep --line-buffered -E '"type":"(step_start|tool_use|error|step_finish)"' | sed -u "s/.*\"type\":\"\([^\"]*\)\".*/[Pulse: $TOOL: \1]/"
+elif [[ -t 0 && -t 1 ]]; then
+    # Interactive mode: run directly — any redirection breaks stdout.isTTY
+    "$TOOL_BINARY" "$@"
 else
+    # Non-interactive (piped input/output): redirection is fine
     "$TOOL_BINARY" "$@" 2>&1 | tee -a "$SESSION_LOG"
 fi
 

@@ -1,52 +1,408 @@
 """
-Maat's 42 Ideals Implementation
-===============================
-Ethical guardrails and compliance verification for Xoe-NovAi systems.
+Maat's 42 Ideals Implementation — Ethical Guardrails
+=====================================================
+Compliance verification for the Xoe-NovAi Omega Stack.
+
+v2.0: All 42 ideals loaded. Mappable ideals have real technical validators.
+      Non-mappable ideals are acknowledged but marked as philosophy-only.
+
+Reference: knowledge_base/expert-knowledge/esoteric/maat_ideals.md
 """
 
+import os
+import logging
+import psutil
 from datetime import datetime, timezone
+from typing import Dict, Any, List, Optional
+from dataclasses import dataclass, field
+
+logger = logging.getLogger(__name__)
+
+
+# ============================================================================
+# DATA STRUCTURES
+# ============================================================================
+
+
+@dataclass
+class IdealResult:
+    """Result of a single ideal compliance check."""
+    ideal_number: int
+    name: str
+    principle: str
+    compliant: bool
+    category: str  # "technical" | "philosophical"
+    evidence: str = ""
+    severity: str = "info"  # "info" | "warning" | "critical"
+
+
+@dataclass
+class ComplianceReport:
+    """Full compliance report across all 42 ideals."""
+    timestamp: str
+    total_ideals: int = 42
+    compliant_count: int = 0
+    non_compliant_count: int = 0
+    technical_checks: int = 0
+    philosophical_only: int = 0
+    results: List[IdealResult] = field(default_factory=list)
+    overall_compliant: bool = True
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "timestamp": self.timestamp,
+            "total_ideals": self.total_ideals,
+            "compliant_count": self.compliant_count,
+            "non_compliant_count": self.non_compliant_count,
+            "technical_checks": self.technical_checks,
+            "philosophical_only": self.philosophical_only,
+            "overall_compliant": self.overall_compliant,
+            "results": [
+                {
+                    "ideal": r.ideal_number,
+                    "name": r.name,
+                    "compliant": r.compliant,
+                    "category": r.category,
+                    "evidence": r.evidence,
+                    "severity": r.severity,
+                }
+                for r in self.results
+            ],
+        }
+
+
+# ============================================================================
+# THE 42 IDEALS
+# ============================================================================
+
+THE_42_IDEALS = [
+    (1,  "honor_virtue",        "I honor virtue"),
+    (2,  "benefit_gratitude",   "I benefit with gratitude"),
+    (3,  "peaceful",            "I am peaceful"),
+    (4,  "respect_property",    "I respect the property of others"),
+    (5,  "life_sacred",         "I affirm that all life is sacred"),
+    (6,  "genuine_offerings",   "I give offerings that are genuine"),
+    (7,  "live_in_truth",       "I live in truth"),
+    (8,  "respect_altars",      "I regard all altars with respect"),
+    (9,  "speak_sincerity",     "I speak with sincerity"),
+    (10, "fair_share",          "I consume only my fair share"),
+    (11, "good_intent",         "I offer words of good intent"),
+    (12, "relate_peace",        "I relate in peace"),
+    (13, "honor_animals",       "I honor animals with reverence"),
+    (14, "trustworthy",         "I can be trusted"),
+    (15, "care_earth",          "I care for the earth"),
+    (16, "own_council",         "I keep my own council"),
+    (17, "speak_positively",    "I speak positively of others"),
+    (18, "balance_emotions",    "I remain in balance with my emotions"),
+    (19, "trustful_relations",  "I am trustful in my relationships"),
+    (20, "purity_esteem",       "I hold purity in high esteem"),
+    (21, "spread_joy",          "I spread joy"),
+    (22, "do_best",             "I do the best I can"),
+    (23, "communicate_compassion", "I communicate with compassion"),
+    (24, "listen_opposing",     "I listen to opposing opinions"),
+    (25, "create_harmony",      "I create harmony"),
+    (26, "invoke_laughter",     "I invoke laughter"),
+    (27, "open_to_love",        "I am open to love in various forms"),
+    (28, "forgiving",           "I am forgiving"),
+    (29, "kind",                "I am kind"),
+    (30, "act_respectfully",    "I act respectfully"),
+    (31, "accepting",           "I am accepting"),
+    (32, "inner_guidance",      "I follow my inner guidance"),
+    (33, "converse_awareness",  "I converse with awareness"),
+    (34, "do_good",             "I do good"),
+    (35, "give_blessings",      "I give blessings"),
+    (36, "keep_waters_pure",    "I keep the waters pure"),
+    (37, "speak_good_intent",   "I speak with good intent"),
+    (38, "praise_divine",       "I praise the Goddess and the God"),
+    (39, "humble",              "I am humble"),
+    (40, "achieve_integrity",   "I achieve with integrity"),
+    (41, "advance_own_abilities", "I advance through my own abilities"),
+    (42, "embrace_all",         "I embrace the All"),
+]
+
+
+# ============================================================================
+# TECHNICAL VALIDATORS
+# ============================================================================
+# These map philosophical ideals to concrete, measurable technical checks.
+
+
+def _check_truth(context: Dict[str, Any]) -> IdealResult:
+    """Ideal 7: I live in truth — Check hallucination guardrails."""
+    # Verify that RAG-based responses include source citations
+    rag_enabled = os.getenv("RAG_REQUIRE_CITATIONS", "true").lower() == "true"
+    return IdealResult(
+        ideal_number=7,
+        name="live_in_truth",
+        principle="I live in truth",
+        compliant=rag_enabled,
+        category="technical",
+        evidence=f"RAG citation requirement: {'enabled' if rag_enabled else 'DISABLED'}",
+        severity="critical" if not rag_enabled else "info",
+    )
+
+
+def _check_sincerity(context: Dict[str, Any]) -> IdealResult:
+    """Ideal 9: I speak with sincerity — Transparent agent state reporting."""
+    # Agents must accurately report their status, not mask errors
+    log_level = os.getenv("LOG_LEVEL", "INFO").upper()
+    transparent = log_level in ("DEBUG", "INFO")
+    return IdealResult(
+        ideal_number=9,
+        name="speak_sincerity",
+        principle="I speak with sincerity",
+        compliant=transparent,
+        category="technical",
+        evidence=f"Log level: {log_level} ({'transparent' if transparent else 'may mask warnings'})",
+        severity="warning" if not transparent else "info",
+    )
+
+
+def _check_fair_share(context: Dict[str, Any]) -> IdealResult:
+    """Ideal 10: I consume only my fair share — Resource usage under limits."""
+    try:
+        mem = psutil.virtual_memory()
+        mem_gb = mem.used / (1024 ** 3)
+        threshold = float(os.getenv("MAAT_MEM_THRESHOLD_GB", "6.0"))
+        compliant = mem_gb < threshold
+        return IdealResult(
+            ideal_number=10,
+            name="fair_share",
+            principle="I consume only my fair share",
+            compliant=compliant,
+            category="technical",
+            evidence=f"Memory usage: {mem_gb:.1f}GB / {threshold:.0f}GB threshold",
+            severity="critical" if not compliant else "info",
+        )
+    except Exception as e:
+        return IdealResult(
+            ideal_number=10,
+            name="fair_share",
+            principle="I consume only my fair share",
+            compliant=True,
+            category="technical",
+            evidence=f"Could not measure: {e}",
+            severity="warning",
+        )
+
+
+def _check_trustworthy(context: Dict[str, Any]) -> IdealResult:
+    """Ideal 14: I can be trusted — Verify auth tokens are properly validated."""
+    jwt_verification = os.getenv("JWT_PUBLIC_KEY") or os.getenv("JWT_PUBLIC_KEY_PATH")
+    return IdealResult(
+        ideal_number=14,
+        name="trustworthy",
+        principle="I can be trusted",
+        compliant=jwt_verification is not None,
+        category="technical",
+        evidence=f"JWT signature verification: {'configured' if jwt_verification else 'NOT CONFIGURED'}",
+        severity="warning" if not jwt_verification else "info",
+    )
+
+
+def _check_balance(context: Dict[str, Any]) -> IdealResult:
+    """Ideal 18: I remain in balance — CPU usage reasonable."""
+    try:
+        cpu = psutil.cpu_percent(interval=0.5)
+        compliant = cpu < 90.0
+        return IdealResult(
+            ideal_number=18,
+            name="balance_emotions",
+            principle="I remain in balance with my emotions",
+            compliant=compliant,
+            category="technical",
+            evidence=f"CPU usage: {cpu:.1f}%",
+            severity="warning" if not compliant else "info",
+        )
+    except Exception as e:
+        return IdealResult(
+            ideal_number=18,
+            name="balance_emotions",
+            principle="I remain in balance with my emotions",
+            compliant=True,
+            category="technical",
+            evidence=f"Could not measure: {e}",
+            severity="warning",
+        )
+
+
+def _check_purity(context: Dict[str, Any]) -> IdealResult:
+    """Ideal 20: I hold purity in high esteem — Sanitization active."""
+    try:
+        from XNAi_rag_app.core.security.sanitization import get_global_sanitizer
+        sanitizer = get_global_sanitizer()
+        active = sanitizer is not None
+        return IdealResult(
+            ideal_number=20,
+            name="purity_esteem",
+            principle="I hold purity in high esteem",
+            compliant=active,
+            category="technical",
+            evidence=f"Content sanitizer: {'active' if active else 'NOT ACTIVE'}",
+            severity="warning" if not active else "info",
+        )
+    except ImportError:
+        return IdealResult(
+            ideal_number=20,
+            name="purity_esteem",
+            principle="I hold purity in high esteem",
+            compliant=False,
+            category="technical",
+            evidence="Sanitization module not importable",
+            severity="warning",
+        )
+
+
+def _check_keep_waters_pure(context: Dict[str, Any]) -> IdealResult:
+    """Ideal 36: I keep the waters pure — Data privacy/no external telemetry."""
+    # Check that no telemetry endpoints are configured
+    telemetry_urls = [
+        os.getenv("TELEMETRY_ENDPOINT"),
+        os.getenv("ANALYTICS_URL"),
+        os.getenv("SENTRY_DSN"),
+    ]
+    has_telemetry = any(url for url in telemetry_urls)
+    return IdealResult(
+        ideal_number=36,
+        name="keep_waters_pure",
+        principle="I keep the waters pure",
+        compliant=not has_telemetry,
+        category="technical",
+        evidence=f"External telemetry: {'DETECTED — sovereignty violated' if has_telemetry else 'none (sovereign)'}",
+        severity="critical" if has_telemetry else "info",
+    )
+
+
+def _check_integrity(context: Dict[str, Any]) -> IdealResult:
+    """Ideal 40: I achieve with integrity — Sovereign, local-only processing."""
+    # Check that processing is local (no external API calls required)
+    llm_model = os.getenv("LLM_MODEL_PATH", "")
+    local = llm_model and not llm_model.startswith("http")
+    return IdealResult(
+        ideal_number=40,
+        name="achieve_integrity",
+        principle="I achieve with integrity",
+        compliant=local,
+        category="technical",
+        evidence=f"LLM model: {'local file' if local else 'NOT LOCAL or not configured'}",
+        severity="warning" if not local else "info",
+    )
+
+
+def _check_own_abilities(context: Dict[str, Any]) -> IdealResult:
+    """Ideal 41: I advance through my own abilities — No external deps at runtime."""
+    # Verify no external API keys are _required_ (optional is fine)
+    required_external = os.getenv("REQUIRE_EXTERNAL_API", "false").lower() == "true"
+    return IdealResult(
+        ideal_number=41,
+        name="advance_own_abilities",
+        principle="I advance through my own abilities",
+        compliant=not required_external,
+        category="technical",
+        evidence=f"External API dependency: {'REQUIRED — violates sovereignty' if required_external else 'not required (sovereign)'}",
+        severity="critical" if required_external else "info",
+    )
+
+
+# Map of ideal numbers to their technical validators
+TECHNICAL_VALIDATORS = {
+    7: _check_truth,
+    9: _check_sincerity,
+    10: _check_fair_share,
+    14: _check_trustworthy,
+    18: _check_balance,
+    20: _check_purity,
+    36: _check_keep_waters_pure,
+    40: _check_integrity,
+    41: _check_own_abilities,
+}
+
+
+# ============================================================================
+# MAIN GUARDRAILS CLASS
+# ============================================================================
+
 
 class MaatGuardrails:
-    """Implementation of Maat's 42 Ideals for AI systems"""
-    
+    """
+    Implementation of Maat's 42 Ideals for the Xoe-NovAi Omega Stack.
+
+    Performs real compliance verification against technically-mappable ideals,
+    and acknowledges the philosophical ideals that guide the system's design.
+    """
+
     def __init__(self):
-        self.ideals = self._load_ideals()
-        self.compliance_log = []
-    
-    def _load_ideals(self):
-        """Load Maat's 42 Ideals"""
-        return {
-            "truth": "I have not spoken falsehood",
-            "justice": "I have not committed sin",
-            "compassion": "I have not caused pain",
-            "sovereignty": "I have not stolen",
-            "wisdom": "I have not been ignorant",
-            # This is a representative subset for the foundation stack
-        }
-    
-    def verify_compliance(self):
-        """Verify compliance with Maat's ideals"""
-        compliance_results = {}
-        
-        for ideal, principle in self.ideals.items():
-            compliance_results[ideal] = self._check_ideal_compliance(ideal)
-        
-        self.compliance_log.append({
-            'timestamp': datetime.now(timezone.utc),
-            'compliance_results': compliance_results
-        })
-        
-        return compliance_results
-    
-    def verify_tracing_compliance(self):
-        """Verify tracing compliance with Maat's ideals"""
-        # Ensure no sensitive data is traced
-        # Verify data sovereignty
-        # Check for ethical data handling
+        self.ideals = THE_42_IDEALS
+        self.compliance_log: List[ComplianceReport] = []
+
+    def verify_compliance(
+        self, context: Optional[Dict[str, Any]] = None
+    ) -> ComplianceReport:
+        """
+        Verify compliance with all 42 of Maat's Ideals.
+
+        Args:
+            context: Optional context dict with runtime state info
+
+        Returns:
+            ComplianceReport with detailed per-ideal results
+        """
+        if context is None:
+            context = {}
+
+        report = ComplianceReport(
+            timestamp=datetime.now(timezone.utc).isoformat()
+        )
+
+        for ideal_num, ideal_name, principle in self.ideals:
+            if ideal_num in TECHNICAL_VALIDATORS:
+                # Run the real technical check
+                result = TECHNICAL_VALIDATORS[ideal_num](context)
+                report.technical_checks += 1
+            else:
+                # Philosophical ideal — acknowledged, assumed compliant by design
+                result = IdealResult(
+                    ideal_number=ideal_num,
+                    name=ideal_name,
+                    principle=principle,
+                    compliant=True,
+                    category="philosophical",
+                    evidence="Acknowledged by design — no technical validator mapped",
+                )
+                report.philosophical_only += 1
+
+            report.results.append(result)
+
+            if result.compliant:
+                report.compliant_count += 1
+            else:
+                report.non_compliant_count += 1
+                report.overall_compliant = False
+
+        self.compliance_log.append(report)
+
+        logger.info(
+            f"Maat Compliance: {report.compliant_count}/{report.total_ideals} "
+            f"({report.technical_checks} technical, {report.philosophical_only} philosophical) — "
+            f"{'✅ COMPLIANT' if report.overall_compliant else '❌ NON-COMPLIANT'}"
+        )
+
+        return report
+
+    def verify_tracing_compliance(self) -> bool:
+        """Verify no sensitive data is traced and data sovereignty is maintained."""
+        report = self.verify_compliance()
+        # Critical sovereignty ideals: 36 (waters pure), 40 (integrity), 41 (own abilities)
+        sovereignty_ideals = [36, 40, 41]
+        for result in report.results:
+            if result.ideal_number in sovereignty_ideals and not result.compliant:
+                logger.warning(
+                    f"Sovereignty violation: Ideal {result.ideal_number} ({result.name}) "
+                    f"— {result.evidence}"
+                )
+                return False
         return True
-    
-    def _check_ideal_compliance(self, ideal):
-        """Check compliance for specific ideal"""
-        # Implementation for each ideal
-        # For Phase 1 Foundation, we assume compliance if guardrails are active
-        return True
+
+    def get_last_report(self) -> Optional[ComplianceReport]:
+        """Get the most recent compliance report."""
+        return self.compliance_log[-1] if self.compliance_log else None

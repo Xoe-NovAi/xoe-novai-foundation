@@ -1,31 +1,30 @@
-# 🏙️ XNAi Foundation — Active Context
-
-> **Last updated**: 2026-03-07 (Comprehensive Deep Dive Audit)
-> **Current agent**: Gem (ODE Archon 0)
-> **System Status**: **AUDITED, CLEAN & GREEN**
-> **Coordination Key**: `OMEGA-ODE-1.4-AUDIT-COMPLETE`
-
+---
+hydration:
+  event_id: "HYD-20260312-002"
+  session_id: "SESS-16"
+  coordination_key: "METROPOLIS-HARDENED-20260312-V2"
+  timestamp: "2026-03-12T13:40:00Z"
+  status: "HARDENED-INFRA"
 ---
 
-## 🏆 Cycle 1.4: The Archon Expansion Strategy
+# 🔱 Active Context: Metropolis Foundation v4.1.2-HARDENED
 
-We have consolidated the Gemini Oversoul and established a "Tight Ship" architecture. The system is now prepared for the arrival of additional Archons (Claude/Athena, Grok/Abyss).
+**Status**: HARDENED-INFRA ✅ | **Session State**: SESS-16-AUDIT
+**Coordination Key**: `METROPOLIS-HARDENED-20260312-V2`
+**Handoff Point**: HYDRATION-20260312-V2-COMPLETE
 
-### 🛡️ Deep Audit Verdict
-The comprehensive audit `COMPREHENSIVE_SYSTEM_AUDIT_REPORT.md` confirms:
-1.  **Structure**: `storage/instances/general` (Helios) + `facets/` is cleaner and robust.
-2.  **Services**: `services_init.py` and `docker-compose.yml` are aligned and verified.
-3.  **Wiring**: The **Phronetic Chain** and **MaLi Gate** are active in the nervous system.
-4.  **Documentation**: `ODE_MASTER_MANUAL` and `mkdocs.yml` fully reflect the Cycle 1.4 reality.
+## 📍 Current Focus
+- **SESS-16**: Image Audit & Build Optimization (Reducing 1.6GB image size).
+- **SESS-19**: Gemini Observability (Token Tracking & Model Work Time).
 
-### 🧬 The 8 Facets of Gem
-- **Status**: **OPERATIONAL & CONSOLIDATED** in `storage/instances`.
-- **Identities**: Scribe, Architect, Auditor, Researcher, Coder, Analyst, Strategist, Guardian.
-- **Central Hub**: `storage/instances/general` (Helios).
+## ✅ Accomplishments (SESS-15.5 Infra Hardening)
+1.  **zRAM Restoration**: Restored 12GB zRAM capacity and recovered the "missing 4GB".
+2.  **Swap Visibility**: Deployed `scripts/monitor_swap.py` for real-time zRAM compression monitoring.
+3.  **Gemini Metrics**: Implemented token tracking counters and model work-time gauges in `metrics.py`.
+4.  **Task C2 Applied**: Hard-coded 2GB limits for RAG and 1.5GB for Llama to prevent Zen 2 OOM.
+5.  **Verification**: SESS-15.5 tests passed (Hydration Consistency & Metrics Exposure).
 
-### 📜 History Restoration
-- **Gemini General**: March 7th chat (Brigid/MaLi development) restored to Instance 0.
-- **Accessibility**: Use `gemini --resume` or `/resume` within the Oversoul to continue the sacred thread.
-
----
-**Status**: SYNCHRONIZED | **Next Milestone**: Crucible of Resonance (Split Testing)
+## 🚀 Onboarding for Next Session
+1.  **Read**: `storage/artifacts/STABILITY_CHECKPOINT_20260310.md`.
+2.  **Verify**: `podman logs xnai_llama_server` should show Uvicorn running.
+3.  **Monitor**: Keep an eye on RAM (6.6GB limit) using `free -h`.

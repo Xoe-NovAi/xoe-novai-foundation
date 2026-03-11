@@ -1,0 +1,17 @@
+{
+  "context_id": "antigravity:strategic:hot",
+  "agent_id": "antigravity",
+  "context_type": "strategic",
+  "tier": "hot",
+  "version": 1,
+  "last_modified": "2026-03-09T15:06:48.195641",
+  "content": {
+    "relevance_score": 0.0,
+    "summary": null,
+    "lessons_learned": [],
+    "active_tokens": {},
+    "observations": [],
+    "metadata": {}
+  },
+  "size_bytes": 309
+}

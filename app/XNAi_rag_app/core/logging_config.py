@@ -59,7 +59,7 @@ try:
     from XNAi_rag_app.core.config_loader import load_config, get_config_value
     CONFIG = load_config()
 except Exception as e:
-    print(f"Warning: Could not load config: {e}")
+    print(f"Warning: Could not load config: {e}", file=sys.stderr)
     CONFIG = {'metadata': {'stack_version': 'v0.1.0-alpha'}, 'performance': {}}
 
 # ============================================================================

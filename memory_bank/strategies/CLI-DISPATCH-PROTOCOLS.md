@@ -80,7 +80,7 @@ Search for: ACTIVE-TASK-DISPATCH-WAVE-3-2026-02-23
 
 4. **Report Issues**: If you encounter blockers, document them and publish to xnai:agent_bus:
    ```bash
-   redis-cli -a "changeme123" --no-auth-warning XADD xnai:agent_bus '*' \
+   redis-cli -a "dUXz1rez6y27FfYC195APxyl1BLNbZz/3T7hucihcgM=" --no-auth-warning XADD xnai:agent_bus '*' \
        sender 'did:xnai:cline-N' \
        action 'blocked' \
        task_id 'TASK_ID' \

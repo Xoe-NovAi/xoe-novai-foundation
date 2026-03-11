@@ -68,7 +68,6 @@ class SanitizationMatch:
 class SanitizationResult:
     """Result of content sanitization"""
 
-    original_content: str
     sanitized_content: str
     level: SanitizationLevel
     matches: List[SanitizationMatch] = field(default_factory=list)
@@ -77,9 +76,9 @@ class SanitizationResult:
     was_modified: bool = False
 
     def __post_init__(self):
+        # Hash must be provided during initialization now to avoid storing original
         if not self.content_hash:
-            self.content_hash = hashlib.sha256(self.original_content.encode()).hexdigest()[:16]
-        self.was_modified = self.original_content != self.sanitized_content
+            logger.warning("SanitizationResult created without content_hash")
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -131,7 +130,7 @@ class SanitizationPatterns:
         ("aws_access_key", re.compile(r"(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])"), "api_key"),
         ("aws_secret_key", re.compile(r"(?<![A-Za-z0-9/+=])[A-Za-z0-9/+=]{40}(?![A-Za-z0-9/+=])"), "api_key"),
         # GitHub tokens
-<REDACTED_GITHUB_PAT_BY_ODES>
+        ("github_pat", re.compile(r"ghp_[a-zA-Z0-9]{36}", re.IGNORECASE), "api_key"),
         ("github_oauth", re.compile(r"gho_[a-zA-Z0-9]{36}", re.IGNORECASE), "api_key"),
         ("github_app_token", re.compile(r"(?:ghu|ghs)_[a-zA-Z0-9]{36}", re.IGNORECASE), "api_key"),
         ("github_refresh_token", re.compile(r"ghr_[a-zA-Z0-9]{36}", re.IGNORECASE), "api_key"),
@@ -170,7 +169,7 @@ class SanitizationPatterns:
         ("postgres_connection", re.compile(r"postgres(?:ql)?://[^:]+:[^@]+@"), "connection_string"),
         ("mysql_connection", re.compile(r"mysql://[^:]+:[^@]+@"), "connection_string"),
         ("mongodb_connection", re.compile(r"mongodb(?:\+srv)?://[^:]+:[^@]+@"), "connection_string"),
-        ("redis_connection", re.compile(r"redis://[^:]*:[^@]+@"), "connection_string"),
+        ("redis_connection", re.compile(r"rediss?://[^:]*:[^@]+@"), "connection_string"),
         # Generic credential patterns
         ("basic_auth", re.compile(r"(?:Authorization\s*:\s*Basic\s+)[a-zA-Z0-9+/=]+", re.IGNORECASE), "credential"),
         ("auth_header", re.compile(r"Authorization\s*:\s*\w+\s+[^\s]+", re.IGNORECASE), "credential"),
@@ -278,7 +277,7 @@ class ContentSanitizer:
             logger.info(f"Sanitized {len(result.matches)} sensitive items")
             sanitized_content = result.sanitized_content
         else:
-            sanitized_content = result.original_content
+            sanitized_content = content  # Use original content if no modifications
     """
 
     def __init__(
@@ -345,11 +344,16 @@ class ContentSanitizer:
             except Exception as e:
                 logger.error(f"Error processing pattern {pattern_name}: {e}")
 
+        # Calculate hash before returning result
+        content_hash = hashlib.sha256(content.encode()).hexdigest()[:16]
+        was_modified = content != sanitized
+
         result = SanitizationResult(
-            original_content=content,
             sanitized_content=sanitized,
             level=self.level,
             matches=matches,
+            content_hash=content_hash,
+            was_modified=was_modified,
         )
 
         # Log sanitization (R012-4)

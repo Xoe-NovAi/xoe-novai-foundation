@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Optional, List, Dict, Any
 from datetime import datetime
 import asyncio
+import anyio
 import httpx
 
 # Retry logic (imported conditionally to avoid import errors)
@@ -347,17 +348,24 @@ def get_redis_client():
             logger.error("redis package not installed")
             raise
         
-        host = get_config_value("redis.host") or os.getenv("REDIS_HOST", "redis")
-        port = int(get_config_value("redis.port", default=6379))
-        password = get_config_value("redis.password") or os.getenv("REDIS_PASSWORD")
+        host = os.getenv("REDIS_HOST") or get_config_value("redis.host", "redis")
+        port = int(os.getenv("REDIS_PORT") or get_config_value("redis.port", 6379))
+        password = os.getenv("REDIS_PASSWORD") or get_config_value("redis.password")
         timeout = int(get_config_value("redis.timeout_seconds", default=60))
+        
+        # TLS Configuration
+        tls_enabled = os.getenv("REDIS_TLS_ENABLED", "false").lower() == "true"
+        ca_cert_path = os.getenv("REDIS_CA_CERT_PATH")
         
         _redis_client = redis.Redis(
             host=host,
             port=port,
             password=password,
-            decode_responses=False,
+            decode_responses=True,
             socket_timeout=timeout,
+            ssl=tls_enabled,
+            ssl_ca_certs=ca_cert_path if tls_enabled else None,
+            ssl_cert_reqs='none' if tls_enabled else None,
             max_connections=int(get_config_value("redis.max_connections", default=50))
         )
         
@@ -386,15 +394,22 @@ async def get_redis_client_async():
             "Async redis not available. Install: pip install redis[asyncio]"
         )
     
-    host = get_config_value("redis.host") or os.getenv("REDIS_HOST", "redis")
-    port = int(get_config_value("redis.port", default=6379))
-    password = get_config_value("redis.password") or os.getenv("REDIS_PASSWORD")
+    host = os.getenv("REDIS_HOST") or get_config_value("redis.host", "redis")
+    port = int(os.getenv("REDIS_PORT") or get_config_value("redis.port", 6379))
+    password = os.getenv("REDIS_PASSWORD") or get_config_value("redis.password")
     
+    # TLS Configuration
+    tls_enabled = os.getenv("REDIS_TLS_ENABLED", "false").lower() == "true"
+    ca_cert_path = os.getenv("REDIS_CA_CERT_PATH")
+
     return redis_async.Redis(
         host=host,
         port=port,
         password=password,
-        decode_responses=False
+        decode_responses=True,
+        ssl=tls_enabled,
+        ssl_ca_certs=ca_cert_path if tls_enabled else None,
+        ssl_cert_reqs='none' if tls_enabled else None
     )
 
 # ============================================================================
@@ -584,8 +599,7 @@ async def get_llm_async(model_path: Optional[str] = None, **kwargs) -> LlamaCpp:
     Returns:
         Initialized LLM
     """
-    loop = asyncio.get_event_loop()
-    return await loop.run_in_executor(None, lambda: get_llm(model_path, **kwargs))
+    return await anyio.to_thread.run_sync(lambda: get_llm(model_path, **kwargs))
 
 # ============================================================================
 # EMBEDDINGS INITIALIZATION
@@ -671,8 +685,7 @@ async def get_embeddings_async(model_path: Optional[str] = None, **kwargs) -> Ll
     Returns:
         Initialized embeddings
     """
-    loop = asyncio.get_event_loop()
-    return await loop.run_in_executor(None, lambda: get_embeddings(model_path, **kwargs))
+    return await anyio.to_thread.run_sync(lambda: get_embeddings(model_path, **kwargs))
 
 # ============================================================================
 # VECTORSTORE INITIALIZATION WITH BACKUP FALLBACK
@@ -726,6 +739,38 @@ def get_vectorstore(
     index_dir = Path(index_path)
     backup_dir = Path(backup_path)
 
+    # --- Qdrant Integration (SI1 Central Vector Hub) ---
+    qdrant_url = os.getenv("QDRANT_URL", "http://qdrant:6333")
+    qdrant_collection = os.getenv("QDRANT_COLLECTION", "omega_library")
+    
+    try:
+        from langchain_qdrant import Qdrant
+        from qdrant_client import QdrantClient
+        
+        # Test connection
+        client = QdrantClient(url=qdrant_url, timeout=5)
+        # Create collection if it doesn't exist
+        collections = client.get_collections().collections
+        exists = any(c.name == qdrant_collection for c in collections)
+        
+        if not exists:
+            logger.info(f"Creating Qdrant collection: {qdrant_collection}")
+            from qdrant_client.http import models as rest
+            client.create_collection(
+                collection_name=qdrant_collection,
+                vectors_config=rest.VectorParams(size=384, distance=rest.Distance.COSINE)
+            )
+            
+        vectorstore = Qdrant(
+            client=client,
+            collection_name=qdrant_collection,
+            embeddings=embeddings
+        )
+        logger.info(f"✓ Initialized Qdrant vectorstore at {qdrant_url}")
+        return vectorstore
+    except Exception as qe:
+        logger.warning(f"Qdrant initialization failed, falling back to FAISS: {qe}")
+
     def verify_faiss_integrity(index_dir_path: Path) -> bool:
         """Verify FAISS index integrity via SHA256 env var if provided."""
         try:
@@ -762,6 +807,10 @@ def get_vectorstore(
             allow_danger = os.getenv('FAISS_ALLOW_DANGEROUS_DESERIALIZATION', 'false').lower() == 'true'
 
             if allow_danger:
+                # S4 HARDENING: Require SHA256 if dangerous deserialization is enabled
+                if not os.getenv('FAISS_INDEX_SHA256'):
+                    raise RuntimeError("FAISS_ALLOW_DANGEROUS_DESERIALIZATION requires FAISS_INDEX_SHA256 env var")
+                
                 # If an expected SHA256 is provided, verify before loading
                 if not verify_faiss_integrity(index_dir):
                     raise RuntimeError("FAISS integrity verification failed - aborting dangerous deserialization")
@@ -873,9 +922,7 @@ async def get_vectorstore_async(
     Returns:
         Loaded vectorstore or None
     """
-    loop = asyncio.get_event_loop()
-    return await loop.run_in_executor(
-        None,
+    return await anyio.to_thread.run_sync(
         lambda: get_vectorstore(embeddings, index_path, backup_path)
     )
 

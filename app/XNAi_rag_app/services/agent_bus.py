@@ -42,7 +42,7 @@ class AgentMessage:
 class AgentBus:
     """Redis-based message bus for agent communication."""
     
-    def __init__(self, redis_url: str = "redis://localhost:6379/0"):
+    def __init__(self, redis_url: str = "rediss://localhost:6379/0"):
         self.redis_url = redis_url
         self.redis_client: Optional[redis.Redis] = None
         self.registry = AgentRegistry()
@@ -282,7 +282,7 @@ class AgentBus:
 class AgentBusManager:
     """Manager for the agent bus with automatic message handling."""
     
-    def __init__(self, redis_url: str = "redis://localhost:6379/0"):
+    def __init__(self, redis_url: str = "rediss://localhost:6379/0"):
         self.bus = AgentBus(redis_url)
         self.running = False
         self.handlers = {}

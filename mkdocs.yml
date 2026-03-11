@@ -91,6 +91,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - 🏛️ Metropolis Master: METROPOLIS_MASTER_INDEX.md
   - 🏁 Getting Started:
       - Quick Start: 01-start/quick-start.md
       - Sovereign Podman Setup: 02-tutorials/sovereign-setup.md
@@ -122,6 +123,8 @@ nav:
       - EKB Contribution Guide: 03-how-to-guides/contributing-to-ekb.md
       - Security DB Management: 03-how-to-guides/security-db-management.md
       - Development Workflow: 03-how-to-guides/dev-workflow.md
+      - 🛡️ Hardening & Audits:
+          - Opus Strategic Audit (2026-03-08): ../OPUS_STRATEGIC_AUDIT_20260308.md
       - ⚡ Hardware Tuning:
           - Ryzen & Vulkan Mastery: 03-how-to-guides/hardware-tuning/amd-ryzen-vulkan-mastery.md
           - The Resilience Manifesto: 03-how-to-guides/hardware-tuning/resilience-manifesto.md

@@ -5,7 +5,7 @@ import os
 import json
 from typing import Dict, Any, List
 from app.XNAi_rag_app.core.agent_bus import AgentBusClient
-from app.XNAi_rag_app.core.iam_db import get_iam_database, AgentType
+from app.XNAi_rag_app.core.config_loader import load_config
 
 logger = logging.getLogger("xnai.curation_bridge")
 
@@ -66,9 +66,12 @@ class VikunjaCurationBridge:
         return task_id
 
 async def run_bridge_cycle():
-    # Load config from env
-    token = os.getenv("VIKUNJA_API_TOKEN", "dummy_token")
-    url = os.getenv("VIKUNJA_URL", "http://localhost:8000/vikunja")
+    # Load config from central registry
+    config = load_config()
+    
+    # Vikunja specific settings from config or env
+    token = os.getenv("VIKUNJA_API_TOKEN") or config.get("vikunja", {}).get("api_token", "dummy_token")
+    url = os.getenv("VIKUNJA_URL") or config.get("vikunja", {}).get("url", "http://localhost:3456")
     did = "did:xnai:agent:curation_bridge"
     
     async with VikunjaCurationBridge(did, url, token) as bridge:

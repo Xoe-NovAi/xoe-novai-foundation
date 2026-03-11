@@ -14,6 +14,20 @@ VIKUNJA_TOKEN = os.environ.get("VIKUNJA_TOKEN", "")
 
 server = Server("xnai-vikunja")
 
+# S2: Authorization
+AUTHORIZED_AGENTS = {
+    "antigravity": os.getenv("MCP_TOKEN_ANTIGRAVITY"),
+    "gemini": os.getenv("MCP_TOKEN_GEMINI"),
+    "sentinel": os.getenv("MCP_TOKEN_SENTINEL"),
+    "generalist": os.getenv("MCP_TOKEN_GENERALIST"),
+}
+
+def _check_auth(agent_id: str, auth_token: str) -> bool:
+    if not agent_id or agent_id not in AUTHORIZED_AGENTS:
+        return False
+    expected = AUTHORIZED_AGENTS[agent_id]
+    if not expected: return True
+    return auth_token == expected
 
 @server.list_tools()
 async def list_tools() -> list[Tool]:
@@ -21,7 +35,14 @@ async def list_tools() -> list[Tool]:
         Tool(
             name="list_projects",
             description="List all Vikunja projects",
-            inputSchema={"type": "object", "properties": {}},
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "agent_id": {"type": "string", "description": "Requesting agent ID"},
+                    "auth_token": {"type": "string", "description": "S2 authorization token"},
+                },
+                "required": ["agent_id", "auth_token"],
+            },
         ),
         Tool(
             name="list_tasks",
@@ -29,9 +50,11 @@ async def list_tools() -> list[Tool]:
             inputSchema={
                 "type": "object",
                 "properties": {
+                    "agent_id": {"type": "string", "description": "Requesting agent ID"},
+                    "auth_token": {"type": "string", "description": "S2 authorization token"},
                     "project_id": {"type": "integer", "description": "Project ID"}
                 },
-                "required": ["project_id"],
+                "required": ["project_id", "agent_id", "auth_token"],
             },
         ),
         Tool(
@@ -40,20 +63,13 @@ async def list_tools() -> list[Tool]:
             inputSchema={
                 "type": "object",
                 "properties": {
+                    "agent_id": {"type": "string", "description": "Requesting agent ID"},
+                    "auth_token": {"type": "string", "description": "S2 authorization token"},
                     "project_id": {"type": "integer", "description": "Project ID"},
                     "title": {"type": "string", "description": "Task title"},
-                    "description": {
-                        "type": "string",
-                        "description": "Task description",
-                    },
-                    "priority": {
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 5,
-                        "description": "Priority (1=critical, 5=someday)",
-                    },
+...
                 },
-                "required": ["project_id", "title"],
+                "required": ["project_id", "title", "agent_id", "auth_token"],
             },
         ),
         Tool(
@@ -62,12 +78,12 @@ async def list_tools() -> list[Tool]:
             inputSchema={
                 "type": "object",
                 "properties": {
+                    "agent_id": {"type": "string", "description": "Requesting agent ID"},
+                    "auth_token": {"type": "string", "description": "S2 authorization token"},
                     "task_id": {"type": "integer", "description": "Task ID"},
-                    "title": {"type": "string", "description": "New title"},
-                    "description": {"type": "string", "description": "New description"},
-                    "done": {"type": "boolean", "description": "Mark as done"},
+...
                 },
-                "required": ["task_id"],
+                "required": ["task_id", "agent_id", "auth_token"],
             },
         ),
         Tool(
@@ -87,6 +103,13 @@ def get_headers() -> dict[str, str]:
 
 @server.call_tool()
 async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
+    # S2: Auth Check
+    if name != "vikunja_health":
+        agent_id = arguments.get("agent_id")
+        auth_token = arguments.get("auth_token")
+        if not _check_auth(agent_id, auth_token):
+            return [TextContent(type="text", text="Error: Authentication failed")]
+
     async with httpx.AsyncClient(timeout=30.0) as client:
         base_url = f"{VIKUNJA_URL}/api/v1"
 

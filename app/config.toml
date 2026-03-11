@@ -143,7 +143,7 @@ session_persist = true
 # ============================================================================
 [redis]
 version = "7.4.1"
-host = "redis"
+host = "localhost"
 port = 6379
 password = ""
 timeout_seconds = 60
@@ -246,10 +246,10 @@ track_timestamps = true
 track_categories = true
 
 # ============================================================================
-# [vectorstore] - FAISS Configuration
+# [vectorstore] - Qdrant Configuration (SI1 Primary)
 # ============================================================================
 [vectorstore]
-type = "faiss"
+type = "qdrant"
 index_path = "/app/storage/data/faiss_index"
 backup_path = "/backups"
 max_docs = 1000000
@@ -257,11 +257,11 @@ save_local_timeout_s = 30
 ingest_batch_size = 100
 
 [vectorstore.qdrant]
-enabled = false
-host = "localhost"
+enabled = true
+host = "qdrant"
 port = 6333
-collection = "xnai_knowledge"
-vector_size = 768
+collection = "omega_library"
+vector_size = 384
 distance = "cosine"
 
 # ============================================================================

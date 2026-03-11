@@ -1,0 +1,23 @@
+#!/bin/bash
+# 🔱 Metropolis MB-MCP Watchdog v1.0
+# Purpose: Ensure the Memory Bank MCP is always operational and healthy.
+
+CONTAINER_NAME="xnai_memory_bank_mcp"
+LOG_FILE="logs/mcp_watchdog.log"
+
+echo "[$(date)] 🛡️ MCP Watchdog starting..." >> $LOG_FILE
+
+while true; do
+    if ! podman ps | grep -q "$CONTAINER_NAME"; then
+        echo "[$(date)] 🚨 MCP DOWN! Attempting restart..." >> $LOG_FILE
+        podman start $CONTAINER_NAME || (cd infra/docker && podman-compose up -d memory-bank)
+    fi
+    
+    # Check health (Internal health endpoint)
+    if ! curl -s http://localhost:8000/health | grep -q "ok"; then
+        echo "[$(date)] ⚠️ MCP UNHEALTHY! Restarting..." >> $LOG_FILE
+        podman restart $CONTAINER_NAME
+    fi
+    
+    sleep 60
+done

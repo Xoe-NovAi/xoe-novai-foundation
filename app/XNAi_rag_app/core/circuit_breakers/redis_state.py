@@ -305,7 +305,7 @@ class CircuitBreakerStateManager:
     
     async def cleanup_expired_states(self):
         """Clean up expired states from fallback storage"""
-        current_time = asyncio.get_event_loop().time()
+        current_time = anyio.current_time()
         async with self._fallback_lock:
             # Remove states older than 1 hour
             expired_keys = [

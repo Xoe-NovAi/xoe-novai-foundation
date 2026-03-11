@@ -10,7 +10,7 @@ Implements circuit breaker pattern with graceful degradation.
 
 import asyncio
 import logging
-from typing import Dict, Any, Optional, Callable
+from typing import Dict, Any, Optional, Callable, List
 from datetime import datetime, timedelta
 
 from memory_bank_store import MemoryBankStore, ContextTier, ContextType
@@ -103,6 +103,12 @@ class MemoryBankFallbackWrapper:
         self.circuit_breaker = FallbackCircuitBreaker()
         self._fallback_mode = False
 
+    def __getattr__(self, name):
+        """Proxy missing methods to the primary MCP server."""
+        if self.mcp_server and hasattr(self.mcp_server, name):
+            return getattr(self.mcp_server, name)
+        raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
+
     async def initialize(self) -> bool:
         """Initialize both MCP server and fallback store."""
         try:
@@ -113,17 +119,10 @@ class MemoryBankFallbackWrapper:
             # Try to initialize MCP server if provided
             if self.mcp_server and hasattr(self.mcp_server, 'initialize'):
                 try:
-                    mcp_ok = await asyncio.wait_for(
-                        self.mcp_server.initialize(),
-                        timeout=5.0
-                    )
-                    if mcp_ok:
-                        self._fallback_mode = False
-                        logger.info("MCP server primary backend available")
-                        return store_ok  # Both OK
-                except asyncio.TimeoutError:
-                    logger.warning("MCP server initialization timeout - using fallback")
-                    self._fallback_mode = True
+                    # Don't use wait_for here as MemoryBankMCP.initialize handles its own timeouts/errors
+                    await self.mcp_server.initialize()
+                    self._fallback_mode = False
+                    logger.info("MCP server primary backend initialized")
                 except Exception as e:
                     logger.warning(f"MCP server initialization failed: {e}")
                     self._fallback_mode = True
@@ -142,31 +141,22 @@ class MemoryBankFallbackWrapper:
     ) -> Dict[str, Any]:
         """
         Register agent with automatic fallback.
-        
-        Tries MCP server first, falls back to SQLite if unavailable.
         """
         if not self.circuit_breaker.check_can_attempt() or self._fallback_mode:
-            logger.info(f"Using fallback store for agent registration: {agent_id}")
             return await self.fallback_store.register_agent(
                 agent_id, capabilities, memory_limit_gb
             )
 
         try:
-            # Try MCP server
             if self.mcp_server:
-                result = await asyncio.wait_for(
-                    self.mcp_server.register_agent(agent_id, capabilities, memory_limit_gb),
-                    timeout=5.0
-                )
-                self.circuit_breaker.record_success()
-                logger.info(f"Agent registered via MCP: {agent_id}")
-                return result
-        except (asyncio.TimeoutError, Exception) as e:
+                result = await self.mcp_server.register_agent(agent_id, capabilities, memory_limit_gb)
+                if result.get("status") == "success":
+                    self.circuit_breaker.record_success()
+                    return result
+        except Exception as e:
             logger.warning(f"MCP server failed, using fallback: {e}")
             self.circuit_breaker.record_failure()
-            self._fallback_mode = True
 
-        # Fallback to SQLite
         return await self.fallback_store.register_agent(
             agent_id, capabilities, memory_limit_gb
         )
@@ -175,112 +165,145 @@ class MemoryBankFallbackWrapper:
         self,
         agent_id: str,
         context_type: str,
-        tier: Optional[str] = None
+        tier: str = "hot",
+        keys: Optional[List[str]] = None
     ) -> Dict[str, Any]:
         """
         Get context with automatic fallback.
-        
-        Priority: Cache → Primary Server → Fallback Store
         """
         if not self.circuit_breaker.check_can_attempt() or self._fallback_mode:
-            logger.info(f"Using fallback store for context: {agent_id}:{context_type}")
             return await self.fallback_store.get_context(agent_id, context_type, tier)
 
         try:
-            # Try MCP server
             if self.mcp_server:
-                result = await asyncio.wait_for(
-                    self.mcp_server.get_context(agent_id, context_type, tier),
-                    timeout=5.0
-                )
-                
+                result = await self.mcp_server.get_context(agent_id, context_type, tier, keys)
                 if result.get("status") == "success":
                     self.circuit_breaker.record_success()
-                    # Also cache in fallback store for quick recovery
-                    if tier is None:
-                        tier = "hot"
-                    await self.fallback_store.set_context(
-                        agent_id, context_type, tier,
-                        result.get("context", {}),
-                        result.get("version", 1)
-                    )
+                    # Optional: Sync to fallback store
                     return result
-
-        except asyncio.TimeoutError:
-            logger.warning("MCP server timeout retrieving context")
-            self.circuit_breaker.record_failure()
-            self._fallback_mode = True
         except Exception as e:
             logger.warning(f"MCP server failed, using fallback: {e}")
             self.circuit_breaker.record_failure()
-            self._fallback_mode = True
 
-        # Fallback to SQLite
         return await self.fallback_store.get_context(agent_id, context_type, tier)
 
-    async def set_context(
+    async def update_context(
         self,
         agent_id: str,
         context_type: str,
-        tier: str,
-        content: Dict[str, Any],
-        version: int = 1
+        context_data: Dict[str, Any],
+        tier: str = "hot"
     ) -> Dict[str, Any]:
         """
-        Set context with automatic fallback.
-        
-        Always stores in fallback store to ensure persistence.
-        Also tries to sync with MCP server if available.
+        Update context with automatic fallback.
         """
-        # Always store in fallback first (ensures durability)
+        # Always store in fallback first for durability
         fallback_result = await self.fallback_store.set_context(
-            agent_id, context_type, tier, content, version
+            agent_id, context_type, tier, context_data, 1
         )
 
-        # Try to sync with MCP server if available
-        if not self._fallback_mode and self.mcp_server:
-            try:
-                await asyncio.wait_for(
-                    self.mcp_server.update_context(agent_id, context_type, content),
-                    timeout=5.0
-                )
-                self.circuit_breaker.record_success()
-                logger.info(f"Context synced to MCP: {agent_id}:{context_type}")
-            except (asyncio.TimeoutError, Exception) as e:
-                logger.warning(f"MCP sync failed: {e} - content preserved in fallback")
-                self.circuit_breaker.record_failure()
+        if not self.circuit_breaker.check_can_attempt() or self._fallback_mode:
+            return fallback_result
+
+        try:
+            if self.mcp_server:
+                result = await self.mcp_server.update_context(agent_id, context_type, context_data, tier)
+                if result.get("status") == "success":
+                    self.circuit_breaker.record_success()
+                    return result
+        except Exception as e:
+            logger.warning(f"MCP update failed: {e}")
+            self.circuit_breaker.record_failure()
 
         return fallback_result
 
-    async def search_context(
-        self,
-        query: str,
-        agent_id: Optional[str] = None,
-        context_type: Optional[str] = None,
-        limit: int = 10
-    ) -> Dict[str, Any]:
-        """
-        Search across contexts using local full-text search.
+    async def sync_context(self, source_agent: str, target_agent: str, context_id: str, sync_type: str = "full") -> Dict[str, Any]:
+        """Sync context (Proxy to MCP server, fallback is no-op or local log)."""
+        if not self.circuit_breaker.check_can_attempt() or self._fallback_mode:
+            return {"status": "error", "message": "Sync unavailable in fallback mode"}
         
-        Note: Uses fallback store FTS, as MCP server may not support search.
-        """
-        return await self.fallback_store.search_context(
-            query, agent_id, context_type, limit
-        )
+        try:
+            return await self.mcp_server.sync_context(source_agent, target_agent, context_id, sync_type)
+        except Exception as e:
+            self.circuit_breaker.record_failure()
+            return {"status": "error", "message": str(e)}
 
-    async def get_fallback_status(self) -> Dict[str, Any]:
-        """Get status of fallback system."""
-        store_metrics = await self.fallback_store.get_metrics()
-        
-        return {
-            "timestamp": datetime.now().isoformat(),
-            "fallback_mode_active": self._fallback_mode,
-            "circuit_breaker_state": self.circuit_breaker.state,
-            "circuit_breaker_failures": self.circuit_breaker.failure_count,
-            "fallback_store": store_metrics,
-            "mcp_server_available": self.mcp_server is not None
-        }
+    async def query_agent_memory(self, target_agent_id: str, query: str, requesting_agent_id: str) -> Dict[str, Any]:
+        """A2A Memory Query with fallback to local search."""
+        if not self.circuit_breaker.check_can_attempt() or self._fallback_mode:
+            # Fallback to store search
+            search_results = await self.fallback_store.search_context(query, target_agent_id)
+            return {
+                "status": "success",
+                "source": "fallback_store",
+                "matches": search_results.get("results", [])
+            }
 
-    async def close(self) -> None:
-        """Close connections."""
-        await self.fallback_store.close()
+        try:
+            return await self.mcp_server.query_agent_memory(target_agent_id, query, requesting_agent_id)
+        except Exception as e:
+            self.circuit_breaker.record_failure()
+            return {"status": "error", "message": str(e)}
+
+    async def handle_tool_call(self, name: str, arguments: Dict[str, Any]) -> Any:
+        """Handle MCP tool calls by routing through fallback logic with S2 support."""
+        if name == "register_agent":
+            result = await self.register_agent(
+                arguments["agent_id"],
+                arguments["capabilities"],
+                arguments["memory_limit_gb"]
+            )
+        elif name == "get_context":
+            result = await self.get_context(
+                arguments["agent_id"],
+                arguments["context_type"],
+                arguments.get("tier", "hot"),
+                arguments.get("keys")
+            )
+        elif name == "update_context":
+            result = await self.update_context(
+                arguments["agent_id"],
+                arguments["context_type"],
+                arguments["context_data"],
+                arguments.get("tier", "hot")
+            )
+        elif name == "sync_context":
+            result = await self.sync_context(
+                arguments["source_agent"],
+                arguments["target_agent"],
+                arguments["context_id"],
+                arguments.get("sync_type", "full")
+            )
+        elif name == "query_agent_memory":
+            result = await self.query_agent_memory(
+                arguments["target_agent_id"],
+                arguments["query"],
+                arguments["requesting_agent_id"]
+            )
+        elif name == "checkpoint_session":
+            result = await self.mcp_server.checkpoint_session(
+                arguments["session_id"],
+                arguments["agent_id"]
+            )
+        elif name == "rehydrate_session":
+            result = await self.mcp_server.rehydrate_session(
+                arguments["session_id"],
+                arguments["agent_id"]
+            )
+        elif name == "get_performance_metrics":
+            if self._fallback_mode:
+                result = await self.fallback_store.get_metrics()
+            else:
+                result = await self.mcp_server.get_performance_metrics()
+        elif name == "get_fallback_status":
+            result = await self.get_fallback_status()
+        else:
+            # Fallback for any other tools that might be added to MemoryBankMCP
+            if hasattr(self.mcp_server, "handle_tool_call"):
+                return await self.mcp_server.handle_tool_call(name, arguments)
+            return {"status": "error", "message": f"Unknown tool: {name}"}
+
+        # Format result for MCP (same as server.py)
+        from mcp.types import TextContent
+        import json
+        return [TextContent(type="text", text=json.dumps(result))]

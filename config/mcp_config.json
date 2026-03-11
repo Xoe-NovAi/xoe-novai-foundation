@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "memory-bank": {
+      "command": "podman",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--network=host",
+        "--env-file", "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.env",
+        "-v", "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage:/storage:Z",
+        "-v", "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app:/app/app:ro",
+        "-v", "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp:/app/mcp-server:ro",
+        "docker_memory-bank-mcp:latest",
+        "python",
+        "server.py"
+      ]
+    }
+  }
+}

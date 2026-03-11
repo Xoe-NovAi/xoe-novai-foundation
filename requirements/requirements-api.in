@@ -62,6 +62,8 @@ sgmllib3k
 slowapi
 soupsieve
 starlette
+sse-starlette
+starlette-context
 tenacity
 toml
 tqdm

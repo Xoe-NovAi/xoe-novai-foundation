@@ -7,25 +7,34 @@
 
 ---
 
-## Metropolis Architecture (v3.5) 🏙️
+## Metropolis Architecture (v4.1.2-HARDENED) 🏙️
 
-The Omega Stack has evolved into a self-organizing mesh of persistent experts and high-performance retrieval patterns.
+The Omega Stack has evolved into a self-organizing mesh of persistent experts and high-performance retrieval patterns, **hardened for Zen 2 (Ryzen 5700U) environments**.
 
-### 🧬 Pioneer RAG (Funnel 2.0)
-- **Small-to-Big Retrieval**: Links high-speed 128d "Summary Chunks" to 4kb "Reasoning Blocks."
-- **Speculative Drafts**: Millisecond-latency responses from 150M models, validated by 8B Authority models in the background.
-- **Affinity Metrics**: VictoriaMetrics tracks the best Expert + Model pairings for ultimate efficiency.
+### 🏛️ Metropolis Master Index
+For all high-level strategy, governance, and infrastructure protocols, see the **[METROPOLIS MASTER INDEX](docs/METROPOLIS_MASTER_INDEX.md)**.
 
-### 🏙️ Expert Metropolis (v4.0)
-- **8-Domain Expert Network**: Dedicated, persistent domain experts for Architect, API, UI, Voice, Data, Ops, Research, and Test/QA.
-- **Isolated State**: Each expert maintains its own `.gemini/history` and settings via `XDG_DATA_HOME` isolation.
-- **Quota-Aware Rotation**: Automated account rotation through 8 unique Gemini API keys to bypass free-tier rate limits.
-- **ProxyChains Support**: Integrated support for routing key-retrieval and authentication through proxies to bypass regional blocks.
+### 🧬 Hardened Stack (2026-03-12)
+- **Metropolis Foundation v4.1.2**: Stabilized mesh standards and hardened infrastructure.
+- **zRAM Restoration**: 12GB total swap capacity optimized for high-density agent workloads.
+- **Observability Baseline**: Real-time Gemini token tracking and zRAM compression monitoring.
+- **Resource Guard (Audit C2)**: Hard-coded memory limits (RAG 2GB, Llama 1.5GB) to prevent OOM.
+- **The Librarian**: Background service for recursive session summarization and archival.
 
 ---
 
 ## 🛠️ Metropolis Operations (Makefile)
 
+### Stack Lifecycle (Tiered Startup)
+| Command | Description |
+|---------|-------------|
+| `make -C infra/docker up-core` | 🚀 **Tier 1**: Start Core Services (Redis, DBs, MCP) ~2GB |
+| `make -C infra/docker up-app` | 🚀 **Tier 2**: Start Core + RAG API & UI ~5GB |
+| `make -C infra/docker up-full` | ⚠️ **Tier 3**: Start ALL services (May cause OOM) |
+| `make -C infra/docker down` | 🛑 Stop and remove all containers |
+| `make -C infra/docker status` | 📊 Check container health |
+
+### Expert Mesh Management
 | Command | Description |
 |---------|-------------|
 | `make metropolis-list` | See all active experts in the mesh |

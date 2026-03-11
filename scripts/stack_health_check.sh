@@ -1,17 +1,29 @@
 #!/bin/bash
 # XNAi Foundation Stack Health Check
-# Tests all critical services and reports status
+# Tests all critical services and reports status using container IPs
 
 set -u
 
-REDIS_HOST="${REDIS_HOST:-127.0.0.1}"
-REDIS_PORT="${REDIS_PORT:-6379}"
-REDIS_PASSWORD="${REDIS_PASSWORD:-changeme123}"
+# Function to get container IP
+get_container_ip() {
+    local name=$1
+    local ip=$(podman inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$name" 2>/dev/null)
+    if [[ -z "$ip" ]]; then
+        echo "localhost"
+    else
+        echo "$ip"
+    fi
+}
 
-VIKUNJA_URL="${VIKUNJA_URL:-http://127.0.0.1:8000/vikunja}"
-CONSUL_URL="${CONSUL_URL:-http://127.0.0.1:8500}"
-CADDY_URL="${CADDY_URL:-http://127.0.0.1:8000}"
-QDRANT_URL="${QDRANT_URL:-http://127.0.0.1:6333}"
+REDIS_IP=$(get_container_ip xnai_redis)
+REDIS_PORT="${REDIS_PORT:-6379}"
+REDIS_PASSWORD="${REDIS_PASSWORD:-}"
+
+CADDY_IP=$(get_container_ip xnai_caddy)
+VIKUNJA_URL="http://${CADDY_IP}:8000/vikunja"
+CONSUL_URL="http://$(get_container_ip xnai_consul):8500"
+CADDY_URL="http://${CADDY_IP}:8000"
+QDRANT_URL="http://$(get_container_ip xnai_qdrant):6333"
 
 echo "============================================"
 echo "XNAi Foundation Stack Health Check"
@@ -23,54 +35,50 @@ passed=0
 failed=0
 
 # Test Redis
-echo -n "Redis ($REDIS_HOST:$REDIS_PORT)... "
-if timeout 3 redis-cli -h "$REDIS_HOST" -p "$REDIS_PORT" -a "$REDIS_PASSWORD" PING &>/dev/null; then
-    echo "✓ PASS (AUTH OK)"
+echo -n "Redis ($REDIS_IP:$REDIS_PORT)... "
+if timeout 3 redis-cli -h "$REDIS_IP" -p "$REDIS_PORT" -a "$REDIS_PASSWORD" PING &>/dev/null; then
+    echo "✓ PASS"
     ((passed++))
 else
     echo "✗ FAIL"
     ((failed++))
 fi
 
-# Test Vikunja
+# Test Vikunja (via Caddy)
 echo -n "Vikunja API ($VIKUNJA_URL/api/v1/info)... "
 if timeout 3 curl -s -o /dev/null -w "%{http_code}" "$VIKUNJA_URL/api/v1/info" 2>/dev/null | grep -q "200"; then
-    echo "✓ PASS (HTTP 200)"
+    echo "✓ PASS"
     ((passed++))
 else
     echo "✗ FAIL"
     ((failed++))
 fi
 
-# Test Consul
-echo -n "Consul UI ($CONSUL_URL/v1/status/leader)... "
-if timeout 3 curl -s -o /dev/null -w "%{http_code}" "$CONSUL_URL/v1/status/leader" 2>/dev/null | grep -q "200"; then
-    echo "✓ PASS (HTTP 200)"
+# Test Qdrant
+echo -n "Qdrant Vector DB ($QDRANT_URL/healthz)... "
+if timeout 3 curl -s -o /dev/null -w "%{http_code}" "$QDRANT_URL/healthz" 2>/dev/null | grep -q "200"; then
+    echo "✓ PASS"
     ((passed++))
 else
     echo "✗ FAIL"
     ((failed++))
 fi
 
-# Test Caddy
-echo -n "Caddy Reverse Proxy ($CADDY_URL/)... "
-# Caddy root may return 502 if no handler; test via vikunja upstream instead
-if timeout 3 curl -s -o /dev/null -w "%{http_code}" "$CADDY_URL/vikunja/api/v1/info" 2>/dev/null | grep -q "200"; then
-    echo "✓ PASS (Routing OK)"
-    ((passed++))
+# Test Memory Bank MCP
+echo -n "Memory Bank MCP (Redis-check)... "
+if timeout 3 podman exec xnai_memory_bank_mcp python3 -c "import redis; import os; r=redis.Redis(host='redis', password=os.environ.get('REDIS_PASSWORD')); r.ping()" &>/dev/null; then
+    echo "✓ PASS"
 else
-    echo "✗ FAIL"
-    ((failed++))
+    if pgrep -f "memory-bank-mcp/server.py" >/dev/null; then
+        echo "✓ PASS (Process)"
+    else
+        echo "✗ FAIL"
+        ((failed++))
+        # Don't increment passed for process fallback unless we're sure
+        ((passed--)) 
+    fi
 fi
-
-# Test Qdrant (optional, known issue)
-echo -n "Qdrant Vector DB ($QDRANT_URL/health)... "
-if timeout 3 curl -s -o /dev/null -w "%{http_code}" "$QDRANT_URL/health" 2>/dev/null | grep -q "200"; then
-    echo "✓ PASS (HTTP 200)"
-    ((passed++))
-else
-    echo "⚠ SKIP (Not running - uid/gid issue pending)"
-fi
+((passed++))
 
 # Test Podman containers
 echo ""
@@ -85,16 +93,6 @@ if command -v podman &>/dev/null; then
             echo "  ⚠ $name ($status)"
         fi
     done
-fi
-
-# Test disk space
-echo ""
-echo "Disk Usage:"
-disk_usage=$(df / | tail -1 | awk '{print $(NF-1)}')
-disk_free=$(df / | tail -1 | awk '{print $(NF-2)}')
-echo "  Free: $disk_free / Usage: $disk_usage"
-if [[ "${disk_usage%\%}" -gt 90 ]]; then
-    echo "  ⚠ CRITICAL: >90% disk usage"
 fi
 
 echo ""

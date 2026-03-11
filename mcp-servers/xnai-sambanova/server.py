@@ -14,31 +14,48 @@ SAMBANOVA_API_URL = "https://api.sambanova.ai/v1"
 
 server = Server("xnai-sambanova")
 
+# S2: Authorization
+AUTHORIZED_AGENTS = {
+    "antigravity": os.getenv("MCP_TOKEN_ANTIGRAVITY"),
+    "gemini": os.getenv("MCP_TOKEN_GEMINI"),
+    "sentinel": os.getenv("MCP_TOKEN_SENTINEL"),
+    "generalist": os.getenv("MCP_TOKEN_GENERALIST"),
+}
+
+def _check_auth(agent_id: str, auth_token: str) -> bool:
+    if not agent_id or agent_id not in AUTHORIZED_AGENTS:
+        return False
+    expected = AUTHORIZED_AGENTS[agent_id]
+    if not expected: return True
+    return auth_token == expected
+
 @server.list_tools()
 async def list_tools() -> list[Tool]:
     return [
         Tool(
             name="sambanova_chat",
-            description="Perform high-speed reasoning using SambaNova Cloud models (Llama 3.1 405B, DeepSeek R1)",
+            description="Perform high-speed reasoning using SambaNova Cloud models",
             inputSchema={
                 "type": "object",
                 "properties": {
+                    "agent_id": {"type": "string", "description": "Requesting agent ID"},
+                    "auth_token": {"type": "string", "description": "S2 authorization token"},
                     "prompt": {"type": "string", "description": "The prompt to send to the model"},
                     "model": {
-                        "type": "string",
-                        "enum": ["Meta-Llama-3.1-405B-Instruct", "Meta-Llama-3.3-70B-Instruct", "DeepSeek-R1", "DeepSeek-V3", "Qwen2.5-72B-Instruct"],
-                        "default": "Meta-Llama-3.3-70B-Instruct",
-                        "description": "The model to use",
-                    },
-                    "system_prompt": {"type": "string", "default": "You are a helpful assistant.", "description": "System instructions"},
+...
                 },
-                "required": ["prompt"],
+                "required": ["prompt", "agent_id", "auth_token"],
             },
         ),
     ]
 
 @server.call_tool()
 async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
+    agent_id = arguments.get("agent_id")
+    auth_token = arguments.get("auth_token")
+    if not _check_auth(agent_id, auth_token):
+        return [TextContent(type="text", text="Error: Authentication failed")]
+
     if not SAMBANOVA_API_KEY:
         # Try rotation if single key missing
         SAMBA_KEY_1 = os.environ.get("SAMBANOVA_API_KEY_1")

@@ -77,7 +77,7 @@ class MemoryBankStore:
             # Use Omega stack storage directory (/storage)
             # Fall back to ~/.xnai if /storage doesn't exist (for development)
             storage_path = Path("/storage")
-            if not storage_path.parent.exists():
+            if not storage_path.is_dir():
                 storage_path = Path.home() / ".xnai"
             db_path = storage_path / "memory_bank_fallback.db"
         

@@ -1,0 +1,63 @@
+{
+  admin 127.0.0.1:2019
+}
+
+:8000 {
+  # Security headers
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "DENY"
+    X-XSS-Protection "1; mode=block"
+    Referrer-Policy "strict-origin-when-cross-origin"
+  }
+
+  # 1. Xoe-NovAi Foundation RAG API (Unique Prefix)
+  handle /xnai/api/v1/* {
+    reverse_proxy xnai_rag_api:8002 {
+      header_up Host {host}
+      header_up X-Real-IP {remote_host}
+    }
+  }
+
+  # 2. Open WebUI - Main Route
+  handle_path /chat/* {
+    reverse_proxy xnai_open_webui:8080 {
+      header_up Host {host}
+      header_up X-Real-IP {remote_host}
+      header_up Connection "Upgrade"
+      header_up Upgrade {>Upgrade}
+    }
+  }
+
+  # 3. Open WebUI - Internal API & Assets (Critical for subpath hosting)
+  # Map everything that the frontend might request under the /chat prefix
+  # and static assets. This avoids capturing Chainlit's own /api/* endpoints.
+  @open-webui-internal {
+    path /chat/api/* /static/* /ollama/* /_app/* /manifest.json /favicon.png /auth/* /signup/*
+  }
+  handle @open-webui-internal {
+    reverse_proxy xnai_open_webui:8080 {
+      header_up Host {host}
+      header_up X-Real-IP {remote_host}
+    }
+  }
+
+  # 4. Chainlit UI Assets
+  @chainlit-assets {
+    path /assets/* /public/* /favicon
+  }
+  handle @chainlit-assets {
+    reverse_proxy xnai_chainlit_ui:8001
+  }
+
+  # 5. Foundation Chainlit UI - Default Catch-all (including WebSockets)
+  handle {
+    reverse_proxy xnai_chainlit_ui:8001 {
+      header_up Host {host}
+      header_up X-Real-IP {remote_host}
+      header_up Connection "Upgrade"
+      header_up Upgrade {>Upgrade}
+    }
+  }
+}

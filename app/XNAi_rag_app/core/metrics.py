@@ -148,6 +148,18 @@ queries_processed_total = Counter(
     ['rag_enabled']  # Labels: 'true', 'false'
 )
 
+# Gemini Specific Tracking
+gemini_tokens_total = Counter(
+    'xnai_gemini_tokens_total',
+    'Total Gemini tokens consumed',
+    ['type']  # Labels: 'input', 'output'
+)
+
+gemini_work_time_ms = Gauge(
+    'xnai_gemini_work_time_ms',
+    'Actual upstream model work time for Gemini'
+)
+
 # ============================================================================
 # ENHANCED METRICS FOR HARDWARE BENCHMARKING, PERSONA TUNING & KNOWLEDGE BASES
 # ============================================================================
@@ -544,8 +556,10 @@ def start_metrics_server(port: int | None = None):
     """
     global _metrics_updater
     
-    # Get port from config if not specified and validate
-    port_number = get_config_value('metrics.port', 8002) if port is None else port
+    # Get port from environment or config or default and validate
+    env_port = os.getenv('METRICS_PORT')
+    port_number = int(env_port) if env_port else (get_config_value('metrics.port', 8002) if port is None else port)
+    
     if not isinstance(port_number, int):
         raise ValueError(f"Port must be an integer, got {type(port_number)}")
     

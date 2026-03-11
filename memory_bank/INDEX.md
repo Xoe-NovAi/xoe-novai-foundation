@@ -1,14 +1,24 @@
 # Memory Bank Navigation Index
 
-**Last Updated**: 2026-03-01  
-**Status**: Wave 5 Active - Split Test Framework, Wave 6 - Persistent Entity Mesh (Metropolis v3.5) 🏙️
+**Last Updated**: 2026-03-12  
+**Status**: Metropolis v4.1.2-HARDENED-INFRA (SESS-15.5 Complete) ✅
 **Architecture**: MemGPT-style hierarchical memory  
 **Purpose**: Single source of truth for Xoe-NovAi Foundation project status and coordination
-**Coordination Key**: `OMEGA-METROPOLIS-INIT-2026-02-28`
+**Coordination Key**: `METROPOLIS-HARDENED-20260312-V2`
 
 ---
 
 ## 📍 Where to Find What
+...
+### Recent Additions (Mar 12, 2026)
+- `scripts/monitor_swap.py`: Real-time zRAM compression and usage tracking (Exporter: Port 9101).
+- `app/XNAi_rag_app/core/metrics.py`: Added Gemini Token Tracking (Input/Output/WorkTime).
+- `docs/protocols/STATE_HYDRATION_PROTOCOL.md`: New mandatory state synchronization protocol.
+- `app/XNAi_rag_app/workers/librarian.py`: The Librarian (worker:librarian:001) for session state management.
+- `mcp-servers/memory-bank-mcp/server.py`: Integrated `checkpoint_session` and `rehydrate_session` tools.
+- `memory_bank/recall/conversations/archives/`: Zstd-compressed historical session logs.
+- `app/XNAi_rag_app/services/curation_bridge.py`: Refactored to poll Vikunja tasks and route to Agent Bus.
+
 
 ### 🎯 IF YOU NEED TO...
 | Need | File | Update Frequency | Purpose |

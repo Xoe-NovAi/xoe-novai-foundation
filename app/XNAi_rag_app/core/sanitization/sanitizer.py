@@ -213,7 +213,7 @@ class SanitizationPatterns:
         # MongoDB
         (r'mongodb(?:\+srv)?://[^:]+:[^@]+@[^\s]+', 'connection_string'),
         # Redis
-        (r'redis://[^:]*:[^@]+@[^\s]+', 'connection_string'),
+        (r'rediss?://[^:]*:[^@]+@[^\s]+', 'connection_string'),
         # Generic DB
         (r'(?i)(connection[_-]?string|connstring)["\s:=]+["\']?([^\s"\']+)["\']?', 'connection_string'),
     ]

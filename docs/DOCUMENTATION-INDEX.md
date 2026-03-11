@@ -27,6 +27,8 @@
 - **memory_bank/activeContext.md** - Current priorities
 
 ### Configuration & Operations
+- **docs/protocols/INDEX.md** - Central registry of system protocols
+- **docs/operations/INDEX.md** - Step-by-step operational procedures
 - **memory_bank/OPERATIONS.md** - How to build, test, deploy
 - **memory_bank/AGENTS.md** - Environment configuration
 - **memory_bank/ACCOUNT-REGISTRY.yaml** - Credentials mapping

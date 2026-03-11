@@ -2,28 +2,49 @@ import anyio
 import json
 import logging
 import os
+import time
 from datetime import datetime
 from typing import Optional, Dict, Any, List
 from redis.asyncio import Redis
-from app.XNAi_rag_app.core.dependencies import get_redis_client
+from app.XNAi_rag_app.core.dependencies import get_redis_client, get_redis_client_async
+from app.XNAi_rag_app.core.iam_handshake import KeyManager
+from prometheus_client import Counter, Histogram
 
 logger = logging.getLogger(__name__)
 
+# Prometheus Metrics
+BUS_SENT_TASKS = Counter("xnai_agent_bus_sent_tasks_total", "Total tasks sent via Agent Bus", ["sender", "target", "task_type"])
+BUS_RECEIVED_TASKS = Counter("xnai_agent_bus_received_tasks_total", "Total tasks received via Agent Bus", ["receiver", "sender", "task_type"])
+BUS_SIG_VERIFICATION = Counter("xnai_agent_bus_signature_verification_total", "Task signature verification results", ["status"])
+BUS_PROCESSING_TIME = Histogram("xnai_agent_bus_task_processing_duration_seconds", "Time taken to process a task")
+
 
 class AgentBusClient:
-    """AnyIO-wrapped Redis Stream Client for multi-agent task distribution."""
+    """AnyIO-wrapped Redis Stream Client for multi-agent task distribution with IA2 signatures."""
 
     def __init__(self, agent_did: str, stream_name: str = "xnai:agent_bus"):
         self.agent_did = agent_did
         self.stream_name = stream_name
         self.group_name = "agent_wavefront"
         self.redis: Optional[Redis] = None
+        
+        # IA2: Load cryptographic keys from environment
+        self.private_key = os.getenv(f"AGENT_KEY_PRIVATE_{agent_did.upper().replace(':', '_')}")
+        self.public_keys = self._load_public_keys()
+
+    def _load_public_keys(self) -> Dict[str, str]:
+        """IA2: Load all known agent public keys from environment."""
+        keys = {}
+        # Pattern: AGENT_KEY_PUBLIC_GEMINI, etc.
+        for env_var, value in os.environ.items():
+            if env_var.startswith("AGENT_KEY_PUBLIC_"):
+                agent_name = env_var.replace("AGENT_KEY_PUBLIC_", "").lower()
+                keys[agent_name] = value
+        return keys
 
     async def __aenter__(self):
-        host = os.getenv("REDIS_HOST", "localhost")
-        port = int(os.getenv("REDIS_PORT", 6379))
-        password = os.getenv("REDIS_PASSWORD")
-        self.redis = Redis(host=host, port=port, password=password, decode_responses=False)
+        # ST4/NS1: Use centralized async redis client with TLS support
+        self.redis = await get_redis_client_async()
         # Initialize Group
         try:
             await self.redis.xgroup_create(self.stream_name, self.group_name, id="0", mkstream=True)
@@ -33,20 +54,70 @@ class AgentBusClient:
         return self
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
+        """Exit the asynchronous context manager."""
+        if self.redis:
+            await self.redis.aclose()
+
+    async def check_kill_switch(self) -> bool:
+        """S3: Red-Phone Kill Switch. Returns True if emergency_stop is active."""
+        try:
+            # Check for most recent emergency_stop message in the stream
+            # We use xrevread to get the latest without needing a group
+            messages = await self.redis.xrevrange(self.stream_name, count=10)
+            for msg_id, data in messages:
+                if data.get("type") == "emergency_stop":
+                    logger.critical(f"🛑 KILL SWITCH DETECTED: {msg_id} from {data.get('sender')}")
+                    return True
+            return False
+        except Exception as e:
+            logger.error(f"Failed to check kill switch: {e}")
+            return False
+
+    async def send_emergency_stop(self, reason: str = "Manual Trigger"):
+        """S3: Broadcast emergency_stop to all agents."""
+        message = {
+            "sender": self.agent_did,
+            "target": "*",
+            "type": "emergency_stop",
+            "payload": json.dumps({"reason": reason, "timestamp": datetime.utcnow().isoformat()}),
+            "status": "critical",
+        }
+        task_id = await self.redis.xadd(self.stream_name, message)
+        logger.critical(f"🚨 EMERGENCY STOP SENT: {task_id} - Reason: {reason}")
+        return task_id
+
+    async def send_task(self, target_did: str, task_type: str, payload: Dict[str, Any]) -> str:
+
         if self.redis:
             await self.redis.aclose()
 
     async def send_task(self, target_did: str, task_type: str, payload: Dict[str, Any]) -> str:
-        """Add a task to the stream."""
+        """Add a signed task to the stream."""
+        timestamp = datetime.utcnow().isoformat()
         message = {
             "sender": self.agent_did,
             "target": target_did,
             "type": task_type,
             "payload": json.dumps(payload),
             "status": "pending",
+            "timestamp": timestamp,
         }
+        
+        # IA2: Generate signature if private key available
+        if self.private_key:
+            try:
+                # Sign essential fields
+                sign_payload = f"{self.agent_did}|{target_did}|{task_type}|{json.dumps(payload)}|{timestamp}".encode()
+                message["signature"] = KeyManager.sign_message(self.private_key, sign_payload)
+            except Exception as e:
+                logger.error(f"Failed to sign message: {e}")
+
         task_id = await self.redis.xadd(self.stream_name, message)
-        logger.info(f"Task sent: {task_id} from {self.agent_did} to {target_did}")
+        
+        # Instrument
+        BUS_SENT_TASKS.labels(sender=self.agent_did, target=target_did, task_type=task_type).inc()
+        
+        logger.info(f"Task sent: {task_id} from {self.agent_did} to {target_did} (Signed: {'signature' in message})")
         return task_id
 
     async def fetch_tasks(self, count: int = 1) -> List[Dict[str, Any]]:
@@ -69,14 +140,36 @@ class AgentBusClient:
                 for _, messages in response:
                     for msg_id, data in messages:
                         # Filter for this agent or broadcast
-                        target = data.get(b"target", b"*").decode()
+                        target = data.get("target", "*")
                         if target == self.agent_did or target == "*":
+                            # IA2: Verify signature if possible
+                            sender = data.get("sender", "unknown")
+                            sig = data.get("signature")
+                            verified = False
+                            
+                            if sig and sender in self.public_keys:
+                                try:
+                                    sign_payload = f"{sender}|{target}|{data.get('type')}|{data.get('payload')}|{data.get('timestamp')}".encode()
+                                    verified = KeyManager.verify_signature(self.public_keys[sender], sign_payload, sig)
+                                except Exception as e:
+                                    logger.warning(f"Signature verification failed for message {msg_id} from {sender}: {e}")
+                            elif not sig:
+                                logger.debug(f"Message {msg_id} from {sender} is unsigned")
+                            else:
+                                logger.debug(f"No public key for sender {sender}, cannot verify signature")
+
+                            # Instrument
+                            BUS_RECEIVED_TASKS.labels(receiver=self.agent_did, sender=sender, task_type=data.get("type")).inc()
+                            sig_status = "verified" if verified else ("unsigned" if not sig else "failed")
+                            BUS_SIG_VERIFICATION.labels(status=sig_status).inc()
+
                             tasks.append(
                                 {
-                                    "id": msg_id.decode(),
-                                    "sender": data.get(b"sender").decode(),
-                                    "type": data.get(b"type").decode(),
-                                    "payload": json.loads(data.get(b"payload").decode()),
+                                    "id": msg_id,
+                                    "sender": sender,
+                                    "type": data.get("type"),
+                                    "payload": json.loads(data.get("payload")),
+                                    "verified": verified,
                                 }
                             )
         return tasks
@@ -85,6 +178,16 @@ class AgentBusClient:
         """Acknowledge task completion."""
         await self.redis.xack(self.stream_name, self.group_name, task_id)
         logger.debug(f"Task acknowledged: {task_id}")
+
+    async def emit_session_bloat(self, session_id: str, token_count: int):
+        """Broadcast a session bloat event for the Librarian to handle."""
+        payload = {
+            "session_id": session_id,
+            "token_count": token_count,
+            "threshold_pct": 75,
+            "timestamp": datetime.utcnow().isoformat()
+        }
+        return await self.send_task(target_did="worker:librarian:*", task_type="session_bloat", payload=payload)
 
 
 class GapListener(AgentBusClient):

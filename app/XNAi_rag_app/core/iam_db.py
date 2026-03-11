@@ -13,20 +13,20 @@ Follows the security requirements identified in the gap analysis.
 import json
 import logging
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional, Any, Set
 from dataclasses import dataclass, asdict
 from enum import Enum
 import hashlib
 import secrets
 from passlib.context import CryptContext
-from sqlalchemy import Column, String, DateTime, JSON, Boolean, UUID, ForeignKey, Table, Index
+from sqlalchemy import Column, String, DateTime, JSON, Boolean, ForeignKey, Table, Index, text as sa_text
 from sqlalchemy.dialects.postgresql import UUID as PGUUID
 from sqlalchemy.orm import relationship, declarative_base, Session
 from sqlalchemy.sql import func
 import jwt
 
-from app.XNAi_rag_app.services.database import get_db_session
+from XNAi_rag_app.services.database import get_db_session
 
 Base = declarative_base()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -39,6 +39,17 @@ class AgentType(str, Enum):
     ESCALATION = "escalation"
     ADMIN = "admin"
     SYSTEM = "system"
+
+
+@dataclass
+class AgentIdentity:
+    """Agent identity structure for handshake protocol."""
+    id: str
+    did: str
+    name: str
+    public_key_ed25519: Optional[str] = None
+    verified: bool = False
+    last_seen: Optional[datetime] = None
 
 
 class PermissionLevel(str, Enum):
@@ -89,6 +100,9 @@ class Agent(Base):
     # Authentication
     password_hash = Column(String(255), nullable=True)
     public_key = Column(String, nullable=True)
+    public_key_ed25519 = Column(String, nullable=True) # IA2: Ed25519 support
+    verified = Column(Boolean, default=False)
+    last_seen = Column(DateTime(timezone=True), nullable=True)
     
     # Relationships
     capabilities = relationship("AgentCapability", back_populates="agent", cascade="all, delete-orphan")
@@ -185,33 +199,62 @@ class AuditLog(Base):
     )
 
 
+class Config(Base):
+    """Configuration storage for IAM."""
+    __tablename__ = 'config'
+    key = Column(String(255), primary_key=True)
+    value = Column(String, nullable=False)
+
+
 class IAMDatabase:
     """Main IAM database interface."""
     
     def __init__(self, db_session: Optional[Session] = None):
-        self.db = db_session or get_db_session()
+        try:
+            self.db = db_session or get_db_session()
+            # Ensure all tables exist
+            if self.db and self.db.bind:
+                Base.metadata.create_all(self.db.bind)
+        except Exception as e:
+            logging.error(f"Failed to initialize IAM database: {e}")
+            self.db = None
+            
         self.logger = logging.getLogger(__name__)
         
         # JWT Configuration
-        self.jwt_secret = self._get_jwt_secret()
         self.jwt_algorithm = "HS256"
         self.token_expiry = timedelta(hours=24)
+        
+        if self.db:
+            try:
+                self.jwt_secret = self._get_jwt_secret()
+            except Exception as e:
+                self.logger.error(f"Failed to initialize JWT secret: {e}")
+                self.jwt_secret = secrets.token_urlsafe(64)
+        else:
+            self.jwt_secret = secrets.token_urlsafe(64)
     
     def _get_jwt_secret(self) -> str:
         """Get or generate JWT secret."""
-        secret = self.db.execute(
-            "SELECT value FROM config WHERE key = 'jwt_secret'"
-        ).scalar()
-        
-        if not secret:
+        try:
+            # We use try/except block because config table might not exist yet
+            result = self.db.execute(
+                sa_text("SELECT value FROM config WHERE key = 'jwt_secret'")
+            ).fetchone()
+            
+            if result:
+                return result[0]
+            
             secret = secrets.token_urlsafe(64)
             self.db.execute(
-                "INSERT INTO config (key, value) VALUES ('jwt_secret', :secret)",
+                sa_text("INSERT INTO config (key, value) VALUES ('jwt_secret', :secret)"),
                 {"secret": secret}
             )
             self.db.commit()
-        
-        return secret
+            return secret
+        except Exception as e:
+            self.logger.warning(f"Database error in _get_jwt_secret: {e}")
+            return secrets.token_urlsafe(64)
     
     def register_agent(
         self,
@@ -222,8 +265,9 @@ class IAMDatabase:
         email: Optional[str] = None,
         password: Optional[str] = None,
         public_key: Optional[str] = None
-    ) -> Agent:
+    ) -> Optional[Agent]:
         """Register a new agent."""
+        if not self.db: return None
         try:
             # Check if agent already exists
             existing = self.db.query(Agent).filter(Agent.did == did).first()
@@ -231,7 +275,9 @@ class IAMDatabase:
                 raise ValueError(f"Agent with DID {did} already exists")
             
             # Create agent
+            import uuid
             agent = Agent(
+                id=uuid.uuid4(),
                 did=did,
                 name=name,
                 email=email,
@@ -247,7 +293,7 @@ class IAMDatabase:
             self.db.commit()
             self.db.refresh(agent)
             
-            self._log_audit(agent.id, "agent_registered", "success", {"did": did, "type": agent_type.value})
+            self._log_audit(str(agent.id), "agent_registered", "success", {"did": did, "type": agent_type.value})
             
             return agent
             
@@ -256,8 +302,30 @@ class IAMDatabase:
             self.logger.error(f"Error registering agent {did}: {e}")
             raise
     
+    def get_agent(self, did: str) -> Optional[Agent]:
+        """Get agent by DID (Handshake compatibility)."""
+        if not self.db: return None
+        return self.db.query(Agent).filter(Agent.did == did).first()
+
+    def update_agent_verification(self, did: str, status: bool):
+        """Update agent verification status (Handshake compatibility)."""
+        if not self.db: return
+        agent = self.get_agent(did)
+        if agent:
+            agent.verified = status
+            self.db.commit()
+
+    def update_agent_last_seen(self, did: str):
+        """Update agent last seen timestamp (Handshake compatibility)."""
+        if not self.db: return
+        agent = self.get_agent(did)
+        if agent:
+            agent.last_seen = datetime.now(timezone.utc)
+            self.db.commit()
+
     def authenticate_agent(self, did: str, credentials: Dict[str, Any]) -> Optional[AuthToken]:
         """Authenticate an agent and return JWT token."""
+        if not self.db: return None
         try:
             agent = self.db.query(Agent).filter(Agent.did == did).first()
             if not agent:
@@ -266,7 +334,7 @@ class IAMDatabase:
             
             # Check agent status
             if agent.status != "active":
-                self._log_audit(agent.id, "authentication_failed", "failed", {"reason": f"agent_inactive_{agent.status}"})
+                self._log_audit(str(agent.id), "authentication_failed", "failed", {"reason": f"agent_inactive_{agent.status}"})
                 return None
             
             # Authenticate based on credentials type
@@ -275,41 +343,42 @@ class IAMDatabase:
             if auth_method == "password":
                 password = credentials.get("password")
                 if not password or not self._verify_password(password, agent.password_hash):
-                    self._log_audit(agent.id, "authentication_failed", "failed", {"reason": "invalid_password"})
+                    self._log_audit(str(agent.id), "authentication_failed", "failed", {"reason": "invalid_password"})
                     return None
             
             elif auth_method == "public_key":
                 signature = credentials.get("signature")
                 message = credentials.get("message")
                 if not self._verify_signature(agent.public_key, message, signature):
-                    self._log_audit(agent.id, "authentication_failed", "failed", {"reason": "invalid_signature"})
+                    self._log_audit(str(agent.id), "authentication_failed", "failed", {"reason": "invalid_signature"})
                     return None
             
             else:
-                self._log_audit(agent.id, "authentication_failed", "failed", {"reason": f"unsupported_auth_method_{auth_method}"})
+                self._log_audit(str(agent.id), "authentication_failed", "failed", {"reason": f"unsupported_auth_method_{auth_method}"})
                 return None
             
             # Generate JWT token
             token = self._generate_jwt_token(agent)
             
             # Create session
+            import uuid
             session = AgentSession(
-                session_id=token,
+                session_id=uuid.uuid4(),
                 agent_id=agent.id,
-                expires_at=datetime.utcnow() + self.token_expiry
+                expires_at=datetime.now(timezone.utc) + self.token_expiry
             )
             
             self.db.add(session)
             self.db.commit()
             
-            self._log_audit(agent.id, "authentication_success", "success", {"session_id": str(session.session_id)})
+            self._log_audit(str(agent.id), "authentication_success", "success", {"session_id": str(session.session_id)})
             
             return AuthToken(
                 token=token,
                 agent_id=str(agent.id),
-                expires_at=datetime.utcnow() + self.token_expiry,
-                permissions=self._get_agent_permissions(agent.id),
-                issued_at=datetime.utcnow()
+                expires_at=datetime.now(timezone.utc) + self.token_expiry,
+                permissions=self._get_agent_permissions(str(agent.id)),
+                issued_at=datetime.now(timezone.utc)
             )
             
         except Exception as e:
@@ -324,6 +393,7 @@ class IAMDatabase:
         resource_type: Optional[str] = None
     ) -> bool:
         """Check if agent is authorized to perform an action on a resource."""
+        if not self.db: return False
         try:
             # Get agent
             agent = self.db.query(Agent).filter(Agent.id == agent_id).first()
@@ -336,7 +406,7 @@ class IAMDatabase:
                 return False
             
             # Check capability
-            if not self._has_capability(agent.id, action):
+            if not self._has_capability(str(agent.id), action):
                 self._log_audit(agent_id, "authorization_denied", "denied", {
                     "action": action,
                     "resource": resource,
@@ -345,7 +415,7 @@ class IAMDatabase:
                 return False
             
             # Check resource permission
-            if resource_type and not self._has_resource_permission(agent.id, resource_type, resource, action):
+            if resource_type and not self._has_resource_permission(str(agent.id), resource_type, resource, action):
                 self._log_audit(agent_id, "authorization_denied", "denied", {
                     "action": action,
                     "resource": resource,
@@ -366,6 +436,7 @@ class IAMDatabase:
     
     def get_agent_capabilities(self, agent_id: str) -> List[str]:
         """Get agent capabilities."""
+        if not self.db: return []
         try:
             capabilities = self.db.query(AgentCapability.capability).filter(
                 AgentCapability.agent_id == agent_id
@@ -379,6 +450,7 @@ class IAMDatabase:
     
     def add_agent_capability(self, agent_id: str, capability: str, level: str = "basic", confidence: str = "medium"):
         """Add capability to agent."""
+        if not self.db: return
         try:
             # Check if capability already exists
             existing = self.db.query(AgentCapability).filter(
@@ -412,6 +484,7 @@ class IAMDatabase:
         permission_level: PermissionLevel
     ):
         """Set agent permission for a resource."""
+        if not self.db: return
         try:
             # Check if permission already exists
             existing = self.db.query(AgentPermission).filter(
@@ -439,6 +512,7 @@ class IAMDatabase:
     
     def list_agents(self, agent_type: Optional[AgentType] = None, status: Optional[str] = None) -> List[Dict[str, Any]]:
         """List agents with optional filtering."""
+        if not self.db: return []
         try:
             query = self.db.query(Agent)
             
@@ -494,14 +568,15 @@ class IAMDatabase:
             "did": agent.did,
             "name": agent.name,
             "agent_type": agent.agent_type,
-            "exp": datetime.utcnow() + self.token_expiry,
-            "iat": datetime.utcnow()
+            "exp": datetime.now(timezone.utc) + self.token_expiry,
+            "iat": datetime.now(timezone.utc)
         }
         
         return jwt.encode(payload, self.jwt_secret, algorithm=self.jwt_algorithm)
     
     def _get_agent_permissions(self, agent_id: str) -> List[str]:
         """Get agent permissions."""
+        if not self.db: return []
         try:
             permissions = self.db.query(AgentPermission.permission_level).filter(
                 AgentPermission.agent_id == agent_id
@@ -526,6 +601,7 @@ class IAMDatabase:
         action: str
     ) -> bool:
         """Check if agent has permission for resource."""
+        if not self.db: return False
         try:
             permission = self.db.query(AgentPermission).filter(
                 AgentPermission.agent_id == agent_id,
@@ -551,10 +627,13 @@ class IAMDatabase:
             self.logger.error(f"Error checking resource permission: {e}")
             return False
     
-    def _log_audit(self, agent_id: Optional[str], action: str, result: str, details: Dict[str, Any]):
+    def _log_audit(self, agent_id: Optional[str], action: str, result: str, details: Dict[Any, Any]):
         """Log audit event."""
+        if not self.db: return
         try:
+            import uuid
             audit_log = AuditLog(
+                id=uuid.uuid4(),
                 agent_id=agent_id,
                 action=action,
                 result=result,
@@ -569,8 +648,9 @@ class IAMDatabase:
     
     def cleanup_expired_sessions(self):
         """Clean up expired sessions."""
+        if not self.db: return
         try:
-            cutoff = datetime.utcnow()
+            cutoff = datetime.now(timezone.utc)
             expired_sessions = self.db.query(AgentSession).filter(
                 AgentSession.expires_at < cutoff
             ).all()

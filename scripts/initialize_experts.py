@@ -12,7 +12,7 @@ import psycopg2
 from typing import List, Dict
 
 # Configuration from environment or defaults
-DB_URL = os.getenv("DATABASE_URL", "postgresql://vikunja:vikunja123@localhost:5432/vikunja")
+DB_URL = os.getenv("DATABASE_URL", "postgresql://vikunja:mUv7+5C6fF1w08O5eU7S9vP8vY8Z0rG1n7J7v4k9m3E=@localhost:5432/vikunja")
 
 EXPERTS = [
     {

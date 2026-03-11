@@ -755,10 +755,10 @@ async def create_schema_manager(redis_url: Optional[str] = None) -> RedisSchemaM
 
     if not redis_url:
         import os
-        redis_url = os.getenv("REDIS_URL", "redis://redis:6379")
+        redis_url = os.getenv("REDIS_URL", "rediss://redis:6379")
 
     try:
-        pool = ConnectionPool.from_url(redis_url, max_connections=50)
+        pool = ConnectionPool.from_url(redis_url, max_connections=50, decode_responses=True)
         redis_client = redis.Redis(connection_pool=pool)
 
         # Test connection

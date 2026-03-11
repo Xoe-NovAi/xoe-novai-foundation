@@ -6,13 +6,21 @@ Phase 1, Day 2 - Circuit Breaker Implementation & Service Resilience
 import asyncio
 import time
 import sys
-import asyncio
-import time
 from unittest.mock import MagicMock, patch
 
 # Mock chainlit in sys.modules before importing the dependent module
 with patch.dict(sys.modules, {'chainlit': MagicMock()}):
-    from XNAi_rag_app.ui.chainlit_app_voice import generate_ai_response, get_circuit_breaker_status
+    from XNAi_rag_app.ui.chainlit_app_unified import stream_from_api, check_api_health
+
+async def generate_ai_response(query: str):
+    """Wrapper to maintain compatibility with existing test structure"""
+    try:
+        async for event_type, content, metadata in stream_from_api(query):
+            if event_type == "error":
+                return f"Error: {metadata.get('error')}"
+        return "Success"
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 async def load_test_circuit_breakers():
     """Test circuit breakers under concurrent load"""
@@ -28,35 +36,22 @@ async def load_test_circuit_breakers():
         tasks.append(generate_ai_response(f"test query {i}"))
 
     # Execute concurrently
-    results = await asyncio.gather(*tasks, return_exceptions=True)
+    results = await asyncio.gather(*tasks)
 
-    end_time = time.time()
-    duration = end_time - start_time
-
-    # Analyze results
-    successful = sum(1 for r in results if not isinstance(r, Exception))
-    failed = len(results) - successful
-    success_rate = (successful / len(results)) * 100
+    # Results summary
+    duration = time.time() - start_time
+    success_count = results.count("Success")
+    success_rate = (success_count / 50) * 100
 
     print("\n📊 Load Test Results:")
-    print(f"  Total requests: {len(results)}")
-    print(f"  Successful: {successful}")
-    print(f"  Failed: {failed}")
-    print(f"  Success rate: {success_rate:.1f}%")
-    print(f"  Duration: {duration:.2f}s")
-    print(f"  Requests/sec: {len(results)/duration:.1f}")
+    print(f"  ⏱️  Total Duration: {duration:.2f}s")
+    print(f"  ✅ Successful Requests: {success_count}/50")
+    print(f"  📈 Success Rate: {success_rate:.1f}%")
 
-    # Check circuit breaker status
-    print("\n🔌 Circuit Breaker Status:")
-    status = get_circuit_breaker_status()
-    for name, cb_status in status.items():
-        state_emoji = {
-            'closed': '✅',
-            'open': '🚨',
-            'half_open': '⚠️'
-        }.get(cb_status['state'], '❓')
-
-        print(f"  {state_emoji} {name}: {cb_status['state']} (failures: {cb_status['fail_count']})")
+    # Verify final health
+    is_healthy, health_msg = await check_api_health()
+    print(f"🧪 API Health Post-Load: {'🟢 Healthy' if is_healthy else '🔴 Impacted'}")
+    print(f"💬 Health Message: {health_msg}")
 
     # Performance analysis
     print("\n📈 Performance Analysis:")
@@ -70,20 +65,11 @@ async def load_test_circuit_breakers():
     if success_rate > 80:
         print("  ✅ High success rate indicates good resilience")
     elif success_rate > 50:
-        print("  ⚠️  Moderate success rate - some circuit breakers may be active")
+        print("  ⚠️  Moderate success rate - circuit breakers may have triggered")
     else:
-        print("  🚨 Low success rate - circuit breakers heavily active")
-
-    # Circuit breaker analysis
-    open_breakers = [name for name, cb_status in status.items() if cb_status['state'] == 'open']
-    if open_breakers:
-        print(f"  ℹ️  {len(open_breakers)} circuit breaker(s) are open: {', '.join(open_breakers)}")
-        print("     This is expected behavior under load when services are unavailable")
-    else:
-        print("  ℹ️  All circuit breakers remain closed - services handled load well")
+        print("  🚨 Low success rate - system under heavy pressure")
 
     print("\n✅ Load test completed")
-    print("📈 Circuit breakers demonstrate proper load handling and resilience")
 
 if __name__ == "__main__":
     asyncio.run(load_test_circuit_breakers())

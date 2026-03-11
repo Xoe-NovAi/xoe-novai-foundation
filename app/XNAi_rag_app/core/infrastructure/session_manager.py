@@ -76,7 +76,7 @@ class SessionManager:
     Priority: Redis (persistent) → In-memory (transient)
 
     Usage:
-        config = SessionConfig(redis_url="redis://localhost:6379")
+        config = SessionConfig(redis_url="rediss://localhost:6379")
         manager = SessionManager(config)
         await manager.initialize()
 

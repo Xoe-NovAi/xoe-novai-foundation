@@ -413,3 +413,4 @@ zstandard==0.25.0
 # pip
 # setuptools
 dnspython==2.7.0
+llama-cpp-python==0.3.16

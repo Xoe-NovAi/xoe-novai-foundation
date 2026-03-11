@@ -58,14 +58,14 @@ class VoiceRecoveryManager:
         3. Cross-service degradation
         4. User notification and retry
         """
-        start_time = asyncio.get_event_loop().time()
+        start_time = asyncio.get_running_loop().time()
 
         try:
             recovery_result = await self._execute_recovery_strategy(
                 error_type, original_request
             )
 
-            recovery_time = asyncio.get_event_loop().time() - start_time
+            recovery_time = asyncio.get_running_loop().time() - start_time
             self.recovery_stats["recovery_times"].append(recovery_time)
             self.recovery_stats["successful_recoveries"] += 1
 

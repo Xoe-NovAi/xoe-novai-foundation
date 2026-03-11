@@ -12,34 +12,51 @@ Usage:
 """
 
 from pathlib import Path
-from typing import Optional
-
+from typing import Optional, Dict, Any
+import os
+import anyio
 from fastmcp import FastMCP
 
 MEMORY_BANK_ROOT = Path(__file__).parent.parent.parent / "memory_bank"
 
 mcp = FastMCP("XNAi Memory Bank")
 
+# S2: Authorization
+AUTHORIZED_AGENTS = {
+    "antigravity": os.getenv("MCP_TOKEN_ANTIGRAVITY"),
+    "gemini": os.getenv("MCP_TOKEN_GEMINI"),
+    "sentinel": os.getenv("MCP_TOKEN_SENTINEL"),
+    "generalist": os.getenv("MCP_TOKEN_GENERALIST"),
+}
 
-@mcp.resource("memory://bank/{path*}")
-async def read_memory_file(path: str) -> str:
+def _check_auth(agent_id: str, auth_token: str) -> bool:
+    if not agent_id or agent_id not in AUTHORIZED_AGENTS:
+        return False
+    expected = AUTHORIZED_AGENTS[agent_id]
+    if not expected: return True
+    return auth_token == expected
+
+@mcp.tool()
+async def read_memory_file(path: str, agent_id: str, auth_token: str) -> str:
     """Read any file from the memory bank.
 
     Args:
         path: Relative path within memory_bank directory
-
-    Returns:
-        File contents as string
+        agent_id: Requesting agent ID
+        auth_token: S2 authorization token
     """
-    file_path = MEMORY_BANK_ROOT / path
+    if not _check_auth(agent_id, auth_token):
+        return "Error: Authentication failed"
 
+    file_path = MEMORY_BANK_ROOT / path
     if not file_path.exists():
         return f"Error: File not found - {path}"
 
     if not str(file_path.resolve()).startswith(str(MEMORY_BANK_ROOT.resolve())):
         return "Error: Access denied - path outside memory bank"
 
-    return file_path.read_text(encoding="utf-8")
+    async with await anyio.open_file(file_path, mode="r", encoding="utf-8") as f:
+        return await f.read()
 
 
 @mcp.resource("memory://bank/core/activeContext.md")
@@ -55,12 +72,16 @@ async def get_progress() -> str:
 
 
 @mcp.tool()
-async def get_core_context() -> str:
+async def get_core_context(agent_id: str, auth_token: str) -> str:
     """Load and compile all core memory blocks.
 
-    Returns:
-        Compiled context from all core blocks
+    Args:
+        agent_id: Requesting agent ID
+        auth_token: S2 authorization token
     """
+    if not _check_auth(agent_id, auth_token):
+        return "Error: Authentication failed"
+
     core_blocks = [
         "projectbrief.md",
         "productContext.md",
@@ -74,7 +95,8 @@ async def get_core_context() -> str:
     for block in core_blocks:
         path = MEMORY_BANK_ROOT / block
         if path.exists():
-            content = path.read_text(encoding="utf-8")
+            async with await anyio.open_file(path, mode="r", encoding="utf-8") as f:
+                content = await f.read()
             if content.startswith("---"):
                 parts = content.split("---", 2)
                 if len(parts) >= 3:
@@ -85,15 +107,17 @@ async def get_core_context() -> str:
 
 
 @mcp.tool()
-async def get_block_status(block_name: str) -> str:
+async def get_block_status(block_name: str, agent_id: str, auth_token: str) -> str:
     """Get utilization status for a memory block.
 
     Args:
         block_name: Name of the block (e.g., 'techContext', 'progress')
-
-    Returns:
-        Block status including character count and utilization
+        agent_id: Requesting agent ID
+        auth_token: S2 authorization token
     """
+    if not _check_auth(agent_id, auth_token):
+        return "Error: Authentication failed"
+
     from pathlib import Path
     import yaml
 
@@ -115,7 +139,8 @@ async def get_block_status(block_name: str) -> str:
     if not block_file.exists():
         return f"Block '{block_name}' not found"
 
-    content = block_file.read_text(encoding="utf-8")
+    async with await anyio.open_file(block_file, mode="r", encoding="utf-8") as f:
+        content = await f.read()
     chars = len(content)
     limit = limits.get(block_name, 5000)
     utilization = chars / limit if limit > 0 else 0
@@ -134,15 +159,17 @@ Path: {block_file.relative_to(MEMORY_BANK_ROOT)}"""
 
 
 @mcp.tool()
-async def search_memory_bank(query: str) -> str:
+async def search_memory_bank(query: str, agent_id: str, auth_token: str) -> str:
     """Search for text within the memory bank.
 
     Args:
         query: Search term to find
-
-    Returns:
-        List of matching files and context
+        agent_id: Requesting agent ID
+        auth_token: S2 authorization token
     """
+    if not _check_auth(agent_id, auth_token):
+        return "Error: Authentication failed"
+
     import re
     from pathlib import Path
 
@@ -151,7 +178,8 @@ async def search_memory_bank(query: str) -> str:
 
     for md_file in MEMORY_BANK_ROOT.rglob("*.md"):
         try:
-            content = md_file.read_text(encoding="utf-8")
+            async with await anyio.open_file(md_file, mode="r", encoding="utf-8") as f:
+                content = await f.read()
             matches = list(pattern.finditer(content))
 
             if matches:
@@ -175,15 +203,17 @@ async def search_memory_bank(query: str) -> str:
 
 
 @mcp.tool()
-async def list_memory_files(tier: str = "all") -> str:
+async def list_memory_files(agent_id: str, auth_token: str, tier: str = "all") -> str:
     """List files in the memory bank.
 
     Args:
+        agent_id: Requesting agent ID
+        auth_token: S2 authorization token
         tier: Filter by tier - 'core', 'recall', 'archival', or 'all'
-
-    Returns:
-        List of files organized by tier
     """
+    if not _check_auth(agent_id, auth_token):
+        return "Error: Authentication failed"
+
     from pathlib import Path
 
     tiers = {
@@ -198,7 +228,8 @@ async def list_memory_files(tier: str = "all") -> str:
     if tier in ("all", "core"):
         core_files = []
         for md_file in MEMORY_BANK_ROOT.glob("*.md"):
-            chars = len(md_file.read_text(encoding="utf-8"))
+            async with await anyio.open_file(md_file, mode="r", encoding="utf-8") as f:
+                chars = len(await f.read())
             core_files.append(f"  - {md_file.name} ({chars:,} chars)")
         output.append(
             f"Core Memory ({len(core_files)} files):\n" + "\n".join(sorted(core_files))

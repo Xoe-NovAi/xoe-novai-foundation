@@ -244,6 +244,32 @@ class UserDatabase:
             )
             self.db["users"].create_index(["email"], unique=True)
 
+        if "agent_keys" not in self.db.table_names():
+            self.db["agent_keys"].create(
+                {
+                    "key_id": str,
+                    "agent_id": str,
+                    "key_hash": str,
+                    "name": str,
+                    "created_at": str,
+                    "expires_at": str,
+                    "last_used": str,
+                    "status": str,  # active, revoked, expired
+                },
+                pk="key_id",
+            )
+            self.db["agent_keys"].create_index(["agent_id"])
+
+        if "agent_key_scopes" not in self.db.table_names():
+            self.db["agent_key_scopes"].create(
+                {
+                    "key_id": str,
+                    "scope": str,
+                },
+                pk=("key_id", "scope"),
+                foreign_keys=[("key_id", "agent_keys", "key_id")]
+            )
+
     def _run_checkpointer(self):
         """Background thread to perform WAL checkpoints."""
         while not self._stop_event.is_set():
@@ -380,6 +406,98 @@ class UserDatabase:
         self.db["users"].insert(user.to_row())
         logger.info(f"Created user account: {username}")
         return user
+
+    def generate_agent_key(
+        self, agent_id: str, name: str, scopes: List[str], expires_in_days: int = 365
+    ) -> str:
+        """Generate a new scoped API key for an agent."""
+        key = f"xnai_{secrets.token_urlsafe(32)}"
+        key_hash = hashlib.sha256(key.encode()).hexdigest()
+        key_id = secrets.token_hex(8)
+        
+        now = datetime.now(timezone.utc).isoformat()
+        expires_at = (datetime.now(timezone.utc) + timedelta(days=expires_in_days)).isoformat()
+        
+        self.db["agent_keys"].insert({
+            "key_id": key_id,
+            "agent_id": agent_id,
+            "key_hash": key_hash,
+            "name": name,
+            "created_at": now,
+            "expires_at": expires_at,
+            "last_used": None,
+            "status": "active"
+        })
+        
+        for scope in scopes:
+            self.db["agent_key_scopes"].insert({
+                "key_id": key_id,
+                "scope": scope
+            })
+            
+        logger.info(f"Generated new API key for agent {agent_id}: {name} (ID: {key_id})")
+        return key
+
+    def verify_agent_key(self, key: str) -> Optional[Dict[str, Any]]:
+        """Verify an agent API key and return its data and scopes."""
+        key_hash = hashlib.sha256(key.encode()).hexdigest()
+        
+        results = list(self.db.query(
+            "SELECT * FROM agent_keys WHERE key_hash = ?", [key_hash]
+        ))
+        
+        if not results:
+            return None
+            
+        key_data = results[0]
+        if key_data["status"] != "active":
+            return None
+            
+        # Check expiry
+        if key_data["expires_at"]:
+            expires_at = datetime.fromisoformat(key_data["expires_at"])
+            if datetime.now(timezone.utc) > expires_at:
+                self.db["agent_keys"].update(key_data["key_id"], {"status": "expired"})
+                return None
+                
+        # Get scopes
+        scopes = [
+            row["scope"] for row in self.db.query(
+                "SELECT scope FROM agent_key_scopes WHERE key_id = ?", [key_data["key_id"]]
+            )
+        ]
+        
+        # Update last used
+        self.db["agent_keys"].update(
+            key_data["key_id"], 
+            {"last_used": datetime.now(timezone.utc).isoformat()}
+        )
+        
+        return {
+            "agent_id": key_data["agent_id"],
+            "name": key_data["name"],
+            "scopes": scopes
+        }
+
+    def revoke_agent_key(self, key_id: str):
+        """Revoke an agent API key."""
+        self.db["agent_keys"].update(key_id, {"status": "revoked"})
+        logger.info(f"Revoked API key: {key_id}")
+
+    def list_agent_keys(self, agent_id: str) -> List[Dict[str, Any]]:
+        """List all keys for a specific agent."""
+        keys = list(self.db.query(
+            "SELECT * FROM agent_keys WHERE agent_id = ?", [agent_id]
+        ))
+        
+        for key in keys:
+            key["scopes"] = [
+                row["scope"] for row in self.db.query(
+                    "SELECT scope FROM agent_key_scopes WHERE key_id = ?", [key["key_id"]]
+                )
+            ]
+            
+        return keys
 
 
 # ============================================================================
@@ -743,6 +861,10 @@ class IAMService:
             "token_type": "bearer",
             "expires_in": IAMConfig.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
         }
+
+    async def verify_agent_key(self, key: str) -> Optional[Dict[str, Any]]:
+        """Verify agent API key and return scopes"""
+        return self.db.verify_agent_key(key)
 
 
 # ============================================================================

@@ -95,26 +95,51 @@ class KnowledgeMinerWorker(AgentBusClient):
         source = self.ROLE_SOURCES.get(role.lower(), "gutenberg")
         category = f"expert-{name.lower().replace(' ', '-')}"
         
-        # 2. Execute Real Research (Web + Local RAG)
-        logger.info(f"📡 Triggering crawl from {source} for {name}...")
+        # 2. Delegate to LibraryCuratorWorker via Agent Bus
+        logger.info(f"📡 Delegating curation task for {name} to LibraryCurator...")
         try:
-            items_curated, duration = await curate_from_source(
-                source=source,
-                category=category,
-                query=name,
-                max_items=5,
-                embed=True,
-                dry_run=False
+            # Send task to Agent Bus
+            curation_payload = {
+                "source_type": "api",
+                "api_name": source,
+                "query": name,
+                "category": category,
+                "max_items": 5
+            }
+            curation_task_id = await self.send_task(
+                target_did="worker:library_curator:001",
+                task_type="curation_task",
+                payload=curation_payload
             )
-            logger.info(f"📚 Curated {items_curated} items for {name} in {duration:.2f}s")
-        except Exception as e:
-            logger.error(f"❌ Crawl failed for {name}: {e}")
-            items_curated = 0
+            logger.info(f"📤 Curation task sent: {curation_task_id}")
+            
+            # 3. Wait for result (Simple poll for now)
+            # In a production system, we might use a proper callback/promise pattern
+            max_wait = 120 # 2 minutes
+            start_wait = time.time()
+            completed = False
+            
+            while time.time() - start_wait < max_wait:
+                # Check task updates stream (this is simplified)
+                # Ideally we'd filter for the specific task_id
+                updates = await self.redis.xrevrange("xnai:task_updates", count=10)
+                for msg_id, data in updates:
+                    if data.get("task_id") == curation_task_id and data.get("status") == "completed":
+                        logger.info(f"✅ Curation task {curation_task_id} confirmed complete")
+                        completed = True
+                        break
+                if completed: break
+                await anyio.sleep(5)
+            
+            if not completed:
+                logger.warning(f"⚠️ Curation task {curation_task_id} timed out or failed")
 
-        # 3. Extract high-value findings from the curated content
-        # In a full implementation, we'd use an LLM to summarize the new files
+        except Exception as e:
+            logger.error(f"❌ Delegation failed for {name}: {e}")
+
+        # 4. Extract high-value findings (Mocked for now)
         findings = [
-            f"{name} research complete via {source}.",
+            f"{name} research complete via delegated curation.",
             f"Expertise category created: {category}.",
             f"Knowledge injected into Gnosis Engine."
         ]

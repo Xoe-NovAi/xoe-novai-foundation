@@ -9,7 +9,7 @@ from app.XNAi_rag_app.core.iam_handshake import KeyManager
 async def test_orchestrator_handoff():
     """Test full delegation/handoff flow via Orchestrator."""
     os.environ["REDIS_HOST"] = "localhost"
-    os.environ["REDIS_PASSWORD"] = "changeme123"
+    os.environ["REDIS_PASSWORD"] = os.getenv("REDIS_PASSWORD", "")
     
     db_path = "data/test_orchestrator.db"
     if os.path.exists(db_path): os.remove(db_path)

@@ -31,7 +31,7 @@ class NotificationSchema(BaseModel):
 class NotificationProducer:
     """Async producer for Metropolis Notification Stream"""
     
-    def __init__(self, redis_url: str = "redis://localhost:6379", stream_key: str = "metropolis:notifications"):
+    def __init__(self, redis_url: str = "rediss://localhost:6379", stream_key: str = "metropolis:notifications"):
         self.redis_url = redis_url
         self.stream_key = stream_key
         self.redis: Optional[Redis] = None

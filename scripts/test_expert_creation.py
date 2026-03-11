@@ -32,7 +32,7 @@ logger = logging.getLogger("test_expert_creation")
 async def run_test():
     # 1. Configuration
     redis_host = os.getenv("REDIS_HOST", "localhost") # Use localhost if running on host
-    redis_password = os.getenv("REDIS_PASSWORD", "changeme123")
+    redis_password = os.getenv("REDIS_PASSWORD", "")
     
     logger.info(f"Connecting to Redis at {redis_host}...")
     

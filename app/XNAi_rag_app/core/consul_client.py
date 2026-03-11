@@ -1,6 +1,7 @@
 import os
 import logging
 import asyncio
+import anyio
 from typing import Optional, List, Dict, Any
 import httpx
 import dns.resolver
@@ -143,22 +144,24 @@ class ConsulClient:
     async def _resolve_via_dns(self, name: str) -> Optional[str]:
         """Resolve service using Consul DNS on port 8600."""
         try:
-            loop = asyncio.get_event_loop()
-            
             def dns_lookup():
                 resolver = dns.resolver.Resolver()
                 resolver.nameservers = [self.dns_host]
                 resolver.port = self.dns_port
-                answers = resolver.resolve(f"{name}.service.consul", "A")
-                if answers:
-                    # Return first address with default port
-                    return f"{answers[0]}:8000"
+                try:
+                    answers = resolver.resolve(f"{name}.service.consul", "A")
+                    if answers:
+                        # Return first address with default port
+                        return f"{answers[0]}:8000"
+                except Exception:
+                    return None
                 return None
-            
-            result = await loop.run_in_executor(None, dns_lookup)
+
+            result = await anyio.to_thread.run_sync(dns_lookup)
             if result:
                 logger.debug(f"✅ Resolved {name} via DNS: {result}")
                 return result
+
         except Exception as e:
             logger.debug(f"⚠️ DNS resolution failed for {name}: {e}")
         

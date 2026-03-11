@@ -44,7 +44,7 @@ ls knowledge/model_cards/*.json | wc -l
 # Redis
 export REDIS_HOST=localhost
 export REDIS_PORT=6379
-export REDIS_PASSWORD=changeme123
+export REDIS_PASSWORD=dUXz1rez6y27FfYC195APxyl1BLNbZz/3T7hucihcgM=
 
 # Consul
 export CONSUL_HOST=localhost
@@ -246,7 +246,7 @@ docker-compose ps redis
 # Expected: redis ... Up
 
 # 2. Check Redis health
-redis-cli -a changeme123 PING
+redis-cli -a dUXz1rez6y27FfYC195APxyl1BLNbZz/3T7hucihcgM= PING
 # Expected: PONG
 
 # 3. If failed, restart Redis

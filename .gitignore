@@ -51,3 +51,6 @@ env/
 # Large Artifacts
 artifacts/*.json
 _archive/**/*.json
+
+# Redis TLS Certificates
+infra/docker/tls/

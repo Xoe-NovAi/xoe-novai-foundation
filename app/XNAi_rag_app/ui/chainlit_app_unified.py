@@ -462,7 +462,7 @@ async def on_chat_start():
     # Initialize session manager
     if INFRASTRUCTURE_AVAILABLE and FEATURE_REDIS_SESSIONS:
         try:
-            redis_url = f"redis://:{urllib.parse.quote_plus(REDIS_PASSWORD)}@{REDIS_HOST}:{REDIS_PORT}/0"
+            redis_url = f"rediss://:{urllib.parse.quote_plus(REDIS_PASSWORD)}@{REDIS_HOST}:{REDIS_PORT}/0"
             config = SessionConfig(redis_url=redis_url)
             _session_manager = SessionManager(config)
             await _session_manager.initialize()

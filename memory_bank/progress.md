@@ -1,14 +1,29 @@
 # Progress - Current Status
 
-**Last Updated**: 2026-03-05
-**Agent**: Opus (Antigravity Claude Opus 4.6)
-**Status**: Wave 7 Active - Audit Remediation & RAG Enhancement
+**Last Updated**: 2026-03-12
+**Agent**: Facet 1 (Omega-Stack Coordinator)
+**Status**: Metropolis Foundation v4.1.2-HARDENED-INFRA ✅
+**Coordination Key**: `METROPOLIS-HARDENED-20260312-V2`
 
 ---
 
 ## Current Focus (March 2026)
 
-### Wave 7: Opus Audit Remediation & RAG Enhancement
+### SESS-15: Infrastructure Hardening (DONE)
+- ✅ **Librarian Implemented**: Chat history trimming service active.
+- ✅ **KV Cache Optimization**: Quantization benchmarks verified.
+- ✅ **zRAM Restoration**: Recovered 12GB total swap capacity (Zen 2).
+- ✅ **Swap Visibility**: Metrics exporter for zRAM compression active.
+- ✅ **Gemini Tracking**: Token usage counters implemented in `metrics.py`.
+
+### SESS-16: Image Audit & Optimization
+| Task | Description | Status |
+|------|-------------|--------|
+| SESS-16.1 | Reduce 1.6GB WebUI image size | PLANNED |
+| SESS-16.2 | Audit unused Python dependencies | PLANNED |
+| SESS-16.3 | Optimize builder cache utilization | PLANNED |
+
+### Wave 7: Opus Audit Remediation & RAG Enhancement (Ongoing)
 | Task | Description | Status |
 |------|-------------|--------|
 | W7.1 | Fix Gemini dispatcher `$FINAL_KEY` bug | CRITICAL - PENDING |
@@ -24,73 +39,23 @@
 | W7.11 | Memory: Tier promotion/demotion automation | LOW - PENDING |
 | W7.12 | RAG: Embedding version migration tooling | LOW - PENDING |
 
-### Wave 7 Completed
-| Task | Description | Status |
-|------|-------------|--------|
-| W7.0 | Create `entities/maat.json` (was missing) | DONE by Opus |
-| W7.0b | Full system audit (14 findings) | DONE by Opus |
-| W7.0c | Strategy report + research brief + handoff | DONE by Opus |
-
-### Wave 5: Split Test Framework & Strategy Manager
-| Task | Description | Status |
-|------|-------------|--------|
-| W5.1 | Wave 5 Strategy Manager Config | COMPLETE |
-| W5.2 | Split Test Framework | COMPLETE |
-| W5.3 | Model Ranking System | COMPLETE |
-| W5.4 | Evaluation Metrics | COMPLETE |
-
-### Wave 6: Persistent Entity Mesh
-| Task | Description | Status |
-|------|-------------|--------|
-| W6.1 | EntityRegistry Implementation | COMPLETE |
-| W6.2 | KnowledgeMiner Worker | COMPLETE |
-| W6.3 | "Hey [Entity]" Feature | COMPLETE |
-| W6.4 | First Expert (Kurt Cobain) | COMPLETE |
-
----
-
-## Phase Completion History
-
-### Phase 3: BookLore & Open WebUI (Feb 28, 2026)
-**Status**: ✅ COMPLETE
-
-| Task | Description | Status |
-|------|-------------|--------|
-| 3.1 | Docker Integration: BookLore + Open WebUI | ✅ COMPLETE |
-| 3.2 | Library Bridge: bookdrop + sorted structure | ✅ COMPLETE |
-| 3.3 | Manager Upgrade: offline_library_manager.py | ✅ COMPLETE |
-| 3.4 | UI Protocol: Dual-UI management | ✅ COMPLETE |
-| 3.5 | Resource Optimization: 1GB RAM limit | ✅ COMPLETE |
-
-### Phase 2: Gemini CLI MC Setup (Feb 22, 2026)
-**Status**: ✅ COMPLETE
-
-### Phase 1: Chainlit Consolidation (Feb 2026)
-**Status**: ✅ COMPLETE
-
----
-
-## Production-Tight Stack Status
-
-**Coordination Key**: `PRODUCTION-TIGHT-STACK-2026-02-28`
-**Status**: 95% Complete
-
-### Completed
-- 15+ Core Services documented
-- Containerization with rootless Podman
-- Security: Maat ethical guardrails
-- Ryzen 7 5700U optimization
-- VictoriaMetrics + Grafana observability
-- Voice Interface (Faster-Whisper + Piper)
-
-### In Progress
-- Documentation finalization
-- Memory bank cleanup (in progress)
-- Knowledge gap research
-
 ---
 
 ## Recent Achievements
+
+### KV Cache Optimization & Benchmarking (SESS-15 - March 12, 2026)
+- ✅ **Rigorous Benchmarking (SESS-15.1b)**: Verified `n_ctx=32768` with `q4_0` KV cache (`type_k=2`, `type_v=2`) uses only **~48.61MB RAM** on Qwen 0.5B.
+- 🚀 **Context Expansion**: Achieved 16x context vs previous baseline with minimal RAM footprint.
+- ✅ **KV Cache Quantization**: Successfully implemented `q4_0` KV cache quantization for local LLM inference.
+- ✅ **Cleanup Audit Findings Ready**: Infrastructure cleanup findings (`infra/docker/CLEANUP_AUDIT.md`) are finalized and awaiting user approval.
+
+### Metropolis Foundation Stability (SESS-14 - March 10, 2026)
+- ✅ **Stabilized Llama Server**: Fixed library and model path issues; reduced `n_ctx` to 2048 for RAM safety.
+- ✅ **Implemented METROPOLIS_MESH_STANDARDS**: Created standardized protocols for service management.
+- ✅ **Configured OTLP Telemetry**: Linked Gemini CLI OTLP to local Jaeger collector.
+- ✅ **Initialized Model Registry**: Registry populated with 4+ local models (Qwen2.5-0.5B, RocRacoon-3B, Krikri-8B, and ruvltra-0.5B-GGUF).
+- ✅ **RAG API Hardened**: Standardized Redis TLS and unique metrics ports.
+- ✅ **Persistent Caching**: Implemented `xnai_huggingface_cache` to eliminate redundant download cycles.
 
 ### Base Image & Infrastructure (March 1, 2026)
 - ✅ **Base Image Success**: `xnai-base:latest` built successfully (1.14 GB).

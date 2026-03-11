@@ -76,7 +76,7 @@ setup_local() {
 # Redis Configuration
 REDIS_HOST=redis
 REDIS_PORT=6379
-REDIS_PASSWORD=changeme123
+REDIS_PASSWORD=
 
 # Qdrant Configuration (Phase 3 Vector Database)
 QDRANT_URL=http://qdrant:6333

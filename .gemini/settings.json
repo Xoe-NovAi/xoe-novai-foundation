@@ -1,14 +1,31 @@
 {
   "mcpServers": {
     "memory-bank": {
-      "command": "docker",
-      "args": [
-        "run",
-        "--rm",
-        "--network=xnai_network",
-        "--name=gemini-memory-bank-mcp",
-        "omega-stack_memory-bank-mcp"
-      ]
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/run_server.sh",
+      "args": []
     }
+  },
+  "experimental": {
+    "plan": true
+  },
+  "tools": {
+    "truncateToolOutputThreshold": 60000
+  },
+  "context": {
+    "fileFiltering": {
+      "respectGitIgnore": false
+    }
+  },
+  "model": {
+    "compressionThreshold": 0.6
+  },
+  "ui": {
+    "useAlternateBuffer": true
+  },
+  "telemetry": {
+    "enabled": true,
+    "otlpEndpoint": "http://localhost:4317",
+    "otlpProtocol": "grpc",
+    "useCollector": true
   }
 }

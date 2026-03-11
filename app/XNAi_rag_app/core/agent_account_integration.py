@@ -11,15 +11,47 @@ Version: 1.0.0
 import asyncio
 import logging
 from typing import Optional, Dict, Any, List
-from datetime import datetime
+from datetime import datetime, timezone
 
 from .account_manager import AccountManager, AccountInfo, get_account_manager
-from .agent_bus import AgentBusClient
 from .dependencies import get_redis_client
-from .iam_service import User, Permission, KnowledgeAction
-from .knowledge_access import KnowledgeClient, KnowledgeOperation
+
+# Lazy imports for optional dependencies — prevents crash if not installed
+try:
+    from .agent_bus import AgentBusClient
+    _HAS_AGENT_BUS = True
+except ImportError:
+    _HAS_AGENT_BUS = False
+    AgentBusClient = None
+
+try:
+    from .security.knowledge_access import (
+        KnowledgeAccessController,
+        KnowledgeOperation,
+        KnowledgePermission,
+    )
+    _HAS_KNOWLEDGE_ACCESS = True
+except (ImportError, SyntaxError):
+    _HAS_KNOWLEDGE_ACCESS = False
+    KnowledgeAccessController = None
+    KnowledgeOperation = None
 
 logger = logging.getLogger(__name__)
+
+# Operation string to KnowledgeOperation mapping
+OPERATION_MAP = {}
+if _HAS_KNOWLEDGE_ACCESS and KnowledgeOperation is not None:
+    OPERATION_MAP = {
+        "execute_task": KnowledgeOperation.READ,
+        "read": KnowledgeOperation.READ,
+        "query": KnowledgeOperation.QUERY,
+        "search": KnowledgeOperation.SEARCH,
+        "write": KnowledgeOperation.WRITE,
+        "ingest": KnowledgeOperation.INGEST,
+        "update": KnowledgeOperation.UPDATE,
+        "delete": KnowledgeOperation.DELETE,
+        "admin": KnowledgeOperation.ADMIN,
+    }
 
 
 class AgentAccountContext:
@@ -76,15 +108,26 @@ class AgentAccountContext:
 
 
 class AgentAccountManager:
-    """Enhanced agent account management with context awareness"""
+    """Enhanced agent account management with IAM context awareness"""
     
     def __init__(self):
         self.account_manager = None
+        self._access_controller = None
+        self._agent_bus = None
         self.logger = logger.getChild("AgentAccountManager")
     
     async def initialize(self):
-        """Initialize the agent account manager"""
+        """Initialize the agent account manager with IAM and Agent Bus"""
         self.account_manager = await get_account_manager()
+
+        # Initialize KnowledgeAccessController if available
+        if _HAS_KNOWLEDGE_ACCESS and KnowledgeAccessController is not None:
+            try:
+                self._access_controller = KnowledgeAccessController()
+                self.logger.info("IAM KnowledgeAccessController initialized")
+            except Exception as e:
+                self.logger.warning(f"Could not initialize KnowledgeAccessController: {e}")
+
         self.logger.info("Agent account manager initialized")
     
     async def get_current_account_for_agent(self, agent_id: str) -> Optional[AccountInfo]:
@@ -198,56 +241,115 @@ class AgentAccountManager:
     
     async def validate_agent_account_access(self, agent_id: str, account_id: str, operation: str) -> bool:
         """
-        Validate that an agent has access to perform an operation on an account
-        
+        Validate that an agent has access to perform an operation on an account.
+
+        Checks:
+        1. Account exists and is active
+        2. Account has remaining quota
+        3. IAM KnowledgeAccessController permission check (if available)
+
         Args:
-            agent_id: Agent identifier
+            agent_id: Agent identifier (used as DID prefix: did:xnai:{agent_id})
             account_id: Account identifier
-            operation: Operation to validate
-            
+            operation: Operation to validate (read, write, query, etc.)
+
         Returns:
             True if access is granted
         """
         if not self.account_manager:
             await self.initialize()
-        
+
         # Check if account exists
         account = await self.account_manager.get_account_status(account_id)
         if not account:
             self.logger.warning(f"Account {account_id} not found for agent {agent_id}")
             return False
-        
+
         # Check account status
         if account.status != "active":
             self.logger.warning(f"Account {account_id} is not active for agent {agent_id}")
             return False
-        
+
         # Check quota availability
         if account.quota_remaining <= 0:
             self.logger.warning(f"Account {account_id} has no remaining quota for agent {agent_id}")
             return False
-        
-        # TODO: Add IAM integration for agent permissions
-        # For now, assume all agents can access active accounts with quota
-        
+
+        # IAM permission check via KnowledgeAccessController
+        if self._access_controller is not None and _HAS_KNOWLEDGE_ACCESS:
+            try:
+                # Map operation string to KnowledgeOperation enum
+                knowledge_op = OPERATION_MAP.get(operation.lower())
+                if knowledge_op is None:
+                    self.logger.warning(
+                        f"Unknown operation '{operation}' for IAM check, defaulting to READ"
+                    )
+                    knowledge_op = KnowledgeOperation.READ
+
+                # Build agent DID from agent_id
+                agent_did = f"did:xnai:{agent_id}" if not agent_id.startswith("did:") else agent_id
+
+                # Check access (require_verified=False for graceful degradation)
+                decision = await self._access_controller.check_access(
+                    agent_did=agent_did,
+                    operation=knowledge_op,
+                    resource=account_id,
+                    require_verified=False,
+                )
+
+                if not decision.allowed:
+                    self.logger.warning(
+                        f"IAM denied {operation} for agent {agent_id} on account {account_id}: "
+                        f"{decision.reason}"
+                    )
+                    return False
+
+                self.logger.debug(
+                    f"IAM granted {operation} for agent {agent_id} on account {account_id}"
+                )
+
+            except Exception as e:
+                # Graceful degradation — if IAM check fails, allow with warning
+                self.logger.warning(
+                    f"IAM check failed for agent {agent_id}, allowing with warning: {e}"
+                )
+        else:
+            self.logger.debug(
+                "KnowledgeAccessController not available, skipping IAM permission check"
+            )
+
         return True
     
     async def _publish_account_switch_event(self, agent_id: str, account_id: str):
-        """Publish account switch event to agent bus"""
+        """Publish account switch event to Agent Bus via Redis Streams."""
         try:
-            # This would integrate with the agent bus system
-            # For now, just log the event
-            self.logger.info(f"Agent {agent_id} switched to account {account_id}")
-            
-            # TODO: Implement actual agent bus integration
-            # await self.agent_bus.publish("account_switch", {
-            #     "agent_id": agent_id,
-            #     "account_id": account_id,
-            #     "timestamp": datetime.now().isoformat()
-            # })
-            
+            if _HAS_AGENT_BUS and AgentBusClient is not None:
+                # Build agent DID
+                agent_did = f"did:xnai:{agent_id}" if not agent_id.startswith("did:") else agent_id
+
+                async with AgentBusClient(agent_did) as bus:
+                    await bus.send_task(
+                        target_did="*",  # Broadcast
+                        task_type="account_switch",
+                        payload={
+                            "agent_id": agent_id,
+                            "account_id": account_id,
+                            "timestamp": datetime.now(timezone.utc).isoformat(),
+                        },
+                    )
+                    self.logger.info(
+                        f"Account switch event published to Agent Bus: "
+                        f"{agent_id} -> {account_id}"
+                    )
+            else:
+                self.logger.info(
+                    f"Agent {agent_id} switched to account {account_id} "
+                    f"(Agent Bus not available, event not published)"
+                )
+
         except Exception as e:
-            self.logger.error(f"Failed to publish account switch event: {e}")
+            # Non-fatal — log and continue, the switch itself succeeded
+            self.logger.warning(f"Failed to publish account switch event: {e}")
 
 
 class AccountAwareAgent:

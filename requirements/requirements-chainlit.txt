@@ -16,7 +16,7 @@ bcrypt==5.0.0
 bidict==0.23.1
 certifi==2026.1.4
 cffi==2.0.0
-chainlit==2.8.5
+chainlit==3.8.5
 charset-normalizer==3.4.4
 chevron==0.14.0
 click==8.3.1

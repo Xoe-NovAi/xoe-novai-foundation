@@ -12,16 +12,19 @@ from typing import Generator
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/xnai")
 
 # Create engine with connection pooling
-engine = create_engine(
-    DATABASE_URL,
-    poolclass=StaticPool,
-    connect_args={
-        "check_same_thread": False,
-        "application_name": "omega-agent-bus"
-    },
-    pool_pre_ping=True,
-    pool_recycle=3600
-)
+engine_args = {
+    "poolclass": StaticPool,
+    "pool_pre_ping": True,
+    "pool_recycle": 3600
+}
+
+# Only SQLite supports/needs check_same_thread
+if DATABASE_URL.startswith("sqlite"):
+    engine_args["connect_args"] = {"check_same_thread": False}
+else:
+    engine_args["connect_args"] = {"application_name": "omega-agent-bus"}
+
+engine = create_engine(DATABASE_URL, **engine_args)
 
 # Create session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
