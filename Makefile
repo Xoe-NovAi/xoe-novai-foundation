@@ -35,6 +35,30 @@ RED := \033[0;31m
 NC := \033[0m
 
 # ============================================================================
+# METROPOLIS FACET ORCHESTRATION (SESS-00 & SESS-16 Ready)
+# ============================================================================
+
+GEMINI_CLI := /home/arcana-novai/.nvm/versions/node/v25.3.0/bin/gemini-cli
+# Default Node memory limit for Gemini CLI stability (Audit C2)
+export NODE_OPTIONS=--max_old_space_size=4096
+
+facet-summon: ## 🔱 Summon a specific facet (Usage: make facet-summon FACET=facet-3 SESSION=my-task)
+	@if [ -z "$(FACET)" ]; then echo "$(RED)❌ ERROR: FACET is required (e.g., FACET=facet-3)$(NC)"; exit 1; fi
+	@SESSION_NAME=$(if $(SESSION),$(SESSION),$(FACET)-manual); \
+	OTLP_PORT=$$(expr 4317 + $$(echo $(FACET) | grep -o '[0-9]*' || echo 0)); \
+	echo "$(CYAN)🏙️  Summoning $(FACET) to Session: $$SESSION_NAME (OTLP: $$OTLP_PORT)...$(NC)"; \
+	$(GEMINI_CLI) --agent $(FACET) --session $$SESSION_NAME --otlp-port $$OTLP_PORT
+
+facet-research: ## 🔬 Summon Facet 3 (Researcher) for SESS-16 Audit
+	@$(MAKE) facet-summon FACET=facet-3 SESSION=sess-16-research
+
+facet-infra: ## 🏗️ Summon Facet 6 (Infrastructure) for Metropolis Hardening
+	@$(MAKE) facet-summon FACET=facet-6 SESSION=sess-16-infra
+
+facet-devops: ## 🛠️ Summon Facet 8 (DevOps) for Build Optimization
+	@$(MAKE) facet-summon FACET=facet-8 SESSION=sess-16-build
+
+# ============================================================================
 # BEGINNER-FRIENDLY TARGETS (Start Here!)
 # ============================================================================
 
@@ -318,29 +342,9 @@ help: ## 📚 Show this help message
 
 
 
-wheelhouse: ## (LEGACY - Use BuildKit instead) Download all Python dependencies to wheelhouse/ for offline install
-	@echo "$(CYAN)Downloading Python packages to wheelhouse/...$(NC)"
-	./setup/download_wheelhouse.sh $(WHEELHOUSE_DIR) $(REQ_GLOB)
-	@echo "$(GREEN)✓ Wheelhouse created in $(WHEELHOUSE_DIR)/$(NC)"
-
-
-deps: ## (LEGACY - Use BuildKit instead) Install dependencies from wheelhouse (offline)
-	@echo "$(CYAN)Installing dependencies from wheelhouse...$(NC)"
-	@if command -v uv >/dev/null 2>&1; then \
-		echo "$(GREEN)✅ UV detected - using ultra-fast installer$(NC)"; \
-		uv pip sync --no-index --find-links=$(WHEELHOUSE_DIR) requirements/requirements-api.txt; \
-		uv pip sync --no-index --find-links=$(WHEELHOUSE_DIR) requirements/requirements-chainlit.txt; \
-		uv pip sync --no-index --find-links=$(WHEELHOUSE_DIR) requirements/requirements-crawl.txt; \
-		uv pip sync --no-index --find-links=$(WHEELHOUSE_DIR) requirements/requirements-curation_worker.txt; \
-	else \
-		echo "$(YELLOW)⚠️  UV not available - using pip (slower)$(NC)"; \
-		$(PYTHON) -m pip install --no-index --find-links=$(WHEELHOUSE_DIR) -r requirements/requirements-api.txt; \
-		$(PYTHON) -m pip install --no-index --find-links=$(WHEELHOUSE_DIR) -r requirements/requirements-chainlit.txt; \
-		$(PYTHON) -m pip install --no-index --find-links=$(WHEELHOUSE_DIR) -r requirements/requirements-crawl.txt; \
-		$(PYTHON) -m pip install --no-index --find-links=$(WHEELHOUSE_DIR) -r requirements/requirements-curation_worker.txt; \
-	fi
-	@echo "$(GREEN)✓ Dependencies installed from wheelhouse$(NC)"
-
+# ============================================================================
+# INFRASTRUCTURE & DEPENDENCIES
+# ============================================================================
 
 download-models: ## Download models and embeddings
 	@echo "Downloading models..."
