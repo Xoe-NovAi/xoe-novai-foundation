@@ -38,25 +38,29 @@ NC := \033[0m
 # METROPOLIS FACET ORCHESTRATION (SESS-00 & SESS-16 Ready)
 # ============================================================================
 
-GEMINI_CLI := /home/arcana-novai/.nvm/versions/node/v25.3.0/bin/gemini-cli
+GEMINI_CLI := /home/arcana-novai/.nvm/versions/node/v25.3.0/bin/gemini
 # Default Node memory limit for Gemini CLI stability (Audit C2)
 export NODE_OPTIONS=--max_old_space_size=4096
 
-facet-summon: ## 🔱 Summon a specific facet (Usage: make facet-summon FACET=facet-3 SESSION=my-task)
+facet-summon: ## 🔱 Summon a specific facet (Usage: make facet-summon FACET=facet-3)
 	@if [ -z "$(FACET)" ]; then echo "$(RED)❌ ERROR: FACET is required (e.g., FACET=facet-3)$(NC)"; exit 1; fi
-	@SESSION_NAME=$(if $(SESSION),$(SESSION),$(FACET)-manual); \
-	OTLP_PORT=$$(expr 4317 + $$(echo $(FACET) | grep -o '[0-9]*' || echo 0)); \
-	echo "$(CYAN)🏙️  Summoning $(FACET) to Session: $$SESSION_NAME (OTLP: $$OTLP_PORT)...$(NC)"; \
-	$(GEMINI_CLI) --agent $(FACET) --session $$SESSION_NAME --otlp-port $$OTLP_PORT
+	@echo "$(CYAN)🏙️  Summoning $(FACET)...$(NC)"
+	@$(GEMINI_CLI) -i "You are $(FACET). Use your tools to fulfill your mandate. Access the Memory Bank via standard MCP integration."
+
+metropolis-sleep: ## 💤 Stop heavy background services to free up RAM (llama_cpp + uvicorn)
+	@echo "$(YELLOW)💤 Putting Metropolis to sleep (pausing background services)...$(NC)"
+	@podman stop xnai_rag_api xnai_llama_cpp 2>/dev/null || true
+	@killall python3 2>/dev/null || true
+	@echo "$(GREEN)✅ RAM reclaimed. Run 'make metropolis-up' to wake the mesh.$(NC)"
 
 facet-research: ## 🔬 Summon Facet 3 (Researcher) for SESS-16 Audit
-	@$(MAKE) facet-summon FACET=facet-3 SESSION=sess-16-research
+	@$(MAKE) facet-summon FACET=facet-3
 
 facet-infra: ## 🏗️ Summon Facet 6 (Infrastructure) for Metropolis Hardening
-	@$(MAKE) facet-summon FACET=facet-6 SESSION=sess-16-infra
+	@$(MAKE) facet-summon FACET=facet-6
 
 facet-devops: ## 🛠️ Summon Facet 8 (DevOps) for Build Optimization
-	@$(MAKE) facet-summon FACET=facet-8 SESSION=sess-16-build
+	@$(MAKE) facet-summon FACET=facet-8
 
 # ============================================================================
 # BEGINNER-FRIENDLY TARGETS (Start Here!)
@@ -1737,13 +1741,11 @@ archive-apt-cache-scripts: ## 📦 Archive apt-cacher-ng scripts for future use
 # ============================================================================
 
 metropolis-list: ## 🏙️  List all persistent experts in the metropolis
-sessions: ## 🏙️  List recent ODE sessions (POEMs)
-	@./scripts/xnai-sessions.sh
-sessions: ## 🏙️  List recent ODE sessions (POEMs)
+	@$(MAKE) metropolis-sessions
+metropolis-sessions: ## 🏙️  List recent ODE sessions (POEMs)
 	@./scripts/xnai-sessions.sh
 	@echo "$(CYAN)🏙️  Xoe-NovAi Metropolis: Persistent Experts$(NC)"
 	@scripts/metropolis-test-suite.sh | grep "PASS" || echo "Run 'make metropolis-init' to see active instances."
-
 metropolis-init: ## 🏙️  Initialize the full Metropolis (Create folders + Generate Master Configs)
 	@echo "$(CYAN)🏙️  Initializing Omega Metropolis Expert Network...$(NC)"
 	@mkdir -p storage/instances
