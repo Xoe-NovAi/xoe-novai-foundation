@@ -58,7 +58,7 @@ Facet 6 is currently working on **"The Great Reconciliation"** - a major filesys
   "max_history_items": 100,
   "telemetry_opt_out": true,
   "model": {
-    "apiKey": "AIzaSyCPRsWqa-zkX_oCjs6hSttxrnig88DbsoA"
+    "apiKey": "REDACTED_GOOGLE_API_KEY"
   }
 }
 ```
