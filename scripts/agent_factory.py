@@ -1,0 +1,164 @@
+#!/usr/bin/env python3
+"""
+🔱 AGENT FACTORY: Unified Inference Engine (SOVEREIGN)
+Powers the Oikos Council with Decrypted OAuth Rotation and Local Fallback.
+"""
+import anyio
+import os
+import json
+import time
+import litellm
+import logging
+from typing import List, Dict, Any, Optional
+from litellm import completion
+from dotenv import load_dotenv
+from pathlib import Path
+
+# Load environment
+load_dotenv()
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("AgentFactory")
+
+# Standard XNAi Imports
+try:
+    from app.XNAi_rag_app.core.oauth_manager import OAuthManager, AccountManager
+except ImportError:
+    # Fallback for direct script execution if needed
+    import sys
+    sys.path.append(os.getcwd())
+    from app.XNAi_rag_app.core.oauth_manager import OAuthManager, AccountManager
+
+# Force LiteLLM defaults to avoid OpenAI fallback
+litellm.api_key = "None"
+litellm.openai_key = "None"
+
+class AgentFactory:
+    def __init__(self, model_name: str = "gemini/gemini-2.0-flash"):
+        self.model_name = model_name
+        self.api_keys = self._load_env_keys()
+        self.oauth_manager = OAuthManager()
+        self.account_manager = AccountManager()
+        self.current_auth_index = 0
+        self.local_fallback_url = os.getenv("LOCAL_LLM_URL", "http://host.containers.internal:11434/v1")
+
+    def _load_env_keys(self) -> List[str]:
+        """Loads static Gemini keys from environment."""
+        keys = []
+        for env_var in ["GEMINI_API_KEY", "GOOGLE_API_KEY", "GEMINI_API_KEY_1", "GEMINI_API_KEY_2"]:
+            key = os.getenv(env_var)
+            if key and key not in keys and "YOUR_ACTUAL" not in key:
+                keys.append(key)
+        return keys
+
+    async def _get_auth_list(self) -> List[Dict[str, Any]]:
+        """Dynamically builds the list of available authentication methods."""
+        auth_list = []
+        
+        # 1. Add Decrypted OAuth Accounts
+        try:
+            oauth_accounts = await self.oauth_manager.list_accounts()
+            for acc_id in oauth_accounts:
+                if await self.oauth_manager.is_valid(acc_id):
+                    creds = await self.oauth_manager.get_credentials(acc_id)
+                    auth_list.append({
+                        "type": "oauth",
+                        "account_id": acc_id,
+                        "credentials": creds
+                    })
+        except Exception as e:
+            logger.warning(f"Failed to load OAuth accounts: {e}")
+
+        # 2. Add Static API Keys
+        for key in self.api_keys:
+            auth_list.append({
+                "type": "api_key",
+                "value": key
+            })
+            
+        return auth_list
+
+    async def think(self, prompt: str, system_instruction: str = "", temperature: float = 0.7) -> str:
+        """Performs model inference with decrypted OAuth rotation."""
+        
+        auth_list = await self._get_auth_list()
+        
+        if not auth_list:
+            logger.error("No authentication methods found (OAuth or API Keys).")
+            return await self._local_fallback(prompt, temperature)
+
+        # Try Rainbow Rotation
+        attempts = []
+        for i in range(len(auth_list)):
+            idx = (self.current_auth_index + i) % len(auth_list)
+            auth = auth_list[idx]
+            auth_desc = f"Account:{auth.get('account_id', 'StaticKey')}"
+            
+            try:
+                messages = []
+                if system_instruction:
+                    messages.append({"role": "system", "content": system_instruction})
+                messages.append({"role": "user", "content": prompt})
+
+                kwargs = {
+                    "messages": messages,
+                    "temperature": temperature,
+                }
+
+                if auth["type"] == "oauth":
+                    kwargs["model"] = "vertex_ai/gemini-2.0-flash"
+                    kwargs["custom_llm_provider"] = "vertex_ai"
+                    kwargs["vertex_project"] = os.getenv("VERTEXAI_PROJECT", "arcana-novai-gemini-1772727596")
+                    kwargs["vertex_location"] = os.getenv("VERTEXAI_LOCATION", "us-central1")
+                    kwargs["api_key"] = auth["credentials"].get("access_token")
+                else:
+                    kwargs["model"] = "gemini/gemini-2.0-flash"
+                    kwargs["custom_llm_provider"] = "gemini"
+                    kwargs["api_key"] = auth["value"]
+
+                start_inf = time.time()
+                response = await anyio.to_thread.run_sync(
+                    lambda: completion(**kwargs)
+                )
+                latency = time.time() - start_inf
+                logger.info(f"✅ {auth_desc} SUCCESS in {latency:.2f}s")
+                return response.choices[0].message.content
+
+            except Exception as e:
+                error_msg = str(e)
+                attempts.append(f"{auth_desc}: {error_msg}")
+                if "429" in error_msg or "quota" in error_msg.lower():
+                    logger.warning(f"⚠️ {auth_desc} RATE_LIMITED (429)")
+                else:
+                    logger.error(f"❌ {auth_desc} ERROR: {error_msg}")
+        
+        # Update index for next time
+        self.current_auth_index = (self.current_auth_index + 1) % len(auth_list)
+        
+        fallback_res = await self._local_fallback(prompt, temperature)
+        if "AgentFactory: All paths" in fallback_res:
+            return f"❌ All Cloud Paths Failed:\n" + "\n".join(attempts) + f"\n\nLocal Fallback: {fallback_res}"
+        return fallback_res
+
+    async def _local_fallback(self, prompt: str, temperature: float) -> str:
+        """Fallback to local Ollama instance."""
+        logger.info("Activating Local Fallback...")
+        try:
+            response = await anyio.to_thread.run_sync(
+                lambda: completion(
+                    model="openai/qwen2.5:0.5b",
+                    api_base=self.local_fallback_url,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=temperature
+                )
+            )
+            return f"[LOCAL] {response.choices[0].message.content}"
+        except Exception as e:
+            return f"❌ AgentFactory: All paths (including local) exhausted. Error: {str(e)}"
+
+if __name__ == "__main__":
+    async def test():
+        factory = AgentFactory()
+        print(await factory.think("Test", "You are a test."))
+    anyio.run(test)

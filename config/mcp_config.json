@@ -1,19 +1,32 @@
 {
   "mcpServers": {
     "memory-bank": {
-      "command": "podman",
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
       "args": [
-        "run",
-        "-i",
-        "--rm",
-        "--network=host",
-        "--env-file", "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.env",
-        "-v", "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage:/storage:Z",
-        "-v", "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app:/app/app:ro",
-        "-v", "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp:/app/mcp-server:ro",
-        "docker_memory-bank-mcp:latest",
-        "python",
-        "server.py"
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py",
+        "--stdio"
+      ],
+      "env": {
+        "STORAGE_PATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage",
+        "PYTHONPATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack:/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app"
+      }
+    },
+    "github": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-github/server.py"
+      ]
+    },
+    "stats": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-stats-mcp/server.py"
+      ]
+    },
+    "websearch": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-websearch/server.py"
       ]
     }
   }

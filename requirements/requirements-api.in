@@ -5,9 +5,11 @@
 # Core RAG stack (CRITICAL - PREVIOUSLY MISSING)
 langchain
 langchain-community
+langgraph
 faiss-cpu
 qdrant-client
 fastembed>=0.4.0
+mcp
 
 # Voice stack (UPDATED for turbo performance)
 faster-whisper

@@ -1,0 +1,58 @@
+# 🔱 Xoe-NovAi Oikos Mesh Service (Hardened Build)
+# Focus: FastAPI + LiteLLM + Research Tools
+
+FROM python:3.12-slim AS builder
+
+WORKDIR /build
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install heavy dependencies first (cache layer)
+RUN pip install --no-cache-dir --default-timeout=1000 \
+    fastapi \
+    uvicorn \
+    litellm \
+    google-cloud-aiplatform \
+    google-genai \
+    python-dotenv \
+    httpx \
+    pyyaml \
+    anyio \
+    redis \
+    aiofiles
+
+# Final Stage
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Copy installed packages from builder
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+
+# Install runtime dependencies (curl for healthcheck)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy application and scripts
+COPY app/oikos_service.py ./app/
+COPY scripts/ ./scripts/
+
+# Create internal directories and set permissions for UID 1000
+RUN mkdir -p /app/.logs /app/memory_bank /app/artifacts/metrics \
+    && chown -R 1000:1000 /app
+
+# Ensure scripts are in path
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+USER 1000
+
+EXPOSE 8006
+
+CMD ["uvicorn", "app.oikos_service:app", "--host", "0.0.0.0", "--port", "8006"]

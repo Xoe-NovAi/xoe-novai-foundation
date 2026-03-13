@@ -31,16 +31,12 @@ RUN rm -f /etc/apt/apt.conf.d/docker-clean && \
     echo 'Acquire::http::Pipeline-Depth "5";' > /etc/apt/apt.conf.d/99parallel && \
     sed -i 's/deb.debian.org/cdn-fastly.deb.debian.org/g' /etc/apt/sources.list.d/debian.sources 2>/dev/null || true
 
-# Install common system dependencies
+# Install common system dependencies (Runtime only)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         curl \
         wget \
         ca-certificates \
-        git \
-        build-essential \
-        cmake \
-        libopenblas-dev \
         libgomp1 \
         procps \
         ffmpeg \
@@ -57,8 +53,8 @@ RUN pip install --no-cache-dir uv==0.5.21 && \
         toml>=0.10.2
 
 # Create a non-root user
-RUN groupadd -g 1001 appuser && \
-    useradd -m -u 1001 -g 1001 -s /bin/bash appuser
+RUN groupadd -g 1000 appuser && \
+    useradd -m -u 1000 -g 1000 -s /bin/bash appuser
 
 RUN mkdir -p /app/logs /app/data && \
     chmod 1777 /app/logs /app/data

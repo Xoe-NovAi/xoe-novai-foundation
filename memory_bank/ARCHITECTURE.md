@@ -1,122 +1,113 @@
-# XNAi Foundation System Architecture
+# XNAi Foundation: The Pan-Optic Gnosis Matrix
 
-> **Version**: 1.0.0  
-> **Last Updated**: 2026-03-02 (service wiring & Docker refactor note)  
-> **Owner**: MC-Overseer Agent
+> **Version**: 2.0.0-GNOSTIC
+> **Last Updated**: 2026-03-12 (RCF & Gnostic Matrix)
+> **Owner**: Jem (Oversoul)
 
 ---
 
 ## Overview
 
-XNAi Foundation is a sovereign AI stack designed for local-first, privacy-preserving AI operations. This document provides a comprehensive architectural overview with visual diagrams.
+The XNAi Foundation has evolved from a hierarchical service mesh into the **Pan-Optic Gnosis Matrix**—a 4-layer sovereign intelligence architecture designed for high-density reasoning, refractive context distillation, and archetypal resonance.
 
 ---
 
-## System Architecture Overview
+## 🏛️ The Gnostic Matrix (Architecture Layers)
 
 ```mermaid
 graph TB
-    subgraph "User Interface Layer"
-        CHAINLIT[Chainlit Unified App]
-        FASTAPI[FastAPI REST API]
-        WS[WebSocket Endpoint]
+    subgraph "Layer 3: The Oikos (The Soul)"
+        COUNCIL[Oikos Council<br/>Octave of Facets]
+        JEM[Jem Oversoul]
+        RDS[Refractive Distillation<br/>RCF Layer]
     end
     
-    subgraph "Core Services Layer"
-        SESSION[SessionManager]
-        KNOWLEDGE[KnowledgeClient]
-        VOICE[VoiceModule]
-        DISTILL[Knowledge Distillation]
+    subgraph "Layer 2: The Logos (The Reasoning)"
+        LOGOSFORGE[Logosforge<br/>OpenPipe Router]
+        MODELS[Model Fleet<br/>Krikri-8B / Greek-BERT]
+        SYNERGY[Synapses<br/>Redis Streams]
     end
     
-    subgraph "Security Layer"
-        IAM[IAM Service]
-        ACCESS[Knowledge Access Control]
-        SANITIZE[Content Sanitizer]
-        HANDSHAKE[Sovereign Handshake]
+    subgraph "Layer 1: The Polis (The Services)"
+        PROSOPON[Prosopon API<br/>Port 8006]
+        PHYLAX[Phylax I_AM<br/>Themis Protocols]
+        CADDY[Prophetis<br/>Caddy Proxy]
     end
     
-    subgraph "Coordination Layer"
-        AGENTBUS[Agent Bus]
-        REDIS[(Redis)]
-        CONSUL[Consul Service Discovery]
+    subgraph "Layer 0: The Silicon Oracle (The Ground)"
+        HARDWARE[Ryzen 5700U / iGPU]
+        QDRANT[(Qdrant / Neo4j)]
+        FS[(Sovereign FS)]
     end
     
-    subgraph "Storage Layer"
-        QDRANT[(Qdrant Vector DB)]
-        FAISS[(FAISS Index)]
-        MEMORY[Memory Bank]
-    end
-    
-    subgraph "Agent Layer"
-        CLINE[Cline CLI]
-        GEMINI_DISPATCH[Gemini Dispatcher]
-        OPENCODE[OpenCode CLI + Antigravity]
-        COPILOT[Copilot CLI]
-
-        GEMINI_DISPATCH -->|Domain Flags| INST1[Architect]
-        GEMINI_DISPATCH -->|Domain Flags| INST2[API Specialist]
-        GEMINI_DISPATCH -->|Domain Flags| INST3[UI/Frontend]
-        GEMINI_DISPATCH -->|Domain Flags| INST4[Voice/Audio]
-    end
-    
-    CHAINLIT --> SESSION
-    CHAINLIT --> KNOWLEDGE
-    CHAINLIT --> VOICE
-    FASTAPI --> SESSION
-    FASTAPI --> KNOWLEDGE
-    WS --> AGENTBUS
-    
-    SESSION --> REDIS
-    KNOWLEDGE --> QDRANT
-    KNOWLEDGE --> FAISS
-    
-    ACCESS --> IAM
-    ACCESS --> HANDSHAKE
-    SANITIZE --> DISTILL
-    
-    AGENTBUS --> REDIS
-    CONSUL --> AGENTBUS
-    
-    CLINE --> AGENTBUS
-    GEMINI --> AGENTBUS
-    OPENCODE --> AGENTBUS
-    COPILOT --> AGENTBUS
-    
-    DISTILL --> QDRANT
-    DISTILL --> SANITIZE
+    COUNCIL --> RDS
+    RDS --> LOGOSFORGE
+    LOGOSFORGE --> MODELS
+    MODELS --> SYNERGY
+    SYNERGY --> PROSOPON
+    PROSOPON --> PHYLAX
+    PHYLAX --> CADDY
+    CADDY --> FS
+    FS --> QDRANT
+    QDRANT --> HARDWARE
 ```
 
 ---
 
-## Memory Bank Architecture
+## 🌀 The Five Flows of Gnosis
+
+1.  **Ingestion & Proteus (Shape-Shifting)**: Raw data enters via **Prophetis**, is guarded by **Phylax (Themis)**, and reaches the **Prosopon API**.
+2.  **Orchestration & Specialization**: The **Oikos Council** routes tasks to specialized **Facets** via **Synapses (Redis Streams)**.
+3.  **Logos Generation (Logosforge)**: **OpenPipe** dynamically selects the optimal model (Local GGUF vs. Cloud Frontier) based on **Oikonomia** and **Apatheia**.
+4.  **Integrity & Resilience (Pillars of Aion)**: 
+    - **Alethia**: Oracle Protocol (Consensus).
+    - **Chronos**: Provenance & Versioning.
+    - **Apatheia**: Hardware-aware Sovereign Enclosure.
+5.  **Insight & Improvement (Phronesis Loop)**: **Metron (Observability)** feeds the **Architect's Phronesis**, refining the strategy through recursive iteration.
+
+---
+
+## 🔬 The Phronesis Loop (5 Stages)
 
 ```mermaid
-graph TD
-    subgraph "Core Memory - Always Loaded"
-        PB[projectbrief.md<br/>Mission & Constraints]
-        PC[productContext.md<br/>Why XNAi Exists]
-        SP[systemPatterns.md<br/>Design Patterns]
-        TC[techContext.md<br/>Tech Stack]
-        AC[activeContext.md<br/>Current Priorities]
-        PROG[progress.md<br/>Phase Status]
-    end
-    
-    subgraph "Recall Tier - Searchable"
-        HANDOVERS[recall/handovers/<br/>Session Handoffs]
-        DECISIONS[recall/decisions/<br/>Architecture Decisions]
-        CONVERSATIONS[recall/conversations/<br/>Session Logs]
-    end
-    
-    subgraph "Archival Tier - On-Demand"
-        RESEARCH[archival/research/<br/>Research Findings]
-        BENCHMARKS[archival/benchmarks/<br/>Performance Data]
-        STRATEGIES[archival/strategies/<br/>Strategic Docs]
-    end
-    
-    Core_Memory -->|evict/summarize| Recall_Tier
-    Recall_Tier -->|archive| Archival_Tier
+graph LR
+    PROP[1. Prop] --> SCRUT[2. Scrutiny]
+    SCRUT --> SYNTH[3. Synth]
+    SYNTH --> CRYST[4. Cryst]
+    CRYST --> REFR[5. Refract]
+    REFR --> PROP
 ```
+
+1.  **Prop (Proposition)**: The initial intent or requirement is proposed.
+2.  **Scrutiny (Analysis)**: The Octave reviews the prop for gaps and implementation issues.
+3.  **Synth (Synthesis)**: A multi-facet plan is integrated into the stack.
+4.  **Cryst (Crystallization)**: The code and docs are hardened and sealed.
+5.  **Refract (Refraction)**: The result is distilled into a **Gnosis Pack** for future context.
+
+---
+
+## 📦 The Refractive Compression Framework (RCF)
+
+The RCF is the "Zipping" engine of the stack, utilizing **Domain-Specialized Resource Crafting (DSRC)** and **Persona Template Distillation (PTD)** to maintain context density.
+
+- **DSRC**: Generates laser-focused context packs (Bronze, Silver, Gold tiers).
+- **PTD**: Distills complex archetypes (LIA Triad) into minimalist **Persona Seeds**.
+- **Anchoring**: Uses Ancient Greek/Russian roots (**Phronesis, Alethia, Aion**) as semantic gravity wells.
+
+---
+
+## Component Ports & Services
+
+| Service | Port | Layer | Purpose |
+|:---|:---|:---|:---|
+| Prophetis (Caddy) | 80 / 443 | Layer 1 | Gateway Proxy |
+| Prosopon (FastAPI) | 8006 | Layer 1 | Primary Gnostic API |
+| Orchestrion (MCP) | 8005 | Layer 3 | Central Reasoning Hub |
+| Synapses (Redis) | 6379 | Layer 2 | High-Speed Gnosis Bus |
+| Silicon Oracle (Qdrant)| 6333 | Layer 0 | Vector Gnosis Storage |
+| Silicon Oracle (Neo4j) | 7474 | Layer 0 | Graph Gnosis Storage |
+
+---
 
 ---
 

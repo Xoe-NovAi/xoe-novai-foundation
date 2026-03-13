@@ -165,6 +165,7 @@ class KnowledgeDistillationPipeline:
         source_type: str,
         raw_content: str,
         provenance: Optional[Dict[str, Any]] = None,
+        **kwargs: Any,
     ) -> KnowledgeState:
         """
         Process content through the distillation pipeline.
@@ -174,6 +175,7 @@ class KnowledgeDistillationPipeline:
             source_type: Type of source (cli_session, agent_research, etc.)
             raw_content: Raw content to process
             provenance: Optional source tracking metadata
+            **kwargs: Extra parameters (e.g., temperature)
 
         Returns:
             Final KnowledgeState with processing results
@@ -187,6 +189,9 @@ class KnowledgeDistillationPipeline:
             raw_content=raw_content,
             provenance=provenance,
         )
+        
+        # Merge extra parameters into state
+        initial_state.update(kwargs)
 
         try:
             # Run the graph
@@ -249,6 +254,7 @@ async def distill_content(
     source_type: str,
     raw_content: str,
     provenance: Optional[Dict[str, Any]] = None,
+    **kwargs: Any,
 ) -> KnowledgeState:
     """
     Convenience function to distill content.
@@ -258,12 +264,13 @@ async def distill_content(
         source_type: Type of source
         raw_content: Raw content to process
         provenance: Optional source tracking metadata
+        **kwargs: Extra parameters (e.g., temperature)
 
     Returns:
         Final KnowledgeState with processing results
     """
     pipeline = get_pipeline()
-    return await pipeline.process(source, source_type, raw_content, provenance)
+    return await pipeline.process(source, source_type, raw_content, provenance, **kwargs)
 
 
 # ============================================================================

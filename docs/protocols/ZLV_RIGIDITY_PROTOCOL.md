@@ -1,0 +1,23 @@
+# 🔱 ZLV RIGIDITY PROTOCOL: CRYSTAL HASHING & ALETHIA POINTERS
+
+## 🎯 OVERVIEW
+The **Zero-Loss Verification (ZLV)** layer ensures that the functional integrity of the Metropolis Mesh remains absolute. By using **Crystal Hashing** (AST-based functional signatures) and **Alethia Pointers**, we move from text-based trust to machine-verifiable truth.
+
+## 🏛️ THE ALETHIA REGISTRY
+The `memory_bank/ALETHIA_REGISTRY.md` is the immutable ledger of all verified functional hashes.
+- **AP-XXXX**: An **Alethia-Pointer** (unique ID) that anchors a technical claim to a verified entry in the Registry.
+- **Functional Hash**: A SHA-256 hash of the code's Abstract Syntax Tree (AST), ignoring non-functional nodes like comments and whitespace.
+
+## 💎 CRYSTAL HASHING MANDATE
+All modifications to files tagged `[RIGID]` or registered in the Alethia Registry MUST maintain their functional signature.
+1. **Extraction**: Use `scripts/gnostic_audit.py` to extract the AST signature.
+2. **Comparison**: Verify the new signature against the Registry before finalizing the session.
+3. **Seal Update**: If a functional change is intentional, a **Seal Hash Update** must be authorized and recorded.
+
+## 🔗 GNOSTIC PROTOCOL STANDARD (GPS)
+Every technical claim made by an agent in a session distillation MUST follow this format:
+> "The `linguistics.py` module maintains functional parity with [AP-412] (SHA-256: `83d596e...`)."
+
+## 🛠️ TOOLS
+- `make gnostic-audit`: Run the global ZLV/TGG/GRA check.
+- `make preflight`: Execute mmap-optimized pre-flight checks including ZLV verification.

@@ -1,4 +1,4 @@
-# 🚀 GEMINI.md: DOMAIN CONTEXT — /docs
+# 🚀 GEMINI.md: DOMAIN CONTEXT — /docs [RIGID]
 
 **Domain**: `/docs`
 **Expertise**: MkDocs, Technical Writing, System Architecture, Omega Stack Protocols
@@ -12,6 +12,12 @@
 > A full-stack audit was completed on 2026-03-08 by Antigravity (Opus).
 > See `OPUS_STRATEGIC_AUDIT_20260308.md` (project root) for the architecture diagram and task list.
 > See `memory_bank/activeContext.md` for execution priorities.
+
+## 🔱 Phronetic Mandate (SESS-23)
+1. **Gnostic Protocol Standard (GPS)**: All technical claims MUST reference an **Alethia-Pointer (AP)** to a **ZLV-verified** source.
+2. **Crystal Rigidity**: Documentation architecture MUST maintain structural parity with the **Diátaxis Framework**.
+3. **TGG Registration**: New documentation sections or protocol maps MUST be registered in the **Topological Gnosis-Graph (TGG)**.
+4. **Oikonomia Efficiency**: Documentation updates MUST utilize **Golden Chain** reads to minimize context debt during research.
 
 ## 🎯 Domain Directives
 1.  **Diátaxis framework** for all documentation (tutorials, how-to, reference, explanation)

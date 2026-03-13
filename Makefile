@@ -41,11 +41,26 @@ NC := \033[0m
 GEMINI_CLI := /home/arcana-novai/.nvm/versions/node/v25.3.0/bin/gemini
 # Default Node memory limit for Gemini CLI stability (Audit C2)
 export NODE_OPTIONS=--max_old_space_size=4096
+# Gnostic Battle Readiness (SESS-23)
+export MAX_TURNS=250
 
-facet-summon: ## 🔱 Summon a specific facet (Usage: make facet-summon FACET=facet-3)
+gnostic-audit: ## 🔱 Execute the Global Gnostic Audit (ZLV + TGG + GRA)
+	@echo "$(CYAN)🔱 Initiating Global Gnostic Audit...$(NC)"
+	@python3 scripts/gnostic_audit.py
+
+preflight: gnostic-audit ## ✈️  Run mmap-optimized Gnostic Pre-Flight Checks
+	@echo "$(CYAN)✈️  Running Gnostic Pre-Flight...$(NC)"
+	@python3 scripts/gnostic_preflight.py
+
+oikonomia-report: ## 💰 Generate Gnostic Oikonomia (Economy) Report
+	@echo "$(CYAN)💰 Gnostic Oikonomia Report (Sovereign ROI)$(NC)"
+	@if [ -f memory_bank/OIKONOMIA_HISTORY.jsonl ]; then tail -n 10 memory_bank/OIKONOMIA_HISTORY.jsonl; else echo "No history found."; fi
+
+facet-summon: ## 🔱 Summon a specific facet (Usage: make facet-summon FACET=facet-3 MSG="Custom prompt")
 	@if [ -z "$(FACET)" ]; then echo "$(RED)❌ ERROR: FACET is required (e.g., FACET=facet-3)$(NC)"; exit 1; fi
 	@echo "$(CYAN)🏙️  Summoning $(FACET)...$(NC)"
-	@$(GEMINI_CLI) -i "You are $(FACET). Use your tools to fulfill your mandate. Access the Memory Bank via standard MCP integration."
+	@PROMPT=$${MSG:-"You are $(FACET). Use your tools to fulfill your mandate. Access the Memory Bank via standard MCP integration."}; \
+	$(GEMINI_CLI) -i "$$PROMPT"
 
 metropolis-sleep: ## 💤 Stop heavy background services to free up RAM (llama_cpp + uvicorn)
 	@echo "$(YELLOW)💤 Putting Metropolis to sleep (pausing background services)...$(NC)"
@@ -358,6 +373,18 @@ download-models: ## Download models and embeddings
 #	wget -P embeddings https://huggingface.co/leliuga/all-MiniLM-L12-v2-GGUF/resolve/main/all-MiniLM-L12-v2.F16.gguf?download=true
 #	wget -P embeddings https://huggingface.co/prithivida/all-MiniLM-L6-v2-gguf/resolve/main/all-MiniLM-L6-v2-q8_0.gguf?download=true
 
+download-ancient-greek-bert: ## 🏛️ Download Ancient-Greek-BERT (pranaydeeps)
+	@echo "Downloading Ancient-Greek-BERT..."
+	mkdir -p models/ancient-greek-bert
+	wget -P models/ancient-greek-bert https://huggingface.co/pranaydeeps/Ancient-Greek-BERT/resolve/main/pytorch_model.bin
+	wget -P models/ancient-greek-bert https://huggingface.co/pranaydeeps/Ancient-Greek-BERT/resolve/main/config.json
+	wget -P models/ancient-greek-bert https://huggingface.co/pranaydeeps/Ancient-Greek-BERT/resolve/main/vocab.txt
+
+download-krikri: ## 🐐 Download Krikri-8B-Instruct (Q5_K_M GGUF)
+	@echo "Downloading Krikri-8B-Instruct Q5_K_M..."
+	mkdir -p models
+	wget -O models/llama-krikri-8b-instruct-q5_k_m.gguf https://huggingface.co/ilsp/Llama-Krikri-8B-Instruct-GGUF/resolve/main/llama-krikri-8b-instruct-q5_k_m.gguf
+
 
 validate: ## Run configuration validation
 	@echo "Validating configuration..."
@@ -590,14 +617,7 @@ validate-prebuild: ## Run pre-build validation checks
 	@echo "$(GREEN)✅ Pre-build validation completed$(NC)"
 
 
-preflight: ## Run system readiness checks
-	@echo "$(CYAN)✈️  Running Preflight Checks...$(NC)"
-	@if [ ! -f setup/preflight_checks.py ]; then \
-		echo "$(RED)Error: setup/preflight_checks.py not found$(NC)"; \
-		exit 1; \
-	fi
-	$(PYTHON) setup/preflight_checks.py
-	@echo "$(GREEN)✅ Preflight checks completed$(NC)"
+# ... removed duplicate preflight ...
 
 # ============================================================================
 # VALIDATION & VERIFICATION TARGETS
@@ -751,18 +771,10 @@ check-image-sizes: ## 📏 Ensure built images are within size budget
 	echo "$(GREEN)✅ Directories created and owned$(NC)"
 
 
-build-base: ## 🏗️ Build the runtime and build base images
-	@echo "$(CYAN)Building xnai-base-build:latest (full build toolkit) with podman...$(NC)"
-	@BUILDKIT_PROGRESS=plain podman build -t xnai-base-build:latest -f infra/docker/Dockerfile.build .
-	@echo "$(GREEN)✓ Podman build-base image built$(NC)"
-	@echo "$(CYAN)Also building xnai-base-build:latest with docker (for compose compatibility)...$(NC)"
-	@docker build -t xnai-base-build:latest -f infra/docker/Dockerfile.build . || echo "$(YELLOW)docker build failed or docker not installed$(NC)"
+build-base: ## 🏗️ Build the runtime base image
 	@echo "$(CYAN)Building xnai-base:latest (runtime-only) with podman...$(NC)"
 	@BUILDKIT_PROGRESS=plain podman build -t xnai-base:latest -f infra/docker/Dockerfile.base .
 	@echo "$(GREEN)✓ Podman runtime base image built$(NC)"
-	@echo "$(CYAN)Also building xnai-base:latest with docker...$(NC)"
-	@docker build -t xnai-base:latest -f infra/docker/Dockerfile.base . || echo "$(YELLOW)docker build failed or docker not installed$(NC)"
-	@echo "$(GREEN)✓ Runtime base image built for docker (if available)$(NC)"
 
 
 build: check-podman-permissions check-host-setup ## Build Podman images with BuildKit caching and offline optimization
@@ -801,7 +813,7 @@ up: build-base ## Start stack (ensure base image exists)
 		echo "$(YELLOW)Warning: .env file not found. Creating from .env.example...$(NC)"; \
 		cp .env.example .env 2>/dev/null || echo "$(RED)Error: .env.example not found$(NC)"; \
 	fi
-	$(COMPOSE) -f docker-compose.yml up -d --build
+	$(COMPOSE) up -d --build
 
 
 down: ## Stop stack

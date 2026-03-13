@@ -240,7 +240,7 @@ class SnapshotIngestor:
     def _extract_metadata_from_content(self, content: str) -> Dict:
         metadata: Dict = {}
         lines = content.splitlines()
-        for line in lines[:80]:
+        for line in lines[:100]: # Expanded search range for scholarly frontmatter
             l = line.strip()
             if l.startswith("**Generated:**"):
                 metadata["generated"] = l.split("**Generated:**", 1)[1].strip()
@@ -248,6 +248,14 @@ class SnapshotIngestor:
                 metadata["version"] = l.split("**Version:**", 1)[1].strip()
             elif l.startswith("**Root Directory:**"):
                 metadata["root_dir"] = l.split("**Root Directory:**", 1)[1].strip(" `")
+            elif l.startswith("**Gnostic Tier:**"):
+                metadata["gnostic_tier"] = l.split("**Gnostic Tier:**", 1)[1].strip()
+            elif l.startswith("**Primary Archetype:**"):
+                metadata["primary_archetype"] = l.split("**Primary Archetype:**", 1)[1].strip()
+            elif l.startswith("**Shadow Resonance:**"):
+                metadata["shadow_resonance"] = "true" in l.lower()
+            elif l.startswith("**Linguistic Density:**"):
+                metadata["linguistic_density"] = l.split("**Linguistic Density:**", 1)[1].strip()
             elif l.startswith("**Files Processed:**"):
                 try:
                     val = l.split("**Files Processed:**", 1)[1].strip()

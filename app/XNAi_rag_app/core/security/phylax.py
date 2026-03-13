@@ -1,0 +1,51 @@
+"""
+🛡️ THE PHYLAX (I_AM GUARDIAN)
+Module: app/XNAi_rag_app/core/security/phylax.py
+Status: INITIALIZED | SESS-19
+"""
+
+import logging
+from typing import Any, Dict, List, Optional
+from anyio import create_task_group
+
+logger = logging.getLogger("xnai.security.phylax")
+
+class Phylax:
+    """
+    The guardian and protocol enforcement layer of the Omega Stack.
+    Responsible for enforcing the Themis Protocols (AuthN/AuthZ) and 
+    the Apatheia Enclosure for sovereign data.
+    """
+
+    def __init__(self, config_path: str = "/app/config.toml"):
+        self.config_path = config_path
+        self.policies = {}
+        self.is_active = False
+
+    async def initialize(self):
+        """Initializes the Phylax and loads the Themis Protocols (I_AM)."""
+        logger.info("Initializing the Phylax Guardian...")
+        # TODO: Load I_AM policies from config/iam-themis-protocols.yaml
+        self.is_active = True
+        logger.info("Phylax is at his post.")
+
+    async def validate_access(self, agent_id: str, action: str, resource_id: str, context: Dict[str, Any]) -> bool:
+        """
+        Validates access based on agent role, action, and resource context.
+        Implements the Themis Protocols.
+        """
+        logger.info(f"Phylax checking access: Agent {agent_id} -> {action} on {resource_id}")
+        # TODO: Implement I_AM access policy checks
+        # TODO: Integrate with Apatheia Enclosure for sensitivity check
+        return True # Placeholder for now
+
+    async def enforce_apatheia(self, data: Any, sensitivity: float) -> bool:
+        """
+        Enforces the Apatheia Enclosure for sovereign data.
+        Returns true if processing is permitted within the current enclave.
+        """
+        if sensitivity > 0.7:
+             logger.warning("High-sensitivity Logos detected. Enforcing Apatheia Enclosure.")
+             # TODO: Implement local-only processing constraints
+             return True
+        return True

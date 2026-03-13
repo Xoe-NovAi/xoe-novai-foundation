@@ -1,0 +1,333 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "XNAi Foundation Omega Stack - Executive Overview",
+    "tags": ["omega-stack", "observability", "ai-agents"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "System Health Overview",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "omega_system_health{component=\"overall\"}",
+            "legendFormat": "Overall Health Score"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": 0},
+                {"color": "yellow", "value": 70},
+                {"color": "green", "value": 90}
+              ]
+            },
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Active Agents",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "sum(omega_agent_status{status=\"active\"})",
+            "legendFormat": "Active Agents"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "unit": "short"
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Cost Savings",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "sum(omega_cost_savings)",
+            "legendFormat": "Total Savings"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "green"},
+            "unit": "currencyUSD",
+            "decimals": 2
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0}
+      },
+      {
+        "id": 4,
+        "title": "Response Time (P95)",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(omega_response_time_bucket[5m]))",
+            "legendFormat": "P95 Response Time"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "steps": [
+                {"color": "green", "value": 0},
+                {"color": "yellow", "value": 0.5},
+                {"color": "red", "value": 1.0}
+              ]
+            },
+            "unit": "s"
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0}
+      },
+      {
+        "id": 5,
+        "title": "Error Rate by Severity",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(omega_error_rate[5m])",
+            "legendFormat": "{{severity}} - {{error_type}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "linear",
+              "barAlignment": 0,
+              "lineWidth": 1,
+              "fillOpacity": 0.1,
+              "gradientMode": "none",
+              "spanNulls": false,
+              "insertNulls": false,
+              "showPoints": "never",
+              "pointSize": 5,
+              "stacking": {"mode": "none", "group": "A"},
+              "axisPlacement": "auto",
+              "axisLabel": "",
+              "axisColorMode": "text",
+              "scaleDistribution": {"type": "linear"},
+              "axisCenteredZero": false,
+              "hideFrom": {"legend": false, "tooltip": false, "vis": false},
+              "thresholdsStyle": {"mode": "off"}
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"color": "green", "value": null},
+                {"color": "red", "value": 80}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}
+      },
+      {
+        "id": 6,
+        "title": "Agent Performance Matrix",
+        "type": "heatmap",
+        "targets": [
+          {
+            "expr": "omega_agent_performance",
+            "legendFormat": "{{agent_id}} - {{metric_type}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}
+      },
+      {
+        "id": 7,
+        "title": "Resource Utilization",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "omega_agent_resource_usage{resource_type=\"cpu\"}",
+            "legendFormat": "CPU Usage - {{agent_id}}"
+          },
+          {
+            "expr": "omega_agent_resource_usage{resource_type=\"memory\"}",
+            "legendFormat": "Memory Usage - {{agent_id}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "linear",
+              "barAlignment": 0,
+              "lineWidth": 1,
+              "fillOpacity": 0.1,
+              "gradientMode": "none",
+              "spanNulls": false,
+              "insertNulls": false,
+              "showPoints": "never",
+              "pointSize": 5,
+              "stacking": {"mode": "none", "group": "A"},
+              "axisPlacement": "auto",
+              "axisLabel": "",
+              "axisColorMode": "text",
+              "scaleDistribution": {"type": "linear"},
+              "axisCenteredZero": false,
+              "hideFrom": {"legend": false, "tooltip": false, "vis": false},
+              "thresholdsStyle": {"mode": "off"}
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"color": "green", "value": null},
+                {"color": "yellow", "value": 70},
+                {"color": "red", "value": 90}
+              ]
+            },
+            "unit": "percent"
+          }
+        },
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 16}
+      },
+      {
+        "id": 8,
+        "title": "Session Quality & Continuity",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "omega_session_quality",
+            "legendFormat": "Quality - {{session_id}}"
+          },
+          {
+            "expr": "omega_session_continuity",
+            "legendFormat": "Continuity - {{session_id}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "linear",
+              "barAlignment": 0,
+              "lineWidth": 1,
+              "fillOpacity": 0.1,
+              "gradientMode": "none",
+              "spanNulls": false,
+              "insertNulls": false,
+              "showPoints": "never",
+              "pointSize": 5,
+              "stacking": {"mode": "none", "group": "A"},
+              "axisPlacement": "auto",
+              "axisLabel": "",
+              "axisColorMode": "text",
+              "scaleDistribution": {"type": "linear"},
+              "axisCenteredZero": false,
+              "hideFrom": {"legend": false, "tooltip": false, "vis": false},
+              "thresholdsStyle": {"mode": "off"}
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"color": "red", "value": 0},
+                {"color": "yellow", "value": 0.6},
+                {"color": "green", "value": 0.8}
+              ]
+            },
+            "unit": "percent",
+            "min": 0,
+            "max": 1
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 24}
+      },
+      {
+        "id": 9,
+        "title": "Cache Efficiency",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "omega_cache_efficiency",
+            "legendFormat": "{{cache_type}} Efficiency"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "linear",
+              "barAlignment": 0,
+              "lineWidth": 1,
+              "fillOpacity": 0.1,
+              "gradientMode": "none",
+              "spanNulls": false,
+              "insertNulls": false,
+              "showPoints": "never",
+              "pointSize": 5,
+              "stacking": {"mode": "none", "group": "A"},
+              "axisPlacement": "auto",
+              "axisLabel": "",
+              "axisColorMode": "text",
+              "scaleDistribution": {"type": "linear"},
+              "axisCenteredZero": false,
+              "hideFrom": {"legend": false, "tooltip": false, "vis": false},
+              "thresholdsStyle": {"mode": "off"}
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"color": "red", "value": 0},
+                {"color": "yellow", "value": 0.5},
+                {"color": "green", "value": 0.8}
+              ]
+            },
+            "unit": "percent",
+            "min": 0,
+            "max": 1
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 24}
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "refresh": "30s",
+    "schemaVersion": 27,
+    "version": 1,
+    "links": [
+      {
+        "title": "Agent-Specific Dashboards",
+        "url": "/d/agent-dashboard",
+        "type": "dashboards",
+        "asDropdown": true
+      },
+      {
+        "title": "Technical Deep-Dive",
+        "url": "/d/technical-dashboard",
+        "type": "dashboards"
+      }
+    ]
+  }
+}

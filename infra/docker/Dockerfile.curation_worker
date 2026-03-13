@@ -21,7 +21,7 @@ RUN apt-get update && \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements
-COPY requirements/requirements-curation_worker.txt .
+COPY requirements/requirements-curation_worker.txt requirements/requirements-curation_worker.txt
 
 # --- BUILD OPTIMIZATION: BuildKit Cache Mounts ---
 RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \

@@ -6,27 +6,27 @@
 
 ---
 
-## 🚨 IMMEDIATE PRIORITY
+## 🔱 Phronetic Mandate (SESS-23)
+1. **Source of Truth**: The `memory_bank` is the **Root of Alethia**. No claim exists without a pointer.
+2. **Pack Hydration**: Sub-agents MUST hydrate their context from **Gold-tier Gnosis Packs (DSRC)** via the `xnai-gnosis` MCP.
+3. **Registry Rigidity**: All core architectural decisions MUST be anchored in the `ALETHIA_REGISTRY` with a **Rigidity Hash**.
+4. **Oikonomia Tracking**: Every session must log **Token ROI** to the `OIKONOMIA_HISTORY.jsonl`.
 
-> [!IMPORTANT]
-> A full-stack audit by Antigravity (Opus) was completed on 2026-03-08.
-> **Current Session (2026-03-09)**: Verified roadmap and filesystem ownership (UID 1000).
-> **Strategic Roadmap (SESS-01 to SESS-06)** is now active in `SESSIONS_MAP.md`.
+## 🚨 IMMEDIATE PRIORITY
+...
 
 ### Execution Order (Metropolis Roadmap)
-1.  **SESS-01**: Identity (Task C3, P3, P4) - **NEXT**
-2.  **SESS-02**: Memory Bank Core (MB1, C1, MB4, MB5, MB3, MB6)
-3.  **SESS-03**: Infra & Capacity (C2, P1, P2, ST4, MB2)
-4.  **SESS-04**: The Sentinel (S1, S2, S4, S5, S3)
-5.  **SESS-05**: Protocol Alignment (ST1, ST2, ST3, ST5)
-6.  **SESS-06**: Deep Research (MCP Audits, Testing)
+1.  **SESS-01 - SESS-18**: Identity, Memory Bank Core, Oikos Resurrection - **COMPLETE**
+2.  **SESS-19**: The Shadow Audit (Task MB7, C4, P5) - **NEXT**
+3.  **SESS-20**: Sovereign Foundry Enhancement (PEM Integration)
 
 ---
 
 ## 🎯 Domain Directives
-1.  **Metropolis Mesh**: All services utilize `CONFIG_PATH=/app/config.toml` and consistent UID 1000 ownership.
+1.  **Metropolis Mesh**: All services utilize `CONFIG_PATH=/app/config.toml` and hardcoded UID 1000 ownership.
 2.  **Memory Bank MCP**: Operates on Port 8005 via SSE/FastAPI.
-3.  **Session Hygiene**: Keep chat context <5MB by following the targeted roadmap sessions.
+3.  **Oikos Mastermind**: Collective Council deliberation via Port 8006 (Grounded reasoning).
+4.  **Rainbow Rotation**: Automatic OAuth/API key switching for 429 resilience.
 
 ## 🛠 Tools & Commands
 - **Check Mesh**: `podman ps --filter "name=xnai"`

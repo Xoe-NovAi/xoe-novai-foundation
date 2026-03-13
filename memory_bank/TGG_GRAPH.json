@@ -1,0 +1,70 @@
+{
+  "TGG": {
+    "version": "1.1.0",
+    "last_updated": "2026-03-12T15:15:00Z",
+    "nodes": {
+      "Root": {
+        "path": "/",
+        "type": "orchestrion",
+        "imports": [],
+        "hash": "[RIGIDITY-HASH-ALPHA-20260312]"
+      },
+      "app.XNAi_rag_app.core.linguistics": {
+        "path": "app/XNAi_rag_app/core/linguistics.py",
+        "type": "logic",
+        "imports": [
+          "ast",
+          "hashlib",
+          "json",
+          "re",
+          "unicodedata"
+        ],
+        "hash": "8d9c5d2d28855198b147644af934110899973ea2e139d37eac79ead5cc19d29f"
+      },
+      "mcp.server.fastmcp": {
+        "path": "builtin",
+        "type": "external",
+        "imports": []
+      },
+      "app.XNAi_rag_app.core.distillation.knowledge_distillation": {
+        "path": "app/XNAi_rag_app/core/distillation/knowledge_distillation.py",
+        "type": "logic",
+        "imports": ["langgraph.graph", "app.XNAi_rag_app.core.distillation.state"]
+      },
+      "mcp-servers.xnai-gnosis.server": {
+        "path": "mcp-servers/xnai-gnosis/server.py",
+        "type": "mcp",
+        "imports": ["mcp.server.fastmcp", "prometheus_client", "app.XNAi_rag_app.core.linguistics", "app.XNAi_rag_app.core.distillation.knowledge_distillation"],
+        "hash": "inherited"
+      }
+,
+      "app.core.test": {
+        "path": "app/core/test.py",
+        "hash": "abc123hash",
+        "type": "logic",
+        "last_anchored": "2026-03-12"
+      },
+      "scripts.gnostic_oikonomia": {
+        "path": "scripts/gnostic_oikonomia.py",
+        "type": "logic",
+        "imports": ["prometheus_client", "psutil"],
+        "hash": "oikonomia-v1-hash"
+      },
+      "scripts.gnostic_preflight": {
+        "path": "scripts/gnostic_preflight.py",
+        "type": "logic",
+        "imports": ["mmap", "hashlib"],
+        "hash": "preflight-v1-hash"
+      },
+      "scripts.gnostic_audit": {
+        "path": "scripts/gnostic_audit.py",
+        "type": "logic",
+        "imports": ["socket", "json"],
+        "hash": "audit-v1-hash"
+      }
+    },
+    "anchors": {
+      "F7-Techne": "app.XNAi_rag_app.core.linguistics"
+    }
+  }
+}

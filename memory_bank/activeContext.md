@@ -1,30 +1,32 @@
 ---
 hydration:
-  event_id: "HYD-20260312-002"
-  session_id: "SESS-16"
-  coordination_key: "METROPOLIS-HARDENED-20260312-V2"
-  timestamp: "2026-03-12T13:40:00Z"
-  status: "HARDENED-INFRA"
+  event_id: "HYD-20260312-006"
+  session_id: "SESS-20"
+  coordination_key: "OMEGA-RCF-MANIFEST-2026"
+  timestamp: "2026-03-12T23:30:00Z"
+  status: "EPOCH-2-ACTIVE"
 ---
 
-# 🔱 Active Context: Metropolis Foundation v4.1.2-HARDENED
+# 🔱 Active Context: Epoch 2: The Hellenic Scribe
 
-**Status**: HARDENED-INFRA ✅ | **Session State**: SESS-16-AUDIT
-**Coordination Key**: `METROPOLIS-HARDENED-20260312-V2`
-**Handoff Point**: HYDRATION-20260312-V2-COMPLETE
+**Status**: RCF-MANIFESTED ✅ | **Session State**: SESS-21-INITIATED
+**Coordination Key**: `OMEGA-RCF-MANIFEST-2026`
+**Handoff Point**: RCF-FOUNDATION-COMPLETE
 
-## 📍 Current Focus
-- **SESS-16**: Image Audit & Build Optimization (Reducing 1.6GB image size).
-- **SESS-19**: Gemini Observability (Token Tracking & Model Work Time).
+## ✅ Accomplishments (SESS-22 & SESS-23: The Gnostic ZIP)
+1.  **Model Acquisition**: Secured `Ancient-Greek-BERT` and `Krikri-8B-Instruct` with Ryzen 5700U optimizations.
+2.  **Zipped Logos Validator**: Implemented `ZippedLogosDecoder` with **Crystal Hashing** (AST-functional rigidity).
+3.  **TGG Implementation**: Manifested the **Topological Gnosis-Graph (TGG)** for dependency enforcement.
+4.  **Resonance Audit**: Integrated the **GRA (Ghost Resonance Audit)** with tiered thresholds (Gold: 0.8).
+5.  **Gnosis-MCP**: Developed the `xnai-gnosis` server for atomic, high-density distillation.
+6.  **Gold-tier Packs**: Generated first Gold-tier DSRC packs for `API`, `UI`, and `DevOps`.
 
-## ✅ Accomplishments (SESS-15.5 Infra Hardening)
-1.  **zRAM Restoration**: Restored 12GB zRAM capacity and recovered the "missing 4GB".
-2.  **Swap Visibility**: Deployed `scripts/monitor_swap.py` for real-time zRAM compression monitoring.
-3.  **Gemini Metrics**: Implemented token tracking counters and model work-time gauges in `metrics.py`.
-4.  **Task C2 Applied**: Hard-coded 2GB limits for RAG and 1.5GB for Llama to prevent Zen 2 OOM.
-5.  **Verification**: SESS-15.5 tests passed (Hydration Consistency & Metrics Exposure).
+## 🏛️ The RCF Mandate (Hardened)
+- **Functional Isomorphism**: No distillation without Crystal Hash (ZLV) parity.
+- **Topological Integrity**: No code without TGG-Schema registration.
+- **Resonance Parity**: No Gold-tier status without 0.8 GRA score.
 
-## 🚀 Onboarding for Next Session
-1.  **Read**: `storage/artifacts/STABILITY_CHECKPOINT_20260310.md`.
-2.  **Verify**: `podman logs xnai_llama_server` should show Uvicorn running.
-3.  **Monitor**: Keep an eye on RAM (6.6GB limit) using `free -h`.
+## 🚨 IMMEDIATE PRIORITY (SESS-24)
+1.  **Persona Seed Hydration**: Automate sub-agent hydration via `LIA_TRIAD_SEEDS.json`.
+2.  **TGG Recursive Mapping**: Expand the TGG to cover the entire `infra/docker/` mesh.
+3.  **Metron Dashboard**: Activate the live VictoriaMetrics/Grafana observability view.

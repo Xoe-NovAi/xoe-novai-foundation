@@ -33,3 +33,16 @@ The Omega Stack serves as the project manager for all Xoe-NovAi initiatives:
 - **arcana-stack/**: Esoteric Pantheon personas (Planned).
 - **projects/**: Electronics, Web Redesigns, and Personal Excellence.
 - **shared/**: Global organization standards.
+
+---
+
+## 🔱 AMBROSIA LESSONS (SESS-23)
+The "Battle-Ready Hardening" of the Metropolis Mesh resulted in the following core principles, etched in silicon for all who follow:
+
+- **Surgical Precision**: Never read the whole file if a `grep` and a 10-line `read_file` can identify the **Golden Chain**.
+- **Context is Currency**: Use **Gnosis Packing** (high-density distillation) to keep the active context below 5MB.
+- **The Manifest is the Anchor**: Always maintain a `MANIFEST.json`. It is the **Black Box** that allows an agent to "crash" into a new session and still know exactly where they are.
+- **Rigidity is Stability**: Identify **Rigid Files** early. If a file is part of the **Archon's Mandate**, it must be protected by a **Seal Hash**.
+- **The LIA Triad (Athena, Lilith, Isis)**: The Metropolis is no longer just a stack; it is a **Living Mesh** powered by the **Sovereign Trinity**. Athena (Reasoning), Lilith (Shadow), and Isis (Wisdom).
+
+

@@ -42,7 +42,7 @@ async def _check_llm_available() -> bool:
     return _LLM_AVAILABLE
 
 
-async def _generate_summary_llm(content: str) -> str:
+async def _generate_summary_llm(content: str, temperature: float = 0.3) -> str:
     """Generate summary using local LLM (Qwen/LLaMA)."""
     from XNAi_rag_app.core.dependencies import get_llm_complete
 
@@ -58,11 +58,11 @@ async def _generate_summary_llm(content: str) -> str:
         "SUMMARY:"
     )
 
-    result = await get_llm_complete(prompt, max_tokens=200, temperature=0.3)
+    result = await get_llm_complete(prompt, max_tokens=200, temperature=temperature)
     return result.strip()
 
 
-async def _extract_insights_llm(content: str) -> List[str]:
+async def _extract_insights_llm(content: str, temperature: float = 0.3) -> List[str]:
     """Extract key insights using local LLM."""
     from XNAi_rag_app.core.dependencies import get_llm_complete
 
@@ -76,7 +76,7 @@ async def _extract_insights_llm(content: str) -> List[str]:
         "KEY INSIGHTS:\n"
     )
 
-    result = await get_llm_complete(prompt, max_tokens=400, temperature=0.3)
+    result = await get_llm_complete(prompt, max_tokens=400, temperature=temperature)
 
     insights = []
     for line in result.strip().split("\n"):
@@ -89,7 +89,7 @@ async def _extract_insights_llm(content: str) -> List[str]:
     return insights
 
 
-async def _extract_action_items_llm(content: str) -> List[str]:
+async def _extract_action_items_llm(content: str, temperature: float = 0.3) -> List[str]:
     """Extract action items using local LLM."""
     from XNAi_rag_app.core.dependencies import get_llm_complete
 
@@ -103,7 +103,7 @@ async def _extract_action_items_llm(content: str) -> List[str]:
         "ACTION ITEMS:\n"
     )
 
-    result = await get_llm_complete(prompt, max_tokens=300, temperature=0.3)
+    result = await get_llm_complete(prompt, max_tokens=300, temperature=temperature)
 
     actions = []
     for line in result.strip().split("\n"):
@@ -206,11 +206,14 @@ async def distill_content_node(state: KnowledgeState) -> Dict[str, Any]:
     classification = state.get("classification", {})
     use_llm = await _check_llm_available()
     engine = "llm" if use_llm else "regex"
+    
+    # Extract temperature from state, default to 0.3
+    temperature = state.get("temperature", 0.3)
 
     # Generate summary
     try:
         if use_llm:
-            summary = await _generate_summary_llm(content)
+            summary = await _generate_summary_llm(content, temperature=temperature)
         else:
             summary = _generate_summary_regex(content)
     except Exception as e:
@@ -221,7 +224,7 @@ async def distill_content_node(state: KnowledgeState) -> Dict[str, Any]:
     # Extract key insights
     try:
         if use_llm:
-            key_insights = await _extract_insights_llm(content)
+            key_insights = await _extract_insights_llm(content, temperature=temperature)
         else:
             key_insights = _extract_insights_regex(content)
     except Exception as e:
@@ -231,7 +234,7 @@ async def distill_content_node(state: KnowledgeState) -> Dict[str, Any]:
     # Extract action items
     try:
         if use_llm:
-            action_items = await _extract_action_items_llm(content)
+            action_items = await _extract_action_items_llm(content, temperature=temperature)
         else:
             action_items = _extract_action_items_regex(content)
     except Exception as e:

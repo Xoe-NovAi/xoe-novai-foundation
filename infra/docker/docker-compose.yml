@@ -14,7 +14,7 @@ services:
     image: consul:1.15.4
     container_name: xnai_consul
     init: true
-    user: root
+    user: "1000:1000"
     ports:
       - "8500:8500"
       - "8600:8600/udp"
@@ -43,7 +43,7 @@ services:
     image: redis:7.4.1
     container_name: xnai_redis
     init: true
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -79,12 +79,61 @@ services:
     restart: unless-stopped
 
   # ==========================================================================
+  # OIKOS SERVICE - Cognitive Mesh & Mastermind Orchestrator
+  # ==========================================================================
+  oikos:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.oikos
+    container_name: xnai_oikos
+    init: true
+    user: "1000:1000"
+    ports:
+      - "8006:8006"
+    volumes:
+      - ../../app:/app/app:Z
+      - ../../scripts:/app/scripts:Z
+      - ../../memory_bank:/app/memory_bank:Z
+      - ../../.cli:/app/.cli:Z
+      - ../../.logs:/app/.logs:Z
+      - ../../.env:/app/.env:ro,Z
+      - ../../config.toml:/app/config.toml:ro,Z
+      - ../../config:/app/config:ro,Z
+      - /home/arcana-novai/.xnai/oauth_credentials.json:/app/secrets/oauth_credentials.json:ro,Z
+      - /home/arcana-novai/.xnai/.oauth_key:/app/secrets/.oauth_key:ro,Z
+    environment:
+      - REDIS_PASSWORD
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - GEMINI_API_KEY
+      - GOOGLE_API_KEY
+      - XNAI_OAUTH_KEY
+      - VERTEXAI_PROJECT=arcana-novai-gemini-1772727596
+      - VERTEXAI_LOCATION=us-central1
+      - CONFIG_PATH=/app/config.toml
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8006/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - xnai_db_network
+      - xnai_app_network
+    restart: unless-stopped
+
+  # ==========================================================================
   # VICTORIAMETRICS SERVICE - Time-Series Metrics Storage
   # ==========================================================================
   victoriametrics:
     image: victoriametrics/victoria-metrics:latest
     container_name: xnai_victoriametrics
     init: true
+    user: "1000:1000"
     ports:
       - "8428:8428"
     volumes:
@@ -119,7 +168,7 @@ services:
     image: python:3.12-slim
     container_name: xnai_openpipe
     init: true
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     command: ["python3", "-c", "import time; print('OpenPipe Sovereign Collector Active'); time.sleep(float('inf'))"]
     deploy:
       resources:
@@ -164,7 +213,7 @@ services:
     image: qdrant/qdrant:v1.13.1
     container_name: xnai_qdrant
     init: true
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -203,6 +252,7 @@ services:
     image: postgres:15
     container_name: xnai_postgres
     init: true
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -243,7 +293,7 @@ services:
         reservations:
           memory: 512M
           cpus: '1.0'
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     security_opt:
       - no-new-privileges:true
     read_only: true
@@ -254,14 +304,15 @@ services:
       - /app/logs:size=100m,mode=1777
       - /app/data:size=50m,mode=1777
     volumes:
-      - ../../storage_new/data/cache:/home/appuser/.cache:Z,U
-      - huggingface_cache:/home/appuser/.cache/huggingface:Z,U
+      - /media/arcana-novai/omega_library/omega-stack/cache/huggingface:/home/appuser/.cache/huggingface:Z,U
       - ../../library:/library:z,U
-      - ../../knowledge_new:/knowledge:z,U
+      - ../../expert-knowledge:/knowledge:z,U
       - ./tls/ca.crt:/tls/ca.crt:ro,Z
       - ../../app/config.toml:/app/config.toml:ro,Z,U
-      - ./models:/models:ro,Z,U
-      - ./embeddings:/embeddings:ro,Z,U
+      - /media/arcana-novai/omega_library/omega-stack/models:/models:ro,Z,U
+      - /media/arcana-novai/omega_library/omega-stack/embeddings:/embeddings:ro,Z,U
+    ports:
+      - "8000:8002"
     environment:
       - OPENBLAS_CORETYPE=ZEN
       - OPENBLAS_NUM_THREADS=6
@@ -284,6 +335,7 @@ services:
       - CONFIG_PATH=/app/config.toml
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app
+      - HSA_OVERRIDE_GFX_VERSION=9.0.0
     secrets:
       - redis_password
       - api_key
@@ -315,7 +367,7 @@ services:
     image: xnai-ui:latest
     container_name: xnai_chainlit_ui
     init: true
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -325,7 +377,7 @@ services:
       - /app/logs:size=100m,mode=1777
     volumes:
       - ./config.toml:/app/config.toml:ro,Z,U
-      - ./models:/models:ro,Z,U
+      - /media/arcana-novai/omega_library/omega-stack/models:/models:ro,Z,U
       - ./app/XNAi_rag_app:/app/XNAi_rag_app:ro,Z,U
       - ./assets:/app/assets:ro,Z,U
       - ./data/entities:/app/data/entities:Z,U
@@ -373,7 +425,7 @@ services:
     image: xnai-crawler:latest
     container_name: xnai_crawler
     init: true
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -414,12 +466,12 @@ services:
   curation_worker:
     build:
       context: ../..
-      dockerfile: infra/docker/Dockerfile.curator
+      dockerfile: infra/docker/Dockerfile.curation_worker
     image: xnai-library-curator:latest
     container_name: xnai_library_curator
     init: true
     restart: on-failure
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -442,11 +494,12 @@ services:
       - KNOWLEDGE_PATH=/expert-knowledge
       - PYTHONPATH=/app
       - CONFIG_PATH=/app/config.toml
+      - HSA_OVERRIDE_GFX_VERSION=9.0.0
     volumes:
-      - ../../storage_new:/storage:Z,U
-      - ./models:/storage/models:ro,Z,U
-      - ./library:/library:z,U
-      - ../../knowledge_new:/expert-knowledge:z,U
+      - ../../storage:/storage:Z,U
+      - /media/arcana-novai/omega_library/omega-stack/models:/storage/models:ro,Z,U
+      - ../../library:/library:z,U
+      - ../../expert-knowledge:/expert-knowledge:z,U
       - ./tls/ca.crt:/tls/ca.crt:ro,Z
       - ../../app/config.toml:/app/config.toml:ro,Z,U
     networks:
@@ -461,7 +514,7 @@ services:
         BUILDKIT_INLINE_CACHE: 1
     image: xnai-mkdocs:latest
     container_name: xnai_mkdocs
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -504,9 +557,10 @@ services:
       - xnai_db_network
 
   vikunja:
-    image: vikunja/vikunja:0.24.1
+    image: vikunja/vikunja:latest
     container_name: xnai_vikunja
-    user: "1001:1001"
+    user: "1000:1000"
+
     restart: unless-stopped
     depends_on:
       vikunja-db:
@@ -534,7 +588,7 @@ services:
   caddy:
     image: caddy:2.8-alpine
     container_name: xnai_caddy
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     restart: unless-stopped
     deploy:
       resources:
@@ -542,7 +596,7 @@ services:
           memory: 256M
           cpus: '0.2'
     ports:
-      - "8000:8000"
+      - "8002:8000"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro,Z,U
       - ./logs/caddy:/var/log/caddy:Z,U
@@ -559,7 +613,7 @@ services:
     image: grafana/grafana:11.4.0
     container_name: xnai_grafana
     init: true
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -622,10 +676,11 @@ services:
     container_name: xnai_llama_server
     command: python3 -m llama_cpp.server --model /models/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf --n_gpu_layers 0 --n_threads 6 --n_ctx 32768 --type_k 2 --type_v 2 --host 0.0.0.0 --port 8000 --api_key ${LLAMA_API_KEY:-xnai-local-key}
     volumes:
-      - ./models:/models:ro,Z,U
+      - /media/arcana-novai/omega_library/omega-stack/models:/models:ro,Z,U
     environment:
       - N_THREADS=6
       - METRICS_PORT=8003
+      - HSA_OVERRIDE_GFX_VERSION=9.0.0
     logging:
       driver: "json-file"
       options:
@@ -667,10 +722,13 @@ services:
       - llama_server
 
   knowledge_miner:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.curation_worker
     image: xnai-curation-worker:latest
     container_name: xnai_knowledge_miner
     init: true
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -706,7 +764,7 @@ services:
       dockerfile: infra/docker/Dockerfile.memory-bank
     container_name: xnai_memory_bank_mcp
     init: true
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     ports:
       - "8005:8000"
     environment:
@@ -721,7 +779,7 @@ services:
       - CONFIG_PATH=/app/config.toml
       - PYTHONPATH=/app
     volumes:
-      - ../../storage_new:/storage:Z,U
+      - ../../storage:/storage:Z,U
       - ./tls/ca.crt:/tls/ca.crt:ro,Z
       - ../../app/config.toml:/app/config.toml:ro,Z,U
     depends_on:
@@ -767,7 +825,7 @@ services:
     image: localhost/xnai-rag:latest
     container_name: xnai_librarian
     init: true
-    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -781,9 +839,11 @@ services:
       - REDIS_SSL_CERT_REQS=none
       - PYTHONPATH=/app
       - CONFIG_PATH=/app/config.toml
+      - HSA_OVERRIDE_GFX_VERSION=9.0.0
       - SESSION_ARCHIVE_DIR=/storage/recall/archives
+      - HSA_OVERRIDE_GFX_VERSION=9.0.0
     volumes:
-      - ../../storage_new:/storage:Z,U
+      - ../../storage:/storage:Z,U
       - ./tls/ca.crt:/tls/ca.crt:ro,Z
       - ../../app/config.toml:/app/config.toml:ro,Z,U
     depends_on:

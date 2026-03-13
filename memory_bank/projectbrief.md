@@ -7,8 +7,8 @@ block:
   tier: core
   priority: 1
 created: 2026-02-19
-modified: 2026-02-23
-version: "1.2"
+modified: 2026-03-11
+version: "1.3-OIKOS"
 ---
 
 # Project Brief - Xoe-NovAi Foundation Stack
@@ -32,38 +32,26 @@ Build a **Sovereign AI Foundation Stack** - a production-ready, self-documenting
 | Constraint | Requirement |
 |------------|-------------|
 | Telemetry | Zero external telemetry (air-gap capable) |
-| Containerization | Non-root containers (security) |
+| Containerization | Non-root containers (UID 1000 standard) |
 | Filesystem | Read-only filesystems (immutability) |
 | Memory | <6GB memory footprint (resource-constrained) |
-| Latency | <500ms API response times (performance) |
+| Port Access | Secured via Caddy Ingress (Unified Port 8002) |
 
 ## Project Phases
 
-### Completed Infrastructure Phases (2026-02)
+### 🔱 METROPOLIS MILESTONES (2026-03)
 | Phase | Status | Description |
 |-------|--------|-------------|
-| Phase 1-7 | ✅ Complete | Foundation bootstrap, Agent Bus integration |
-| Phase 8 | ✅ Complete | Infrastructure Hardening |
-| Phase 9 | ✅ Complete | Code Audit & Implementation Fixes |
-| Phase 10 | ✅ Complete | OpenPipe Integration |
+| SESS-17 | ✅ Complete | PES AnyIO Refactor & Storage Sovereignty |
+| SESS-18 | ✅ Complete | Oikos Council Resurrection & Containerization |
+| SESS-19 | 🔵 In Progress | The Shadow Audit (Ancestral Hub Analysis) |
+| SESS-20 | 🔵 In Progress | Sovereign Foundry Enhancement |
 
-### Current Strategy Phases (2026-02)
-| Phase | Status | Description |
-|-------|--------|-------------|
-| Phase 1 | ✅ Complete | Chainlit Consolidation (65% code reduction) |
-| Phase 2 | ✅ Complete | Gemini CLI MC Setup |
-| Phase 3 | ✅ Complete | Knowledge Absorption System |
-| Phase 4 | 🔵 In Progress | Core Integration (CLINE executing) |
+## 🏛️ Current Status: Containerized Sovereign Infrastructure
+The Omega Stack has transitioned to a hardened, containerized cognitive mesh. The Oikos Council is now a service-based entity integrated into the Metropolis Ingress, supported by Decrypted OAuth (Rainbow Rotation).
 
-> **Canonical Source**: `progress.md` for detailed phase status
-> **Task Dispatch**: `strategies/ACTIVE-TASK-DISPATCH-2026-02-22.md`
-
-## Related Documents
-
-- `productContext.md` - Why XNAi exists, problems solved
-- `techContext.md` - Technology stack and constraints
-- `systemPatterns.md` - Architecture patterns
+> **Canonical Source**: `memory_bank/activeContext.md` for real-time status.
 
 ---
-**Last Updated**: 2026-03-02 (reflects Docker refactor & Opus handoff)
-**Owner**: MC-Overseer Agent
+**Last Updated**: 2026-03-11 (Reflects Oikos Mesh Completion)
+**Owner**: The Sentinel

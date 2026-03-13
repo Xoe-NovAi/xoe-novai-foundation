@@ -10,11 +10,11 @@ echo "[$(date)] 🛡️ MCP Watchdog starting..." >> $LOG_FILE
 while true; do
     if ! podman ps | grep -q "$CONTAINER_NAME"; then
         echo "[$(date)] 🚨 MCP DOWN! Attempting restart..." >> $LOG_FILE
-        podman start $CONTAINER_NAME || (cd infra/docker && podman-compose up -d memory-bank)
+        podman start $CONTAINER_NAME || (cd infra/docker && podman-compose up -d memory-bank-mcp)
     fi
     
-    # Check health (Internal health endpoint)
-    if ! curl -s http://localhost:8000/health | grep -q "ok"; then
+    # Check health (Host exposed port)
+    if ! curl -s http://localhost:8005/health | grep -q "ok"; then
         echo "[$(date)] ⚠️ MCP UNHEALTHY! Restarting..." >> $LOG_FILE
         podman restart $CONTAINER_NAME
     fi

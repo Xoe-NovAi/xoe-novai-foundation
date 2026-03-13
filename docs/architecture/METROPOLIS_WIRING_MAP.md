@@ -1,6 +1,6 @@
 # 🔱 Metropolis Wiring Map & Service Dependencies
 
-**Version**: 1.0.0 (Metropolis v4.1.2 Revision)
+**Version**: 1.1.0 (Oikos cognitive mesh integration)
 **Status**: ACTIVE
 **Hardware Context**: Ryzen 7 5700U (Zen 2) | 6.6GB RAM Budget
 
@@ -13,7 +13,7 @@ The Metropolis is partitioned into two primary Podman networks, enforcing isolat
 ### 🌐 xnai_app_network (UNTRUSTED)
 - **Role**: Front-facing services and external gateways.
 - **Members**:
-  - `xnai_caddy`: Reverse proxy (Port 8000).
+  - `xnai_caddy`: Reverse proxy (Port 8000 internally, Port 8002 host).
   - `xnai_chainlit_ui`: User interface (Port 8001).
 - **Security**: Can only reach the **Bridge Layer**. Cannot see the DB core.
 
@@ -33,8 +33,9 @@ The Metropolis is partitioned into two primary Podman networks, enforcing isolat
 - **Role**: Secure data routing between App and DB networks.
 - **Members**:
   - `xnai_rag_api`: FastAPI backend (Port 8000).
+  - `xnai_oikos`: Cognitive Mesh & Mastermind (Port 8006).
   - `xnai_memory_bank_mcp`: Refactored SSE/FastAPI MCP (Port 8000).
-- **Connectivity**: Dual-homed on both networks. Enforces S2 Auth and JWT validation.
+- **Connectivity**: Dual-homed on both networks. Enforces S2 Auth, JWT validation, and Decrypted OAuth (Rainbow Rotation).
 
 ---
 
@@ -42,55 +43,33 @@ The Metropolis is partitioned into two primary Podman networks, enforcing isolat
 
 ```mermaid
 graph TD
-    CLI[Gemini CLI] -->|OTLP| Jaeger[Jaeger]
-    UI[Chainlit UI] -->|HTTP| RAG[RAG API]
-    UI -->|SSE/MCP| MB[Memory Bank MCP]
+    CLI[Gemini CLI] -->|HTTP Port 8002| Caddy[Caddy Ingress]
+    Caddy -->|Internal Proxy| Oikos[Oikos Mesh]
+    Caddy -->|Internal Proxy| RAG[RAG API]
+    
+    Oikos -->|LLM| Vertex[Vertex AI / Gemini]
+    Oikos -->|Research| Tavily[Tavily API]
+    Oikos -->|Memory| Redis[(Redis)]
     
     RAG -->|HTTP| LLAMA[Llama Server]
     RAG -->|redis:// TLS| Redis[(Redis)]
     RAG -->|HTTP/gRPC| Qdrant[(Qdrant)]
     RAG -->|SQL| Postgres[(Postgres)]
     
-    MB -->|redis:// TLS| Redis
+    MB[Memory Bank MCP] -->|redis:// TLS| Redis
     MB -->|JSON| storage[/storage persistent/]
     
-    LLAMA -->|mmap| Models[/GGUF Models/]
-    
-    Worker[Curator/Miner] -->|redis:// TLS| Redis
-    Worker -->|SQL| Postgres
-    Worker -->|RAG| RAG
-    
-    Sentinel[mcp_watchdog] -->|Health Probe| MB
+    Sentinel[sentinel-skill] -->|Protocol| Oikos
 ```
 
 ---
 
-## ⚡ 3. Low-Resource Optimizations (Zen 2 Specific)
-
-### 🧠 Memory Hard-Caps (6.6GB Total Budget)
-- **Redis**: 512MB (LRU Policy).
-- **Qdrant**: 1GB (On-Disk + mmap + Scalar Quantization).
-- **Postgres**: 1GB.
-- **Llama Server**: 2GB (Reduced `n_ctx=2048`, `mlock=false`).
-- **RAG API**: 2GB (Llama-cpp `f16_kv` optimization).
-- **UI/Other**: 512MB - 1GB.
-
-### 🚀 Build & Storage Persistence
-- **HuggingFace Cache**: Named volume `xnai_huggingface_cache` persists Whisper/Embedding models across builds.
-- **Wheel Caching**: BuildKit mounts enable sub-60s Python dependency resolution.
-- **Model Registry**: Discovered models are indexed in `models/registry.json`.
-
-### 🚀 CPU Steering
-- **Zen 2 Tuning**: Services utilize `OPENBLAS_CORETYPE=ZEN` and `LLAMA_CPP_N_THREADS=6`.
-- **Parallelism**: Background workers restricted to 1-2 threads to prevent cache thrashing.
-
----
-
-## 🔑 4. Authentication & Identity (IAM)
+## 🔑 3. Authentication & Identity (IAM)
 
 - **S2 Token**: Mandatory for all MCP tool calls.
-- **Ed25519**: All messages on the `xnai:agent_bus` (Redis Streams) are cryptographically signed.
-- **JWT**: Shared-secret validation between RAG API and UI.
+- **UID 1000**: Global standard for all container users and host mounts.
+- **OAuth Decryption**: Symmetric Fernet encryption for Gemini credentials (`XNAI_OAUTH_KEY`).
+- **Rainbow Rotation**: Automatic key rotation for high-bandwidth LLM inference.
 
 ---
-*Wiring Map Sealed by GG2 Archon. Full visibility achieved. 🔱*
+*Wiring Map Sealed by The Sentinel. Oikos Harmony Achieved. 🔱*

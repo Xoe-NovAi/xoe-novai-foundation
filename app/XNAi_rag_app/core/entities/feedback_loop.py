@@ -1,0 +1,370 @@
+#!/usr/bin/env python3
+"""
+XNAi Performance Feedback Loop
+=============================
+
+Implements continuous learning for persistent entities.
+Collects feedback from agents and humans, updates entity performance,
+and enables cross-entity knowledge sharing.
+Now AnyIO/Async compliant.
+"""
+
+import logging
+import time
+import anyio
+import json
+from typing import Dict, Any, Optional, List
+from dataclasses import dataclass, asdict
+from pathlib import Path
+
+from .registry import get_entity_registry
+
+logger = logging.getLogger(__name__)
+
+@dataclass
+class FeedbackRecord:
+    """Represents a single feedback record."""
+    entity_id: str
+    query: str
+    advice: str
+    outcome: str
+    rating: float
+    feedback_source: str  # "agent" or "human"
+    timestamp: float
+    context: Dict[str, Any] = None
+
+class PerformanceFeedbackLoop:
+    """
+    Manages the continuous learning loop for persistent entities.
+    Collects feedback, analyzes performance, and triggers improvements.
+    """
+
+    def __init__(self, base_dir: str = "storage/data/feedback"):
+        self.base_dir = Path(base_dir)
+        
+        # Feedback storage
+        self.feedback_history: List[FeedbackRecord] = []
+        
+        # Performance analytics
+        self.performance_metrics: Dict[str, Dict[str, Any]] = {}
+        self._initialized = False
+
+    async def initialize(self):
+        """Async initialization of the feedback loop."""
+        if self._initialized:
+            return
+            
+        storage_parent = anyio.Path(self.base_dir)
+        if not await storage_parent.exists():
+            await storage_parent.mkdir(parents=True, exist_ok=True)
+            
+        await self.load_feedback_history()
+        self._initialized = True
+
+    async def record_feedback(self, entity_id: str, query: str, advice: str, 
+                       outcome: str, rating: float, feedback_source: str = "agent",
+                       context: Optional[Dict[str, Any]] = None) -> bool:
+        """
+        Record feedback for an entity (Async).
+        This is the primary entry point for the learning loop.
+        """
+        if not self._initialized:
+            await self.initialize()
+
+        try:
+            # Create feedback record
+            feedback = FeedbackRecord(
+                entity_id=entity_id,
+                query=query,
+                advice=advice,
+                outcome=outcome,
+                rating=rating,
+                feedback_source=feedback_source,
+                timestamp=time.time(),
+                context=context or {}
+            )
+            
+            # Add to history
+            self.feedback_history.append(feedback)
+            
+            # Update entity registry
+            registry = await get_entity_registry()
+            success = await registry.record_feedback(entity_id, query, advice, outcome, rating)
+            
+            if success:
+                # Update performance metrics
+                self._update_performance_metrics(entity_id, rating, feedback_source)
+                
+                # Trigger learning improvements
+                await self._trigger_learning_improvements(entity_id, feedback)
+                
+                # Persist history
+                await self.save_feedback_history()
+                
+                logger.info(f"Recorded feedback for {entity_id} from {feedback_source} (rating: {rating})")
+                return True
+            else:
+                logger.warning(f"Failed to record feedback for {entity_id}")
+                return False
+                
+        except Exception as e:
+            logger.error(f"Failed to record feedback: {e}")
+            return False
+
+    def _update_performance_metrics(self, entity_id: str, rating: float, source: str):
+        """Update performance metrics for an entity (Sync)."""
+        if entity_id not in self.performance_metrics:
+            self.performance_metrics[entity_id] = {
+                "total_feedback": 0,
+                "average_rating": 0.0,
+                "agent_feedback_count": 0,
+                "human_feedback_count": 0,
+                "last_improvement": 0,
+                "improvement_count": 0
+            }
+        
+        metrics = self.performance_metrics[entity_id]
+        
+        # Update counts
+        metrics["total_feedback"] += 1
+        if source == "agent":
+            metrics["agent_feedback_count"] += 1
+        else:
+            metrics["human_feedback_count"] += 1
+        
+        # Update average rating
+        old_avg = metrics["average_rating"]
+        n = metrics["total_feedback"]
+        metrics["average_rating"] = ((old_avg * (n - 1)) + rating) / n
+
+    async def _trigger_learning_improvements(self, entity_id: str, feedback: FeedbackRecord):
+        """Trigger learning improvements based on feedback (Async)."""
+        registry = await get_entity_registry()
+        entity = registry.get_entity(entity_id)
+        
+        if not entity:
+            return
+        
+        # Check if entity needs improvement (low rating)
+        if feedback.rating < 0.7:
+            # Trigger self-reflection
+            await self._trigger_self_reflection(entity, feedback)
+        
+        # Check for pattern recognition
+        await self._analyze_feedback_patterns(entity_id)
+        
+        # Update entity's procedural memory with meta-lessons
+        await self._update_meta_learning(entity, feedback)
+
+    async def _trigger_self_reflection(self, entity, feedback: FeedbackRecord):
+        """Trigger self-reflection for poor performance (Async)."""
+        # Extract meta-lesson from failure
+        meta_lesson = self._extract_meta_lesson(feedback)
+        
+        if meta_lesson:
+            # Add meta-lesson to entity's memory
+            await entity.add_lesson(
+                query=f"Meta: {feedback.query}",
+                advice=f"Self-reflection: {meta_lesson}",
+                outcome="Improved approach for similar queries",
+                rating=0.8  # Assume reflection is valuable
+            )
+            
+            logger.info(f"Triggered self-reflection for {entity.entity_id}")
+
+    def _extract_meta_lesson(self, feedback: FeedbackRecord) -> Optional[str]:
+        """Extract meta-lessons from feedback (Sync)."""
+        query_lower = feedback.query.lower()
+        outcome_lower = feedback.outcome.lower()
+        
+        # Common failure patterns
+        if "not accurate" in outcome_lower or "incorrect" in outcome_lower:
+            return "Need to verify facts more thoroughly before responding"
+        
+        elif "too verbose" in outcome_lower or "too detailed" in outcome_lower:
+            return "Should provide more concise responses"
+        
+        elif "too brief" in outcome_lower or "not detailed enough" in outcome_lower:
+            return "Should provide more detailed explanations"
+        
+        elif any(word in query_lower for word in ["code", "implementation", "programming"]):
+            return "Need to double-check code examples for correctness"
+        
+        elif any(word in query_lower for word in ["philosophy", "ethics", "meaning"]):
+            return "Should consider multiple perspectives in philosophical discussions"
+        
+        return None
+
+    async def _analyze_feedback_patterns(self, entity_id: str):
+        """Analyze patterns in feedback for continuous improvement (Async)."""
+        entity_feedback = [f for f in self.feedback_history if f.entity_id == entity_id]
+        
+        if len(entity_feedback) < 5:
+            return  # Not enough data
+        
+        # Analyze rating trends
+        recent_ratings = [f.rating for f in entity_feedback[-10:]]
+        avg_recent = sum(recent_ratings) / len(recent_ratings)
+        
+        # Analyze query type patterns
+        query_types = {}
+        for feedback in entity_feedback:
+            query_type = self._classify_query_type(feedback.query)
+            if query_type:
+                query_types[query_type] = query_types.get(query_type, 0) + 1
+        
+        # Update entity with pattern insights
+        registry = await get_entity_registry()
+        entity = registry.get_entity(entity_id)
+        
+        if entity and avg_recent < 0.7 and query_types:
+            top_query_type = max(query_types, key=query_types.get)
+            pattern_insight = f"Pattern: Low ratings on {top_query_type} queries. Consider adjusting approach."
+            
+            await entity.add_lesson(
+                query="Meta: Performance Analysis",
+                advice=pattern_insight,
+                outcome="Adjusted approach for better performance",
+                rating=0.8
+            )
+
+    async def _update_meta_learning(self, entity, feedback: FeedbackRecord):
+        """Update entity's meta-learning capabilities (Async)."""
+        # Track what types of queries the entity performs well on
+        query_type = self._classify_query_type(feedback.query)
+        
+        if query_type:
+            # Store meta-knowledge about query type performance
+            meta_query = f"Meta: {query_type} queries"
+            meta_advice = f"Perform best on {query_type} queries when using detailed analysis"
+            meta_outcome = f"Improved {query_type} query handling"
+            
+            await entity.add_lesson(meta_query, meta_advice, meta_outcome, feedback.rating)
+
+    def _classify_query_type(self, query: str) -> Optional[str]:
+        """Classify the type of query for meta-learning (Sync)."""
+        query_lower = query.lower()
+        
+        if any(word in query_lower for word in ["code", "programming", "implementation"]):
+            return "technical"
+        elif any(word in query_lower for word in ["philosophy", "ethics", "meaning", "purpose"]):
+            return "philosophical"
+        elif any(word in query_lower for word in ["creative", "write", "story", "poem"]):
+            return "creative"
+        elif any(word in query_lower for word in ["explain", "how", "why"]):
+            return "explanatory"
+        elif any(word in query_lower for word in ["compare", "contrast", "difference"]):
+            return "comparative"
+        
+        return None
+
+    async def get_entity_performance_report(self, entity_id: str) -> Dict[str, Any]:
+        """Get performance report for an entity (Async)."""
+        registry = await get_entity_registry()
+        entity_stats = registry.get_entity_stats(entity_id)
+        
+        metrics = self.performance_metrics.get(entity_id, {})
+        
+        return {
+            "entity_id": entity_id,
+            "basic_stats": entity_stats,
+            "performance_metrics": metrics,
+            "feedback_count": len([f for f in self.feedback_history if f.entity_id == entity_id]),
+            "average_rating": metrics.get("average_rating", 0.0),
+            "improvement_suggestions": self._generate_improvement_suggestions(entity_id)
+        }
+
+    def _generate_improvement_suggestions(self, entity_id: str) -> List[str]:
+        """Generate improvement suggestions based on feedback analysis (Sync)."""
+        suggestions = []
+        
+        entity_feedback = [f for f in self.feedback_history if f.entity_id == entity_id]
+        
+        if not entity_feedback:
+            return ["No feedback available for improvement suggestions"]
+        
+        # Analyze low-rated feedback
+        low_rated = [f for f in entity_feedback if f.rating < 0.6]
+        
+        if low_rated:
+            # Common issues in low-rated feedback
+            common_issues = {}
+            for feedback in low_rated:
+                outcome = feedback.outcome.lower()
+                if "not accurate" in outcome:
+                    common_issues["accuracy"] = common_issues.get("accuracy", 0) + 1
+                elif "too verbose" in outcome:
+                    common_issues["verbosity"] = common_issues.get("verbosity", 0) + 1
+                elif "too brief" in outcome:
+                    common_issues["detail"] = common_issues.get("detail", 0) + 1
+            
+            if common_issues:
+                top_issue = max(common_issues, key=common_issues.get)
+                if top_issue == "accuracy":
+                    suggestions.append("Focus on fact-checking and verification before responding")
+                elif top_issue == "verbosity":
+                    suggestions.append("Practice providing more concise responses")
+                elif top_issue == "detail":
+                    suggestions.append("Provide more detailed explanations and examples")
+        
+        # Analyze query type performance
+        query_performance = {}
+        for feedback in entity_feedback:
+            query_type = self._classify_query_type(feedback.query)
+            if query_type:
+                if query_type not in query_performance:
+                    query_performance[query_type] = []
+                query_performance[query_type].append(feedback.rating)
+        
+        for query_type, ratings in query_performance.items():
+            avg_rating = sum(ratings) / len(ratings)
+            if avg_rating < 0.7:
+                suggestions.append(f"Improve performance on {query_type} queries")
+        
+        return suggestions[:3]  # Return top 3 suggestions
+
+    async def load_feedback_history(self):
+        """Load feedback history from disk using Async I/O."""
+        history_file = anyio.Path(self.base_dir) / "history.json"
+        if await history_file.exists():
+            try:
+                async with await anyio.open_file(history_file, "r") as f:
+                    content = await f.read()
+                    data = json.loads(content)
+                    self.feedback_history = [FeedbackRecord(**f) for f in data]
+                    logger.debug(f"Loaded {len(self.feedback_history)} feedback records")
+            except Exception as e:
+                logger.error(f"Failed to load feedback history: {e}")
+
+    async def save_feedback_history(self):
+        """Save feedback history to disk using Async I/O."""
+        history_file = anyio.Path(self.base_dir) / "history.json"
+        try:
+            async with await anyio.open_file(history_file, "w") as f:
+                data = [asdict(f) for f in self.feedback_history]
+                await f.write(json.dumps(data, indent=2))
+        except Exception as e:
+            logger.error(f"Failed to save feedback history: {e}")
+
+# Global feedback loop instance
+_feedback_loop: Optional[PerformanceFeedbackLoop] = None
+
+async def get_feedback_loop() -> PerformanceFeedbackLoop:
+    """Get the global feedback loop instance (Async)."""
+    global _feedback_loop
+    if _feedback_loop is None:
+        _feedback_loop = PerformanceFeedbackLoop()
+        await _feedback_loop.initialize()
+    return _feedback_loop
+
+async def record_entity_feedback(entity_id: str, query: str, advice: str, 
+                          outcome: str, rating: float, feedback_source: str = "agent",
+                          context: Optional[Dict[str, Any]] = None) -> bool:
+    """Record feedback for an entity (Async convenience function)."""
+    loop = await get_feedback_loop()
+    return await loop.record_feedback(entity_id, query, advice, outcome, rating, feedback_source, context)
+
+async def get_entity_performance_report(entity_id: str) -> Dict[str, Any]:
+    """Get performance report for an entity (Async convenience function)."""
+    loop = await get_feedback_loop()
+    return await loop.get_entity_performance_report(entity_id)

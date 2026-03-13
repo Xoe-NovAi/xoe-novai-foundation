@@ -51,7 +51,25 @@ class AgentBusClient:
         except Exception:
             # Group likely already exists
             pass
+        
+        # 🔱 Archon Mandate: Auto-Connect (HEARTBEAT & IDENTITY)
+        await self._publish_identity()
         return self
+
+    async def _publish_identity(self):
+        """Publish HEARTBEAT and IDENTITY upon initialization."""
+        payload = {
+            "agent_did": self.agent_did,
+            "capabilities": ["generic"], # Default
+            "status": "online",
+            "timestamp": datetime.utcnow().isoformat()
+        }
+        try:
+            await self.send_task(target_did="*", task_type="IDENTITY", payload=payload)
+            await self.send_task(target_did="*", task_type="HEARTBEAT", payload=payload)
+            logger.info(f"🔱 Agent {self.agent_did} registered with Agent Bus.")
+        except Exception as e:
+            logger.error(f"Failed to publish identity for {self.agent_did}: {e}")
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
         """Exit the asynchronous context manager."""

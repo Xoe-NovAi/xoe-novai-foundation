@@ -1,0 +1,31 @@
+#!/bin/bash
+# context_watchdog.sh (v1.0)
+# ===========================
+# Monitors Gemini session logs and triggers the Omega Chronicle
+# whenever a session update or /compress event is detected.
+
+SESSION_LOGS="./.logs/sessions"
+CHRONICLE_SCRIPT="./scripts/omega_chronicle.py"
+
+echo "🛡️ Context Sentinel active. Monitoring $SESSION_LOGS..."
+
+# Use inotifywait if available, otherwise fallback to a polling loop
+if command -v inotifywait >/dev/null 2>&1; then
+    inotifywait -m -e modify "$SESSION_LOGS" --format '%f' | while read FILE
+    do
+        if [[ "$FILE" == *.json ]]; then
+            echo "📝 Session update detected in $FILE. Generating Chronicle..."
+            python3 "$CHRONICLE_SCRIPT" --reason "Automatic Session Update: $FILE"
+        fi
+    done
+else
+    echo "⚠️ inotify-tools not found. Falling back to polling mode (60s)."
+    while true; do
+        find "$SESSION_LOGS" -name "*.json" -mmin -1 | while read FILE
+        do
+            echo "📝 Recent activity in $FILE. Syncing state..."
+            python3 "$CHRONICLE_SCRIPT" --reason "Polling Sync: $FILE"
+        done
+        sleep 60
+    done
+fi

@@ -3,7 +3,7 @@
 # XNAi Foundation Stack - Permissions Remediation Script
 # ============================================================================
 # Purpose: PERMANENTLY fix the recurring permissions issues
-# Issue: Containers run as UID 1001, but data dirs have wrong ownership
+# Issue: Containers run as UID 1000, but data dirs have wrong ownership
 # Solution: Create data dirs with correct ownership BEFORE container start
 # 
 # Usage: ./scripts/fix-permissions.sh [--reset]
@@ -21,8 +21,8 @@ NC='\033[0m' # No Color
 echo -e "${GREEN}=== XNAi Permissions Fix Script ===${NC}"
 
 # Define the correct UID/GID from .env or default
-APP_UID=${APP_UID:-1001}
-APP_GID=${APP_GID:-1001}
+APP_UID=${APP_UID:-1000}
+APP_GID=${APP_GID:-1000}
 
 # Load from .env if exists
 if [ -f ".env" ]; then

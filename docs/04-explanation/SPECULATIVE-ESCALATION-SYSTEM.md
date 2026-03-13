@@ -25,6 +25,7 @@ Experts (Personas and Models) are no longer transient prompts. They are **Autono
 - **Registry ID**: Unique identity in the `EntityRegistry`.
 - **Procedural Memory**: A dedicated JSON store (`data/entities/`) tracking every interaction and lesson learned.
 - **Domain Expertise**: Dynamic knowledge mapping to specific technical and creative domains.
+- **Continuous Learning**: Each entity learns from feedback via the `PerformanceFeedbackLoop`, improving performance over time.
 
 ### 2. Autonomous Knowledge Mining
 When a new expert is summoned (e.g., "Kurt Cobain"), the system automatically:
@@ -43,6 +44,33 @@ Agents can now autonomously consult experts using standardized tools:
 #### `compare_experts(entity1, entity2, topic)`
 - **Purpose**: Triangulate truth by comparing different expert perspectives.
 - **Example**: Compare "Socrates" and "Einstein" on the nature of reality.
+
+### 4. Continuous Learning System
+The system implements a sophisticated feedback loop for continuous improvement:
+
+#### `PerformanceFeedbackLoop`
+- **Purpose**: Collects feedback from agents and humans to improve entity performance.
+- **Features**:
+  - Self-reflection triggers for poor performance
+  - Pattern recognition for query type optimization
+  - Meta-learning for cross-query improvement
+  - Performance analytics and improvement suggestions
+
+#### `EntityRegistry`
+- **Purpose**: Global registry for all persistent entities with identity management.
+- **Features**:
+  - Cross-session identity preservation
+  - Entity statistics and performance tracking
+  - Top performer identification
+  - Entity context retrieval for research
+
+#### `PersistentEntity`
+- **Purpose**: Individual entity state management with procedural memory.
+- **Features**:
+  - Lesson learning from every interaction
+  - Success rate tracking and improvement
+  - Memory compression for long-term storage
+  - Context-aware response generation
 
 ---
 

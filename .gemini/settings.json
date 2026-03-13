@@ -1,31 +1,61 @@
 {
   "mcpServers": {
     "memory-bank": {
-      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/run_server.sh",
-      "args": []
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py",
+        "--stdio"
+      ],
+      "env": {
+        "STORAGE_PATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage",
+        "PYTHONPATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack:/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app"
+      }
+    },
+    "github": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-github/server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack"
+      }
+    },
+    "stats": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-stats-mcp/server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack"
+      }
+    },
+    "websearch": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-websearch/server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack"
+      }
+    },
+    "xnai-gnosis": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-gnosis/server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack:/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app"
+      }
+    },
+    "xnai-rag": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-rag/server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack",
+        "RAG_API_URL": "http://localhost:8000"
+      }
     }
-  },
-  "experimental": {
-    "plan": true
-  },
-  "tools": {
-    "truncateToolOutputThreshold": 60000
-  },
-  "context": {
-    "fileFiltering": {
-      "respectGitIgnore": false
-    }
-  },
-  "model": {
-    "compressionThreshold": 0.6
-  },
-  "ui": {
-    "useAlternateBuffer": true
-  },
-  "telemetry": {
-    "enabled": true,
-    "otlpEndpoint": "http://localhost:4317",
-    "otlpProtocol": "grpc",
-    "useCollector": true
   }
 }

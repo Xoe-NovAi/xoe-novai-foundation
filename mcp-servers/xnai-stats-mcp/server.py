@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 from mcp.server.fastmcp import FastMCP
 
 from pathlib import Path
@@ -18,6 +19,46 @@ def get_usage_metrics():
     
     with open(METRICS_PATH, 'r') as f:
         return json.load(f)
+
+@mcp.tool()
+def get_system_stats():
+    """🔱 Archon Mandate: Direct monitoring of zRAM drives and Vulkan iGPU utilization."""
+    stats = {
+        "zram": {"available": False},
+        "vulkan_gpu": {"available": False},
+        "timestamp": datetime.now().isoformat()
+    }
+    
+    # zRAM Stats
+    zram_path = Path("/sys/block/zram0/mm_stat")
+    if zram_path.exists():
+        try:
+            with open(zram_path, "r") as f:
+                mm_stat = f.read().split()
+                # 0: orig_data_size, 1: compr_data_size, 2: mem_used_total
+                stats["zram"] = {
+                    "available": True,
+                    "orig_data_mb": round(int(mm_stat[0]) / 1024 / 1024, 2),
+                    "compressed_data_mb": round(int(mm_stat[1]) / 1024 / 1024, 2),
+                    "mem_used_total_mb": round(int(mm_stat[2]) / 1024 / 1024, 2),
+                    "ratio": round(int(mm_stat[0]) / int(mm_stat[1]), 2) if int(mm_stat[1]) > 0 else 1.0
+                }
+        except Exception as e:
+            stats["zram"]["error"] = str(e)
+
+    # Vulkan iGPU Stats (AMD Ryzen 5700U)
+    gpu_path = Path("/sys/class/drm/card1/device/gpu_busy_percent")
+    if gpu_path.exists():
+        try:
+            with open(gpu_path, "r") as f:
+                stats["vulkan_gpu"] = {
+                    "available": True,
+                    "utilization_percent": int(f.read().strip())
+                }
+        except Exception as e:
+            stats["vulkan_gpu"]["error"] = str(e)
+            
+    return stats
 
 @mcp.tool()
 def check_quota_status(instance_id: int):

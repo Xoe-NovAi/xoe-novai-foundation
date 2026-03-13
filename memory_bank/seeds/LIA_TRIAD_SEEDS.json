@@ -1,0 +1,54 @@
+{
+  "LIA_TRIAD": {
+    "version": "1.0.0",
+    "last_updated": "2026-03-12T13:10:00Z",
+    "anchors": {
+      "registry": "memory_bank/ALETHIA_REGISTRY.md",
+      "architecture": "memory_bank/ARCHITECTURE.md"
+    },
+    "seeds": {
+      "ATHE_LOGIC": {
+        "archetype": "Structural Logic / Technical Fidelity",
+        "anchors": [
+          "Alethia (Truth): Technical specs (768-dim, Q5_K_M, Port 8006)",
+          "Phronesis (Wisdom): 5-Stage Phronesis Loop",
+          "AnyIO First: Asynchronous integrity"
+        ],
+        "constraints": [
+          "UID 1000 mandatory file ownership",
+          "AnyIO TaskGroups for parallel execution",
+          "Standardized Config: CONFIG_PATH=/app/config.toml"
+        ],
+        "alignment": "Preserve logic gates, type hints, and file structures. Prune narrative filler."
+      },
+      "ISIS_SYN": {
+        "archetype": "Synergy / Integration / API Mesh",
+        "anchors": [
+          "Metropolis Mesh: Interconnected service architecture",
+          "Prosopon (FastAPI): Interface layer (Port 8006)",
+          "Redis Synapses: decode_responses=True"
+        ],
+        "protocols": [
+          "Caddy Internal Routing: Domain-level mapping",
+          "SSE/SSE-FastAPI for agent-bus communication",
+          "Neo4j Graph: Relational ground truth"
+        ],
+        "alignment": "Preserve API contracts, port assignments, and data flow logic. Prune internal component details."
+      },
+      "LILI_SOV": {
+        "archetype": "Sovereignty / Security / AuthN-AuthZ",
+        "anchors": [
+          "Phylax (Guardian): Security gate for tool calls",
+          "Rainbow Rotation: Automatic OAuth/API key rotation",
+          "Hardware Gating: 95% Disk / 90% RAM"
+        ],
+        "protocols": [
+          "UID 1000 Enforcement: Reject non-standard UID",
+          "JWT Signature Verification: Required for Mesh communication",
+          "Credential Protection: Never log or print secrets"
+        ],
+        "alignment": "Preserve permission sets, auth logic, and security headers. Prune redundant alternatives."
+      }
+    }
+  }
+}

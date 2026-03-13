@@ -17,43 +17,28 @@ version: "1.1"
 
 | Component | Technology | Version | Purpose |
 |-----------|-----------|---------|---------|
-| **Framework** | FastAPI | Latest | REST API server |
-| **Async Runtime** | AnyIO | Python 3.12 | Async task management |
-| **LLM** | GGUF/ONNX | Quantized | Local language model |
-| **Vector DB** | FAISS/Qdrant | Latest | Semantic search |
-| **Cache** | Redis | 7.1.1 | State persistence, caching |
-| **Database** | PostgreSQL | 14+ | Data persistence |
-| **Reverse Proxy** | Caddy | 2.8 | Load balancing, routing |
-| **Path Resolver** | `paths.py` | 1.0.0 | Dynamic OMEGA_ROOT resolution |
-| **Dispatcher** | `xnai-dispatcher.sh`| 2.0.0 | Universal tool routing & Pulse Filter |
-| **Speculative Search**| Funnel Retrieval | 128d -> 4096d | 1.0.0 | High-speed-to-deep retrieval |
-| **Escalation**      | Hierarchical Research | 150M -> 8B | 1.0.0 | 4-level agent reasoning |
-| **Container Runtime** | Podman | Latest | Rootless containers |
-| **Metrics** | VictoriaMetrics | Latest | Time-series storage |
-| **Documentation** | MkDocs | 1.6.1 + Material 10.0.2 | Knowledge base |
-
-## Stack Constraints
-
-| Constraint | Requirement | Rationale |
-|------------|-------------|-----------|
-| Torch-free | No PyTorch/Torch/Triton/CUDA | Sovereignty, resource efficiency |
-| Python | 3.12-slim containers | Modern async, smaller images |
-| Async | AnyIO TaskGroups (never asyncio.gather) | Safer cancellation, structured concurrency |
-| Containers | Rootless Podman with `:Z,U` volumes | Security, no root privileges |
+| **Framework** | FastAPI | Latest | REST API server (Prosopon) |
+| **Async Runtime** | AnyIO | Python 3.12 | Structured TaskGroups (No asyncio.gather) |
+| **Gnostic Models**| Krikri-8B-Instruct | Q5_K_M GGUF | Local Sovereign Reasoning |
+| **Linguistic Model**| Ancient-Greek-BERT | 768-dim | Zipped Logos / RDS Anchoring |
+| **Router** | Logosforge (OpenPipe) | 1.0.0 | Intelligent Routing & Oikonomia |
+| **Vector DB** | Qdrant | Latest | HELLENIC_SCRIBE_CORE collection |
+| **Graph DB** | Neo4j / Memgraph | Latest | Gnosis Relationship Mapping |
+| **Cache/Bus** | Redis Streams | 7.1.1 | Synapses / Agent Bus |
+| **Reverse Proxy** | Prophetis (Caddy) | 2.8 | Port 80 Routing & TLS |
+| **Container Runtime** | Podman | Latest | Rootless UID 1000 containers |
 
 ## Service Ports
 
-| Service | Port | Purpose |
-|---------|------|---------|
-| Caddy (main proxy) | 8000 | Public API |
-| MkDocs (internal) | 8001 | Internal KB |
-| VictoriaMetrics | 8428 | Time-series metrics |
-| Redis | 6379 | Cache/state |
-| PostgreSQL | 5432 | Primary DB |
-| Semantic Search | 8000 | RAG queries |
-| Agent Bus | 6379 | Redis Streams |
-| Consul | 8500 | Service discovery |
-| Vikunja | 3456 | Task management |
+| Service | Port | Layer | Purpose |
+|:---|:---|:---|:---|
+| Prophetis (Caddy) | 80 / 443 | Layer 1 | Main Gnostic Gateway |
+| Prosopon (FastAPI) | 8006 | Layer 1 | Primary API Service |
+| Orchestrion (MCP) | 8005 | Layer 3 | Central Reasoning & RCF |
+| Synapses (Redis) | 6379 | Layer 2 | High-Throughput Bus |
+| Silicon Oracle (Qdrant)| 6333 | Layer 0 | Vector Gnosis DB |
+| Silicon Oracle (Neo4j) | 7474 | Layer 0 | Graph Gnosis DB |
+| MkDocs (Internal) | 8001 | Layer 3 | Internal Knowledge Base |
 
 ## Development Environment
 
@@ -105,7 +90,12 @@ GRANT ALL ON DATABASE xnai_foundation TO xnai;
 ### Zero-Telemetry & Sovereignty Architecture
 - **No external data transmission**: Air-gap capable.
 - **Sovereign OAuth**: `oauth_manager.py` uses Fernet-encrypted storage with support for `XNAI_OAUTH_KEY` environment variable injection.
-- **Portability Protocol**: All scripts use the Central Path Resolver to avoid hardcoded absolute paths.
+- **Portability Protocol**: All scripts use the Central Path Resolver (`paths.py`) to avoid hardcoded absolute paths.
+### CLI Stability (Crash Remediation)
+- **Memory Allocation**: Set `export NODE_OPTIONS="--max-old-space-size=8192"` to prevent Node.js OOM during high-context operations.
+- **Context Management**: Mandatory `/compress` when context exceeds 400K tokens.
+- **Discovery Safety**: Use sub-agents (e.g., `generalist`) for recursive `grep` or large file reads to prevent CLI OOM.
+
 
 ### Container Security
 

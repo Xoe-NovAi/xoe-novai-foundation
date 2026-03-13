@@ -99,6 +99,14 @@ graph LR
 - **Concept**: Hierarchical 4-level reasoning (150M -> 1B -> 3B -> 8B).
 - **Implementation**: `EscalationResearcher`.
 
+### 3. Refractive Distillation (Steerable Compression)
+- **Concept**: Context is not truncated; it is refracted through the LIA Triad using linguistic frequency markers (`... for logic`, `... for sovereignty`).
+- **Implementation**: `Compression Gnosis Protocol` (SESS-20).
+
+### 4. Zipped Logos (Semantic Anchoring)
+- **Concept**: Utilizing Ancient Greek/Russian roots (Phronesis, Alethia, Toska) as high-density semantic gravity wells to prevent context drift.
+- **Implementation**: `Morphological Oracle` (Epoch 2).
+
 ## Code Standards
 
 ### Async Runtime
@@ -113,5 +121,5 @@ graph LR
 - **Read-Only** - Immutable runtime filesystem
 
 ---
-**Last Updated**: 2026-03-05 (Opus v6 Strategy Audit)
-**Owner**: Opus (Antigravity Claude Opus 4.6)
+**Last Updated**: 2026-03-12 (Jem Overseer SESS-20)
+**Owner**: Jem (Overseer - Gemini CLI v4.1.2)
