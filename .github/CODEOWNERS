@@ -1,0 +1,15 @@
+# Global owners
+* @arcana-novai @xoe.nova.ai
+
+# Critical paths (require review from owners)
+/config/                    @arcana-novai
+/app/XNAi_rag_app/core/     @arcana-novai
+/memory_bank/               @arcana-novai
+/docs/                      @arcana-novai @xoe.nova.ai
+/.github/workflows/         @arcana-novai
+/setup/                     @arcana-novai
+
+# Infrastructure (require review)
+/infra/                     @arcana-novai
+/orchestration/             @arcana-novai
+/monitoring/                @arcana-novai
