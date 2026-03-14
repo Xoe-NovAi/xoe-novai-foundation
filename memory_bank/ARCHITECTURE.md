@@ -1,3 +1,13 @@
+---
+document_type: report
+title: ARCHITECTURE
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: 2b62544796fce4725d324bec1ae9e56189a1c735d7fa9ea7febd7805076584a4
+---
+
 # XNAi Foundation: The Pan-Optic Gnosis Matrix
 
 > **Version**: 2.0.0-GNOSTIC

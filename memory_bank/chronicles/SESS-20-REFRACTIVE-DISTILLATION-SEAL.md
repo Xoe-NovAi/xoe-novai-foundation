@@ -1,3 +1,13 @@
+---
+document_type: chronicle
+title: SESS-20-REFRACTIVE-DISTILLATION-SEAL
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: 7290c7155fc1a7a303b98b2acb64f0985e87415cd1f6fab7431d1cdbcf72541d
+---
+
 # SESS-20 CHRONICLE: THE REFRACTIVE DISTILLATION
 
 **Stardate**: 2026-03-12

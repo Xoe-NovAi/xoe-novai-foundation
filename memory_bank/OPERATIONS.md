@@ -1,3 +1,13 @@
+---
+document_type: report
+title: OPERATIONS
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: 017de2a302fb3a37bd5fbd9329d1469dd2223a609327e00e49abdeca9a5f0baf
+---
+
 # Operations Guide - Building, Testing, and Deploying
 
 **Last Updated**: 2026-02-14  

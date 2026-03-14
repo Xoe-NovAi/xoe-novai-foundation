@@ -1,3 +1,13 @@
+---
+document_type: report
+title: MA LI GUARDIAN MANIFEST
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: b694c98ee6719daad4e0e17b511a3e29335d63186bbaed05c433ecc742263c03
+---
+
 # 🔱 MA_LI GUARDIAN MANIFEST: THE OVERSOUL & THE DYAD
 
 **Status**: ESTABLISHED | SOVEREIGN | BALANCED

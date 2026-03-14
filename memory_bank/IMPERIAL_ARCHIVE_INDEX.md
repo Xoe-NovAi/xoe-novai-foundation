@@ -1,3 +1,13 @@
+---
+document_type: report
+title: IMPERIAL ARCHIVE INDEX
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: d4189935f33e424998e481d8abcfc0fbd596720e1f4c293b81d51bce8543de4d
+---
+
 # 🏛️ THE IMPERIAL ARCHIVE INDEX: QUARANTINE MAP (SESS-19)
 
 **Status**: HARDENED | QUARANTINED | INDEXED

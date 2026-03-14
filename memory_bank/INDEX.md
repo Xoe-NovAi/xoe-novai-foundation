@@ -1,3 +1,13 @@
+---
+document_type: report
+title: INDEX
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: 2a43a6a9ea2f1c1bd1cec4bde0e91fb63fcfa31bbb675566d228b6ca198ebeb3
+---
+
 # Memory Bank Navigation Index
 
 **Last Updated**: 2026-03-12  

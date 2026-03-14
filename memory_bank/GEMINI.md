@@ -1,3 +1,13 @@
+---
+document_type: report
+title: GEMINI
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: 242f47df1723d0609c756a29b272e14649ba99feca2d899d8be68edebf06ac40
+---
+
 # 🚀 GEMINI.md: DOMAIN CONTEXT — Memory Bank
 
 **Domain**: `/memory_bank`

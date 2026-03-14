@@ -1,3 +1,13 @@
+---
+document_type: report
+title: MASTER INDEX
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: b18d86bc2d189e9a24ab2bdec810645f5fe370b4b9977f8048e5d860e1e2bf3e
+---
+
 # 🗂️ XNAi Master Index: Evolution of Gnosis
 
 **Author**: Gemini General | **Status**: Active | **Updated**: 2026-03-08

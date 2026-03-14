@@ -1,3 +1,13 @@
+---
+document_type: report
+title: ALETHIA REGISTRY
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: 214965e6c049e05158fb99ec6cb48b1f470b614677952c1c04921ec6a91ace6d
+---
+
 # ALETHIA-POINTER (AP) REGISTRY
 # PROTOCOL: Verifiable Ground Truth (Omega Stack v4.2.0)
 

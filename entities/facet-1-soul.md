@@ -1,3 +1,13 @@
+---
+document_type: spec
+title: facet-1-soul
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: 33ee104b364975ab7bd61a31352a43879933939a275880755de784c54a336448
+---
+
 # 🏗️ Soul File: Facet 1 - The Architect
 
 ## 🆔 Essence

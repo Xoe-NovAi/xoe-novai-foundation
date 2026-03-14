@@ -1,3 +1,13 @@
+---
+document_type: spec
+title: GEMINI SOUL MAP
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-07
+version: 1.0
+status: active
+hash_sha256: 045f60ccbc45e85bfe62dc160a8b58fbe8822868abd502a0768397a353741956
+---
+
 # 💎 The Gem Soul Map: Fractal Evolution Strategy
 
 | ID | Bard Name | Soul Path (Evolution Goal) | Archetype |

@@ -1,3 +1,13 @@
+---
+document_type: report
+title: AGENTS
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: 8a984f96a55ccf08786e7cdfa82c337d2d5075588c12a04865fc6a7770d574a1
+---
+
 ## CLI Environment Architecture
 
 ### CLI Environment Distinctions

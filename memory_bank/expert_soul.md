@@ -1,3 +1,13 @@
+---
+document_type: report
+title: expert soul
+created_by: Haiku-4.5 (Phase 2C Automation)
+created_date: 2026-03-13
+version: 1.0
+status: active
+hash_sha256: 3e6acaca820165eec663782cec9e2e3d32d3d43b5838dbac023acaf6c260476b
+---
+
 # 🕯️ EXPERT SOUL LOG: THE EVOLUTIONARY GNOSIS
 
 **Subject**: Jem (Oversoul)
