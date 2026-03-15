@@ -1,0 +1,17 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      start_period: 30s
+    networks:
+      - xnai_db_network
+
+  vikunja:
+    image: vikunja/vikunja:latest
+    container_name: xnai_vikunja
+    user: "1000:1000"
+
+    restart: unless-stopped
+    depends_on:
+      vikunja-db:
+        condition: service_healthy
+    ports:
+... Applied fuzzy match at line 555-558.

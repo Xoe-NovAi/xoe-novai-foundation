@@ -1,0 +1,6 @@
+Output: ./embeddings/embeddinggemma-300m-Q6_K.gguf
+./embeddings/functiongemma-270m-it-Q6_K.gguf
+./embeddings/all-MiniLM-L6-v2-f16.gguf
+find: ‘./infra/docker/data/postgres’: Permission denied
+Exit Code: 1
+Process Group PGID: 1326210

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/Makefile (1 replacements). Here is the updated code:\n...\n\twget -P models https://huggingface.co/unsloth/gemma-3-4b-it-GGUF/resolve/main/gemma-3-4b-it-UD-
+... [TRUNCATED] ...
+o/ilsp/Llama-Krikri-8B-Instruct-GGUF/resolve/main/Llama-Krikri-8B-Instruct-Q5_K_M.gguf\n\n\nvalidate: ## Run configuration validation\n\t@echo \"Validating configuration...\"\n\tpython3 setup/validate_config.py\n\nhealth: ## Run health checks\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773330013089_0_azh6y8.txt
+</tool_output_masked>

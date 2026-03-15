@@ -1,0 +1,32 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.curator. Here is the updated code:
+...
+ENV PYTHONPATH=/app
+
+# Set working directory
+WORKDIR /app
+
+# Group 1: Core and DB dependencies
+RUN uv pip install --system --no-cache \
+    passlib>=1.7.4 \
+    bcrypt>=4.0.1 \
+    tenacity>=8.2.0 \
+    PyJWT>=2.8.0 \
+    psycopg2-binary>=2.9.9
+
+# Group 2: Library and Media dependencies
+RUN uv pip install --system --no-cache \
+    feedparser>=6.0.10 \
+    python-magic>=0.4.27 \
+    yt-dlp>=2023.7.6
+
+# Group 3: Heavy Crawling dependencies
+RUN uv pip install --system --no-cache \
+    crawl4ai>=0.1.7
+
+# Copy application code
+COPY app/ /app/app/
+COPY scripts/ /app/scripts/
+
+# Run the worker
+CMD ["python", "-m", "app.XNAi_rag_app.workers.library_curator"]
+...

@@ -1,0 +1,3 @@
+{
+  "output": "{\n  \"error\": \"Failed to edit, 0 occurrences found for old_string in /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts/GNOSTIC_AXIOMS.md. Ensure you're not escaping content incorrectly and check whitespace, indentation, and context. Use read_file tool to verify.\"\n}"
+}

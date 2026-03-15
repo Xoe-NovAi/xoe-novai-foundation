@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\"\"\"XNAi Vikunja MCP Server - Task management integration for OpenCode.\"\"\"\n\nimport json\nimport os\nfrom typing import Any\n\nimport httpx\nfrom mcp.server import Server\nfrom mcp.server.stdio import stdio_server\nfrom mcp.types
+... [TRUNCATED] ...
+ stdio_server() as (read_stream, write_stream):\n        await server.run(\n            read_stream, write_stream, server.create_initialization_options()\n        )\n\n\nif __name__ == \"__main__\":\n    import asyncio\n\n    asyncio.run(main())\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001681112_0_c5o5m.txt
+</tool_output_masked>

@@ -1,0 +1,20 @@
+Command was automatically cancelled because it exceeded the timeout of 5.0 minutes without output. Below is the output before it was cancelled:
+xnai_qdrant
+xnai_redis
+xnai_postgres
+xnai_llama_server
+xnai_rag_api
+xnai_rag_api
+xnai_llama_server
+xnai_postgres
+xnai_qdrant
+xnai_redis
+8a8e0764bd1f90cf4d72542f7d79832506b67ff86771a8d82f70d0f27931c75b
+xnai_redis
+04017fa5a1fe8dd386993c52bea7e863f5b608983814a94daf4b469c51a2eae6
+xnai_qdrant
+6122fda8ff9541b0734d6af3730f4101e476c9ec62329f3755b1c47bc152891e
+xnai_postgres
+cce47b690d0dbf9858c776275e12be4f8bad1948ff06f864c7ef117b328496d4
+xnai_llama_server
+66df2406ecfcdc2b882fc1a91d96574c11814952a5a2f0dcb180eb322f30243b

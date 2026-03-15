@@ -1,0 +1,3 @@
+{
+  "output": "No matches found for pattern \"General instance\" in path \"memory_bank/\"."
+}

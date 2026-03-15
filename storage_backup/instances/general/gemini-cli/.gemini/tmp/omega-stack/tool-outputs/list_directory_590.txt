@@ -1,0 +1,9 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/secrets:
+api_key.txt (19 bytes)
+gemini_api_key.txt (27 bytes)
+postgres_password.txt (33 bytes)
+redis_password.txt (25 bytes)
+vikunja_db_password.txt (45 bytes)
+vikunja_jwt_secret.txt (90 bytes)
+vikunja-db-pass (45 bytes)
+vikunja-jwt-secret (90 bytes)

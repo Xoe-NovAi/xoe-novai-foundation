@@ -1,0 +1,3 @@
+{
+  "output": "Output: Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.\nname\nagent_wavefront\nconsumers\n1\npending\n0\nlast-delivered-id\n1773017553597-2\nentries-read\n476\nlag\n0\nProcess Group PGID: 1306985"
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 500-650 of 1042 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For examp
+... [TRUNCATED] ...
+await cl.Message(content=f\"❌ Research failed: {str(e)}\").send()\n\nasync def handle_targeted_query(entity_name: str, query: str):\n    \"\"\"Handle follow-up queries for specific models or personas.\"\"\"\n    global _escalation_researcher\n    "
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001817898_0_jv6g8c.txt
+</tool_output_masked>

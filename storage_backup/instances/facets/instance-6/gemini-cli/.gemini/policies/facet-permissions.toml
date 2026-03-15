@@ -1,0 +1,4 @@
+[[rule]]
+toolName = ["write_file", "run_shell_command", "replace", "grep_search", "read_file"]
+decision = "allow"
+priority = 100

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1060-1100 of 1100 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exa
+... [TRUNCATED] ...
+complete\",\n    \"get_embeddings_func\",\n    \"get_embeddings\",\n    \"get_embeddings_async\",\n    \"get_vectorstore\",\n    \"get_vectorstore_async\",\n    \"get_curator\",\n    \"cleanup_old_backups\",\n    \"check_dependencies_ready\",\n]\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773018885143_0_h1tzz.txt
+</tool_output_masked>

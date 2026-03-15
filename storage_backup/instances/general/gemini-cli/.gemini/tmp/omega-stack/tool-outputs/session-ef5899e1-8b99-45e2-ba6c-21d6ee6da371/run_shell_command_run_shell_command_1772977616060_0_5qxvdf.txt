@@ -1,0 +1,3 @@
+{
+  "output": "Output: ✓ Host-level Python Caches Purged\nFilesystem      Size  Used Avail Use% Mounted on\n/dev/nvme0n1p2  109G   94G  8.9G  92% /\nProcess Group PGID: 3886363"
+}

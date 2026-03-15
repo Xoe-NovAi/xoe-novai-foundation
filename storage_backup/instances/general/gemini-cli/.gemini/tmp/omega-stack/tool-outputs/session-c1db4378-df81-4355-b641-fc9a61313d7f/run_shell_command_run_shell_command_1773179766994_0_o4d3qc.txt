@@ -1,0 +1,3 @@
+{
+  "output": "Output: Resolved \"alpine\" as an alias (/etc/containers/registries.conf.d/shortnames.conf)\nTrying to pull docker.io/library/alpine:latest...\nGetting image source signatures\nCopying blob 589002ba0eae skipped: already exists  \nCopying config a40c03cbb8 done   | \nWriting manifest to image destination\nProcess Group PGID: 732669"
+}

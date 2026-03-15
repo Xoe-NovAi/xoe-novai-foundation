@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: Warning: Could not load config: No module named 'XNAi_rag_app'
+Database error in _get_jwt_secret: (psycopg2.OperationalError) connection to server at "postgres" (10.89.0.4), port 5432 failed: FATAL:  password authentication failed for user "postgres"
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 47, in <module>
+    from memory_bank_fallback import MemoryBankFallbackWrapper
+  File "/app/mcp-server/memory_bank_fallback.py", line 78, in <module>
+    class MemoryBankFallbackWrapper:
+  File "/app/mcp-server/memory_bank_fallback.py", line 169, in MemoryBankFallbackWrapper
+
+... [18 lines omitted] ...
+
+NameError: name 'List' is not defined. Did you mean: 'list'?
+Warning: Could not load config: No module named 'XNAi_rag_app'
+Warning: Could not load config: No module named 'XNAi_rag_app'
+Database error in _get_jwt_secret: (psycopg2.errors.UndefinedTable) relation "config" does not exist
+LINE 1: SELECT value FROM config WHERE key = 'jwt_secret'
+                          ^
+
+[SQL: SELECT value FROM config WHERE key = 'jwt_secret']
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Warning: Could not load config: No module named 'XNAi_rag_app'
+Process Group PGID: 870396
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773009098949_0_mjr5kw.txt
+</tool_output_masked>

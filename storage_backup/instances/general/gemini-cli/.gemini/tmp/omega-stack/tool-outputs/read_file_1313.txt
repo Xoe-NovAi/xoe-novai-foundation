@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 101-250 of 363 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+ype=\"text\", text=json.dumps({\"error\": \"message_id required\"}))]\n\n        try:\n            acked = await r.xack(STREAM_KEY, CONSUMER_GROUP, message_id)\n            return [\n                TextContent(\n                    type=\"text\","
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001439143_0_lmvuqn.txt
+</tool_output_masked>

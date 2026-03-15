@@ -1,0 +1,19 @@
+{
+  "sessionId": "7cf528ab-a8a6-47cb-9570-851a31892408",
+  "projectHash": "2476bd7a9850651760e85ba3ac3188c94c0588ba952e85515f42602f589ea94f",
+  "startTime": "2026-03-08T17:22:40.476Z",
+  "lastUpdated": "2026-03-08T17:22:40.476Z",
+  "messages": [
+    {
+      "id": "afbd4234-b8a7-4405-a3a5-0d2d3573f554",
+      "timestamp": "2026-03-08T17:22:40.476Z",
+      "type": "user",
+      "content": [
+        {
+          "text": "Confirm your identity and role. Reference your expert_soul.md."
+        }
+      ]
+    }
+  ],
+  "kind": "main"
+}

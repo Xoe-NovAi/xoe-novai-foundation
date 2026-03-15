@@ -1,0 +1,10 @@
+Subagent 'cli_help' finished.
+Termination Reason: GOAL
+Result:
+{
+  "answer": "In Gemini CLI, the default **OTLP (OpenTelemetry Protocol) endpoint** for telemetry is `http://localhost:4317`.\n\n### Configuration\nYou can configure the OTLP endpoint and related settings in your `.gemini/settings.json` file or via environment variables:\n\n*   **Settings File (`.gemini/settings.json`):**\n    ```json\n    {\n      \"telemetry\": {\n        \"enabled\": true,\n        \"otlpEndpoint\": \"http://localhost:4317\",\n        \"otlpProtocol\": \"grpc\",\n        \"useCollector\": true\n      }\n    }\n    ```\n*   **Environment Variables:**\n    *   `GEMINI_TELEMETRY_OTLP_ENDPOINT`: Sets the OTLP collector endpoint.\n    *   `GEMINI_TELEMETRY_OTLP_PROTOCOL`: Sets the transport protocol (`grpc` or `http`).\n    *   `GEMINI_TELEMETRY_USE_COLLECTOR`: Set to `true` or `1` to enable the use of an external OTLP collector.\n\n### Sending Data to a Local Collector\nYes, Gemini CLI can be configured to send data to a local collector. This is particularly useful for local development and debugging. \n\n1.  **Manual Configuration:** Set `telemetry.useCollector` to `true` and ensure `telemetry.otlpEndpoint` points to your local collector's address (e.g., `http://localhost:4317`).\n2.  **Automation Script:** Gemini CLI provides a built-in automation script to set up a local telemetry environment (including Jaeger and an OTEL collector). You can run:\n    ```bash\n    npm run telemetry -- --target=local\n    ```\n    This script automatically starts the necessary services and configures your workspace to export telemetry to them. Traces can then be viewed at `http://localhost:16686` (Jaeger UI), and logs/metrics are saved to `~/.gemini/tmp/<projectHash>/otel/collector.log`.",
+  "sources": [
+    "cli/telemetry.md",
+    "reference/configuration.md"
+  ]
+}

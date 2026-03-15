@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - ./config.toml:/app/config.toml:ro
+      - ./library:/library:z
+      - ./knowledge:/knowledge:z
+      - ./data/cache:/app/cache:Z
+      - ./app/XNAi_rag_app:/app/XNAi_rag_app
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+      - /tmp/crawl4ai:/app/.crawl4ai
+      - /tmp/crawler_logs:/app/logs
+    environment:
+      - OPENBLAS_CORETYPE=ZEN
+      - N_THREADS=6
+...

@@ -1,0 +1,97 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 720-810 of 834 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 811.
+
+--- FILE CONTENT (truncated) ---
+      - REDIS_URL=rediss://xnai_redis:6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=true
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - REDIS_SSL_CERT_REQS=none
+      - HF_TOKEN=${HF_TOKEN:-}
+      - STORAGE_PATH=/storage
+      - CONFIG_PATH=/app/config.toml
+      - PYTHONPATH=/app
+    volumes:
+      - ../../storage_new:/storage:Z,U
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+      - ../../app/config.toml:/app/config.toml:ro,Z,U
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    networks:
+      - xnai_db_network
+      - xnai_app_network
+    restart: on-failure:5
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    labels:
+      - "com.xnai.component=memory-bank-mcp"
+      - "com.xnai.requires=redis"
+      - "com.xnai.type=mcp-server"
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.49
+    container_name: xnai_jaeger
+    ports:
+      - "16686:16686"
+      - "14268:14268"
+      - "4317:4317"
+      - "4318:4318"
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    networks:
+      - xnai_app_network
+    restart: unless-stopped
+
+  librarian:
+    image: localhost/xnai-rag:latest
+    container_name: xnai_librarian
+    init: true
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+    environment:
+      - REDIS_HOST=xnai_redis
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=true
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - REDIS_SSL_CERT_REQS=none
+      - PYTHONPATH=/app
+      - CONFIG_PATH=/app/config.toml
+      - HSA_OVERRIDE_GFX_VERSION=9.0.0
+      - SESSION_ARCHIVE_DIR=/storage/recall/archives
+      - HSA_OVERRIDE_GFX_VERSION=9.0.0
+    volumes:
+      - ../../storage_new:/storage:Z,U
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+      - ../../app/config.toml:/app/config.toml:ro,Z,U
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - xnai_db_network
+    restart: unless-stopped
+    command: ["python3", "-m", "XNAi_rag_app.workers.librarian"]
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import os; exit(0) if os.path.exists('/storage/recall/archives') else exit(1)"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+
+networks:

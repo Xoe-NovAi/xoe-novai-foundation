@@ -1,0 +1,3 @@
+{
+  "output": "Output: Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.\nCould not connect to Redis at :6379: Name or service not known\nExit Code: 1\nProcess Group PGID: 2825167"
+}

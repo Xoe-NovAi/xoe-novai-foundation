@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/expert-knowledge:\n[DIR] infrastructure\n[DIR] reclaimed_gnosis\napi-expert.yaml (1818 bytes)\narchitect-expert.yaml (1882 bytes)\nresearch-expert.yaml (1733 bytes)\nui-expert.yaml (1827 bytes)"
+}

@@ -1,0 +1,3 @@
+{
+  "output": "Output: c98a2bf369a9  localhost/xnai-rag:latest                          uvicorn XNAi_rag_...  6 minutes ago   Up 6 minutes (healthy)            8000/tcp, 8002/tcp                                                                                                                  xnai_rag_api\nProcess Group PGID: 578342"
+}

@@ -1,0 +1,18 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/GEMINI.md (1 replacements). Here is the updated code:
+...
+| ST5 | `asyncio.get_event_loop()` fixes | `consul_client.py` | IN PROGRESS |
+
+## 🎯 Domain Directives
+1.  **AnyIO First**: Always use `anyio` (not raw `asyncio`).
+2.  **Config First**: Use `CONFIG_PATH=/app/config.toml` (standardized across the mesh).
+3.  **Port 8006**: RAG/Oikos API operates on Port 8006 (Caddy routes internally).
+4.  **OAuth Protocol**: Use `OAuthManager` for decrypted credential handling (`XNAI_OAUTH_KEY`).
+5.  **Rainbow Rotation**: Implement automatic account rotation upon 429/quota triggers.
+6.  **Redis Standard**: `decode_responses=True` and `REDIS_SSL_CERT_REQS=none`.
+7.  **Memory Guard**: LLM services MUST disable `mlock` (`LLAMA_CPP_USE_MLOCK=false`).
+
+## 🛠 Tools & Commands
+- `python -m pytest tests/ -x -q` — Run test suite
+- `podman logs xnai_rag_api` — Check API state
+- `curl http://localhost:8002/health` — Internal health check
+...

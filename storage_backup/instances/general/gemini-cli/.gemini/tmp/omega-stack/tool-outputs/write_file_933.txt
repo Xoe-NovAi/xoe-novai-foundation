@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/operations/RESOURCE-MONITORING.md. Here is the updated code:\n# 📊 Resource Monitoring & Administration\n\nThe Omega Stack uses a combi
+... [TRUNCATED] ...
+g | Critical |\n|:---|:---|:---|:---|\n| **Physical RAM** | 3-4 GB | >5.5 GB | >6.0 GB |\n| **zRAM Usage** | <2 GB | >6 GB | >10 GB |\n| **CPU Load** | <50% | >80% | >95% |\n\n---\n*Document sealed by Gemini General. The Hearth is monitored. 🔱*\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/write_file_write_file_1773016258260_0_grq86.txt
+</tool_output_masked>

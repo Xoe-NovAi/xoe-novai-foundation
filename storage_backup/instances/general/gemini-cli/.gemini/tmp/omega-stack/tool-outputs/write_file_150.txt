@@ -1,0 +1,49 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60a489d7-8146-4904-b060-2c573f022352/plans/SESS-15-CHAT-TRIMMING.md. Here is the updated code:
+...
+## 📍 Philosophical Foundation (Sovereign AI)
+- **Resource Sovereignty**: We do not merely accept 2048-token limits; we optimize the local KV cache (quantization/packing) to squeeze maximal reasoning from minimal physical silicon.
+- **Recursive Gnosis**: Sessions are not disposable streams; they are iterative knowledge loops. Each summary must act as a "Gnostic Seed" for the next turn.
+- **Mesh-First Resilience**: Session management is not a monolithic UI feature but a distributed mesh service communicating via Redis Streams and OTLP.
+
+## 🏗️ Holistic Architecture & Omega-Stack Leveraging
+
+### 1. The "Squeeze" (Context Window Innovation)
+- **Local Frontier**: Test `Llama.cpp` bit-quantized KV caches (`q4_0`, `q8_0`) to push the RAM/Context boundary.
+- **Optimization**: Leverage `LLAMA_CPP_N_THREADS=6` and `OPENBLAS_CORETYPE=ZEN` to maximize summarization speed on the 5700U.
+- **Constraint**: Maintain `f16` or `bf16` compute precision; only quantize the *cache* to preserve intelligence.
+
+### 2. "The Librarian" (Asynchronous State Worker)
+- **Role**: A background RPC service that monitors session entropy and bloat.
+- **Omega Tool Integration**:
+  - **Redis Streams**: Use `XREADGROUP` for multi-session distributed trimming.
+  - **AnyIO**: Structured concurrency for non-blocking summarization loops.
+  - **Memory Bank**: Summaries act as "Checkpoints" within the existing `memory_bank/` ontology.
+- **Archival Compression**: Use `zstd` (high ratio, fast) for historical log archival.
+
+### 3. Recursive Observability & Lightweight Tooling
+- **Metrics**: Hook Librarian into `metrics.py` (Prometheus) and Jaeger (OTLP).
+- **Searchable Archives**: Integrate `fzf` logic into the CLI for rapid searching of "The Librarian's" historical archives.
+- **Entropy Tracking**: Measure the `Information Distance` between raw history and summarized seeds.
+
+## 🛠️ Implementation Steps
+
+### Phase 1: Context Frontier Benchmarking
+- [ ] **Task**: Research and benchmark `q4_0` KV cache quantization in the `xnai-rag` container.
+...
+
+### Phase 3: Deep Observability Integration
+- [ ] **Instrumentation**: Hook Librarian into Jaeger (OTLP) to trace the "Reasoning Archive" loop.
+- [ ] **Dashboard**: Build a Grafana view for "Context Health" and "Knowledge Density."
+
+### Phase 4: Integration & Hardening
+- [ ] **UI Sync**: Update Chainlit to support "Hybrid Context" (Latest Summary + N Recent Turns).
+- [ ] **Archival Integration**: Automated `zstd` compression of logs after summarization.
+- [ ] **Hardening**: Stress test with 1000+ turn "Marathon Sessions."
+
+## 🧪 Verification & Testing
+- **The "Memory Test"**: Ask a model about turn #1 after turn #500 (post-summarization) to verify anchor retention.
+- **Stability Matrix**: Automated RSS monitoring during context expansion.
+
+## ⚠️ Risks & Mitigations
+- **Context Hallucination**: Librarian might summarize falsely. *Mitigation*: Multi-turn verification where a model "reviews" the Librarian's summary against raw history.
+- **Resource Contention**: Background worker stealing CPU. *Mitigation*: Run with `nice` priority and limit its thread count via `LLAMA_CPP_N_THREADS`.

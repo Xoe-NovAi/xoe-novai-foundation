@@ -1,0 +1,59 @@
+# 🔱 Omega Stack: Global Partition & Directory Index
+
+This index serves as the primary map for all Archons, Facets, and Agents to navigate the Omega Stack infrastructure.
+
+---
+
+## 💾 Core Partitions
+
+| Partition Name | Mount Point | Capacity | Primary Purpose |
+|:---|:---|:---|:---|
+| **System Root** | `/` | 109G (91% Used) | OS, Podman overlays, Application logic, and local caches. |
+| **Sovereign Library** | `/media/arcana-novai/omega_library` | 110G (33% Used) | Heavy models, centralized caches, media archives, and engine binaries. |
+| **Omega Vault** | `/media/arcana-novai/omega_vault` | 16G (72% Used) | Reclaimed gnosis, ancestral hub, soul memories, and secure vector stores. |
+
+---
+
+## 📂 Primary Directory Map (Project Root)
+
+### 🚀 Application & Infrastructure
+- `app/`: Core XNAi application logic (FastAPI, AnyIO).
+- `infra/`: Docker/Podman orchestration, configuration, and TLS certificates.
+- `mcp-servers/`: Implementations of Model Context Protocol servers (Memory Bank, WebSearch, etc.).
+- `scripts/`: System management, maintenance, and automation scripts.
+
+### 🧠 Knowledge & Memory
+- `memory_bank/`: System-wide ground truth and state (The Long-Term Memory).
+- `expert-knowledge/`: Specialized domains and expert personas.
+- `knowledge/`: General knowledge base, schemas, and technical manuals.
+- `entities/`: Persistent Entity definitions and Soul Files.
+
+### 📦 Storage & Data (The "Great Reconciliation" Targets)
+- `storage/`: Primary persistent storage for containerized services.
+    - `storage/data/`: Service-specific data (Consul, Redis, Qdrant).
+    - `storage/backups/`: System snapshots.
+    - `storage/instances/`: Isolated workspaces for various agent facets.
+- `data/`: Shared data directory (consolidated from `_new` folders).
+- `library/`: Local symbolic link or shared data for librarian services.
+
+---
+
+## 🏗️ Centralized External Storage (Library Partition)
+
+Located at: `/media/arcana-novai/omega_library/omega-stack/`
+
+- `models/`: Global repository for GGUF and Transformer models.
+- `embeddings/`: Centralized embedding models.
+- `cache/huggingface/`: Consolidated HF hub cache (Shared by all services).
+- `media_archives/`: Large media files and archives.
+- `engines/`: Binary engines (LM Studio, Piper, etc.).
+
+---
+
+## 🛡️ Security & Integrity
+- **UID/GID 1000**: All project files should be owned by `arcana-novai`.
+- **AnyIO First**: All new Python logic MUST use `anyio` for non-blocking I/O.
+- **Port 8005**: Central Memory Bank MCP (SSE/FastAPI).
+
+**Last Updated**: 2026-03-11  
+**Authority**: Archon Gem (Gemini General)

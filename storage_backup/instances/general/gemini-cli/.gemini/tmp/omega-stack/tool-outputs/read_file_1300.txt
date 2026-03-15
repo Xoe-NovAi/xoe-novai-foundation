@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 220-288 of 288 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+\n2. For any relevant files found, read them using the memory://bank/ resource\n3. Summarize the findings in a clear, organized format\n4. Note any gaps or areas that need more documentation\"\"\"\n\n\nif __name__ == \"__main__\":\n    mcp.run()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001723691_0_bhycib.txt
+</tool_output_masked>

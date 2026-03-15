@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"\"GPT-5 Nano\" AI model OpenAI OpenCode release date specs\":\n\nThe **GPT-5 Nano** model was officially released by OpenAI on **August 7, 2025**.[1][2][3] It is the smallest, fastest, and most cost-effective v
+... [TRUNCATED] ...
+om/grounding-api-redirect/AUZIYQF1Vrirs0e76Ntc4pVzEqCrghylJ6p1tQqnP8fn3_1uVqTFgVR_IJRyMiM8egW7ko0blxt9_b_zM-dutNd2zZ522jomOwVIQEzbQZPR6hYNfXtct3HT3IVHe7ee8RM77Qp-ocuy7539uJ1iCXtb7KV-MXhrCjQ160y2c2EnrTSmaF0HKwXbqTcg73mrmpKs74_NmcIvoF9tw-95turbG6E=)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/google_web_search_google_web_search_1773002739112_0_ipszng.txt
+</tool_output_masked>

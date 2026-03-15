@@ -1,0 +1,42 @@
+<tool_output_masked>
+Output: STEP 1/11: FROM xnai-base:latest
+STEP 2/11: LABEL maintainer="Xoe-NovAi Team"
+--> Using cache 9a5203f80bcab3238701d780dfbb5abb4cec5085421bd19c306a06ec07193a59
+--> 9a5203f80bca
+STEP 3/11: LABEL version="0.1.0"
+--> Using cache d29c4e4ec1aa2a6f17394236a644761e5d84db09da51c8c6c668fd293227dfcf
+--> d29c4e4ec1aa
+STEP 4/11: LABEL description="Xoe-NovAi Library Curator Worker"
+--> Using cache f783ee45f10832dfdc0438e49b8cd7ccbdcfffd6933e12ddecdeb01961db84fe
+--> f783ee45f108
+
+... [18 lines omitted] ...
+
+--> 077ea695bd98
+STEP 9/11: COPY app/ /app/app/
+--> 6f94db62a9c9
+STEP 10/11: COPY scripts/ /app/scripts/
+--> 2859994f9804
+STEP 11/11: CMD ["python", "-m", "app.XNAi_rag_app.workers.library_curator"]
+COMMIT xnai-library-curator:latest
+--> 398fc26159e8
+Successfully tagged localhost/xnai-library-curator:latest
+398fc26159e8cb2f9ed88c1f528958391af554052df28509854709fca5ebcc91
+Error: no container with name or ID "xnai_library_curator" found: no such container
+xnai_redis
+xnai_postgres
+Error: no container with ID or name "xnai_library_curator" found: no such container
+Error: container 1b5a3f99f82e0cecceb95cd13633f5e57aa21b8846dae73fdce84ec6919af062 has dependent containers which must be removed before it: 12dd1121032bdbd8b2517281267e315ab104f027bdf60ef9e2108561bf922919: container already exists
+Error: container b2a38a92fff930ff7dfc27197e4b314c99c4573a394037fa7109498fd6211457 has dependent containers which must be removed before it: 12dd1121032bdbd8b2517281267e315ab104f027bdf60ef9e2108561bf922919: container already exists
+Error: creating container storage: the container name "xnai_redis" is already in use by b2a38a92fff930ff7dfc27197e4b314c99c4573a394037fa7109498fd6211457. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_redis
+Error: creating container storage: the container name "xnai_postgres" is already in use by 1b5a3f99f82e0cecceb95cd13633f5e57aa21b8846dae73fdce84ec6919af062. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_postgres
+Error: --userns and --pod cannot be set together
+Error: no container with name or ID "xnai_library_curator" found: no such container
+Error: no container with name or ID "xnai_library_curator" found: no such container
+Exit Code: 125
+Process Group PGID: 1197985
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773014894616_0_u7sun.txt
+</tool_output_masked>

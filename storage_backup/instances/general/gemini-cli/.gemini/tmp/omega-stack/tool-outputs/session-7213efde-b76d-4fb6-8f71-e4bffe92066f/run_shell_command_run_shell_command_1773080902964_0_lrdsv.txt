@@ -1,0 +1,3 @@
+{
+  "output": "Output: chown: changing ownership of 'data/redis': Operation not permitted\nExit Code: 1\nProcess Group PGID: 558329"
+}

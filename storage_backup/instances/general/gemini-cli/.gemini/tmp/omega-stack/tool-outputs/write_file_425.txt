@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/architecture/OIKOS_MASTERMIND_DIAGRAM.md. Here is the updated code:\n# 🔱 Omega Stack: Oikos Mastermind Architecture\n**Date**: March 1
+... [TRUNCATED] ...
+n `SOUL_PATHS.yaml`. |\n\n---\n\n## 📡 Port & Network Map\n- **Oikos Mesh API**: Port 8006 (FastAPI)\n- **Memory Bank**: Port 8005 (FastAPI/MCP)\n- **Redis**: Port 6379 (Isolated in `xnai_db_network`)\n- **Prometheus**: Port 9090 (Observability)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/write_file_write_file_1773275698067_0_ivvddl.txt
+</tool_output_masked>

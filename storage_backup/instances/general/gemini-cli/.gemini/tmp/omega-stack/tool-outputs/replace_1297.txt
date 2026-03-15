@@ -1,0 +1,20 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-vikunja/server.py (1 replacements). Here is the updated code:
+...
+    return headers
+
+
+@server.call_tool()
+async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
+    # S2: Auth Check
+    if name != "vikunja_health":
+        agent_id = arguments.get("agent_id")
+        auth_token = arguments.get("auth_token")
+        if not _check_auth(agent_id, auth_token):
+            return [TextContent(type="text", text="Error: Authentication failed")]
+
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        base_url = f"{VIKUNJA_URL}/api/v1"
+
+        if name == "list_projects":
+            try:
+...

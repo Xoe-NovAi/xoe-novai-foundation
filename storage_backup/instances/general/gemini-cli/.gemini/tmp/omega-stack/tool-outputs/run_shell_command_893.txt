@@ -1,0 +1,5 @@
+Output: find: ‘/proc/tty/driver’: Permission denied
+/app/scripts/ingest_library.py
+/app/app/XNAi_rag_app/services/ingest_library.py
+Exit Code: 1
+Process Group PGID: 1302953

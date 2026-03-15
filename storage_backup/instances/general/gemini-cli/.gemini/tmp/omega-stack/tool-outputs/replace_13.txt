@@ -1,0 +1,39 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/oikos_mastermind.py (1 replacements). Here is the updated code:
+...
+from scripts.soul_distiller import distill_cycle
+from scripts.mali_gate import judge_decree
+
+async def call_level_2(problem: str):
+    """
+    Performs Level 2 reasoning using actual inference.
+    Includes one iterative refinement of the initial prompt.
+    """
+    start_time = time.time()
+    await record_gear_shift("Iris", "LEVEL_2_START", 0, {"problem": problem})
+    
+    print("🔱 Level 2: Archive Guardian active...")
+    from scripts.agent_factory import AgentFactory
+    factory = AgentFactory(model_name="gemini/gemini-2.0-flash")
+    
+    # Iterative Refinement
+    refinement_prompt = f"Problem: {problem}\n\nRewrite this problem statement for maximum clarity and depth, suitable for a council of experts."
+    refined_problem = await factory.think(refinement_prompt, "You are the Archive Guardian. Your role is to refine and deepen the user's inquiry.")
+    print(f"🔱 Level 2: Initial Analysis complete. Refined Problem: {refined_problem}")
+    
+    # Analysis
+    analysis_prompt = f"Refined Problem: {refined_problem}\n\nDecide if this problem requires the collective gnosis of the Oikos Council or if it can be resolved by a single large mind. Respond with 'ESCALATE' or 'RESOLVE'."
+    decision = await factory.think(analysis_prompt, "You are the Archive Guardian. You are wise, discerning, and protective of the Council's time.")
+    
+    # Decision Point
+    if "ESCALATE" in decision.upper():
+        print("🔱 Level 2: Problem depth requires collective gnosis. Escalating to Level 3 Oikos Council.")
+        await record_gear_shift("Archive_Guardian", "LEVEL_2_ESCALATION", time.time() - start_time, {"decision": "ESCALATE"})
+        return "ESCALATE_TO_OIKOS"
+    else:
+        resolution = f"Problem '{problem}' has been resolved by the Archive Guardian."
+        print(f"\n✅ Level 2 Resolution: {resolution}")
+        await record_gear_shift("Archive_Guardian", "LEVEL_2_RESOLUTION", time.time() - start_time, {"decision": "RESOLVE"})
+        return "RESOLVED_AT_LEVEL_2"
+
+async def orchestrate_oikos_session(problem: str):
+...

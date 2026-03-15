@@ -1,0 +1,29 @@
+<tool_output_masked>
+Output: --- DB 0 ---
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+memory_bank:context:antigravity:strategic:hot:v2
+memory_bank:context:antigravity:strategic:hot:v1
+memory_bank:agents:general
+memory_bank:context:general:technical:hot:v1
+memory_bank:agents:antigravity
+memory_bank:agents:facet_1
+--- DB 1 ---
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+
+... [34 lines omitted] ...
+
+--- DB 13 ---
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+
+--- DB 14 ---
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+
+--- DB 15 ---
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+
+ls: cannot access 'internal_docs/communication_hub/inbox/': No such file or directory
+Exit Code: 2
+Process Group PGID: 422372
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773002422761_0_82um7g.txt
+</tool_output_masked>

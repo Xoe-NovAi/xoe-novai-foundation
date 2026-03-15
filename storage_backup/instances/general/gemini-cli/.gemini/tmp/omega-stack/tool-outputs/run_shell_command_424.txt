@@ -1,0 +1,4 @@
+Output: XNAi_rag_app/
+data/
+logs/
+Process Group PGID: 101662

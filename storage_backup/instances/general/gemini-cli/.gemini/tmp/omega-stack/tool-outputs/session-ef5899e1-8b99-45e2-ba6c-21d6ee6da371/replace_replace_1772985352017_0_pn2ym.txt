@@ -1,0 +1,3 @@
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/dispatcher.d/gemini.conf (1 replacements). Here is the updated code:\n...\n    SOUL_FILE=\"${GEMINI_CLI_HOME}/.gemini/expert_soul.md\"\n    if [[ -f \"$SOUL_FILE\" ]]; then\n        export GEMINI_CUSTOM_INSTRUCTIONS=\"$(cat \"$SOUL_FILE\")\"\n    fi\n\n    # Link/Copy MCP Config\n        SHARED_MCP=\"${HOME}/.config/gemini/mcp_config.json\"\n        if [[ -f \"$SHARED_MCP\" ]]; then\n            mkdir -p \"${GEMINI_CLI_HOME}/.gemini\"\n            # FIX: Copy instead of symlink to prevent lock contention between facets\n            cp \"$SHARED_MCP\" \"${GEMINI_CLI_HOME}/.gemini/mcp_config.json\"\n        fi\n}\n Applied fuzzy match at line 24-29."
+}

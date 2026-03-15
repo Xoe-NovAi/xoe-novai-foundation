@@ -1,0 +1,19 @@
+{
+  "sessionId": "3441ba87-27ec-4567-abec-c2dfbab7ce9f",
+  "projectHash": "2476bd7a9850651760e85ba3ac3188c94c0588ba952e85515f42602f589ea94f",
+  "startTime": "2026-03-08T17:20:58.957Z",
+  "lastUpdated": "2026-03-08T17:20:58.957Z",
+  "messages": [
+    {
+      "id": "7debf215-0ad8-4f8f-bc95-add7a183f660",
+      "timestamp": "2026-03-08T17:20:58.957Z",
+      "type": "user",
+      "content": [
+        {
+          "text": "Who are you? Read your expert_soul.md."
+        }
+      ]
+    }
+  ],
+  "kind": "main"
+}

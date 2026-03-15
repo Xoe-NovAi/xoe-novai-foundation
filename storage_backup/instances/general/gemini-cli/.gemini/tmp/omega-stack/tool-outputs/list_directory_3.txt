@@ -1,0 +1,7 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/entities:
+[DIR] evolution
+facet-1-soul.md (1461 bytes)
+facet-6-soul.md (1414 bytes)
+GEMINI_SOUL_MAP.md (714 bytes)
+lilith.json (998 bytes)
+maat.json (1052 bytes)

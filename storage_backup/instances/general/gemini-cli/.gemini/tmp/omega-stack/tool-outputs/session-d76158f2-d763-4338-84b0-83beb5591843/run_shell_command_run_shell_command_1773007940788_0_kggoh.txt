@@ -1,0 +1,3 @@
+{
+  "output": "Output: app/:\nGEMINI.md\nXNAi_rag_app\n__init__.py\n__pycache__\nconfig.toml\n\napp/XNAi_rag_app:\n__init__.py\n__pycache__\napi\ncli\nconversation_ingestion.py\ncore\nknowledge_synthesis\nmodel_intelligence_ingestion.py\nmodel_router.py\nmodels\npy.typed\nschemas\nProcess Group PGID: 838661"
+}

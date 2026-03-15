@@ -1,0 +1,21 @@
+Output: 3.9G    /home/arcana-novai/Documents/Xoe-NovAi
+552M    /home/arcana-novai/Documents/Tarot Deck
+543M    /home/arcana-novai/Documents/Programming
+497M    /home/arcana-novai/Documents/RECOVERED_GNOSIS
+440M    /home/arcana-novai/Documents/Archives
+407M    /home/arcana-novai/Documents/LLM Knowledge Sources
+276M    /home/arcana-novai/Documents/Cline
+213M    /home/arcana-novai/Documents/Cursor.old
+59M     /home/arcana-novai/Downloads/freedoom-0.13.0
+58M     /home/arcana-novai/Documents/xnaif-files
+46M     /home/arcana-novai/Documents/docs-backup
+44M     /home/arcana-novai/Documents/Greek Resources
+27M     /home/arcana-novai/Documents/docs_2
+24M     /home/arcana-novai/Downloads/vscode_cli_alpine_x64_cli
+24M     /home/arcana-novai/Downloads/freedoom-0.13.0.zip
+20M     /home/arcana-novai/Downloads/2.53_Win_Release_2-17APRIL2019.zip
+19M     /home/arcana-novai/Downloads/gzdoom_4.14.2_amd64.deb
+19M     /home/arcana-novai/Downloads/John Entwistle - Whistle Rymes 1972 (full album) - Thebestdream I had(2).DlzICLqS.mp3.part
+17M     /home/arcana-novai/Documents/docs_1
+16M     /home/arcana-novai/Downloads/Xoe-NovAi_Enterprise_Architecture_Roadmap.pdf
+Process Group PGID: 1859267

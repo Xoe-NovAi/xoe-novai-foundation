@@ -1,0 +1,3 @@
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:\n...\n      resources:\n        limits:\n          memory: 512M\n          cpus: '0.5'\n    healthcheck:\n      test: [\"CMD-SHELL\", \"python3 -c \\\"import redis; import os; r=redis.Redis(host='redis', password=os.environ.get('REDIS_PASSWORD')); r.ping()\\\" || exit 1\"]\n      interval: 30s\n      timeout: 10s\n      retries: 3\n    labels:\n      - \"com.xnai.component=memory-bank-mcp\"\n..."
+}

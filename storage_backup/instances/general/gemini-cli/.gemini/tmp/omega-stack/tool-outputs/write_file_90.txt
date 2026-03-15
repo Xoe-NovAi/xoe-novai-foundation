@@ -1,0 +1,30 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/TGG_GRAPH.json. Here is the updated code:
+{
+  "TGG": {
+    "version": "1.1.0",
+    "last_updated": "2026-03-12T15:15:00Z",
+    "nodes": {
+      "Root": {
+        "path": "/",
+        "type": "orchestrion",
+        "imports": [],
+        "hash": "[RIGIDITY-HASH-ALPHA-20260312]"
+      },
+      "app.XNAi_rag_app.core.linguistics": {
+        "path": "app/XNAi_rag_app/core/linguistics.py",
+        "type": "logic",
+        "imports": ["ast", "hashlib", "json", "re", "unicodedata"],
+        "hash": "83d596e775e49a9d0100fff846afb54965d6a4e954e746446a85f51896e05a80"
+      },
+      "mcp-servers.xnai-gnosis.server": {
+        "path": "mcp-servers/xnai-gnosis/server.py",
+        "type": "mcp",
+        "imports": ["mcp", "prometheus_client", "app.XNAi_rag_app.core.linguistics"],
+        "hash": "inherited"
+      }
+    },
+    "anchors": {
+      "F7-Techne": "app.XNAi_rag_app.core.linguistics"
+    }
+  }
+}

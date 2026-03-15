@@ -1,0 +1,8 @@
+Output: 3.2G    storage/data
+964M    storage/backups
+375M    storage/instances
+46M     storage/db
+5.2M    storage/instances-active
+8.0K    storage/artifacts
+4.0K    storage/models
+Process Group PGID: 79760

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\nhydration:\n  event_id: \"HYD-20260312-006\"\n  session_id: \"SESS-20\"\n  coordination_key: \"OMEGA-RCF-MANIFEST-2026\"\n  timestamp: \"2026-03-12T23:30:00Z\"\n  status: \"EPOCH-2-ACTIVE\"\n---\n\n# 🔱 Active Context: Epoch 2: Th
+... [TRUNCATED] ...
+Gnosis Packs** for the `API`, `UI`, and `DevOps` domains.\n4.  **Persona Seed Implementation**: Distill the **LIA Triad** into active `memory_bank/seeds/`.\n5.  **Metron Metrics**: Define the `Metron Density Metric` for RDS performance tracking.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773326184972_1_qwfl1a.txt
+</tool_output_masked>

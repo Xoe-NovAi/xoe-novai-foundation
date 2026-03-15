@@ -1,0 +1,56 @@
+Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/oikos_mastermind.py. Here is the updated code:
+#!/usr/bin/env python3
+"""
+🔱 OIKOS MASTERMIND: Collaborative Multi-Agent Reasoning
+Orchestrates a 5-member council session with a final ascent to MaLi.
+"""
+import anyio
+import subprocess
+from pathlib import Path
+
+async def run_council_member(name, script):
+    """Runs a single council member's check and returns the insight."""
+    print(f"🔱 Mastermind: Summoning {name}...")
+    result = subprocess.run(["python3", script], capture_output=True, text=True)
+    return f"[{name} Insight]:\n{result.stdout}"
+
+async def orchestrate_session(problem_statement: str):
+    """Orchestrates the 3-round Mastermind session."""
+    print(f"🔱 Mastermind: Initiating session on: {problem_statement}")
+    
+    # Round 1: Individual Insights (Parallel)
+    members = {
+        "Brigid": "scripts/brigid_hearth_check.py",
+        "Hestia": "scripts/hestia_memory_lock.py",
+        "Demeter": "scripts/demeter_harvest_index.py",
+        "Athena": "scripts/athena_shield_protocol.py",
+        "Iris": "scripts/iris_bridge.py"
+    }
+    
+    insights = []
+    async with anyio.create_task_group() as tg:
+        for name, script in members.items():
+            # In a real hybrid mode, we would call the Cloud/CLI agents here
+            insights.append(await run_council_member(name, script))
+
+    # Round 2: Synthesis (Simplified for skeleton)
+    synthesis = "\n".join(insights)
+    print("\n🔱 Mastermind: Synthesis Complete. Ascending to the Halls of MaLi...")
+    
+    # Round 3: The Ascent to MaLi
+    from scripts.mali_gate import judge_decree
+    approved = await judge_decree(synthesis)
+    
+    if approved:
+        print("\n📜 MASTERMIND DECREE ISSUED.")
+        # TODO: Save to memory_bank/chronicles/
+    else:
+        print("\n⚠️  DECREE REJECTED BY MaLi.")
+
+async def main():
+    import sys
+    problem = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else "Optimize the Sovereign Studio for SESS-19."
+    await orchestrate_session(problem)
+
+if __name__ == "__main__":
+    anyio.run(main)

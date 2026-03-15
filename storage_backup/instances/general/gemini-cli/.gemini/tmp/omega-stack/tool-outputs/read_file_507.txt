@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\"\"\"\nXNAi Memory Bank MCP Server\n===========================\n\nMCP server exposing memory bank tools, resources, and prompts.\nImplements MemGPT-style hierarchical memory architecture.\n\nUsage:\n    fastmcp run server.py\n    # o
+... [TRUNCATED] ...
+\n2. For any relevant files found, read them using the memory://bank/ resource\n3. Summarize the findings in a clear, organized format\n4. Note any gaps or areas that need more documentation\"\"\"\n\n\nif __name__ == \"__main__\":\n    mcp.run()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001659413_0_nti5ti.txt
+</tool_output_masked>

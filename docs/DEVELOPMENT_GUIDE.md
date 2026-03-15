@@ -203,7 +203,8 @@ omega-stack/
 │   ├── logging.conf        # Logging configuration
 │   └── schemas/            # Database schemas
 ├── docs/                   # Documentation
-│   ├── ARCHITECTURE_OVERVIEW.md
+│   ├── gnostic_architecture/
+│   │   ├── 01_temple_architecture.md
 │   ├── API_REFERENCE.md
 │   ├── DEVELOPMENT_GUIDE.md
 │   └── tutorials/          # Step-by-step guides
@@ -1362,7 +1363,7 @@ docker-compose exec app python scripts/check_migrations.py
 
 #### Documentation
 
-- [Architecture Overview](ARCHITECTURE_OVERVIEW.md)
+- [Architecture Overview](gnostic_architecture/01_temple_architecture.md)
 - [API Reference](API_REFERENCE.md)
 - [Contributing Guide](CONTRIBUTING.md)
 

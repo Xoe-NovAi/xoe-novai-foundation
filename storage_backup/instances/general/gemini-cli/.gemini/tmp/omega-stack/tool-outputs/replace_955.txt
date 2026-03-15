@@ -1,0 +1,17 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/workers/library_curator.py (1 replacements). Here is the updated code:
+...
+
+    async def start(self):
+        """Main loop to fetch and process curation tasks."""
+        # Initialize Redis and Ingestion Engine
+        async with self as bus:
+            # Note: EnterpriseIngestionEngine needs a config dict
+            from XNAi_rag_app.core.config_loader import load_config
+            config = load_config()
+            self.engine = EnterpriseIngestionEngine(config=config)
+            logger.info(f"LibraryCuratorWorker {self.agent_did} started and listening...")
+            
+            while True:
+                try:
+                    # Check for kill switch
+...

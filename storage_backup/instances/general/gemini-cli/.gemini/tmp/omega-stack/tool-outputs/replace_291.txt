@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/linguistics.py (1 replacements). Here is the updated code:
+...
+[AP:memory_bank/ALETHIA_REGISTRY.md#L15] (SOS-F7: ZLV/Techne)
+"""
+import ast
+import hashlib
+import re
+import unicodedata
+from typing import Any, Dict, List, Optional, Set
+
+# Root Mappings (Ancient Greek & Russian)
+GNOSTIC_ROOTS = {
+    # Ancient Greek (Suffixes & Roots)
+...

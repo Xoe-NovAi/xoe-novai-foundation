@@ -1,0 +1,12 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements:
+requirements-api.in (1274 bytes)
+requirements-api.txt (9298 bytes)
+requirements-chainlit.in (2938 bytes)
+requirements-chainlit.txt (4217 bytes)
+requirements-crawl.in (1081 bytes)
+requirements-crawl.txt (8676 bytes)
+requirements-curation_worker.in (313 bytes)
+requirements-curation_worker.txt (5048 bytes)
+requirements-ui-core.txt (519 bytes)
+requirements.in (171 bytes)
+requirements.txt (35343 bytes)

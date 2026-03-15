@@ -1,0 +1,66 @@
+Command was automatically cancelled because it exceeded the timeout of 5.0 minutes without output. Below is the output before it was cancelled:
+Error: no container with name or ID "xnai_crawler" found: no such container
+Error: no container with name or ID "xnai_grafana" found: no such container
+Error: no container with name or ID "xnai_open_webui" found: no such container
+Error: no container with name or ID "xnai_knowledge_miner" found: no such container
+Error: no container with name or ID "xnai_cline" found: no such container
+Error: no container with name or ID "xnai_chainlit_ui" found: no such container
+Error: no container with name or ID "xnai_vikunja" found: no such container
+Error: no container with name or ID "xnai_rag_api" found: no such container
+Error: no container with name or ID "xnai_victoriametrics" found: no such container
+Error: no container with name or ID "xnai_curation_worker" found: no such container
+Error: no container with name or ID "xnai_consul" found: no such container
+Error: no container with name or ID "xnai_vikunja_db" found: no such container
+Error: no container with name or ID "xnai_booklore" found: no such container
+xnai_caddy
+xnai_qdrant
+Error: no container with name or ID "xnai_openpipe" found: no such container
+Error: no container with name or ID "xnai_mkdocs" found: no such container
+Error: no container with name or ID "xnai_llama_server" found: no such container
+xnai_memory_bank_mcp
+xnai_redis
+Error: removing container aae3c3688c7364a2c5934b9eda39210a178aad7a9ba3e496a900a9ea9fbf274e network: 1 error occurred:
+        * rootless netns: kill network process: permission denied
+
+
+Error: no container with ID or name "xnai_crawler" found: no such container
+Error: no container with ID or name "xnai_chainlit_ui" found: no such container
+Error: no container with ID or name "xnai_rag_api" found: no such container
+xnai_memory_bank_mcp
+Error: no container with ID or name "xnai_knowledge_miner" found: no such container
+Error: no container with ID or name "xnai_open_webui" found: no such container
+Error: no container with ID or name "xnai_grafana" found: no such container
+Error: no container with ID or name "xnai_vikunja" found: no such container
+Error: no container with ID or name "xnai_curation_worker" found: no such container
+Error: no container with ID or name "xnai_openpipe" found: no such container
+Error: no container with ID or name "xnai_cline" found: no such container
+Error: no container with ID or name "xnai_llama_server" found: no such container
+Error: no container with ID or name "xnai_booklore" found: no such container
+xnai_caddy
+Error: no container with ID or name "xnai_vikunja_db" found: no such container
+Error: no container with ID or name "xnai_mkdocs" found: no such container
+xnai_postgres
+xnai_qdrant
+Error: no container with ID or name "xnai_victoriametrics" found: no such container
+xnai_redis
+Error: no container with ID or name "xnai_consul" found: no such container
+dd37c94cfe22391d6faac775792e22f51200def610380cfe724b5f49a1e26139
+xnai_app_network
+xnai_db_network
+xnai_network
+make: Entering directory '/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker'
+🚀 Starting Core Services (Tier 1)...
+podman-compose -f docker-compose.yml up -d redis postgres qdrant caddy memory-bank-mcp
+42e703a4835bb771775bfa20982ea915c9ed37c2ec458234f2b543863f7a2bfb
+3ac2f870269cb49187660e877dcdfce3f5adff4edde4b64314e944e8d40055ef
+Error: unable to start container "3ac2f870269cb49187660e877dcdfce3f5adff4edde4b64314e944e8d40055ef": 1 error occurred:
+        * rootless netns: kill network process: permission denied
+
+
+6f17f02eb2ac43d82adbe73c8b2ac81e6ee25fb661e026e2026291222fd396d5
+xnai_qdrant
+ba5be9d14b092c8c295535a2f1634a4333234f7d2ee3a49a8b98c0e3bfe28b29
+xnai_postgres
+650ab7675f39d001149cc3407efd18674d2d014fd22ca14a3f6d40d58b85a797
+xnai_caddy
+74d67b6498ea6422b639368692a25afcab3bc5843f9380068ffe50b6bf74103b

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-memory/server.py (1 replacements). Here is the updated code:\n...\n    \"\"\"Get the current project progress status.\"\"\"\n    return (ME
+... [TRUNCATED] ...
+ntent.startswith(\"---\"):\n                parts = content.split(\"---\", 2)\n                if len(parts) >= 3:\n                    content = parts[2].strip()\n            compiled.append(f\"## {block.replace('.md', '')}\\n\\n{content}\")\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001702504_0_smj93.txt
+</tool_output_masked>

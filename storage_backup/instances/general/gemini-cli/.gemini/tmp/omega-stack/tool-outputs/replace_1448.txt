@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:\n...\n    \"\"\"Schema for agent registration.\"\"\"\n    agent_id: str\n 
+... [TRUNCATED] ...
+ions)\n                for context_id, version in self.context_versions.items():\n                    if version > 3:\n                        # Remove old versions from Redis\n                        for old_version in range(1, version - 2):\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1772999966436_0_1vraqa.txt
+</tool_output_masked>

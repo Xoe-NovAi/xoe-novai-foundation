@@ -1,0 +1,6 @@
+Output: 🔐 Generating CA and Redis certificates in infra/docker/tls...
+Certificate request self-signature ok
+subject=CN=redis
+✅ Updated .gitignore
+✨ TLS Certificates generated successfully.
+Process Group PGID: 440069

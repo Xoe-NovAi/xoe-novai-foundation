@@ -1,0 +1,3 @@
+{
+  "output": "Subagent 'codebase_investigator' failed. Error: The user aborted a request."
+}

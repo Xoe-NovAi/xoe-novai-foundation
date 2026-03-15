@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/oikos_mastermind.py (1 replacements). Here is the updated code:
+...
+    approved = await judge_decree(synthesis)
+    await record_gear_shift("MaLi", "JUDGMENT", time.time() - mali_start, {"approved": approved})
+    
+    if approved:
+        timestamp = time.strftime("%Y%m%d_%H%M%S")
+        decree_path = Path(f"/app/memory_bank/chronicles/MASTERMIND_DECREE_{timestamp}.md")
+        
+        with open(decree_path, "w") as f:
+            f.write(f"# 📜 Mastermind Decree: {problem}\n")
+            f.write(f"**Timestamp**: {time.ctime()}\n")
+            f.write("**Status**: APPROVED BY MaLi\n\n")
+...

@@ -1,0 +1,6 @@
+Output: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app -> /app/app
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts -> /app/scripts
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/tls/ca.crt -> /tls/ca.crt
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/library -> /library
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge -> /expert-knowledge
+Process Group PGID: 2732956

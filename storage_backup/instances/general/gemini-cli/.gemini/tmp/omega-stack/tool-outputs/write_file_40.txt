@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60261d1d-e73f-4dc4-be0e-3da9c3a90627/plans/sess_23_gnosis_packs_final.md. Here 
+... [TRUNCATED] ...
+breaking changes trigger re-distillation.\n- **Atomic Rollback**: Verify `ALETHIA_REGISTRY` remains consistent after a forced crash during sealing.\n- **E2E Trace**: Verify a source file update flows through the entire pipeline to the dashboard.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773333538722_0_p8n2le.txt
+</tool_output_masked>

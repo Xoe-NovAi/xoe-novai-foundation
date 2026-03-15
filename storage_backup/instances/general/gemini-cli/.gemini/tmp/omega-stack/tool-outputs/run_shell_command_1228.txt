@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: # MkDocs output
+site/
+
+# Build artifacts
+*.egg-info/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+
+
+... [33 lines omitted] ...
+
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Large Artifacts
+artifacts/*.json
+_archive/**/*.json
+Process Group PGID: 439604
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773004292640_0_gk1hk.txt
+</tool_output_masked>

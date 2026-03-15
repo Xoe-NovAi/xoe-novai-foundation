@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 17 matches for pattern \"Metron|DSRC|Gnosis Pack|Refractive Compression\" in path \"memory_bank/\":\n---\nFile: progress.md\nL18:     - Established the **Refractive Compression Framework (RCF)**.\nL26:     - **DSRC Packs**: Gener
+... [TRUNCATED] ...
+ng\" engine of the stack, utilizing **Domain-Specialized Resource Crafting (DSRC)** and **Persona Template Distillation (PTD)** to maintain context density.\nL93: - **DSRC**: Generates laser-focused context packs (Bronze, Silver, Gold tiers).\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/grep_search_grep_search_1773331526427_1_52g99g.txt
+</tool_output_masked>

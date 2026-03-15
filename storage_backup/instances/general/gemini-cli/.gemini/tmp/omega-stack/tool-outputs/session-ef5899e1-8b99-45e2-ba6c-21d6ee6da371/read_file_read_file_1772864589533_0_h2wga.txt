@@ -1,0 +1,3 @@
+{
+  "output": "#!/bin/bash\nLIMIT=${1:-10}\necho -e \"\\033[0;36m🏙️  Omega Metropolis: Recent Sessions (BardRY)\\033[0m\"\nfind \"$INSTANCE_ROOT\" -name \"session-*.json\" -printf \"%T+ %p\\n\" 2>/dev/null | sort -r | head -n \"$LIMIT\"\n"
+}

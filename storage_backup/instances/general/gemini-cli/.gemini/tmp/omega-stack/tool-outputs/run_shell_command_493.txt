@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: ============================================
+XNAi Foundation Stack Health Check
+Sun Mar  8 17:29:54 ADT 2026
+============================================
+
+Redis (redis:6379)... ✗ FAIL
+Vikunja API (http://localhost:8000/vikunja/api/v1/info)... ✗ FAIL
+Consul UI (http://localhost:8500/v1/status/leader)... ✗ FAIL
+Caddy Reverse Proxy (http://localhost:8000/)... ✗ FAIL
+Qdrant Vector DB (http://qdrant:6333/healthz)... ✗ FAIL (Qdrant Not Healthy)
+
+... [40 lines omitted] ...
+
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR tests/circuit_breaker_load_test.py
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+6 warnings, 1 error in 1.79s
+Process Group PGID: 416474
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773001794141_0_q18308.txt
+</tool_output_masked>

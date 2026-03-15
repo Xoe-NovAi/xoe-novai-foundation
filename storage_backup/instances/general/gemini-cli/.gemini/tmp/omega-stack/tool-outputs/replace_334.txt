@@ -1,0 +1,13 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/linguistics.py (1 replacements). Here is the updated code:
+...
+    decoder = ZippedLogosDecoder()
+    sample_code = "def hello(): print('world')"
+    c_hash = decoder.generate_crystal_hash(sample_code)
+    print(f"Crystal Hash: {c_hash}")
+    print(f"Integrity: {decoder.verify_integrity(sample_code, c_hash)}")
+
+    # Test Ancient Greek Normalization
+    greek_text = "μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος"
+    normalized_greek = normalize_ancient_greek(greek_text)
+    print(f"Original: {greek_text}")
+    print(f"Normalized: {normalized_greek}")

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/activeContext.md. Here is the updated code:\n# 🏙️ XNAi Foundation — Active Context\n\n> **Last updated**: 2026-03-08 (Hardened Foundation v4.0
+... [TRUNCATED] ...
+DIT_20260308.md` |\n| **Red-Phone Test** | `tests/test_red_phone_kill_switch.py` |\n| **Unified UI/API** | `app/XNAi_rag_app/ui/chainlit_app_unified.py` |\n\n---\n**Status**: CONTINUOUS INTEGRITY ACTIVE | **Next Milestone**: IA1: Scoped API Keys\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/write_file_write_file_1773002296702_0_zlw55n.txt
+</tool_output_masked>

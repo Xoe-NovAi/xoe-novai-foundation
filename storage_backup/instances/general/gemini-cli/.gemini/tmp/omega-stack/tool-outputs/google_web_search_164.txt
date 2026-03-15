@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"LLM context window management chat history compression summarization strategies\":\n\nEffective LLM context management balances retention of critical information with the physical constraints of the context win
+... [TRUNCATED] ...
+brid approach is most effective:\n1.  **Sliding Window** for immediate conversational flow.\n2.  **Vector Retrieval** for cross-session or long-term context.\n3.  **Fact Extraction** stored in the `memory_bank` to maintain ontological consistency."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/google_web_search_google_web_search_1773184517797_0_47rcr8.txt
+</tool_output_masked>

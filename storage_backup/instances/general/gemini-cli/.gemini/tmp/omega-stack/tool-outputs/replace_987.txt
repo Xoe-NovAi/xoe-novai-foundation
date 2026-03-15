@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/archetype_resonance.py (1 replacements). Here is the updated code:\n...\n    if not magnitude1 or not magnitude2:\n        return 0.0\n    return do
+... [TRUNCATED] ...
+t in code_noise:\n            vec[w] = vec.get(w, 0) + 1\n    return vec\n\nasync def load_archetype_library(library_path: str) -> Dict[str, str]:\n    \"\"\"Parse the ARCHETYPE_LIBRARY.md for definitions.\"\"\"\n    path = Path(library_path)\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773292199581_0_3d9og.txt
+</tool_output_masked>

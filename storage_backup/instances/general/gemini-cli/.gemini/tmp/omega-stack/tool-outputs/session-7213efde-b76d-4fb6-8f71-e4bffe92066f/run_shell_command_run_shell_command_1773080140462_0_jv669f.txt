@@ -1,0 +1,3 @@
+{
+  "output": "Output: logs\nProcess Group PGID: 382936"
+}

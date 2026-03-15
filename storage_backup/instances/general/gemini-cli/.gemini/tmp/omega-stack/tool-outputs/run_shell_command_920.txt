@@ -1,0 +1,56 @@
+Output: total 61592
+drwxrwxr-x 18 arcana-novai arcana-novai     4096 Mar  6 21:12  .
+drwxr-xr-x  8 arcana-novai arcana-novai     4096 Mar  8 13:10  ..
+drwxr-xr-x  4 arcana-novai arcana-novai     4096 Jun 16  2014  .Spotlight-V100
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Jun 16  2014  .Trashes
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Jun 16  2014  ._.Trashes
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr  8  2016  ._iglavi-newsletter-test.pdf
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr  8  2016  ._iglavi-newsletter-test1.pdf
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr  8  2016  ._iglavi-newsletter-test2.pdf
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr  8  2016  ._iglavi-newsletter-test9.pdf
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr 11  2016  ._iglavi-newsletter.pdf
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr  7  2016  ._iglavi-newsletter1.pdf
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr  8  2016  ._iglavi-newsletter2.indd
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr  8  2016  ._iglavi-newsletter2.pdf
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr  8  2016  ._iglavi-newsletterB.pdf
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr  8  2016  ._iglavi-newsletterB1.pdf
+-rw-r--r--  1 arcana-novai arcana-novai     4096 Apr  8  2016  ._iglavi-newsletterB2.pdf
+-rwxr-xr-x  1 arcana-novai arcana-novai     4096 Mar 28  2016  ._ta15ny1040.exe
+-rwxr-xr-x  1 arcana-novai arcana-novai     4096 Mar 28  2016  ._ta15stbasic.exe
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Apr 16  2017  .fseventsd
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Dec 23  2014  100EOS5D
+drwxr-xr-x 20 arcana-novai arcana-novai     4096 Apr 14  2011 '2005 photos in Folders'
+drwxr-xr-x  8 arcana-novai arcana-novai     4096 Dec 14  2008 '2008 Photos'
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Apr  7  2016  252_0315
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Apr  7  2016  253_0317
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Apr  7  2016  254_0407
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Dec 14  2008 'Guatemala year unknown'
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Dec 14  2008  "Joes' Family"
+-rw-r--r--  1 arcana-novai arcana-novai    78366 Apr 15  2017 'Mark H Buchalter 2016 Tax Return.pdf'
+-rw-r--r--  1 arcana-novai arcana-novai   109276 Mar 28  2016  "Mark H Buchalter's 2015 Individual Tax Return.ta5"
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Dec 14  2008 'Neptunes Chariot Fall 2008'
+drwxr-xr-x 11 arcana-novai arcana-novai     4096 Dec 16  2008 'Peru photos for website'
+-rw-r--r--  1 arcana-novai arcana-novai    94700 Apr 14  2015  "Susan E Dickson-Buchalter's 2014 Individual Tax Return.ta4"
+-rw-r--r--  1 arcana-novai arcana-novai    99180 Mar 28  2016  "Susan E Dickson-Buchalter's 2015 Individual Tax Return.ta5"
+-rw-r--r--  1 arcana-novai arcana-novai   116908 Apr 17  2017  "Susan E Dickson-Buchalter's 2016 Individual Tax Return.ta6"
+-rw-r--r--  1 arcana-novai arcana-novai    88465 Apr 17  2017 'Susan E DicksonBuchalter 2016 Tax Return.pdf'
+-rw-r--r--  1 arcana-novai arcana-novai    88487 Apr 17  2017 'Susan E DicksonBuchalter 2016-2 Tax Return.pdf'
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Feb 27  2016 'System Volume Information'
+drwxr-xr-x  2 arcana-novai arcana-novai     4096 Nov 28  2014  documents-buck
+-rw-r--r--  1 arcana-novai arcana-novai  7419931 Nov 28  2014  documents2.pdf
+-rw-r--r--  1 arcana-novai arcana-novai   793285 Apr  8  2016  iglavi-newsletter-test.pdf
+-rw-r--r--  1 arcana-novai arcana-novai   791851 Apr  8  2016  iglavi-newsletter-test1.pdf
+-rw-r--r--  1 arcana-novai arcana-novai   806980 Apr  8  2016  iglavi-newsletter-test2.pdf
+-rw-r--r--  1 arcana-novai arcana-novai   846867 Apr  8  2016  iglavi-newsletter-test9.pdf
+-rw-r--r--  1 arcana-novai arcana-novai  1035106 Apr 11  2016  iglavi-newsletter.pdf
+-rw-r--r--  1 arcana-novai arcana-novai   937775 Apr  7  2016  iglavi-newsletter1.pdf
+-rw-r--r--  1 arcana-novai arcana-novai 12234752 Apr  8  2016  iglavi-newsletter2.indd
+-rw-r--r--  1 arcana-novai arcana-novai   787072 Apr  8  2016  iglavi-newsletter2.pdf
+-rw-r--r--  1 arcana-novai arcana-novai   963750 Apr  8  2016  iglavi-newsletterB.pdf
+-rw-r--r--  1 arcana-novai arcana-novai   875783 Apr  8  2016  iglavi-newsletterB1.pdf
+-rw-r--r--  1 arcana-novai arcana-novai   918172 Apr  8  2016  iglavi-newsletterB2.pdf
+-rw-r--r--  1 arcana-novai arcana-novai   227693 Apr 14  2017 'jean Buchalter-2 2016 Tax Return.pdf'
+drwxr-xr-x  7 arcana-novai arcana-novai     4096 Apr 16  2017  neck-xray
+-rwxr-xr-x  1 arcana-novai arcana-novai  4945592 Mar 28  2016  ta15ny1040.exe
+-rwxr-xr-x  1 arcana-novai arcana-novai 28633400 Mar 28  2016  ta15stbasic.exe
+Process Group PGID: 90488

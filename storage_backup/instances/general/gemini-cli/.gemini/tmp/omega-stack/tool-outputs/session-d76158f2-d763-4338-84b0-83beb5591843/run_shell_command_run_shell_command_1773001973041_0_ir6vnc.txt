@@ -1,0 +1,3 @@
+{
+  "output": "Output: ============================================\nXNAi Foundation Stack Health Check\nSun Mar  8 17:32:53 ADT 2026\n============================================\n\nRedis (10.89.0.5:6379)... ✗ FAIL\nVikunja API (http://localhost:8000/vikunja/api/v1/info)... ✗ FAIL\nQdrant Vector DB (http://10.89.0.6:6333/healthz)... ✗ FAIL\nMemory Bank MCP (Redis-check)... ✓ PASS (Process)\n\nContainer Status:\n  ✓ xnai_redis (Up 5 hours (healthy))\n  ✓ xnai_qdrant (Up 5 hours (unhealthy))\n  ✓ xnai_postgres (Up 5 hours (healthy))\n\n============================================\nSummary: 1 passed, 3 failed\nStatus: ⚠ CHECK FAILURES\nExit Code: 1\nProcess Group PGID: 418230"
+}

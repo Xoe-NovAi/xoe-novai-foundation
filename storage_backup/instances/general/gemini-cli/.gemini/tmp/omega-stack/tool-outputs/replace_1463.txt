@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:\n...\n\nasync def main():\n    \"\"\"Main entry point for Memory Bank MCP 
+... [TRUNCATED] ...
+e handle_tool_call\n        return await memory_bank_mcp.handle_tool_call(name, arguments)\n    \n    # Start server\n    async with stdio_server() as (read_stream, write_stream):\n        init_options = server.create_initialization_options()\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773000459993_0_7ro7po.txt
+</tool_output_masked>

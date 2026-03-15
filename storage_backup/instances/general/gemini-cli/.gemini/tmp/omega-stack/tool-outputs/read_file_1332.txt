@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 101-127 of 127 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+client for simplicity here)\n        job = {\"type\": \"gap_fill\", \"criteria\": {\"topic\": query}, \"priority\": 1, \"created_at\": datetime.utcnow().isoformat()}\n        await self.redis.lpush(\"xnai:jobs:crawler:pending\", json.dumps(job))\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001305302_0_cva8v.txt
+</tool_output_masked>

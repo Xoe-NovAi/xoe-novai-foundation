@@ -1,0 +1,37 @@
+{
+  "sessionId": "be3989b6-0f6d-4b85-b8af-3444ccf8c8f3",
+  "projectHash": "2476bd7a9850651760e85ba3ac3188c94c0588ba952e85515f42602f589ea94f",
+  "startTime": "2026-03-08T17:30:05.066Z",
+  "lastUpdated": "2026-03-08T17:30:06.610Z",
+  "messages": [
+    {
+      "id": "d7106d91-4796-47e5-a26e-2ee07e3f52d1",
+      "timestamp": "2026-03-08T17:30:05.066Z",
+      "type": "info",
+      "content": "Waiting for MCP servers to initialize... Slash commands are still available and prompts will be queued."
+    },
+    {
+      "id": "f47d6b60-d9e0-4ae2-b7c4-150d0190c332",
+      "timestamp": "2026-03-08T17:30:05.788Z",
+      "type": "user",
+      "content": [
+        {
+          "text": "config set model.apiKey AIzaSyCPRsWqa-zkX_oCjs6hSttxrnig88DbsoA"
+        }
+      ]
+    },
+    {
+      "id": "b5a7d83d-9fd3-481d-9172-3b2199644d86",
+      "timestamp": "2026-03-08T17:30:06.609Z",
+      "type": "error",
+      "content": "[API Error: {\"error\":{\"message\":\"{\\n  \\\"error\\\": {\\n    \\\"code\\\": 400,\\n    \\\"message\\\": \\\"API key not valid. Please pass a valid API key.\\\",\\n    \\\"status\\\": \\\"INVALID_ARGUMENT\\\",\\n    \\\"details\\\": [\\n      {\\n        \\\"@type\\\": \\\"type.googleapis.com/google.rpc.ErrorInfo\\\",\\n        \\\"reason\\\": \\\"API_KEY_INVALID\\\",\\n        \\\"domain\\\": \\\"googleapis.com\\\",\\n        \\\"metadata\\\": {\\n          \\\"service\\\": \\\"generativelanguage.googleapis.com\\\"\\n        }\\n      },\\n      {\\n        \\\"@type\\\": \\\"type.googleapis.com/google.rpc.LocalizedMessage\\\",\\n        \\\"locale\\\": \\\"en-US\\\",\\n        \\\"message\\\": \\\"API key not valid. Please pass a valid API key.\\\"\\n      }\\n    ]\\n  }\\n}\\n\",\"code\":400,\"status\":\"Bad Request\"}}]"
+    },
+    {
+      "id": "4cacabbe-5229-4c6e-b338-b62e976568a5",
+      "timestamp": "2026-03-08T17:30:06.610Z",
+      "type": "info",
+      "content": "This request failed. Press F12 for diagnostics, or set ui.errorVerbosity to full for full details."
+    }
+  ],
+  "kind": "main"
+}

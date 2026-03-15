@@ -1,0 +1,17 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/SESSIONS_MAP.md (1 replacements). Here is the updated code:
+...
+- [ ] **Tool Constraint**: Research and implement restricted tool access for Cline during concurrent agent work.
+- [ ] **Team Handshaking**: Establish a protocol for agents to signal "Domain Locked" status to each other.
+
+## ✂️ SESS-15: Context Management & Chat Trimming
+**Focus**: Implement the "Chat Trimming Protocol" to resolve stability and CPU issues.
+- [x] **The Librarian**: Deployed background service for recursive summarization.
+- [x] **KV Cache Optimization**: Implemented `q4_0` quantization for 32k context.
+- [x] **State Hydration**: Established mandatory atomic synchronization protocol.
+- [x] **GitHub Sync**: Defined 7-stage CI/CD parity loop.
+
+## 📦 SESS-16: Image Bloat & Build Optimization
+**Focus**: Inspect images and build process to reduce size and eliminate "dark layers".
+- [ ] **Layer Analysis**: Use `dive` or similar to identify bloated layers in `xnai-rag` and `xnai-base`.
+- [ ] **MPI Integration**: Add findings to the Master Plan Index for long-term tracking.
+...

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-20 of 223 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, 
+... [TRUNCATED] ...
+ERIFICATION = Counter(\"xnai_agent_bus_signature_verification_total\", \"Task signature verification results\", [\"status\"])\nBUS_PROCESSING_TIME = Histogram(\"xnai_agent_bus_task_processing_duration_seconds\", \"Time taken to process a task\")\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773016953078_0_q3e5v.txt
+</tool_output_masked>

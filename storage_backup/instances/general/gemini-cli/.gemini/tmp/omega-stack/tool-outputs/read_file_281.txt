@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\"\"\"\nQuality Scoring Module\n======================\n\nImplements quality scoring for knowledge distillation.\n\"\"\"\n\nimport logging\nimport re\nfrom typing import Dict, Any, List, Optional\nfrom dataclasses import dataclass\nfro
+... [TRUNCATED] ...
+ has_formatting:\n            score += 0.10\n\n        return min(1.0, score)\n\n    def get_stats(self) -> Dict[str, Any]:\n        \"\"\"Get scorer statistics.\"\"\"\n        return {\n            \"score_count\": self._score_count,\n        }\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773336237777_1_ejz58s.txt
+</tool_output_masked>

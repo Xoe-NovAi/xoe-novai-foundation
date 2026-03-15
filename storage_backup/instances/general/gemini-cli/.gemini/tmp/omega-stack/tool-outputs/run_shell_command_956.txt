@@ -1,0 +1,16 @@
+Output: 4.6G    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage
+1.5G    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/data
+943M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra
+307M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/projects
+61M     /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers
+32M     /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_base
+9.7M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs
+6.8M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge
+5.9M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/_archive
+5.6M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/library
+5.3M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank
+4.6M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app
+4.0M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests
+3.7M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts
+2.1M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts
+Process Group PGID: 77780

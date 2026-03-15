@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+  # ==========================================================================
+  consul:
+    image: consul:1.15.4
+    container_name: xnai_consul
+    init: true
+    user: "1000:1000"
+    ports:
+      - "8500:8500"
+      - "8600:8600/udp"
+    deploy:
+      resources:
+...

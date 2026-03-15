@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Subagent 'codebase_investigator' finished.\nTermination Reason: GOAL\nResult:\n{\n  \"SummaryOfFindings\": \"The investigation was interrupted, but the following insights were gathered: \\n1. 'Items 123 and 456' refer to placeholder id
+... [TRUNCATED] ...
+lePath\": \"config/mcp_config.json\",\n      \"Reasoning\": \"Contains the configuration for MCP servers; issues here or in the underlying Redis/process state are likely causes for the MCP being offline.\",\n      \"KeySymbols\": []\n    }\n  ]\n}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-323f9caa-049e-4ef6-b14c-57d779a99bc2/codebase_investigator_codebase_investigator_1773148474166_1_p4la.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# Memory Bank MCP Server - Fallback Integration Guide\n\n**Location**: `mcp-servers/memory-bank-mcp/`  \n**Status**: ✅ Integrated  \n**Version**: 1.0.0\n\n## 📦 What's Here\n\nThis directory contains the memory-bank MCP server with int
+... [TRUNCATED] ...
+2>/dev/null || echo \"⚠️ Could not check fallback status\"\n```\n\n---\n\n**Questions?** See `/docs/MEMORY_BANK_FALLBACK_SYSTEM.md` for detailed documentation.\n\n**Version**: 1.0.0 | **Status**: ✅ Production-Ready | **Last Updated**: 2026-03-07\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/read_file_read_file_1773075610026_0_xvd8n.txt
+</tool_output_masked>

@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/stack_scribe.py (1 replacements). Here is the updated code:
+...
+import os
+import asyncio
+import logging
+from pathlib import Path
+from typing import List
+from XNAi_rag_app.core.agent_bus import AgentBusClient
+
+# Setup logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger("stack_scribe")
+
+...

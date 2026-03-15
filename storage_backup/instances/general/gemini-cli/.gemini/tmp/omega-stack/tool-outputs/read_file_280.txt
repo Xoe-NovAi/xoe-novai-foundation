@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nOmega Context Packer (v2.0)\n===========================\nHardened collimator for the Omega Metropolis. \nPackages 8-domain experts, memory bank, and codebase into a single \nMarkdown file for model inje
+... [TRUNCATED] ...
+edirs(\"artifacts\", exist_ok=True)\n    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:\n        f.write(pack_content)\n    \n    print(f\"✅ Omega Context Pack generated: {OUTPUT_FILE}\")\n\nif __name__ == \"__main__\":\n    generate_pack()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773333450434_1_24we34.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# 🚀 GEMINI.md: DOMAIN CONTEXT — /app\n\n**Domain**: `/app`\n**Expertise**: FastAPI, Async Python (AnyIO), Redis Streams, Postgres, Qdrant\n**Status**: ACTIVE | **Context Mastery**: 100% | **Sync**: v4.1.2\n\n---\n\n## 🚨 Active Audit 
+... [TRUNCATED] ...
+ xnai_rag_api` — Check API state\n- `curl http://localhost:8002/health` — Internal health check\n\n## 🧠 Local Memory\nUse `./.cli/` within this folder for domain-specific state.\n- Metropolis Wiring: `docs/architecture/METROPOLIS_WIRING_MAP.md`\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773183734155_0_a2lhdu.txt
+</tool_output_masked>

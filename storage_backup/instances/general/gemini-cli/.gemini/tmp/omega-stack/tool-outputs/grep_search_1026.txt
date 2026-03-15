@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 100 matches for pattern \"depends_on:\" in path \".\" (results limited to 100 matches for performance):\n---\nFile: infra/docker/docker-compose.yml\nL156:     depends_on:\nL294:     depends_on:\nL343:     depends_on:\nL405:     d
+... [TRUNCATED] ...
+ depends_on:\n---\nFile: docs/03-reference/vikunja-advanced-usage.md\nL59:     depends_on:\n---\nFile: docs/gnosis/FOUNDATION-STACK-INTEGRATION.md\nL1058:     depends_on:\nL1074:     depends_on:\nL1090:     depends_on:\nL1126:     depends_on:\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/grep_search_grep_search_1773250378354_0_k9subc.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/oikos_mastermind.py (1 replacements). Here is the updated code:\n...\nfrom scripts.soul_distiller import distill_cycle\nfrom scripts.mali_gate impor
+... [TRUNCATED] ...
+resolution}\")\n        await record_gear_shift(\"Archive_Guardian\", \"LEVEL_2_RESOLUTION\", time.time() - start_time, {\"decision\": \"RESOLVE\"})\n        return \"RESOLVED_AT_LEVEL_2\"\n\nasync def orchestrate_oikos_session(problem: str):\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773274479700_0_cjwcx6.txt
+</tool_output_masked>

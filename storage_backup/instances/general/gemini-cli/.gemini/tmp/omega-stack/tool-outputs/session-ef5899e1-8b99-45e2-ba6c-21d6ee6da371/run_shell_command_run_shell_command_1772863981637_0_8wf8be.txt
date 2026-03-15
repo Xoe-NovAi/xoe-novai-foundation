@@ -1,0 +1,3 @@
+{
+  "output": "Output: Activate.ps1  activate.csh   dotenv*  fastapi*       pip*   pip3.13*  python3@     uvicorn*     websockets*\nactivate      activate.fish  f2py*    numpy-config*  pip3*  python@   python3.13@  watchfiles*\nProcess Group PGID: 22747"
+}

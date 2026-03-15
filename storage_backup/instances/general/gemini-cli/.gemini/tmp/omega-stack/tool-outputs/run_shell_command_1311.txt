@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: ============================================
+XNAi Foundation Stack Health Check
+Sun Mar  8 17:26:13 ADT 2026
+============================================
+
+Redis (redis:6379)... ✗ FAIL
+Vikunja API (http://127.0.0.1:8000/vikunja/api/v1/info)... ✗ FAIL
+Consul UI (http://127.0.0.1:8500/v1/status/leader)... ✗ FAIL
+Caddy Reverse Proxy (http://127.0.0.1:8000/)... ✗ FAIL
+Qdrant Vector DB (http://qdrant:6333/healthz)... ✗ FAIL (Qdrant Not Healthy)
+
+... [19 lines omitted] ...
+
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/arcana-novai/Documents/xnai-foundation/tests/circuit_breaker_load_test.py:15: in <module>
+    ???
+E   ModuleNotFoundError: No module named 'XNAi_rag_app.ui.chainlit_app_voice'
+=========================== short test summary info ============================
+ERROR tests/circuit_breaker_load_test.py
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 error in 0.04s
+Process Group PGID: 414423
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773001572861_0_rs74e.txt
+</tool_output_masked>

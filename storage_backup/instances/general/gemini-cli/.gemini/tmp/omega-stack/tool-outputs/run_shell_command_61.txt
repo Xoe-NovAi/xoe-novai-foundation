@@ -1,0 +1,8 @@
+Output: total 24
+drwxr-xr-x 47 arcana-novai arcana-novai 4096 Mar 14 01:25 ..
+-rw-rw-r--  1 arcana-novai arcana-novai  527 Mar 11 15:49 mcp_config.json
+-rw-rw-r--  1 arcana-novai arcana-novai  165 Mar  7 16:17 settings.json
+drwxrwxr-x+  2 arcana-novai arcana-novai 4096 Mar  7 05:09 .
+-rw-------  1 arcana-novai arcana-novai 1566 Mar  7 05:09 oauth_creds.json
+-rw-rw-r--  1 arcana-novai arcana-novai   85 Mar  7 05:09 google_accounts.json
+Process Group PGID: 62531

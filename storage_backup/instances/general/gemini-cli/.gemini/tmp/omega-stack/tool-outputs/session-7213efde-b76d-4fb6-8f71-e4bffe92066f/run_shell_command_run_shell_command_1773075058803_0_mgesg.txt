@@ -1,0 +1,3 @@
+{
+  "output": "Output: Loaded cached credentials.\nServer \"memory-bank\" removed from project settings.\nLoaded cached credentials.\nMCP server \"memory-bank\" added to project settings. (stdio)\nProcess Group PGID: 208085"
+}

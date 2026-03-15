@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: [1/2] STEP 1/4: FROM python:3.12-slim AS builder
+[1/2] STEP 2/4: WORKDIR /build
+--> Using cache e31617cd784d7ff422dce2a4eb9e85efad6d8f33bb88ea863328dce845aaa559
+--> e31617cd784d
+[1/2] STEP 3/4: RUN apt-get update && apt-get install -y --no-install-recommends     gcc     python3-dev     && rm -rf /var/lib/apt/lists/*
+--> Using cache 39373420232931614365bf779d16fed9633def94b3d0b23cd5037fc68b60a1bd
+--> 393734202329
+[1/2] STEP 4/4: RUN pip install --no-cache-dir --default-timeout=1000     fastapi     uvicorn     litellm     google-cloud-aiplatform     google-genai     python-dotenv     httpx     pyyaml     anyio     redis     aiofiles
+Collecting fastapi
+  Downloading fastapi-0.135.1-py3-none-any.whl.metadata (30 kB)
+
+... [457 lines omitted] ...
+
+--> 6a2843a2da18
+Successfully tagged localhost/docker_oikos:latest
+6a2843a2da184dffd13302f8a474c986d0a6e2a0392e6d4c8086f53ccaf1fb62
+xnai_oikos
+xnai_oikos
+0a3f389741d6976833fc5eb4e4e9580d60c466032400939d0c8e7eeec7fae104
+xnai_oikos
+{"status":"ACTIVE","hearth":"WARM"}🔱 Foundry: Sending problem to Iris Bridge (Port 8006)...
+❌ Connection Error: Oikos Service is likely offline. ()
+💡 Suggestion: Start the service with 'python3 app/oikos_service.py'
+Process Group PGID: 502094
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/run_shell_command_run_shell_command_1773280335494_0_mz208p.txt
+</tool_output_masked>

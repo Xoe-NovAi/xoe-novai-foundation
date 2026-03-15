@@ -1,0 +1,3 @@
+{
+  "output": "Output: 1c889df2-601c-47ea-944d-3087a3ff2b92/  checkpoint-Kurt%20Cobain.json  tool-outputs/\nchats/                                 logs.json\n/tmp/xnai-instances/instance-/gemini-cli/.gemini/tmp/omega-stack/chats/session-2026-03-07T05-39-ef5899e1.json\n/tmp/xnai-instances/instance-/gemini-cli/.gemini/tmp/omega-stack/logs.json\nExit Code: 1\nProcess Group PGID: 34020"
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank:\n[DIR] _archive\n[DIR] activeContext\n[DIR] archival\n[DIR] facets\n[DIR] handovers\n[DIR] infrastructure\n[DIR] multi_expert\n[DIR] PHASES\n[DIR] pr
+... [TRUNCATED] ...
+TIONS.md (11612 bytes)\nproductContext.md (1055 bytes)\nprogress.md (7070 bytes)\nprojectbrief.md (2405 bytes)\nRESEARCH_COMPLETION_SUMMARY.md (8462 bytes)\nsystemPatterns.md (4576 bytes)\nteamProtocols.md (7772 bytes)\ntechContext.md (4872 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/list_directory_list_directory_1773249863900_0_h9z6ge.txt
+</tool_output_masked>

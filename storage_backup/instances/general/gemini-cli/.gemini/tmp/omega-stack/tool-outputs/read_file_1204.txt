@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# 🗂️ XNAi Master Index: Evolution of Gnosis\n\n**Author**: Gemini General | **Status**: Active | **Updated**: 2026-03-08\n\nThis index maps the project's documentation to its developmental phases, providing a clear roadmap from founda
+... [TRUNCATED] ...
+**Strategy**: `memory_bank/protocols/PROJECT_MANAGEMENT_STRATEGY.md`\n- **Status**: 🟢 **INCEPTION** — Blocked by Critical Tasks C1-C3 from audit.\n\n---\n*Index maintained by the Archon. Use this to navigate the deep memory of the Omega Stack.*\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773004122863_0_reg0u.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/facets:
+[DIR] instance-1
+[DIR] instance-2
+[DIR] instance-3
+[DIR] instance-4
+[DIR] instance-5
+[DIR] instance-6
+[DIR] instance-7
+[DIR] instance-8

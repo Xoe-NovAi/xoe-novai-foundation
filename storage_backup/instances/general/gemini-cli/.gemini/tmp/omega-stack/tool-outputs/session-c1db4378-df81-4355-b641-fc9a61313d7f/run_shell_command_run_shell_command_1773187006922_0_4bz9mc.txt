@@ -1,0 +1,3 @@
+{
+  "output": "Output: Defaulting to user installation because normal site-packages is not writeable\nRequirement already satisfied: psutil in /usr/local/lib/python3.12/site-packages (7.2.2)\nError: 2 errors occurred:\n        * copying to container: open /proc/1509187/ns/mnt: no such file or directory\n        * copying from host: copier: get: \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/test_kv_cache.py\": copying /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/test_kv_cache.py: io: read/write on closed pipe\npython3: can't open file '/app/test_kv_cache.py': [Errno 2] No such file or directory\nExit Code: 2\nProcess Group PGID: 1509179"
+}

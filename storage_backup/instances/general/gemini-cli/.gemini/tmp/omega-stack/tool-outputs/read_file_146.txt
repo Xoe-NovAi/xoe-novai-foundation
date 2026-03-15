@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "import anyio\nimport json\nimport logging\nimport os\nimport time\nimport yaml\nimport zstandard as zstd\nfrom datetime import datetime\nfrom typing import Dict, Any, List, Optional\nfrom pathlib import Path\n\nfrom app.XNAi_rag_app.co
+... [TRUNCATED] ...
+production, this would be run via a worker script\n    import asyncio\n    \n    async def run_worker():\n        async with TheLibrarian() as librarian:\n            await librarian.start_listening()\n            \n    asyncio.run(run_worker())\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773188052463_0_hiw9bu.txt
+</tool_output_masked>

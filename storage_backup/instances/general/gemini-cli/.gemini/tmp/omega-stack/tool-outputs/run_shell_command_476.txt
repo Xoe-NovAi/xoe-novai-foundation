@@ -1,0 +1,7 @@
+Output: xnai_oikos
+xnai_oikos
+3d304484ef3b3506dcf6bdd0592b8944fa8bebe0104ffbe09192e9e90bfe0223
+xnai_oikos
+curl: (56) Recv failure: Connection reset by peer
+Exit Code: 56
+Process Group PGID: 490835

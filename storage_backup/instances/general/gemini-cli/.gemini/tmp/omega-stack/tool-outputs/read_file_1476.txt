@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 280-500 of 890 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+gent not in self.agents:\n                return {\"status\": \"error\", \"message\": f\"Target agent {target_agent} not registered\"}\n            \n            # Get source context\n            source_context = self.context_cache.get(context_id)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000027580_0_mbga0l.txt
+</tool_output_masked>

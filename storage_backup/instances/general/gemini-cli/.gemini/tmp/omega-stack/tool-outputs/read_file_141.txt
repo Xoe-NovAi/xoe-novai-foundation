@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# ============================================================================ \n# XNAi Foundation Stack - Phase 1 v0.1.7 (BuildKit Optimized)\n# ============================================================================ \n# Purpose:
+... [TRUNCATED] ...
+xnai_grafana_data\n  booklore-config:\n    name: xnai_booklore_config\n  open-webui-data:\n    name: xnai_open_webui_data\n\nsecrets:\n  redis_password:\n    file: ../../secrets/redis_password.txt\n  api_key:\n    file: ../../secrets/api_key.txt\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773188163963_0_452slj.txt
+</tool_output_masked>

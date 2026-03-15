@@ -1,0 +1,4 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-rag:
+README.md (1026 bytes)
+requirements.txt (25 bytes)
+server.py (4186 bytes)

@@ -1,0 +1,56 @@
+Found 2 matches for pattern "xnai_llama_server" in path "infra/docker/docker-compose.yml":
+---
+File: docker-compose.yml
+L600-     volumes:
+L601-       - ./data/booklore:/config:Z,U
+L602-       - ./library/sorted:/books:z,U
+L603-       - ./library/bookdrop:/bookdrop:z,U
+L604-     deploy:
+L605-       resources:
+L606-         limits:
+L607-           memory: 1G
+L608-           cpus: '0.5'
+L609-     networks:
+L610-       - xnai_db_network
+L611-     restart: unless-stopped
+L612- 
+L613-   llama_server:
+L614-     image: ghcr.io/abetlen/llama-cpp-python:latest
+L615:     container_name: xnai_llama_server
+L616-     command: python3 -m llama_cpp.server --model /models/Qwen3-0.6B-Q6_K.gguf --n_gpu_layers 0 --n_threads 6 --n_ctx 32768 --host 0.0.0.0 --port 8000 --api_key ${LLAMA_API_KEY:-xnai-local-key}
+L617-     volumes:
+L618-       - ./models:/models:ro,Z,U
+L619-     environment:
+L620-       - N_THREADS=6
+L621-     deploy:
+L622-       resources:
+L623-         limits:
+L624-           memory: 2G
+L625-           cpus: '2.0'
+L626-     networks:
+L627-       - xnai_db_network
+L628-     restart: unless-stopped
+L629- 
+L630-   open-webui:
+L631-     image: ghcr.io/open-webui/open-webui:main
+L632-     container_name: xnai_open_webui
+L633-     expose:
+L634-       - "8080"
+L635-     environment:
+L636:       - OPENAI_API_BASE_URL=http://xnai_llama_server:8000/v1
+L637-       - OPENAI_API_KEY=${LLAMA_API_KEY:-xnai-local-key}
+L638-       - VECTOR_DB=qdrant
+L639-       - QDRANT_URI=http://qdrant:6333
+L640-       - QDRANT_API_KEY=${QDRANT_API_KEY:-}
+L641-       - ENABLE_PERSISTENT_CONFIG=False
+L642-     volumes:
+L643-       - ./data/open-webui:/app/backend/data:Z,U
+L644-     extra_hosts:
+L645-       - "host.docker.internal:host-gateway"
+L646-     deploy:
+L647-       resources:
+L648-         limits:
+L649-           memory: 1G
+L650-           cpus: '0.5'
+L651-     networks:
+---

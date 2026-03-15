@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 2 matches for pattern \"async def initialize\\(self\\) -> bool:\" in path \"mcp-servers/memory-bank-mcp/\":\n---\nFile: memory_bank_store.py\nL77-             # Use Omega stack storage directory (/storage)\nL78-             # Fal
+... [TRUNCATED] ...
+       return False\nL135- \nL136-     async def register_agent(\nL137-         self,\nL138-         agent_id: str,\nL139-         capabilities: list,\nL140-         memory_limit_gb: float\nL141-     ) -> Dict[str, Any]:\nL142-         \"\"\"\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/grep_search_grep_search_1773075700148_0_hjdsw.txt
+</tool_output_masked>

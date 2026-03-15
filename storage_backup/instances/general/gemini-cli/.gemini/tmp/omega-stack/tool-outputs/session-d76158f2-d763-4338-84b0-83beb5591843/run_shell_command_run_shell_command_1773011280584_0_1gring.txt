@@ -1,0 +1,3 @@
+{
+  "output": "Output: xnai_memory_bank_mcp\nxnai_redis\nxnai_postgres\nxnai_memory_bank_mcp\nxnai_postgres\nxnai_redis\n0e717c7ef872ef8626785eb03de729850c78617e68e600bfbbebfb30059d86f8\nxnai_redis\n823034074af10c290c4495a909bcbc955243125615ee4f283109ec0930d8fa52\nxnai_postgres\n58ef48850e5c5ac4e3166ec7a158130040043bd17aee8bf2f082ae8fc7dd6a5a\nxnai_memory_bank_mcp\nProcess Group PGID: 967298"
+}

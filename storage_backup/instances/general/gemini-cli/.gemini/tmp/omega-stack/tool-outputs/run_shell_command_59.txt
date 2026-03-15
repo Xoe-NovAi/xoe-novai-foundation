@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: # gemini.conf - Gemini-specific dispatcher configuration
+TOOL_NAME="gemini"
+TOOL_BINARY="${HOME}/.nvm/versions/node/v25.3.0/bin/gemini"
+# Fallback to persistent storage if INSTANCE_ROOT is not set in environment
+INSTANCE_ROOT="${INSTANCE_ROOT:-${HOME}/Documents/Xoe-NovAi/omega-stack/storage/instances}"
+
+set_tool_env() {
+    if [[ "$INSTANCE_ID" == "0" ]]; then
+        export GEMINI_CLI_HOME="${INSTANCE_ROOT}/general/gemini-cli"
+    else
+
+... [21 lines omitted] ...
+
+        fi
+    fi
+
+    # HARDENING: Resource Constraints for Facets
+    # Prevents combined overhead of 8 facets from overwhelming RAM
+    # NOTE: 512 caused OOM with large session files + MCP.
+    # 1024 gives headroom while still protecting the 6GB system.
+    export NODE_OPTIONS="--max-old-space-size=1024"
+    export UV_THREADPOOL_SIZE=4
+}
+Process Group PGID: 62632
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/run_shell_command_run_shell_command_1773542465879_0_tcfgij.txt
+</tool_output_masked>

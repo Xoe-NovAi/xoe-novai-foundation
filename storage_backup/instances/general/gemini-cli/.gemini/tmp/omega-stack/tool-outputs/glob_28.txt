@@ -1,0 +1,2 @@
+Found 1 file(s) matching "**/github-protocol-guide.md" across 2 workspace directories, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_base/internal_docs/07-archives/backups/docs-merge-to-main/howto/github-protocol-guide.md

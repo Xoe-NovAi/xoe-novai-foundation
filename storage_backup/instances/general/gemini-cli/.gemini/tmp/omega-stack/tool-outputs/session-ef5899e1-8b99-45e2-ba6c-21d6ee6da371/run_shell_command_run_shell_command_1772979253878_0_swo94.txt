@@ -1,0 +1,3 @@
+{
+  "output": "Output: chown: changing ownership of 'infra/docker/data/qdrant': Operation not permitted\nExit Code: 1\nProcess Group PGID: 4040080"
+}

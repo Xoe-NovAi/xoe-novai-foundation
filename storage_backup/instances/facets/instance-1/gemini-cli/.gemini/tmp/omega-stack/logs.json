@@ -1,0 +1,58 @@
+[
+  {
+    "sessionId": "ec79b76e-43ee-4c03-81a2-5ae2dc729f3b",
+    "messageId": 0,
+    "type": "user",
+    "message": "config set model.apiKey YOUR_ACTUAL_GEMINI_API_KEY",
+    "timestamp": "2026-03-08T17:23:34.636Z"
+  },
+  {
+    "sessionId": "ec79b76e-43ee-4c03-81a2-5ae2dc729f3b",
+    "messageId": 1,
+    "type": "user",
+    "message": "AIzaSyCPRsWqa-zkX_oCjs6hSttxrnig88DbsoA",
+    "timestamp": "2026-03-08T17:23:58.126Z"
+  },
+  {
+    "sessionId": "ec79b76e-43ee-4c03-81a2-5ae2dc729f3b",
+    "messageId": 2,
+    "type": "user",
+    "message": "/rewind",
+    "timestamp": "2026-03-08T17:24:07.301Z"
+  },
+  {
+    "sessionId": "b743704f-880f-4485-9937-09110667a6a3",
+    "messageId": 0,
+    "type": "user",
+    "message": "config set model.apiKey AIzaSyCPRsWqa-zkX_oCjs6hSttxrnig88DbsoA",
+    "timestamp": "2026-03-08T17:28:22.390Z"
+  },
+  {
+    "sessionId": "b743704f-880f-4485-9937-09110667a6a3",
+    "messageId": 1,
+    "type": "user",
+    "message": "Hello?",
+    "timestamp": "2026-03-08T17:28:43.656Z"
+  },
+  {
+    "sessionId": "be3989b6-0f6d-4b85-b8af-3444ccf8c8f3",
+    "messageId": 0,
+    "type": "user",
+    "message": "config set model.apiKey AIzaSyCPRsWqa-zkX_oCjs6hSttxrnig88DbsoA",
+    "timestamp": "2026-03-08T17:30:05.526Z"
+  },
+  {
+    "sessionId": "81c2e5a3-840c-492b-8c6e-7ccdbdc2084e",
+    "messageId": 0,
+    "type": "user",
+    "message": "config set model.apiKey AIzaSyAdZ9zMDf_8CrCFVx7LlTvLV6jq2GlrcuY",
+    "timestamp": "2026-03-08T18:11:22.552Z"
+  },
+  {
+    "sessionId": "81c2e5a3-840c-492b-8c6e-7ccdbdc2084e",
+    "messageId": 1,
+    "type": "user",
+    "message": "/exit",
+    "timestamp": "2026-03-08T18:11:31.939Z"
+  }
+]

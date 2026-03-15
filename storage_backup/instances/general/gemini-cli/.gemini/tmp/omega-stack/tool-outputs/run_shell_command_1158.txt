@@ -1,0 +1,7 @@
+Output: chown: changing ownership of 'infra/docker/tls/ca.crt': Operation not permitted
+chown: changing ownership of 'infra/docker/tls/ca.key': Operation not permitted
+chown: changing ownership of 'infra/docker/tls/ca.srl': Operation not permitted
+chown: changing ownership of 'infra/docker/tls/redis.crt': Operation not permitted
+chown: changing ownership of 'infra/docker/tls/redis.key': Operation not permitted
+Exit Code: 1
+Process Group PGID: 782582

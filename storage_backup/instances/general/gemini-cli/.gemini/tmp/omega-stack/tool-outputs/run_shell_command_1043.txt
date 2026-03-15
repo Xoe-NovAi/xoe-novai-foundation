@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: -rwxr-xr-x 1 arcana-novai arcana-novai 3938 Mar  2 02:56 app/XNAi_rag_app/workers/crawl.py
+#!/usr/bin/env python3
+"""
+Xoe-NovAi Crawler Service
+=========================
+Simplified and robust crawler for knowledge mining.
+"""
+
+import argparse
+import os
+
+... [31 lines omitted] ...
+
+    results = []
+    ydl_opts = {'skip_download': True, 'extract_flat': True, 'quiet': True}
+    try:
+        def fetch_info():
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                return ydl.extract_info(f"ytsearch{max_items}:{query}", download=False)
+        info = await anyio.to_thread(fetch_info)
+        for entry in info.get('entries', []):
+            results.append({
+                'id': f"youtube_{entry.get('id')}",
+Process Group PGID: 978415
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773011894474_0_u1uy2k.txt
+</tool_output_masked>

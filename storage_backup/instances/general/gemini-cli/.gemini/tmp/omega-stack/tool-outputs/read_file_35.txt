@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# Grok MC Expert Dataset — Source Hygiene Cleanup v1.0.0\n\n**expert_dataset_name**: Sovereign Project Files Governance\n\n**expertise_focus**: Source sprawl reduction & canon maintenance in multi-model stacks\n\n**community_contrib_re
+... [TRUNCATED] ...
+audit trail.\n\nMa'at alignment:\n- **Truth (#7)**: Deletion log provides complete visibility\n- **Balance (#18)**: Active canon vs. archive ratio optimized\n- **Advance through own abilities (#41)**: Smaller canon enables faster agent iteration\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773543381830_1_thite.txt
+</tool_output_masked>

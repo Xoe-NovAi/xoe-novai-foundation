@@ -1,0 +1,3 @@
+{
+  "output": "Output: xnai_oikos\nxnai_oikos\ncc563961fa303ffdb967e03fa25cecbcd171f15055923a92656efdd016217b1b\nxnai_oikos\nProcess Group PGID: 418975"
+}

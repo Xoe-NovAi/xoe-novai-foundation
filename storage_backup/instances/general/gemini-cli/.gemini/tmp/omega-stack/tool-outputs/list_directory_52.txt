@@ -1,0 +1,10 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers:
+[DIR] memory-bank-mcp
+[DIR] xnai-agentbus
+[DIR] xnai-github
+[DIR] xnai-memory
+[DIR] xnai-rag
+[DIR] xnai-sambanova
+[DIR] xnai-stats-mcp
+[DIR] xnai-vikunja
+[DIR] xnai-websearch

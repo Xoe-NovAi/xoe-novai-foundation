@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/circuit_breaker_load_test.py (1 replacements). Here is the updated code:
+...
+import time
+from unittest.mock import MagicMock, patch
+
+# Mock chainlit in sys.modules before importing the dependent module
+with patch.dict(sys.modules, {'chainlit': MagicMock()}):
+    from XNAi_rag_app.ui.chainlit_app_unified import generate_ai_response, get_circuit_breaker_status
+
+async def load_test_circuit_breakers():
+    """Test circuit breakers under concurrent load"""
+    print("🧪 Starting Circuit Breaker Load Test...")
+    print("=" * 50)
+...

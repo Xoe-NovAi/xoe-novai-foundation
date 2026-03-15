@@ -1,0 +1,106 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 1-100 of 269 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 101.
+
+--- FILE CONTENT (truncated) ---
+#!/usr/bin/env python3
+"""
+Memory Bank MCP Server
+======================
+Provides sovereign, offline-first memory bank access for deep inter-agent communication.
+Implements progressive loading, context engineering, and A2A protocol patterns.
+Supports both SSE (FastAPI) and stdio transports.
+"""
+
+import asyncio
+import json
+import logging
+import time
+import hashlib
+import sys
+import os
+import argparse
+from collections import OrderedDict
+from typing import Dict, Any, List, Optional, AsyncGenerator, Generator
+from pathlib import Path
+from dataclasses import dataclass, asdict
+from datetime import datetime, timedelta, timezone
+from enum import Enum
+import httpx
+from redis.asyncio import Redis
+from pydantic import BaseModel, Field
+
+# MCP Server imports
+from mcp.server import Server
+from mcp.types import (
+    Tool,
+    TextContent,
+)
+from mcp.server.sse import SseServerTransport
+from mcp.server.stdio import stdio_server
+
+# FastAPI imports
+try:
+    from fastapi import FastAPI, Request
+    from starlette.responses import Response
+    HAS_FASTAPI = True
+except ImportError:
+    HAS_FASTAPI = False
+
+# XNAi Foundation imports
+try:
+    from XNAi_rag_app.core.config_loader import load_config
+    from XNAi_rag_app.core.logging_config import get_logger
+except ImportError:
+    def load_config(): return {}
+    def get_logger(name): return logging.getLogger(name)
+
+from memory_bank_fallback import MemoryBankFallbackWrapper
+from memory_bank_store import MemoryBankStore
+
+# Setup logging
+logging.basicConfig(level=logging.INFO, stream=sys.stderr)
+logger = get_logger(__name__)
+
+class ContextTier(str, Enum):
+    HOT = "hot"
+    WARM = "warm"
+    COLD = "cold"
+
+class ContextType(str, Enum):
+    PROJECT = "project"
+    TECHNICAL = "technical"
+    STRATEGIC = "strategic"
+    OPERATIONAL = "operational"
+    TEMPORAL = "temporal"
+
+@dataclass
+class AgentCapability:
+    agent_id: str
+    capabilities: List[str]
+    memory_limit_gb: float
+    last_seen: datetime
+    performance_score: float = 0.0
+
+class MemoryBankMCP:
+    def __init__(self):
+        try:
+            self.config = load_config()
+        except:
+            self.config = {}
+        self.redis_url = self._get_redis_url()
+        self.redis = None
+        self.agents: Dict[str, AgentCapability] = {}
+        # Centralized storage path
+        self.memory_bank_path = Path("/storage/memory_bank")
+        if not self.memory_bank_path.exists():
+            # Fallback for host-side execution
+            self.memory_bank_path = Path("./storage/memory_bank")
+            
+        self.context_cache = OrderedDict()
+        self.cache_limit = 100
+        self.performance_metrics = {
+            "hits": 0,
+            "misses": 0,
+            "latency_ms": []

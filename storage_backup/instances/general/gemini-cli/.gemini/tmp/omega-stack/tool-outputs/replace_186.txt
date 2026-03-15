@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - QDRANT_API_KEY=${QDRANT_API_KEY:-}
+      - QDRANT_HOST=0.0.0.0
+      - QDRANT_PORT=6333
+      - QDRANT_GRPC_PORT=6334
+      - QDRANT_SNAPSHOT_RECOVERY=true
+      - QDRANT__STORAGE__ON_DISK=true
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:6333/healthz || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+...

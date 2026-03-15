@@ -1,0 +1,62 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (5 replacements). Here is the updated code:
+...
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=true
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - REDIS_SSL_CERT_REQS=none
+      - HF_TOKEN=${HF_TOKEN:-}
+      - REDIS_PASSWORD_FILE=/run/secrets/redis_password
+      - POSTGRES_HOST=xnai_postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=xnai
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+...
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=${REDIS_TLS_ENABLED:-true}
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - REDIS_SSL_CERT_REQS=none
+      - HF_TOKEN=${HF_TOKEN:-}
+      - LIBRARY_PATH=/library
+      - KNOWLEDGE_PATH=/knowledge
+      - LOG_DIR=/app/logs
+    depends_on:
+      redis:
+...
+      - REDIS_HOST=xnai_redis
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=true
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - REDIS_SSL_CERT_REQS=none
+      - HF_TOKEN=${HF_TOKEN:-}
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@xnai_postgres:5432/xnai
+      - LIBRARY_PATH=/library
+      - KNOWLEDGE_PATH=/expert-knowledge
+      - PYTHONPATH=/app
+      - CONFIG_PATH=/app/config.toml
+...
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=${REDIS_TLS_ENABLED:-true}
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - REDIS_SSL_CERT_REQS=none
+      - HF_TOKEN=${HF_TOKEN:-}
+      - PYTHONPATH=/app:/app/scripts
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+...
+      - REDIS_URL=rediss://xnai_redis:6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=true
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - REDIS_SSL_CERT_REQS=none
+      - HF_TOKEN=${HF_TOKEN:-}
+      - STORAGE_PATH=/storage
+      - CONFIG_PATH=/app/config.toml
+      - PYTHONPATH=/app
+    volumes:
+      - ../../storage_new:/storage:Z,U
+...

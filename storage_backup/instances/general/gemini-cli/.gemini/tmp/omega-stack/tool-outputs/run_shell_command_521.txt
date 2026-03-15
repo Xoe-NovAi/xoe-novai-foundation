@@ -1,0 +1,2 @@
+Output: 0d19ebcc0a0a  docker.io/library/redis:7.4.1                      redis-server --re...  20 hours ago  Up 6 hours (healthy)  0.0.0.0:6379->6379/tcp  xnai_redis
+Process Group PGID: 317991

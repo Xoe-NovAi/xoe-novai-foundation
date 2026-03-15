@@ -1,0 +1,10 @@
+Output: ALTER ROLE
+xnai_memory_bank_mcp
+xnai_redis
+xnai_memory_bank_mcp
+xnai_redis
+f04416de61b6732df24e123bf5fefdf899e3244bf0456bee02be4d255d8e3af0
+xnai_redis
+e3e4ee1a67574f8ab6f8e42cde9f3ae3d408d0d04d0347eb35e458e2e72a2249
+xnai_memory_bank_mcp
+Process Group PGID: 871227

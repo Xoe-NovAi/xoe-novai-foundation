@@ -1,0 +1,56 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/oikos_service.py (1 replacements). Here is the updated code:
+...
+    response = await call_next(request)
+    process_time = time.time() - start_time
+    print(f"📡 Oikos API: {request.method} {request.url.path} - Status: {response.status_code} - Time: {process_time:.4f}s")
+    return response
+
+class MastermindRequest(BaseModel):
+    problem: str
+    session_id: str = "DEFAULT-SESSION"
+    escalation_level: Optional[int] = 1
+
+# --- 🌈 IRIS: THE FRONT-FACING ROUTER ---
+
+@app.post("/iris/route")
+async def iris_route(req: MastermindRequest, background_tasks: BackgroundTasks):
+    """
+...
+    """
+    start_time = time.time()
+    print(f"🌈 Iris (Service): Hearing your request... '{req.problem}'")
+    
+    # 1. Routing Logic (Swift Phase)
+    try:
+        complexity = len(req.problem.split())
+        
+        if complexity < 5:
+            # Swift Level 1
+            await record_gear_shift("Iris", "LEVEL_1_SWIFT", time.time() - start_time, {"problem": req.problem})
+            return {"decision": "LEVEL_1_SWIFT", "response": "Handling instantly via the Hearth."}
+        
+        elif complexity < 20:
+            # Escalation Level 2
+            print("🌈 Iris: Level 2 Escalation (Archive Guardian)")
+            await record_gear_shift("Iris", "LEVEL_2_ESCALATION", time.time() - start_time, {"problem": req.problem})
+            # Simulate Level 2 model thought
+            response = await factory.think(f"Problem: {req.problem}. Decide if this requires the Oikos Council.", "You are the Archive Guardian (Level 2). Provide a decision and a refined prompt.")
+            return {"decision": "LEVEL_2_LOCAL_LARGE", "response": response}
+        
+        else:
+            # Escalation Level 3 (Mastermind)
+            print("🌈 Iris: Level 3 Escalation (Mastermind Council)")
+            await record_gear_shift("Iris", "LEVEL_3_ESCALATION", time.time() - start_time, {"problem": req.problem})
+            background_tasks.add_task(orchestrate_mastermind, req.problem, req.session_id)
+            return {"decision": "LEVEL_3_OIKOS_COUNCIL", "response": "Summoning the Council of Oikos. Decree pending in the Chronicles."}
+    except Exception as e:
+        print(f"❌ Iris Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
+
+# --- 🏛️ THE COUNCIL ENDPOINTS ---
+
+@app.get("/council/{member}")
+async def get_council_insight(member: str, problem: str):
+...

@@ -1,0 +1,11 @@
+Output: NAME       ALGORITHM DISKSIZE   DATA  COMPR  TOTAL STREAMS MOUNTPOINT
+/dev/zram1 zstd            8G 793.5M 152.2M 158.3M         [SWAP]
+/dev/zram0 lzo-rle         4G   232M  74.7M  80.2M         [SWAP]
+vm.swappiness = 180
+vm.vfs_cache_pressure = 50
+vm.dirty_ratio = 40
+vm.dirty_background_ratio = 20
+               total        used        free      shared  buff/cache   available
+Mem:           6.6Gi       3.5Gi       980Mi        10Mi       2.7Gi       3.1Gi
+Swap:           11Gi       1.1Gi        10Gi
+Process Group PGID: 425728

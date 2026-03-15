@@ -1,0 +1,3 @@
+{
+  "output": "Subagent 'generalist' finished.\nTermination Reason: ERROR_NO_COMPLETE_TASK_CALL\nResult:\nAgent stopped calling tools but did not call 'complete_task'."
+}

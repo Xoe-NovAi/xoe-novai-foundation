@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/architecture:\n[DIR] diagrams\nMETROPOLIS_NETWORK_SHIELD.md (3750 bytes)\nMETROPOLIS-AGENT-BUS.md (1687 bytes)\nMETROPOLIS-HIERARCHY.md (4069 bytes)\nMETROPOLIS-NOTIF-BLUEPRINT.md (4778 bytes)\nMETROPOLIS-SOUL-EVOLUTION.md (1768 bytes)\nmodular-architecture.md (8477 bytes)\nMULTI-EXPERT-SYSTEM.md (13890 bytes)\nservice-wiring.md (3860 bytes)\nXNAI-AGENT-TAXONOMY.md (9120 bytes)"
+}

@@ -1,0 +1,19 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/SESSIONS_MAP.md (1 replacements). Here is the updated code:
+...
+- [x] **GRA Resonance**: Integrated tiered resonance thresholds (0.4/0.6/0.8).
+- [x] **Oikonomia**: Implemented token-usage and cache efficiency tracking.
+- [x] **Battle Readiness**: Hardened CLI with **MAX_TURNS: 250** and **mmap-preflight**.
+- [x] **STUP**: Codified the **Sovereign Tool-Use Protocol** for agent efficiency.
+
+## 🔱 SESS-24: Persona Seed Hydration (LIA Triad)
+**Focus**: Activate the Persona Foundry and automate sub-agent hydration.
+- [ ] **Hydration**: Activate Athena (Reasoning), Lilith (Shadow), and Isis (Wisdom) seeds.
+- [ ] **Resonance Audit (GRA)**: Verify persona alignment via Ghost Resonance Audit.
+- [ ] **Oikonomia Auto-Rotation**: Enable 429-resilient Rainbow Rotation for triple-persona load.
+- [ ] **ZLV Enforcement**: Ensure persona-logic matches the Crystal Hashes (SOS-F7).
+- [ ] **Metron Dashboard**: Activate live observability for resonance/density.
+
+---
+
+### 📌 Session Hygiene:
+...

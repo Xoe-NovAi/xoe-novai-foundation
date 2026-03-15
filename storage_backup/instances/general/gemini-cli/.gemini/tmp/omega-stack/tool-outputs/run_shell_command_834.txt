@@ -1,0 +1,10 @@
+Output: CONTAINER ID  IMAGE                                              COMMAND               CREATED         STATUS                               PORTS                                                       NAMES
+4c839c263795  docker.io/qdrant/qdrant:v1.13.1                    ./entrypoint.sh       3 hours ago     Up 3 hours (unhealthy)               0.0.0.0:6333-6334->6333-6334/tcp                            xnai_qdrant
+3df326bb7fc3  docker.io/library/caddy:2.8-alpine                 caddy run --confi...  3 hours ago     Up 3 hours (healthy)                 0.0.0.0:8000->8000/tcp, 80/tcp, 443/tcp, 2019/tcp, 443/udp  xnai_caddy
+0f34fba531c3  docker.io/victoriametrics/victoria-metrics:latest  -storageDataPath=...  2 hours ago     Up 2 hours (healthy)                 0.0.0.0:8428->8428/tcp                                      xnai_victoriametrics
+92ffbf4067e4  docker.io/grafana/grafana:11.4.0                                         2 hours ago     Up 2 hours (healthy)                 0.0.0.0:3000->3000/tcp                                      xnai_grafana
+e7fdd0e020e7  docker.io/library/redis:7.4.1                      redis-server --re...  30 minutes ago  Up 26 seconds (healthy)              0.0.0.0:6379->6379/tcp                                      xnai_redis
+cdc1431edf34  docker.io/library/postgres:15                      postgres              30 minutes ago  Up 26 seconds (healthy)              0.0.0.0:5432->5432/tcp                                      xnai_postgres
+f5cc5f20e9ed  localhost/docker_memory-bank-mcp:latest            python server.py      30 minutes ago  Exited (1) 29 minutes ago (healthy)                                                              xnai_memory_bank_mcp
+a9a3f3ba3703  ghcr.io/abetlen/llama-cpp-python:latest            python3 -m llama_...  2 minutes ago   Up 1 second                          8000/tcp                                                    xnai_llama_server
+Process Group PGID: 1355178

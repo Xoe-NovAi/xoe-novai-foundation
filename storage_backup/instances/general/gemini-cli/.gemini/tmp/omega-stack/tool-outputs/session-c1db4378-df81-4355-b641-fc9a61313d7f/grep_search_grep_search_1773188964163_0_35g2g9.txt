@@ -1,0 +1,3 @@
+{
+  "output": "No matches found for pattern \"swap\\|performance\" in path \"docs/\"."
+}

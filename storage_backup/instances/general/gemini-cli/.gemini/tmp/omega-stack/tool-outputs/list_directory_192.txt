@@ -1,0 +1,11 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/architecture:
+[DIR] diagrams
+METROPOLIS_NETWORK_SHIELD.md (3750 bytes)
+METROPOLIS-AGENT-BUS.md (1687 bytes)
+METROPOLIS-HIERARCHY.md (4069 bytes)
+METROPOLIS-NOTIF-BLUEPRINT.md (4778 bytes)
+METROPOLIS-SOUL-EVOLUTION.md (1768 bytes)
+modular-architecture.md (8477 bytes)
+MULTI-EXPERT-SYSTEM.md (13890 bytes)
+service-wiring.md (3860 bytes)
+XNAI-AGENT-TAXONOMY.md (9120 bytes)

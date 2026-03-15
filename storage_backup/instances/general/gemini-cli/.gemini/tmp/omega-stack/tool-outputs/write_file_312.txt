@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60261d1d-e73f-4dc4-be0e-3da9c3a90627/plans/sess_23_gnosis_packs_v3.md. Here is 
+... [TRUNCATED] ...
+low-resonance distillation and verify automatic fallback.\n- **TGG Skeleton Test**: Verify that the TGG map correctly identifies dependency breaks.\n- **Stress Test**: Distill the entire `app/` directory (~200 files) in a single batch operation.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773331773303_0_zizns7.txt
+</tool_output_masked>

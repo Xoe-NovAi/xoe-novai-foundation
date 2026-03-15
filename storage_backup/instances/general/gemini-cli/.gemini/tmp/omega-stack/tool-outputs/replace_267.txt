@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+    restart: unless-stopped
+
+  llama_server:
+    image: localhost/xnai-rag:latest
+    container_name: xnai_llama_server
+    command: python3 -m llama_cpp.server --model /models/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf --n_gpu_layers 0 --n_threads 6 --n_ctx 2048 --host 0.0.0.0 --port 8000 --api_key ${LLAMA_API_KEY:-xnai-local-key}
+    volumes:
+      - ./models:/models:ro,Z,U
+    environment:
+      - N_THREADS=6
+    logging:
+...

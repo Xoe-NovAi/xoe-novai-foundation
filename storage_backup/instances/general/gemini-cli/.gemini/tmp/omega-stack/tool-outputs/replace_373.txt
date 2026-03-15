@@ -1,0 +1,34 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/DEVELOPMENT_GUIDE.md (1 replacements). Here is the updated code:
+...
+7. [Performance Optimization](#performance-optimization)
+8. [Deployment](#deployment)
+9. [Advanced Development](#advanced-development)
+10. [Troubleshooting](#troubleshooting)
+
+## 🔱 Omega Stack: Metropolis Standards (v4.1.3)
+
+### 1. The Oikos Cognitive Mesh
+All complex agentic deliberations MUST use the **Oikos Mastermind** protocol.
+- **Internal Access**: Port 8006.
+- **Secure Ingress**: Unified entry via Caddy on Port 8002.
+- **Architecture**: Asynchronous status polling for long-running sessions.
+- **Handshake**: Clients MUST use the `wait_for_service` handshake.
+
+### 2. Rainbow Rotation Protocol
+To bypass rate limits and achieve high bandwidth:
+- **Authentication**: Use `OAuthManager` for on-the-fly Fernet decryption.
+- **Master Key**: Requires `XNAI_OAUTH_KEY` or `~/.xnai/.oauth_key`.
+- **Rotation**: Automatic switching between high-quota OAuth accounts and API keys.
+- **Fallback**: Graceful transition to local Ollama (Port 11434).
+
+### 3. Permissions & Identity
+- **Standard**: UID 1000 (arcana-novai) is the global identity.
+- **Hardening**: ALL containers MUST run as `user: "1000:1000"`.
+- **Mounts**: Use the `:Z` flag for SELinux-aware volume mapping.
+
+## Prerequisites
+
+### System Requirements
+
+- **Operating System**: Linux, macOS, or Windows with WSL2
+...

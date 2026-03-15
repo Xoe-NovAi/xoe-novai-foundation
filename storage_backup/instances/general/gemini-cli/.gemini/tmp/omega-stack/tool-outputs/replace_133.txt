@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:\n...\n      - COLLECTOR_OTLP_ENABLED=true\n    networks:\n      - xnai_app_netwo
+... [TRUNCATED] ...
+\"import os; exit(0) if os.path.exists('/storage/recall/archives') else exit(1)\"]\n      interval: 60s\n      timeout: 10s\n      retries: 3\n\nnetworks:\n  xnai_db_network:\n    name: xnai_db_network\n    internal: true\n  xnai_app_network:\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/replace_replace_1773188323518_0_e0t7vm.txt
+</tool_output_masked>

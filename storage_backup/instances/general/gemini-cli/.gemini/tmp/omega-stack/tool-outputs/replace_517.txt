@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/demeter_harvest_index.py (1 replacements). Here is the updated code:\n...\nEnsures the agent is fed with the \"grains\" of intelligence (Tokens).\n\
+... [TRUNCATED] ...
+    data = json.load(f)\n            tokens = data.get(\"cumulative_tokens\", 0)\n            requests = data.get(\"total_requests\", 0)\n            print(f\"  ✅ Harvest Yield: {tokens:,} tokens consumed.\")\n... Applied fuzzy match at line 9-19."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773273333846_0_4w3vsg.txt
+</tool_output_masked>

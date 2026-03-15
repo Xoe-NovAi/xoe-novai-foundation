@@ -1,0 +1,18 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/agent_factory.py (1 replacements). Here is the updated code:
+...
+                messages.append({"role": "user", "content": prompt})
+
+                # Call LiteLLM
+                kwargs = {
+                    "messages": messages,
+                    "temperature": temperature,
+                    "custom_llm_provider": "vertex_ai" if auth["type"] == "oauth" else "gemini"
+                }
+                
+                if auth["type"] == "oauth":
+                    kwargs["model"] = "vertex_ai/gemini-2.0-flash"
+                else:
+                    kwargs["model"] = "gemini/gemini-2.0-flash"
+                    kwargs["api_key"] = auth["value"]
+                
+...

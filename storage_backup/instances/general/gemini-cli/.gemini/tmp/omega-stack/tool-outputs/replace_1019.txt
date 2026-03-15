@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/test_red_phone_kill_switch.py (1 replacements). Here is the updated code:\n...\nimport anyio\nimport json\nimport os\nfrom datetime import datetime, t
+... [TRUNCATED] ...
+n    async with AgentBusClient(agent_did=agent_id) as bus:\n        # Clear any existing emergency stops for a clean test\n        # (In a real test we might use a dedicated test stream)\n        \n        # 2. Pre-check: Switch should be OFF\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773011614746_0_41k3je.txt
+</tool_output_masked>

@@ -1,0 +1,15 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/agent_bus.py (1 replacements). Here is the updated code:
+...
+                agent_name = env_var.replace("AGENT_KEY_PUBLIC_", "").lower()
+                keys[agent_name] = value
+        return keys
+
+    async def __aenter__(self):
+        # ST4/NS1: Use centralized async redis client with TLS support
+        self.redis = await get_redis_client_async()
+        # Initialize Group
+        try:
+            await self.redis.xgroup_create(self.stream_name, self.group_name, id="0", mkstream=True)
+        except Exception:
+            # Group likely already exists
+...

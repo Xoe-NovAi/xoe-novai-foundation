@@ -1,0 +1,3 @@
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/run_server.sh (1 replacements). Here is the updated code:\n...\n\n# Change to omega-stack directory so relative imports work\ncd \"${OMEGA_ROOT}\"\n\n# Run the server\nPYTHON=\"${OMEGA_ROOT}/.venv_mcp/bin/python3\"\nif [[ ! -x \"$PYTHON\" ]]; then\n    echo \"ERROR: Python venv not found at $PYTHON\" >&2\n    echo \"Run: python3 -m venv ${OMEGA_ROOT}/.venv_mcp && ${PYTHON} -m pip install -e ${OMEGA_ROOT}/mcp-servers/memory-bank-mcp/\" >&2\n    exit 1\nfi\nexec \"$PYTHON\" \"$SCRIPT_DIR/server.py\" \"$@\"\n"
+}

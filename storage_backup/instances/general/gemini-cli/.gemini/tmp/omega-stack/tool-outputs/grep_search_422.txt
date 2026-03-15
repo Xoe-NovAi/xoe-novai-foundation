@@ -1,0 +1,12 @@
+Found 8 matches for pattern "llama" in path "infra/docker/Dockerfile":
+---
+File: Dockerfile
+L36: # Install llama-cpp-python==0.3.16 with Vulkan/OpenBLAS support
+L37: ENV CMAKE_ARGS="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS -DLLAMA_AVX2=ON -DLLAMA_FMA=ON -DLLAMA_F16C=ON -DLLAMA_VULKAN=ON" \
+L41:     echo "🔨 Building llama-cpp-python==0.3.16 with Vulkan/OpenBLAS..." && \
+L42:     uv pip install --system --verbose llama-cpp-python==0.3.16
+L70:     LLAMA_CPP_N_THREADS=6 \
+L71:     LLAMA_CPP_F16_KV=true \
+L72:     LLAMA_CPP_USE_MLOCK=true \
+L73:     LLAMA_CPP_USE_MMAP=true \
+---

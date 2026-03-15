@@ -1,0 +1,3 @@
+{
+  "output": "Output: 7:# Last Updated: 2026-03-09 (SI1 Local LLM Integration + anyio Fix)\n24:import anyio\n194:            results = await anyio.to_thread.run_sync(lambda: api_client.search(query, max_results=max_items))\n236:                        mime_type = await anyio.to_thread.run_sync(lambda: self.magic.from_file(str(file_path), mime=True))\n237:                    async with await anyio.open_file(file_path, mode=\"r\", encoding=\"utf-8\", errors=\"ignore\") as f:\nProcess Group PGID: 1315045"
+}

@@ -1,0 +1,39 @@
+{
+  "theme": "dark",
+  "editor": "code",
+  "auto_save": true,
+  "stream": true,
+  "minimal_ui": true,
+  "max_history_items": 100,
+  "telemetry_opt_out": true,
+  "font_size": 14,
+  "render_markdown": true,
+  "model": {
+    "apiKey": "AIzaSyCPRsWqa-zkX_oCjs6hSttxrnig88DbsoA"
+  },
+  "experimental": {
+    "enableAgents": true,
+    "codebaseInvestigatorSettings": {
+      "enabled": true
+    }
+  },
+  "agents": {
+    "overrides": {
+      "codebase_investigator": {
+        "enabled": true
+      }
+    }
+  },
+  "general": {
+    "sessionRetention": {
+      "enabled": true,
+      "maxAge": "30d",
+      "warningAcknowledged": true
+    }
+  },
+  "security": {
+    "auth": {
+      "selectedType": "gemini-api-key"
+    }
+  }
+}

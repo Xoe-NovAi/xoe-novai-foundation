@@ -1,0 +1,3 @@
+{
+  "output": "Output: Traceback (most recent call last):\n  File \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/test_sess23_gnosis.py\", line 22, in <module>\n    from server import ResonanceAuditor\n  File \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-gnosis/server.py\", line 18, in <module>\n    from mcp.server.fastmcp import FastMCP\nModuleNotFoundError: No module named 'mcp'\nExit Code: 1\nProcess Group PGID: 1329589"
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nOmega Soul Evolution Engine (Hardened v2.0)\n===========================================\nOrchestrates the \"Weighing of the Heart\" ceremony for technical experts.\nBalances the force of Maat (Order) ag
+... [TRUNCATED] ...
+s tg:\n        for i in range(1, 9):\n            instance_path = INSTANCE_ROOT / f\"instance-{i}\"\n            if instance_path.exists():\n                tg.start_soon(weigh_expert_soul, i)\n\nif __name__ == \"__main__\":\n    anyio.run(main)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773294414569_0_cqvwfn.txt
+</tool_output_masked>

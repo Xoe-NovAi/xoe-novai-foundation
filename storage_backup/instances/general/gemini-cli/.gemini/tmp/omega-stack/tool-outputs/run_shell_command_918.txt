@@ -1,0 +1,2 @@
+Output: 403M    /media/arcana-novai/omega_library/omega-stack/data
+Process Group PGID: 91612

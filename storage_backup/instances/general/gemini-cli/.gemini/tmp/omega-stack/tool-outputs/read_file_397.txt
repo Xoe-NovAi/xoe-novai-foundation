@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# ==========================================================================\n# Xoe-NovAi Phase 1 v0.1.2 Environment Configuration (TEMPLATE)\n# ==========================================================================\n# USAGE: cp .e
+... [TRUNCATED] ...
+RD_HERE\n\n# Service Configuration\nAPP_UID=1000\nAPP_GID=1000\n\n# Gemini API Configuration\nGEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE\n\n# Persistence\nINSTANCE_ROOT=\"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances-active\"\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773175268959_0_be6kdl.txt
+</tool_output_masked>

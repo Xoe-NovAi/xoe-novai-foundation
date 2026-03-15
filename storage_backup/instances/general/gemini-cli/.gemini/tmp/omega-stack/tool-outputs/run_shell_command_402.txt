@@ -1,0 +1,11 @@
+Output: 472M    /home/arcana-novai/.cache/tracker3
+126M    /home/arcana-novai/.cache/ms-playwright-go
+67M     /home/arcana-novai/.cache/node-gyp
+53M     /home/arcana-novai/.cache/gnome-software
+47M     /home/arcana-novai/.cache/nyxt
+46M     /home/arcana-novai/.cache/opencode
+13M     /home/arcana-novai/.cache/thumbnails
+7.0M    /home/arcana-novai/.cache/flatpak
+5.8M    /home/arcana-novai/.cache/pip
+5.6M    /home/arcana-novai/.cache/mesa_shader_cache
+Process Group PGID: 79038

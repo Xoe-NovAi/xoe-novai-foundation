@@ -1,0 +1,8 @@
+Found 7 file(s) matching "infra/docker/Dockerfile*" across 2 workspace directories, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.base
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.chainlit
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.crawl
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.curation_worker
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.docs
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.memory-bank

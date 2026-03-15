@@ -1,0 +1,14 @@
+Found 8 matches for pattern "PersistentEntity" in path "app/" (filter: "*.py"):
+---
+File: XNAi_rag_app/core/entities/registry.py
+L15: from .persistent_entity import PersistentEntity
+L30:         self.entities: Dict[str, PersistentEntity] = {}
+L37:     def register_entity(self, entity_id: str, role: str) -> PersistentEntity:
+L46:             entity = PersistentEntity(entity_id, role, str(self.base_dir))
+L61:     def get_entity(self, entity_id: str) -> Optional[PersistentEntity]:
+L123:                 entity = PersistentEntity(entity_id, "unknown", str(self.base_dir))
+L181: def register_persistent_entity(entity_id: str, role: str) -> PersistentEntity:
+---
+File: XNAi_rag_app/core/entities/persistent_entity.py
+L20: class PersistentEntity:
+---

@@ -1,0 +1,3 @@
+Output: CONTAINER ID  IMAGE                                    COMMAND           CREATED         STATUS                               PORTS       NAMES
+f5cc5f20e9ed  localhost/docker_memory-bank-mcp:latest  python server.py  49 minutes ago  Exited (1) 48 minutes ago (healthy)              xnai_memory_bank_mcp
+Process Group PGID: 1519470

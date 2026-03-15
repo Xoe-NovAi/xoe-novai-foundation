@@ -1,0 +1,9 @@
+Output: # [redis] - Redis 7.4.1 Configuration
+# ============================================================================
+[redis]
+version = "7.4.1"
+host = "redis"
+port = 6379
+password = ""
+timeout_seconds = 60
+Process Group PGID: 2738328

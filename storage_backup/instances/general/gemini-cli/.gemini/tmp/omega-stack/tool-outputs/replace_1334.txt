@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/circuit_breakers/redis_state.py (1 replacements). Here is the updated code:
+...
+        
+        return states
+    
+    async def cleanup_expired_states(self):
+        """Clean up expired states from fallback storage"""
+        current_time = anyio.current_time()
+        async with self._fallback_lock:
+            # Remove states older than 1 hour
+            expired_keys = [
+                name for name, state in self._fallback_states.items()
+                if current_time - max(state.last_failure_time, state.last_success_time) > 3600
+...

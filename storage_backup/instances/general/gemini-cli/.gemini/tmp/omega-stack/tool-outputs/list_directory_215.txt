@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/handovers:\n[DIR] split-test\nARCHITECTURE-DECISION-RECORDS.md (7842 bytes)\nBLOCKER-RESOLUTION-TRACKING.md (6177 bytes)\nCODE-EXAMPLES-REPOSITORY.md 
+... [TRUNCATED] ...
+NDATES_20260309.md (1162 bytes)\nTEST-TEMPLATES.md (11071 bytes)\nWAVE-5-IMPLEMENTATION-MANUAL.md (102606 bytes)\nWAVE-5-MANUAL-SPLIT-TEST-PLAN.md (15683 bytes)\nWAVE-5-PREP-RESOURCES.md (9671 bytes)\nWAVE-6-IMPLEMENTATION-MANUAL.md (134151 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/list_directory_list_directory_1773077691494_0_ktykkk.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 10 matches for pattern \"storage_new\" in path \".\" (results limited to 10 matches for performance):\n---\nFile: infra/docker/docker-compose.yml\nL257:       - ../../storage_new/data/cache:/home/appuser/.cache:Z,U\nL448:       -
+... [TRUNCATED] ...
+\nL724:       - ../../storage_new:/storage:Z,U\nL786:       - ../../storage_new:/storage:Z,U\n---\nFile: storage/backups/SNAP-20260312-METROPOLIS-HARDENED/docker-compose.yml\nL257:       - ../../storage_new/data/cache:/home/appuser/.cache:Z,U\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/grep_search_grep_search_1773250257747_0_h3nk7g.txt
+</tool_output_masked>

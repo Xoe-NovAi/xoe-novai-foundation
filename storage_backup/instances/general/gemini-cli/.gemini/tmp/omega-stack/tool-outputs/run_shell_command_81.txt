@@ -1,0 +1,5 @@
+Output: find: ‘./.gemini/skills/sentinel-skill’: Permission denied
+find: ‘./knowledge_base/internal_docs/01-strategic-planning/session-state-archive/files’: Permission denied
+find: ‘./infra/docker/data/vikunja/db’: Permission denied
+find: ‘./infra/docker/data/postgres’: Permission denied
+Process Group PGID: 62218

@@ -1,0 +1,3 @@
+{
+  "output": "Output:       - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/xnai\nProcess Group PGID: 858110"
+}

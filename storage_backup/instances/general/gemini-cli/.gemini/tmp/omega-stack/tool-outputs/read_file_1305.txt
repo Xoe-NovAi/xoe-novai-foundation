@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "site_name: Xoe-NovAi Foundation Stack\nsite_description: Sovereign AI Assistant - Modular Foundation & Toolkit\nsite_url: http://localhost:8000\nrepo_url: https://github.com/arcana-novai/Xoe-NovAi\nrepo_name: arcana-novai/Xoe-NovAi\ned
+... [TRUNCATED] ...
+ ML Research Labs:\n          - Vulkan Native Inference: 05-research/labs/01-vulkan-native-inference.md\n          - AWQ Production Report: 05-research/labs/AWQ Quantization Production Implementation Research Report.md\n  - 📦 Archive: _archive/\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001962797_0_6ncfb.txt
+</tool_output_masked>

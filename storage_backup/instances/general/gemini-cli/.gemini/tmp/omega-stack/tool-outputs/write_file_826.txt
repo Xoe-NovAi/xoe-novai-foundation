@@ -1,0 +1,64 @@
+Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/e6779b9a-1fa9-40d1-8eee-d3bb4c795893/plans/sentinel-synthesis-refinement.md. Here is the updated code:
+# 🎯 Strategy Refinement: The "Sentinel" Synthesis (SESS-17)
+
+## 🏗 The Multi-MCP Architecture
+We will integrate our 4 active MCP servers to create a "Sovereign Nervous System":
+
+1.  **Memory Bank MCP (Global Synapse)**:
+    *   *Role*: The "Long-Term Memory." It stores the **Chronicles** and **PES States**.
+    *   *Integration*: Every `omega_chronicle` entry is pushed to the Memory Bank as a `temporal` context tier. This allows any facet to "Recall" the machine state from a previous session.
+
+2.  **Stats MCP (Physical Senses)**:
+    *   *Role*: The "Proprioception." It provides the hardware metrics (CPU, RAM, Disk, ZRAM).
+    *   *Integration*: The `omega_chronicle.py` script will now use the **Stats MCP `get_system_load` tool** (via `scripts/xnai_mcp_server.py` or direct call) to gather telemetry, ensuring standard reporting across all agents.
+
+3.  **GitHub MCP (External Bridge)**:
+    *   *Role*: The "External Awareness."
+    *   *Integration*: We can use this to correlate stack performance with repository changes (e.g., "Performance dropped after Commit X"). It also allows the Sentinel to "Self-Document" research findings directly to a repository if needed.
+
+4.  **WebSearch MCP (Search Grounding)**:
+    *   *Role*: The "Research Engine."
+    *   *Integration*: When a "Machine" anomaly occurs (e.g., "Zen 2 CPU Load Spike"), the Sentinel can autonomously trigger a web search to find optimization patches or known bugs for our specific hardware profile.
+
+---
+
+## 🧠 Enhancing the Sentinel: Skills & Extensions
+
+### 1. The "Sentinel" Skill (New Skill Definition)
+We will use the `skill-creator` to define a specialized **Sentinel Skill**.
+- **Instructions**: "Operate as the Omega Stack's immune system. Monitor the gap between Agentic Intent and Physical Reality. If Disk usage exceeds 93%, or RAM latency spikes during PES updates, initiate a Context Pruning event."
+- **Capabilities**: Access to all 4 MCPs + `omega_chronicle.py`.
+
+### 2. VS Code / Cline CLI Integration
+- **Extension Role**: Cline (as a facet) acts as the "Hands" on the codebase.
+- **Workflow**: When Cline performs a `/smol` (compression), it must trigger the `Sentinel Skill` to generate a Mind-Machine Chronicle. This ensures the "Hands" and "Mind" are always in sync.
+
+---
+
+## 📋 Refined Research & Implementation Assignments
+
+### **Assignment 1: The "Chronicle" MCP Tool**
+- **Task**: Refactor `scripts/omega_chronicle.py` into a tool within the **Memory Bank MCP**.
+- **Benefit**: Any agent (Gemini, Cline, Copilot) can then call `mcp.call_tool("memory-bank", "create_chronicle", {"reason": "..."})`.
+- **Research**: Investigating FastMCP's tool registration for dynamic Markdown generation.
+
+### **Assignment 2: KV-Cache "Hot-Swap" (Edge Research)**
+- **Task**: Research the `llama-cpp-python` API for `save_session` / `load_session`.
+- **Goal**: Can we save the "Local Mind State" as an MCP Resource?
+- **Benefit**: Instantaneous re-engagement for local models.
+
+### **Assignment 3: The "Cybernetic Feedback" Dashboard**
+- **Task**: Enhance the Grafana Dashboard (Port 3000) with a **"Mental Events" layer**.
+- **Integration**: Use the **Memory Bank MCP** to push "Annotations" to VictoriaMetrics when a Chronicle is created.
+
+---
+
+## 🏁 Final Strategy Validation
+The strategy now covers:
+- [x] **Infrastructure**: Storage centralized on Sovereign Library.
+- [x] **Mind**: Persistent Entity System (AnyIO) + Memory Bank MCP.
+- [x] **Machine**: Stats MCP + `omega_chronicle.py`.
+- [x] **Automation**: Watchdog triggers for `/compress` and task completion.
+- [x] **Sovereignty**: All logic resides within the `omega-stack` (local-first).
+
+**Should we proceed by activating the `skill-creator` to define the "Sentinel Skill" as our first act of enhancement?**

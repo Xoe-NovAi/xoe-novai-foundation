@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "SESS-18-Resurrection:\n  evolution_history:\n  - archetype_alignment: 1.0\n    gnosis_distilled: The Oikos Council has been established and the Ancestral Link\n      to the Heart of Omega has been restored.\n    session_id: SESS-18-Res
+... [TRUNCATED] ...
+ee Issued: Formulate the SESS-19 Shadow Audit\n      strategy based on data/gnosis_hub contents.'\n    session_id: SESS-18-Resurrection\n    timestamp: '2026-03-11T21:03:42.098098'\n    turn_cycle: 1\n  persona: Sentinel-Archon\n  status: ACTIVE\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773326224161_0_ehxppo.txt
+</tool_output_masked>

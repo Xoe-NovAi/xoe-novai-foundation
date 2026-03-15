@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\"\"\"\nSimple local model registry (skeleton).\n\nAllows registering local GGUF/ONNX/ggml models for agent use. Registry is a JSON file under models/registry.json.\n\"\"\"\n\nimport json\nimport os\nfrom typing import Optional\n\nREGI
+... [TRUNCATED] ...
+}\n        self._save(data)\n\n    def get_model(self, name: str) -> Optional[dict]:\n        data = self._load()\n        return data.get(name)\n\n    def list_models(self) -> list:\n        data = self._load()\n        return list(data.keys())\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773179635238_0_6tl5us.txt
+</tool_output_masked>

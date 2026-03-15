@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - run
+      - XNAi_rag_app.ui.chainlit_app_unified.py
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8001"
+
+  crawler:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.crawl
+...

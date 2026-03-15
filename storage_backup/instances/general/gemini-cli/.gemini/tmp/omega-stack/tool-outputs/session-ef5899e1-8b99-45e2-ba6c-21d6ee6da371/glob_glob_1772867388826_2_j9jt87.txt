@@ -1,0 +1,3 @@
+{
+  "output": "No files found matching pattern \"storage/instances-active/instance-0/**/expert_soul.md\" within 2 workspace directories"
+}

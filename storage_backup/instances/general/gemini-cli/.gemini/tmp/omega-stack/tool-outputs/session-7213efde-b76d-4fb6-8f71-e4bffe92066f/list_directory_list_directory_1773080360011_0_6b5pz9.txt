@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini:\n[DIR] acknowledgments\n[DIR] chats\n[DIR] history\n[DIR] tmp\nexpert_soul.md (1462 bytes)\ngoogle_accounts.json (114 bytes)\ninstallation_id (36 bytes)\nmcp_config.json (164 bytes)\noauth_creds.json (1798 bytes)\nprojects.json (160 bytes)\nsettings.json (1050 bytes)\nstate.json (21 bytes)\ntrustedFolders.json (74 bytes)"
+}

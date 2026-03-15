@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Subagent 'cli_help' finished.\nTermination Reason: GOAL\nResult:\n{\n  \"answer\": \"In Gemini CLI, the default **OTLP (OpenTelemetry Protocol) endpoint** for telemetry is `http://localhost:4317`.\\n\\n### Configuration\\nYou can confi
+... [TRUNCATED] ...
+to them. Traces can then be viewed at `http://localhost:16686` (Jaeger UI), and logs/metrics are saved to `~/.gemini/tmp/<projectHash>/otel/collector.log`.\",\n  \"sources\": [\n    \"cli/telemetry.md\",\n    \"reference/configuration.md\"\n  ]\n}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/cli_help_cli_help_1773175852731_0_7sj39.txt
+</tool_output_masked>

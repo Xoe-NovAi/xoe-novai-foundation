@@ -1,0 +1,3 @@
+{
+  "output": "Output: arcana-+   35237  0.9  0.8  88400 56572 ?        S    21:13   1:20 python3 /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py\narcana-+   59857 50.0  0.0  10292  3780 pts/3    Ss+  23:30   0:00 bash -c shopt -u promptvars nullglob extglob nocaseglob dotglob; { ps aux | grep python | grep memory || echo \"MB-MCP is NOT running\"; }; __code=$?; pgrep -g 0 >/tmp/shell_pgrep_bccd198e415f.tmp 2>&1; exit $__code;\nProcess Group PGID: 59857"
+}

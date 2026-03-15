@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_base/internal_docs/02-research-lab/RESEARCH-MASTER-INDEX.md (1 replacements). Here is the updated code:\n...\n| **P0** | 3 | Ancient Greek BERT & 
+... [TRUNCATED] ...
+| 3-4h | Phase 7A | ✅ Ready |\n| **P1** | 10 | Distributed Tracing Architecture | 2-3h | Phase 5D | ✅ Ready |\n| **P1** | 11 | Voice Quality Enhancement | 3-4h | Phase 6E | ✅ Ready |\n| | | **P1 Subtotal** | **18-24h** | **Weeks 11-24** | — |\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773003545102_0_6simtj.txt
+</tool_output_masked>

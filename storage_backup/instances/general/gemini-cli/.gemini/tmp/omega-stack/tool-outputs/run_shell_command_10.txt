@@ -1,0 +1,16 @@
+Output: Trying to pull docker.io/library/redis:7.4.1...
+Getting image source signatures
+Copying blob e0b2e54213f5 [--------------------------------------] 0.0b / 872.0b
+Copying blob e0b2e54213f5 [--------------------------------------] 0.0b / 872.0b
+Copying blob e0b2e54213f5 done   | 
+Copying blob 76f0f8a4aae4 done   | 
+Copying blob d334c6665cc1 done   | 
+Copying blob fd674058ff8f done   | 
+Copying blob 47cee545c70a done   | 
+Copying blob f3615eb0792b done   | 
+Copying blob 4f4fb700ef54 done   | 
+Copying blob 4c9c306fe0ac done   | 
+Copying config 2724e40d43 done   | 
+Writing manifest to image destination
+24e120cf20fd19903a48d5a87e273e8e148c98cbaddfa9947d09912d0c05881a
+Process Group PGID: 1978893

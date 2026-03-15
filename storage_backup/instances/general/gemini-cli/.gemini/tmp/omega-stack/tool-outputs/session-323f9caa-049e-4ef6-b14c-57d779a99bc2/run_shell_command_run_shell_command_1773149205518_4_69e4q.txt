@@ -1,0 +1,3 @@
+{
+  "output": "Output: bash: line 15: warning: here-document at line 1 delimited by end-of-file (wanted `EOF')\nbash: -c: line 16: syntax error: unexpected end of file\nExit Code: 2\nProcess Group PGID: 9258"
+}

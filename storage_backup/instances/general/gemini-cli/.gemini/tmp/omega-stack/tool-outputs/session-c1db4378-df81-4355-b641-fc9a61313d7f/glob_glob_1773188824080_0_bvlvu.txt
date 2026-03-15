@@ -1,0 +1,3 @@
+{
+  "output": "Found 7 file(s) matching \"infra/docker/Dockerfile*\" across 2 workspace directories, sorted by modification time (newest first):\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.base\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.chainlit\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.crawl\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.curation_worker\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.docs\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.memory-bank"
+}

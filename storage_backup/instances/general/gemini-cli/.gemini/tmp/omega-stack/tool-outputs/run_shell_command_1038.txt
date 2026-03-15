@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: # ============================================================================
+# Xoe-NovAi Phase 1 v0.1.4-stable Application Configuration
+# ============================================================================
+# Purpose: Centralized application-level settings (complements .env runtime)
+# Usage: Loaded by config_loader.py via toml.load() at startup
+# Validation: python3 -c "import toml; toml.load('config.toml')"
+# Guide Reference: Section 3.1 (config.toml Structure - 23 sections)
+# Last Updated: 2025-11-08
+# Sections: 23 total (v0.1.4-stable)
+# ============================================================================
+
+... [453 lines omitted] ...
+
+cache_ttl_seconds = 3600
+cache_max_entries = 1000
+Caddyfile                         config.toml                  mkdocs-internal.yml            pyproject.toml                  templates
+agent-identity.yaml               doc-curation-bridge.yaml     model-documentation.yaml       pytest.ini                      tox.ini
+alembic.ini                       domain-routing.yaml          model-router.yaml              qdrant_collections.yaml         victoriametrics
+antigravity-free-frontier.yaml    free-providers-catalog.yaml  multi-agent-config.yaml        qdrant_config.yaml              vikunja-config.yaml
+automated-curation-pipeline.yaml  gemini-cli-integration.yaml  offline-library.yaml           redis.conf                      vikunja-doc-integration.yaml
+cli-service-bridge.yaml           mcp_config.json              openpipe-config.yaml           split-test-defaults.yaml        wave5-strategy-manager.yaml
+cli-shared-config.yaml            metropolis-domains.yaml      performance-optimization.yaml  split-test-model-template.yaml  working-memory-handoff-protocol.yaml
+cline-accounts.yaml               minimax-working-memory.yaml  postgres.conf                  stack-cat-config.yaml
+Process Group PGID: 979554
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773011969416_0_pntfg.txt
+</tool_output_masked>

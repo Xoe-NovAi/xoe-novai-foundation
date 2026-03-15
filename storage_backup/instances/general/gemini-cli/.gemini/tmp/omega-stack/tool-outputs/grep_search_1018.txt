@@ -1,0 +1,69 @@
+Found 3 matches for pattern "memory-bank" in path "infra/docker/docker-compose.yml":
+---
+File: docker-compose.yml
+L694-       - REDIS_PORT=6379
+L695-       - REDIS_PASSWORD=${REDIS_PASSWORD}
+L696-       - REDIS_TLS_ENABLED=${REDIS_TLS_ENABLED:-true}
+L697-       - REDIS_CA_CERT_PATH=/tls/ca.crt
+L698-       - REDIS_SSL_CERT_REQS=none
+L699-       - HF_TOKEN=${HF_TOKEN:-}
+L700-       - PYTHONPATH=/app:/app/scripts
+L701-     depends_on:
+L702-       redis:
+L703-         condition: service_healthy
+L704-     networks:
+L705-       - xnai_db_network
+L706-     restart: unless-stopped
+L707-     command: ["python3", "-m", "XNAi_rag_app.workers.knowledge_miner"]
+L708- 
+L709:   memory-bank-mcp:
+L710-     build:
+L711-       context: ../..
+L712:       dockerfile: infra/docker/Dockerfile.memory-bank
+L713-     container_name: xnai_memory_bank_mcp
+L714-     init: true
+L715-     user: "${APP_UID:-1001}:${APP_GID:-1001}"
+L716-     ports:
+L717-       - "8005:8000"
+L718-     environment:
+L719-       - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@xnai_postgres:5432/xnai
+L720-       - REDIS_URL=rediss://xnai_redis:6379
+L721-       - REDIS_PASSWORD=${REDIS_PASSWORD}
+L722-       - REDIS_TLS_ENABLED=true
+L723-       - REDIS_CA_CERT_PATH=/tls/ca.crt
+L724-       - REDIS_SSL_CERT_REQS=none
+L725-       - HF_TOKEN=${HF_TOKEN:-}
+L726-       - STORAGE_PATH=/storage
+L727-       - CONFIG_PATH=/app/config.toml
+L739-       - xnai_db_network
+L740-       - xnai_app_network
+L741-     restart: on-failure:5
+L742-     deploy:
+L743-       resources:
+L744-         limits:
+L745-           memory: 1G
+L746-           cpus: '0.5'
+L747-     healthcheck:
+L748-       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+L749-       interval: 30s
+L750-       timeout: 10s
+L751-       retries: 3
+L752-       start_period: 30s
+L753-     labels:
+L754:       - "com.xnai.component=memory-bank-mcp"
+L755-       - "com.xnai.requires=redis"
+L756-       - "com.xnai.type=mcp-server"
+L757- 
+L758-   jaeger:
+L759-     image: jaegertracing/all-in-one:1.49
+L760-     container_name: xnai_jaeger
+L761-     ports:
+L762-       - "16686:16686"
+L763-       - "14268:14268"
+L764-       - "4317:4317"
+L765-       - "4318:4318"
+L766-     environment:
+L767-       - COLLECTOR_OTLP_ENABLED=true
+L768-     networks:
+L769-       - xnai_app_network
+---

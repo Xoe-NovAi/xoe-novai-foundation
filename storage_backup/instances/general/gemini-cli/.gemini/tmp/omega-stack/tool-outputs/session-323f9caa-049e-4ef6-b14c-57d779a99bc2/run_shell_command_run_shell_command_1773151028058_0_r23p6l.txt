@@ -1,0 +1,3 @@
+{
+  "output": "Output: ./memory_bank/GEMINI.md\n./app/GEMINI.md\n./docs/GEMINI.md\nProcess Group PGID: 9783"
+}

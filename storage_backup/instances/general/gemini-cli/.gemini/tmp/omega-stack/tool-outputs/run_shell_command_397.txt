@@ -1,0 +1,11 @@
+Output: 1.5G    storage/data/cache
+899M    storage/data/cache_v2
+889M    storage/data/open-webui
+6.0M    storage/data/consul_old
+2.9M    storage/data/qdrant.broken
+2.3M    storage/data/service_manuals
+356K    storage/data/ui_config
+180K    storage/data/consul
+48K     storage/data/entities
+32K     storage/data/scraping_results
+Process Group PGID: 79818

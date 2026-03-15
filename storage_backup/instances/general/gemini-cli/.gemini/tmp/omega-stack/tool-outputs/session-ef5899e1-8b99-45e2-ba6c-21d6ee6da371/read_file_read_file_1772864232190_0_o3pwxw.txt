@@ -1,0 +1,3 @@
+{
+  "output": "# 📊 Krikri-8B Import Metrics (Crucible Cycle 1)\n\n**Date**: 2026-03-07\n**Hardware**: Ryzen 5700U | 8GB RAM | 12GB zRAM\n**Engine**: Ollama\n\n## 📈 Import Telemetry\n\n- **Import Duration**: 23 seconds\n- **Memory Spike (Max)**: 2.8Gi\nNAME       ALGORITHM DISKSIZE   DATA COMPR  TOTAL STREAMS MOUNTPOINT\n/dev/zram1 zstd            8G 135.8M 29.4M  63.1M         [SWAP]\n/dev/zram0 zstd            4G 990.1M  246M 271.8M         [SWAP]\n"
+}

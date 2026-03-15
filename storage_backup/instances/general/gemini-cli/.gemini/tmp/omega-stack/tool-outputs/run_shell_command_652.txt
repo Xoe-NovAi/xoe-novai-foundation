@@ -1,0 +1,5 @@
+Output: 🔍 Validating skill...
+⚠️  Found unresolved TODO in scripts/example_script.cjs
+Please resolve all TODOs before packaging.
+Exit Code: 1
+Process Group PGID: 215040

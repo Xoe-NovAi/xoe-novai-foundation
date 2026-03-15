@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: import anyio
+import json
+import logging
+import os
+import time
+from datetime import datetime
+from typing import Optional, Dict, Any, List
+from redis.asyncio import Redis
+from app.XNAi_rag_app.core.dependencies import get_redis_client
+from app.XNAi_rag_app.core.iam_handshake import KeyManager
+
+... [53 lines omitted] ...
+
+grep: app/XNAi_rag_app/services/__pycache__/ingest_library.cpython-313.pyc: binary file matches
+grep: app/XNAi_rag_app/services/rag/__pycache__/rag_service.cpython-313.pyc: binary file matches
+app/XNAi_rag_app/services/rag/rag_service.py:from ...core.logging_config import get_logger, PerformanceLogger
+app/XNAi_rag_app/services/rag/rag_service.py:        self.perf_logger = PerformanceLogger(logger)
+grep: app/XNAi_rag_app/ui/__pycache__/chainlit_app_unified.cpython-313.pyc: binary file matches
+app/XNAi_rag_app/ui/chainlit_app_unified.py:    from logging_config import setup_logging, get_logger, PerformanceLogger
+app/XNAi_rag_app/ui/chainlit_app_unified.py:    perf_logger = PerformanceLogger(logger)
+grep: app/XNAi_rag_app/api/routers/__pycache__/query.cpython-313.pyc: binary file matches
+app/XNAi_rag_app/api/routers/query.py:from ...core.logging_config import PerformanceLogger, get_logger
+app/XNAi_rag_app/api/routers/query.py:perf_logger = PerformanceLogger(logger)
+Process Group PGID: 1257183
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773015695341_0_yq6vjz.txt
+</tool_output_masked>

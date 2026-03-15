@@ -1,0 +1,18 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/omega_foundry.py (1 replacements). Here is the updated code:
+...
+    cast_parser = subparsers.add_parser("broadcast")
+    cast_parser.add_argument("file", help="The markdown file to broadcast")
+
+    args = parser.parse_args()
+
+    if args.command == "mastermind":
+        await mastermind(args.problem)
+    elif args.command == "oikos-check":
+        await oikos_check()
+    elif args.command == "synthesize":
+        await synthesize(args.domain)
+    elif args.command == "visualize":
+        await visualize(args.file)
+    elif args.command == "broadcast":
+        await broadcast(args.file)
+...

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "[Wed Mar 11 00:27:18 ADT 2026] 🛡️ MCP Watchdog starting...\n[Wed Mar 11 00:37:20 ADT 2026] 🚨 MCP DOWN! Attempting restart...\n[Wed Mar 11 00:37:21 ADT 2026] ⚠️ MCP UNHEALTHY! Restarting...\n[Wed Mar 11 00:38:22 ADT 2026] 🚨 MCP DOWN!
+... [TRUNCATED] ...
+05:30 ADT 2026] 🚨 MCP DOWN! Attempting restart...\n[Wed Mar 11 01:05:34 ADT 2026] ⚠️ MCP UNHEALTHY! Restarting...\n[Wed Mar 11 01:12:38 ADT 2026] 🚨 MCP DOWN! Attempting restart...\n[Wed Mar 11 01:12:39 ADT 2026] ⚠️ MCP UNHEALTHY! Restarting...\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773250306059_0_rs9hmt.txt
+</tool_output_masked>

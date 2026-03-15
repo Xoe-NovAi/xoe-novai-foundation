@@ -1,0 +1,3 @@
+{
+  "output": "Output: [1/2] STEP 1/11: FROM xnai-base:latest AS builder\n✔ docker.io/library/xnai-base:latest\nTrying to pull docker.io/library/xnai-base:latest...\nError: creating build container: initializing source docker://xnai-base:latest: reading manifest latest in docker.io/library/xnai-base: requested access to the resource is denied\nExit Code: 125\nProcess Group PGID: 4124728"
+}

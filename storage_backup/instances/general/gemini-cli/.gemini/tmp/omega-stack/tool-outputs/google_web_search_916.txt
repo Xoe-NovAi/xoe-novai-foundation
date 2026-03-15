@@ -1,0 +1,51 @@
+Web search results for "Ancient-Greek-BERT uncased Hugging Face details model id vector size research":
+
+The primary model for Ancient Greek on Hugging Face is **`pranaydeeps/Ancient-Greek-BERT`**.[1][2][3] Below are the specific details regarding its identification, architecture, and vector size.
+
+### **Model Identification**
+*   **Model ID:** `pranaydeeps/Ancient-Greek-BERT`[1][2][3][4]
+*   **Alternative (Uncased):** `altsoph/bert-base-ancientgreek-uncased` (A fine-tuned version of the AUEB Greek BERT specifically for Ancient Greek texts).[2]
+
+### **Architecture & Vector Size**[2]
+*   **Vector Size (Hidden Dimension):** **768**[5][2][1]
+    *   This is a standard `bert-base` architecture.[1][2]
+*   **Parameters:** ~110M - 113M.[2][3]
+*   **Layers:** 12 layers.[2][1]
+*   **Attention Heads:** 12 heads.[2]
+*   **Max Sequence Length:** 512 tokens.[4][2][5][1]
+
+### **Technical Details**
+*   **Base Model:** It was initialized from the **AUEB NLP Group's Greek BERT** (`nlpaueb/bert-base-greek-uncased-v1`) and subsequently trained on Ancient and Medieval Greek corpora.[2][4]
+*   **Training Data:** Monolingual data from the First1KGreek Project, Perseus Digital Library, PROIEL Treebank, and Gorman's Treebank.[4][2][1]
+*   **Preprocessing:** The model is **uncased** and utilizes standard de-accentuating (removing diacritics) for Greek text.[2]
+*   **Performance:** Achieves state-of-the-art results for Part-of-Speech (PoS) tagging and Morphological Analysis on Ancient Greek treebanks (averaging >90% accuracy).
+
+### **Usage Example (Python)**
+```python
+from transformers import AutoTokenizer, AutoModel[4][5][2][1]
+
+# Load the model and tokenizer
+model_id = "pranaydeeps/Ancient-Greek-BERT"
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModel.from_pretrained(model_id)[2][1][4]
+
+# Example text (Ancient Greek)
+text = "μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος"
+inputs = tokenizer(text, return_tensors="pt")
+outputs = model(**inputs)[2]
+
+# The last hidden state has the vector size of 768
+embeddings = outputs.last_hidden_state
+print(embeddings.shape)  # torch.Size([1, sequence_length, 768])
+```[2]
+
+### **Research Reference**
+If using this for research, the authors cite the following paper:
+> Singh, P., et al. (2021).[4][2][1] *"A Pilot Study for BERT Language Modelling and Morphological Analysis for Ancient and Medieval Greek."* Proceedings of The 5th Joint SIGHUM Workshop (LaTeCH-CLfL 2021).
+
+Sources:
+[1] huggingface.co (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrKcbImy-Z3_ae6nKxQ4FUy1gcY-ych_XJL3zcHEplTsM6rjxec-JE3Fp1Y2NOane9ZxFi1Ih6AjZYjTs55KLTkIvjC9mCoNNsqXuHjySzBPKC6gLCSh9QiMZqOogR48X8Of38pEqcYdi6RWtBludE)
+[2] huggingface.co (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE13pGWFFuKZ8WULgPXEZCusCwkfx4jZVDRGH-qHIYHvxcZW57PHnhv5f-P2z8XUw4cQcz0MHp0WRRS4YLNb2_iTbPPVSoNVYoIhFUnPGFUqREtjsi0hPLyLiqnImL-PK-PpxwLwhyCdCpFB4E87u7JCKwoYw==)
+[3] github.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF2tQt1tR_VMhLm48mTzNjcEEuVj4YbH45ZWhwZbB1jB-PMyKCgoHvDHlS5AUNEGeOb8KSjslioU6u08rlJBcE1FySeI52bVDV4mek8TuHsqFoPlGl4q0llR71R9LxO5AsnpnuODORx77a8PhmeHEwgoTNEYqsHDtW9TJ4V)
+[4] huggingface.co (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHjcv5SWBitD_KUqb8vZER3qn1qwSeZj82IDQZYwYCKhKYzwJ-DiFhf7A1Imlvfa51ujD81alSKP72EytbLJ6Dl89ETSj-UxEwteirg9qF3N64Vn14v4BskxGlM5iNzXA_XYIikFjLgB1K8VfV1pVIzJw_4Jyd3lEvOGark8MFo5GBMzAlco5gVBzXl68e7)
+[5] huggingface.co (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGijcD0qR0E6tbuxxoqIcZseGMXWT3C_rRDZJRPQaVlYZa3ZEwwUvWT7-vfQO9TiZxsBQuhOmdqhj4HgW3B8KTK2MxiXIqZjVGR-dEwhxDn8eOUjwZ8l530IO7xUttwK2xFWZkcoNP78LZKi5G2MubncBhcT-TmXQLOF90=)

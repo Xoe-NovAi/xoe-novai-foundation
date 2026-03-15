@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "{\"timestamp\": 1773273371.463022, \"agent\": \"Iris\", \"gear\": \"LEVEL_2_START\", \"duration\": 0, \"metadata\": {\"problem\": \"Define the SESS-19 Shadow Audit scope and identify key PEM logic blocks.\"}}\n{\"timestamp\": 177327337
+... [TRUNCATED] ...
+COUNCIL_SPEAK\", \"duration\": 1.1907525062561035, \"metadata\": {\"status\": \"SUCCESS\"}}\n{\"timestamp\": 1773273375.5047922, \"agent\": \"MaLi\", \"gear\": \"JUDGMENT\", \"duration\": 7.05718994140625e-05, \"metadata\": {\"approved\": true}}\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773273641173_0_n59ms.txt
+</tool_output_masked>

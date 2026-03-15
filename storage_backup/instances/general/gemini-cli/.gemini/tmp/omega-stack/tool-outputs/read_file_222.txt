@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\"\"\"\nXoe-NovAi Foundation Stack Core Module\nProvides integrated circuit breakers, health monitoring, and graceful degradation.\n\"\"\"\n\nfrom .circuit_breakers import (\n    CircuitBreaker,\n    CircuitBreakerError,\n    CircuitBr
+... [TRUNCATED] ...
+recovery_rules',\n    'create_vikunja_recovery_rules'\n]\n\n# Version information\n__version__ = \"1.0.0\"\n__author__ = \"Xoe-NovAi Foundation Stack\"\n__description__ = \"Integrated circuit breakers, health monitoring, and graceful degradation\""
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-323f9caa-049e-4ef6-b14c-57d779a99bc2/read_file_read_file_1773148959369_2_oss9zk.txt
+</tool_output_masked>

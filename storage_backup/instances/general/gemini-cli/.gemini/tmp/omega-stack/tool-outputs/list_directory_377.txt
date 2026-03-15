@@ -1,0 +1,6 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/chronicles:
+.gitkeep (0 bytes)
+chronicle_20260311_182432.md (1099 bytes)
+chronicle_20260311_183007.md (1103 bytes)
+EVOLUTION_SESS-18-Resurrection_20.md (196 bytes)
+MASTERMIND_DECREE_20260311_210342.md (778 bytes)

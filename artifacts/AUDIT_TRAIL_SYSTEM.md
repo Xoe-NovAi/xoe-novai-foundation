@@ -92,7 +92,7 @@ All commits must follow this format:
 
 | File | Quality | Session | Date | Description |
 |------|---------|---------|------|-------------|
-| `docs/ARCHITECTURE_OVERVIEW.md` | ✅ Comprehensive | #20260311-1545 | 2026-03-11 | Complete system architecture |
+| `docs/gnostic_architecture/01_temple_architecture.md` | ✅ Comprehensive | #20260311-1545 | 2026-03-11 | Complete system architecture (replaces ARCHITECTURE_OVERVIEW.md, archived 2026-03-14) |
 | `CONTRIBUTING.md` | ✅ Comprehensive | #20260311-1545 | 2026-03-11 | Community development guidelines |
 | `docs/API_REFERENCE.md` | ✅ Comprehensive | #20260311-1545 | 2026-03-11 | Complete API documentation |
 | `docs/DEVELOPMENT_GUIDE.md` | ✅ Comprehensive | #20260311-1545 | 2026-03-11 | Development setup and best practices |

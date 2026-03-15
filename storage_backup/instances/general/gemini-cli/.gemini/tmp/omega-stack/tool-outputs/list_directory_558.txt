@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.logs/sessions/General:\n2026-03-07_13-41-49_gemini_0.log (2119 bytes)\n2026-03-07_13-42-17_gemini_0.log (1007 bytes)\n2026-03-07_13-43-17_gemini_0.log (1007 byte
+... [TRUNCATED] ...
+0.log (182 bytes)\n2026-03-10_22-43-44_gemini_0.log (225 bytes)\n2026-03-10_22-47-01_gemini_0.log (225 bytes)\n2026-03-10_22-47-49_gemini_0.log (182 bytes)\n2026-03-11_12-38-34_gemini_0.log (182 bytes)\n2026-03-11_14-13-24_gemini_0.log (182 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/list_directory_list_directory_1773269492853_0_btsdgo.txt
+</tool_output_masked>

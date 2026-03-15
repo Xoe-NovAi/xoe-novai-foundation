@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+                            "type": "array",
+                            "items": {"type": "string"},
+                            "description": "Optional: List of specific keys to retrieve from the context content (Token Optimization)"
+                        }
+                    },
+                    "required": ["agent_id", "auth_token", "context_type"]
+                }
+            ),
+            Tool(
+                name="update_context",
+                description="Update context for an agent with versioning",
+...

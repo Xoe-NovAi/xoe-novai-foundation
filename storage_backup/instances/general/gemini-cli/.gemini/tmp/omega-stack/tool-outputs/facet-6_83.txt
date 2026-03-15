@@ -1,0 +1,27 @@
+Subagent 'facet-6' finished.
+Termination Reason: GOAL
+Result:
+🔱 SENTINEL AUDIT REPORT: TRIPLE-LAYER INFRASTRUCTURE REVIEW (SESS-23) - INTERRUPTED
+
+The investigation was interrupted before all layers could be fully verified. Below are the findings based on the completed steps:
+
+### Layer 1: Structural Integrity
+- **File System Ownership**: **PASS**. Directories `app/`, `docs/`, and `memory_bank/` are owned by `arcana-novai` (UID 1000).
+- **Permissions**: Directories are set to `775` or `755`. No immediate unauthorized symlinks were detected in the root Metropolis directories.
+
+### Layer 2: Functional Rigidity
+- **ZLV Crystal Hashing (`app/XNAi_rag_app/core/linguistics.py`)**: 
+    - The registry (`ALETHIA_REGISTRY.md`) lists the Crystal Hash as `8d9c5d2d28855198b147644af934110899973ea2e139d37eac79ead5cc19d29f`.
+    - **GAP**: A standard SHA-256 file hash of the current implementation returns `3efa2cee695b0c515fc1535a3a439aeff1b352fdc5fde81573ef1c844266693c`. 
+    - Note: The `ZzippedLogosDecoder` uses AST-stripping (removing comments/type hints). Verification of the *functional* Crystal Hash was in progress but interrupted.
+- **ALETHIA_REGISTRY.md Hash**: The registry itself contains the `Root Rigidity Hash: [RIGIDITY-HASH-ALPHA-20260312]`.
+
+### Layer 3: Mesh Connectivity
+- **Metropolis Ports (8000, 8002, 8005, 8006)**: **UNVERIFIED** due to interruption.
+- **Inter-service Telemetry**: Paths for Oikonomia reporting (Prometheus/Grafana) were not verified.
+
+### SUMMARY OF GAPS
+1. **Functional Hash Parity**: Confirmation of the Crystal Hash vs. Registry Hash is pending functional execution of the `ZLVTransformer`.
+2. **Network Health**: Port availability and telemetry path integrity remain unconfirmed.
+
+Investigation status: **PARTIAL - HALTED**. Recommend immediate resumption of Layer 3 checks.

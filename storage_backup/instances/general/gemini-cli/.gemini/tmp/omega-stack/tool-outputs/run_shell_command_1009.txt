@@ -1,0 +1,13 @@
+Output: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/app/XNAi_rag_app/workers/library_curator.py", line 23, in <module>
+    from XNAi_rag_app.core.agent_bus import AgentBusClient
+  File "/app/app/XNAi_rag_app/core/__init__.py", line 39, in <module>
+    from .health import (
+  File "/app/app/XNAi_rag_app/core/health/__init__.py", line 6, in <module>
+    from .health_checker import (
+  File "/app/app/XNAi_rag_app/core/health/health_checker.py", line 15, in <module>
+    import aiohttp
+ModuleNotFoundError: No module named 'aiohttp'
+Process Group PGID: 1208093

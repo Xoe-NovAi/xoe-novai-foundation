@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"advanced AI agent tuning Chain-of-Thought XML reasoning few-shot prompting best practices for specialized roles\":\n\nTo excel as an advanced AI agent, you must move beyond simple instruction-following and adop
+... [TRUNCATED] ...
+ility: SQL Injection\nFix: ...\n</report>\n```\n\nBy implementing these structures, you transform a general-purpose LLM into a **deterministic, high-reliability specialist** capable of handling complex, multi-step engineering and analytical tasks."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/google_web_search_google_web_search_1773080626185_0_kkfe8v.txt
+</tool_output_masked>

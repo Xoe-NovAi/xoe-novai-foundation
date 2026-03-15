@@ -1,0 +1,3 @@
+{
+  "output": "Output: chown: changing ownership of 'infra/docker/tls/ca.crt': Operation not permitted\nchown: changing ownership of 'infra/docker/tls/ca.key': Operation not permitted\nchown: changing ownership of 'infra/docker/tls/ca.srl': Operation not permitted\nchown: changing ownership of 'infra/docker/tls/redis.crt': Operation not permitted\nchown: changing ownership of 'infra/docker/tls/redis.key': Operation not permitted\nExit Code: 1\nProcess Group PGID: 782582"
+}

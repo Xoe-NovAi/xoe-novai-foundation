@@ -1,0 +1,18 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+
+# ============================================================================ 
+# NETWORKS & VOLUMES
+# ============================================================================ 
+networks:
+  xnai_db_network:
+    name: xnai_db_network
+    internal: true  # Backends cannot reach the internet
+  xnai_app_network:
+    name: xnai_app_network
+
+volumes:
+  victoriametrics-data:
+    name: xnai_victoriametrics_data
+  grafana-data:
+...

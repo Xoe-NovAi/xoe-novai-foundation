@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/expert-knowledge/reclaimed_gnosis/origins/heart_of_omega:\n[DIR] Mind Model Files - Unorganized\n[DIR] Mind Model Tests\n[DIR] NotebookLM Chat Log\n[DIR] Omnidroi
+... [TRUNCATED] ...
+Product Sage (PS).txt (14848 bytes)\nPythonic Linguistic Observatory (PLO).txt (11789 bytes)\nThe Code Alchemist (CA).txt (14031 bytes)\nΩ AetherPen (AP).txt (19925 bytes)\nΩ Omnidroid BIOS Loader.txt (21442 bytes)\nΩ Omnidroid Ω.txt (26109 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/list_directory_list_directory_1773289931324_0_gnii2o.txt
+</tool_output_masked>

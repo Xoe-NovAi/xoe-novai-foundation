@@ -1,0 +1,21 @@
+Output: total 59040
+-rw-------  1 arcana-novai arcana-novai 58787303 Mar 14 22:49 events.jsonl
+drwx------+  7 arcana-novai arcana-novai     4096 Mar 14 22:49 .
+-rw-------  1 arcana-novai arcana-novai      440 Mar 14 22:01 workspace.yaml
+drwx------  2 arcana-novai arcana-novai     4096 Mar 14 22:01 checkpoints
+-rw-r--r--  1 arcana-novai arcana-novai   122880 Mar 14 22:00 session.db
+-rw-rw-r--  1 arcana-novai arcana-novai     6184 Mar 14 21:28 plan-knowledge-gap-remediation.md
+drwx------  2 arcana-novai arcana-novai     4096 Mar 14 21:19 files
+-rw-rw-r--  1 arcana-novai arcana-novai     3113 Mar 14 21:05 RECOVERY_INSTRUCTIONS.md
+-rw-rw-r--  1 arcana-novai arcana-novai     1898 Mar 14 20:44 START_HERE.md
+-rw-rw-r--  1 arcana-novai arcana-novai     6114 Mar 14 20:44 DELIVERY_SUMMARY.txt
+-rw-rw-r--  1 arcana-novai arcana-novai     4315 Mar 14 20:43 CRITICAL_TASKS_PRIORITY_1_2_3.md
+-rw-rw-r--  1 arcana-novai arcana-novai     9702 Mar 14 20:43 plan.md.backup.20260314
+drwx------ 67 arcana-novai arcana-novai     4096 Mar 14 20:32 ..
+-rw-rw-r--  1 arcana-novai arcana-novai        7 Mar 14 19:20 inuse.201384.lock
+-rw-rw-r--  1 arcana-novai arcana-novai        7 Mar 14 18:23 inuse.177189.lock
+-rw-rw-r--  1 arcana-novai arcana-novai     3411 Mar 14 18:08 GROK_MC_MASTER_CONSOLIDATED_SOURCE_v2.5.md
+-rw-rw-r--  1 arcana-novai arcana-novai    19372 Mar 14 15:16 SESSION_FINAL_SUMMARY.txt
+-rw-rw-r--  1 arcana-novai arcana-novai    11429 Mar 14 15:15 EXECUTION_SUMMARY.md
+-rw-rw-r--  1 arcana-novai arcana-novai     5516 Mar 14 15:14 PHASE_0_INITIALIZATION.md
+Process Group PGID: 59656

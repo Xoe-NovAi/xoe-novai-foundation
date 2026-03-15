@@ -1,0 +1,24 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/agent_factory.py (1 replacements). Here is the updated code:
+...
+                if system_instruction:
+                    messages.append({"role": "system", "content": system_instruction})
+                messages.append({"role": "user", "content": prompt})
+
+                # Call LiteLLM
+                # If auth_key is None, we don't pass api_key, letting LiteLLM use GOOGLE_APPLICATION_CREDENTIALS
+                kwargs = {
+                    "model": self.model_name,
+                    "messages": messages,
+                    "temperature": temperature
+                }
+                if auth_key:
+                    kwargs["api_key"] = auth_key
+                
+                response = await anyio.to_thread.run_sync(
+                    lambda: completion(**kwargs)
+                )
+                return response.choices[0].message.content
+
+            except Exception as e:
+                error_msg = str(e)
+...

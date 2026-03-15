@@ -1,0 +1,21 @@
+Output: xnai_memory_bank_mcp
+xnai_postgres
+Error: no container with name or ID "xnai_memory_bank_mcp" found: no such container
+Error: no container with name or ID "xnai_library_curator" found: no such container
+Error: no container with name or ID "xnai_postgres" found: no such container
+xnai_redis
+Error: no container with ID or name "xnai_memory_bank_mcp" found: no such container
+Error: no container with ID or name "xnai_library_curator" found: no such container
+Error: no container with ID or name "xnai_postgres" found: no such container
+xnai_redis
+9b14316604f9c0ac7f592184b8dcdaadf6828c42f04326002bd94f1c26373078
+xnai_redis
+9e9d6e111dbb7abfabfcc7e0cf1c2c2ac9d0fb96c1c283f383a5aaf6628aa582
+xnai_postgres
+Error: --userns and --pod cannot be set together
+Error: no container with name or ID "xnai_library_curator" found: no such container
+38031692d79499704958a0b1cbb7e0eb8e2af678c927b271c7b2d71e5bad559f
+xnai_memory_bank_mcp
+Error: no container with name or ID "xnai_library_curator" found: no such container
+Exit Code: 125
+Process Group PGID: 1203871

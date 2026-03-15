@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 385-400 of 1090 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For examp
+... [TRUNCATED] ...
+v(\"REDIS_PASSWORD\")\n    \n    return redis_async.Redis(\n        host=host,\n        port=port,\n        password=password,\n        decode_responses=False\n    )\n\n# ============================================================================"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001133073_0_u3hiya.txt
+</tool_output_masked>

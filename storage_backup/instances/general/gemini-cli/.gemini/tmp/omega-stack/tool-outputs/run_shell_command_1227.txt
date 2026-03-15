@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: # CRAWLER OPERATIONS RUNBOOK
+
+**Version**: 1.0  
+**Last Updated**: 2026-02-16T22:15:00Z  
+**Status**: Production-Ready
+
+## Quick Reference
+
+**Start Crawler**:
+```bash
+
+... [31 lines omitted] ...
+
+### Environment Variables
+```bash
+# Redis
+export REDIS_HOST=localhost
+export REDIS_PORT=6379
+export REDIS_PASSWORD=changeme123
+
+# Consul
+export CONSUL_HOST=localhost
+RESEARCH-PROTOCOLS.md
+Process Group PGID: 427364
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773002934462_0_cqb5k.txt
+</tool_output_masked>

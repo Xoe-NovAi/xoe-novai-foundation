@@ -1,0 +1,3 @@
+{
+  "output": "Output: 250c349107b0aa23445c5d55302788a5d06fa12f31ffa06c02249b03e048b943\n250c349107b0  localhost/xnai-library-curator:latest  python -m app.XNA...  5 seconds ago   Up 5 seconds                                                                                  xnai_library_curator\nProcess Group PGID: 541076"
+}

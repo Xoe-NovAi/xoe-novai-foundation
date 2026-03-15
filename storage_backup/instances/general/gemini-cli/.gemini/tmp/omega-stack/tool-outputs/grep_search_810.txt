@@ -1,0 +1,56 @@
+Found 6 matches for pattern "models" in path "infra/docker/docker-compose.yml":
+---
+File: docker-compose.yml
+L258-       - huggingface_cache:/home/appuser/.cache/huggingface:Z,U
+L259-       - ../../library:/library:z,U
+L260-       - ../../knowledge_new:/knowledge:z,U
+L261-       - ./tls/ca.crt:/tls/ca.crt:ro,Z
+L262-       - ../../app/config.toml:/app/config.toml:ro,Z,U
+L263:       - /media/arcana-novai/omega_library/omega-stack/models:/models:ro,Z,U
+L264-       - /media/arcana-novai/omega_library/omega-stack/embeddings:/embeddings:ro,Z,U
+L265-     environment:
+L266-       - OPENBLAS_CORETYPE=ZEN
+L267-       - OPENBLAS_NUM_THREADS=6
+L268-       - LLAMA_CPP_N_THREADS=6
+L269:       - LLM_MODEL_PATH=/models/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf
+L270-       - METRICS_PORT=8002
+L271-       - RAG_API_URL=http://rag:8002
+L272-       - REDIS_HOST=xnai_redis
+L273-       - REDIS_PORT=6379
+L274-       - REDIS_PASSWORD=${REDIS_PASSWORD}
+L324-           cpus: '1.0'
+L325-     tmpfs:
+L326-       - /app/logs:size=100m,mode=1777
+L327-     volumes:
+L328-       - ./config.toml:/app/config.toml:ro,Z,U
+L329:       - /media/arcana-novai/omega_library/omega-stack/models:/models:ro,Z,U
+L330-       - ./app/XNAi_rag_app:/app/XNAi_rag_app:ro,Z,U
+L331-       - ./assets:/app/assets:ro,Z,U
+L332-       - ./data/entities:/app/data/entities:Z,U
+L333-     environment:
+L334-       - OPENBLAS_CORETYPE=ZEN
+L444-       - PYTHONPATH=/app
+L445-       - CONFIG_PATH=/app/config.toml
+L446-       - HSA_OVERRIDE_GFX_VERSION=9.0.0
+L447-     volumes:
+L448-       - ../../storage_new:/storage:Z,U
+L449:       - ./models:/storage/models:ro,Z,U
+L450-       - ./library:/library:z,U
+L451-       - ../../knowledge_new:/expert-knowledge:z,U
+L452-       - ./tls/ca.crt:/tls/ca.crt:ro,Z
+L453-       - ../../app/config.toml:/app/config.toml:ro,Z,U
+L454-     networks:
+L620-     restart: unless-stopped
+L621- 
+L622-   llama_server:
+L623-     image: localhost/xnai-rag:latest
+L624-     container_name: xnai_llama_server
+L625:     command: python3 -m llama_cpp.server --model /models/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf --n_gpu_layers 0 --n_threads 6 --n_ctx 32768 --type_k 2 --type_v 2 --host 0.0.0.0 --port 8000 --api_key ${LLAMA_API_KEY:-xnai-local-key}
+L626-     volumes:
+L627:       - /media/arcana-novai/omega_library/omega-stack/models:/models:ro,Z,U
+L628-     environment:
+L629-       - N_THREADS=6
+L630-       - METRICS_PORT=8003
+L631-       - HSA_OVERRIDE_GFX_VERSION=9.0.0
+L632-     logging:
+---

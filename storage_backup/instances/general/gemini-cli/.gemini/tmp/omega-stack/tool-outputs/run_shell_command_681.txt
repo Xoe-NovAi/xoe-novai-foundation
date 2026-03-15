@@ -1,0 +1,21 @@
+Output: # ==========================================================================
+# Xoe-NovAi Phase 1 v0.1.2 Environment Configuration
+# ==========================================================================
+
+# DO NOT COMMIT REAL SECRETS TO VERSION CONTROL!
+# See docs/secrets.md for secure secrets management.
+# ==========================================================================
+
+# Redis Configuration
+REDIS_HOST=redis
+REDIS_PORT=6379
+REDIS_PASSWORD=dUXz1rez6y27FfYC195APxyl1BLNbZz/3T7hucihcgM=
+
+# Qdrant Configuration (Phase 3 Vector Database)
+QDRANT_URL=http://qdrant:6333
+QDRANT_API_KEY=  # Optional: leave empty for development
+VECTOR_SIZE=384
+FAISS_INDEX_PATH=/app/data/faiss_index
+
+# Phase 2 Feature Flags
+Process Group PGID: 317028

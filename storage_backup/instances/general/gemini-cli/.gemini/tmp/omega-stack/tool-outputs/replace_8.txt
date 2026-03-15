@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mkdocs.yml (1 replacements). Here is the updated code:
+...
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - 🏛️ Metropolis Master: METROPOLIS_MASTER_INDEX.md
+  - 🏁 Getting Started:
+      - Quick Start: 01-start/quick-start.md
+      - Sovereign Podman Setup: 02-tutorials/sovereign-setup.md
+      - Team Onboarding: 02-tutorials/onboarding.md
+  - 🚀 Tutorials:
+...

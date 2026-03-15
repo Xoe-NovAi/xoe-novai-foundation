@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts/ARCHETYPE_LIBRARY.md. Here is the updated code:\n# 🔱 Omega Stack: Archetype Library & Gnostic Registry\n**Status**: ACTIVE | **Ve
+... [TRUNCATED] ...
+otocol\nAgents may select or fuse archetypes based on their **Resonance Score** (Calculated via `scripts/archetype_resonance.py`).\n- **Fusion Example**: \"The Sovereign Sentinel\" (Lilith + Sentinel) - A protector who is also a visionary rebel.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/write_file_write_file_1773268358676_0_cczg4m.txt
+</tool_output_masked>

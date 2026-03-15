@@ -1,0 +1,2 @@
+Found 1 file(s) matching "docs/**/RCF_MASTER_PROTOCOL.md" within /home/arcana-novai/Documents/Xoe-NovAi/omega-stack, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/protocols/RCF_MASTER_PROTOCOL.md

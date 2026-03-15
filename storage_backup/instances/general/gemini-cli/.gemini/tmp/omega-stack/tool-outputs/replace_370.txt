@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/services/database.py (1 replacements). Here is the updated code:\n...\n\n# Database configuration\nDATABASE_URL = os.getenv(\"DATABASE_URL\
+... [TRUNCATED] ...
+connect_args\"] = {\"application_name\": \"omega-agent-bus\"}\n\nengine = create_engine(DATABASE_URL, **engine_args)\n\n# Create session factory\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n\n\n@contextmanager\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773008493940_0_ubs54.txt
+</tool_output_masked>

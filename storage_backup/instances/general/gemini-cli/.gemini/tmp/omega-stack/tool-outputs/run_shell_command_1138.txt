@@ -1,0 +1,2 @@
+Output: drwxrwxr-x 2 arcana-novai arcana-novai 4096 Mar  8 18:39 infra/docker/Caddyfile
+Process Group PGID: 572569

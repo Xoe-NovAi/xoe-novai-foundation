@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/iam_db.py. Here is the updated code:\n...\n\"\"\"\n\nimport json\nimport logging\nimport time\nfrom datetime import datetime, timedel
+... [TRUNCATED] ...
+ < cutoff\n            ).all()\n            \n            for session in expired_sessions:\n...\niam_database = IAMDatabase()\n\n\ndef get_iam_database() -> IAMDatabase:\n    \"\"\"Get global IAM database instance.\"\"\"\n    return iam_database\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/write_file_write_file_1773008426711_0_6cjfkw.txt
+</tool_output_masked>

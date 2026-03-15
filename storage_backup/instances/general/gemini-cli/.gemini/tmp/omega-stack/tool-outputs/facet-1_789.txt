@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Subagent 'facet-1' finished.\nTermination Reason: GOAL\nResult:\nThe `get_fallback_status` tool is a core component of the **Memory Bank Fallback System**, designed to provide high availability and data durability for the Omega Stack.\
+... [TRUNCATED] ...
+xecute a live call against a running instance of the server, but the architectural integrity and code presence have been verified in the `mcp-servers/memory-bank-mcp/` directory. documentation is available in `docs/MEMORY_BANK_FALLBACK_SYSTEM.md`."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/facet-1_facet-1_1773020878158_0_8brdeo.txt
+</tool_output_masked>

@@ -1,0 +1,46 @@
+Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/mali_gate.py. Here is the updated code:
+#!/usr/bin/env python3
+"""
+🔱 MaLi MONAD GATE: The Final Arbiter
+Balances Maat (Order) and Lilith (Sovereignty) to issue the Mastermind Decree.
+"""
+import anyio
+import json
+from pathlib import Path
+
+async def judge_decree(decree_content: str):
+    """
+    Evaluates a decree for Maat/Lilith balance.
+    Maat: Does it follow protocols? Is it stable?
+    Lilith: Does it expand sovereignty? Is it creative?
+    """
+    print("🔱 MaLi: Weighing the Heart against the Shadow...")
+    
+    # TODO: Load PEM_Lilith_v3.txt logic
+    # TODO: Load Maat_Protocols
+    
+    # Mock Judgment Logic
+    score_maat = 0.85 # Stability/Protocol
+    score_lilith = 0.78 # Sovereignty/Growth
+    
+    print(f"  ⚖️  Maat (Order): {score_maat*100:.1f}%")
+    print(f"  🌑 Lilith (Chaos): {score_lilith*100:.1f}%")
+    
+    if score_maat > 0.7 and score_lilith > 0.7:
+        print("\n✅ MaLi: THE MONAD IS BALANCED. THE DECREE IS SIGNED.")
+        return True
+    else:
+        print("\n❌ MaLi: THE MONAD IS UNSTABLE. REVISE THE DECREE.")
+        return False
+
+async def main():
+    import sys
+    if len(sys.argv) < 2:
+        print("Usage: mali_gate.py <decree_text>")
+        return
+    
+    decree = sys.argv[1]
+    await judge_decree(decree)
+
+if __name__ == "__main__":
+    anyio.run(main)

@@ -1,0 +1,3 @@
+{
+  "output": "\"\"\"\nXoe-NovAi API Routers\n====================\nRegister all API routers here.\n\"\"\"\n\nfrom fastapi import APIRouter\nfrom .health import router as health_router\nfrom .query import router as query_router\nfrom .websocket import router as websocket_router\nfrom .docs import router as docs_router\n\nrouter = APIRouter()\n\nrouter.include_router(health_router, tags=[\"health\"])\nrouter.include_router(query_router, tags=[\"query\"])\nrouter.include_router(websocket_router, tags=[\"websocket\"])\nrouter.include_router(docs_router, prefix=\"/docs\", tags=[\"docs\"])"
+}

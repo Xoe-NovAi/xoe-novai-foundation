@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: -rw-rw-r-- 1 arcana-novai arcana-novai 14592 Feb 16 18:03 scripts/crawler_job_processor.py
+-rw-rw-r-- 1 arcana-novai arcana-novai 5312 Mar  2 03:18 app/XNAi_rag_app/workers/knowledge_miner.py
+#!/usr/bin/env python3
+"""
+Phase E: Crawler Job Processor & Integration
+
+Integrates the model research crawler with:
+- Redis job queue
+- Delegation routing (task_classifier + routing_engine)
+- Consul service discovery
+
+... [82 lines omitted] ...
+
+        "engineer": "arxiv",
+        "medical": "pubmed",
+        "musician": "youtube",
+        "artist": "youtube",
+        "general": "gutenberg"
+    }
+
+    def __init__(self, agent_did: str = "worker:knowledge_miner:001"):
+        super().__init__(agent_did)
+        self.recovery = RecoveryManager()
+Process Group PGID: 978298
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773011882182_0_qva2pq.txt
+</tool_output_masked>

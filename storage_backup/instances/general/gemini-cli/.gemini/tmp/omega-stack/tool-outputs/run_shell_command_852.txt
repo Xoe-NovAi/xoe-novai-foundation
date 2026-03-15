@@ -1,0 +1,15 @@
+Output: xnai_redis
+xnai_postgres
+WARN[0010] StopSignal SIGTERM failed to stop container xnai_library_curator in 10 seconds, resorting to SIGKILL 
+xnai_library_curator
+xnai_library_curator
+Error: container cdc1431edf347572ebd65e8695b158d314d24f613af0e9ac5a8f15df24acd6c9 has dependent containers which must be removed before it: f5cc5f20e9ed3ae1a17738a4caf855b5dd8fe0462cb64dfe504cc691696fd04a: container already exists
+Error: container e7fdd0e020e7eb60bf9673fa4236769e4b3e4e10563751d9b74c2c850b0d612f has dependent containers which must be removed before it: f5cc5f20e9ed3ae1a17738a4caf855b5dd8fe0462cb64dfe504cc691696fd04a: container already exists
+Error: creating container storage: the container name "xnai_redis" is already in use by e7fdd0e020e7eb60bf9673fa4236769e4b3e4e10563751d9b74c2c850b0d612f. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_redis
+Error: creating container storage: the container name "xnai_postgres" is already in use by cdc1431edf347572ebd65e8695b158d314d24f613af0e9ac5a8f15df24acd6c9. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_postgres
+Error: --userns and --pod cannot be set together
+Error: no container with name or ID "xnai_library_curator" found: no such container
+Error: no container with name or ID "xnai_library_curator" found: no such container
+Process Group PGID: 1318696

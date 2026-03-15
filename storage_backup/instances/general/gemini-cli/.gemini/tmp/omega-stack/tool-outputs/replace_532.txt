@@ -1,0 +1,15 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.oikos (1 replacements). Here is the updated code:
+...
+    uvicorn \
+    litellm \
+    python-dotenv \
+    httpx \
+    pyyaml \
+    anyio \
+    google-cloud-aiplatform
+
+# Copy application and scripts
+COPY app/oikos_service.py ./app/
+COPY scripts/ ./scripts/
+
+...

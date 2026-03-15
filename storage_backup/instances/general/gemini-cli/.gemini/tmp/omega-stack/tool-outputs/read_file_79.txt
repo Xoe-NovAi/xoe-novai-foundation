@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-2000 of 2242 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+.md ]; then \\\n\t\techo \"$(RED)❌ ERROR: PERFORMANCE.md baseline file missing$(NC)\"; \\\n\t\texit 1; \\\n\tfi\n\t@$(PYTHON) setup/query_test.py --benchmark\n\t@echo \"$(YELLOW)💡 Compare results above with docs/03-reference/PERFORMANCE.md$(NC)\""
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773356269657_0_qtoenn.txt
+</tool_output_masked>

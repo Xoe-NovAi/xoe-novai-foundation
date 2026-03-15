@@ -1,0 +1,6 @@
+Output: 📡 Foundry: Waiting for Oikos Service at http://localhost:8006/iris/route...
+✅ Oikos Service is ONLINE.
+🔱 Foundry: Sending problem to Iris Bridge...
+❌ Connection Error: Oikos Service is likely offline. ()
+💡 Suggestion: Start the service with 'python3 app/oikos_service.py'
+Process Group PGID: 560547

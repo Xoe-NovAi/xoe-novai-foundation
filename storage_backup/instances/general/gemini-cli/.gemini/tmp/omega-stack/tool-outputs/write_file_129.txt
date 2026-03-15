@@ -1,0 +1,34 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60a489d7-8146-4904-b060-2c573f022352/plans/SESS-15-CHAT-TRIMMING.md. Here is the updated code:
+# 🔱 Implementation Plan: SESS-15 Chat Trimming & Recursive State Management
+
+**Objective**: Architect a frontier-grade session-state management protocol for the Omega Stack. This system (codenamed "The Librarian") will maximize **Resource Sovereignty** (local context optimization) and **Information Persistence** (long-term session memory) through asynchronous, recursive summarization and deep state observability, fully integrated with the **MemGPT-style hierarchical memory architecture**.
+
+---
+
+## 📍 1. Local Inference Optimization: The "Squeeze"
+**Goal**: Push `n_ctx` limits from 2048 to 8192+ within the 6.6GB RAM budget.
+...
+- [ ] **Deliverable**: A documented Matrix of `n_ctx` vs. `RAM` vs. `Quantization`.
+
+---
+
+## 📍 2. "The Librarian": Asynchronous State Worker
+**Goal**: Manage session bloat and persistence via an offline mesh service, acting as the active agent for the **MemGPT-style memory hierarchy**.
+
+### 📚 Prerequisite Research
+- [ ] **MemGPT Tier Integration**: Study the transition between **Core Memory** (Active Context), **Recall Tier** (Searchable History), and **Archival Tier** (Long-term Knowledge) as defined in `memory_bank/INDEX.md`.
+- [ ] **Automated Curation Pipeline Integration**: Study `AutomatedCurationPipeline` (in `scripts/automated_curation_pipeline.py`) as a template for the Librarian's background loop.
+- [ ] **State Serialization Formats**: Compare `YAML` vs. `JSON` for model "parseability" of complex state anchors (File paths, Git hashes, CLI outputs).
+- [ ] **Zstd-Stream Archival**: Research `zstd` compression ratios and CPU impact for real-time session log archival.
+
+### 🛠️ Execution Skeleton
+- [ ] **Task**: Implement `librarian.py` as a Redis Stream listener, modeled after the `curation_worker.py`.
+- [ ] **Task**: Develop the "State-of-Play" recursive summarization prompt (YAML structured), aligning with the **Curation & Knowledge Management Memory Bank** ontology.
+- [ ] **Task**: Implement differential snapshots and `zstd` archival in `memory_bank/recall/conversations/` and `memory_bank/archival/research/`.
+- [ ] **Deliverable**: A robust background worker for automated session trimming, summarization, and hierarchical archival.
+
+---
+
+## 📍 3. Recursive Observability: Entropy & Health
+**Goal**: Measure information loss and system health through deep instrumentation.
+...

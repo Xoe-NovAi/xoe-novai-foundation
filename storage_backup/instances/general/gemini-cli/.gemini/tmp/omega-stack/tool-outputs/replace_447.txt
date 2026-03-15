@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+    volumes:
+      - ../../app:/app/app:Z
+      - ../../scripts:/app/scripts:Z
+      - ../../memory_bank:/app/memory_bank:Z
+      - ../../.cli:/app/.cli:Z
+      - ../../.logs:/app/.logs:Z
+      - ../../.env:/app/.env:ro,Z
+      - ../../config.toml:/app/config.toml:ro,Z
+    environment:
+      - REDIS_PASSWORD
+      - REDIS_HOST=redis
+...

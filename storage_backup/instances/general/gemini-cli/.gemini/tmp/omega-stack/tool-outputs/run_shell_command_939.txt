@@ -1,0 +1,10 @@
+Output: total 44
+drwxr-xr-x  8 arcana-novai arcana-novai  4096 Mar  8 13:10 .
+drwxr-x---  4 root         root          4096 Mar 11 15:09 ..
+drwxr-xr-x  5 arcana-novai arcana-novai  4096 Mar  6 20:43 ANCESTRAL_HUB
+drwxr-xr-x  4 arcana-novai arcana-novai  4096 Mar  6 20:43 RECLAIMED_PALACE
+drwxrwxr-x 18 arcana-novai arcana-novai  4096 Mar  6 21:12 TREAZZURE
+drwx------  2 arcana-novai arcana-novai 16384 Mar  6 20:40 lost+found
+drwxr-xr-x  2 arcana-novai arcana-novai  4096 Mar  6 21:02 soul_memory
+drwxr-xr-x  2 arcana-novai arcana-novai  4096 Mar  6 21:02 vector_store
+Process Group PGID: 83184

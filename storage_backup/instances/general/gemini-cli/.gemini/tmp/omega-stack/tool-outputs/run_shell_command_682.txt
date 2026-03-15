@@ -1,0 +1,5 @@
+Output: ls: cannot access 'config.toml': No such file or directory
+-rwxrwxr-x 1 100999       100999       14932 Mar  9 10:58 app/config.toml
+-rwxr-xr-x 1 arcana-novai arcana-novai 13436 Mar  2 08:12 config/config.toml
+Exit Code: 2
+Process Group PGID: 316941

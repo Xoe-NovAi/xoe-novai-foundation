@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\"\"\"Database session management for agent services.\"\"\"\n\nfrom sqlalchemy import create_engine, event\nfrom sqlalchemy.orm import sessionmaker, Session\nfrom sqlalchemy.engine import Engine\nfrom sqlalchemy.pool import StaticPool\
+... [TRUNCATED] ...
+ection_record):\n    \"\"\"Set SQLite pragmas for better performance (if using SQLite).\"\"\"\n    if 'sqlite' in DATABASE_URL:\n        cursor = dbapi_connection.cursor()\n        cursor.execute(\"PRAGMA foreign_keys=ON\")\n        cursor.close()"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773008438423_0_8jd1p5.txt
+</tool_output_masked>

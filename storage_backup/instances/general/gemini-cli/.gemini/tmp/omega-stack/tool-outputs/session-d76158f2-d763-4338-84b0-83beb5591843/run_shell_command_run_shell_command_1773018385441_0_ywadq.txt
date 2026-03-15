@@ -1,0 +1,3 @@
+{
+  "output": "Output: Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.\n1\nWarning: Using a password with '-a' or '-u' option on the command line interface may not be safe.\nOK\nWARN[0010] StopSignal SIGTERM failed to stop container xnai_library_curator in 10 seconds, resorting to SIGKILL \nxnai_library_curator\nProcess Group PGID: 1307658"
+}

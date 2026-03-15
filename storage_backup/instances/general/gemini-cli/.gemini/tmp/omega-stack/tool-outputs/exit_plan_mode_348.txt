@@ -1,0 +1,4 @@
+Plan rejected. No feedback provided.
+
+The plan is stored at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/3bbad171-16be-425c-acf9-f6ce35432090/plans/sess-19-maat-ceremony-and-shadow-audit.md
+Ask the user for specific feedback on how to improve the plan.

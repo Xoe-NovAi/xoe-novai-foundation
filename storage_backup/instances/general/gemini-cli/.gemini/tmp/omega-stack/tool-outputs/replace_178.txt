@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60261d1d-e73f-4dc4-be0e-3da9c3a90627/plans/sess_23_gnosis_lexicon_and_audit.md (1 replacements)
+... [TRUNCATED] ...
+make preflight` and verify the background audit.\n- Simulate a high-turn task (200+ turns) and verify checkpointing.\n- Verify Gnostic-SSE streaming from the MCP to a sub-agent.\n- Confirm the `Refraction Gate` blocks a non-resonant tool-call.\n\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773352960534_0_hbnerj.txt
+</tool_output_masked>

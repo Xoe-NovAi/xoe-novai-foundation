@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/protocols/OIKONOMIA_ECONOMICS.md. Here is the updated code:\n# 💰 OIKONOMIA ECONOMICS: TOKEN ROI & CACHE RESONANCE\n\n## 🎯 OVERVIEW\n*
+... [TRUNCATED] ...
+ggers, tracked by the **Oikonomia Engine**.\n\n## 🛠️ TOOLS\n- `make oikonomia-report`: Generate a report of token usage and ROI from `memory_bank/OIKONOMIA_HISTORY.jsonl`.\n- `make metropolis-stats`: Collect metrics from all 8 expert instances.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773356331705_0_qyk0xr.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 24 matches for pattern \"The Architect\" in path \"memory_bank/\":\n---\nFile: MASTER_INDEX.md\nL27: *Focus: Scaling the architecture, implementing tiered memory, and hardening the Agent Bus.*\n---\nFile: _archive/2026-02-11_depr
+... [TRUNCATED] ...
+owledge absorption system that transforms agent research into structured, searchable knowledge within the XNAi Foundation stack. The system prioritizes quality over quantity, ensuring only distilled, high-value knowledge enters the ecosystem.\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/grep_search_grep_search_1773076439381_0_lopeo.txt
+</tool_output_masked>

@@ -1,0 +1,21 @@
+Output:   6045562      4 -rw-------   1 arcana-novai arcana-novai      440 Mar 14 22:01 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/workspace.yaml
+  6046036    124 -rw-r--r--   1 arcana-novai arcana-novai   122880 Mar 14 22:00 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/session.db
+  6070232   2736 -rw-rw-r--   1 arcana-novai arcana-novai  2798553 Mar 14 22:21 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots/index.json
+  6029536     32 -rw-rw-r--   1 arcana-novai arcana-novai    31658 Mar 14 18:12 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots/backups/f42d1793e364d35a-1773522755994
+  6032575     68 -rw-rw-r--   1 arcana-novai arcana-novai    66077 Mar 14 21:38 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots/backups/eab4c4d6c18cab8f-1773535096367
+  6032541      4 -rwxrwxr-x   1 arcana-novai arcana-novai     3062 Mar 14 19:33 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots/backups/b1ce0139be992d6d-1773527616512
+  6032003      4 -rw-rw-r--   1 arcana-novai arcana-novai     2972 Mar 14 18:30 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots/backups/846d38cb59cef4a7-1773523804163
+  6032577     16 -rw-rw-r--   1 arcana-novai arcana-novai    13172 Mar 14 21:38 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots/backups/715a01a5b3249657-1773535096369
+  6032581     28 -rw-rw-r--   1 arcana-novai arcana-novai    26052 Mar 14 22:02 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots/backups/6cba72bf413f13a9-1773536534099
+  6032578     12 -rw-rw-r--   1 arcana-novai arcana-novai    10774 Mar 14 21:38 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots/backups/679915f9a511ec8f-1773535096371
+  6032022      4 -rw-rw-r--   1 arcana-novai arcana-novai     3076 Mar 14 18:30 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots/backups/2c81226dbf5b970f-1773523804165
+  6032559     12 -rw-rw-r--   1 arcana-novai arcana-novai     9702 Mar 14 20:43 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/plan.md.backup.20260314
+  6032573      8 -rw-rw-r--   1 arcana-novai arcana-novai     6184 Mar 14 21:28 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/plan-knowledge-gap-remediation.md
+  6029539      4 -rw-rw-r--   1 arcana-novai arcana-novai        7 Mar 14 19:20 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/inuse.201384.lock
+  6031998      4 -rw-rw-r--   1 arcana-novai arcana-novai        7 Mar 14 18:23 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/inuse.177189.lock
+  6032542     16 -rw-rw-r--   1 arcana-novai arcana-novai    13048 Mar 14 19:41 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/files/ZRAM_PASSWORDLESS_SUDO_GNOSIS_LOCKED_v2.md
+  6032554     12 -rw-rw-r--   1 arcana-novai arcana-novai    11013 Mar 14 19:48 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/files/ENTERPRISE_GNOSIS_v3_OOM_RECOVERY_EXPANDED.md
+  6032023     12 -rw-rw-r--   1 arcana-novai arcana-novai    10847 Mar 14 18:44 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/files/DEEPDIVE_BUILD_OPTIMIZATION_GNOSIS.md
+  6032543      8 -rw-rw-r--   1 arcana-novai arcana-novai     5511 Mar 14 19:42 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/files/CUSTOM_INSTRUCTIONS_ADDITIONS_OOM_RECOVERY.md
+  6032571     16 -rw-rw-r--   1 arcana-novai arcana-novai    16090 Mar 14 21:19 /home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/files/CADDY_AUDIT_AND_OPTIMIZATION_PLAN.md
+Process Group PGID: 61344

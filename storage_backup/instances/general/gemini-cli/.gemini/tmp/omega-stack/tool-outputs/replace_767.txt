@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/infrastructure/session_manager.py (1 replacements). Here is the updated code:
+...
+    Unified session management with Redis persistence and in-memory fallback.
+
+    Priority: Redis (persistent) → In-memory (transient)
+
+    Usage:
+        config = SessionConfig(redis_url="rediss://localhost:6379")
+        manager = SessionManager(config)
+        await manager.initialize()
+
+        # Store data
+        await manager.set("user_id", "12345")
+...

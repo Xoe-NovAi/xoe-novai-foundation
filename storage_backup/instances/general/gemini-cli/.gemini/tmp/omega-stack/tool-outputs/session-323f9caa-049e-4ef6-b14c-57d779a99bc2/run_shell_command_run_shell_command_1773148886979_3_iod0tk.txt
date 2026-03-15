@@ -1,0 +1,3 @@
+{
+  "output": "Output: ./docs/agent_bus_implementation.md:163:omega agent claim agent123 job456                   # Claim a job\n./docs/agent_bus_implementation.md:165:omega job complete job456                           # Complete job\n./scripts/omega.py:350:  omega agent claim agent123 job456                  # Claim a job\nProcess Group PGID: 8173"
+}

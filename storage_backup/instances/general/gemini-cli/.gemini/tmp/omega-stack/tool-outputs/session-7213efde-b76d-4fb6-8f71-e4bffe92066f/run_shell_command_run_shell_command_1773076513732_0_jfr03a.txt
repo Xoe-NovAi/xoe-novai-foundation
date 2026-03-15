@@ -1,0 +1,3 @@
+{
+  "output": "Output: xnai_memory_bank_mcp\nExit Code: 1\nProcess Group PGID: 212668"
+}

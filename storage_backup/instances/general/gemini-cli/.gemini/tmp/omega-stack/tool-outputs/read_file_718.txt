@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 160-195 of 813 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+     retries: 3\n      start_period: 30s\n    networks:\n      - xnai_network\n    restart: unless-stopped\n\n  # ==========================================================================\n  # POSTGRESQL SERVICE - Optional Hybrid GraphRAG storage"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000486103_0_5y7c1i.txt
+</tool_output_masked>

@@ -1,0 +1,32 @@
+Output:   curation_worker:
+    image: localhost/xnai-curation-worker:latest
+    container_name: xnai_curation_worker
+    init: true
+    userns_mode: "keep-id"
+    restart: on-failure
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+    depends_on:
+      - redis
+    environment:
+      - OPENBLAS_CORETYPE=ZEN
+      - OPENBLAS_NUM_THREADS=6
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=${REDIS_TLS_ENABLED:-true}
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - DATA_DIR=/app/data/curations
+      - LOG_DIR=/app/logs/curations
+      - PYTHONPATH=/app
+    volumes:
+      - ./data/curations:/app/data/curations:Z
+      - ./logs/curations:/app/logs/curations:Z
+      - ./app/XNAi_rag_app:/app/XNAi_rag_app:ro
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+    networks:
+Process Group PGID: 980493

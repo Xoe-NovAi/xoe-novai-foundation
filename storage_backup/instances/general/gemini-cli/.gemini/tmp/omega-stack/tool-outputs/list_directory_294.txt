@@ -1,0 +1,3 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/dashboard:
+[DIR] artifacts
+index.html (9256 bytes)

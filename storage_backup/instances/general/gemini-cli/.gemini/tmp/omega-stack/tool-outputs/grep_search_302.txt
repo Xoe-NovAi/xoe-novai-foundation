@@ -1,0 +1,3 @@
+Error during grep search operation: Process exited with code 2: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/data/redis/dump.rdb: Permission denied (os error 13)
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/data/postgres: Permission denied (os error 13)
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/data/vikunja/db: Permission denied (os error 13)

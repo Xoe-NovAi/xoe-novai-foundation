@@ -1,0 +1,17 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/services/ingest_library.py (1 replacements). Here is the updated code:
+...
+        # Initialize components
+        self.enrichment_engine = LibraryEnrichmentEngine()
+        self.scholarly_curator = ScholarlyTextCurator()
+        self.embeddings = None
+        self.vectorstore = None
+        
+        # SI1: Local LLM for curation
+        from XNAi_rag_app.core.dependencies import get_llm_complete
+        self.llm_complete = get_llm_complete
+
+        # Content deduplication
+        self.processed_checksums: Set[str] = set()
+
+        # Rate limiting
+...

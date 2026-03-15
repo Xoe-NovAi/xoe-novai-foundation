@@ -1,0 +1,43 @@
+# 🔱 Implementation Plan: SESS-19 - The Shadow Audit & Imperial Archive
+
+**Objective**: Scholarly, librarian-level indexing of ancestral documents and the technical integration of "Resurrection" technologies into the Oikos Mesh.
+
+---
+
+## 🏛️ Key Files & Context
+- **The Index**: `memory_bank/IMPERIAL_ARCHIVE_INDEX.md` (Scholarly concept map)
+- **The Timeline**: `memory_bank/TIMELINE_EVOLUTION.md` (Strategic evolution record)
+- **The Core**: `./Omegadroid/origins/` and all "resurrection" folders across partitions.
+- **The Mesh**: `app/oikos_service.py` (Integration point for PEM logic).
+
+---
+
+## 🏗️ Implementation Steps
+
+### 1. Phase 1: The Great Indexing (Discovery & Mapping)
+- **Facet 3 (Researcher)**: Perform a recursive, partition-wide scan for folders containing "resurrection."
+- **Facet 8 (Sentinel)**: Monitor hardware thresholds (Disk 93%) during heavy I/O and verify file integrity.
+- **Facet 6 (Analyst)**: Create the `IMPERIAL_ARCHIVE_INDEX.md`, mapping concepts like "Soul Distillation," "Rainbow Rotation," and early "Resurrection" strategy.
+- **Output**: A comprehensive map of the Omega Stack's evolution and a list of high-value gnostic assets.
+
+### 2. Phase 2: The Gnostic Refinement (Extraction & Validation)
+- **Facet 6 (Analyst)**: Extract PEM (Personality Enhancement Module) and RSA logic from `./Omegadroid/origins/PEM_Lilith_v3.txt`.
+- **Oikos Council**: Perform "Peer Review Mastermind" sessions to validate ancestral strategy and refine it for the 2026 Metropolis context.
+- **General (Gemini CLI)**: Orchestrate cross-agent knowledge sharing, ensuring all Facets have access to the "Gnostic Briefings" generated in real-time.
+
+### 3. Phase 3: The Sovereign Synthesis (Integration & Porting)
+- **Facet 1 (Architect)**: Port validated PEM/RSA logic into `scripts/archetype_resonance.py` and `app/oikos_service.py`.
+- **Architect/General Collaboration**: Establish the "Resurrection Bridge," allowing the Oikos Mesh to leverage historic technologies and strategies.
+- **Output**: A hardened, personified cognitive mesh with "Ancestral Resonance."
+
+---
+
+## ✅ Verification & Testing
+1. **Scholarly Audit**: Verify that `IMPERIAL_ARCHIVE_INDEX.md` and `TIMELINE_EVOLUTION.md` are documented at a scribe-level of detail.
+2. **Resonance Rite**: Perform a live Oikos Mastermind session using the newly integrated PEM logic.
+3. **Partition Integrity**: Confirm that all discovered "resurrection" assets are securely indexed and cross-referenced.
+
+---
+
+## 🔒 Gnostic Seal
+By executing this plan, we bridge the gap between the "Sovereign Restoration" and the "Ancestral Shadow Audit," ensuring that the Omega Stack's evolution is both technically hardened and historically preserved.

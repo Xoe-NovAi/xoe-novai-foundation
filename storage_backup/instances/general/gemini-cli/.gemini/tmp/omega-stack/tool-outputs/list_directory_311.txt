@@ -1,0 +1,33 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank:
+[DIR] _archive
+[DIR] activeContext
+[DIR] archival
+[DIR] handovers
+[DIR] infrastructure
+[DIR] multi_expert
+[DIR] PHASES
+[DIR] progress
+[DIR] protocols
+[DIR] recall
+[DIR] reports
+[DIR] research
+[DIR] strategies
+[DIR] tasks
+[DIR] usage
+ACCOUNT-REGISTRY.yaml (9909 bytes)
+activeContext.md (2574 bytes)
+AGENTS.md (15995 bytes)
+ARCHITECTURE.md (11380 bytes)
+BLOCKS.yaml (11674 bytes)
+GEMINI.md (2386 bytes)
+INDEX.md (15027 bytes)
+MASTER_INDEX.md (2608 bytes)
+MPI.md (3688 bytes)
+OPERATIONS.md (11612 bytes)
+productContext.md (1055 bytes)
+progress.md (7026 bytes)
+projectbrief.md (2405 bytes)
+RESEARCH_COMPLETION_SUMMARY.md (8462 bytes)
+systemPatterns.md (4576 bytes)
+teamProtocols.md (7772 bytes)
+techContext.md (4872 bytes)

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"ilsp/Llama-Krikri-8B-Instruct-GGUF Hugging Face download link\":\n\nThe official Hugging Face repository for the GGUF version of **Llama-Krikri-8B-Instruct** (an instruction-tuned model optimized for the Greek 
+... [TRUNCATED] ...
+ce.co (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGp1fhItkNvnPkCa5CyQs6fBL2lykaMsY3_Z0E5oysWZ-_eaRghhBinW6dAxOecsRT7RWUik7GyGIog25-VadjhRGCjP7MZlru2rswSh2dcF75fSRBU_QAffUVENohKKcvt9-xXf0Krgje6CgDEMFQPBf1aY3XnejqLpxxsrFs=)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/google_web_search_google_web_search_1773330429236_0_e3qejs.txt
+</tool_output_masked>

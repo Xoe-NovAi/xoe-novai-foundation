@@ -1,0 +1,3 @@
+{
+  "output": "Output: lrwxrwxrwx 1 arcana-novai arcana-novai 109 Mar  8 13:37 /home/arcana-novai/.gemini/settings.json -> /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/settings.json\nProcess Group PGID: 242866"
+}

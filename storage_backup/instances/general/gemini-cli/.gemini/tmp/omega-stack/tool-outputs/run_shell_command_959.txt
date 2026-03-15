@@ -1,0 +1,4 @@
+Output: Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p3  110G   34G   71G  33% /media/arcana-novai/omega_library
+/dev/nvme0n1p4   16G   12G  3.5G  77% /media/arcana-novai/omega_vault
+Process Group PGID: 77369

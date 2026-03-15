@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+                        "memory_limit_gb": {
+                            "type": "number",
+                            "description": "Maximum memory the agent can use in GB"
+                        }
+                    },
+                    "required": ["agent_id", "auth_token", "capabilities", "memory_limit_gb"]
+                }
+            ),
+            Tool(
+                name="get_context",
+                description="Get context for an agent with progressive loading support and optional key filtering",
+...

@@ -1,0 +1,21 @@
+Output: /app:
+app
+data
+logs
+mcp-server
+
+/app/app:
+GEMINI.md
+XNAi_rag_app
+__init__.py
+__pycache__
+config.toml
+
+/app/app/XNAi_rag_app:
+__init__.py
+__pycache__
+api
+cli
+conversation_ingestion.py
+core
+Process Group PGID: 853875

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:\n...\n                }\n            )\n        ]\n\n    async def handle_
+... [TRUNCATED] ...
+  arguments[\"context_data\"],\n                    arguments.get(\"tier\", \"hot\")\n                )\n                return [TextContent(\n                    type=\"text\",\n                    text=json.dumps(result)\n                )]\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001083411_0_stqk9p.txt
+</tool_output_masked>

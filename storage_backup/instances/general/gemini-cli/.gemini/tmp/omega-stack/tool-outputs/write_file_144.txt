@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/gnostic_preflight.py. Here is the updated code:\n#!/usr/bin/env python3\n\"\"\"\n🔱 GNOSTIC PRE-FLIGHT: mmap-Optimized Hash Verifica
+... [TRUNCATED] ...
+ \n    # 3. UID Check\n    if os.getuid() == 1000:\n        print(\"✅ UID Integrity: 1000 (Sovereign)\")\n    else:\n        print(f\"⚠️ Warning: Non-standard UID detected ({os.getuid()})\")\n\nif __name__ == \"__main__\":\n    preflight_check()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773354407332_1_04k134.txt
+</tool_output_masked>

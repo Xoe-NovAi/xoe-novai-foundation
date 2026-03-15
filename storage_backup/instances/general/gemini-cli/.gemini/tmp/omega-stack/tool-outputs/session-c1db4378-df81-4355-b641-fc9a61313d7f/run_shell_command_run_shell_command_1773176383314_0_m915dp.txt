@@ -1,0 +1,3 @@
+{
+  "output": "Output: XNAi_rag_app/\ndata/\nlogs/\nProcess Group PGID: 101662"
+}

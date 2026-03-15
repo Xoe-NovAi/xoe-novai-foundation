@@ -1,0 +1,15 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - ../../storage_new/data/cache:/home/appuser/.cache:Z,U
+      - ../../library:/library:z,U
+      - ../../knowledge_new:/knowledge:z,U
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+      - ../../app/config.toml:/app/config.toml:ro,Z,U
+      - ./models:/models:ro,Z,U
+      - ./embeddings:/embeddings:ro,Z,U
+    environment:
+      - OPENBLAS_CORETYPE=ZEN
+      - OPENBLAS_NUM_THREADS=6
+      - LLAMA_CPP_N_THREADS=6
+      - LLM_MODEL_PATH=/models/Qwen3-0.6B-Q6_K.gguf
+...

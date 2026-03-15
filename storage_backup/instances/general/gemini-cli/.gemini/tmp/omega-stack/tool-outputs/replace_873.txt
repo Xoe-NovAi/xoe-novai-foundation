@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/workers/library_curator.py (1 replacements). Here is the updated code:\n...\n            logger.warning(f\"Task {task_id} missing query for
+... [TRUNCATED] ...
+\")\n            await self._post_update(task_id, sender, \"failed\", {\"error\": str(e)})\n\n    async def _post_update(self, task_id: str, target: str, status: str, result: Any):\n        \"\"\"Post result back to task_updates stream.\"\"\"\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773018632877_0_p20lbm.txt
+</tool_output_masked>

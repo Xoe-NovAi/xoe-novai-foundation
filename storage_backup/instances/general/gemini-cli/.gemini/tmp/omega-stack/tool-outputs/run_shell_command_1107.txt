@@ -1,0 +1,32 @@
+Output: ALTER ROLE
+#!/usr/bin/env python3
+"""
+Memory Bank MCP Fallback Wrapper
+=================================
+Wraps the MemoryBankMCP server and provides automatic fallback to SQLite when
+the primary Redis backend becomes unavailable.
+
+Implements circuit breaker pattern with graceful degradation.
+"""
+
+import asyncio
+import logging
+from typing import Dict, Any, Optional, Callable
+from datetime import datetime, timedelta
+
+from memory_bank_store import MemoryBankStore, ContextTier, ContextType
+
+logger = logging.getLogger(__name__)
+
+class FallbackCircuitBreaker:
+    """Circuit breaker for MCP server health."""
+    
+    def __init__(
+        self,
+        failure_threshold: int = 3,
+        recovery_timeout: int = 60,
+        half_open_max_calls: int = 2
+    ):
+        self.failure_threshold = failure_threshold
+        self.recovery_timeout = recovery_timeout
+Process Group PGID: 868686

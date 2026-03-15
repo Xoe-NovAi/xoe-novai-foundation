@@ -344,7 +344,8 @@ pytest tests/integration/
 
 ```
 docs/
-├── ARCHITECTURE_OVERVIEW.md    # System architecture
+├── gnostic_architecture/
+│   ├── 01_temple_architecture.md  # System architecture (replaces ARCHITECTURE_OVERVIEW.md)
 ├── API_REFERENCE.md            # API documentation
 ├── DEVELOPMENT_GUIDE.md        # Development setup
 ├── DEPLOYMENT_GUIDE.md         # Deployment instructions
@@ -555,7 +556,7 @@ Please describe the tests that you ran to verify your changes.
 
 ### Developer Resources
 
-- **Architecture Overview**: See `docs/ARCHITECTURE_OVERVIEW.md`
+- **Architecture Overview**: See `docs/gnostic_architecture/01_temple_architecture.md`
 - **API Reference**: See `docs/API_REFERENCE.md`
 - **Development Guide**: See `docs/DEVELOPMENT_GUIDE.md`
 

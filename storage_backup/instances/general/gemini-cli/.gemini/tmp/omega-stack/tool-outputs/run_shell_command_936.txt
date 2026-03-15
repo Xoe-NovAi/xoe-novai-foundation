@@ -1,0 +1,11 @@
+Output: DRIVER      VOLUME NAME
+local       xnai_victoriametrics_data
+local       xnai_grafana_data
+local       data
+local       d85a7054a57458f8965864f634d804c873df24d054e884573430b2c372c9dbf9
+local       77267b657ef7d67e62d782e9b309419d0fc040df2c5ea9864ac12fbd4227decf
+local       xnai_huggingface_cache
+local       xnai_booklore_config
+local       xnai_open_webui_data
+local       8a196dcb69adf8874da9e3ab06747a88a48424cefbe5d4cd4b06bfbdb25a51b3
+Process Group PGID: 85361

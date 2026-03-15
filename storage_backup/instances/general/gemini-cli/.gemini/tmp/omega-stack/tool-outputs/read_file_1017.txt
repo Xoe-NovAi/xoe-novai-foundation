@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nContent Sanitization Module - Security Redaction & PII Protection\n==================================================================\nImplements content sanitization for knowledge ingestion and storage.
+... [TRUNCATED] ...
+  _global_sanitizer = ContentSanitizer()\n    return _global_sanitizer\n\n\ndef set_global_sanitizer(sanitizer: ContentSanitizer) -> None:\n    \"\"\"Set the global sanitizer\"\"\"\n    global _global_sanitizer\n    _global_sanitizer = sanitizer\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773290286311_0_0d4639.txt
+</tool_output_masked>

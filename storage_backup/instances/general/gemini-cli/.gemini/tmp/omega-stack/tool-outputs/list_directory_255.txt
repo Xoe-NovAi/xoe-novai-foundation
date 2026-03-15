@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/strategies:\n[DIR] production-tight-stack\nACTIVE-TASK-DISPATCH-2026-02-22.md (5291 bytes)\nACTIVE-TASK-DISPATCH-2026-02-23.md (6687 bytes)\nACTIVE-TA
+... [TRUNCATED] ...
+COMPLETION-REPORT.md (12764 bytes)\nWAVE-4-PHASE-3-IMPLEMENTATION-PLAN.md (87302 bytes)\nWAVE-4-PHASE-3C-COMPLETION-REPORT.md (4197 bytes)\nWORKFLOW-ORCHESTRATION-HANDOFF-v1.0.md (26128 bytes)\nWORKFLOW-ORCHESTRATION-STRATEGY-v1.0.md (50627 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/list_directory_list_directory_1773077900198_0_ebgsu.txt
+</tool_output_masked>

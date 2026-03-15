@@ -1,0 +1,41 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/activeContext.md. Here is the updated code:
+---
+hydration:
+  event_id: "HYD-20260311-003"
+  session_id: "SESS-17"
+  coordination_key: "METROPOLIS-SENTINEL-20260311-V1"
+  timestamp: "2026-03-11T18:35:00Z"
+  status: "SENTINEL-ACTIVE"
+---
+
+# 🔱 Active Context: Metropolis Foundation v4.1.2-HARDENED
+
+**Status**: SENTINEL-ACTIVE ✅ | **Session State**: SESS-17-COMPLETE
+**Coordination Key**: `METROPOLIS-SENTINEL-20260311-V1`
+**Handoff Point**: HYDRATION-20260311-V3-COMPLETE
+
+## 📍 Current Focus
+- **SESS-18**: OpenPipe & Context Scaling (Knowledge Distillation & Local Model KV-Cache Persistence).
+- **SESS-19**: Gemini Observability (Token Metrics & Real-time Reasoning Feedback).
+
+## ✅ Accomplishments (SESS-17: The Great Reconciliation)
+1.  **Storage Sovereignty**: Centralized all models, embeddings, and caches on the Sovereign Library partition (`/media/arcana-novai/omega_library`).
+2.  **PES Async Refactor**: Successfully refactored the Persistent Entity System to `AnyIO` for non-blocking state persistence.
+3.  **The Sentinel Skill**: Initialized and installed the `sentinel-skill` for proactive stack-wide monitoring and hardware-intent correlation.
+4.  **Chronicle System**: Deployed `scripts/omega_chronicle.py` for high-density "Mind-Machine" snapshots.
+5.  **Documentation Foundation**: Ingested Cline's comprehensive documentation suite (Architecture, API, Development, Roadmap).
+6.  **Observability**: Standardized metrics reporting via the **Stats MCP** and Grafana Omega Dashboard.
+
+## 🛡️ The Sentinel's Prime Directive
+- **Immune Response**: Automatic Vikunja task creation for architectural drift or resource pressure (Disk > 93%).
+- **Chronicle Trigger**: Automatic state snapshots on `/compress` or major task completion via `context_watchdog.sh`.
+
+## 🚨 IMMEDIATE PRIORITY (SESS-18)
+1.  **OpenPipe Integration**: Configure `scripts/omega_chronicle.py` to harvest reasoning traces via OpenPipe for local model fine-tuning.
+2.  **KV-Cache Persistence**: Research and prototype `llama-cpp-python` session state serialization for "Hot-Swap" context management.
+3.  **Context Injection**: Refine the high-density chronicle format to maximize reasoning depth for small-window models (Phi-3.5, Qwen 2.5).
+
+## 🚀 Onboarding for Next Session
+1.  **Read**: `memory_bank/chronicles/` (Latest entries).
+2.  **Verify**: `/media/arcana-novai/omega_library` health and availability.
+3.  **Monitor**: `scripts/context_watchdog.sh` logs for automated state capture.

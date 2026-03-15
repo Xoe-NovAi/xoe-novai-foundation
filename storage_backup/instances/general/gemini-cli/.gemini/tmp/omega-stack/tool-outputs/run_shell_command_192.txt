@@ -1,0 +1,23 @@
+Output: 2.9G    /home/arcana-novai/Documents/Xoe-NovAi
+2.6G    /home/arcana-novai/Desktop/GitHub
+1.9G    /home/arcana-novai/Desktop/Pictures
+817M    /home/arcana-novai/Desktop/Documents From SD
+687M    /home/arcana-novai/Desktop/Docs to phone
+552M    /home/arcana-novai/Documents/Tarot Deck
+543M    /home/arcana-novai/Documents/Programming
+497M    /home/arcana-novai/Documents/RECOVERED_GNOSIS
+440M    /home/arcana-novai/Documents/Archives
+407M    /home/arcana-novai/Documents/LLM Knowledge Sources
+276M    /home/arcana-novai/Documents/Cline
+213M    /home/arcana-novai/Documents/Cursor.old
+211M    /home/arcana-novai/Desktop/Loot.S01E10.720p.ATVP.WEBRip.x264-GalaxyTV.mkv
+110M    /home/arcana-novai/Desktop/code_1.107.1-1765982436_amd64.deb
+86M     /home/arcana-novai/Desktop/opencode-desktop-linux-amd64.deb
+58M     /home/arcana-novai/Documents/xnaif-files
+46M     /home/arcana-novai/Documents/docs-backup
+44M     /home/arcana-novai/Documents/Greek Resources
+41M     /home/arcana-novai/Desktop/session-2026-03-07T05-39-ef5899e1.json
+27M     /home/arcana-novai/Documents/docs_2
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p2  109G   79G   25G  77% /
+Process Group PGID: 1860347

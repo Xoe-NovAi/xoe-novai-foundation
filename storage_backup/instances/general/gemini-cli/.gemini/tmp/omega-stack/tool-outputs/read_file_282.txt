@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\"\"\"\nKnowledge Distillation Nodes - Distill Node\n===========================================\n\nContent distillation node for LangGraph.\n\nv2.0: LLM-powered summarization and insight extraction via get_llm_complete.\n      Regex m
+... [TRUNCATED] ...
+with headings\n    sections = re.split(r\"\\n(?=## )\", content)\n    for section in sections[:5]:  # Limit sections\n        if len(\"\\n\".join(parts)) + len(section) < 4000:\n            parts.append(section)\n\n    return \"\\n\".join(parts)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773336237562_0_dr0hi8.txt
+</tool_output_masked>

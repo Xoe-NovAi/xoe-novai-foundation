@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-agentbus:\nREADME.md (1408 bytes)\nrequirements.txt (24 bytes)\nserver.py (13403 bytes)"
+}

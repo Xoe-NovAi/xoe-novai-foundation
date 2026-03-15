@@ -1,0 +1,34 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker:
+[DIR] app
+[DIR] backups
+[DIR] config
+[DIR] config.toml
+[DIR] configs
+[DIR] data
+[DIR] docs
+[DIR] docs-new
+[DIR] embeddings
+[DIR] expert-knowledge
+[DIR] knowledge
+[DIR] library
+[DIR] logs
+[DIR] mkdocs.yml
+[DIR] models
+[DIR] monitoring
+[DIR] scripts
+[DIR] tls
+Caddyfile (1679 bytes)
+docker-compose-noninit.yml (14106 bytes)
+docker-compose.production.yml (4950 bytes)
+docker-compose.yml (22129 bytes)
+Dockerfile (3126 bytes)
+Dockerfile.base (2224 bytes)
+Dockerfile.build (2896 bytes)
+Dockerfile.chainlit (2462 bytes)
+Dockerfile.cline (1314 bytes)
+Dockerfile.crawl (2187 bytes)
+Dockerfile.curation_worker (2117 bytes)
+Dockerfile.curator (1155 bytes)
+Dockerfile.docs (2677 bytes)
+Dockerfile.memory-bank (1015 bytes)
+Makefile (1074 bytes)

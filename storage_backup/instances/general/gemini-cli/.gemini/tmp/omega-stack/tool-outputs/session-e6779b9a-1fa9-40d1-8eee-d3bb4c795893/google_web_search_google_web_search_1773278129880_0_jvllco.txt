@@ -1,0 +1,3 @@
+{
+  "output": "No search results or information found for query: \"litellm vertex_ai authentication docker GOOGLE_APPLICATION_CREDENTIALS OpenAIException fix\""
+}

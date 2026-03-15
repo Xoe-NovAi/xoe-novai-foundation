@@ -1,0 +1,26 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (2 replacements). Here is the updated code:
+...
+      - HF_TOKEN=${HF_TOKEN:-}
+      - STORAGE_PATH=/storage
+      - CONFIG_PATH=/app/config.toml
+      - PYTHONPATH=/app
+    volumes:
+      - ../../storage:/storage:Z,U
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+      - ../../app/config.toml:/app/config.toml:ro,Z,U
+    depends_on:
+      redis:
+        condition: service_healthy
+...
+      - CONFIG_PATH=/app/config.toml
+      - HSA_OVERRIDE_GFX_VERSION=9.0.0
+      - SESSION_ARCHIVE_DIR=/storage/recall/archives
+      - HSA_OVERRIDE_GFX_VERSION=9.0.0
+    volumes:
+      - ../../storage:/storage:Z,U
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+      - ../../app/config.toml:/app/config.toml:ro,Z,U
+    depends_on:
+      redis:
+        condition: service_healthy
+...

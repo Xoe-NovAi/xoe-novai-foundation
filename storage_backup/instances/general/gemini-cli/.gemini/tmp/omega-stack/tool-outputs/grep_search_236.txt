@@ -1,0 +1,8 @@
+Found 4 matches for pattern "TGG|Topological Gnosis-Graph|Skeleton Schema|Bones|SLM" in path "docs/protocols/":
+---
+File: RCF_MASTER_PROTOCOL.md
+L56: - **Integration**: GRA interacts with the **TGG/SLM** by verifying that the "Soul" can still navigate the "Bones" under duress.
+L66: - **Mermaid-Bones (F5)**: Topological Blueprinting & **Rigidity Hashing**.
+L69: The Mermaid-Bones strategy "zips" the entire SOS Mesh into a **Topological Gnosis-Graph (TGG)**.
+L71: - **SLM Interaction**: The **Security Logic Matrix** treats the Blueprint as a **"Skeleton Schema"**; any execution path not pre-mapped in the TGG topology triggers a **"Brittle-Bone Exception"** and is immediately purged.
+---

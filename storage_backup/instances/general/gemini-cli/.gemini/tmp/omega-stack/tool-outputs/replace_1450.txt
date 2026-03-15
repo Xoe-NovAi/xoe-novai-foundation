@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+    userns_mode: "keep-id"
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+    tmpfs:
+      - /app/logs:size=100m,mode=1777
+    volumes:
+      - ./config.toml:/app/config.toml:ro
+...

@@ -1,0 +1,170 @@
+Found 100 matches for pattern "zramctl|lz4|zstd" in path "." (results limited to 100 matches for performance):
+---
+File: orchestration/conductor/tracks/phase-4.1-integration/spec.md
+L22: - **Memory Optimization**: Mandatory verification of 2-tier zRAM (lz4 + zstd) active state via `zramctl`.
+---
+File: tests/benchmarks/KRIKRI_IMPORT_METRICS.md
+L12: /dev/zram1 zstd            8G 135.8M 29.4M  63.1M         [SWAP]
+L13: /dev/zram0 zstd            4G 990.1M  246M 271.8M         [SWAP]
+---
+File: tests/test_phase5a_rollback.py
+L43:     # zramctl -> noop
+L44:     (bin_dir / "zramctl").write_text("""#!/usr/bin/env bash
+---
+File: tests/integration/conftest.py
+L152:         'zram_tiers': ['zstd'], # Found only zstd in preflight
+L178:             zram_info = subprocess.run(['zramctl'], capture_output=True, text=True, timeout=5)
+L179:             if 'zstd' not in zram_info.stdout:
+L182:             pytest.skip("zramctl not available")
+L453:         result = subprocess.run(['zramctl'], capture_output=True, text=True, timeout=5)
+L454:         assert 'zstd' in result.stdout, "zRAM (zstd) not configured"
+---
+File: tests/integration/README.md
+L30: - **zRAM**: 2-tier configuration (lz4 + zstd)
+L131: - zRAM configuration (2-tier: lz4 + zstd)
+L238: zramctl
+---
+File: tests/integration/run_integration_tests.py
+L112:                 zram_info = subprocess.run(['zramctl'], capture_output=True, text=True, timeout=10)
+L113:                 if 'zstd' in zram_info.stdout:
+L120:                 logger.warning("zramctl not available - cannot verify zRAM configuration")
+L507: 4. **Memory Management**: Implement 2-tier zRAM (lz4 + zstd) for memory optimization
+---
+File: tests/integration/test_hw_preflight.py
+L86:         """Test 2-tier zRAM configuration (lz4 + zstd)."""
+L88:             result = subprocess.run(['zramctl'], capture_output=True, text=True, timeout=10)
+L89:             assert result.returncode == 0, "zramctl command failed"
+L93:             # Check for lz4 compression
+L94:             assert 'lz4' in zram_info, "lz4 compression not found in zRAM configuration"
+L96:             # Check for zstd compression
+L97:             assert 'zstd' in zram_info, "zstd compression not found in zRAM configuration"
+L119:             assert 'lz4' in compression_types, "lz4 compression type not found"
+L120:             assert 'zstd' in compression_types, "zstd compression type not found"
+L128:             pytest.skip("zramctl command timed out")
+L130:             pytest.skip("zramctl command not found")
+L242:             'zramctl',
+---
+File: tests/test_zram_health_check.py
+L9: def make_fake_zramctl(output_text, dst_dir):
+L10:     p = os.path.join(dst_dir, 'zramctl')
+L25:     # Prepare fake zramctl output (header + one device line)
+L26:     zram_output = 'DATA COMPR TOTAL ALGORITHM STREAMS\n2.0G 1.0G 2.0G zstd 4'
+L28:     # Create a fake zramctl and ensure PATH picks it up
+L31:     fake = make_fake_zramctl(zram_output, str(bin_dir))
+---
+File: tests/test_validate_phase_5a.py
+L42:         if 'zramctl | grep -q zram0' in cmd:
+---
+File: scripts/persistence-check.sh
+L23: if zramctl | grep -q zram0 2>/dev/null; then
+---
+File: scripts/rj-synth-memory.py
+L194: zramctl --noheadings
+---
+File: scripts/omega_chronicle.py
+L37:         "zram_info": subprocess.getoutput("zramctl --noheadings") if os.path.exists("/usr/bin/zramctl") else "N/A"
+---
+File: scripts/xnai-zram-init.sh
+L11: echo "XNAi zRAM Init: Activating 12GB zstd swap..."
+L17:         /usr/sbin/zramctl --reset "$dev" 2>/dev/null || true
+L26: /usr/sbin/zramctl --find --size "${ZRAM_MB}M" --algorithm zstd
+L38: /usr/sbin/zramctl
+---
+File: scripts/phase5a-rollback.sh
+L44: if command -v zramctl &>/dev/null; then
+L47:   sudo zramctl --reset /dev/zram0 || true
+---
+File: scripts/xnai-zram-multi.sh
+L4: # Tier 1 (Fast): lz4, high priority
+L5: # Tier 2 (Bulk): zstd, medium priority
+L20:         /usr/sbin/zramctl --reset "$dev" 2>/dev/null || true
+L29: echo "Configuring Tier 1 (Fast - lz4)..."
+L30: /usr/sbin/zramctl --find --size "${FAST_MB}M" --algorithm lz4
+L35: echo "Configuring Tier 2 (Bulk - zstd)..."
+L36: /usr/sbin/zramctl --find --size "${BULK_MB}M" --algorithm zstd
+L46: /usr/sbin/zramctl
+---
+File: scripts/monitor_swap.py
+L46:         # Get capacity via zramctl or sysfs
+---
+File: scripts/optimize_ryzen.sh
+L30: if command -v zramctl > /dev/null; then
+L32:     zramctl
+---
+File: scripts/validate-phase-5a.py
+L35:     required_tools = ["zramctl", "systemctl", "swapon"]
+L43:     success, stdout, _ = run_cmd("zramctl --noheadings | wc -l")
+L119:     subprocess.run("zramctl", shell=True)
+---
+File: scripts/xnai_mcp_server.py
+L49:         "zram_info": subprocess.getoutput("zramctl --noheadings")
+---
+File: scripts/phase-5a-stress-test.py
+L143:     subprocess.run(['bash','-c','zramctl || true'])
+---
+File: scripts/zram-health-check.sh
+L34:   if zramctl_out=$(zramctl 2>/dev/null); then
+L36:     header=$(echo "$zramctl_out" | head -n1)
+L44:         data=$(echo "$zramctl_out" | awk -v d="$device_name" 'NR==1{for(i=1;i<=NF;i++){h[$i]=i}} $1==d{print $(h["DATA"])}')
+L45:         compr=$(echo "$zramctl_out" | awk -v d="$device_name" 'NR==1{for(i=1;i<=NF;i++){h[$i]=i}} $1==d{print $(h["COMPR"])}')
+L46:         total=$(echo "$zramctl_out" | awk -v d="$device_name" 'NR==1{for(i=1;i<=NF;i++){h[$i]=i}} $1==d{print $(h["TOTAL"])}')
+L47:         alg=$(echo "$zramctl_out" | awk -v d="$device_name" 'NR==1{for(i=1;i<=NF;i++){h[$i]=i}} $1==d{print $(h["ALGORITHM"])}')
+L48:         streams=$(echo "$zramctl_out" | awk -v d="$device_name" 'NR==1{for(i=1;i<=NF;i++){h[$i]=i}} $1==d{print $(h["STREAMS"])}')
+L67:     done <<< "$zramctl_out"
+---
+File: expert-knowledge/phase5a-best-practices.md
+L8: - Default production-safe zRAM for an 8-core / 16 GiB host: `zram0` size = 8 GiB, `algorithm=zstd(level=3)`, `streams=4`, sysctl: `vm.swappiness=180`, `vm.page-cluster=0`.
+L21: - compression algorithm: `zstd` (level=3) — best compression ratio/CPU tradeoff on modern CPUs
+L36:   zramctl --find --size 8G --algorithm zstd --streams 4 /dev/zram0
+L44:   compression-algorithm = zstd(level=3)
+L47: Sources: zramctl manpage (man8 zramctl), ArchWiki zram.
+L51: - If CPU is constrained, use `lz4` as fallback (lower CPU cost, lower ratio).
+L128: - xnai_zram_disksize_bytes (zramctl DISKSIZE)
+L146: - Add an Ansible play to apply zram-generator or `zramctl` in staging and run the Phase‑5A stress test script for 30 minutes.
+L147: - Automate checks: `zramctl -j` (json) parsing and thresholds validation before enabling swap.
+L153: - zramctl(8) — man7.org: https://man7.org/linux/man-pages/man8/zramctl.8.html
+---
+File: expert-knowledge/reclaimed_gnosis/v28_0_0/XNAi - v28.0.0 Phase 1 Guide - shortened.md
+L437: | `lz4` | 4.3.3 | Compression (Redis optimization) | `import lz4` | `ImportError` |
+---
+File: expert-knowledge/environment/development-workflows/hardware-profile.md
+L115: sudo btrfs filesystem defrag -czstd /path/to/models
+---
+File: expert-knowledge/environment/ryzen-5700u-optimization.md
+L10: - **zRAM**: Use the multi-tiered `lz4` + `zstd` configuration provided in Phase 5A.
+---
+File: expert-knowledge/environment/multi-agent-resource-limits.md
+L20: - **zRAM Priority**: Ensure agents are swapped to zRAM (lz4) before the RAG model is touched.
+---
+File: expert-knowledge/infrastructure/postgres-performance.md
+L40: - **`wal_compression = lz4`**: High-speed WAL compression.
+---
+File: _archive/research-2026-02-27/RESEARCH_TASK_SUMMARY.md
+L166: - **zRAM**: 12GB lz4-compressed swap for memory extension
+---
+File: _archive/research-2026-02-27/SMALL_MODELS_RESEARCH_REPORT.md
+L277: echo lz4 | sudo tee /sys/block/zram0/comp_algorithm
+L284: - **Compression**: Use lz4 for fast compression/decompression
+---
+File: knowledge_base/architecture/modular-design/CONTAINERIZATION_STRATEGY.md
+L745:     encode zstd gzip
+L764:     encode zstd gzip
+L783:     encode zstd gzip
+---
+File: knowledge_base/architecture/modular-design/EXISTING_STACK_INTEGRATION.md
+L177:     encode zstd gzip
+L196:     encode zstd gzip
+L215:     encode zstd gzip
+---
+File: knowledge/technical_manuals/podman/performance.md
+L197: * __zstd:chunked__
+L201: __zstd:chunked__ has better performance than __eStargz__.
+---
+File: docs/05-research/RESEARCH-JOB-2-AMD-RYZEN-5700U-VULKAN-OPTIMIZATION.md
+L176:   primary: lz4  # Fast compression for active memory
+L177:   secondary: zstd  # High compression for swap
+---
+File: docs/02-tutorials/_archive/phase5a-quickstart.md
+L6: - Staging host with `zramctl` installed
+L32: - If zramctl shows no device: check `systemctl status xnai-zram.service` and `journalctl -u xnai-zram.service -n 200`
+---

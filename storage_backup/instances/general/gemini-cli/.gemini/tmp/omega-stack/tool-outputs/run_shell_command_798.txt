@@ -1,0 +1,5 @@
+Output: TYPE           TOTAL       ACTIVE      SIZE        RECLAIMABLE
+Images         107         35          12.25GB     5.221GB (43%)
+Containers     19          4           51.01MB     49.88MB (98%)
+Local Volumes  9           4           1.523GB     0B (0%)
+Process Group PGID: 77912

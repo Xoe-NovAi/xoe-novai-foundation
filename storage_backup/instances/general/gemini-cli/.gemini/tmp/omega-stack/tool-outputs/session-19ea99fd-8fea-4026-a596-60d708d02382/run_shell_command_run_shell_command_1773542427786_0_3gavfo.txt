@@ -1,0 +1,3 @@
+{
+  "output": "Output: {\n  \"tipsShown\": 10,\n  \"focusUiEnabled\": false\n}{\n  \"projects\": {\n    \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack\": \"omega-stack\",\n    \"/home/arcana-novai/.gemini/antigravity/scratch\": \"scratch\",\n    \"/home/arcana-novai\": \"arcana-novai\"\n  }\n}\nProcess Group PGID: 62443"
+}

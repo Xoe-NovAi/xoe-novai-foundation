@@ -1,0 +1,20 @@
+Output: [
+     {
+          "Name": "xnai_huggingface_cache",
+          "Driver": "local",
+          "Mountpoint": "/home/arcana-novai/.local/share/containers/storage/volumes/xnai_huggingface_cache/_data",
+          "CreatedAt": "2026-03-10T19:43:38.050414066-03:00",
+          "Labels": {
+               "com.docker.compose.project": "docker",
+               "io.podman.compose.project": "docker"
+          },
+          "Scope": "local",
+          "Options": {},
+          "UID": 1001,
+          "GID": 1001,
+          "MountCount": 0,
+          "NeedsCopyUp": true,
+          "LockNumber": 11
+     }
+]
+Process Group PGID: 85479

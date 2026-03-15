@@ -1,0 +1,31 @@
+<tool_output_masked>
+Output too large. Showing first 12,000 and last 48,000 characters. For full output see: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/run_shell_command_1773174734755_0.txt
+Output: [1/2] STEP 1/11: FROM xnai-base:latest AS builder
+[1/2] STEP 2/11: LABEL maintainer="Xoe-NovAi Team"
+--> Using cache 9a5203f80bcab3238701d780dfbb5abb4cec5085421bd19c306a06ec07193a59
+--> 9a5203f80bca
+[1/2] STEP 3/11: LABEL version="0.1.7"
+--> Using cache 56d0eab88c73e5b123c8f8a98772ddd8a2b617122cdff7b10bc56292f3dd4fa6
+--> 56d0eab88c73
+[1/2] STEP 4/11: LABEL description="Xoe-NovAi RAG API Builder Image"
+--> Using cache 3603313f546671f9f272941f6fccf09096f1d9d3998998ad011602009e8046a5
+--> 3603313f5466
+
+... [857 lines omitted] ...
+
+[2/2] STEP 3/15: LABEL version="0.1.7"
+--> Using cache 56d0eab88c73e5b123c8f8a98772ddd8a2b617122cdff7b10bc56292f3dd4fa6
+--> 56d0eab88c73
+[2/2] STEP 4/15: LABEL description="Xoe-NovAi RAG API Service - Runtime Image"
+--> Using cache 2549bb0dfd344b40dc8920507ddc81447c76b3072d29071dba33a5e7ec0a1eb6
+--> 2549bb0dfd34
+[2/2] STEP 5/15: WORKDIR /app
+--> Using cache ec32a1b2d5f159f0a615feca9ee3f1500825ca494287ab6a6a1ec649c05d5e51
+--> ec32a1b2d5f1
+[2/2] STEP 6/15: COPY --from=builder /usr/local/lib/python3.12 /usr/local/lib/python3.12
+Error: committing container for step {Env:[PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin LANG=C.UTF-8 GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305 PYTHON_VERSION=3.12.13 PYTHON_SHA256=c08bc65a81971c1dd5783182826503369466c7e67374d1646519adf05207b684 DEBIAN_FRONTEND=noninteractive PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 PIP_NO_CACHE_DIR=off PIP_DISABLE_PIP_VERSION_CHECK=1 UV_LINK_MODE=copy] Command:copy Args:[/usr/local/lib/python3.12 /usr/local/lib/python3.12] Flags:[--from=builder] Attrs:map[] Message:COPY --from=builder /usr/local/lib/python3.12 /usr/local/lib/python3.12 Heredocs:[] Original:COPY --from=builder /usr/local/lib/python3.12 /usr/local/lib/python3.12}: copying layers and metadata for container "4e4103ca5d71a3411271ff9240c1cf506a6d14ed6fc8e840373f1db6c841d732": writing blob: adding layer with blob "sha256:3d946284ca2a7a380fa902b40bca355919765bdab399d67677ada8c809a15620"/""/"sha256:3d946284ca2a7a380fa902b40bca355919765bdab399d67677ada8c809a15620": unpacking failed (error: exit status 1; output: write /usr/local/lib/python3.12/site-packages/pip/_internal/build_env.py: no space left on device)
+Exit Code: 1
+Process Group PGID: 69729
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/run_shell_command_run_shell_command_1773174734755_0_gqht9.txt
+</tool_output_masked>

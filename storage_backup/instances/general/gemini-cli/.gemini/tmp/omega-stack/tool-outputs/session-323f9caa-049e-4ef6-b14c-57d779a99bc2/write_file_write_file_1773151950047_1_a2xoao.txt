@@ -1,0 +1,3 @@
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/protocols/DOCUMENTATION_IMPACT_PROTOCOL.md. Here is the updated code:\n---\ntitle: Documentation & Diagram Impact Protocol\nversion: 1.0\nstatus: active\ntags: [documentation, refactor, protocol, metropolis]\nlast_sync: 2026-03-10\n---\n\n# 📄 Documentation & Diagram Impact Protocol (v1.0)\n\n**Mandate**: Every code refactor, architectural change, or secret rotation MUST trigger a documentation impact assessment.\n\n## 1. Impact Assessment Matrix\n..."
+}

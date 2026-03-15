@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/dashboard:\n[DIR] artifacts\nindex.html (9256 bytes)"
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 14 file(s) matching \"**/security/*\" across 2 workspace directories, sorted by modification time (newest first):\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/fastapi/security/utils.p
+... [TRUNCATED] ...
+SP-LLM-AUDIT-2026-02-23.md\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_base/expert-knowledge/security/sovereign-trinity-expert-v1.0.0.md\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/unit/security/test_sanitization.py"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/glob_glob_1773082115461_0_30s8v.txt
+</tool_output_masked>

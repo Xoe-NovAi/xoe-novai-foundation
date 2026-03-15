@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/expert-knowledge/reclaimed_gnosis/v28_0_0:\nXNAi - v28.0.0 Phase 1 Guide - shortened.md (80473 bytes)"
+}

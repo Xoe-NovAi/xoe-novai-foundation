@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\n🔱 OIKOS SERVICE: The Cognitive Mesh of the Omega Stack\nManages Iris (Routing), The Council (Individual Agents), and The Mastermind (Collective Decisioning).\nPort: 8006\n\"\"\"\nimport anyio\nimport os
+... [TRUNCATED] ...
+Complete for [{session_id}].\")\n\n@app.get(\"/health\")\nasync def health_check():\n    return {\"status\": \"ACTIVE\", \"hearth\": \"WARM\"}\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8006)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773279257000_0_szjckc.txt
+</tool_output_masked>

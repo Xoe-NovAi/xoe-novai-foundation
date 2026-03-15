@@ -1,0 +1,6 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/expert-knowledge:
+[DIR] reclaimed_gnosis
+api-expert.yaml (1818 bytes)
+architect-expert.yaml (1882 bytes)
+research-expert.yaml (1733 bytes)
+ui-expert.yaml (1827 bytes)

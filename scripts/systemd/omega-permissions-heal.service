@@ -1,0 +1,15 @@
+[Unit]
+Description=Omega Stack Permissions Healer (Epoch 2)
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/home/arcana-novai/Documents/Xoe-NovAi/omega-stack
+ExecStart=/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/omega-permissions-heal.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

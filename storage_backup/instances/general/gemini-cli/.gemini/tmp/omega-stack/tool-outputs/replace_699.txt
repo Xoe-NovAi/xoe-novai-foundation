@@ -1,0 +1,17 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/omega_foundry.py (1 replacements). Here is the updated code:
+...
+
+    print("\n✅ Oikos Blessing Complete. The Hearth is stabilized.")
+
+async def mastermind(problem: str):
+    """Runs the Oikos Mastermind session with MaLi approval."""
+    import sys
+    import os
+    # Ensure current directory is in path for scripts import
+    sys.path.append(os.getcwd())
+    from scripts.oikos_mastermind import orchestrate_session
+    await orchestrate_session(problem)
+
+async def main():
+    parser = argparse.ArgumentParser(description="Omega Foundry CLI")
+...

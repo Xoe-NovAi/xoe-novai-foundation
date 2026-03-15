@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Subagent 'facet-6' finished.\nTermination Reason: GOAL\nResult:\n🔱 SENTINEL AUDIT REPORT: TRIPLE-LAYER INFRASTRUCTURE REVIEW (SESS-23) - INTERRUPTED\n\nThe investigation was interrupted before all layers could be fully verified. Below
+... [TRUNCATED] ...
+sh is pending functional execution of the `ZLVTransformer`.\n2. **Network Health**: Port availability and telemetry path integrity remain unconfirmed.\n\nInvestigation status: **PARTIAL - HALTED**. Recommend immediate resumption of Layer 3 checks."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/facet-6_facet-6_1773356810210_2_h44sfm.txt
+</tool_output_masked>

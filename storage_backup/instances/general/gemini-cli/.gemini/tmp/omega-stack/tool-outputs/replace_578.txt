@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.oikos (1 replacements). Here is the updated code:
+...
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --default-timeout=1000 \
+    fastapi \
+    uvicorn \
+    litellm \
+    python-dotenv \
+    httpx \
+...

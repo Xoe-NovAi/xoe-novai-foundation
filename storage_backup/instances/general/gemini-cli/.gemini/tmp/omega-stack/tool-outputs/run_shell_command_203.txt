@@ -1,0 +1,30 @@
+<tool_output_masked>
+Output: CONTAINER ID  IMAGE                                              COMMAND               CREATED         STATUS                                PORTS                                                                                                                               NAMES
+fc72737228fe  localhost/docker_memory-bank-mcp:latest            python server.py      26 hours ago    Up 26 hours                                                                                                                                                               nervous_lederberg
+bd540d3f7a1b  docker.io/library/consul:1.15.4                    agent -server -ui...  14 minutes ago  Exited (1) 14 minutes ago (starting)  0.0.0.0:8500->8500/tcp, 0.0.0.0:8600->8600/udp, 8300-8302/tcp, 8600/tcp, 8301-8302/udp                                              xnai_consul
+b9aa6ab3cb18  docker.io/library/redis:7.4.1                      redis-server --re...  14 minutes ago  Up 14 minutes (healthy)               0.0.0.0:6379->6379/tcp                                                                                                              xnai_redis
+bae54d09bc1f  localhost/docker_oikos:latest                      uvicorn app.oikos...  14 minutes ago  Up 14 minutes (healthy)               0.0.0.0:8006->8006/tcp                                                                                                              xnai_oikos
+cb012e20d879  docker.io/victoriametrics/victoria-metrics:latest  -storageDataPath=...  14 minutes ago  Exited (2) 1 second ago (starting)    0.0.0.0:8428->8428/tcp                                                                                                              xnai_victoriametrics
+15894cefe6d1  docker.io/qdrant/qdrant:v1.13.1                    ./entrypoint.sh       14 minutes ago  Up 14 minutes (unhealthy)             0.0.0.0:6333-6334->6333-6334/tcp                                                                                                    xnai_qdrant
+e9d1bdf6d9e7  docker.io/library/postgres:15                      postgres              14 minutes ago  Up 14 minutes (healthy)               0.0.0.0:5432->5432/tcp                                                                                                              xnai_postgres
+a6fcda110853  localhost/xnai-mkdocs:latest                       sh -c echo '🚀 ...     14 minutes ago  Up 4 seconds                          0.0.0.0:8008->8000/tcp                                                                                                              xnai_mkdocs
+23414bd4c3bc  docker.io/library/postgres:16-alpine               postgres              14 minutes ago  Up 14 minutes (healthy)               5432/tcp                                                                                                                            xnai_vikunja_db
+
+... [13 lines omitted] ...
+
+cb012e20d879
+57859d85f241
+bae54d09bc1f
+bd540d3f7a1b
+15894cefe6d1
+a6fcda110853
+5a0c1277f12c
+d64d8dadbca9
+b9aa6ab3cb18
+7f2edb3536b5
+Error: container 23414bd4c3bcc0ae4875d76459717d782303a63ab69f348c68d8fd5a333e367e has dependent containers which must be removed before it: bb3b018bbc838c04e21422dc6bf11bb7dffefc93df0f99de1eade084eca951f0: container already exists
+Exit Code: 125
+Process Group PGID: 1855490
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773337662104_0_fvof2g.txt
+</tool_output_masked>

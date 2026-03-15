@@ -1,0 +1,53 @@
+Output: WARN[0000] Could not find mount at destination "/var/run" when parsing user volumes for container 9b10f2ef5faf892b3dc2642c683eeb53ae99ad30d98a08db24790ff3bd70500c 
+          "Mounts": [
+               {
+                    "Type": "volume",
+                    "Name": "xnai_huggingface_cache",
+                    "Source": "/home/arcana-novai/.local/share/containers/storage/volumes/xnai_huggingface_cache/_data",
+                    "Destination": "/home/appuser/.cache/huggingface",
+                    "Driver": "local",
+                    "Mode": "Z",
+                    "Options": [
+                         "U",
+                         "nosuid",
+                         "nodev",
+                         "rbind"
+                    ],
+                    "RW": true,
+                    "Propagation": "rprivate"
+               },
+               {
+                    "Type": "bind",
+                    "Source": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_new",
+                    "Destination": "/knowledge",
+                    "Driver": "",
+                    "Mode": "",
+                    "Options": [
+                         "rbind"
+                    ],
+                    "RW": true,
+                    "Propagation": "rprivate"
+               },
+               {
+                    "Type": "bind",
+                    "Source": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/tls/ca.crt",
+                    "Destination": "/tls/ca.crt",
+                    "Driver": "",
+                    "Mode": "",
+                    "Options": [
+                         "rbind"
+                    ],
+                    "RW": false,
+                    "Propagation": "rprivate"
+               },
+               {
+                    "Type": "bind",
+                    "Source": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/config.toml",
+                    "Destination": "/app/config.toml",
+                    "Driver": "",
+                    "Mode": "",
+                    "Options": [
+                         "rbind"
+                    ],
+                    "RW": false,
+Process Group PGID: 92765

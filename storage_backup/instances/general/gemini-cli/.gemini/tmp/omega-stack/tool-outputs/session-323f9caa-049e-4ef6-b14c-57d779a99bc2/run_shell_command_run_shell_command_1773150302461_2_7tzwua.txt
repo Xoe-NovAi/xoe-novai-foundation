@@ -1,0 +1,3 @@
+{
+  "output": "Output: 101:        password = os.getenv(\"REDIS_PASSWORD\", \"\")\n102:        # Use rediss:// if password is set (implies TLS in our stack)\n103:        protocol = \"rediss\" if password else \"redis\"\n104:        return f\"{protocol}://:{password}@{host}:{port}/0\"\nProcess Group PGID: 9656"
+}

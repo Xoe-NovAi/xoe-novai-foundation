@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/gnostic_audit.py. Here is the updated code:\n#!/usr/bin/env python3\n\"\"\"\n🔱 GNOSTIC AUDIT: The Triad of Verification\nPerforms Z
+... [TRUNCATED] ...
+elf.report[\"summary\"][\"fail\"] > 0:\n            print(\"\\n⚠️  Action Required: Fix Brittle-Bone violations in TGG.\")\n            # sys.exit(1)\n\nif __name__ == \"__main__\":\n    auditor = GnosticAuditor()\n    auditor.run_global_audit()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773354462118_0_6zjgyx.txt
+</tool_output_masked>

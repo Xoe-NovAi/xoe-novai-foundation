@@ -1,0 +1,3 @@
+{
+  "output": "Found 8 matches for pattern \"llama\" in path \"infra/docker/Dockerfile\":\n---\nFile: Dockerfile\nL36: # Install llama-cpp-python==0.3.16 with Vulkan/OpenBLAS support\nL37: ENV CMAKE_ARGS=\"-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS -DLLAMA_AVX2=ON -DLLAMA_FMA=ON -DLLAMA_F16C=ON -DLLAMA_VULKAN=ON\" \\\nL41:     echo \"🔨 Building llama-cpp-python==0.3.16 with Vulkan/OpenBLAS...\" && \\\nL42:     uv pip install --system --verbose llama-cpp-python==0.3.16\nL70:     LLAMA_CPP_N_THREADS=6 \\\nL71:     LLAMA_CPP_F16_KV=true \\\nL72:     LLAMA_CPP_USE_MLOCK=true \\\nL73:     LLAMA_CPP_USE_MMAP=true \\\n---"
+}

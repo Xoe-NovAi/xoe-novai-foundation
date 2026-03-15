@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 100 matches for pattern \"librarian|curation|curator\" in path \".\" (results limited to 100 matches for performance):\n---\nFile: scripts/automated_curation_pipeline.py\nL3: Automated Curation Pipeline\nL40: CONFIG_PATH = Path(\
+... [TRUNCATED] ...
+: \"Fix Curation Script API\",\nL23:     \"labels\": [\"bug\", \"curation\"],\n---\nFile: orchestration/handovers/RAPTOR-HANDOFF-DOCKER-REFAC-2026-03-02.md\nL14:    `Dockerfile.crawl`, and `Dockerfile.curation_worker` now follow a multi-stage\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/grep_search_grep_search_1773186149584_0_wbyvll.txt
+</tool_output_masked>

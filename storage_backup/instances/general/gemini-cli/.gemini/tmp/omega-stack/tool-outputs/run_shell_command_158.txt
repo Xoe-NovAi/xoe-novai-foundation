@@ -1,0 +1,10 @@
+Output: dfb6dba7-9eb0-41e5-9828-67ca28f7c392
+/home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392:
+/home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/ARCHIVE:
+/home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/ARCHIVE/2026-03-14-consolidation:
+/home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/checkpoints:
+/home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/files:
+/home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/research:
+/home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots:
+/home/arcana-novai/.copilot/session-state/dfb6dba7-9eb0-41e5-9828-67ca28f7c392/rewind-snapshots/backups:
+Process Group PGID: 59576

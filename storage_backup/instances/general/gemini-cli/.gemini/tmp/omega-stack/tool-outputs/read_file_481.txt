@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 215-300 of 824 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+i\n      - POSTGRES_USER=postgres\n      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}\n      - IAM_DB_PATH=/app/data/iam.db\n      - JWT_PRIVATE_KEY_PATH=/app/data/jwt-private-key.pem\n      - JWT_PUBLIC_KEY_PATH=/app/data/jwt-public-key.pem"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773004367495_0_83l4pg.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+Output: CLAUDE-SONNET-RESEARCH-REQUEST-PHASE-5-7.md  RESEARCH-REQUEST-TEMPLATES                     grok-mc-evaluation-report.md
+Exa-API-Setup-Guide.md                       RESEARCH-REQUESTS-DOCUMENTATION-EXCELLENCE.md  index.md
+Grok-MCA-context-doc-02-06-2026.md           RESEARCH-RESULTS                               sessions
+OPERATION-LORE-MINING.md                     RESEARCH-S1-AUTONOMOUS-COMMUNICATION.md        xoe-novai-research-phases-expansion-priorities.md
+PHASE-5-zRAM-OPTIMIZATION-DESIGN.md          RESEARCH-S2-CNS-FRAMEWORK.md                   xoe-novai-research-phases-v2-COMPLETE.md
+README.md                                    RESEARCH-S3-ZRAM-TIERING.md                    xoe-novai-research-phases-v2.md
+RESEARCH-MASTER-INDEX.md                     RESEARCH-SESSIONS
+RESEARCH-P0-CRITICAL-PATH.md                 XOE-NOVAI-RESEARCH-REPORT-2026-02-11.md
+Process Group PGID: 424293

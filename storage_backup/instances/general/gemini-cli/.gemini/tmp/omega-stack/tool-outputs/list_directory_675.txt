@@ -1,0 +1,4 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/research_env/research-environment/scripts:
+[DIR] __pycache__
+jupyter_vikunja_integration.py (14444 bytes)
+research_queue_worker.py (7733 bytes)

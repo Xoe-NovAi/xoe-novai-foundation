@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/ui/chainlit_app_unified.py (1 replacements). Here is the updated code:
+...
+    init_session_state()
+
+    # Initialize session manager
+    if INFRASTRUCTURE_AVAILABLE and FEATURE_REDIS_SESSIONS:
+        try:
+            redis_url = f"rediss://:{urllib.parse.quote_plus(REDIS_PASSWORD)}@{REDIS_HOST}:{REDIS_PORT}/0"
+            config = SessionConfig(redis_url=redis_url)
+            _session_manager = SessionManager(config)
+            await _session_manager.initialize()
+            logger.info(f"Session manager initialized: {_session_manager.session_id}")
+        except Exception as e:
+...

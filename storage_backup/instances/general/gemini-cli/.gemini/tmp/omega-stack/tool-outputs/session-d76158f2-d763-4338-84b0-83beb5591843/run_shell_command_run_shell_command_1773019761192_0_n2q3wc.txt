@@ -1,0 +1,3 @@
+{
+  "output": "Output: grep: app/XNAi_rag_app/api/__pycache__/semantic_search_agent_bus.cpython-313.pyc: binary file matches\ngrep: app/XNAi_rag_app/api/__pycache__/middleware.cpython-313.pyc: binary file matches\napp/XNAi_rag_app/api/semantic_search_agent_bus.py:    type: str  # task_assignment, task_completion, error_report, heartbeat\napp/XNAi_rag_app/api/semantic_search_agent_bus.py:                type=\"task_completion\",\napp/XNAi_rag_app/api/middleware.py:        logger.warning(f\"Failed to log query completion to Redis: {e}\")\nProcess Group PGID: 1335372"
+}

@@ -1,0 +1,15 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.base (1 replacements). Here is the updated code:
+...
+        redis>=7.3.0 \
+        pyyaml>=6.0 \
+        toml>=0.10.2
+
+# Create a non-root user
+RUN groupadd -g 1000 appuser && \
+    useradd -m -u 1000 -g 1000 -s /bin/bash appuser
+
+RUN mkdir -p /app/logs /app/data && \
+    chmod 1777 /app/logs /app/data
+
+WORKDIR /app
+...

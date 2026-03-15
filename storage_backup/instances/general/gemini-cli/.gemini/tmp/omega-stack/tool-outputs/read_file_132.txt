@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\ndocument_type: report\ntitle: STRATEGY SESS-19-SHADOW AUDIT\ncreated_by: Haiku-4.5 (Phase 2C Automation)\ncreated_date: 2026-03-13\nversion: 1.0\nstatus: active\nhash_sha256: 42f53b17dbcf3c54df7fba6fb213653b659ed4ec42d0a18082ecbcb
+... [TRUNCATED] ...
+he core logic from `PEM_Lilith_v3.txt`.\n3.  **Phase 3 (Integration)**: Facet 1 ports the distilled logic into the Oikos Service.\n4.  **Phase 4 (Validation)**: Facet 8 performs the first \"Resonance Rite\" to verify the new personality scoring.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773542036341_1_cwnvum.txt
+</tool_output_masked>

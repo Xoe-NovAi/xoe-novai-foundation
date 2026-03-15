@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# Xoe-NovAi Foundation Stack\n\n**Build your own AI. Own your data. Evolve your future.** 🔱\n\n> **Production-Tight Local Agentic RAG System**  \n> 100% local · Zero telemetry · Ryzen 5700U Optimized · Maat Ethical Overlay\n\n---\n\n#
+... [TRUNCATED] ...
+nsmission\n2. **Local-First**: All processing on your hardware\n3. **Ethical AI**: Maat guardrails on all agents\n4. **Self-Evolution**: Continuous learning from interactions\n\n---\n\n🔱 **Xoe-NovAi** — Private forge for sovereign intelligence.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773192012606_0_wwnd2i.txt
+</tool_output_masked>

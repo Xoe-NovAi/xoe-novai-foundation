@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: docs/01-infrastructure/01-phase1-architecture.md
+docs/01-infrastructure/02-connection-guide.md
+docs/01-infrastructure/03-database-schema.md
+docs/01-infrastructure/qdrant-collections-quickstart.md
+docs/01-infrastructure/qdrant-query-strategy.md
+docs/01-start/ONBOARDING-CHECKLIST.md
+docs/01-start/START-HERE.md
+docs/01-start/USER-ONBOARDING.md
+docs/01-start/quick-start.md
+docs/02-tutorials/METROPOLIS-SETUP-GUIDE.md
+
+... [80 lines omitted] ...
+
+docs/protocols/MEMORY-BANK-ADAPTER.md
+docs/protocols/METROPOLIS-AGENT-INTERACTION.md
+docs/protocols/SPLIT-TEST-PROTOCOL.md
+docs/redis-schemas-design.md
+docs/reference/ADDITIONAL-TESTING-TOOLS.md
+docs/reference/IDE-CLI-KNOWN-ISSUES.md
+docs/research_workflow.md
+docs/search_index.json
+docs/secrets.md
+docs/troubleshooting/SPLIT-TEST-TROUBLESHOOTING.md
+Process Group PGID: 1264182
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773016011584_0_dgu24.txt
+</tool_output_masked>

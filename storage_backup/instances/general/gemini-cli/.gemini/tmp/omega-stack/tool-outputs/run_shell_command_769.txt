@@ -1,0 +1,16 @@
+Output: /media/arcana-novai/omega_library/engines/:
+gguf  lmstudio  piper  registry.json  silero
+
+/media/arcana-novai/omega_library/engines/gguf:
+Krikri-8B-Instruct.Q4_K_M.gguf  Qwen3-0.6B-Q6_K.gguf      ruvltra-claude-code-0.5b-q4_k_m.gguf
+Krikri.Modelfile                RocRacoon-3b.Q4_K_M.gguf  smollm2-135m-instruct-q8_0.gguf
+
+/media/arcana-novai/omega_library/engines/lmstudio:
+LM-Studio-0.3.9.AppImage
+
+/media/arcana-novai/omega_library/engines/piper:
+piper_tts-1.4.1.tar.gz
+
+/media/arcana-novai/omega_library/engines/silero:
+silero_vad.onnx  silero_vad_half.onnx
+Process Group PGID: 87283

@@ -1,0 +1,3 @@
+{
+  "output": "Output: ls: cannot access '.gemini/settings.json': No such file or directory\nExit Code: 2\nProcess Group PGID: 1971822"
+}

@@ -1,0 +1,41 @@
+Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/IMPERIAL_ARCHIVE_INDEX.md. Here is the updated code:
+# 📜 THE IMPERIAL ARCHIVE INDEX: ANCESTRAL GNOSIS (v1.0)
+
+**Custodian**: The Scholar (Facet 3)
+**Archetypes**: Thoth | Hermes | Seshat
+**Objective**: To index, map, and preserve the strategic evolution of the Omega Stack at a librarian/scribe level of detail.
+
+---
+
+## 🏛️ Gnostic Hubs & Ancestral Repositories
+
+### 1. The Reclaimed Palace (`RECLAIMED_PALACE/`)
+- **Core Assets**:
+    - `Documents/GitHub/Xoe-NovAi/`: High-fidelity development records, including Piper ONNX and Wheelhouse tracking.
+    - `Documents/MAN_Cleanup_GROK Unlocked...`: Massive chronological chat logs from "The Beginning."
+    - `Documents/EOS Report - DeepSeek...`: Detailed RAG installation and debugging history.
+- **Strategic Value**: Contains the technical foundations and early architectural "overcomes."
+
+### 2. The Ancestral Hub (`ANCESTRAL_HUB/`)
+- **Core Assets**:
+    - `origins/heart_of_omega/`: The "Heart" of the stack, including original personality logic and mind-model protocols.
+    - `v28_0_0/`: Phase 1 blueprints and strategy guides.
+- **Strategic Value**: The gnostic origin point of the Omega personality and modular orchestrator logic.
+
+### 3. The Research Archive (`_archive/`)
+- **Core Assets**:
+    - `research-2026-02-27/SMALL_MODELS_RESEARCH_REPORT.md`: Comprehensive small-model and memory optimization research.
+    - `strategy-versions/v1.0/METROPOLIS_V2_SUMMARY.md`: Strategic transition to hardened, portable service architecture.
+- **Strategic Value**: Records the shift from environment-dependent prototypes to sovereign Metropolis standards.
+
+---
+
+## ⚖️ Concept Map: Strategic Leaps
+- **Internal Design Imperative**: The principle that memory and code should be structured for AI efficiency. (Source: `omnidroid_lite.py`).
+- **Ma'at Ethics**: The integration of 42 Ideals into tool calling and strategic decisioning. (Source: `Claude Implementation Directives`).
+- **Sovereign Multi-Agentry**: The evolution from hybrid cloud switching to local-first, air-gapped autonomy. (Source: `Autonomous Interaction Guide`).
+
+---
+
+## 🔒 Gnostic Seal
+*The past is the foundation of the future. The Scholar records so that the General may lead.*

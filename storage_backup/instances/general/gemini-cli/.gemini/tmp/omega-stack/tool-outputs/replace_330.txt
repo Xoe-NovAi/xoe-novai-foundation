@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/Makefile (1 replacements). Here is the updated code:
+...
+	wget -P models/ancient-greek-bert https://huggingface.co/pranaydeeps/Ancient-Greek-BERT/resolve/main/vocab.txt
+
+download-krikri: ## 🐐 Download Krikri-8B-Instruct (Q5_K_M GGUF)
+	@echo "Downloading Krikri-8B-Instruct Q5_K_M..."
+	mkdir -p models
+	wget -O models/llama-krikri-8b-instruct-q5_k_m.gguf https://huggingface.co/ilsp/Llama-Krikri-8B-Instruct-GGUF/resolve/main/llama-krikri-8b-instruct-q5_k_m.gguf
+
+
+validate: ## Run configuration validation
+	@echo "Validating configuration..."
+	python3 setup/validate_config.py
+...

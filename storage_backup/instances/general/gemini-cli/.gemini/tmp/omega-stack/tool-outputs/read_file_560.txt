@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-50 of 499 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, 
+... [TRUNCATED] ...
+\"\n    XNAI_IAM = \"xnai_iam\"\n    LOCAL = \"local\"\n\n\nclass TokenValidationResult(Enum):\n    VALID = \"valid\"\n    INVALID_FORMAT = \"invalid_format\"\n    EXPIRED = \"expired\"\n    EMPTY = \"empty\"\n    UNKNOWN_ERROR = \"unknown_error\""
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000939558_0_5nrvy.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/gnostic_oikonomia.py. Here is the updated code:\n#!/usr/bin/env python3\n\"\"\"\n🔱 GNOSTIC OIKONOMIA: The Sovereign Economy\nTracks
+... [TRUNCATED] ...
+s\n\nif __name__ == \"__main__\":\n    # Test execution\n    engine = OikonomiaEngine(\"SESS-23\")\n    engine.log_usage(\"generalist\", 1200, 450, cache_hit=True)\n    engine.push_metrics()\n    print(\"✅ Oikonomia metrics logged and pushed.\")\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773354406919_0_qwr4y9.txt
+</tool_output_masked>

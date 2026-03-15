@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# ============================================================================\n# Xoe-NovAi Phase 1 v0.1.4-stable Application Configuration\n# ============================================================================\n# Purpose: Cen
+... [TRUNCATED] ...
+onfiguration\nstreaming_enabled = true\nstreaming_buffer_size = 4096\nchunk_size_ms = 100\n\n# Offline Mode\noffline_mode = true\npreload_models = false\n\n# Cache Settings\nenable_cache = true\ncache_ttl_seconds = 3600\ncache_max_entries = 1000\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-323f9caa-049e-4ef6-b14c-57d779a99bc2/read_file_read_file_1773150268671_0_wwx5br.txt
+</tool_output_masked>

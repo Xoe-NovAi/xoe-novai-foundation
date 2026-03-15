@@ -1,0 +1,151 @@
+#!/usr/bin/env python3
+"""
+🔱 OIKOS SERVICE: The Cognitive Mesh of the Omega Stack
+Manages Iris (Routing), The Council (Individual Agents), and The Mastermind (Collective Decisioning).
+Port: 8006
+"""
+import anyio
+import os
+import sys
+import json
+import time
+import httpx
+from typing import List, Dict, Any, Optional
+from fastapi import FastAPI, HTTPException, BackgroundTasks, Request
+from pydantic import BaseModel
+from pathlib import Path
+
+# Ensure project root is in path for scripts/app imports
+sys.path.append(os.getcwd())
+
+from scripts.agent_factory import AgentFactory
+from scripts.soul_distiller import distill_cycle
+from scripts.observer import record_gear_shift
+
+# Initialize Oikos Mesh
+app = FastAPI(title="🔱 XNA Oikos Mesh Service", version="1.0.0")
+factory = AgentFactory(model_name="gemini/gemini-2.0-flash")
+
+class MastermindRequest(BaseModel):
+    problem: str
+    session_id: str = "DEFAULT-SESSION"
+    escalation_level: Optional[int] = 1
+
+# --- 🌈 IRIS: THE FRONT-FACING ROUTER ---
+
+@app.post("/iris/route")
+async def iris_route(req: MastermindRequest, background_tasks: BackgroundTasks):
+    """
+    Iris Swift Routing and Escalation Gateway.
+    """
+    start_time = time.time()
+    print(f"🌈 Iris (Service): Hearing your request... '{req.problem}'")
+    
+    # 1. Routing Logic (Swift Phase)
+    complexity = len(req.problem.split())
+    
+    if complexity < 5:
+        # Swift Level 1
+        await record_gear_shift("Iris", "LEVEL_1_SWIFT", time.time() - start_time, {"problem": req.problem})
+        return {"decision": "LEVEL_1_SWIFT", "response": "Handling instantly via the Hearth."}
+    
+    elif complexity < 20:
+        # Escalation Level 2
+        await record_gear_shift("Iris", "LEVEL_2_ESCALATION", time.time() - start_time, {"problem": req.problem})
+        # Simulate Level 2 model thought
+        response = await factory.think(f"Problem: {req.problem}. Decide if this requires the Oikos Council.", "You are the Archive Guardian (Level 2). Provide a decision and a refined prompt.")
+        return {"decision": "LEVEL_2_LOCAL_LARGE", "response": response}
+    
+    else:
+        # Escalation Level 3 (Mastermind)
+        await record_gear_shift("Iris", "LEVEL_3_ESCALATION", time.time() - start_time, {"problem": req.problem})
+        background_tasks.add_task(orchestrate_mastermind, req.problem, req.session_id)
+        return {"decision": "LEVEL_3_OIKOS_COUNCIL", "response": "Summoning the Council of Oikos. Decree pending in the Chronicles."}
+
+# --- 🏛️ THE COUNCIL ENDPOINTS ---
+
+@app.get("/council/{member}")
+async def get_council_insight(member: str, problem: str):
+    """Get domain-specific insight from a Council member."""
+    # TODO: Integration with individual Oikos scripts
+    return {"member": member, "insight": f"Insight for {problem} from {member}."}
+
+# --- 🧠 THE MASTERMIND CORE ---
+
+async def tavily_search(query: str) -> str:
+    """Performs a direct REST call to Tavily."""
+    api_key = os.getenv("TAVILY_API_KEY")
+    if not api_key:
+        return "Tavily API Key missing. Skipping web research."
+    
+    url = "https://api.tavily.com/search"
+    payload = {
+        "api_key": api_key,
+        "query": query,
+        "search_depth": "basic",
+        "max_results": 3
+    }
+    
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.post(url, json=payload, timeout=30.0)
+            response.raise_for_status()
+            data = response.json()
+            results = [f"- {r['title']}: {r['url']}" for r in data.get('results', [])]
+            return "\n".join(results)
+    except Exception as e:
+        return f"Web Search Failed: {str(e)}"
+
+async def orchestrate_mastermind(problem: str, session_id: str):
+    """Grounded Mastermind session with Local and Web research."""
+    print(f"🔱 Mastermind (Service): Initiating session on: {problem}")
+    
+    # --- Round 0: Research Phase ---
+    print("🔱 Mastermind: Activating Research Phase...")
+    
+    # Local Research (Gnosis Hub)
+    gnosis_context = ""
+    try:
+        hub_path = Path("data/gnosis_hub")
+        gnosis_files = [f.name for f in hub_path.iterdir() if f.is_file()]
+        gnosis_context = f"Local Gnosis Hub Files: {', '.join(gnosis_files[:10])}"
+    except Exception as e:
+        print(f"⚠️ Local Research Error: {e}")
+
+    # Web Research
+    search_query_prompt = f"Problem: {problem}. Formulate a concise search query to find best practices and common blockers."
+    search_query = await factory.think(search_query_prompt, "You are the Archive Guardian. Formulate a search query.")
+    
+    print(f"📡 Mastermind: Searching the web for: {search_query}")
+    web_results = await tavily_search(search_query)
+    web_context = f"Web Research Results:\n{web_results}"
+
+    full_research_context = f"{gnosis_context}\n\n{web_context}"
+    
+    # --- Round 1: Individual Insights ---
+    members = ["Brigid", "Hestia", "Demeter", "Athena", "Iris"]
+    council_insights = []
+    
+    for member in members:
+        # Ground the prompt in research
+        research_prompt = f"Problem: {problem}\nResearch Context:\n{full_research_context}\n\nPerform domain-specific research and provide insight."
+        insight = await factory.think(research_prompt, f"You are {member}, a member of the Oikos Council. You must address knowledge gaps and identify best practices.")
+        council_insights.append(f"### {member} Insight\n{insight}")
+        await record_gear_shift(member, "COUNCIL_SPEAK", 0.5, {"status": "SUCCESS"})
+
+    # Round 2: MaLi Synthesis
+    synthesis = "\n\n".join(council_insights)
+    # TODO: Call mali_gate logic
+    
+    # Round 3: Soul Distillation
+    await distill_cycle(session_id, 20, f"Oikos Council Mastermind for: {problem}")
+    
+    print(f"✅ Mastermind Session Complete for [{session_id}].")
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ACTIVE", "hearth": "WARM"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8006)

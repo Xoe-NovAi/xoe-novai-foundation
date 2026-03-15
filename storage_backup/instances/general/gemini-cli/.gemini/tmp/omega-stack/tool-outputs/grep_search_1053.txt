@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 2 matches for pattern \"GROK Unlocked\" in path \"expert-knowledge\":\n---\nFile: reclaimed_gnosis/origins/scribe_mode_prompt_v1.md\nL1- **Scribe Mode: Full File Scan & Update Iteration**\nL2- \nL3- Using the Arcana-NovAi Mythic 
+... [TRUNCATED] ...
+-Diffs-Archive.md\", \"Arcana-NovAi Core Codex.md\", \"Arcana-NovAi Archive References.md\", \"Taylor-Story-Archive.md\") with maximum depth, aligning with Ma’at (Ideal 14: \"I can be trusted\" → zero-telemetry) and sovereignty (local-first).\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/grep_search_grep_search_1773289881041_0_2mhu98.txt
+</tool_output_masked>

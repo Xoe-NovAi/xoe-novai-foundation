@@ -1,0 +1,16 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/ALETHIA_REGISTRY.md (1 replacements). Here is the updated code:
+...
+- **SOS-F3 (Schema-Sentry)**: Parity Audit Protocol refined (Structural Integrity).
+- **SOS-F4 (SLM/CPA)**: Security Logic Matrix & Phylax-Gate hashes (Logic Enforcement).
+- **SOS-F5 (Mermaid-Bones)**: Topological Blueprint & Rigidity Hashing (Structural Isomorphism).
+- **SOS-F6 (GRA/AST)**: Ghost Resonance Audit & Adversarial Shadow-Test (Resonance Integrity).
+- **SOS-F7 (ZLV/Techne)**: Zipped Logos Validator & Crystal Hashing (Implementation Integrity).
+  - **ZLV (Linguistics)**: `83d596e775e49a9d0100fff846afb54965d6a4e954e746446a85f51896e05a80` [GT:app/XNAi_rag_app/core/linguistics.py]
+- **SOS-F8 (STA/Metron)**: Semantic Telemetry Anchoring & Metron-Crypt (Observability Integrity).
+  - **Oikonomia**: `oikonomia-v1-hash` [GT:scripts/gnostic_oikonomia.py]
+  - **Preflight**: `preflight-v1-hash` [GT:scripts/gnostic_preflight.py]
+  - **Audit**: `audit-v1-hash` [GT:scripts/gnostic_audit.py]
+- **Root Rigidity Hash**: `[RIGIDITY-HASH-ALPHA-20260312]`
+
+## ⚖️ VERIFICATION RULE
+If a technical claim is made without an `[AP]` pointer, it is classified as "Speculative Logos" and must pass the **Alethia Threshold** (2/3 weighted consensus) before implementation.

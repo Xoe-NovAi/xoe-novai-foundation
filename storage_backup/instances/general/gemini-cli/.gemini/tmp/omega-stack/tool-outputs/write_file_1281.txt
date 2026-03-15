@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/stack_health_check.sh. Here is the updated code:\n#!/bin/bash\n# XNAi Foundation Stack Health Check\n# Tests all critical services and reports stat
+... [TRUNCATED] ...
+ \"  ⚠ $name ($status)\"\n        fi\n    done\nfi\n\necho \"\"\necho \"============================================\"\necho \"Summary: $passed passed, $failed failed\"\nif [[ $failed -eq 0 ]]; then\n    echo \"Status: ✅ HEALTHY\"\n    exit 0\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/write_file_write_file_1773001908316_0_eahzdr.txt
+</tool_output_masked>

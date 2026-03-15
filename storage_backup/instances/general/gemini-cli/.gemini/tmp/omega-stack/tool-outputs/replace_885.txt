@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/MPI.md (1 replacements). Here is the updated code:\n...\n*Current Phase: SI1 - LCS Deployment (LIVE)*\n\n| Project | Status | Description | Cont
+... [TRUNCATED] ...
+rch. | `RJ-003-result.md` |\n| **Vikunja Sync** | 🟡 PENDING | Automated ticket generation for Knowledge Gaps. | `RJ-004-result.md` |\n| **Intertextuality** | ⚪ SCOUTED | Vector-based \"Echo Detection\" between authors. | `RJ-008-result.md` |\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773017585986_0_p804l.txt
+</tool_output_masked>

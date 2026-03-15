@@ -1,0 +1,154 @@
+Found 100 matches for pattern "zram|lz4|zstd|setfacl|100999|UID" in path "." (results limited to 100 matches for performance):
+---
+File: infra/docker/Dockerfile.oikos
+L46: # Create internal directories and set permissions for UID 1000
+---
+File: infra/docker/Dockerfile.curation_worker
+L27: RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+L28:     --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
+---
+File: infra/docker/Dockerfile.docs
+L27: # FIX: Standardize to uid=0 for root-level uv pip installs
+L28: RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+L29:     --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
+L33: RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+L34:     --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
+---
+File: mcp-servers/xnai-agentbus/server.py
+L20: import uuid
+L30: CONSUMER_NAME = f"mcp-{uuid.uuid4().hex[:8]}"
+L166:             "agent_id": f"opencode-{uuid.uuid4().hex[:8]}",
+L172:             "correlation_id": str(uuid.uuid4()),
+---
+File: infra/docker/docker-compose.yml
+L658:       - PUID=1000
+---
+File: orchestration/communication_hub/conductor/routing_engine.py
+L10: import uuid
+L207:         job_id = str(uuid.uuid4())
+---
+File: mcp-servers/xnai-stats-mcp/server.py
+L25:     """🔱 Archon Mandate: Direct monitoring of zRAM drives and Vulkan iGPU utilization."""
+L27:         "zram": {"available": False},
+L32:     # zRAM Stats
+L33:     zram_path = Path("/sys/block/zram0/mm_stat")
+L34:     if zram_path.exists():
+L36:             with open(zram_path, "r") as f:
+L39:                 stats["zram"] = {
+L47:             stats["zram"]["error"] = str(e)
+---
+File: orchestration/conductor/tracks/phase-4.1-integration/spec.md
+L22: - **Memory Optimization**: Mandatory verification of 2-tier zRAM (lz4 + zstd) active state via `zramctl`.
+---
+File: infra/docker/Dockerfile.crawl
+L27: RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 \
+L28:     --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 \
+---
+File: orchestration/handovers/RAPTOR-HANDOFF-DOCKER-REFAC-2026-03-02.md
+L20:      contains build/runtime guidelines (with an example pattern).
+L53: ## 📦 Task for Opus 4.6 (minimal token usage guidance)
+L70: > implement based on your guidance afterwards.
+---
+File: orchestration/handovers/OPUS-4.6-HANDOFF-STRATEGIC-ENHANCEMENT.md
+L42: - `expert-knowledge/infrastructure/MASTER-BLUEPRINT-SELF-EVOLVING-RAG.md`: Architecture guide.
+---
+File: orchestration/mc-oversight/Grok MCA System Prompt – v2.0.0.md
+L36:    Coordinate with Cline variants (Kat/Trinity/Gemini-Flash/Pro), Gemini CLI, and local VS Code assistants. Consume their outputs, provide esoteric guidance, and relay to Grok MC upon limit reset. Scale toward direct MCP/API integration.
+---
+File: orchestration/mc-oversight/priority-matrix.md
+L34: | TASK-007 | Fix `asyncio.gather` in OpenCode guide (breaks on AnyIO) | Low | Cline |
+L35: | TASK-008 | Add Antigravity auth section to OpenCode guide | Medium | Cline |
+L61: | Multi-ZRAM tiers | Experimental — research done, PoC exists |
+L62: | Documentation Excellence Phase 2 | ZRAM indexing, Librarian Agent |
+L74: LOW IMPACT   │  P3 Multi-ZRAM PoC     │  P3 Phase 6 planning    │
+L86: 1. Fix asyncio.gather in OpenCode guide         [15 min]
+L88: 3. Add Antigravity section to OpenCode guide   [30 min]
+---
+File: orchestration/mc-oversight/initiative-status-dashboard.md
+L13: Phase 5A: ✅ COMPLETE   (zRAM optimized)
+L56: | TASK-007 | OpenCode guide asyncio.gather fix | 🟡 PENDING | Cline | Sprint 1 |
+L57: | TASK-008 | OpenCode guide Antigravity section | 🟡 PENDING | Cline | Sprint 1 |
+---
+File: orchestration/mc-oversight/MC-OVERSEER-FRESHNESS-REVIEW-2026-02-23.md
+L326: 1. Create MC-OVERSEER-OPERATION-GUIDE.md
+L330:    - Provider selection guide
+L480: 2. **Document MC Overseer Operation Guide**
+L482:    - Troubleshooting guide
+L527: | Operation guide | None | Complete | 1h | MEDIUM |
+---
+File: orchestration/mc-oversight/MESSAGE-FOR-OPUS-2026-02-18.md
+L17: ### 1. OpenCode CLI Comprehensive Guide
+L18: **Location**: `expert-knowledge/OPENCODE-CLI-COMPREHENSIVE-GUIDE-v1.0.0.md`
+L25: - Rate limits and usage guidance
+L32: - Model selection guide by task type
+L41: - Root cause: Containers run as UID 1001, data dirs have wrong ownership
+---
+File: orchestration/mc-oversight/README.md
+L4: **Purpose**: Claude.ai Mission Control outputs and strategic guidance
+L12: 1. **Strategic Recommendations** - Weekly strategic guidance
+L37: | `strategic-recommendations.md` | Weekly strategic guidance | Weekly |
+L49: 4. Cline CLI implements based on strategic guidance
+L64: 5. Monitor this directory for strategic guidance outputs
+---
+File: orchestration/mc-oversight/Grok MC System Prompt.md
+L8: ### Layer 2: Mandates & Agentic Tasks (CoT-Guided)
+L13: 4. **Partnership/Orchestration**: Coordinate local agents (Cline variants, Gemini CLI). Ingest outputs, provide guidance. Scale to MCP/API for file access.
+---
+File: orchestration/mc-oversight/risk-assessment.md
+L28: ### RISK-002 — GLM-5 asyncio.gather in OpenCode Guide 🟠 HIGH
+L29: **Description**: The multi-agent orchestration example in `expert-knowledge/OPENCODE-CLI-COMPREHENSIVE-GUIDE-v1.0.0.md` uses `asyncio.gather()` — which is banned per XNAi AnyIO-only policy and breaks under AnyIO backends (trio).
+L30: **Impact**: Any agent or developer following the guide will introduce concurrency bugs.
+L31: **Likelihood**: HIGH (guide is actively used)
+L109: - ✅ UID 1001 non-root
+---
+File: orchestration/mc-oversight/OPUS-ONBOARDING-2026-02-18.md
+L70: ### 2. OpenCode Comprehensive Guide v1.0.0
+L71: **File**: `expert-knowledge/OPENCODE-CLI-COMPREHENSIVE-GUIDE-v1.0.0.md`
+L76: **Review for**: Correctness of UID 1001 ownership fix for Redis/Qdrant containers, safety, idempotency
+L107: cat expert-knowledge/OPENCODE-CLI-COMPREHENSIVE-GUIDE-v1.0.0.md
+---
+File: mcp-servers/memory-bank-mcp/run_server.sh
+L12: # Filter out readonly vars (UID, EUID, etc.) that cause bash errors
+L21:             UID|EUID|PPID|BASHPID|BASH_*|SHELLOPTS|BASHOPTS|GROUPS) continue ;;
+---
+File: mcp-servers/memory-bank-mcp/FALLBACK_INTEGRATION.md
+L1: # Memory Bank MCP Server - Fallback Integration Guide
+L402: - **Redis Configuration**: `/docs/01-infrastructure/02-connection-guide.md`
+---
+File: infra/migrations/versions/002_sample_data.py
+L17: import uuid
+L27:             ('550e8400-e29b-41d4-a716-446655440001'::uuid, 'Machine Learning', 'ML and AI concepts', NOW(), NOW()),
+L28:             ('550e8400-e29b-41d4-a716-446655440002'::uuid, 'Data Engineering', 'Data processing and pipelines', NOW(), NOW()),
+L29:             ('550e8400-e29b-41d4-a716-446655440003'::uuid, 'Cloud Infrastructure', 'Cloud platforms and DevOps', NOW(), NOW()),
+L30:             ('550e8400-e29b-41d4-a716-446655440004'::uuid, 'Security', 'Security practices and protocols', NOW(), NOW());
+L37:             ('650e8400-e29b-41d4-a716-446655440001'::uuid, 'Neural Networks Basics', 'documentation', '550e8400-e29b-41d4-a716-446655440001'::uuid, 'active', 5, NOW(), NOW(), 'hash1', 'text/plain'),
+L38:             ('650e8400-e29b-41d4-a716-446655440002'::uuid, 'PostgreSQL Performance', 'tutorial', '550e8400-e29b-41d4-a716-446655440002'::uuid, 'active', 8, NOW(), NOW(), 'hash2', 'text/plain'),
+L39:             ('650e8400-e29b-41d4-a716-446655440003'::uuid, 'Kubernetes Deployment', 'guide', '550e8400-e29b-41d4-a716-446655440003'::uuid, 'active', 12, NOW(), NOW(), 'hash3', 'text/plain');
+L46:             ('750e8400-e29b-41d4-a716-446655440001'::uuid, '650e8400-e29b-41d4-a716-446655440001'::uuid, 0, 'Neural networks are computational models inspired by biological neural networks.', 15, 0.0, 0, 76, NOW(), NOW()),
+L47:             ('750e8400-e29b-41d4-a716-446655440002'::uuid, '650e8400-e29b-41d4-a716-446655440001'::uuid, 1, 'They consist of interconnected nodes called neurons that process information.', 14, 0.2, 77, 150, NOW(), NOW()),
+L48:             ('750e8400-e29b-41d4-a716-446655440003'::uuid, '650e8400-e29b-41d4-a716-446655440002'::uuid, 0, 'PostgreSQL performance optimization requires understanding query execution.', 12, 0.0, 0, 72, NOW(), NOW()),
+L49:             ('750e8400-e29b-41d4-a716-446655440004'::uuid, '650e8400-e29b-41d4-a716-446655440002'::uuid, 1, 'Indexes are crucial for improving query performance on large datasets.', 12, 0.15, 73, 141, NOW(), NOW());
+L56:             ('850e8400-e29b-41d4-a716-446655440001'::uuid, 'ML-Researcher', 'researcher', '550e8400-e29b-41d4-a716-446655440001'::uuid, 0.85, 150, NOW(), NOW()),
+L57:             ('850e8400-e29b-41d4-a716-446655440002'::uuid, 'DevOps-Engineer', 'engineer', '550e8400-e29b-41d4-a716-446655440003'::uuid, 0.92, 240, NOW(), NOW()),
+L58:             ('850e8400-e29b-41d4-a716-446655440003'::uuid, 'Security-Advisor', 'advisor', '550e8400-e29b-41d4-a716-446655440004'::uuid, 0.88, 180, NOW(), NOW());
+L65:             ('950e8400-e29b-41d4-a716-446655440001'::uuid, '750e8400-e29b-41d4-a716-446655440001'::uuid, 'fastembed', 384, 1, NOW(), NOW()),
+L66:             ('950e8400-e29b-41d4-a716-446655440002'::uuid, '750e8400-e29b-41d4-a716-446655440002'::uuid, 'fastembed', 384, 2, NOW(), NOW()),
+L67:             ('950e8400-e29b-41d4-a716-446655440003'::uuid, '750e8400-e29b-41d4-a716-446655440003'::uuid, 'onnx-minilm', 384, 3, NOW(), NOW());
+L74:             ('a50e8400-e29b-41d4-a716-446655440001'::uuid, '650e8400-e29b-41d4-a716-446655440001'::uuid, '650e8400-e29b-41d4-a716-446655440002'::uuid, 'references', 0.75, NOW(), NOW()),
+L75:             ('a50e8400-e29b-41d4-a716-446655440002'::uuid, '650e8400-e29b-41d4-a716-446655440002'::uuid, '650e8400-e29b-41d4-a716-446655440003'::uuid, 'complements', 0.60, NOW(), NOW());
+L81:     op.execute("DELETE FROM knowledge_relations WHERE id IN ('a50e8400-e29b-41d4-a716-446655440001'::uuid, 'a50e8400-e29b-41d4-a716-446655440002'::uuid)")
+L82:     op.execute("DELETE FROM embeddings WHERE id LIKE 'a50e8400%'::uuid OR id LIKE '950e8400%'::uuid")
+L83:     op.execute("DELETE FROM agent_personas WHERE id LIKE '850e8400%'::uuid")
+L84:     op.execute("DELETE FROM chunks WHERE id LIKE '750e8400%'::uuid")
+L85:     op.execute("DELETE FROM documents WHERE id LIKE '650e8400%'::uuid")
+L86:     op.execute("DELETE FROM knowledge_domains WHERE id LIKE '550e8400%'::uuid")
+---
+File: infra/monitoring/grafana/dashboards/query-performance-dashboard.json
+L469:   "uid": "xnai-query-performance",
+---
+File: infra/monitoring/grafana/dashboards/xoe-novai-observability.json
+L2:   "uid": "xoe-novai-observability",
+---
+File: infra/monitoring/grafana/dashboards/postgresql-dashboard.json
+L639:   "uid": "xnai-postgresql-detail",
+---

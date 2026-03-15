@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\ndocument_type: report\ntitle: MULTI CLI COPILOT GEM STRATEGY v2\ncreated_by: Haiku-4.5 (Phase 2C Automation)\ncreated_date: 2026-03-14\nversion: 1.0\nstatus: active\nhash_sha256: d49fe441893fe0c8ccd5dcfb28337296f3ec032cc1179dbdcb8
+... [TRUNCATED] ...
+uthority**: 88% confidence (multi-source synthesis)  \n**Owner**: Haiku 4.5 + Multi-Model Research Team  \n**Last Updated**: 2026-03-14T07:10:00Z\n\nUsed for: System prompt generation, task routing, Gemini collaboration, Phase execution planning\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773543477946_1_7k5bm.txt
+</tool_output_masked>

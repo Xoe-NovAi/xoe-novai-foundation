@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/Makefile (1 replacements). Here is the updated code:
+...
+	fi
+	$(PYTHON) setup/prebuild_validate.py
+	@echo "$(GREEN)✅ Pre-build validation completed$(NC)"
+
+
+# ... removed duplicate preflight ...
+
+# ============================================================================
+# VALIDATION & VERIFICATION TARGETS
+# ============================================================================
+
+...

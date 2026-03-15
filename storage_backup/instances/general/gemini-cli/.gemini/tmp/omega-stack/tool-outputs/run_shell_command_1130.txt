@@ -1,0 +1,2 @@
+Output:       - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/xnai
+Process Group PGID: 858110

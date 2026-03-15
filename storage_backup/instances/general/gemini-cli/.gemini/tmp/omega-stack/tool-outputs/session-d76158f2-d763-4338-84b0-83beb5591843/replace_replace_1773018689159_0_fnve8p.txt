@@ -1,0 +1,3 @@
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/services/ingest_library.py (1 replacements). Here is the updated code:\n...\n        self.processed_checksums: Set[str] = set()\n        self.last_api_call = 0\n        self.api_call_interval = 1.0\n        self.min_quality_score = 0.4\n        self.min_content_length = 100\n        \n        # SI1: Magic handle\n        self.magic = magic if _HAS_MAGIC else None\n        \n        self.supported_extensions = {\n            'text': ['.md', '.txt', '.rst'],\n            'pdf': ['.pdf'],\n            'audio': ['.mp3', '.wav']\n        }\n..."
+}

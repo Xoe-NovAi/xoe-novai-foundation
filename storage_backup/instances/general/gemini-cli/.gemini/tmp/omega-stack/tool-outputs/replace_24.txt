@@ -1,0 +1,29 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/dependencies.py (1 replacements). Here is the updated code:
+...
+        )
+    
+    host = os.getenv("REDIS_HOST") or get_config_value("redis.host", "redis")
+    port = int(os.getenv("REDIS_PORT") or get_config_value("redis.port", 6379))
+    password = os.getenv("REDIS_PASSWORD") or get_config_value("redis.password")
+    timeout = int(get_config_value("redis.timeout_seconds", default=60))
+    
+    # TLS Configuration
+    tls_enabled = os.getenv("REDIS_TLS_ENABLED", "false").lower() == "true"
+    ca_cert_path = os.getenv("REDIS_CA_CERT_PATH")
+
+    return redis_async.Redis(
+        host=host,
+        port=port,
+        password=password,
+        decode_responses=True,
+        socket_timeout=timeout,
+        ssl=tls_enabled,
+        ssl_ca_certs=ca_cert_path if tls_enabled else None,
+        ssl_cert_reqs='none' if tls_enabled else None,
+        max_connections=int(get_config_value("redis.max_connections", default=50))
+    )
+
+# ============================================================================
+# HTTP CLIENT
+# ============================================================================
+...

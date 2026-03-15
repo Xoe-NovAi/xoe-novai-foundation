@@ -1,0 +1,17 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 15-25 of 93 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 26.
+
+--- FILE CONTENT (truncated) ---
+import psutil
+import redis
+from datetime import datetime
+
+# Configuration
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
+REDIS_PASSWORD = os.getenv("REDIS_PASSWORD", "changeme123")
+BUS_CHANNEL = "xnai:system:health"
+POLL_INTERVAL = 30  # seconds
+MEM_THRESHOLD = 85.0  # percentage

@@ -1,0 +1,13 @@
+Output: infra/docker/Dockerfile
+infra/docker/Dockerfile.crawl
+find: ‘infra/docker/data/postgres’: Permission denied
+infra/docker/Dockerfile.chainlit
+infra/docker/Dockerfile.curator
+infra/docker/Dockerfile.build
+infra/docker/Dockerfile.base
+infra/docker/Dockerfile.cline
+infra/docker/Dockerfile.curation_worker
+infra/docker/Dockerfile.docs
+infra/docker/Dockerfile.memory-bank
+Exit Code: 1
+Process Group PGID: 61390

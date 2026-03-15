@@ -1,0 +1,3 @@
+{
+  "output": "Output: Analysis of 'Phronesis': {'term': 'Phronesis', 'roots': [{'root': 'phron', 'concept': 'practical wisdom', 'example': 'Phronesis'}]}\nAnalysis of 'Sobornost': {'term': 'Sobornost', 'roots': [{'root': 'ost', 'concept': 'abstract quality/state', 'example': 'Dukhovnost (Spirituality)'}]}\nAnalysis of 'Ontology': {'term': 'Ontology', 'roots': []}\nAnalysis of 'Eudaimonia': {'term': 'Eudaimonia', 'roots': [{'root': 'daimon', 'concept': 'spirit/guiding power', 'example': 'Eudaimonia'}]}\nProcess Group PGID: 830274"
+}

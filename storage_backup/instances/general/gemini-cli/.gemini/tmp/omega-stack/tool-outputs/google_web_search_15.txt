@@ -1,0 +1,42 @@
+Web search results for "Gemini Code Assist rate limits OAuth vs API key 2026 non-interactive usage":
+
+As of early 2026, the rate limits and authentication strategies for **Gemini Code Assist** (the enterprise/IDE-focused product) versus the **Gemini API** (the developer-focused model access) have diverged significantly to accommodate different usage patterns.
+
+### **1. Gemini Code Assist (OAuth / IAM)**
+This is primarily designed for interactive use within IDEs (VS Code, JetBrains) and the Gemini CLI. For non-interactive usage (e.g., CI/CD pipelines, automated code reviews), it utilizes **Google Cloud IAM** (Service Accounts) rather than simple API keys.
+
+| Tier | Requests per Minute (RPM) | Requests per Day (RPD) | Best For |
+| :--- | :--- | :--- | :--- |
+| **Individual (Free)** | 60 | 1,000 | Personal projects, CLI experimentation.[1] |
+| **Standard** | 120 | 1,500 | Small teams, standard CI/CD tasks. |
+| **Enterprise** | 120+ | 2,000+ | Large-scale automation, private codebase RAG. |
+| **AI Pro / Ultra** | 120 | 1,500 - 2,000 | Power users (shared across IDE & CLI). |
+
+*   **Non-Interactive Note:** For automated environments, you should use a **Service Account** with the `cloudaicompanion.user` role. This allows you to bypass the browser-based OAuth flow required for personal accounts.
+
+### **2. Gemini API (API Keys via AI Studio)**
+This is the preferred route for high-volume, non-interactive scripts and custom applications. Limits are enforced at the **Project level**, meaning multiple keys in one project share the same quota.
+
+| Tier | RPM (Flash / Pro) | RPD (Requests per Day) | TPM (Tokens per Minute) |
+| :--- | :--- | :--- | :--- |
+| **Free Tier** | 15 / 2 | 1,000 / 50 | 1M / 32K |
+| **Tier 1 (Paid)** | 2,000 / 360 | 10,000+ | 4M / 2M |
+| **Tier 2 ($250+ spend)** | 5,000 / 1,000 | Unlimited (Pay-as-you-go) | 10M / 5M |
+| **Tier 3 (Enterprise)** | 10,000+ | Custom | Custom |
+
+*   **2026 Quota Change:** Following the December 2025 update, Free Tier RPD for "Pro" models was significantly tightened to encourage migration to the "Flash" models for high-frequency automated tasks.
+
+### **Key Differences for Non-Interactive Usage**
+
+*   **Authentication:** 
+    *   **API Keys** are easier to implement in simple scripts but lack the granular security of IAM.
+    *   **OAuth/IAM** is required for "Code Assist" features like **Local Codebase Awareness** and **Enterprise Customization** (tuning on your private repos).
+*   **Context Window:** Gemini Code Assist (OAuth) typically provides a standardized **1M token context window** for all users, whereas the Gemini API (Key) allows you to choose models with windows ranging from 128K to 2M+ tokens.
+*   **Caching:** Context Caching (to reduce costs on repetitive non-interactive tasks) is **only available via API Keys or Vertex AI**, not through the standard Gemini Code Assist OAuth flow.
+
+### **Recommendation**
+*   **For CI/CD (Linting, PR Summaries):** Use **Gemini Code Assist Enterprise** with a **Service Account**. It provides the best integration with your organization's security policies and private code context.
+*   **For Bulk Data Processing/Custom Tools:** Use the **Gemini API with an API Key (Tier 1+)**. It offers much higher RPM/TPM and supports **Context Caching**, which is critical for keeping costs low in non-interactive batch jobs.
+
+Sources:
+[1] github.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFuufQ9QuKG1e2R3CGtcEEd5rFc2dTiX5QDvYBJnWZnfc-I6DlgpjpbaIy7FTsqBHakSqrcGNF7nHwftM-bJpWZKcu8udY4f9e6LOKUlwmXMpjkw5QV8WZTu8L97eEPmO8TIXm24to=)

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\"\"\"\n\n▓█████ ███▄ █ ███▄ ▄███▓ ██▓███ ██▓ ▒█████ ██▀███ ▓█████ ██▀███\n\n▓█ ▀ ██ ▀█ █ ▓██▒▀█▀ ██▒▓██░ ██▒▓██▒ ▒██▒ ██▒▓██ ▒ ██▒▓█ ▀ ▓██ ▒ ██▒\n\n▒███ ▓██ ▀█ ██▒▓██ ▓██░▓██░ ██▓▒▒██░ ▒██░ ██▒▓██ ░▄█ ▒▒███ ▓██ ░▄█ ▒\n\n▒▓█ ▄▓██▒ ▐▌██
+... [TRUNCATED] ...
+query, user)\n\n    print(json.dumps(result, indent=2))\n\n    # Simulate user providing feedback\n\n    feedback = {\"accuracy_rating\": 4, \"speed_rating\": 5, \"satisfaction\": 5}\n\n    api.provide_feedback(user, result['session'], feedback)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773290128612_0_4o7dhw.txt
+</tool_output_masked>

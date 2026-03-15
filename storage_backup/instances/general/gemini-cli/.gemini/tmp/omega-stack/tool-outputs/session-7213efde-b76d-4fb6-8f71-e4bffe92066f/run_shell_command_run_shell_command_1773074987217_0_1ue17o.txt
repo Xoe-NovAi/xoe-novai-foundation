@@ -1,0 +1,3 @@
+{
+  "output": "Output: Loaded cached credentials.\nConfigured MCP servers:\n\n✓ memory-bank: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/run_server.sh  (stdio) - Connected\nProcess Group PGID: 207782"
+}

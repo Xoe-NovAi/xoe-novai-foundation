@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\ntitle: Omega Metropolis Context Pack\ngenerated_at: 2026-03-05 00:06\narchitecture: Hierarchical 8-Domain Expert Network\n---\n\n# 🏙️ Omega Metropolis Context Pack\n\n## 📊 Inventory Summary\nTree summary unavailable.\n\n\n## 📄 
+... [TRUNCATED] ...
+ynchronized with Omega Metropolis architecture.\n- Hardened Agent Bus integration implemented.\n\n### Session Reflection (2026-03-04 21:41)\n- Synchronized with Omega Metropolis architecture.\n- Hardened Agent Bus integration implemented.\n\n```\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773289898434_0_dp5x8t.txt
+</tool_output_masked>

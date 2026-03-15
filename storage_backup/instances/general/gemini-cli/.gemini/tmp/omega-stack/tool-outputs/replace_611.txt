@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.oikos
+    container_name: xnai_oikos
+    init: true
+    user: "1000:1000"
+    ports:
+      - "8006:8006"
+    volumes:
+      - ../../app:/app/app:Z
+      - ../../scripts:/app/scripts:Z
+...

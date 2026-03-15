@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 100-150 of 218 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+                      if sig and sender in self.public_keys:\n                                try:\n                                    sign_payload = f\"{sender}|{target}|{data.get('type')}|{data.get('payload')}|{data.get('timestamp')}\".encode()"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773015706250_0_njybiw.txt
+</tool_output_masked>

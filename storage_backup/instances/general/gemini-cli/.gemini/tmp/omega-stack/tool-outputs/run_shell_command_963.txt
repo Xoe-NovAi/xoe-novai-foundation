@@ -1,0 +1,5 @@
+Output: df: /media/arcana-novai/omega_library/: No such file or directory
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p2  109G   99G  3.9G  97% /
+Exit Code: 1
+Process Group PGID: 76579

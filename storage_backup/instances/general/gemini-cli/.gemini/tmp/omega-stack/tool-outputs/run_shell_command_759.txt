@@ -1,0 +1,4 @@
+Output: lrwxrwxrwx 1 arcana-novai arcana-novai 56 Mar 11 19:31 ./Omegadroid -> /media/arcana-novai/omega_vault/ANCESTRAL_HUB/Omegadroid
+ls: cannot access '/media/arcana-novai/omega_vault/ANCESTRAL_HUB/Omegadroid/': No such file or directory
+Exit Code: 2
+Process Group PGID: 261243

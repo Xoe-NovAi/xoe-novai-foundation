@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "{\n  \"mcpServers\": {\n    \"memory-bank\": {\n      \"command\": \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3\",\n      \"args\": [\n        \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-serve
+... [TRUNCATED] ...
+\": {\n      \"command\": \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3\",\n      \"args\": [\n        \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-websearch/server.py\"\n      ]\n    }\n  }\n}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773359326896_0_0k2w9.txt
+</tool_output_masked>

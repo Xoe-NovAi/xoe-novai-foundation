@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-sambanova/server.py (1 replacements). Here is the updated code:\n...\nSAMBANOVA_API_KEY = os.environ.get(\"SAMBANOVA_API_KEY\")\nSAMBANOVA_
+... [TRUNCATED] ...
+ text=\"Error: Authentication failed\")]\n\n    if not SAMBANOVA_API_KEY:\n        # Try rotation if single key missing\n        SAMBA_KEY_1 = os.environ.get(\"SAMBANOVA_API_KEY_1\")\n        if SAMBA_KEY_1:\n            api_key = SAMBA_KEY_1\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001735160_0_0ds59r.txt
+</tool_output_masked>

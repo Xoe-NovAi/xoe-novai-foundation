@@ -1,0 +1,6 @@
+Output: 248M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/.venv
+61M     /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-memory/.venv
+492K    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/projects/nova/.Trashes/502/GPT-voice-setup/.venv
+8.0K    /home/arcana-novai/Documents/Archives/Old-Stacks/Xoe-NovAi/venv
+8.0K    /home/arcana-novai/Documents/.cursor.old/extensions/ms-python.python-2025.6.1-linux-x64/python_files/lib/jedilsp/jedi/third_party/typeshed/stdlib/3/venv
+Process Group PGID: 1860044

@@ -1,0 +1,53 @@
+Output: NAME        FSTYPE   FSVER LABEL         UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+loop0       squashfs 4.0                                                            0   100% /snap/btop-desktop/276
+loop1       squashfs 4.0                                                            0   100% /snap/btop-desktop/344
+loop2       squashfs 4.0                                                            0   100% /snap/bare/5
+loop3       squashfs 4.0                                                            0   100% /snap/chromium/3369
+loop4       squashfs 4.0                                                            0   100% /snap/chromium/3375
+loop5       squashfs 4.0                                                            0   100% /snap/core18/2979
+loop6       squashfs 4.0                                                            0   100% /snap/core18/2999
+loop7       squashfs 4.0                                                            0   100% /snap/core20/2686
+loop8       squashfs 4.0                                                            0   100% /snap/core20/2717
+loop9       squashfs 4.0                                                            0   100% /snap/core22/2292
+loop10      squashfs 4.0                                                            0   100% /snap/core22/2339
+loop11      squashfs 4.0                                                            0   100% /snap/core24/1267
+loop12      squashfs 4.0                                                            0   100% /snap/core24/1349
+loop13      squashfs 4.0                                                            0   100% /snap/cups/1142
+loop14      squashfs 4.0                                                            0   100% /snap/cups/1146
+loop15      squashfs 4.0                                                            0   100% /snap/desktop-security-center/87
+loop16      squashfs 4.0                                                            0   100% /snap/desktop-security-center/99
+loop17      squashfs 4.0                                                            0   100% /snap/docker/3265
+loop18      squashfs 4.0                                                            0   100% /snap/docker/3377
+loop19      squashfs 4.0                                                            0   100% /snap/firmware-updater/210
+loop20      squashfs 4.0                                                            0   100% /snap/firmware-updater/216
+loop21      squashfs 4.0                                                            0   100% /snap/gh/640
+loop22      squashfs 4.0                                                            0   100% /snap/gitkraken/286
+loop23      squashfs 4.0                                                            0   100% /snap/gitkraken/288
+loop24      squashfs 4.0                                                            0   100% /snap/gnome-42-2204/226
+loop25      squashfs 4.0                                                            0   100% /snap/gnome-42-2204/247
+loop26      squashfs 4.0                                                            0   100% /snap/gnome-46-2404/145
+loop27      squashfs 4.0                                                            0   100% /snap/gnome-46-2404/153
+loop28      squashfs 4.0                                                            0   100% /snap/gtk-common-themes/1535
+loop29      squashfs 4.0                                                            0   100% /snap/mesa-2404/1165
+loop30      squashfs 4.0                                                            0   100% /snap/mesa-2404/912
+loop31      squashfs 4.0                                                            0   100% /snap/prompting-client/104
+loop32      squashfs 4.0                                                            0   100% /snap/python-runtime-core24-312/31
+loop33      squashfs 4.0                                                            0   100% /snap/snap-store/1270
+loop34      squashfs 4.0                                                            0   100% /snap/snapd/25577
+loop35      squashfs 4.0                                                            0   100% /snap/snapd/25935
+loop36      squashfs 4.0                                                            0   100% /snap/snapd-desktop-integration/315
+loop37      squashfs 4.0                                                            0   100% /snap/snapd-desktop-integration/343
+loop38      squashfs 4.0                                                            0   100% /snap/thunderbird/1001
+loop39      squashfs 4.0                                                            0   100% /snap/thunderbird/1017
+loop40      squashfs 4.0                                                            0   100% /snap/tre/1
+loop41      squashfs 4.0                                                            0   100% /snap/tree/54
+loop42      squashfs 4.0                                                            0   100% /snap/vlc/3777
+loop43      squashfs 4.0                                                            0   100% /snap/wireguard-dtp/29
+zram0                                                                                        
+zram1       swap     1     zram1         003b3ca7-bad4-455f-8c1d-14c2d1bc5c29                [SWAP]
+nvme0n1                                                                                      
+├─nvme0n1p1 vfat     FAT32 SYSTEM        68B3-A169                               195M    24% /boot/efi
+├─nvme0n1p2 ext4     1.0                 af025118-8969-44f4-8777-244012a4e0f4    3.8G    91% /
+├─nvme0n1p3 ext4     1.0   omega_library 9073e188-f7a4-4be8-823f-de4a2175f789   68.4G    33% /media/arcana-novai/omega_library
+└─nvme0n1p4 ext4     1.0   omega_vault   3570c974-6500-406d-bbcb-dc0c839079ad    3.4G    72% /media/arcana-novai/omega_vault
+Process Group PGID: 95469

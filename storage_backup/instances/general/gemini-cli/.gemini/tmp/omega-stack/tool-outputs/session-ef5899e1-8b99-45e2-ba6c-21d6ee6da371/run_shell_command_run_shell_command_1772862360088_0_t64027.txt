@@ -1,0 +1,3 @@
+{
+  "output": "Output: /home/arcana-novai/.gemini/tmp/2c2e57fff6a7d732495109652181928b3d530c55b8e2edff4a024611bf88b193/checkpoint-reef.json\n/home/arcana-novai/.gemini/tmp/arcana-novai/checkpoint-reef.json\n/home/arcana-novai/.gemini/tmp/omega-stack/checkpoint-Kurt%20Cobain.json\n/home/arcana-novai/.gemini/tmp/0a2d7521d51ea0b509097c57429bd98cdabae4f45a20b03ddbf7f6a32500f9bf/checkpoint-foundation.json\n/home/arcana-novai/.gemini/tmp/0a2d7521d51ea0b509097c57429bd98cdabae4f45a20b03ddbf7f6a32500f9bf/checkpoint-refactor.json\nProcess Group PGID: 15967"
+}

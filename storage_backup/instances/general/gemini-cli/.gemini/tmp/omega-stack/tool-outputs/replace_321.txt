@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/omega_foundry.py (1 replacements). Here is the updated code:
+...
+async def mastermind(problem: str):
+    """Runs the Oikos Mastermind session via the FastAPI Service."""
+    import httpx
+    print(f"🔱 Foundry: Sending problem to Iris Bridge (Port 8006)...")
+    
+    url = "http://localhost:8006/iris/route"
+    payload = {"problem": problem, "session_id": "SESS-18-Resurrection"}
+    
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.post(url, json=payload, timeout=30.0)
+...

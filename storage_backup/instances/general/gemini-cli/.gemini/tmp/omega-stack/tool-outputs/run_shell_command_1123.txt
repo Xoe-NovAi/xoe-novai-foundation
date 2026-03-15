@@ -1,0 +1,38 @@
+<tool_output_masked>
+Output: xnai_memory_bank_mcp
+xnai_redis
+STEP 1/10: FROM xnai-base:latest
+STEP 2/10: LABEL maintainer="Xoe-NovAi Team"
+--> Using cache 9a5203f80bcab3238701d780dfbb5abb4cec5085421bd19c306a06ec07193a59
+--> 9a5203f80bca
+STEP 3/10: LABEL version="0.1.8"
+--> Using cache 5bae21c4241a4e48a08da623af415bac02906beb5af6d588bebb86b939fb801b
+--> 5bae21c4241a
+STEP 4/10: LABEL description="Xoe-NovAi Memory Bank MCP Service"
+
+... [51 lines omitted] ...
+
+COMMIT docker_memory-bank-mcp
+WARN[0358] HEALTHCHECK is not supported for OCI image format and will be ignored. Must use `docker` format 
+--> dade5227e8f6
+Successfully tagged localhost/docker_memory-bank-mcp:latest
+dade5227e8f6267eb27c192804602c5d7b221b8972f14adc45cee1e6e7c06d4f
+make: Entering directory '/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker'
+🚀 Starting Core Services (Tier 1)...
+podman-compose -f docker-compose.yml up -d redis postgres qdrant caddy memory-bank-mcp
+acf4702d8042cdf8815f37d3dadb51de972db325a10a8f635abde77c7e097dd5
+xnai_redis
+Error: creating container storage: the container name "xnai_qdrant" is already in use by 6f17f02eb2ac43d82adbe73c8b2ac81e6ee25fb661e026e2026291222fd396d5. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_qdrant
+Error: creating container storage: the container name "xnai_postgres" is already in use by ba5be9d14b092c8c295535a2f1634a4333234f7d2ee3a49a8b98c0e3bfe28b29. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_postgres
+Error: creating container storage: the container name "xnai_caddy" is already in use by 650ab7675f39d001149cc3407efd18674d2d014fd22ca14a3f6d40d58b85a797. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_caddy
+0b314a16daa285f194d2ce97add37f0e8a3cdd6b37b0eb17559e8941707deb6d
+xnai_memory_bank_mcp
+✅ Core Services started. Check status with 'make status'
+make: Leaving directory '/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker'
+Process Group PGID: 811941
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773007558878_0_nxto1.txt
+</tool_output_masked>

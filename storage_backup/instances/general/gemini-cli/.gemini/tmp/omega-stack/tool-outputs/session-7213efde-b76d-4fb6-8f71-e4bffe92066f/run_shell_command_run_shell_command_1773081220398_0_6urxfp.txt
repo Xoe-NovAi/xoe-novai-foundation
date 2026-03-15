@@ -1,0 +1,3 @@
+{
+  "output": "Output: uid=1000(arcana-novai) gid=1000(arcana-novai) groups=1000(arcana-novai),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users),115(lpadmin),125(docker),982(ollama)\nProcess Group PGID: 601267"
+}

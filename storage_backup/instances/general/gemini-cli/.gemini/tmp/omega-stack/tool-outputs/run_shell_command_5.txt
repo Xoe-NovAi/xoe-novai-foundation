@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: REPOSITORY                                  TAG         IMAGE ID      CREATED        SIZE
+localhost/docker_oikos                      latest      6c89e801c627  6 minutes ago  550 MB
+<none>                                      <none>      fdb1ee6728b3  6 minutes ago  801 MB
+<none>                                      <none>      a7477c01afad  24 hours ago   137 MB
+<none>                                      <none>      4bc8c773dc02  24 hours ago   136 MB
+<none>                                      <none>      89f9b77bb134  2 days ago     1.14 GB
+<none>                                      <none>      bdfa46d5835e  4 days ago     849 MB
+<none>                                      <none>      23dcc43fc6fe  4 days ago     123 MB
+docker.io/library/python                    3.12-slim   6f90d4a79e7a  9 days ago     123 MB
+docker.io/victoriametrics/victoria-metrics  latest      5e7fd3af19bd  13 days ago    35.4 MB
+
+... [4 lines omitted] ...
+
+docker.io/library/redis                     7.4.1       2724e40d4303  17 months ago  120 MB
+docker.io/library/caddy                     2.8-alpine  612f0ff47f33  21 months ago  49.8 MB
+CONTAINER ID  IMAGE                                              COMMAND               CREATED         STATUS                    PORTS                                                       NAMES
+66e46f19d7a7  localhost/docker_oikos:latest                      uvicorn app.oikos...  6 minutes ago   Up 6 minutes (healthy)    0.0.0.0:8006->8006/tcp                                      xnai_oikos
+0bcd57c92ba3  docker.io/victoriametrics/victoria-metrics:latest  -storageDataPath=...  5 minutes ago   Up 6 minutes (healthy)    0.0.0.0:8428->8428/tcp                                      xnai_victoriametrics
+7c1192e480eb  docker.io/library/caddy:2.8-alpine                 caddy run --confi...  4 minutes ago   Up 4 minutes (healthy)    0.0.0.0:8002->8000/tcp, 80/tcp, 443/tcp, 2019/tcp, 443/udp  xnai_caddy
+c314e0244763  docker.io/grafana/grafana:11.4.0                                         3 minutes ago   Up 3 minutes (healthy)    0.0.0.0:3000->3000/tcp                                      xnai_grafana
+176b498ad669  docker.io/library/redis:7.4.1                      redis-server --re...  39 seconds ago  Up 40 seconds (healthy)   0.0.0.0:6379->6379/tcp                                      xnai_redis
+77a936f4e6ba  docker.io/qdrant/qdrant:v1.13.1                    ./entrypoint.sh       39 seconds ago  Up 39 seconds (starting)  0.0.0.0:6333-6334->6333-6334/tcp                            xnai_qdrant
+8d49962292c6  docker.io/library/postgres:15                      postgres              38 seconds ago  Up 39 seconds (healthy)   0.0.0.0:5432->5432/tcp                                      xnai_postgres
+Process Group PGID: 2026944
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773361714160_0_mmneqg.txt
+</tool_output_masked>

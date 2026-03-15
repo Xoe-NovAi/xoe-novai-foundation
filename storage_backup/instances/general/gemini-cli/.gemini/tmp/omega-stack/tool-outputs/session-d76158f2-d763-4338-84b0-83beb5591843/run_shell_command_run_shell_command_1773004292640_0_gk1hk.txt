@@ -1,0 +1,3 @@
+{
+  "output": "Output: # MkDocs output\nsite/\n\n# Build artifacts\n*.egg-info/\n__pycache__/\n.pytest_cache/\n*.pyc\n*.pyo\n\n# OS files\n.DS_Store\nThumbs.db\n\n# Environment & Secrets\n.env\n.env.local\n*.pem\nsecrets/\n*.secret\n.oauth_key\n\n# Large binaries and archives\n*.AppImage\n*.zip\n*.tar.gz\n*.log\n*.dmg\n*.gguf\n*.onnx\n\n# Storage (Models, Instances, Data) - GLOBAL IGNORE\nstorage/\ndata/\ndb/\ninternal_docs/\nbackups/\nembeddings/\n\n# Virtual environments\nvenv/\n.venv/\nenv/\n\n# IDE\n.idea/\n.vscode/\n*.swp\n*.swo\n\n# Large Artifacts\nartifacts/*.json\n_archive/**/*.json\nProcess Group PGID: 439604"
+}

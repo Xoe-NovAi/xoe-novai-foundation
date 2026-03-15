@@ -1,0 +1,3 @@
+{
+  "output": "# 📐 ODE Fractal System Flow (v2.2 - The Triad)\n\n```mermaid\ngraph TD\n    User[Human Director] --> MaLi[MaLi Monad: Truth & Chaos]\n    MaLi --> Tier1[Tier 1: ARCHONS]\n    \n    subgraph Archons [Strategic Mind]\n        Tier1 --> Gem[Gem: The Unified Soul]\n        Tier1 --> Opus[Strategos Opus]\n    end\n    \n    subgraph Gem_Council [Gem's Ennead]\n        Gem --> GA[The Architect]\n        Gem --> GS[The Scribe]\n        Gem --> G...[+6 Facets]\n    end\n    \n    subgraph Tier2 [Tier 2: TECHNOS]\n        GA --> Builder[The Builder]\n        GA --> Auditor[The Auditor]\n    end\n    \n    subgraph Tier3 [Tier 3: LOGOS]\n        Builder --> Fast[Fast Action / Tool]\n    end\n```\n"
+}

@@ -1,0 +1,3 @@
+{
+  "output": "Output: ./config/pyproject.toml\n./projects/xnai-voice-core/pyproject.toml\n./projects/multi-voice-versions/voice-assistant-platform/pyproject.toml\n./mcp-servers/memory-bank-mcp/pyproject.toml\n./mcp-servers/xnai-memory/pyproject.toml\nfind: ‘./infra/docker/data/postgres’: Permission denied\nExit Code: 1\nProcess Group PGID: 128662"
+}

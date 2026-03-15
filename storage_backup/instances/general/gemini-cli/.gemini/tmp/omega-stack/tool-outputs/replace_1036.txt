@@ -1,0 +1,17 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+
+
+from memory_bank_fallback import MemoryBankFallbackWrapper
+from memory_bank_store import MemoryBankStore
+
+import sys
+logging.basicConfig(level=logging.INFO, stream=sys.stderr)
+logger = get_logger(__name__)
+logger.info("Memory Bank MCP Script Started")
+
+class ContextTier(str, Enum):
+    """Memory bank context tiers for progressive loading."""
+    HOT = "hot"      # Frequently accessed, <100MB
+    WARM = "warm"    # Moderately accessed, <500MB  
+...

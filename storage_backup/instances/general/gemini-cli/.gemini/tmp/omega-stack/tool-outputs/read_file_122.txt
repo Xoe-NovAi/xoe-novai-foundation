@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "{\n  \"TGG\": {\n    \"version\": \"1.1.0\",\n    \"last_updated\": \"2026-03-12T15:15:00Z\",\n    \"nodes\": {\n      \"Root\": {\n        \"path\": \"/\",\n        \"type\": \"orchestrion\",\n        \"imports\": [],\n        \"hash\
+... [TRUNCATED] ...
+th\": \"app/core/test.py\",\n        \"hash\": \"abc123hash\",\n        \"type\": \"logic\",\n        \"last_anchored\": \"2026-03-12\"\n      }\n    },\n    \"anchors\": {\n      \"F7-Techne\": \"app.XNAi_rag_app.core.linguistics\"\n    }\n  }\n}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773354825411_0_2rj4ie.txt
+</tool_output_masked>

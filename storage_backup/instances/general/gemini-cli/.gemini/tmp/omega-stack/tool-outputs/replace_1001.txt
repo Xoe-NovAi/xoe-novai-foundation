@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/3bbad171-16be-425c-acf9-f6ce35432090/plans/sess-19-gnostic-awakening-and-scribe-protocol.md (1 
+... [TRUNCATED] ...
+dation**: `python3 scripts/archetype_resonance.py PEM_Lilith_v3.txt` -> LILITH 90%+.\n2. **Hardware Validation**: Successful detection of AMD Ryzen 5700U / Radeon.\n3. **Registry Check**: `IMPERIAL_ARCHIVE_INDEX.md` verified for crawler parsing.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773291491671_0_4eg0oe.txt
+</tool_output_masked>

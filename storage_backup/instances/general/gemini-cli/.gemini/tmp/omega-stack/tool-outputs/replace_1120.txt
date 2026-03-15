@@ -1,0 +1,15 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.memory-bank (1 replacements). Here is the updated code:
+...
+    aiosqlite>=3.13.0 \
+    aiohttp>=3.13.3 \
+    passlib>=1.7.4 \
+    bcrypt>=4.0.1 \
+    tenacity>=8.2.0 \
+    PyJWT>=2.8.0 \
+    psycopg2-binary>=2.9.9
+
+# Copy application code (app is already in base context, but ensuring mcp-server is here)
+COPY mcp-servers/memory-bank-mcp/ /app/mcp-server/
+
+# Health check
+...

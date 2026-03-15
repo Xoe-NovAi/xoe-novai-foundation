@@ -1,0 +1,3 @@
+{
+  "output": "No matches found for pattern \"GITHUB_PAT\\|REDIS_PASSWORD\\|VIKUNJA_JWT_SECRET\" in path \"config/\"."
+}

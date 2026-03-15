@@ -1,0 +1,7 @@
+Output: WARN[0010] StopSignal SIGTERM failed to stop container xnai_oikos in 10 seconds, resorting to SIGKILL 
+xnai_oikos
+📡 Foundry: Waiting for Oikos Service at http://localhost:8006/iris/route...
+✅ Oikos Service is ONLINE.
+🔱 Foundry: Sending problem to Iris Bridge...
+❌ Error: Request to Oikos Service timed out (60s).
+Process Group PGID: 563355

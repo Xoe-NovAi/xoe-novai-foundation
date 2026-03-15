@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\ningest_library.py - Robust ingestion for stack-cat snapshots into XNAi RAG\n\nThis module is intended to be imported by the small wrapper script\n`xnai-snapshot-ingest.py` (which calls ingest_library.mai
+... [TRUNCATED] ...
+ts = ing.ingest_snapshot(args.snapshot_dir, chunk_size=args.chunk_size, overlap=args.overlap)\n        print(json.dumps(stats, indent=2))\n        return\n\n    parser.print_help()\n    sys.exit(2)\n\n\nif __name__ == \"__main__\":\n    main()\n\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773295007704_0_25op0w.txt
+</tool_output_masked>

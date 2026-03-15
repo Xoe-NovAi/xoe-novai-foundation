@@ -1,0 +1,38 @@
+# Plan: SESS-23 - Gnosis System Verification & Testing
+
+**Objective**: Verify all current SESS-23 implementations (ZLV, Greek Normalization, Resonance Auditor, TGG Anchoring, and SLM Logic) through a unified test suite.
+
+## 🧪 Verification Strategy
+
+I will create a comprehensive test script `tests/test_sess23_gnosis.py` that exercises the following logic blocks:
+
+1. **ZLV Rigidity (Crystal Hashing)**:
+   - **Test**: Compare hashes for two identical Python functions with different formatting/comments.
+   - **Success**: Hashes MUST be identical (Functional Parity).
+2. **Ancient Greek Normalization**:
+   - **Test**: Input "μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος".
+   - **Success**: Output "μηνιν αειδε θεα πηληιαδεω αχιληος" (Normalized).
+3. **Resonance Auditor (Cosine Similarity)**:
+   - **Test**: Compare an "Athena-like" context against "Athena" seed words.
+   - **Success**: Score > 0.5 for aligned context, < 0.1 for noise.
+4. **TGG Anchoring Logic**:
+   - **Test**: Call `anchor_to_gnosis` with sample path/hash.
+   - **Success**: Verify correct dictionary structure and metadata.
+5. **SLM Check (Security Logic Matrix)**:
+   - **Test**: Pass an execution path containing "secrets" without "Phylax".
+   - **Success**: Must return `False` (Blocked).
+
+## Implementation Steps
+
+1. **Create `tests/test_sess23_gnosis.py`**:
+   - Use the Python `unittest` or simple `assert` framework.
+   - Import `ZippedLogosDecoder` and `ResonanceAuditor`.
+2. **Execute Tests**:
+   - Run via `python3 tests/test_sess23_gnosis.py`.
+3. **Report Findings**:
+   - Log all successes/failures to the session history.
+4. **Harden Based on Results**:
+   - Address any functional gaps before final SESS-23 closure.
+
+## Verification & Testing
+- Final success requires all 5 tests to pass with 100% fidelity.

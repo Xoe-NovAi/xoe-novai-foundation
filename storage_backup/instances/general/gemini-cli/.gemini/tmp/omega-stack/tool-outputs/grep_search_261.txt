@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 2 matches for pattern \"/compress\" in path \"docs/\":\n---\nFile: 02-tutorials/advanced-agent-patterns/CR - Supplemental Advanced Cline Techniques (2026 Edition).md\nL173- \nL174- 3. **Semantic Compression:**\nL175-    - Group s
+... [TRUNCATED] ...
+ds:\nL49- *   `/audit`: Automated security and \"Maat\" ideal compliance check.\nL50- *   `/torch-free`: Scan and refactor code to ensure no PyTorch dependencies.\nL51- *   `/docs`: Build MkDocs documentation following the Diátaxis structure.\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/grep_search_grep_search_1773074133586_0_muwr7a.txt
+</tool_output_masked>

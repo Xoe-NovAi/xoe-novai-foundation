@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/dispatcher.d:\ngemini.conf (1601 bytes)\nopencode.conf (998 bytes)"
+}

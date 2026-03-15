@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1350-1550 of 1755 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exa
+... [TRUNCATED] ...
+           for stats in all_stats:\n                combined_stats.total_processed += stats.total_processed\n                combined_stats.total_ingested += stats.total_ingested\n                combined_stats.total_skipped += stats.total_skipped"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773016595842_0_hd9ryg.txt
+</tool_output_masked>

@@ -1,0 +1,12 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/data:
+[DIR] cache
+[DIR] consul
+[DIR] curations
+[DIR] data
+[DIR] entities
+[DIR] feedback
+[DIR] models
+[DIR] prometheus-multiproc
+[DIR] qdrant
+[DIR] redis
+[DIR] vikunja

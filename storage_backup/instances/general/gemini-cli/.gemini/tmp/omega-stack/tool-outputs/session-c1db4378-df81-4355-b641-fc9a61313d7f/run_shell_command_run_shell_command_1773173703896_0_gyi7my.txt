@@ -1,0 +1,3 @@
+{
+  "output": "Output: infra/docker/Dockerfile\ninfra/docker/Dockerfile.crawl\nfind: ‘infra/docker/data/postgres’: Permission denied\ninfra/docker/Dockerfile.chainlit\ninfra/docker/Dockerfile.curator\ninfra/docker/Dockerfile.build\ninfra/docker/Dockerfile.base\ninfra/docker/Dockerfile.cline\ninfra/docker/Dockerfile.curation_worker\ninfra/docker/Dockerfile.docs\ninfra/docker/Dockerfile.memory-bank\nExit Code: 1\nProcess Group PGID: 61390"
+}

@@ -1,0 +1,55 @@
+Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/e6779b9a-1fa9-40d1-8eee-d3bb4c795893/plans/sess-17-reconciliation-mcp-hardening.md. Here is the updated code:
+# 🔱 Plan: SESS-17: The Great Reconciliation & MCP Hardening
+
+**Status**: DRAFT (Session 17.1)
+**Objective**: Finalize the Great Reconciliation (centralize storage), consolidate redundant cache/data folders, fix the Memory Bank MCP crash loop, and harden inter-agent communication.
+
+## 🎯 Objectives
+1. **Fix MCP Watchdog**: Resolve the `KeyError: 'memory-bank'` by correcting the service name in `scripts/mcp_watchdog.sh`.
+2. **Consolidate Redundant Storage**: 
+    - Review and merge the "mess of cache and data folders" (e.g., `data/data/cache`, `storage/data/cache`, `storage/data/cache_v2`).
+    - Standardize on a single `models/` storage folder for both RAG and other services, pointing to the Sovereign Library partition.
+    - Eliminate redundant downloads of the Qwen model.
+3. **Harden Memory Bank MCP Access**: 
+    - Transition all agents (Archon and Facets) from `stdio` (isolated containers) to `sse` (central server) for Memory Bank access.
+    - Ensure the central `memory-bank-mcp` service is stable and healthy.
+4. **Alleviate Disk Stress**: Ensure all heavy data is correctly symlinked/mounted to the Sovereign Library partition (`omega_library`) to resolve the 98% root disk usage.
+
+## 🔍 Key Files & Context
+- `scripts/mcp_watchdog.sh`: The source of the restart failure loop.
+- `infra/docker/docker-compose.yml`: Current service definitions and volume mappings.
+- `config/mcp_config.json`: Master MCP configuration for the Archon.
+- `storage/instances/facets/*/gemini-cli/.gemini/mcp_config.json`: MCP configurations for Facets.
+- `artifacts/GEMINI_FACET_6_SESSION_SUMMARY.md`: Gem's roadmap for this reconciliation.
+- Redundant Paths identified: `data/data/cache`, `storage/data/cache`, `storage/data/cache_v2`, `storage/models`.
+
+## 🛠 Implementation Steps
+
+### Phase 1: Fix & Stabilize Infrastructure
+1. **Correct Watchdog Script**:
+    - Update `scripts/mcp_watchdog.sh` to use `memory-bank-mcp` instead of `memory-bank` in the `podman-compose` fallback command.
+2. **Restart MCP Services**:
+    - Stop any rogue `xnai_memory_bank_mcp` containers.
+    - Start the central service: `cd infra/docker && podman-compose up -d memory-bank-mcp`.
+
+### Phase 2: Storage Consolidation & De-duplication
+1. **Map Redundant Caches**:
+    - Identify all `huggingface` cache directories and merge their contents into a single centralized cache (ideally on the `omega_library` partition).
+2. **Model Storage Standardization**:
+    - Redirect all services to use the models stored in the Sovereign Library partition (`/media/arcana-novai/omega_library/omega-stack/models`).
+    - Remove the redundant `huggingface` caches if the models are already present in the primary `models/` folder.
+3. **Update `docker-compose.yml`**:
+    - Consolidate all volume mappings to point to the new centralized paths.
+    - Remove `storage_new` and `knowledge_new` references once verified.
+
+### Phase 3: Harden Agent Access (SSE Transition)
+1. **Update Master `mcp_config.json`**:
+    - Transition the `memory-bank` server to the SSE transport: `http://localhost:8005/sse`.
+2. **Batch Update Facet Configurations**:
+    - Update all facet `mcp_config.json` files to use the central SSE server.
+
+## ✅ Verification & Testing
+- **Watchdog Status**: `logs/mcp_watchdog.log` should show healthy checks.
+- **MCP Health**: `curl http://localhost:8005/health` should return `{"status": "ok"}`.
+- **Disk Usage**: Significant recovery on the root partition.
+- **Model Loading**: Ensure RAG and other services can load the Qwen model from the centralized path without re-downloading.

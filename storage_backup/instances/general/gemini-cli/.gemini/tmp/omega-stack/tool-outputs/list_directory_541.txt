@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_base/expert-knowledge/model-reference:\n[DIR] _archived\n[DIR] _templates\n[DIR] bert\n[DIR] index\n[DIR] phi\nAI-MODEL-REFERENCE-2026-02-22.md (7894 by
+... [TRUNCATED] ...
+.md (796 bytes)\nruvltra-claude-code-0.5b-q4_k_m.md (1982 bytes)\nRuvLTRA-Claude-Coding-LoRA-model.md (5230 bytes)\nsilero-tts.md (533 bytes)\nTIERED-MODEL-REFINEMENT-STRATEGY-v1.0.0.md (19289 bytes)\nXNAI-MODEL-INTELLIGENCE-MASTER.md (3736 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/list_directory_list_directory_1773002550575_0_7ds92u.txt
+</tool_output_masked>

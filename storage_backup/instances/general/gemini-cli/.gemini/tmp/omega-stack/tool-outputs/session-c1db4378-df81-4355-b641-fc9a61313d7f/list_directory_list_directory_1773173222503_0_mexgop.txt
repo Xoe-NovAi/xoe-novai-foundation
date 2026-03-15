@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra:\n[DIR] containers\n[DIR] docker\n[DIR] migrations\n[DIR] monitoring"
+}

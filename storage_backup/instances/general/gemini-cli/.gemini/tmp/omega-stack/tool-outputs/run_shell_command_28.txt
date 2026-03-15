@@ -1,0 +1,11 @@
+Output:     validator = OctaveValidator(pack_data)
+    validation = await validator.validate()
+    
+    if validation["status"] == "FAIL":
+        return f"❌ Seal Denied (Facet {validation['facet']}): {validation['message']}"
+    
+    return f"🔒 Pack sealed and anchored in ALETHIA_REGISTRY: {hash}"
+
+if __name__ == "__main__":
+    mcp.run()
+Process Group PGID: 1974557

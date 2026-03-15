@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: {
+  "version": "1.0.0",
+  "last_updated": "2026-02-13",
+  "queue_status": {
+    "pending": 3,
+    "prioritized": 0,
+    "assigned": 0,
+    "in_progress": 0,
+    "completed": 0,
+    "integrated": 0,
+
+... [34 lines omitted] ...
+
+  ],
+  "recently_completed": [],
+  "stats": {
+    "total_submitted": 3,
+    "this_month": 3,
+    "completion_rate": 0,
+    "average_resolution_time_days": null
+  },
+  "notes": "Initial queue populated with OpenCode model research requests. System operational."
+}
+Process Group PGID: 425180
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773002702634_0_5ztb8i.txt
+</tool_output_masked>

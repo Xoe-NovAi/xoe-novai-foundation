@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/oikos_service.py (1 replacements). Here is the updated code:\n...\n    return {\"member\": member, \"insight\": f\"Insight for {problem} from {member}.\
+... [TRUNCATED] ...
+    council_insights.append(f\"### {member} Insight\\n{insight}\")\n        await record_gear_shift(member, \"COUNCIL_SPEAK\", 0.5, {\"status\": \"SUCCESS\"})\n\n    # Round 2: MaLi Synthesis\n    synthesis = \"\\n\\n\".join(council_insights)\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773277371112_0_ic84ot.txt
+</tool_output_masked>

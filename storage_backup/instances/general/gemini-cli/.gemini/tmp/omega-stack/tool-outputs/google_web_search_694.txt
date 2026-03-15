@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"GitHub Model Context Protocol (MCP) server list for local data ingestion Qdrant SQLite PostgreSQL\":\n\nThe Model Context Protocol (MCP) ecosystem has rapidly expanded to include robust servers for local data i
+... [TRUNCATED] ...
+kkfloBUCjBm0g==)\n[13] github.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGBlZPKhZSn57WLz-puPUiJlEXpu2-993tneDFLDe-GMTjQ-_Dkp_hpcdPlUfHHN93kLwpMHrya6vWR_ktTuOPURAIM3XecdXowtsGvZWT6wjLnnsBC5cskIHpoJndw1h9QyhlXsE_Ub-c=)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/google_web_search_google_web_search_1773293394357_0_jd7g5k.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\nblock:\n  label: tech_context\n  description: Technology stack, versions, dependencies, and development environment setup\n  chars_limit: 5000\n  read_only: false\n  tier: core\n  priority: 3\ncreated: 2026-02-20\nmodified: 2026-0
+... [TRUNCATED] ...
+sconfig |\n\n## Related Documents\n\n- `systemPatterns.md` - Architecture patterns\n- `OPERATIONS.md` - Operational procedures\n- `AGENTS.md` - Agent constraints\n\n---\n**Last Updated**: 2026-03-04 (Metropolis Hardening)\n**Owner**: MC-Overseer\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773326165290_0_07npdq.txt
+</tool_output_masked>

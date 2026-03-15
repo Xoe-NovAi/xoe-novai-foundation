@@ -1,0 +1,3 @@
+{
+  "output": "Output: sed: -e expression #1, char 50: unknown option to `s'\n✅ Generated and rotated Redis/Postgres passwords.\nProcess Group PGID: 2242083"
+}

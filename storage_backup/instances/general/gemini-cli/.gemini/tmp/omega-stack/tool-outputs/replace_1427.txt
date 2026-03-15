@@ -1,0 +1,12 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/redis_health_check.py (1 replacements). Here is the updated code:
+#!/usr/bin/env python3
+"""
+Redis health check helper for local developer usage.
+
+Checks connectivity using REDIS_URL or REDIS_HOST/REDIS_PASSWORD env vars.
+"""
+
+import os
+import sys
+import subprocess
+...

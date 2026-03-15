@@ -1,0 +1,3 @@
+{
+  "output": "{\n  \"error\": \"File path '/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.env' is ignored by configured ignore patterns.\"\n}"
+}

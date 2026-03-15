@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nKnowledge Distillation Pipeline - LangGraph StateGraph Implementation\n======================================================================\n\nImplements the Knowledge Absorption System using LangGraph
+... [TRUNCATED] ...
+\"STORAGE TARGETS: {result.get('storage_targets', [])}\")\n\n    print(f\"PROCESSING TIME: {result.get('processing_time_ms', 0)}ms\")\n    print(f\"{'=' * 60}\\n\")\n\n\nif __name__ == \"__main__\":\n    import asyncio\n\n    asyncio.run(main())\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773333451979_3_gtzgi.txt
+</tool_output_masked>

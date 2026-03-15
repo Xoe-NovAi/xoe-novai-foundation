@@ -1,0 +1,17 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+                    "properties": {
+                        "source_agent": {
+                            "type": "string",
+                            "description": "Source agent identifier"
+                        },
+                        "auth_token": {
+                            "type": "string",
+                            "description": "S2: Authorization token for the source agent"
+                        },
+                        "target_agent": {
+                            "type": "string",
+                            "description": "Target agent identifier"
+                        },
+                        "context_id": {
+...

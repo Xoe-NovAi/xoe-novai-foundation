@@ -1,0 +1,3 @@
+Output: bash: -c: line 4: syntax error: unexpected end of file
+Exit Code: 2
+Process Group PGID: 2009536

@@ -1,0 +1,3 @@
+{
+  "output": "Output: drwxrwxr-x 3 100999 100999 4096 Mar 10 18:08 storage_new\nProcess Group PGID: 485868"
+}

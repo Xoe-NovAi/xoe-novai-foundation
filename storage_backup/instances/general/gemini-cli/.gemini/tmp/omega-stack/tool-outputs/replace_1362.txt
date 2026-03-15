@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+                        "context_data": {
+                            "type": "object",
+                            "description": "Context data to store"
+                        }
+                    },
+                    "required": ["agent_id", "auth_token", "context_type", "context_data"]
+                }
+            ),
+            Tool(
+                name="sync_context",
+                description="Synchronize context between agents",
+...

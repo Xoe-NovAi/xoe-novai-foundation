@@ -1,0 +1,67 @@
+<tool_output_masked>
+Output: xnai_memory_bank_mcp
+STEP 1/10: FROM xnai-base:latest
+STEP 2/10: LABEL maintainer="Xoe-NovAi Team"
+--> Using cache 9a5203f80bcab3238701d780dfbb5abb4cec5085421bd19c306a06ec07193a59
+--> 9a5203f80bca
+STEP 3/10: LABEL version="0.1.8"
+--> Using cache 5bae21c4241a4e48a08da623af415bac02906beb5af6d588bebb86b939fb801b
+--> 5bae21c4241a
+STEP 4/10: LABEL description="Xoe-NovAi Memory Bank MCP Service"
+--> Using cache 7397a1fa78d2aae9a589f44667574a64a030e10a15e03bb6c1935cfa7a2a0f73
+
+... [46 lines omitted] ...
+
+--> 0bc5dafdb2af
+STEP 9/10: HEALTHCHECK --interval=30s --timeout=10s --retries=3     CMD python -c "import sys; sys.exit(0)" || exit 1
+WARN[0186] HEALTHCHECK is not supported for OCI image format and will be ignored. Must use `docker` format 
+--> 280d9757737c
+STEP 10/10: CMD ["python", "server.py"]
+COMMIT docker_memory-bank-mcp
+WARN[0186] HEALTHCHECK is not supported for OCI image format and will be ignored. Must use `docker` format 
+--> 90b8d416223d
+Successfully tagged localhost/docker_memory-bank-mcp:latest
+90b8d416223d7032a1149ca1f081b51966fd7c19731a9935b790e09ceff573c2
+Error: creating container storage: the container name "xnai_redis" is already in use by acf4702d8042cdf8815f37d3dadb51de972db325a10a8f635abde77c7e097dd5. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_redis
+8c41e7ec6bb1426460bd0b3ad6a36b14e8fd4910189eaa92b0554306bb725bbc
+xnai_memory_bank_mcp
+Warning: Could not load config: No module named 'XNAi_rag_app'
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 45, in <module>
+    from app.XNAi_rag_app.core.agent_bus import AgentBusClient
+  File "/app/app/XNAi_rag_app/core/agent_bus.py", line 9, in <module>
+    from app.XNAi_rag_app.core.iam_handshake import KeyManager
+  File "/app/app/XNAi_rag_app/core/iam_handshake.py", line 25, in <module>
+    from .iam_db import IAMDatabase, AgentIdentity, AgentType
+  File "/app/app/XNAi_rag_app/core/iam_db.py", line 590, in <module>
+    iam_database = IAMDatabase()
+                   ^^^^^^^^^^^^^
+  File "/app/app/XNAi_rag_app/core/iam_db.py", line 196, in __init__
+    self.jwt_secret = self._get_jwt_secret()
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/XNAi_rag_app/core/iam_db.py", line 202, in _get_jwt_secret
+    secret = self.db.execute(
+             ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2147, in _execute_internal
+    statement = coercions.expect(roles.StatementRole, statement)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 396, in expect
+    resolved = impl._literal_coercion(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 622, in _literal_coercion
+    return self._text_coercion(element, argname, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 615, in _text_coercion
+    return _no_text_coercion(element, argname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 585, in _no_text_coercion
+    raise exc_cls(
+sqlalchemy.exc.ArgumentError: Textual SQL expression 'SELECT value FROM config ...' should be explicitly declared as text('SELECT value FROM config ...')
+Process Group PGID: 839189
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773007964960_0_495tms.txt
+</tool_output_masked>

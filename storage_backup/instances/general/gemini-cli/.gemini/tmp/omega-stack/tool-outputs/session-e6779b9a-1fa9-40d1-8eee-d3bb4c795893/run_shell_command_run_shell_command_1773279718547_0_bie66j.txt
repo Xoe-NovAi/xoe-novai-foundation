@@ -1,0 +1,3 @@
+{
+  "output": "Output: INFO:     Started server process [7]\nINFO:     Waiting for application startup.\nINFO:     Application startup complete.\nINFO:     Uvicorn running on http://0.0.0.0:8006 (Press CTRL+C to quit)\nProcess Group PGID: 491324"
+}

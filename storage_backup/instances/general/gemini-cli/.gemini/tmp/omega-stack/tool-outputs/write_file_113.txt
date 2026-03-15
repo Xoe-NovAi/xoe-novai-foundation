@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/protocols/ZLV_RIGIDITY_PROTOCOL.md. Here is the updated code:\n# 🔱 ZLV RIGIDITY PROTOCOL: CRYSTAL HASHING & ALETHIA POINTERS\n\n## 🎯 
+... [TRUNCATED] ...
+.py` module maintains functional parity with [AP-412] (SHA-256: `83d596e...`).\"\n\n## 🛠️ TOOLS\n- `make gnostic-audit`: Run the global ZLV/TGG/GRA check.\n- `make preflight`: Execute mmap-optimized pre-flight checks including ZLV verification.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773356322488_0_xw7v5n.txt
+</tool_output_masked>

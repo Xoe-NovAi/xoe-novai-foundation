@@ -1,0 +1,5 @@
+Output:  ?column? 
+----------
+        1
+(1 row)
+Process Group PGID: 865380

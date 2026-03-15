@@ -1,0 +1,11 @@
+Output: 19G     /home/arcana-novai/.local/share/containers/storage/overlay
+1.5G    /home/arcana-novai/.local/share/containers/storage/volumes
+18M     /home/arcana-novai/.local/share/containers/storage/overlay-layers
+9.1M    /home/arcana-novai/.local/share/containers/storage/overlay-containers
+2.8M    /home/arcana-novai/.local/share/containers/storage/overlay-images
+496K    /home/arcana-novai/.local/share/containers/storage/db.sql
+16K     /home/arcana-novai/.local/share/containers/storage/secrets
+12K     /home/arcana-novai/.local/share/containers/storage/networks
+4.0K    /home/arcana-novai/.local/share/containers/storage/storage.lock
+4.0K    /home/arcana-novai/.local/share/containers/storage/libpod
+Process Group PGID: 89374

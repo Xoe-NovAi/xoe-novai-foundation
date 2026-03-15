@@ -1,0 +1,14 @@
+Output: Traceback (most recent call last):
+  File "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/test_sess23_gnosis.py", line 22, in <module>
+    from server import ResonanceAuditor
+  File "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-gnosis/server.py", line 25, in <module>
+    from app.XNAi_rag_app.core.distillation.knowledge_distillation import distill_content
+  File "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/distillation/__init__.py", line 34, in <module>
+    from .knowledge_distillation import (
+    ...<4 lines>...
+    )
+  File "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/distillation/knowledge_distillation.py", line 37, in <module>
+    from .nodes.classify import classify_content_node
+ModuleNotFoundError: No module named 'app.XNAi_rag_app.core.distillation.nodes.classify'
+Exit Code: 1
+Process Group PGID: 1861017

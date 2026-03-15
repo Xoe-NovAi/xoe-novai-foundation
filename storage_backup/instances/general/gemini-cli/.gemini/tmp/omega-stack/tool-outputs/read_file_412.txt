@@ -1,0 +1,27 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 610-630 of 760 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 631.
+
+--- FILE CONTENT (truncated) ---
+      - xnai_db_network
+    restart: unless-stopped
+
+  llama_server:
+    image: ghcr.io/abetlen/llama-cpp-python:latest
+    container_name: xnai_llama_server
+    command: python3 -m llama_cpp.server --model /models/Qwen3-0.6B-Q6_K.gguf --n_gpu_layers 0 --n_threads 6 --n_ctx 32768 --host 0.0.0.0 --port 8000 --api_key ${LLAMA_API_KEY:-xnai-local-key}
+    volumes:
+      - ./models:/models:ro,Z,U
+    environment:
+      - N_THREADS=6
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2.0'
+    networks:
+      - xnai_db_network
+    restart: unless-stopped
+
+  open-webui:

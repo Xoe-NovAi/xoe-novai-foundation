@@ -1,0 +1,6 @@
+Output: [Sun Mar 15 02:14:32 UTC 2026] START session for gemini in domain General (Instance 0)
+Command: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/xnai-gemini-dispatcher.sh 
+[Sun Mar 15 01:51:36 UTC 2026] START session for gemini in domain General (Instance 0)
+Command: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/xnai-gemini-dispatcher.sh 
+[Sun Mar 15 02:14:24 UTC 2026] END session
+Process Group PGID: 62164

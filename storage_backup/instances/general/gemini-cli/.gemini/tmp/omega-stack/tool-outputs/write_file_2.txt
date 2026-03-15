@@ -1,0 +1,26 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.memory-bank. Here is the updated code:
+...
+ENV PYTHONPATH=/app
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies needed specifically for the MCP server and foundation modules
+RUN uv pip install --system --no-cache \
+    fastapi>=0.100.0 \
+    uvicorn>=0.23.0 \
+    sse-starlette>=1.6.0 \
+    redis>=5.0.0 \
+    aiosqlite>=0.19.0 \
+    pyyaml>=6.0.0 \
+    mcp[cli]>=1.2.0 \
+    aiohttp>=3.9.0 \
+    tenacity>=8.2.0 \
+    pydantic>=2.0.0 \
+    pydantic-settings>=2.0.0
+
+# Copy only the necessary core modules and the server itself
+COPY app/XNAi_rag_app /app/XNAi_rag_app
+COPY mcp-servers/memory-bank-mcp/ /app/mcp-server/
+
+...

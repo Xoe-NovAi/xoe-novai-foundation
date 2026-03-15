@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/agent_bus.py (1 replacements). Here is the updated code:
+...
+import os
+import time
+from datetime import datetime
+from typing import Optional, Dict, Any, List
+from redis.asyncio import Redis
+from app.XNAi_rag_app.core.dependencies import get_redis_client, get_redis_client_async
+from app.XNAi_rag_app.core.iam_handshake import KeyManager
+from prometheus_client import Counter, Histogram
+
+logger = logging.getLogger(__name__)
+
+...

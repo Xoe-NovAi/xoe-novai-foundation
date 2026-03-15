@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# Deletion Log\n\n## 2026-03-14 — GPT-4.1 Review & Canon Lock\n\n**Archived to**: _archive/2026-03-14/\n\n**Archived files**:\n- PLAN_* (all planning documents pre-GPT-4.1 review)\n- GPT_4_1_* (comprehensive handoff chains)\n- Compacti
+... [TRUNCATED] ...
+S_MANAGEMENT.md\n5. maat_freedom_implementation.py\n6. maat_implementation_guide.md\n7. SESS-24.2 Sovereign Proxy Mesh Ignition.md\n8. _meta/projects.md\n\n**Governance**: See _meta/active_sources_canon_v1.md & _meta/project_files_strategy_v2.md\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773543357735_1_nwqhj.txt
+</tool_output_masked>

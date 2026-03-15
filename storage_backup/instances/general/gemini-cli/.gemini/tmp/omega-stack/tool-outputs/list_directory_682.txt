@@ -1,0 +1,3 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/research_env:
+[DIR] research
+[DIR] research-environment

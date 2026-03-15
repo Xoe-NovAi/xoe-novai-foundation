@@ -1,0 +1,17 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.curator. Here is the updated code:
+...
+    PyJWT>=2.8.0 \
+    psycopg2-binary>=2.9.9
+
+# Group 2: Library and Media dependencies
+RUN uv pip install --system --no-cache \
+    feedparser>=6.0.12 \
+    python-magic>=0.4.27 \
+    yt-dlp>=2023.7.6
+
+# Copy application code
+COPY app/ /app/app/
+COPY scripts/ /app/scripts/
+
+# Run the worker
+...

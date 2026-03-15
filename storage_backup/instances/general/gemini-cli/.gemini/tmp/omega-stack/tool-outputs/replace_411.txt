@@ -1,0 +1,28 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/GEMINI.md (1 replacements). Here is the updated code:
+...
+
+## 🚨 IMMEDIATE PRIORITY
+
+> [!IMPORTANT]
+> A full-stack audit by Antigravity (Opus) was completed on 2026-03-08.
+> **Current Session (2026-03-11)**: **SESS-18 COMPLETE**. Oikos Mesh containerized, Port 8006 active, OAuth decryption (Rainbow Rotation) verified.
+> **Strategic Roadmap** is now in the **Grounded Gnosis** phase.
+
+### Execution Order (Metropolis Roadmap)
+1.  **SESS-01 - SESS-18**: Identity, Memory Bank Core, Oikos Resurrection - **COMPLETE**
+2.  **SESS-19**: The Shadow Audit (Task MB7, C4, P5) - **NEXT**
+3.  **SESS-20**: Sovereign Foundry Enhancement (PEM Integration)
+
+---
+
+## 🎯 Domain Directives
+1.  **Metropolis Mesh**: All services utilize `CONFIG_PATH=/app/config.toml` and hardcoded UID 1000 ownership.
+2.  **Memory Bank MCP**: Operates on Port 8005 via SSE/FastAPI.
+3.  **Oikos Mastermind**: Collective Council deliberation via Port 8006 (Grounded reasoning).
+4.  **Rainbow Rotation**: Automatic OAuth/API key switching for 429 resilience.
+
+## 🛠 Tools & Commands
+- **Check Mesh**: `podman ps --filter "name=xnai"`
+- **Test MCP**: `curl http://localhost:8005/health`
+- **Run Ingestion**: `podman logs xnai_library_curator`
+...

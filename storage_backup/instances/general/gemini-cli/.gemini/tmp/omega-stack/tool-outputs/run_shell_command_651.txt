@@ -1,0 +1,10 @@
+Output: 🔍 Validating skill...
+✅ Skill is valid!
+  adding: references/ (stored 0%)
+  adding: SKILL.md (deflated 44%)
+  adding: assets/ (stored 0%)
+  adding: scripts/ (stored 0%)
+  adding: scripts/context_watchdog.sh (deflated 48%)
+  adding: scripts/omega_chronicle.py (deflated 56%)
+✅ Successfully packaged skill to: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.cli/skills/sentinel-skill.skill
+Process Group PGID: 215302

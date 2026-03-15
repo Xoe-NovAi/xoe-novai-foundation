@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/SESSIONS_MAP.md (1 replacements). Here is the updated code:\n...\n- [x] **The Foundry**: Unified CLI (`omega_foundry.py`) with `oikos-check`.\n- [x] **The M
+... [TRUNCATED] ...
+ **Shadow Audit**: Full recursive analysis of `./Omegadroid/origins/`.\n- [ ] **PEM Integration**: Port `PEM_Lilith_v3.txt` logic into the Foundry.\n- [ ] **OpenPipe Harvesting**: Begin recording \"Sentinel Reasoning\" for local distillation.\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773275251830_0_fdc77ef.txt
+</tool_output_masked>

@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: -rw-rw-r-- 1 arcana-novai arcana-novai 1679 Mar  3 11:08 config/Caddyfile
+{
+  admin 127.0.0.1:2019
+}
+
+:8000 {
+  # Security headers
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options "nosniff"
+
+... [44 lines omitted] ...
+
+  # 5. Foundation Chainlit UI - Default Catch-all (including WebSockets)
+  handle {
+    reverse_proxy xnai_chainlit_ui:8001 {
+      header_up Host {host}
+      header_up X-Real-IP {remote_host}
+      header_up Connection "Upgrade"
+      header_up Upgrade {>Upgrade}
+    }
+  }
+}
+Process Group PGID: 576886
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773006416177_0_kvpolg.txt
+</tool_output_masked>

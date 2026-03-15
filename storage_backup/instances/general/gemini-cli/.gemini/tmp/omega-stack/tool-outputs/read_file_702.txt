@@ -1,0 +1,94 @@
+#!/usr/bin/env python3
+"""
+🔱 OMEGA FOUNDRY: The Unified Sovereign Studio CLI
+Focus: Synthesis, Visualization, and Broadcasting (Voice/Video).
+"""
+import anyio
+import sys
+import argparse
+from pathlib import Path
+
+async def synthesize(domain: str):
+    """1M-context domain ingestion via Gemini 2.5 Pro."""
+    print(f"🔱 Foundry: Synthesizing domain [{domain}]...")
+    # TODO: Implement Gemini 2.5 Pro 1M context call
+    await anyio.sleep(1)
+    print(f"✅ Synthesis Complete: outputs/synthesis_{domain}.md")
+
+async def visualize(input_file: str):
+    """Automated Mermaid-CLI mind-mapping."""
+    print(f"🔱 Foundry: Visualizing [{input_file}]...")
+    # TODO: Implement mermaid-cli container call
+    await anyio.sleep(1)
+    print(f"✅ Visualization Complete: outputs/map_{Path(input_file).stem}.png")
+
+async def broadcast(input_file: str):
+    """Piper TTS + MoviePy audio/video briefing."""
+    print(f"🔱 Foundry: Broadcasting [{input_file}]...")
+    # TODO: Implement Piper TTS and MoviePy pipeline
+    await anyio.sleep(1)
+    print(f"✅ Broadcast Complete: outputs/briefing_{Path(input_file).stem}.mp3")
+
+async def oikos_check():
+    """Runs all Council stabilization scripts."""
+    print("🔱 Foundry: Initiating the Oikos Blessing...")
+    scripts = [
+        "scripts/brigid_hearth_check.py",
+        "scripts/hestia_memory_lock.py",
+        "scripts/demeter_harvest_index.py",
+        "scripts/athena_shield_protocol.py",
+        "scripts/iris_bridge.py"
+    ]
+    
+    for s in scripts:
+        print(f"\n🔱 Calling {Path(s).stem}...")
+        # Use subprocess to run the scripts (since they are standalone)
+        import subprocess
+        result = subprocess.run(["python3", s], capture_output=True, text=True)
+        print(result.stdout)
+        if result.stderr:
+            print(f"  ⚠️  Error: {result.stderr}")
+
+    print("\n✅ Oikos Blessing Complete. The Hearth is stabilized.")
+
+async def mastermind(problem: str):
+    """Runs the Oikos Mastermind session with MaLi approval."""
+    from scripts.oikos_mastermind import orchestrate_session
+    await orchestrate_session(problem)
+
+async def main():
+    parser = argparse.ArgumentParser(description="Omega Foundry CLI")
+    subparsers = parser.add_subparsers(dest="command")
+
+    # Mastermind
+    mm_parser = subparsers.add_parser("mastermind")
+    mm_parser.add_argument("problem", help="The problem to solve via Oikos Council")
+
+    # Oikos Check
+    subparsers.add_parser("oikos-check")
+
+    # Synthesize
+    sync_parser = subparsers.add_parser("synthesize")
+    sync_parser.add_argument("domain", help="The domain/folder to synthesize")
+
+    # Visualize
+    vis_parser = subparsers.add_parser("visualize")
+    vis_parser.add_argument("file", help="The markdown file to visualize")
+
+    # Broadcast
+    cast_parser = subparsers.add_parser("broadcast")
+    cast_parser.add_argument("file", help="The markdown file to broadcast")
+
+    args = parser.parse_args()
+
+    if args.command == "synthesize":
+        await synthesize(args.domain)
+    elif args.command == "visualize":
+        await visualize(args.file)
+    elif args.command == "broadcast":
+        await broadcast(args.file)
+    else:
+        parser.print_help()
+
+if __name__ == "__main__":
+    anyio.run(main)

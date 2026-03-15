@@ -1,0 +1,57 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 700-750 of 833 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 751.
+
+--- FILE CONTENT (truncated) ---
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - xnai_db_network
+    restart: unless-stopped
+    command: ["python3", "-m", "XNAi_rag_app.workers.knowledge_miner"]
+
+  memory-bank-mcp:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.memory-bank
+    container_name: xnai_memory_bank_mcp
+    init: true
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    ports:
+      - "8005:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@xnai_postgres:5432/xnai
+      - REDIS_URL=rediss://xnai_redis:6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=true
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - REDIS_SSL_CERT_REQS=none
+      - HF_TOKEN=${HF_TOKEN:-}
+      - STORAGE_PATH=/storage
+      - CONFIG_PATH=/app/config.toml
+      - PYTHONPATH=/app
+    volumes:
+      - ../../storage_new:/storage:Z,U
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+      - ../../app/config.toml:/app/config.toml:ro,Z,U
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    networks:
+      - xnai_db_network
+      - xnai_app_network
+    restart: on-failure:5
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

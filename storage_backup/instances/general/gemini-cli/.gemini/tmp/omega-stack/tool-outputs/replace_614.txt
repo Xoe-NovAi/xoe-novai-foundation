@@ -1,0 +1,24 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.oikos (1 replacements). Here is the updated code:
+...
+    httpx \
+    pyyaml \
+    anyio
+
+# Copy application and scripts
+COPY app/oikos_service.py ./app/
+COPY scripts/ ./scripts/
+
+# Create internal directories and set permissions for UID 1000
+RUN mkdir -p /app/.logs /app/memory_bank /app/artifacts/metrics \
+    && chown -R 1000:1000 /app
+
+# Ensure scripts are in path
+ENV PYTHONPATH=/app
+
+USER 1000
+
+
+EXPOSE 8006
+
+CMD ["uvicorn", "app.oikos_service:app", "--host", "0.0.0.0", "--port", "8006"]
+ Applied fuzzy match at line 23-29.

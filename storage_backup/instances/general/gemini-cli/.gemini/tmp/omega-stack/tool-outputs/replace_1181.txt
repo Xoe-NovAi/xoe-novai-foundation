@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/iam_service.py (1 replacements). Here is the updated code:\n...\n\n        self.db[\"users\"].insert(user.to_row())\n        logger.in
+... [TRUNCATED] ...
+\n            ]\n            \n        return keys\n\n\n# ============================================================================\n# JWT TOKEN MANAGEMENT\n# ============================================================================\n\n\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773005464907_0_444hqo.txt
+</tool_output_masked>

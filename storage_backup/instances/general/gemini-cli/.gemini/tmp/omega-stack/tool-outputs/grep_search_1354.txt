@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 2 matches for pattern \"Redis\\(|Redis\\.from_url\\(\" in path \".\" (filter: \"app/XNAi_rag_app/core/dependencies.py\"):\n---\nFile: app/XNAi_rag_app/core/dependencies.py\nL350-         host = get_config_value(\"redis.host\") or
+... [TRUNCATED] ...
+g_value(\"redis.password\") or os.getenv(\"REDIS_PASSWORD\")\nL392- \nL393:     return redis_async.Redis(\nL394-         host=host,\nL395-         port=port,\nL396-         password=password,\nL397-         decode_responses=False\nL398-     )\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/grep_search_grep_search_1773001113744_0_fm6ktl.txt
+</tool_output_masked>

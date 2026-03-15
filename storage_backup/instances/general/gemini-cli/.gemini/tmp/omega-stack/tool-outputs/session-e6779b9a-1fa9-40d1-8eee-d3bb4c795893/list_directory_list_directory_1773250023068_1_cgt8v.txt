@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge:\n[DIR] model_cards\n[DIR] schemas\n[DIR] technical_manuals\n[DIR] vectors\nmodel_cards_inventory.json (325 bytes)"
+}

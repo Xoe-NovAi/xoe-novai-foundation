@@ -1,0 +1,3 @@
+{
+  "output": "Output: total 76\ndrwxrwxr-x 3 arcana-novai arcana-novai  4096 Mar  7 15:45 .\ndrwxrwxr-x 9 arcana-novai arcana-novai  4096 Mar  4 18:44 ..\n-rw-rw-r-- 1 arcana-novai arcana-novai 12065 Mar  7 13:06 FALLBACK_INTEGRATION.md\ndrwxrwxr-x 2 arcana-novai arcana-novai  4096 Mar  8 23:11 __pycache__\n-rw-rw-r-- 1 arcana-novai arcana-novai 11519 Mar  8 19:30 memory_bank_fallback.py\n-rw-rw-r-- 1 arcana-novai arcana-novai 18282 Mar  8 23:11 memory_bank_store.py\n-rw-rw-r-- 1 arcana-novai arcana-novai   594 Mar  7 13:04 pyproject.toml\n-rwxrwxr-x 1 arcana-novai arcana-novai  1390 Mar  8 23:08 run_server.sh\n-rw-rw-r-- 1 arcana-novai arcana-novai  8885 Mar  9 15:58 server.py\nProcess Group PGID: 8333"
+}

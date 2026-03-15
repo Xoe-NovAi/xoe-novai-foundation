@@ -1,0 +1,105 @@
+Found 1 match for pattern "entropy|information density" in path "docs/":
+---
+File: 02-tutorials/advanced-agent-patterns/CR - Autonomous Research System Rule Files!.md
+L487- ---
+L488- 
+L489- ## 7. Research Automation Macros
+L490- 
+L491- ### **Common Research Sequences**
+L492- Record and reuse these patterns:
+L493- 
+L494- ```bash
+L495- # Macro 1: Technology evaluation
+L496- research_evaluate_tech() {
+L497-     TECH="$1"
+L498-     research_topic "$TECH 2025 features"
+L499-     research_topic "$TECH performance benchmarks"
+L500-     research_topic "$TECH common issues"
+L501-     research_topic "$TECH alternatives comparison"
+L502- }
+L503- 
+L504- # Macro 2: Version upgrade research
+L505- research_version_upgrade() {
+L506-     TECH="$1"
+L507-     FROM="$2"
+L508-     TO="$3"
+L509-     research_topic "$TECH $FROM to $TO migration"
+L510-     research_topic "$TECH $TO breaking changes"
+L511-     research_topic "$TECH $TO performance improvements"
+L512- }
+L513- 
+L514- # Macro 3: Hardware optimization
+L515- research_hardware_optimization() {
+L516-     TECH="$1"
+L517-     research_topic "$TECH Ryzen 7 optimization"
+L518-     research_topic "$TECH CPU performance tuning"
+L519-     research_topic "$TECH memory usage reduction"
+L520- }
+L521- ```
+L522- 
+L523- ---
+L524- 
+L525- ## 8. Research Success Criteria
+L526- 
+L527- ### **Quality Indicators**
+L528- - ✅ **Comprehensiveness**: Covers all aspects of the topic
+L529- - ✅ **Relevance**: Directly applicable to Xoe-NovAi
+L530- - ✅ **Currency**: Information is up-to-date (<12 months)
+L531- - ✅ **Actionability**: Leads to concrete next steps
+L532- - ✅ **Integration**: Properly incorporated into Memory Bank
+L533- 
+L534- ### **Efficiency Metrics**
+L535- - **Time to research**: <10 minutes for simple, <30 for complex
+L536- - **Sources per minute**: 2-3 high-quality sources identified
+L537: - **Information density**: High signal-to-noise ratio in findings
+L538- - **Confidence boost**: Minimum +3 points on 10-point scale
+L539- 
+L540- ---
+L541- 
+L542- ## 9. Research Follow-up
+L543- 
+L544- ### **Scheduled Re-research**
+L545- For critical topics, schedule follow-up:
+L546- - **Monthly**: Security vulnerabilities, performance-critical tools
+L547- - **Quarterly**: Core technologies (Python, MkDocs, FAISS)
+L548- - **Bi-annually**: Hardware optimizations, architectural patterns
+L549- - **Annually**: Comprehensive technology review
+L550- 
+L551- ### **Research Debt Tracking**
+L552- In `memory_bank/activeContext.md`:
+L553- ```
+L554- Research Debt:
+L555- - [ ] Topic: [Topic], Due: [Date], Priority: [High/Medium/Low]
+L556- - [ ] Topic: [Topic], Due: [Date], Priority: [High/Medium/Low]
+L557- ```
+L558- 
+L559- ### **Knowledge Freshness Dashboard**
+L560- Monitor with:
+L561- ```bash
+L562- # Check research age
+L563- grep -h "Researched:" memory_bank/*.md | sort -r
+L564- 
+L565- # Identify stale knowledge
+L566- find_outdated_research() {
+L567-     CURRENT_DATE=$(date +%Y%m%d)
+L568-     grep "Researched:" memory_bank/*.md | while read line; do
+L569-         # Extract date and compare
+L570-         # Flag if >6 months old for time-sensitive topics
+L571-         # Flag if >12 months old for stable topics
+L572-     done
+L573- }
+L574- ```
+L575- 
+L576- ---
+L577- 
+L578- ## 10. Research Integration Examples
+L579- 
+L580- ### **Example 1: Researching "MkDocs Zensical"**
+L581- ```
+L582- User asks: "What's new with MkDocs Zensical?"
+L583- 
+L584- Research triggered because:
+L585- - Time-sensitive ("new")
+L586- - Technology evolution (Zensical replacing Material)
+L587- 
+---

@@ -1,0 +1,6 @@
+Found 5 file(s) matching "requirements/*.in" across 2 workspace directories, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements-api.in
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements-chainlit.in
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements-crawl.in
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements-curation_worker.in
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements.in

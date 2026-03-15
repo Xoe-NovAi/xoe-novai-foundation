@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\nhydration:\n  event_id: \"HYD-20260311-004\"\n  session_id: \"SESS-18\"\n  coordination_key: \"METROPOLIS-OIKOS-20260311-V1\"\n  timestamp: \"2026-03-11T22:00:00Z\"\n  status: \"SENTINEL-COMPLETE\"\n---\n\n# 🔱 Active Context: Met
+... [TRUNCATED] ...
+r Next Session\n1.  **Read**: `memory_bank/chronicles/` (Latest Mastermind Decrees).\n2.  **Verify**: Podman state via `podman ps --filter \"name=xnai\"`.\n3.  **Act**: Run `python3 scripts/omega_foundry.py mastermind` for Shadow Audit strategy.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773291956497_0_i63vu9.txt
+</tool_output_masked>

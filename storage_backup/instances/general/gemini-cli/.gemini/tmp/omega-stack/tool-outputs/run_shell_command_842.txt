@@ -1,0 +1,6 @@
+Output: /media/arcana-novai/omega_library/engines/gguf/RocRacoon-3b.Q4_K_M.gguf
+/media/arcana-novai/omega_library/engines/gguf/Krikri-8B-Instruct.Q4_K_M.gguf
+/media/arcana-novai/omega_library/engines/gguf/smollm2-135m-instruct-q8_0.gguf
+/media/arcana-novai/omega_library/engines/gguf/ruvltra-claude-code-0.5b-q4_k_m.gguf
+/media/arcana-novai/omega_library/engines/gguf/Qwen3-0.6B-Q6_K.gguf
+Process Group PGID: 1327005

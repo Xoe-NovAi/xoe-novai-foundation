@@ -1,0 +1,29 @@
+Output: storage/data/open-webui/cache
+storage/data/cache
+storage/data/cache_v2
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/schemas/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/core/entities/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/core/health/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/core/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/core/security/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/core/infrastructure/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/core/curation/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/core/circuit_breakers/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/core/memory/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/core/embeddings/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/core/sanitization/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/cli/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/services/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/services/rag/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/services/voice/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/ui/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/api/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/app/XNAi_rag_app/api/routers/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/docs/03-how-to-guides/buildtime-debian-cache
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/scripts/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/scripts/split_test/__pycache__
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/infra/docker/data/open-webui/cache
+storage/backups/SNAP-20260312-METROPOLIS-HARDENED/infra/docker/data/cache
+Process Group PGID: 86445

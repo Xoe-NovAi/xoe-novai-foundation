@@ -1,0 +1,12 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/research_env/research-environment:
+[DIR] config
+[DIR] jupyterlab
+[DIR] notebooks
+[DIR] scripts
+docker-compose.yml (4238 bytes)
+Dockerfile.classical-processor (902 bytes)
+Dockerfile.doc-generator (770 bytes)
+Dockerfile.model-router (704 bytes)
+Dockerfile.research-queue (707 bytes)
+README.md (10103 bytes)
+test_research_environment.py (10552 bytes)

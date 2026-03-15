@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: ---
+document_type: critical_tasks
+title: Critical Task Delivery - MB-MCP, Gemini, zRAM (Priority 1-3)
+created_date: 2026-03-14
+version: 1.0
+status: ready_for_execution
+---
+
+# CRITICAL TASKS: PRIORITY 1-3 DELIVERY
+
+
+... [136 lines omitted] ...
+
+2. **Run zRAM Commands 1-6** (your terminal, password in step 1, then passwordless)
+3. **Verify each step** (expected outputs documented)
+4. **Report back** when complete
+5. **Proceed to Phase 2A**: `podman-compose --parallel 2 up -d`
+
+---
+
+**Ready for execution**
+**Confidence**: 9.9/10
+**Issued**: 2026-03-14 23:40 UTC
+Process Group PGID: 59805
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/run_shell_command_run_shell_command_1773541805752_0_ep64sn.txt
+</tool_output_masked>

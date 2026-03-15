@@ -1,0 +1,2 @@
+Output: 383:async def get_redis_client_async():
+Process Group PGID: 2667894

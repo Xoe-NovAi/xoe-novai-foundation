@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 9 file(s) matching \"**/expert_soul.md\" within /home/arcana-novai/Documents/Xoe-NovAi/omega-stack, sorted by modification time (newest first):\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/facets/instance
+... [TRUNCATED] ...
+xpert_soul.md\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/facets/instance-8/gemini-cli/.gemini/expert_soul.md\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/expert_soul.md"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/glob_glob_1773292594531_0_xlfhj8.txt
+</tool_output_masked>

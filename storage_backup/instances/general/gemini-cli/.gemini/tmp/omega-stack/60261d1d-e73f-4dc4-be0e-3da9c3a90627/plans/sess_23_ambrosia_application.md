@@ -1,0 +1,38 @@
+# 🏺 AMBROSIA PROTOCOL: METROPOLIS INTEGRATION PLAN
+
+## 🎯 OBJECTIVE
+Immediately apply the SESS-23 "Ambrosia" insights (ZLV, Oikonomia, LIA Triad) to the Omega Stack's core protocols and documentation to ensure total alignment for SESS-24.
+
+## 🏛️ KEY FILES & CONTEXT
+- `docs/protocols/ZLV_RIGIDITY_PROTOCOL.md` (New): Define Crystal Hashing and Alethia-Pointers.
+- `docs/protocols/OIKONOMIA_ECONOMICS.md` (New): Define Token ROI and Cache Resonance.
+- `docs/protocols/OCTAVE_COUNCIL_SYNC.md` (New): Define the low-level Facet boot-sequence.
+- `app/GEMINI.md` & `docs/GEMINI.md`: Update with new Metropolis mandates.
+
+## 🛠️ IMPLEMENTATION STEPS
+
+### 1. The Gnostic Rigidity (ZLV) Layer
+- **Mandate**: Every technical claim in a session must have an Alethia-Pointer (`AP-XXXX`) referencing the `ALETHIA_REGISTRY`.
+- **ZLV-Audit**: Integrate `scripts/gnostic_audit.py` into the `make preflight` command.
+- **Seal Hashes**: Implement `[RIGID]` tags for core architecture files.
+
+### 2. The Oikonomia (Economics) Layer
+- **Token ROI**: All sub-agents must report token usage in their final distillation.
+- **Cache Resonance**: Implement "Golden Chain" reads (minimal, targeted `read_file` vs. full reads).
+- **Metron Dashboard**: Create the Grafana schema for Port 8006 telemetry.
+
+### 3. The Octave Council (Low-Level) Layer
+- **Octave Sync**: A 4-step pre-flight check for sub-agents:
+  1. `curl http://localhost:8000/health` (RAG API)
+  2. `curl http://localhost:8002/health` (CLI Ingress)
+  3. `curl http://localhost:8005/health` (MCP Context)
+  4. `curl http://localhost:8006/health` (Oikos Mastermind)
+
+### 4. Documentation Update (Laser-Distilled)
+- **KNOWLEDGE-HUB.md**: Add the "Silicon-Etched Lessons."
+- **SESSIONS_MAP.md**: Finalize the LIA Triad roadmap for SESS-24.
+
+## 🧪 VERIFICATION & TESTING
+- **Gnostic Audit**: Run `python -m pytest tests/test_gnostic_audit.py` (to be created).
+- **Mesh Check**: Run `podman ps --filter "name=xnai"` to verify all Metropolis ports are active.
+- **Resonance Test**: Perform a "Ghost Resonance Audit" (GRA) on the newly applied protocols.

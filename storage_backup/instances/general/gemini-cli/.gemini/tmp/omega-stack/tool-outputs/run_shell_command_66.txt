@@ -1,0 +1,11 @@
+Output: {
+  "tipsShown": 10,
+  "focusUiEnabled": false
+}{
+  "projects": {
+    "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack": "omega-stack",
+    "/home/arcana-novai/.gemini/antigravity/scratch": "scratch",
+    "/home/arcana-novai": "arcana-novai"
+  }
+}
+Process Group PGID: 62443

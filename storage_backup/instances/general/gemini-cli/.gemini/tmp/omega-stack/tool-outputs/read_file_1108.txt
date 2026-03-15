@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 190-210 of 595 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+alar()\n        \n        if not secret:\n            secret = secrets.token_urlsafe(64)\n            self.db.execute(\n                text(\"INSERT INTO config (key, value) VALUES ('jwt_secret', :secret)\"),\n                {\"secret\": secret}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773008286176_0_0x4hmc.txt
+</tool_output_masked>

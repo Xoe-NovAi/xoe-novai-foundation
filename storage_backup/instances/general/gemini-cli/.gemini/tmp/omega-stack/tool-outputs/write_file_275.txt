@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/artifacts/STABILITY_CHECKPOINT_20260310.md. Here is the updated code:\n# Session Artifact: Stability Checkpoint - 2026-03-10\n\n**Ch
+... [TRUNCATED] ...
+nt Chat Trimming Protocol to prevent session OOM.\n- [ ] Profile Node.js heap for Gemini CLI.\n- [ ] Blazed trails for Mobile Gateway (SESS-21) and Global Model Audit (SESS-22).\n\n---\n*Spidering Anchor: METROPOLIS-STABLE-20260310-ROADMAP-SYNC*\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/write_file_write_file_1773183488848_0_913cn.txt
+</tool_output_masked>

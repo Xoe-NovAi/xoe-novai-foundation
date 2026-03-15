@@ -1,0 +1,7 @@
+Output: INFO:XNAi_rag_app.core.config_loader:Configuration validated against Pydantic schema (v0.1.4-compliant)
+INFO:XNAi_rag_app.core.config_loader:Configuration loaded from /app/app/config.toml (22 sections)
+{"timestamp": "2026-03-09T01:14:10.002997", "level": "INFO", "module": "logging_config", "message": "Logging configured"}
+anyio is global
+{"timestamp": "2026-03-09T01:14:10.028854", "level": "INFO", "module": "dependencies", "message": "Redis client connected: redis:6379"}
+Engine ready
+Process Group PGID: 1315294

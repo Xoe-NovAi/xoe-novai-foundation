@@ -1,0 +1,9 @@
+Output: Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+(empty array)
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+(empty array)
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+(integer) 0
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+(integer) 0
+Process Group PGID: 422315

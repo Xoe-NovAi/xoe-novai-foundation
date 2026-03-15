@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 1 match for pattern \"changeme123\" in path \".\" (filter: \"tests/*\"):\n---\nFile: tests/test_orchestrator_integration.py\nL1- import pytest\nL2- import anyio\nL3- import os\nL4- from datetime import datetime, timezone\nL5- fro
+... [TRUNCATED] ...
+session_id, pub_gem)\nL57-             assert loaded_context == context_data\nL58- \nL59-             await cline_orch.bus.acknowledge_task(tasks[0][\"id\"])\nL60- \nL61-     db.close()\nL62-     if os.path.exists(db_path): os.remove(db_path)\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/grep_search_grep_search_1773000675977_0_fxgz2c.txt
+</tool_output_masked>

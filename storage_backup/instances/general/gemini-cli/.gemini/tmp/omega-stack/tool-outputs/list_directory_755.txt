@@ -1,0 +1,17 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/data/gnosis_hub:
+[DIR] Chat Logs
+[DIR] Update
+[DIR] V3
+_old_MIND MODEL V4.1_MASTERPROTOCOLS_Py_enh_v3-DS.txt (11109 bytes)
+_old_MIND MODEL V4.1_MASTERPROTOCOLS_Py_enh_v3.txt (13649 bytes)
+_old_PEM_Lilith_Py_enh-v3-DS.py (16169 bytes)
+MIND MODEL V4.1_ MASTER PROTOCOLS.txt (3044 bytes)
+MIND MODEL V4.1_MASTERPROTOCOLS_Py_enh.txt (7011 bytes)
+PEM_Lilith_Py_enh-2.txt (8252 bytes)
+PEM_Lilith_Py.txt (3044 bytes)
+RAG_SystemManager_Py_enh.txt (6844 bytes)
+RAG_SystemManager_v3-Claude.txt (10722 bytes)
+RAG_SystemManager_v3.py (2776 bytes)
+RAG_SystemManager.txt (3233 bytes)
+version 1.txt (10971 bytes)
+version 2.txt (10275 bytes)

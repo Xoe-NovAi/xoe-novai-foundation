@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\n🔱 OMEGA LINGUISTICS: The Morphological Oracle\nScholarly root-mapping for Ancient Greek and Russian to zip complex intent.\n\"\"\"\nimport re\nfrom typing import Dict, List, Optional, Set\n\n# Root Mapp
+... [TRUNCATED] ...
+t-to-root mapping\n    return intent\n\nif __name__ == \"__main__\":\n    # Simple test\n    test_terms = [\"Phronesis\", \"Sobornost\", \"Ontology\", \"Eudaimonia\"]\n    for t in test_terms:\n        print(f\"Analysis of '{t}': {analyze(t)}\")\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773326155459_0_oh9mwa.txt
+</tool_output_masked>

@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/xnai
+      - CACHE_TTL=${OPENPIPE_CACHE_TTL:-300}
+      - DEDUPLICATION_WINDOW=${OPENPIPE_DEDUPLICATION_WINDOW:-60}
+      - METRICS_ENABLED=true
+      - SOVEREIGN_MODE=${OPENPIPE_SOVEREIGN_MODE:-true}
+      - MEMORY_BUDGET_GB=1.0
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+
+... [47 lines omitted] ...
+
+      - REDIS_URL=rediss://redis:6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=true
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - STORAGE_PATH=/storage
+      - LOG_LEVEL=info
+    volumes:
+      - ../../storage:/storage:Z
+      - ../../app:/app/app:ro
+      - ../../mcp-servers/memory-bank-mcp:/app/mcp-server:ro
+Process Group PGID: 865078
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773008867451_0_ybti8q.txt
+</tool_output_masked>

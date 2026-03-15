@@ -1,0 +1,3 @@
+{
+  "output": "Output: Loaded cached credentials.\nError: Server 'memory-bank' not found. Use 'gemini mcp' to see available servers.\nLoaded cached credentials.\nError: Server 'memory-bank' not found. Use 'gemini mcp' to see available servers.\nProcess Group PGID: 207681"
+}

@@ -1,0 +1,3 @@
+{
+  "output": "-r requirements-api.in\n-r requirements-chainlit.in\n-r requirements-crawl.in\n-r requirements-curation_worker.in\n\n# Dev tools\n# -r requirements-dev.in\npython-consul2>=0.1.5\n"
+}

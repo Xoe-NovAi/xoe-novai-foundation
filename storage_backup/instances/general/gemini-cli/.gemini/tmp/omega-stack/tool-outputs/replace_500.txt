@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.oikos
+    container_name: xnai_oikos
+    init: true
+    user: "1000:1000"
+    # Port 8006 exposed internally via xnai_app_network, no host binding
+    volumes:
+      - ../../app:/app/app:Z
+      - ../../scripts:/app/scripts:Z
+      - ../../memory_bank:/app/memory_bank:Z
+      - ../../.cli:/app/.cli:Z
+...

@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: INFO:     Started server process [7]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8006 (Press CTRL+C to quit)
+INFO:     127.0.0.1:44754 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44762 - "GET /health HTTP/1.1" 200 OK
+🌈 Iris (Service): Hearing your request... 'Formulate the SESS-19 Shadow Audit strategy based on data/gnosis_hub contents and identify key PEM logic blocks for porting.'
+📡 Observer: [Iris] shift to gear [LEVEL_2_ESCALATION] recorded.
+01:42:39 - LiteLLM:ERROR: vertex_llm_base.py:584 - Failed to load vertex credentials. Check to see if credentials containing partial/invalid information. Error: ('File /app/secrets/oauth_credentials.json is not a valid json file.', JSONDecodeError('Expecting value: line 1 column 1 (char 0)'))
+Traceback (most recent call last):
+
+... [180 lines omitted] ...
+
+    raise new_exc from caught_exc
+google.auth.exceptions.DefaultCredentialsError: ('File /app/secrets/oauth_credentials.json is not a valid json file.', JSONDecodeError('Expecting value: line 1 column 1 (char 0)'))
+⚠️ AgentFactory: Key 1 exhausted. Rotating...
+
+Give Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+⚠️ AgentFactory: Key 1 exhausted. Rotating...
+🔱 AgentFactory: Cloud exhausted. Activating Local Fallback...
+INFO:     127.0.0.1:50210 - "GET /health HTTP/1.1" 200 OK
+Process Group PGID: 494064
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/run_shell_command_run_shell_command_1773279873950_0_8ermpo.txt
+</tool_output_masked>

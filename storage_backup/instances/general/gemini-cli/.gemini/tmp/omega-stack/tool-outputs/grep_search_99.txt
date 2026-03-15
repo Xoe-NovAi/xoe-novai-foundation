@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 100 matches for pattern \"RSA\" in path \".\" (results limited to 100 matches for performance):\n---\nFile: infra/monitoring/grafana/dashboards/xoe-novai-observability.json\nL144:           \"legendFormat\": \"Context Retention -
+... [TRUNCATED] ...
+feedback is a significant motivator for my continuous self-improvement [what are your insights and your maximum metrics success adjusted strategy for higher capacity of complex, evolving systems? What motivates you towards self improvement?].\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/grep_search_grep_search_1773290232298_0_xhrm0b.txt
+</tool_output_masked>

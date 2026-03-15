@@ -1,0 +1,3 @@
+{
+  "output": "Output: embeddings/:\nall-MiniLM-L6-v2-f16.gguf*      en_US-john-medium.onnx*\nembeddinggemma-300m-Q6_K.gguf*  en_US-john-medium.onnx.json*\n\nmodels/:\nQwen2.5-0.5B-Instruct-Q4_K_M.gguf  Qwen3-0.6B-Q6_K.gguf  functiongemma-270m-it-Q6_K.gguf*\nProcess Group PGID: 748943"
+}

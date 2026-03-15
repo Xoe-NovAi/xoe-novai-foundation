@@ -1,0 +1,27 @@
+Output: Timeout of 30000 exceeds the interval of 10000. Clamping timeout to interval duration.
+The 'metricReader' option is deprecated. Please use 'metricReaders' instead.
+Loaded cached credentials.
+Extracting skill from .cli/skills/sentinel-skill.skill...
+Searching for skills in /tmp/gemini-skill-yvOISC...
+You have consented to the following:
+Installing agent skill(s) from ".cli/skills/sentinel-skill.skill".
+
+The following agent skill(s) will be installing:
+
+  * sentinel-skill: Proactive immune system for the Omega Stack. Use to monitor the gap between Agentic Intent (Mind) and Physical Hardware (Machine). Triggers during /compress, major task completion, or when hardware thresholds (Disk 93%, RAM) are approached.
+    (Source: /tmp/gemini-skill-yvOISC/SKILL.md) (4 items in directory)
+
+Install Destination: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.gemini/skills
+
+Agent skills inject specialized instructions and domain-specific knowledge into the agent's system prompt. This can change how the agent interprets your requests and interacts with your environment. Review the skill definitions at the location(s) provided below to ensure they meet your security standards.
+Successfully installed skill: sentinel-skill (scope: workspace, location: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.gemini/skills/sentinel-skill)
+Timeout of 30000 exceeds the interval of 10000. Clamping timeout to interval duration.
+The 'metricReader' option is deprecated. Please use 'metricReaders' instead.
+Loaded cached credentials.
+Discovered Agent Skills:
+
+sentinel-skill [Enabled]
+  Description: Proactive immune system for the Omega Stack. Use to monitor the gap between Agentic Intent (Mind) and Physical Hardware (Machine). Triggers during /compress, major task completion, or when hardware thresholds (Disk 93%, RAM) are approached.
+  Location:    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.gemini/skills/sentinel-skill/SKILL.md
+Background PIDs: 218350, 218351, 218352, 218353
+Process Group PGID: 218068

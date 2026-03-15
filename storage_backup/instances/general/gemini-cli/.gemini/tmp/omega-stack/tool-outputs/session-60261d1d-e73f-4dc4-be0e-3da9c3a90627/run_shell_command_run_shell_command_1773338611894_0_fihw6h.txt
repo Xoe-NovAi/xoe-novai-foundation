@@ -1,0 +1,3 @@
+{
+  "output": "Output: usage: omega_chronicle.py [-h] --reason REASON\nomega_chronicle.py: error: the following arguments are required: --reason\nExit Code: 2\nProcess Group PGID: 1864416"
+}

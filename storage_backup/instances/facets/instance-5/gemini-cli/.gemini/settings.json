@@ -1,0 +1,28 @@
+{
+  "theme": "dark",
+  "editor": "code",
+  "auto_save": true,
+  "stream": true,
+  "minimal_ui": true,
+  "max_history_items": 100,
+  "telemetry_opt_out": true,
+  "font_size": 14,
+  "render_markdown": true,
+  "model": {
+    "id": "gemini-1.5-flash",
+    "apiKey": "AIzaSyAY5zT8GMvpJX2j7kdxQ3uP6I-m3VZW0BQ"
+  },
+  "experimental": {
+    "enableAgents": true,
+    "codebaseInvestigatorSettings": {
+      "enabled": true
+    }
+  },
+  "agents": {
+    "overrides": {
+      "codebase_investigator": {
+        "enabled": true
+      }
+    }
+  }
+}

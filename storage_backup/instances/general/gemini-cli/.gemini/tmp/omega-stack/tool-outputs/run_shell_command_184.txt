@@ -1,0 +1,4 @@
+Output: usage: omega_chronicle.py [-h] --reason REASON
+omega_chronicle.py: error: the following arguments are required: --reason
+Exit Code: 2
+Process Group PGID: 1864416

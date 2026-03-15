@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+                            "type": "string",
+                            "enum": ["full", "delta", "stream"],
+                            "description": "Type of synchronization"
+                        }
+                    },
+                    "required": ["source_agent", "auth_token", "target_agent", "context_id"]
+                }
+            ),
+            Tool(
+                name="query_agent_memory",
+                description="Execute an A2A (Agent-to-Agent) memory query",
+...

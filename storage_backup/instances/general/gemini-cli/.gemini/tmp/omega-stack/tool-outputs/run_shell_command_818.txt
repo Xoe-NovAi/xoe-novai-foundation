@@ -1,0 +1,21 @@
+Output: # 🗺️ Omega Stack: Strategic Session Roadmap (v1.3)
+
+This roadmap assigns all tasks into 9 targeted, context-efficient chat sessions.
+
+---
+
+## 🛡️ SESS-01: Identity & Credentials
+**Focus**: Stabilize ownership and secure credentials.
+- [x] **Filesystem Cleanup**: Merge `_new` folders and lock UID 1000 ownership.
+- [x] **Task C3**: Purge `changeme123` & `vikunja123` from all files.
+- [x] **Task P3**: Restore `rate_limit_handler.py`.
+- [x] **MB-MCP Fix**: Resolve `fastapi` and upgrade Watchdog.
+- [x] **MPI Update**: Integrate 'dark layers' and drift reports.
+- [x] **Protocols**: Lock in `SECRETS_ENFORCEMENT` and `DOCUMENTATION_IMPACT`.
+
+## 🧠 SESS-02: Memory Bank Hardening
+**Focus**: Ensure the agent's memory survives restarts and Redis failures.
+- [ ] **Task MB1**: Persistence (Restore agents from Redis on startup).
+- [ ] **Task C1**: Redis Null-Guards in `server.py` to prevent crashes.
+- [ ] **Task MB4**: Redis Reconnection Logic.
+Process Group PGID: 214555

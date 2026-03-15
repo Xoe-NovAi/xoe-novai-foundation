@@ -1,0 +1,16 @@
+Found 10 matches for pattern "sse" in path "mcp-servers/memory-bank-mcp/":
+---
+File: memory_bank_store.py
+L21: from dataclasses import dataclass
+L102:             "cache_misses": 0,
+L372:                         "accessed_at": datetime.now().isoformat()
+L378:             self.metrics["cache_misses"] += 1
+L413:                     "accessed_at": datetime.now().isoformat()
+---
+File: server.py
+L24: from dataclasses import dataclass, asdict
+L69:     HOT = "hot"      # Frequently accessed, <100MB
+L70:     WARM = "warm"    # Moderately accessed, <500MB
+L71:     COLD = "cold"    # Rarely accessed, <2GB
+L461:                 context_data['last_accessed'] = datetime.now().isoformat()
+---

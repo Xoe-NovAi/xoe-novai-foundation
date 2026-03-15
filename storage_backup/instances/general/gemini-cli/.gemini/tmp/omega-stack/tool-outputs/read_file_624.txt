@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\n🔱 SOUL DISTILLER: The Gnostic Evolution Engine\nDistills 20-turn cycles into the agent's Soul system to record learning.\n\"\"\"\nimport anyio\nimport yaml\nimport time\nfrom pathlib import Path\nfrom d
+... [TRUNCATED] ...
+f len(sys.argv) < 3:\n        print(\"Usage: soul_distiller.py <session_id> <turn_count> <summary>\")\n        return\n    \n    await distill_cycle(sys.argv[1], int(sys.argv[2]), sys.argv[3])\n\nif __name__ == \"__main__\":\n    anyio.run(main)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773275346882_0_2jsfjt.txt
+</tool_output_masked>

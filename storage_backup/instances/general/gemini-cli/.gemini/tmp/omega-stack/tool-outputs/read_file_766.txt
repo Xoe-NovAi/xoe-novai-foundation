@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# Plan: Omega Chronicle & Sentinel Integration (SESS-17 FINAL)\n\n## 🎯 Objective\nImplement a **Cybernetic Self-Awareness** layer for the Omega Stack by correlating Agentic Intent (Mind) with Physical Telemetry (Machine). This system 
+... [TRUNCATED] ...
+93% root disk threshold is exceeded.\n\n## 🚀 Migration & Rollback\n- **Migration**: None required; this is a non-breaking additive feature.\n- **Rollback**: Delete `scripts/omega_chronicle.py` and remove the `memory_bank/chronicles/` directory.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773268252691_0_0idbch.txt
+</tool_output_masked>

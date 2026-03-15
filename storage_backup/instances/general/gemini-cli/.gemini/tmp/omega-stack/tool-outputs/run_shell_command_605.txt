@@ -1,0 +1,14 @@
+Output: Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           675M  3.2M  671M   1% /run
+/dev/nvme0n1p2  109G   96G  7.5G  93% /
+tmpfs           3.3G   84K  3.3G   1% /dev/shm
+efivarfs        128K   11K  113K   9% /sys/firmware/efi/efivars
+tmpfs           5.0M   16K  5.0M   1% /run/lock
+tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+tmpfs           3.3G  1.3M  3.3G   1% /tmp
+/dev/nvme0n1p1  256M   61M  196M  24% /boot/efi
+tmpfs           675M  932K  674M   1% /run/user/1000
+/dev/nvme0n1p3  110G   36G   69G  35% /media/arcana-novai/omega_library
+/dev/nvme0n1p4   16G   12G  3.5G  77% /media/arcana-novai/omega_vault
+Process Group PGID: 260928

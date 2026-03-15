@@ -1,0 +1,15 @@
+Output: ACCOUNT-REGISTRY.yaml       MPI.md                            antigravity_strategic_hot.json  protocols
+AGENTS.md                   OPERATIONS.md                     archival                        recall
+ALETHIA_REGISTRY.md         PHASES                            chronicles                      reports
+ANCHOR_MANIFEST.md          RESEARCH_COMPLETION_SUMMARY.md    expert_soul.md                  research
+ARCHITECTURE.md             SESS_19_CLOSING_DECREE.md         facets                          seeds
+BLOCKS.yaml                 SESS_19_FINAL_MIND_MAP.md         handovers                       strategies
+DEPRECATION_SCHEDULE.md     SOUL_PATHS.yaml                   infrastructure                  systemPatterns.md
+GEMINI.md                   STRATEGY_SESS-19-SHADOW_AUDIT.md  multi_expert                    tasks
+IMPERIAL_ARCHIVE_INDEX.md   TIMELINE_EVOLUTION.md             productContext.md               teamProtocols.md
+INDEX.md                    _archive                          progress                        techContext.md
+MASTER_INDEX.md             activeContext                     progress.md                     usage
+MA_LI_GUARDIAN_MANIFEST.md  activeContext.md                  projectbrief.md
+SESS-17-SYNCHRONIZATION-MANIFEST.md  SESS-20-SYNCHRONIZATION-MANIFEST.md
+SESS-18-SYNCHRONIZATION-MANIFEST.md  skills
+Process Group PGID: 1184431

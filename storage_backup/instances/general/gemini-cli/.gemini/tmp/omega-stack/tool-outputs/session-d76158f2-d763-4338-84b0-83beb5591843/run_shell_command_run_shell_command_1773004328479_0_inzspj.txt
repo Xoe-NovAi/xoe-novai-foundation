@@ -1,0 +1,3 @@
+{
+  "output": "Output: 🔐 Generating CA and Redis certificates in infra/docker/tls...\nCertificate request self-signature ok\nsubject=CN=redis\n✅ Updated .gitignore\n✨ TLS Certificates generated successfully.\nProcess Group PGID: 440069"
+}

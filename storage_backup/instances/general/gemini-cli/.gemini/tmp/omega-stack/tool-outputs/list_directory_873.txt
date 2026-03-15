@@ -1,0 +1,11 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/logs:
+[DIR] caddy
+[DIR] curations
+[DIR] openpipe
+agent_coordinator.log (3974 bytes)
+agent_watcher.log (290984 bytes)
+mcp_watchdog.log (3844 bytes)
+mcp_watchdog.stdout (42750 bytes)
+migration.log (17514 bytes)
+monitor_swap.stdout (81 bytes)
+xnai-observability.log (1437989 bytes)

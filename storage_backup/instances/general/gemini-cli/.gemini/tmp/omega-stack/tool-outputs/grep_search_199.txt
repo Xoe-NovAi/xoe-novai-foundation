@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 20 matches for pattern \"grafana|prometheus|prometheus-multiproc|metrics|victoriametrics|monitoring\" in path \"config/\" (results limited to 20 matches for performance):\n---\nFile: pyproject.toml\nL52:     \"opentelemetry-expor
+... [TRUNCATED] ...
+victoria-metrics-data` |\nL26: | `http://localhost:8428/api/v1/write` | Write metrics |\nL27: | `http://localhost:8428/api/v1/query` | Query metrics (PromQL) |\nL33: ### Writing Metrics\nL41: ### Querying Metrics\nL49: ### Grafana Integration\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/grep_search_grep_search_1773331753747_2_27nuis.txt
+</tool_output_masked>

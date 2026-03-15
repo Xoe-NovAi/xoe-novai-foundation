@@ -1,0 +1,4 @@
+Output: bash: line 1: netstat: command not found
+arcana-+  332644 25.0  0.0  10292  3740 pts/3    Ss+  21:15   0:00 bash -c shopt -u promptvars nullglob extglob nocaseglob dotglob; { podman ps | grep 8006 || netstat -tunlp | grep 8006 || ps aux | grep oikos_service.py; }; __code=$?; pgrep -g 0 >/tmp/shell_pgrep_9c03707d8df0.tmp 2>&1; exit $__code;
+arcana-+  332665  0.0  0.0   9600  2424 pts/3    S+   21:15   0:00 grep oikos_service.py
+Process Group PGID: 332644

@@ -1,0 +1,73 @@
+Output: Error: no container with name or ID "xnai_rag_api" found: no such container
+Error: no container with name or ID "xnai_curation_worker" found: no such container
+Error: no container with name or ID "xnai_chainlit_ui" found: no such container
+Error: no container with name or ID "xnai_crawler" found: no such container
+Error: no container with name or ID "xnai_openpipe" found: no such container
+Error: no container with name or ID "xnai_booklore" found: no such container
+Error: no container with name or ID "xnai_consul" found: no such container
+xnai_memory_bank_mcp
+Error: no container with name or ID "xnai_grafana" found: no such container
+Error: no container with name or ID "xnai_knowledge_miner" found: no such container
+Error: no container with name or ID "xnai_mkdocs" found: no such container
+Error: no container with name or ID "xnai_victoriametrics" found: no such container
+Error: no container with name or ID "xnai_vikunja" found: no such container
+Error: no container with name or ID "xnai_cline" found: no such container
+Error: no container with name or ID "xnai_vikunja_db" found: no such container
+xnai_redis
+Error: no container with name or ID "xnai_open_webui" found: no such container
+xnai_qdrant
+xnai_postgres
+Error: no container with name or ID "xnai_llama_server" found: no such container
+Error: removing container 650ab7675f39d001149cc3407efd18674d2d014fd22ca14a3f6d40d58b85a797 network: 1 error occurred:
+        * rootless netns: kill network process: permission denied
+
+
+Error: no container with ID or name "xnai_crawler" found: no such container
+Error: no container with ID or name "xnai_chainlit_ui" found: no such container
+Error: no container with ID or name "xnai_rag_api" found: no such container
+xnai_memory_bank_mcp
+Error: no container with ID or name "xnai_knowledge_miner" found: no such container
+Error: no container with ID or name "xnai_open_webui" found: no such container
+Error: no container with ID or name "xnai_grafana" found: no such container
+Error: no container with ID or name "xnai_vikunja" found: no such container
+Error: no container with ID or name "xnai_curation_worker" found: no such container
+Error: no container with ID or name "xnai_openpipe" found: no such container
+Error: no container with ID or name "xnai_cline" found: no such container
+Error: no container with ID or name "xnai_llama_server" found: no such container
+Error: no container with ID or name "xnai_booklore" found: no such container
+xnai_caddy
+Error: no container with ID or name "xnai_vikunja_db" found: no such container
+Error: no container with ID or name "xnai_mkdocs" found: no such container
+xnai_postgres
+xnai_qdrant
+Error: no container with ID or name "xnai_victoriametrics" found: no such container
+xnai_redis
+Error: no container with ID or name "xnai_consul" found: no such container
+42e703a4835bb771775bfa20982ea915c9ed37c2ec458234f2b543863f7a2bfb
+xnai_app_network
+xnai_db_network
+6184e78612241e7682a9e7fde6872ceb32c60048f3b18c14949365b062de84c5
+77b7d08561c4a66cb459f749af567e0a7bb887644cd7f54fd206512a0a514e65
+xnai_redis
+4c839c2637950fdbaa15cc0704d14c7cb18e781e1334192cd865fb1acece0b34
+xnai_qdrant
+3adc1d4f429d381ba803a68bc5a01f1902da3b968840e2f1da5f93ba40142a3a
+xnai_postgres
+3df326bb7fc38d91d2c038b07ca194a78662fceaf262f9117a908c2f388e3600
+xnai_caddy
+2393ee2fae31c26a2bdb8fc3a2c33754219dd5bea81f8776836ae7e7a17936af
+xnai_memory_bank_mcp
+Warning: Could not load config: No module named 'XNAi_rag_app'
+Database error in _get_jwt_secret: (psycopg2.OperationalError) connection to server at "postgres" (10.89.0.4), port 5432 failed: FATAL:  password authentication failed for user "postgres"
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 47, in <module>
+    from memory_bank_fallback import MemoryBankFallbackWrapper
+  File "/app/mcp-server/memory_bank_fallback.py", line 78, in <module>
+    class MemoryBankFallbackWrapper:
+  File "/app/mcp-server/memory_bank_fallback.py", line 169, in MemoryBankFallbackWrapper
+    keys: Optional[List[str]] = None
+                   ^^^^
+NameError: name 'List' is not defined. Did you mean: 'list'?
+Process Group PGID: 866611

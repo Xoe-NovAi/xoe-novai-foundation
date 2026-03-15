@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: modularization/IMPLEMENTATION_SUMMARY.md
+modularization/README.md
+modularization/docs/README.md
+modularization/installer/FILES_SUMMARY.md
+modularization/installer/HANDOFF_OPUS.md
+modularization/installer/OPUS_AUDIT_HANDOFF.md
+modularization/installer/README.md
+orchestration/conductor/tracks/phase-4.1-integration/plan.md
+orchestration/conductor/tracks/phase-4.1-integration/spec.md
+orchestration/conductor/tracks/templates/plan.md
+
+... [7 lines omitted] ...
+
+orchestration/mc-oversight/MC-OVERSEER-FRESHNESS-REVIEW-2026-02-23.md
+orchestration/mc-oversight/MESSAGE-FOR-OPUS-2026-02-18.md
+orchestration/mc-oversight/OPUS-ONBOARDING-2026-02-18.md
+orchestration/mc-oversight/ORGANIZATIONAL-ARCHITECTURE-MASTER.md
+orchestration/mc-oversight/README.md
+orchestration/mc-oversight/UPDATED-STRATEGIC-ROADMAP-2026-02-22.md
+orchestration/mc-oversight/initiative-status-dashboard.md
+orchestration/mc-oversight/priority-matrix.md
+orchestration/mc-oversight/risk-assessment.md
+orchestration/mc-oversight/strategic-recommendations.md
+Process Group PGID: 1264413
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773016031550_0_fbcx8p.txt
+</tool_output_masked>

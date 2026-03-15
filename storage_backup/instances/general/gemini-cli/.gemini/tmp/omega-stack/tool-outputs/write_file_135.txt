@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/gnosis/SESS_23_AMBROSIA_DISTILLATION.md. Here is the updated code:\n# 🏺 AMBROSIA DISTILLATION: SESS-23 (The Battle-Ready Gnosis
+... [TRUNCATED] ...
+**Anchor**: `memory_bank/MANIFEST.json` (Machine-readable state).\n- **Target**: `SESSIONS_MAP.md` (SESS-24).\n- **Hardening**: Run `make gnostic-audit` at the start of SESS-24 to verify the mesh.\n\n*The Gnosis is Sealed. The Mesh is Ready. 🔱*\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773354854295_0_41b6.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 310-360 of 499 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+ry = (exp_time - now).total_seconds() / 3600\n                logger.info(f\"XNAI IAM: Token valid ({hours_until_expiry:.1f}h remaining)\")\n                \n                return TokenStatus(\n                    provider=ProviderType.XNAI_IAM,"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000935763_0_16eoyr.txt
+</tool_output_masked>

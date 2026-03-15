@@ -1,0 +1,15 @@
+Found 11 matches for pattern "cache" in path "infra/docker/docker-compose.yml":
+---
+File: docker-compose.yml
+L40:   # REDIS SERVICE - Cache & Streams Coordinator
+L142:       - CACHE_TTL=${OPENPIPE_CACHE_TTL:-300}
+L253:       - /app/.cache:size=100m,mode=0755
+L257:       - ../../storage_new/data/cache:/home/appuser/.cache:Z,U
+L258:       - huggingface_cache:/home/appuser/.cache/huggingface:Z,U
+L315:         BUILDKIT_INLINE_CACHE: 1
+L373:         BUILDKIT_INLINE_CACHE: 1
+L387:       - ./data/cache:/app/cache:Z,U
+L463:         BUILDKIT_INLINE_CACHE: 1
+L818:   huggingface_cache:
+L819:     name: xnai_huggingface_cache
+---

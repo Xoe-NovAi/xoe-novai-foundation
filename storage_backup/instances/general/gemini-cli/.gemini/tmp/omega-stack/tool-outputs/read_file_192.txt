@@ -1,0 +1,18 @@
+{
+  "TGG": {
+    "version": "1.0.0",
+    "last_updated": "2026-03-12T13:20:00Z",
+    "anchors": {
+      "Root": {
+        "path": "/",
+        "hash": "[RIGIDITY-HASH-ALPHA-20260312]",
+        "dependencies": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8"]
+      },
+      "F7-Techne": {
+        "path": "app/XNAi_rag_app/core/linguistics.py",
+        "hash": "1d02036b858d323ccd03dcf0d3823debb9d835b408abdfc073cd7253d655a3f8",
+        "dependencies": ["F1", "ALETHIA_REGISTRY"]
+      }
+    }
+  }
+}

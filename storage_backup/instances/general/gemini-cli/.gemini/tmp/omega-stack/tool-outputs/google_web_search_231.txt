@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"Krikri-8B-Instruct GGUF Ryzen 5700U optimization\":\n\nOptimizing **Llama-Krikri-8B-Instruct** (a Greek-optimized Llama 3.1 variant) for an **AMD Ryzen 7 5700U** requires balancing the CPU's 8 cores/16 threads 
+... [TRUNCATED] ...
+rces:\n[1] ollama.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQPa6blZF-zq3BIv4JRzMt0EpCqE-X6BY3B1bR6ED7ZdTZ22iKiqcabIZeNKyEkCHnwEl3mWioj-Gs7iKHO9lx7dO6zHPicd-ToEfu2usp4YHNa4Gy3VE6U718iVC0u83YEHht20Cxmw1s9pEU-p2Xew==)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/google_web_search_google_web_search_1773329624589_1_hj2kem.txt
+</tool_output_masked>

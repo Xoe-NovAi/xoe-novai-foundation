@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/stack_health_check.sh (1 replacements). Here is the updated code:
+...
+
+set -u
+
+REDIS_HOST="${REDIS_HOST:-127.0.0.1}"
+REDIS_PORT="${REDIS_PORT:-6379}"
+REDIS_PASSWORD="${REDIS_PASSWORD:-}"
+
+VIKUNJA_URL="${VIKUNJA_URL:-http://127.0.0.1:8000/vikunja}"
+CONSUL_URL="${CONSUL_URL:-http://127.0.0.1:8500}"
+CADDY_URL="${CADDY_URL:-http://127.0.0.1:8000}"
+QDRANT_URL="${QDRANT_URL:-http://127.0.0.1:6333}"
+...

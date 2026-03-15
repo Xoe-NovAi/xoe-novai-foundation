@@ -1,0 +1,16 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/MPI.md (1 replacements). Here is the updated code:
+...
+## 🌑 4. The Deep Stack (Internal Modules)
+*Older or specialized layers surfacing for re-integration.*
+
+| Module | Purpose | Status | Key File |
+|:---|:---|:---|:---|
+| **Vulkan Accel.** | RDNA2 GPU acceleration framework. | 🛠 WARM | `app/XNAi_rag_app/core/vulkan_acceleration.py` |
+| **Maat Guardrails** | Ethical alignment via 42 Ideals. | 🛠 WARM | `app/XNAi_rag_app/core/maat_guardrails.py` |
+| **Distillation** | LangGraph knowledge compression pipeline. | 🛠 WARM | `app/XNAi_rag_app/core/distillation/` |
+| **OpenPipe Integration**| LLM evaluation and caching. | ❄️ COLD | `infra/docker/docker-compose.yml` |
+
+---
+
+## 🔬 4. Active Research Threads
+...

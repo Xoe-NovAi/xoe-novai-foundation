@@ -1,0 +1,37 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 1620-1650 of 2223 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 1651.
+
+--- FILE CONTENT (truncated) ---
+		echo "$(RED)❌ BuildKit plugin missing$(NC)"; 
+	fi
+	@echo ""
+	@echo "$(CYAN)📦 Wheelhouse:$(NC)"
+	@if [ -d "$(WHEELHOUSE_DIR)" ]; then 
+		wheel_count=$$(find $(WHEELHOUSE_DIR) -name "*.whl" 2>/dev/null | wc -l);
+		if [ "$$wheel_count" -gt 0 ]; then 
+			echo "$(GREEN)✅ Wheelhouse ready: $$wheel_count wheels$(NC)"; 
+			echo "$(CYAN)   Size: $$(du -sh $(WHEELHOUSE_DIR) | awk '{print $$1}')$(NC)"; 
+		else 
+			echo "$(YELLOW)⚠️  Wheelhouse empty$(NC)"; 
+		fi; 
+	else 
+		echo "$(RED)❌ Wheelhouse not created$(NC)"; 
+	fi
+	@echo ""
+	@image_count=$$(podman images | grep -E "(xoe|xnai)" | wc -l 2>/dev/null || echo "0"); \
+	if [ "$$image_count" -gt 0 ]; then \
+		echo "$(GREEN)✅ $$image_count Xoe-NovAi images built$(NC)"; \
+	else \
+		echo "$(YELLOW)⚠️  No images built yet$(NC)"; \
+	fi
+	@echo ""
+	@echo "$(CYAN)🎯 Quick Actions:$(NC)"
+	@echo "$(CYAN)   make docs-buildkit    # Enable BuildKit$(NC)"
+	@echo "$(CYAN)   make docs-wheelhouse  # Setup wheelhouse$(NC)"
+	@echo "$(CYAN)   make docs-optimization # Complete setup$(NC)"
+	@echo "$(CYAN)   make build            # Build with optimizations$(NC)"
+
+
+enterprise-buildkit: ## 🏗️ Enable enterprise BuildKit features

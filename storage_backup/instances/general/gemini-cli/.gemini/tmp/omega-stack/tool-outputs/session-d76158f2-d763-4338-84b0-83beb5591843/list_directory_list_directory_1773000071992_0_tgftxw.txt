@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp:\n[DIR] __pycache__\nFALLBACK_INTEGRATION.md (12065 bytes)\nmemory_bank_fallback.py (10348 bytes)\nmemory_bank_store.py (18289 bytes)\npyproject.toml (594 bytes)\nrun_server.sh (1157 bytes)\nserver.py (38522 bytes)"
+}

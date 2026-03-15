@@ -1,0 +1,15 @@
+Found 9 matches for pattern "get_entity_registry" in path "app/" (filter: "*.py"):
+---
+File: XNAi_rag_app/core/entities/feedback_loop.py
+L17: from .registry import get_entity_registry
+L75:             registry = get_entity_registry()
+L123:         registry = get_entity_registry()
+L202:         registry = get_entity_registry()
+L247:         registry = get_entity_registry()
+---
+File: XNAi_rag_app/core/entities/registry.py
+L174: def get_entity_registry() -> EntityRegistry:
+L183:     registry = get_entity_registry()
+L189:     registry = get_entity_registry()
+L194:     registry = get_entity_registry()
+---

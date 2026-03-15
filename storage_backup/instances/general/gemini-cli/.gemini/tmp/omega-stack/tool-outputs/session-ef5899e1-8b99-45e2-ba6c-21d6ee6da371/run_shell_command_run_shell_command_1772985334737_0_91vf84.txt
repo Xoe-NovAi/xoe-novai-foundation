@@ -1,0 +1,3 @@
+{
+  "output": "Output: (empty)\nSignal: 15\nProcess Group PGID: 218947"
+}

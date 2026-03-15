@@ -1,0 +1,2 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/chats/archive:
+session-2026-03-07T05-39-ef5899e1.json (42520912 bytes)

@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/plans:\ngnostic-matrix-spec.md (1988 bytes)\nSESS-18-RESTORATION.md (1278 bytes)"
+}

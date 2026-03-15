@@ -1,0 +1,5 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.cli:
+[DIR] skills
+SESS-17-SYNCHRONIZATION-MANIFEST.md (3271 bytes)
+SESS-18-SYNCHRONIZATION-MANIFEST.md (2198 bytes)
+SESS-20-SYNCHRONIZATION-MANIFEST.md (2548 bytes)

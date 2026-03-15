@@ -1,0 +1,3 @@
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/safe_logs.sh. Here is the updated code:\n#!/bin/bash\n# Xoe-NovAi Safe Log Viewer\n# Prevents Gemini CLI crashes by capping log output\n\nSERVICE=$1\nLINES=${2:-100}\n\nif [ -z \"$SERVICE\" ]; then\n    echo \"Usage: ./scripts/safe_logs.sh <service_name> [lines]\"\n    echo \"Active services:\"\n    podman ps --format \"{{.Names}}\"\n    exit 1\nfi\n\npodman logs --tail \"$LINES\" \"$SERVICE\"\n"
+}

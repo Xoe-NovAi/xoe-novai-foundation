@@ -1,0 +1,15 @@
+Output: CONTAINER ID  IMAGE                                    COMMAND           CREATED         STATUS                   PORTS       NAMES
+9a036958e3a4  localhost/docker_memory-bank-mcp:latest  python server.py  41 seconds ago  Up 14 seconds (healthy)              xnai_memory_bank_mcp
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 42, in <module>
+    from app.XNAi_rag_app.core.config_loader import load_config
+ModuleNotFoundError: No module named 'app'
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 42, in <module>
+    from app.XNAi_rag_app.core.config_loader import load_config
+ModuleNotFoundError: No module named 'app'
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 42, in <module>
+    from app.XNAi_rag_app.core.config_loader import load_config
+ModuleNotFoundError: No module named 'app'
+Process Group PGID: 959467

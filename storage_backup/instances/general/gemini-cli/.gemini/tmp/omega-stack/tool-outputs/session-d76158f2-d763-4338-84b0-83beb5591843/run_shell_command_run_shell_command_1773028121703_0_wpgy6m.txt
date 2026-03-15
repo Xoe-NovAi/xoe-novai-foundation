@@ -1,0 +1,3 @@
+{
+  "output": "Output: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app -> /app/app\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts -> /app/scripts\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/tls/ca.crt -> /tls/ca.crt\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/library -> /library\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge -> /expert-knowledge\nProcess Group PGID: 2732956"
+}

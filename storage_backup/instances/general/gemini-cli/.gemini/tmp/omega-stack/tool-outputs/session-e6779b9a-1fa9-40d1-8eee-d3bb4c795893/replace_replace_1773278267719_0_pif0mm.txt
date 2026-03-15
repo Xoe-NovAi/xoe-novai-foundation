@@ -1,0 +1,3 @@
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:\n...\n      - REDIS_HOST=redis\n      - REDIS_PORT=6379\n      - GEMINI_API_KEY\n      - GOOGLE_API_KEY\n      - GOOGLE_APPLICATION_CREDENTIALS=/app/secrets/oauth_credentials.json\n      - VERTEXAI_PROJECT=arcana-novai-gemini-1772727596\n      - VERTEXAI_LOCATION=us-central1\n      - CONFIG_PATH=/app/config.toml\n    deploy:\n      resources:\n        limits:\n          memory: 1G\n..."
+}

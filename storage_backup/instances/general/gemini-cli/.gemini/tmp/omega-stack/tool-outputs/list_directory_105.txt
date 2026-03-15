@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank:\n[DIR] _archive\n[DIR] activeContext\n[DIR] archival\n[DIR] chronicles\n[DIR] facets\n[DIR] gnosis\n[DIR] handovers\n[DIR] infrastructure\n[DIR] mult
+... [TRUNCATED] ...
+TRATEGY_SESS-19-SHADOW_AUDIT.md (2689 bytes)\nSYNTHESIS_EXECUTIVE_SUMMARY.md (10774 bytes)\nsystemPatterns.md (5093 bytes)\nteamProtocols.md (7772 bytes)\ntechContext.md (4700 bytes)\nTGG_GRAPH.json (2127 bytes)\nTIMELINE_EVOLUTION.md (2642 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/list_directory_list_directory_1773542029581_1_whw4a.txt
+</tool_output_masked>

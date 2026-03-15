@@ -1,0 +1,150 @@
+Found 100 matches for pattern "sse" in path "." (results limited to 100 matches for performance):
+---
+File: infra/docker/Dockerfile.memory-bank
+L17:     sse-starlette>=1.6.0 \
+---
+File: infra/docker/Dockerfile.base
+L7: # Features: BuildKit optimized APT caching, essential build tools.
+---
+File: infra/docker/Dockerfile.curation_worker
+L16:         build-essential \
+---
+File: infra/docker/Caddyfile
+L33:   # 3. Open WebUI - Internal API & Assets (Critical for subpath hosting)
+L35:   # and static assets. This avoids capturing Chainlit's own /api/* endpoints.
+L46:   # 4. Chainlit UI Assets
+L47:   @chainlit-assets {
+L48:     path /assets/* /public/* /favicon
+L50:   handle @chainlit-assets {
+---
+File: infra/docker/docker-compose.yml
+L330:       - ./assets:/app/assets:ro,Z,U
+---
+File: infra/docker/Makefile
+L9: # Essential for any operation: Redis, Postgres, Qdrant, Caddy, MBMCP
+---
+File: infra/docker/Dockerfile.chainlit
+L17:         build-essential \
+---
+File: infra/docker/Dockerfile.crawl
+L16:         build-essential \
+---
+File: infra/docker/Dockerfile
+L20:         build-essential \
+---
+File: infra/containers/Containerfile.production
+L20:     build-essential \
+---
+File: orchestration/communication_hub/conductor/task_classifier.py
+L10: from dataclasses import dataclass
+---
+File: orchestration/communication_hub/conductor/routing_engine.py
+L12: from dataclasses import dataclass, asdict
+---
+File: infra/monitoring/grafana/dashboards/redis-dashboard.json
+L281:           "expr": "rate(redis_keyspace_misses_total[5m])",
+L282:           "legendFormat": "Cache Misses/sec",
+L362:           "expr": "(rate(redis_keyspace_hits_total[5m]) / (rate(redis_keyspace_hits_total[5m]) + rate(redis_keyspace_misses_total[5m]))) * 100",
+L602:           "expr": "rate(redis_commands_processed_total[5m])",
+---
+File: infra/monitoring/grafana/dashboards/database-overview.json
+L336:           "expr": "(rate(redis_keyspace_hits_total[5m]) / (rate(redis_keyspace_hits_total[5m]) + rate(redis_keyspace_misses_total[5m]))) * 100",
+L500:           "expr": "rate(redis_keyspace_misses_total[5m])",
+L501:           "legendFormat": "Misses/sec",
+---
+File: infra/monitoring/grafana/dashboards/query-performance-dashboard.json
+L346:           "expr": "rate(redis_commands_processed_total[5m])",
+---
+File: infra/monitoring/grafana/dashboards/xnai_zram_dashboard.json
+L50:         {"expr": "xnai_zram_uncompressed_bytes_total", "legendFormat": "uncompressed bytes", "refId": "B"}
+L52:       "title": "zRAM Size / Used / Uncompressed",
+---
+File: orchestration/conductor/tracks/phase-4.1-integration/spec.md
+L14: - [ ] **Streaming Validation**: Verify Server-Sent Events (SSE) and WebSocket stability for LLM responses.
+L29: - [ ] Audit passed for Ryzen 7 5700U / Vega 8 hardware alignment.
+---
+File: infra/monitoring/grafana/dashboards/openpipe-dashboard.json
+L217:             "expr": "rate(openpipe_cache_misses_total[5m])",
+L218:             "legendFormat": "Cache Misses/sec"
+---
+File: infra/monitoring/prometheus/rules/database-alerts.yml
+L148:         expr: (rate(redis_keyspace_hits_total[5m]) / (rate(redis_keyspace_hits_total[5m]) + rate(redis_keyspace_misses_total[5m]))) < 0.7
+---
+File: orchestration/handovers/RAPTOR-HANDOFF-DOCKER-REFAC-2026-03-02.md
+L40:   volumes). Confirm this pattern and propose rules for keeping large assets out
+---
+File: orchestration/mc-oversight/MC-OVERSEER-FRESHNESS-REVIEW-2026-02-23.md
+L196: - Quota check → Load ACCOUNT-TRACKING-*.yaml to assess available quota
+---
+File: orchestration/mc-oversight/initiative-status-dashboard.md
+L80: - **GLM-5 missed this entirely** — significant capability upgrade
+---
+File: tests/test_circuit_breaker_basic.py
+L30:         assert config.failure_threshold == 5
+L31:         assert config.recovery_timeout == 60
+L32:         assert config.half_open_max_calls == 3
+L33:         assert config.timeout == 30
+L34:         assert config.name == "test_circuit"
+L40:         assert state.state == CircuitState.CLOSED
+L41:         assert state.failure_count == 0
+L42:         assert state.last_failure_time == 0.0
+L43:         assert state.success_count == 0
+L44:         assert state.last_success_time == 0.0
+L45:         assert state.total_calls == 0
+L46:         assert state.total_failures == 0
+L47:         assert state.total_successes == 0
+L51:         assert CircuitState.CLOSED.value == "closed"
+L52:         assert CircuitState.OPEN.value == "open"
+L53:         assert CircuitState.HALF_OPEN.value == "half_open"
+L59:         assert "test_service" in str(error)
+L60:         assert error.details["service_name"] == "test_service"
+L61:         assert error.details["retry_after"] == 30
+L67:         assert "Operation timed out" in str(error)
+L77:         assert metrics['name'] == 'test_circuit'
+L78:         assert 'metrics' in metrics
+L79:         assert 'config' in metrics
+L80:         assert metrics['metrics']['calls'] == 0
+L81:         assert metrics['metrics']['failures'] == 0
+L82:         assert metrics['metrics']['successes'] == 0
+L83:         assert metrics['metrics']['blocked'] == 0
+L84:         assert metrics['metrics']['fallbacks'] == 0
+L100:         assert metrics['config']['failure_threshold'] == 10
+L101:         assert metrics['config']['recovery_timeout'] == 120
+L102:         assert metrics['config']['half_open_max_calls'] == 5
+L103:         assert metrics['config']['timeout'] == 60
+L116:         assert not circuit_breaker._should_open_circuit(state)
+L120:         assert circuit_breaker._should_open_circuit(state)
+L124:         assert circuit_breaker._should_open_circuit(state)
+L134:         assert not circuit_breaker._should_close_circuit(state)
+L138:         assert circuit_breaker._should_close_circuit(state)
+L142:         assert circuit_breaker._should_close_circuit(state)
+L151:         assert error.message == "Circuit breaker open for service: redis_service"
+L152:         assert error.details["service_name"] == "redis_service"
+L153:         assert error.details["retry_after"] == 45
+L159:         assert error.message == "Database connection timeout"
+L177:         assert state is not None
+L181:         assert metrics['name'] == 'integration_test'
+---
+File: tests/test_exceptions_base.py
+L53:             assert exc.http_status == expected_status, \
+L66:         assert exc1.error_code == exc2.error_code, \
+L79:         assert exc1.error_code != exc2.error_code, \
+L92:         assert data["message"] == "Test error"
+L93:         assert data["category"] == "validation"
+L94:         assert data["details"]["field"] == "query"
+L95:         assert data["recovery_suggestion"] == "Fix input"
+L96:         assert "error_code" in data
+L97:         assert "timestamp" in data
+L106:         assert exc.error_code == "custom_error_xyz"
+L115:         assert exc.http_status == 418
+L126:         assert before <= exc.timestamp <= after
+L136:         assert exc.cause is original_error
+L146:         assert isinstance(exc, XNAiException)
+L147:         assert exc.category == ErrorCategory.NOT_FOUND
+L148:         assert exc.http_status == 404
+L149:         assert "llama-3.2-1b" in exc.message
+L154:         assert exc.recovery_suggestion is not None
+L155:         assert "Check model path" in exc.recovery_suggestion
+L165:         assert isinstance(exc, XNAiException)
+L166:         assert exc.category == ErrorCategory.VALIDATION
+---

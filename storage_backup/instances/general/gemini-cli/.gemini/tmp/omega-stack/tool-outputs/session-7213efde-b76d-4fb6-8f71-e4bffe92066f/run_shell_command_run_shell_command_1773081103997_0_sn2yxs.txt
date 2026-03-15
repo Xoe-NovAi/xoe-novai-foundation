@@ -1,0 +1,3 @@
+{
+  "output": "Output: Error: no container with name or ID \"xnai_redis\" found: no such container\nError: no container with ID or name \"xnai_redis\" found: no such container\nf0d51e79a43050375ea2c83ca812a3a84a6bb65265e450df100f264d0e233b76\nxnai_redis\nProcess Group PGID: 599317"
+}

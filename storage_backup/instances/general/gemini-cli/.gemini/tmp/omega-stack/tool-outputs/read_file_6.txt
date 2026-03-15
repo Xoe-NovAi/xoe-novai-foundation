@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\nhydration:\n  event_id: \"HYD-20260312-006\"\n  session_id: \"SESS-20\"\n  coordination_key: \"OMEGA-RCF-MANIFEST-2026\"\n  timestamp: \"2026-03-12T23:30:00Z\"\n  status: \"EPOCH-2-ACTIVE\"\n---\n\n# 🔱 Active Context: Epoch 2: Th
+... [TRUNCATED] ...
+dration**: Automate sub-agent hydration via `LIA_TRIAD_SEEDS.json`.\n2.  **TGG Recursive Mapping**: Expand the TGG to cover the entire `infra/docker/` mesh.\n3.  **Metron Dashboard**: Activate the live VictoriaMetrics/Grafana observability view.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773542052886_0_2q11uh.txt
+</tool_output_masked>

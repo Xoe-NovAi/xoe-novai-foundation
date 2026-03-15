@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/oikos_mastermind.py (1 replacements). Here is the updated code:\n...\n    mali_start = time.time()\n    approved = await judge_decree(synthesis)\n  
+... [TRUNCATED] ...
+20, f\"Mastermind Decree Issued: {problem}\")\n    else:\n        print(\"\\n⚠️  DECREE REJECTED BY MaLi. The Monad requires balance.\")\n\nasync def main():\n    parser = argparse.ArgumentParser(description=\"Oikos Mastermind Orchestrator\")\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773273670563_1_3joyy.txt
+</tool_output_masked>

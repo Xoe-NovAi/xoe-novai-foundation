@@ -1,0 +1,9 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 25-28 of 28 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 29.
+
+--- FILE CONTENT (truncated) ---
+
+## ⚖️ VERIFICATION RULE
+If a technical claim is made without an `[AP]` pointer, it is classified as "Speculative Logos" and must pass the **Alethia Threshold** (2/3 weighted consensus) before implementation.

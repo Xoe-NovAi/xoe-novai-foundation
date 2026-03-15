@@ -1,0 +1,3 @@
+{
+  "output": "No files found matching pattern \"**/*soul.md\" within /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage"
+}

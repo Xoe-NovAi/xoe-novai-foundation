@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nXoe-NovAi Graph Extractor (Gnosis Engine)\n=========================================\n\nExtracts entities and relations from documents and populates the \nPostgreSQL knowledge graph using LightRAG v1.0+ 
+... [TRUNCATED] ...
+TABASE_URL\"), help=\"Postgres URI\")\n    \n    args = parser.parse_args()\n    \n    if not args.db_uri:\n        print(\"Error: DATABASE_URL not set.\")\n        exit(1)\n\n    asyncio.run(process_document(None, args.file)) # Initial skeleton\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773294402371_0_19koe7.txt
+</tool_output_masked>

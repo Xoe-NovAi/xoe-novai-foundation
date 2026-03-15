@@ -1,0 +1,17 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/brigid_hearth_check.py (1 replacements). Here is the updated code:
+...
+            print(f"  ❌ {f}: MISSING.")
+            
+    # Check for core keys
+    with open(".env", "r") as env:
+        content = env.read()
+        if "GOOGLE_API_KEY" in content or "GEMINI_API_KEY" in content:
+            print("  ✅ API Key: Found.")
+        else:
+            print("  ❌ API Key: NOT FOUND.")
+
+async def main():
+    await check_hearth()
+
+if __name__ == "__main__":
+...

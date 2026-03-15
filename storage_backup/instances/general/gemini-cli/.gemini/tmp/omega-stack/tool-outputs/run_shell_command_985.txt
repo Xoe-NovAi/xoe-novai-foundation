@@ -1,0 +1,13 @@
+Output: 🔱 Resonance: Calculating resonance for [expert-knowledge/reclaimed_gnosis/origins/heart_of_omega/Python Logic Enhancement/V3/PEM_Lilith_v3.txt]...
+🔱 Resonance Results:
+  - LILITH         :   9.9%
+  - DEMETER        :   4.7%
+  - ATHENA         :   3.7%
+  - BRIGID         :   3.5%
+  - THOTH          :   1.8%
+  - HESTIA         :   1.7%
+  - THESENTINEL    :   1.2%
+  - IRIS           :   0.0%
+
+⚠️  Low Resonance: Context does not align with Oikos Archetypes.
+Process Group PGID: 693644

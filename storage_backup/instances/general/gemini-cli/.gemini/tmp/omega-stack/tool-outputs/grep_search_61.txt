@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 100 matches for pattern \"ACL|setfacl|100999|mapping\" in path \"memory_bank/\" (results limited to 100 matches for performance):\n---\nFile: OPERATIONS.md\nL397: ### Technical Identity Mapping\n---\nFile: GROK_MC_TARGETED_DISTIL
+... [TRUNCATED] ...
+L1804: from dataclasses import dataclass\nL1821: @dataclass\nL2144: from dataclasses import dataclass\nL2156: @dataclass\nL2165: @dataclass\nL2612: from dataclasses import dataclass\nL2635: @dataclass\nL2991: from dataclasses import dataclass\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/grep_search_grep_search_1773543428660_0_hs84w.txt
+</tool_output_masked>

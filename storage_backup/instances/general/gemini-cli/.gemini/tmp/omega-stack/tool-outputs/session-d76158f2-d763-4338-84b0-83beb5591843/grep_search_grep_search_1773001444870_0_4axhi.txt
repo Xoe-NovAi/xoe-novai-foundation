@@ -1,0 +1,3 @@
+{
+  "output": "No matches found for pattern \"decode_responses=False\" in path \".\" (filter: \"mcp-servers/xnai-rag/server.py\")."
+}

@@ -1,0 +1,3 @@
+{
+  "output": "Output: drwxrwxr-x 6 arcana-novai arcana-novai 4096 Mar  9 15:40 knowledge_new\ndrwxrwxr-x 3 arcana-novai arcana-novai 4096 Mar  9 15:40 storage_new\nProcess Group PGID: 604990"
+}

@@ -1,0 +1,3 @@
+{
+  "output": "Output: ==> mcp-servers/xnai-github/server.py <==\n    \"\"\"Returns the last N commit messages.\"\"\"\n    return run_git_command([\"log\", \"-n\", str(count), \"--oneline\"])\n\nif __name__ == \"__main__\":\n    mcp.run()\n\n==> mcp-servers/xnai-stats-mcp/server.py <==\n        g = inst[\"gemini\"]\n        return f\"Domain: {inst['name']} | Requests: {g['total_requests']} | Tokens: {g['total_tokens']} | Status: {g['quota_status']}\"\n\nif __name__ == \"__main__\":\n    mcp.run()\n\n==> mcp-servers/xnai-websearch/server.py <==\n        \"note\": \"🔱 Archon: Please provide TAVILY_API_KEY or SERPER_API_KEY for deep research integration.\"\n    }\n\nif __name__ == \"__main__\":\n    mcp.run()\nProcess Group PGID: 1974306"
+}

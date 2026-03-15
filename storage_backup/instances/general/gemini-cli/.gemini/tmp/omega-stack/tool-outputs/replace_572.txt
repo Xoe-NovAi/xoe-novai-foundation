@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-vikunja/server.py (1 replacements). Here is the updated code:\n...\nVIKUNJA_URL = os.environ.get(\"VIKUNJA_URL\", \"http://localhost:3456\"
+... [TRUNCATED] ...
+D\"},\n...\n                },\n                \"required\": [\"task_id\", \"agent_id\", \"auth_token\"],\n            },\n        ),\n        Tool(\n            name=\"vikunja_health\",\n            description=\"Check Vikunja API health\",\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001748270_0_9ihtr.txt
+</tool_output_masked>

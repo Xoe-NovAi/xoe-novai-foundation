@@ -1,0 +1,2 @@
+Output: ollama version is 0.17.7
+Process Group PGID: 1360518

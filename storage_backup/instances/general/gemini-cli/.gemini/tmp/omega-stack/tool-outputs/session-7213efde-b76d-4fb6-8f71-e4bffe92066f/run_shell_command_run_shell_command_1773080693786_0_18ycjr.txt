@@ -1,0 +1,3 @@
+{
+  "output": "Output: starting [redis-server --requirepass GOIRPwqDqgwYDduUEBgHScV1 --maxmemory 512mb --maxmemory-policy allkeys-lru --port 0 --tls-port 6379 --tls-cert-file /tls/redis.crt --tls-key-file /tls/redis.key --tls-ca-cert-file /tls/ca.crt --tls-auth-clients no]\nProcess Group PGID: 509294"
+}

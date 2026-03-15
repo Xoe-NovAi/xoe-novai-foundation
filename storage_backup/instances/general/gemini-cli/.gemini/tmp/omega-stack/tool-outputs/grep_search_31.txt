@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 19 files with matches for pattern \"IMPL-01|SESS-24.2|SUPP-02|YOUR_OMEGA_STACK_ENHANCED\" in path \".\":\n_archive/deletion-log.md\n_meta/grok-mc-source-hygiene-cleanup-v1.0.0.md\n_meta/project_files_strategy_v2.md\ndocs/DOCUMENT
+... [TRUNCATED] ...
+_STRATEGY_v2.md\nmemory_bank/NOTEBOOKLM_PREP_BUNDLE_20260314/GROK_MC_TARGETED_DISTILLATION_v1.md\nmemory_bank/NOTEBOOKLM_PREP_BUNDLE_20260314/MANIFEST.md\nmemory_bank/SONNET_IMPL_INTEGRATION_CHECKLIST.md\nmemory_bank/SYNTHESIS_EXECUTIVE_SUMMARY.md"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/grep_search_grep_search_1773543397540_2_icb9q.txt
+</tool_output_masked>

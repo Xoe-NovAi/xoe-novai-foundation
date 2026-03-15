@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# 🏙️ XNAi Foundation - Master Project Index (MPI)\n\n**Author**: Gemini General | **Status**: ACTIVE | **Last Sync**: 2026-03-09  \n**Context Key**: `XNAI-MPI-METROPOLIS-V4.1-STABILIZED-2026`\n\n---\n\n## 🏛️ 1. Core Infrastructure (T
+... [TRUNCATED] ...
+s | Facet 7 | 🟡 PENDING |\n| **SESS-03** | Mesh & GitHub | Facet 6 | 🟡 PENDING |\n| **SESS-04** | Gnosis (Qdrant) | Facet 3 | 🟡 PENDING |\n| **SESS-05** | Protocols | General | 🟡 PENDING |\n| **SESS-06** | The Soul | General | 🟡 PENDING |\n\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-323f9caa-049e-4ef6-b14c-57d779a99bc2/read_file_read_file_1773150302670_3_c3migo.txt
+</tool_output_masked>

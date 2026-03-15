@@ -1,0 +1,3 @@
+{
+  "output": "Output: Switched to a new branch 'develop'\nProcess Group PGID: 2108484"
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# syntax=docker/dockerfile:1\n# ============================================================================ \n# Xoe-NovAi Phase 1 v0.1.7 - FastAPI RAG Service Dockerfile (BuildKit Optimized) \n# =======================================
+... [TRUNCATED] ...
+LAS_NUM_THREADS=6 \\\n    OPENBLAS_CORETYPE=ZEN \\\n    OPENBLAS_VERBOSE=0 \\\n    OMP_NUM_THREADS=1\n\nUSER appuser\n\nCMD [\"uvicorn\", \"XNAi_rag_app.api.entrypoint:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8000\", \"--workers\", \"1\"]\n\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773186672922_0_5tkqa.txt
+</tool_output_masked>

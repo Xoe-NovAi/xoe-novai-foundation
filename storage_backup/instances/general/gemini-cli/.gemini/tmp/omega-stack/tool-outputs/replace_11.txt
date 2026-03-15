@@ -1,0 +1,24 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+
+    def _get_redis_url(self) -> str:
+        host = os.getenv("REDIS_HOST", "localhost")
+        port = os.getenv("REDIS_PORT", 6379)
+        password = os.getenv("REDIS_PASSWORD", "")
+        # SESS-02: Enforce rediss:// and ssl_cert_reqs=none for Metropolis Mesh
+        protocol = "rediss" if password else "redis"
+        url = f"{protocol}://:{password}@{host}:{port}/0"
+        if protocol == "rediss":
+            url += "?ssl_cert_reqs=none"
+        return url
+
+    async def initialize(self) -> bool:
+        try:
+            if not self.redis:
+                # SESS-02: Standardize decode_responses=True
+                self.redis = Redis.from_url(self.redis_url, decode_responses=True)
+                await self.redis.ping()
+            
+            self.memory_bank_path.mkdir(parents=True, exist_ok=True)
+            return True
+...

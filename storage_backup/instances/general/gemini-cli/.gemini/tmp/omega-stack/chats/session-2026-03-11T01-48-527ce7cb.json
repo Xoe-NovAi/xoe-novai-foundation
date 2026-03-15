@@ -1,0 +1,31 @@
+{
+  "sessionId": "527ce7cb-57b0-475f-ab7e-11443ae1a73f",
+  "projectHash": "2476bd7a9850651760e85ba3ac3188c94c0588ba952e85515f42602f589ea94f",
+  "startTime": "2026-03-11T01:48:06.596Z",
+  "lastUpdated": "2026-03-11T01:48:14.708Z",
+  "messages": [
+    {
+      "id": "c9e63bdf-e030-4bd7-b228-1406599c652d",
+      "timestamp": "2026-03-11T01:48:06.596Z",
+      "type": "info",
+      "content": "MCP issues detected. Run /mcp list for status."
+    },
+    {
+      "id": "d8e678ec-11fc-49a3-b0da-c08bddd9a7d4",
+      "timestamp": "2026-03-11T01:48:13.020Z",
+      "type": "user",
+      "content": [
+        {
+          "text": "/mco"
+        }
+      ]
+    },
+    {
+      "id": "8bc03e31-a7fd-49ae-84e5-5af79b5f05f8",
+      "timestamp": "2026-03-11T01:48:14.708Z",
+      "type": "info",
+      "content": "Request cancelled."
+    }
+  ],
+  "kind": "main"
+}

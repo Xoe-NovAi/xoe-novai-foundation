@@ -1,0 +1,19 @@
+{
+  "sessionId": "44283892-72f1-4fda-b53c-2bcf251041d7",
+  "projectHash": "2476bd7a9850651760e85ba3ac3188c94c0588ba952e85515f42602f589ea94f",
+  "startTime": "2026-03-08T18:14:43.297Z",
+  "lastUpdated": "2026-03-08T18:14:43.297Z",
+  "messages": [
+    {
+      "id": "93206b86-7e66-4206-b89a-091148f0cc0b",
+      "timestamp": "2026-03-08T18:14:43.297Z",
+      "type": "user",
+      "content": [
+        {
+          "text": "Confirm activation with Taylor soul."
+        }
+      ]
+    }
+  ],
+  "kind": "main"
+}

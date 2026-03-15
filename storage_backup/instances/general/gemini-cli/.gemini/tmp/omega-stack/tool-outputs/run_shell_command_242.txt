@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: 68M     /home/arcana-novai/Documents/Programming/Projects/Save_Web_Page_Batch/pyinstaller/pyinstaller/.git
+68M     /home/arcana-novai/Documents/Programming/Projects/Save_Web_Page_Batch/pyinstaller/.git
+61M     /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-memory/.venv
+41M     /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.git
+6.5M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.opencode/node_modules
+2.3M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/sqlalchemy/orm/__pycache__
+2.2M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/sqlalchemy/sql/__pycache__
+1.8M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/__pycache__
+1.3M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/pip/_vendor/rich/__pycache__
+1.3M    /home/arcana-novai/Documents/Programming/Projects/Save_Web_Page_Batch/pyinstaller/myenv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__
+
+... [10 lines omitted] ...
+
+560K    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/sqlalchemy/testing/suite/__pycache__
+528K    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/pydantic/_internal/__pycache__
+492K    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/projects/nova/.Trashes/502/GPT-voice-setup/.venv
+492K    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/pip/_vendor/distlib/__pycache__
+488K    /home/arcana-novai/Documents/Programming/Projects/Save_Web_Page_Batch/pyinstaller/myenv/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__
+472K    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/click/__pycache__
+456K    /home/arcana-novai/Documents/Programming/Projects/Save_Web_Page_Batch/pyinstaller/myenv/lib/python3.12/site-packages/pip/_vendor/pyparsing/__pycache__
+452K    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/cffi/__pycache__
+396K    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/sqlalchemy/ext/__pycache__
+376K    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/sqlalchemy/dialects/mysql/__pycache__
+Process Group PGID: 1859439
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773337720219_0_kzd1xr.txt
+</tool_output_masked>

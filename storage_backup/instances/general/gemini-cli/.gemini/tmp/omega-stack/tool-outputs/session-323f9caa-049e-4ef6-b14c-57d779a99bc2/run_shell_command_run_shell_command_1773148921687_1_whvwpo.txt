@@ -1,0 +1,3 @@
+{
+  "output": "Output: localhost/xnai-rag                          latest      f3d634adcb8a  16 hours ago   1.63 GB\nlocalhost/xnai-library-curator              latest      f40a5fd99efc  19 hours ago   1.02 GB\nlocalhost/xnai-mkdocs                       latest      6b7bb0dbe248  34 hours ago   913 MB\nlocalhost/xnai_memory_bank_mcp              latest      0171400f37bf  45 hours ago   867 MB\nlocalhost/xnai-base                         latest      baa83535383d  46 hours ago   823 MB\nProcess Group PGID: 8190"
+}

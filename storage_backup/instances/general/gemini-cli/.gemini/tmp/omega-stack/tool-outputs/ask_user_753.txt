@@ -1,0 +1,1 @@
+{"answers":{"0":"I was just using 600KB as an obvious large amount of data for you to ingest, not referencing the actual size of any file, I didn't know the size of the Grok file and made a number up, my apologies for the confusion."}}

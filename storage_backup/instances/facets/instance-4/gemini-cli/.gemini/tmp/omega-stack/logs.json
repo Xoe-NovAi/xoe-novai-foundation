@@ -1,0 +1,30 @@
+[
+  {
+    "sessionId": "a3f66471-dff2-4f0d-8ddd-a4c9e3ce6178",
+    "messageId": 0,
+    "type": "user",
+    "message": "config get model.id",
+    "timestamp": "2026-03-08T17:40:27.452Z"
+  },
+  {
+    "sessionId": "a3f66471-dff2-4f0d-8ddd-a4c9e3ce6178",
+    "messageId": 1,
+    "type": "user",
+    "message": "/exit",
+    "timestamp": "2026-03-08T17:40:32.602Z"
+  },
+  {
+    "sessionId": "58904afa-49a6-4774-8fb0-f85968b41b72",
+    "messageId": 0,
+    "type": "user",
+    "message": "config set model.apiKey AIzaSyAdZ9zMDf_8CrCFVx7LlTvLV6jq2GlrcuY",
+    "timestamp": "2026-03-08T18:11:50.378Z"
+  },
+  {
+    "sessionId": "58904afa-49a6-4774-8fb0-f85968b41b72",
+    "messageId": 1,
+    "type": "user",
+    "message": "/exit",
+    "timestamp": "2026-03-08T18:11:55.694Z"
+  }
+]

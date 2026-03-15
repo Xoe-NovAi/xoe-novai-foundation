@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/sanitization/sanitizer.py (1 replacements). Here is the updated code:
+...
+        # MySQL
+        (r'mysql://[^:]+:[^@]+@[^\s]+', 'connection_string'),
+        # MongoDB
+        (r'mongodb(?:\+srv)?://[^:]+:[^@]+@[^\s]+', 'connection_string'),
+        # Redis
+        (r'rediss?://[^:]*:[^@]+@[^\s]+', 'connection_string'),
+        # Generic DB
+        (r'(?i)(connection[_-]?string|connstring)["\s:=]+["\']?([^\s"\']+)["\']?', 'connection_string'),
+    ]
+    
+    # PII Patterns
+...

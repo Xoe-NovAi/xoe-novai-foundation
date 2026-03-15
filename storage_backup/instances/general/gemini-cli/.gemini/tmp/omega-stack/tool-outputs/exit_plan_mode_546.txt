@@ -1,0 +1,1 @@
+Plan file does not exist: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/589746d6-fcf6-4f3f-9b6d-92450881df38/plans/sess-18-fastapi-oikos-mesh.md. You must create the plan file before requesting approval.

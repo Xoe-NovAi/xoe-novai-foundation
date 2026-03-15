@@ -1,0 +1,3 @@
+{
+  "output": "Output: lrwxrwxrwx 1 arcana-novai arcana-novai 56 Mar 11 01:12 embeddings -> /media/arcana-novai/omega_library/omega-stack/embeddings\nlrwxrwxrwx 1 arcana-novai arcana-novai 52 Mar 11 04:25 models -> /media/arcana-novai/omega_library/omega-stack/models\nProcess Group PGID: 748510"
+}

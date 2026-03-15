@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:\n...\n            'memory_efficiency': 0.0\n        }\n        \n        l
+... [TRUNCATED] ...
+\n        return auth_token == expected_token\n\n    def _build_redis_url(self) -> str:\n        \"\"\"Build Redis URL from config and environment variables.\"\"\"\n        import os\n        redis_cfg = self.config.get('redis', {})\n        \n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001003357_0_rn9wq.txt
+</tool_output_masked>

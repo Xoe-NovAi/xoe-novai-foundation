@@ -1,0 +1,4 @@
+Subagent 'generalist' finished.
+Termination Reason: ERROR_NO_COMPLETE_TASK_CALL
+Result:
+Agent stopped calling tools but did not call 'complete_task'.

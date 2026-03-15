@@ -1,0 +1,5 @@
+Output: total 20
+drwxrwx--- 5 100999 100999 4096 Mar 12 21:39 ..
+drwxrwx---+ 2 100999 100999 4096 Mar  7 12:16 .
+-rwxrwx--- 1 100999 100999   50 Mar  7 12:16 .project_root
+Process Group PGID: 62403

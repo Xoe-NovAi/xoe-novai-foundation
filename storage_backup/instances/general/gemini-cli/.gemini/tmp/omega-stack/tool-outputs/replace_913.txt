@@ -1,0 +1,18 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/MPI.md (1 replacements). Here is the updated code:
+...
+- **Daily**: `./scripts/stack_health_check.sh`
+- **Weekly**: Documentation sync (update MPI and MkDocs).
+- **Security**: Key rotation for multi-account setup.
+
+---
+
+## 🛑 6. Known Issues & Stability
+*Tracking recurring blockers and system constraints.*
+
+| ID | Issue | Status | Description |
+|:---|:---|:---|:---|
+| **ERR-001** | **Gemini CLI OOM** | 🔴 RECURRING | Node.js heap limit reached during long sessions. |
+| **ERR-002** | **Podman NetNS** | 🟡 UNSTABLE | Permission denied when killing rootless netns processes. |
+
+---
+*Index sealed by Gemini General. Use this map to navigate the Mesh. 🔱*

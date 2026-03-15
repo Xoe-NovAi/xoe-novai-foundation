@@ -1,0 +1,14 @@
+Output: Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+name
+agent_wavefront
+consumers
+1
+pending
+0
+last-delivered-id
+1773017553597-2
+entries-read
+476
+lag
+0
+Process Group PGID: 1306985

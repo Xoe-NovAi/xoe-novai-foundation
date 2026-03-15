@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/iris_bridge.py. Here is the updated code:\n#!/usr/bin/env python3\n\"\"\"\n🌈 IRIS BRIDGE: The Messenger of the Rainbow\nA high-band
+... [TRUNCATED] ...
+.parse_args()\n\n    if args.sync:\n        await sync_worlds()\n    if args.balance:\n        await balance_spectrum()\n    if not args.sync and not args.balance:\n        parser.print_help()\n\nif __name__ == \"__main__\":\n    anyio.run(main)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/write_file_write_file_1773268939807_0_2utjy.txt
+</tool_output_masked>

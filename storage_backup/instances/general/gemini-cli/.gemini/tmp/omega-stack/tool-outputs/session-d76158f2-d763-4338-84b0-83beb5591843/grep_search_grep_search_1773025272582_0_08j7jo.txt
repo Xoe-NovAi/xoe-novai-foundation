@@ -1,0 +1,3 @@
+{
+  "output": "No matches found for pattern \"redis://\" in path \".\" (filter: \"infra/docker/docker-compose.yml\")."
+}

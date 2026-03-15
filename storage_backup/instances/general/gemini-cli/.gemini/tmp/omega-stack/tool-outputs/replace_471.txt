@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/agent_factory.py (1 replacements). Here is the updated code:\n...\n\n                # Call LiteLLM\n                kwargs = {\n                   
+... [TRUNCATED] ...
+                 kwargs[\"model\"] = \"gemini/gemini-2.0-flash\"\n                    kwargs[\"api_key\"] = auth[\"value\"]\n                \n                # Use litellm.completion explicitly to ensure it doesn't use internal OpenAI client\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773279770896_0_uq2zn.txt
+</tool_output_masked>

@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: -rwxr-xr-x 1 arcana-novai arcana-novai 39794 Feb 28 13:44 app/XNAi_rag_app/core/metrics.py
+-rw-rw-r-- 1 arcana-novai arcana-novai 11635 Mar  6 15:42 app/XNAi_rag_app/core/observability.py
+"""
+Xoe-NovAi Observability System
+================================
+Sovereign, ethical, and accessible observability for RAG API.
+Complies with Maat's 42 Ideals and Xoe-NovAi standards.
+"""
+
+import os
+
+... [136 lines omitted] ...
+
+app/XNAi_rag_app/core/maat_guardrails.py:        """Load Maat's 42 Ideals"""
+app/XNAi_rag_app/core/maat_guardrails.py:        """Verify compliance with Maat's ideals"""
+grep: app/XNAi_rag_app/core/__pycache__/dependencies.cpython-313.pyc: binary file matches
+grep: app/XNAi_rag_app/core/__pycache__/metrics.cpython-313.pyc: binary file matches
+grep: app/XNAi_rag_app/core/__pycache__/vulkan_acceleration.cpython-313.pyc: binary file matches
+app/XNAi_rag_app/core/vulkan_acceleration.py:# Xoe-NovAi Vulkan GPU Acceleration Framework
+app/XNAi_rag_app/core/vulkan_acceleration.py:# Claude v2 Vulkan Compute Evolution - GPU acceleration for transformer operations
+app/XNAi_rag_app/core/vulkan_acceleration.py:# - Vulkan 1.4 cooperative matrix support for attention mechanisms
+app/XNAi_rag_app/core/vulkan_acceleration.py:# Import unified exception hierarchy and Vulkan memory manager
+app/XNAi_rag_app/core/vulkan_acceleration.py:from scripts.vulkan_memory_manager import VulkanMemoryManager, VulkanMemoryError
+Process Group PGID: 453192
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773005768930_0_ky4wve.txt
+</tool_output_masked>

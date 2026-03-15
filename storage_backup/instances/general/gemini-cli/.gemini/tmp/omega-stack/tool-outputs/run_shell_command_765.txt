@@ -1,0 +1,3 @@
+Output: lrwxrwxrwx 1 arcana-novai arcana-novai 48 Mar 11 19:30 ./Omegadroid -> /media/arcana-novai/omega_vault/omega/Omegadroid
+memory_bank/chronicles/
+Process Group PGID: 260799

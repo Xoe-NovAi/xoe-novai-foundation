@@ -1,0 +1,2 @@
+Output: xnai_memory_bank_mcp
+Process Group PGID: 870123

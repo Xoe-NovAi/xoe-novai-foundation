@@ -1,0 +1,22 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.curator (1 replacements). Here is the updated code:
+...
+    sqlalchemy>=2.0.0 \
+    prometheus_client>=0.20.0 \
+    psutil>=5.9.5 \
+    requests>=2.31.0
+
+# Group 2: LangChain and LLM dependencies
+RUN uv pip install --system --no-cache \
+    langchain>=0.1.0 \
+    langchain-core>=0.1.0 \
+    langchain-community>=0.0.10 \
+    llama-cpp-python>=0.2.26
+
+# Group 3: Library and Media dependencies
+RUN uv pip install --system --no-cache \
+    feedparser>=6.0.12 \
+    python-magic>=0.4.27 \
+    yt-dlp>=2023.7.6
+
+# Copy application code
+...

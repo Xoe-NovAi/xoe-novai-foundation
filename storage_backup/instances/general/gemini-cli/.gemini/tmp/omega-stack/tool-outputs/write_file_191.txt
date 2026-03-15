@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-gnosis/server.py. Here is the updated code:\n#!/usr/bin/env python3\n\"\"\"\n🔱 xnai-gnosis MCP Server\nCentral authority for Gnosis Pack 
+... [TRUNCATED] ...
+ry synchronization.\n    [AP:memory_bank/ALETHIA_REGISTRY.md]\n    \"\"\"\n    # TODO: Implement atomic registry update logic\n    return f\"🔒 Pack sealed and anchored in ALETHIA_REGISTRY: {hash}\"\n\nif __name__ == \"__main__\":\n    mcp.run()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773333283497_0_vafxte.txt
+</tool_output_masked>

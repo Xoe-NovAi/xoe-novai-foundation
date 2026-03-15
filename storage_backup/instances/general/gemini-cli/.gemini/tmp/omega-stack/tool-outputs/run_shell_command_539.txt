@@ -1,0 +1,17 @@
+Output: data/gnosis_hub:
+'Chat Logs'                                    RAG_SystemManager_Py_enh.txt                            '_old_MIND MODEL V4.1_MASTERPROTOCOLS_Py_enh_v3.txt'
+'MIND MODEL V4.1_ MASTER PROTOCOLS.txt'        RAG_SystemManager_v3-Claude.txt                          _old_PEM_Lilith_Py_enh-v3-DS.py
+'MIND MODEL V4.1_MASTERPROTOCOLS_Py_enh.txt'   RAG_SystemManager_v3.py                                 'version 1.txt'
+ PEM_Lilith_Py.txt                             Update                                                  'version 2.txt'
+ PEM_Lilith_Py_enh-2.txt                       V3
+ RAG_SystemManager.txt                        '_old_MIND MODEL V4.1_MASTERPROTOCOLS_Py_enh_v3-DS.txt'
+
+'data/gnosis_hub/Chat Logs':
+'chat log - 03-19-25_8-14PM.txt'
+
+data/gnosis_hub/Update:
+'MIND MODEL V4.1_MASTERPROTOCOLS_Py_enh-update.txt'   PEM_Lilith_Py_enh-2-update.txt   RAG_SystemManager_Py_enh-2-update.txt
+
+data/gnosis_hub/V3:
+'MIND MODEL V4.1_MASTERPROTOCOLS_v3.txt'  'MIND MODEL v4.2.txt'   PEM_Lilith_v3.txt   RAG_SystemManager_v3.txt
+Process Group PGID: 421098

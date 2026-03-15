@@ -1,0 +1,3 @@
+{
+  "output": "Output: Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.\nPONG\nNAMES          STATUS                            PORTS\nxnai_redis     Up 27 minutes (healthy)           0.0.0.0:6379->6379/tcp\nxnai_postgres  Up 29 minutes (healthy)           0.0.0.0:5432->5432/tcp\nxnai_qdrant    Up Less than a second (starting)  0.0.0.0:6333-6334->6333-6334/tcp\nProcess Group PGID: 391719"
+}

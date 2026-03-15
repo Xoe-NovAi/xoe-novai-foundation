@@ -1,0 +1,3 @@
+{
+  "output": "Output: drwxrwxr-x 3 arcana-novai arcana-novai 4096 Mar 11 20:56 .logs\nProcess Group PGID: 365153"
+}

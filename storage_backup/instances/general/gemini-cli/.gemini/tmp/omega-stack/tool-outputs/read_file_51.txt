@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# Project Files Hygiene Strategy v2 — 2026-03-14\n\n## Rules\n\n- **8-file active cap enforced**\n- **Every major thread → one versioned EKB export** (grok-mc-[topic]-vX.Y.Z.md)\n- **Proxy-quality filter**: upload only if it increases 
+... [TRUNCATED] ...
+rok-mc-[topic]-vX.Y.Z.md files for reuse and model switching.\n\n## Archive Protocol\n\nFiles are superseded by GPT-4.1 review and consolidated into Sovereign Proxy Mesh framework.\n\nSource sprawl elimination mandatory for next-phase execution.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773543334167_2_oim9k9.txt
+</tool_output_masked>

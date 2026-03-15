@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-memory/server.py (1 replacements). Here is the updated code:\n...\n    # or\n    python -m mcp_servers.xnai_memory.server\n\"\"\"\n\nfrom p
+... [TRUNCATED] ...
+, mode=\"r\", encoding=\"utf-8\") as f:\n        return await f.read()\n\n\n@mcp.resource(\"memory://bank/core/activeContext.md\")\nasync def get_active_context() -> str:\n    \"\"\"Get the active context for current session priorities.\"\"\"\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001694616_0_96zpo.txt
+</tool_output_masked>

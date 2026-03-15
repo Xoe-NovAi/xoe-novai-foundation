@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# 🏙️ XNAi Foundation — Active Context\n\n> **Last updated**: 2026-03-08 (Opus Strategic Audit v2 + Gemini OOM Fix)\n> **Current agent**: Gemini General (Bard 0)\n> **System Status**: **AUDITED — 16 TASKS PENDING IMPLEMENTATION**\n> **
+... [TRUNCATED] ...
+AN.md` |\n| Gemini Dispatcher Config | `scripts/dispatcher.d/gemini.conf` |\n| Memory Bank Strategic Context | MCP key `antigravity:strategic:hot` v1 |\n\n---\n**Status**: AUDIT HANDOFF ACTIVE | **Next Milestone**: Implement Critical Tasks C1-C3\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773002286379_0_4jtd5d.txt
+</tool_output_masked>

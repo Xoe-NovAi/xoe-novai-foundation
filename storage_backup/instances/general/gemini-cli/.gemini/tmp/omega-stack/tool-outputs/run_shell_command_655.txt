@@ -1,0 +1,2 @@
+Output: ✅ Skill 'sentinel-skill' initialized at /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.cli/skills/sentinel-skill
+Process Group PGID: 214948

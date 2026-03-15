@@ -1,0 +1,9 @@
+Output: WARN[0010] StopSignal SIGTERM failed to stop container xnai_oikos in 10 seconds, resorting to SIGKILL 
+xnai_oikos
+xnai_oikos
+dfa469cf0b8d6f5f13f5e47b72a316353febd346b4d9a5f4f3935cf5f7f30c84
+xnai_oikos
+🔱 Foundry: Sending problem to Iris Bridge (Port 8006)...
+❌ Connection Error: Oikos Service is likely offline. ()
+💡 Suggestion: Start the service with 'python3 app/oikos_service.py'
+Process Group PGID: 524443

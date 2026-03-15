@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/bin/bash\n# Wrapper script to run memory-bank MCP server with correct environment\n\n# Get the absolute path to omega-stack root\nSCRIPT_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\nOMEGA_ROOT=\"$(cd \"$SCRIPT_DIR/../.
+... [TRUNCATED] ...
+ < \"${OMEGA_ROOT}/.env\"\nfi\n\n# Change to omega-stack directory so relative imports work\ncd \"${OMEGA_ROOT}\"\n\n# Run the server\nexec /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3 \"$SCRIPT_DIR/server.py\" \"$@\"\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000424047_0_9xswd.txt
+</tool_output_masked>

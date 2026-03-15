@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker:\n[DIR] app\n[DIR] backups\n[DIR] config\n[DIR] config.toml\n[DIR] configs\n[DIR] data\n[DIR] docs\n[DIR] docs-new\n[DIR] embeddings\n[DIR] expert-kn
+... [TRUNCATED] ...
+chainlit (2462 bytes)\nDockerfile.cline (1314 bytes)\nDockerfile.crawl (2187 bytes)\nDockerfile.curation_worker (2117 bytes)\nDockerfile.curator (1155 bytes)\nDockerfile.docs (2677 bytes)\nDockerfile.memory-bank (1015 bytes)\nMakefile (1074 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/list_directory_list_directory_1773186659016_0_6vu7mj.txt
+</tool_output_masked>

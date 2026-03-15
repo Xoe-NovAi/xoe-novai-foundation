@@ -1,0 +1,60 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/e6779b9a-1fa9-40d1-8eee-d3bb4c795893/plans/sess-17-reconciliation-mcp-hardening.md (1 replacements). Here is the updated code:
+# 🔱 Plan: SESS-17: The Great Reconciliation, Compliance & MCP Hardening
+
+**Status**: REVISED (Session 17.2)
+**Objective**: Finalize the Great Reconciliation (centralize storage), achieve AnyIO/Async compliance for the Persistent Entity System, fix the Memory Bank MCP crash loop, and harden inter-agent communication.
+
+## 🎯 Objectives
+1. **Fix MCP Watchdog**: Resolve the `KeyError: 'memory-bank'` by correcting the service name in `scripts/mcp_watchdog.sh`.
+2. **Consolidate Redundant Storage**: 
+    - Merge "messy" cache/data folders (`data/data/cache`, `storage/data/cache`, `storage/data/cache_v2`).
+    - Standardize on a single `models/` folder on the Sovereign Library partition.
+3. **Core Compliance (Handover Integration)**: 
+    - Refactor the Persistent Entity System (`persistent_entity.py`, `registry.py`) to use AnyIO/Async patterns to prevent event loop blocking.
+    - Implement categorized error handling and async context management.
+4. **Harden Memory Bank MCP Access**: 
+    - Transition all agents from `stdio` to `sse` (central server at `http://localhost:8005/sse`).
+5. **Observability Deployment**: 
+    - Integrate the Omega Observability system and deploy Grafana dashboards.
+
+## 🔍 Key Files & Context
+- `scripts/mcp_watchdog.sh`: Target for watchdog fix.
+- `app/XNAi_rag_app/core/entities/persistent_entity.py`: Target for AnyIO refactoring.
+- `app/XNAi_rag_app/core/entities/registry.py`: Target for AnyIO refactoring.
+- `infra/docker/docker-compose.yml`: Volume and service consolidation.
+- `artifacts/GEMINI_GENERAL_ARCHON_HANDOVER.md`: Deep-dive compliance requirements.
+
+## 🛠 Implementation Steps
+
+### Phase 1: Fix & Stabilize Infrastructure
+1. **Correct Watchdog Script**:
+    - Update `scripts/mcp_watchdog.sh` to use `memory-bank-mcp` in the `podman-compose` command.
+2. **Restart MCP Services**:
+    - Ensure the central service is running: `cd infra/docker && podman-compose up -d memory-bank-mcp`.
+
+### Phase 2: Core Compliance (Refactoring)
+1. **Async Persistent Entity**:
+    - Refactor `PersistentEntity` to use `anyio.open` for `load()` and `save()`.
+    - Change `__init__` to be a non-blocking or use a factory method for initialization.
+2. **Async Registry**:
+    - Refactor `EntityRegistry` to follow async patterns for entity management.
+3. **Categorized Error Handling**:
+    - Implement the error handling templates provided in the handover document.
+
+### Phase 3: Storage Consolidation & De-duplication
+1. **Merge Caches**:
+    - Consolidate all `huggingface` caches into a single volume/path.
+2. **Update Volumes**:
+    - Update `docker-compose.yml` to point to centralized, non-redundant paths on the `omega_library` partition.
+
+### Phase 4: Harden Agent Access (SSE Transition)
+1. **SSE Configuration**:
+    - Update master and facet `mcp_config.json` files to use the SSE transport.
+2. **Observability Sync**:
+    - Deploy the Grafana dashboard and connect it to VictoriaMetrics.
+
+## ✅ Verification & Testing
+- **Async Validation**: Ensure no blocking calls in the logs during entity load/save.
+- **MCP Health**: `curl http://localhost:8005/health` returns `ok`.
+- **Disk Usage**: Recovery to <90% usage.
+- **Dashboards**: Grafana shows live metrics for the Entity System.

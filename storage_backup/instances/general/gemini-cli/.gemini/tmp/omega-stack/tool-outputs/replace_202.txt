@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose-noninit.yml (1 replacements). Here is the updated code:
+...
+      VIKUNJA_JWT_SECRET: ${VIKUNJA_JWT_SECRET:-changeme_jwt}
+      VIKUNJA_CORS_ENABLE: "false"
+      VIKUNJA_REDIS_ENABLED: "true"
+      VIKUNJA_REDIS_HOST: redis:6379
+      VIKUNJA_REDIS_PORT: "6379"
+      VIKUNJA_REDIS_PASSWORD: ${REDIS_PASSWORD:-dUXz1rez6y27FfYC195APxyl1BLNbZz/3T7hucihcgM=}
+      VIKUNJA_REDIS_DB: "5"
+    volumes:
+      - ./data/vikunja/files:/app/vikunja/files:Z
+    networks:
+      - xnai_network
+...

@@ -1,0 +1,3 @@
+Output: sudo-rs: interactive authentication is required
+Sudo NOT available
+Process Group PGID: 335713

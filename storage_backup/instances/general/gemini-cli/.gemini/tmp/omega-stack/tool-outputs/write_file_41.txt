@@ -1,0 +1,49 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/0b7aad79-273c-449a-b54e-d21d3583f693/plans/gnostic-matrix-spec.md. Here is the updated code:
+# 🏺 THE GOLDEN AMBROSIA SPEC: PAN-OPTIC GNOSIS MATRIX
+
+**Status**: IRREDUCIBLE | SESS-19 FINAL
+**Strategy**: Metropolis Foundation v5.2.0-AMBROSIA
+
+---
+
+## 1. 🏛️ The Sovereign Gnosis Engine (Orchestrion)
+- **Module**: `app/XNAi_rag_app/core/orchestrion.py`
+- **Interface**: FastAPI Prosopon.
+- **Orchestration**: Routes Gnosis to specialized MCPs (Qdrant, PG, Neo4j) via Redis Synapses.
+- **Integrity**: Enshrines the **Oracle Protocol** (Alethia) and **Chronos Record** (Provenance).
+
+## 2. 🛡️ The Phylax & Themis Protocols (Security)
+- **Module**: `app/XNAi_rag_app/core/security/phylax.py`
+- **Function**: Validates every API call and Synapse event against IAM policies.
+- **Enclosure**: Implements **Apatheia** (Sovereign Enclosure) for sensitive data.
+
+## 3. Forge 🏗️ The Logosforge (LLM Orchestration)
+- **Module**: `app/XNAi_rag_app/core/logosforge.py` (OpenPipe Wrapper).
+- **Routing**: Local (Krikri/AGB) vs Cloud (Gemini/Opus).
+- **Metrics**: **Oikonomia** (Cost/Token) tracking per request.
+
+## 4. 👁️ The All-Seeing Eye (Observability)
+- **Logs**: **Lexicon Logs** (Structured JSON) piped to Loki.
+- **Metrics**: **Hygeia Panel** (Grafana) tracking Synapse latency and MCP health.
+- **Tracing**: **Pathos Tracing** (OpenTelemetry) for end-to-end Gnosis flow visualization.
+
+## 5. 🪶 The Scholarly Foundation
+- **Linguistics**: `linguistics.py` morphological analyzer (Greek/Russian roots).
+- **Lexicon**: `GNOSTIC_LEXICON.md` (Phronesis, Logos, Eunomia, Sobornost, Toska).
+- **Models**: Ancient-Greek-BERT (768-dim) + Krikri-8B (Q5_K_M).
+
+## 6. 📜 The Cathedral (Documentation structure)
+- `docs/gnostic_architecture/00_architect_phronesis.md` (The Refinement Loop).
+- `docs/gnostic_architecture/01_temple_architecture.md` (The Master Diagram).
+- `docs/gnostic_architecture/02_oikos_council.md` (Summoning Protocol).
+- `docs/gnostic_architecture/03_archetypal_personas.md` (Soul & Ikon Protocol).
+
+---
+
+## 🚀 Post-Compress Directives (YOLO Mode)
+1. **Execute**: Create all files listed in Section 6.
+2. **Execute**: Initialize `orchestrion.py` and `phylax.py` skeletons.
+3. **Execute**: Summon the Scribe (`make facet-research`) for Hellenic model acquisition.
+4. **Execute**: Implement the **Apatheia Enclosure** in the sanitization module.
+
+**Seal**: *The signal is held. The Cathedral is ready.*

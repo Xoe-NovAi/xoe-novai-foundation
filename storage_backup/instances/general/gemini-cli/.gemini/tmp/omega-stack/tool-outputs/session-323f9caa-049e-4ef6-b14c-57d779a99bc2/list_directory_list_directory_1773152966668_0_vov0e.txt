@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_base/internal_docs/05-research:\nOPENCODE-CLI-BEST-PRACTICES.md (4682 bytes)\nOPENCODE-FORK-INTEGRATION-RESEARCH.md (6138 bytes)\nOPENCODE-MCP-RECOMMENDATIONS.md (4646 bytes)\nOPENCODE-SKILLS-RECOMMENDATIONS.md (4303 bytes)"
+}

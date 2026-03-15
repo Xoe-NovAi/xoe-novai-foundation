@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/bin/bash\nset -a\nsource \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.env\"\nset +a\n\n# --- Check for Deprecated Architectural Documents ---\nDEPRECATION_SCHEDULE_FILE=\"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/m
+... [TRUNCATED] ...
+ngly.\"\n            echo \"------------------------------------------\"\n        fi\n    done\nfi\n# --- End Deprecation Check ---\n\npodman-compose -f \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml\" up -d\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773336545123_1_tjssp8.txt
+</tool_output_masked>

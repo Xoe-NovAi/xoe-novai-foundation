@@ -1,0 +1,40 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/agent_factory.py (1 replacements). Here is the updated code:
+...
+            if key and key not in keys and "YOUR_ACTUAL" not in key:
+                keys.append(key)
+        return keys
+
+    async def think(self, prompt: str, system_instruction: str = "", temperature: float = 0.7) -> str:
+        """Performs model inference with automatic rotation, OAuth, and fallback."""
+        
+        # 0. Check for OAuth (GCP ADC)
+        use_oauth = os.getenv("GOOGLE_APPLICATION_CREDENTIALS") is not None
+        
+        # 1. Try Rainbow Rotation (Cloud Keys / OAuth)
+        # If OAuth is available, we try it first by passing None as api_key to LiteLLM
+        search_list = [None] if use_oauth else self.keys
+        if use_oauth and self.keys:
+            search_list.extend(self.keys) # Fallback to keys if OAuth fails
+        elif not search_list:
+            search_list = [None] # Assume environment auth
+
+        for auth_key in search_list:
+            try:
+                messages = []
+                if system_instruction:
+                    messages.append({"role": "system", "content": system_instruction})
+                messages.append({"role": "user", "content": prompt})
+
+                # Call LiteLLM
+                # If auth_key is None, LiteLLM uses env vars (GOOGLE_APPLICATION_CREDENTIALS)
+                response = await anyio.to_thread.run_sync(
+                    lambda: completion(
+                        model=self.model_name,
+                        messages=messages,
+                        api_key=auth_key,
+                        temperature=temperature
+                    )
+                )
+                return response.choices[0].message.content
+
+...

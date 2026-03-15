@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"\"Big Pickle\" AI model OpenCode OpenRouter\":\n\n**Big Pickle** is a \"stealth\" AI model currently available for free on the **OpenCode** platform.[1][2][3][4] It is primarily used as a coding assistant withi
+... [TRUNCATED] ...
+)\n[7] dev.to (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFi0N0R_MIv4XEBaU9K2MX6UR3iVyx-WCo7zLbHKoIvby2TNbFpOnqJZvKUf2mXRj2hABAdynGgZJofLhrs2hqH0dyf3dwxWN9Hg8_SlOB0ddoElaJ8Z0aaRs_NLBqe9t-hl3a5XLVWxSdEjVXxHxUfQ3Ckj4d9KWgz)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/google_web_search_google_web_search_1773002716349_0_tje93m.txt
+</tool_output_masked>

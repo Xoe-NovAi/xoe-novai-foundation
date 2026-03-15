@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nMemory Bank MCP Server\n======================\nProvides sovereign, offline-first memory bank access for deep inter-agent communication.\nImplements progressive loading, context engineering, and A2A prot
+... [TRUNCATED] ...
+d)\n    return Response(status_code=204)\n\n@app.get(\"/health\")\nasync def health():\n    return {\"status\": \"ok\"}\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000, timeout_keep_alive=65)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773187553326_0_ei8a5r.txt
+</tool_output_masked>

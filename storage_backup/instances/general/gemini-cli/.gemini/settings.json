@@ -1,0 +1,64 @@
+{
+  "theme": "dark",
+  "editor": "code",
+  "auto_save": true,
+  "stream": true,
+  "minimal_ui": true,
+  "max_history_items": 100,
+  "telemetry_opt_out": true,
+  "font_size": 14,
+  "render_markdown": true,
+  "model": {
+    "apiKey": "AIzaSyCPRsWqa-zkX_oCjs6hSttxrnig88DbsoA",
+    "name": "gemini-3-flash-preview",
+    "compressionThreshold": 0.35
+  },
+  "experimental": {
+    "enableAgents": true,
+    "codebaseInvestigatorSettings": {
+      "enabled": true
+    },
+    "modelSteering": true
+  },
+  "agents": {
+    "overrides": {
+      "codebase_investigator": {
+        "enabled": true
+      }
+    }
+  },
+  "general": {
+    "sessionRetention": {
+      "warningAcknowledged": true,
+      "enabled": true,
+      "maxAge": "120d"
+    }
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    },
+    "enablePermanentToolApproval": true
+  },
+  "ui": {
+    "showMemoryUsage": true,
+    "showModelInfoInChat": true,
+    "showCitations": true,
+    "footer": {
+      "hideContextPercentage": false,
+      "hideModelInfo": false
+    },
+    "inlineThinkingMode": "full",
+    "useAlternateBuffer": true
+  },
+  "tools": {
+    "shell": {
+      "showColor": true
+    }
+  },
+  "context": {
+    "fileFiltering": {
+      "respectGitIgnore": true
+    }
+  }
+}

@@ -1,0 +1,16 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - /var/run:size=64m,mode=0755
+      - /app/.cache:size=100m,mode=0755
+      - /app/logs:size=100m,mode=1777
+      - /app/data:size=50m,mode=1777
+    volumes:
+      - /media/arcana-novai/omega_library/omega-stack/cache/huggingface:/home/appuser/.cache/huggingface:Z,U
+      - ../../library:/library:z,U
+      - ../../expert-knowledge:/knowledge:z,U
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+      - ../../app/config.toml:/app/config.toml:ro,Z,U
+      - /media/arcana-novai/omega_library/omega-stack/models:/models:ro,Z,U
+      - /media/arcana-novai/omega_library/omega-stack/embeddings:/embeddings:ro,Z,U
+    environment:
+...

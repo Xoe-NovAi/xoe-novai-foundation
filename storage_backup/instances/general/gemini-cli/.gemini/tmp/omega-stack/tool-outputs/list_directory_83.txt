@@ -1,0 +1,14 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini:
+[DIR] acknowledgments
+[DIR] chats
+[DIR] history
+[DIR] tmp
+expert_soul.md (1462 bytes)
+google_accounts.json (114 bytes)
+installation_id (36 bytes)
+mcp_config.json (164 bytes)
+oauth_creds.json (1798 bytes)
+projects.json (160 bytes)
+settings.json (1050 bytes)
+state.json (21 bytes)
+trustedFolders.json (74 bytes)

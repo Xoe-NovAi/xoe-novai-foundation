@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# XNAi Foundation: The Pan-Optic Gnosis Matrix\n\n> **Version**: 2.0.0-GNOSTIC\n> **Last Updated**: 2026-03-12 (RCF & Gnostic Matrix)\n> **Owner**: Jem (Oversoul)\n\n---\n\n## Overview\n\nThe XNAi Foundation has evolved from a hierarch
+... [TRUNCATED] ...
+se |\n|----------|---------|\n| [Task Dispatch](./strategies/ACTIVE-TASK-DISPATCH-2026-02-23.md) | Current tasks |\n| [Wave 2 Progress](./WAVE-2-PROGRESS.md) | Progress tracking |\n\n---\n\n**Created**: 2026-02-23  \n**Owner**: MC-Overseer Agent\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773326246092_0_62mhps.txt
+</tool_output_masked>

@@ -1,0 +1,5 @@
+Output: du: cannot read directory '/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/data/vikunja/db': Permission denied
+du: cannot read directory '/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/data/postgres': Permission denied
+7.5G    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/
+Exit Code: 1
+Process Group PGID: 81309

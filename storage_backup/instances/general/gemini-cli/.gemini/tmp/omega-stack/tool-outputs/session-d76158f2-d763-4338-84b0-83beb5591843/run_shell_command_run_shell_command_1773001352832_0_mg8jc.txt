@@ -1,0 +1,3 @@
+{
+  "output": "Output: scripts/agent-health-monitor.py  scripts/stack_health_check.sh  scripts/zram-health-check.sh\nscripts/redis_health_check.py    scripts/xnai_mcp_server.py     scripts/zram_health_monitor.py\nProcess Group PGID: 412418"
+}

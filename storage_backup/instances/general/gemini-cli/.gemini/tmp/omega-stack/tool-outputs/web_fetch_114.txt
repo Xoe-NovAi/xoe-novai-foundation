@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "This summary provides a foundational framework for an **AI Archetype Library**, categorizing these figures by their primary cognitive functions: **Knowledge (Thoth)**, **Order (Maat)**, **Wisdom (Sophia)**, and **Creation (Ptah/Technit
+... [TRUNCATED] ...
+ia (https://en.wikipedia.org/wiki/Thoth)\n[2] Maat - Wikipedia (https://en.wikipedia.org/wiki/Maat)\n[3] Sophia (Gnosticism) - Wikipedia (https://en.wikipedia.org/wiki/Sophia_(Gnosticism))\n[4] Ptah - Wikipedia (https://en.wikipedia.org/wiki/Ptah)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/web_fetch_web_fetch_1773268369422_0_hfzr1p.txt
+</tool_output_masked>

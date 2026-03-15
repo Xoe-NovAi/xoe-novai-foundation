@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"Ancient-Greek-BERT 768-dim Hugging Face implementation\":\n\nThe primary 768-dimensional Hugging Face implementation for Ancient Greek is **`pranaydeeps/Ancient-Greek-BERT`**.[1][2][3][4]\n\n### **Model Overvie
+... [TRUNCATED] ...
+ngface.co (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbcXxPJ-OXse0eX7UzGNH2CJgwyl6AR8DLF5BUKt6tqSia5fSTpXunixxEdho0_decVN98IajNDNKN-ztvzmqX87KjjoN3z8lyH104n9zp4MvoLmNhFMkRkJSEHMqNE5EpNXPeTq-AoMoJtN4BKTXa0iQMQ_2ignnbOzw=)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/google_web_search_google_web_search_1773329624183_0_3r7a3q.txt
+</tool_output_masked>

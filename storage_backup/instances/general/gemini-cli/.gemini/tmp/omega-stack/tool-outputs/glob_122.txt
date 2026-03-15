@@ -1,0 +1,3 @@
+Found 2 file(s) matching "**/model*registry*" within /home/arcana-novai/Documents/Xoe-NovAi/omega-stack, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/model_registry.py
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/backups/SNAP-20260312-METROPOLIS-HARDENED/scripts/model_registry.py

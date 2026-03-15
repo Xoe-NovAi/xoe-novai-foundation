@@ -1,0 +1,58 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/omega_foundry.py (1 replacements). Here is the updated code:
+...
+            print(f"  (Attempt {i+1}/{retries}) Service starting...")
+            await anyio.sleep(delay)
+    return False
+
+async def mastermind(problem: str):
+    """Runs the Oikos Mastermind session with status polling."""
+    import httpx
+    import time
+    
+    base_url = "http://localhost:8006"
+    route_url = f"{base_url}/iris/route"
+    session_id = f"SESS-{int(time.time())}"
+    
+    if not await wait_for_service(route_url):
+        print("❌ Error: Oikos Service timed out.")
+        return
+
+    print(f"🔱 Foundry: Initiating Session [{session_id}]...")
+    payload = {"problem": problem, "session_id": session_id}
+    
+    async with httpx.AsyncClient() as client:
+        try:
+            # 1. Start Session
+            response = await client.post(route_url, json=payload, timeout=30.0)
+            data = response.json()
+            print(f"🌈 Iris Decision: {data.get('decision', 'UNKNOWN')}")
+            print(f"📡 Status: {data.get('response', 'Starting...')}")
+
+            if data.get("decision") == "ASYNC_MASTERMIND":
+                # 2. Poll Status
+                status_url = f"{base_url}/iris/status/{session_id}"
+                print("🪶 Council is deliberating. Polling for Decree...")
+                
+                while True:
+                    await anyio.sleep(5)
+                    status_res = await client.get(status_url)
+                    status_data = status_res.json()
+                    current_status = status_data.get("status")
+                    
+                    if current_status == "COMPLETE":
+                        print(f"🔱 COUNCIL DECREE ACHIEVED: {status_data.get('response')}")
+                        break
+                    elif current_status == "ERROR":
+                        print(f"❌ Council Error: {status_data.get('error')}")
+                        break
+                    else:
+                        print(f"  [Status]: {current_status}...")
+
+        except Exception as e:
+            print(f"❌ Error during Mastermind: {str(e)}")
+
+async def main():
+    parser = argparse.ArgumentParser(description="Omega Foundry CLI")
+    subparsers = parser.add_subparsers(dest="command")
+
+...

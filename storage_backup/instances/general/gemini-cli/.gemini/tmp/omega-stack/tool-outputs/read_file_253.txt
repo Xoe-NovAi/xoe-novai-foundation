@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# API service requirements - UPDATED for 2026 standards\n# Generated from pyproject.toml on Wed Jan 14 7:56 PM AST 2026\n# CRITICAL: Added missing RAG, voice, and observability packages\n\n# Core RAG stack (CRITICAL - PREVIOUSLY MISSIN
+... [TRUNCATED] ...
+oupsieve\nstarlette\nsse-starlette\nstarlette-context\ntenacity\ntoml\ntqdm\ntyping-extensions\ntyping-inspection\nuvicorn\nuvloop\nwatchfiles\nwebsockets\nwrapt>=1.14.0,<2.0.0\ngriffe\nbcrypt\npyjwt\ncryptography\nsqlite-utils\ndnspython==2.7.0\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773337388294_0_kfxqyo.txt
+</tool_output_masked>

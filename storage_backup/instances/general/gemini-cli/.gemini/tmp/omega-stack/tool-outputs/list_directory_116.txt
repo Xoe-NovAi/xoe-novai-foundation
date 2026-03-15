@@ -1,0 +1,49 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_base/expert-knowledge:
+[DIR] _archive
+[DIR] _meta
+[DIR] agent-tooling
+[DIR] architect
+[DIR] architecture
+[DIR] assistant_toolbox
+[DIR] cline
+[DIR] coder
+[DIR] common-sop
+[DIR] copilot
+[DIR] crawler
+[DIR] embeddings
+[DIR] environment
+[DIR] esoteric
+[DIR] gemini
+[DIR] gemini-cli
+[DIR] infrastructure
+[DIR] intelligence
+[DIR] model-reference
+[DIR] onboarding
+[DIR] origins
+[DIR] patterns
+[DIR] personas
+[DIR] protocols
+[DIR] research
+[DIR] security
+[DIR] sessions
+[DIR] sync
+[DIR] tools
+AGENT-CLI-MODEL-MATRIX-v3.0.0.md (17628 bytes)
+ASYNC-ANYIO-BEST-PRACTICES.md (3339 bytes)
+CLI-FEATURE-COMPARISON-MATRIX-2026-02-23.md (12653 bytes)
+cli-model-selection-strategy-v1.0.0.md (17091 bytes)
+CLI-NOMENCLATURE-GUIDE-v1.0.0.md (5608 bytes)
+CLINE-CLI-MODELS-v1.0.0.md (7723 bytes)
+CONTEXT-ENGINEERING-PROTOCOLS-RESEARCH.md (6700 bytes)
+COPILOT-CLI-MODELS-v1.0.0.md (5961 bytes)
+COPILOT-QUOTA-VERIFICATION-2026-02-23.md (3984 bytes)
+GEMINI-CLI-MODELS-v1.0.0.md (7919 bytes)
+GEMINI-QUOTA-API-2026-02-23.md (3254 bytes)
+MEMORY-BANK-OPTIMIZATION-RESEARCH.md (10824 bytes)
+MODEL-DISCOVERY-SYSTEM-v1.0.0.md (34722 bytes)
+MULTI-ACCOUNT-EMAIL-REGISTRY-2026-02-23.md (15128 bytes)
+OPENCODE-CLI-COMPREHENSIVE-GUIDE-v1.0.0.md (17660 bytes)
+OPENCODE-CLI-MODELS-v1.0.0.md (9620 bytes)
+phase5a-best-practices.md (5619 bytes)
+README.md (10524 bytes)
+url-registry.json (14134 bytes)

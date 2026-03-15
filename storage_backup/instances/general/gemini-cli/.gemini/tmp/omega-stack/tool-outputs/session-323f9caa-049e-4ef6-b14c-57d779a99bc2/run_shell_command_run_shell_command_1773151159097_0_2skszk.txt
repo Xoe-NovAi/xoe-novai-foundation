@@ -1,0 +1,3 @@
+{
+  "output": "Output:       VIKUNJA_JWT_SECRET: ${VIKUNJA_JWT_SECRET:?VIKUNJA_JWT_SECRET must be set}\nProcess Group PGID: 9795"
+}

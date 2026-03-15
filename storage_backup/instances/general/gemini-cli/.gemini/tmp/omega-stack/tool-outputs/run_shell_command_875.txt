@@ -1,0 +1,31 @@
+Output: Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+Updated: {f}
+find: ‘./infra/docker/data/vikunja/db’: Permission denied
+find: ‘./infra/docker/data/postgres’: Permission denied
+Exit Code: 1
+Process Group PGID: 103253

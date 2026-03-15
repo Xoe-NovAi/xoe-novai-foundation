@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "from fastmcp import FastMCP\nimport os\nimport json\nimport subprocess\nfrom pathlib import Path\n\n# Initialize Xoe-NovAi Command Center\nmcp = FastMCP(\n    \"Xoe-NovAi Command Center\",\n    description=\"Centralized MCP server for 
+... [TRUNCATED] ...
+s = OUTBOX.glob(f\"{agent_name}_response_*.json\")\n    results = []\n    for f in files:\n        with open(f, \"r\") as content:\n            results.append(json.load(content))\n    return results\n\nif __name__ == \"__main__\":\n    mcp.run()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001378683_0_2ojhcp.txt
+</tool_output_masked>

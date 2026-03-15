@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/ALETHIA_REGISTRY.md (1 replacements). Here is the updated code:\n...\n- **SOS-F3 (Schema-Sentry)**: Parity Audit Protocol refined (Structural In
+... [TRUNCATED] ...
+[RIGIDITY-HASH-ALPHA-20260312]`\n\n## ⚖️ VERIFICATION RULE\nIf a technical claim is made without an `[AP]` pointer, it is classified as \"Speculative Logos\" and must pass the **Alethia Threshold** (2/3 weighted consensus) before implementation.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773354886947_0_hzboj8.txt
+</tool_output_masked>

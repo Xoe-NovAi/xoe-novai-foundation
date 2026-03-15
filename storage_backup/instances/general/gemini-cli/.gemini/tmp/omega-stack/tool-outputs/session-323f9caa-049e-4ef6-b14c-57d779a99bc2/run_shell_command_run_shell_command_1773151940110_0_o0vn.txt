@@ -1,0 +1,3 @@
+{
+  "output": "Output: ./_archive/cleanup-procedures\nProcess Group PGID: 9856"
+}

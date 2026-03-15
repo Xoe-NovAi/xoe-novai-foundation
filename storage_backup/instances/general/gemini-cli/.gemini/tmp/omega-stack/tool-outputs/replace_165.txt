@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/mcp_watchdog.sh (1 replacements). Here is the updated code:\n...\n# Purpose: Ensure the Memory Bank MCP is always operational and healthy.\n\nCONTAI
+... [TRUNCATED] ...
+Internal health endpoint)\n    if ! curl -s http://localhost:8000/health | grep -q \"ok\"; then\n        echo \"[$(date)] ⚠️ MCP UNHEALTHY! Restarting...\" >> $LOG_FILE\n        podman restart $CONTAINER_NAME\n    fi\n    \n    sleep 60\ndone\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-323f9caa-049e-4ef6-b14c-57d779a99bc2/replace_replace_1773149493584_3_g07hv.txt
+</tool_output_masked>

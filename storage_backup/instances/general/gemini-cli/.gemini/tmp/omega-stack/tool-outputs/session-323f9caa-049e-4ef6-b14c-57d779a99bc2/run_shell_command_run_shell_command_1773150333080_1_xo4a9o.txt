@@ -1,0 +1,3 @@
+{
+  "output": "Output: {\"status\":\"ok\"}✅ MCP Internal OK\nProcess Group PGID: 9665"
+}

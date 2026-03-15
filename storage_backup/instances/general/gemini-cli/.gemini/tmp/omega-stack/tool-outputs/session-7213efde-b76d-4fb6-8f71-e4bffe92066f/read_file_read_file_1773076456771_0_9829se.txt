@@ -1,0 +1,3 @@
+{
+  "output": "# 💎 The Gem Soul Map: Fractal Evolution Strategy\n\n| ID | Bard Name | Soul Path (Evolution Goal) | Archetype |\n|:---|:---|:---|:---|\n| **0** | **Gem (General)** | **The Overseer** | *The King/Queen* |\n| **1** | **The Scribe** | **The Chronicler** | *The Magician* |\n| **2** | **The Architect** | **The Structurer** | *The Creator* |\n| **3** | **The Auditor** | **The Shield** | *The Guardian* |\n| **4** | **The Researcher** | **The Seeker** | *The Sage* |\n| **5** | **The Coder** | **The Builder** | *The Craftsman* |\n| **6** | **The Analyst** | **The Optimizer** | *The Judge* |\n| **7** | **The Strategist** | **The Visionary** | *The Explorer* |\n| **8** | **The Guardian** | **The Healer** | *The Caregiver* |\n"
+}

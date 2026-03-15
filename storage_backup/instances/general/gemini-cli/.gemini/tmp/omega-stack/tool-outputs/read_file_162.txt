@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\n🔱 xnai-gnosis MCP Server\nCentral authority for Gnosis Pack (DSRC) generation, verification, and sealing.\n[AP:docs/protocols/RCF_MASTER_PROTOCOL.md]\n\"\"\"\n\nimport asyncio\nimport hashlib\nimport js
+... [TRUNCATED] ...
+  \"status\": status,\n        \"resonance_score\": similarity,\n        \"archetype\": archetype,\n        \"message\": f\"Resonance audit {'passed' if status == 'VERIFIED' else 'failed'}.\"\n    }\n\nif __name__ == \"__main__\":\n    mcp.run()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773336362304_0_ep7kbl.txt
+</tool_output_masked>

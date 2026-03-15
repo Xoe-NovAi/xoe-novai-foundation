@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+  # ==========================================================================
+  redis:
+    image: redis:7.4.1
+    container_name: xnai_redis
+    init: true
+    user: "1000:1000"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+...

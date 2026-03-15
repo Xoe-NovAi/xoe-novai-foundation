@@ -1,0 +1,26 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/MPI.md (1 replacements). Here is the updated code:
+# 🏙️ XNAi Foundation - Master Project Index (MPI)
+
+**Author**: Gemini General | **Status**: HARDENED-INFRA | **Last Sync**: 2026-03-12  
+**Context Key**: `XNAI-MPI-METROPOLIS-V4.1.2-HARDENED-2026-V2`
+
+---
+
+## 🏛️ 1. Core Infrastructure (The Foundation)
+*Current Phase: 4.1.2-INFRA (Hardening Complete) - ✅ COMPLETE*
+
+| Project | Status | Description | Context File |
+|:---|:---|:---|:---|
+| **Foundation Shield** | ✅ LIVE | Zero-trust networks + **Redis TLS (rediss://)**. | `docs/architecture/METROPOLIS_NETWORK_SHIELD.md` |
+| **Dependency Lock** | ✅ STABLE | **llama-cpp-python 0.3.16** + **chainlit 3.8.5** (2026 Baseline). | `requirements/` |
+| **Enterprise IAM** | ✅ ACTIVE | Scoped API Keys (IA1) + Ed25519 Signatures (IA2). | `app/XNAi_rag_app/core/iam_service.py` |
+| **Secrets Rotation** | ✅ COMPLETE | Purged `changeme123` & `vikunja123`; implemented random base64 secrets. | `docs/protocols/SECRETS_ENFORCEMENT_PROTOCOL.md` |
+| **Memory Bank MCP** | ✅ ACTIVE | Refactored for **SSE/FastAPI** (Port 8000). Watchdog active. | `mcp-servers/memory-bank-mcp/server.py` |
+| **Metropolis Caps**| ✅ ACTIVE | Enforced 6.6GB RAM + 12GB zRAM budget across stack. | `infra/docker/docker-compose.yml` |
+| **The Librarian** | ✅ LIVE | Recursive summarization & archival service. | `app/XNAi_rag_app/workers/librarian.py` |
+
+---
+
+## 🏛️ 2. Scholar Platform (The Great Library)
+...
+...

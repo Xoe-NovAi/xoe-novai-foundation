@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 170-220 of 300 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+MCP update failed: {e}\")\n            self.circuit_breaker.record_failure()\n\n        return fallback_result\n\n    async def sync_context(self, source_agent: str, target_agent: str, context_id: str, sync_type: str = \"full\") -> Dict[str, Any]:"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001086595_0_nyr1s8.txt
+</tool_output_masked>

@@ -1,0 +1,5 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra:
+[DIR] containers
+[DIR] docker
+[DIR] migrations
+[DIR] monitoring

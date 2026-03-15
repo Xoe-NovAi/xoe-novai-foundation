@@ -1,0 +1,6 @@
+Output: ## 🚰 SESS-17: The Great Reconciliation (Execution)
+**Focus**: Archon (Gemini General) to execute storage centralization and folder merging.
+- [ ] **Data Merge**: Merge `_new` folders into primary directories.
+- [ ] **Symlink Bridge**: Redirect `models/` and `embeddings/` to the Sovereign Library partition.
+- [ ] **Disk Recovery**: Reach <80% root usage baseline.
+Process Group PGID: 214637

@@ -1,0 +1,26 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/omega_foundry.py (1 replacements). Here is the updated code:
+...
+        if result.stderr:
+            print(f"  ⚠️  Error: {result.stderr}")
+
+    print("\n✅ Oikos Blessing Complete. The Hearth is stabilized.")
+
+async def mastermind(problem: str):
+    """Runs the Oikos Mastermind session with MaLi approval."""
+    from scripts.oikos_mastermind import orchestrate_session
+    await orchestrate_session(problem)
+
+async def main():
+    parser = argparse.ArgumentParser(description="Omega Foundry CLI")
+    subparsers = parser.add_subparsers(dest="command")
+
+    # Mastermind
+    mm_parser = subparsers.add_parser("mastermind")
+    mm_parser.add_argument("problem", help="The problem to solve via Oikos Council")
+
+    # Oikos Check
+    subparsers.add_parser("oikos-check")
+
+    # Synthesize
+    sync_parser = subparsers.add_parser("synthesize")
+...

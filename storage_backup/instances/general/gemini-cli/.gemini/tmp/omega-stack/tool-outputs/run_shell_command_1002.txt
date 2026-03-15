@@ -1,0 +1,13 @@
+Output: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/app/XNAi_rag_app/workers/library_curator.py", line 23, in <module>
+    from XNAi_rag_app.core.agent_bus import AgentBusClient
+  File "/app/app/XNAi_rag_app/core/agent_bus.py", line 10, in <module>
+    from app.XNAi_rag_app.core.iam_handshake import KeyManager
+  File "/app/app/XNAi_rag_app/core/iam_handshake.py", line 25, in <module>
+    from .iam_db import IAMDatabase, AgentIdentity, AgentType
+  File "/app/app/XNAi_rag_app/core/iam_db.py", line 23, in <module>
+    from sqlalchemy import Column, String, DateTime, JSON, Boolean, ForeignKey, Table, Index, text as sa_text
+ModuleNotFoundError: No module named 'sqlalchemy'
+Process Group PGID: 1230849

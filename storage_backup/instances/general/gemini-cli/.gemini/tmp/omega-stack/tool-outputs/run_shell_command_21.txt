@@ -1,0 +1,5 @@
+Output: -rw-rw-r--  1 arcana-novai arcana-novai     5837 Mar 14 14:39 GEMINI_RESTORATION_PLAN.md
+-rw-rw-r--  1 arcana-novai arcana-novai     5723 Mar 13 00:59 WHAT_TO_SHARE_WITH_GEMINI3.md
+-rw-rw-r--  1 arcana-novai arcana-novai    10864 Mar 13 00:42 GEMINI3_BRIEFING.txt
+-rw-rw-r--  1 arcana-novai arcana-novai    25048 Mar 13 00:41 GEMINI3_REVIEW_PACKAGE.md
+Process Group PGID: 60474

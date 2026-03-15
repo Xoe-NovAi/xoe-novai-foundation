@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-40 of 97 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, t
+... [TRUNCATED] ...
+OST\", \"localhost\") # Use localhost if running on host\n    redis_password = os.getenv(\"REDIS_PASSWORD\", \"changeme123\")\n    \n    logger.info(f\"Connecting to Redis at {redis_host}...\")\n    \n    try:\n        # 2. Initialize Redis client"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000770993_0_p5dhas.txt
+</tool_output_masked>

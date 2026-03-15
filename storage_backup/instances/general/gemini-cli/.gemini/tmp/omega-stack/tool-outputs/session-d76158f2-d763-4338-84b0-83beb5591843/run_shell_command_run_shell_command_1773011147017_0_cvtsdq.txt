@@ -1,0 +1,3 @@
+{
+  "output": "Output: Error: lstat app/app: no such file or directory\nExit Code: 125\nProcess Group PGID: 964797"
+}

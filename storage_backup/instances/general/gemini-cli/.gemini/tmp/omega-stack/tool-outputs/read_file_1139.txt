@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 400-500 of 990 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+     key[\"scopes\"] = [\n                row[\"scope\"] for row in self.db.query(\n                    \"SELECT scope FROM agent_key_scopes WHERE key_id = ?\", [key[\"key_id\"]]\n                )\n            ]\n            \n        return keys"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773008266207_0_jj1g3p.txt
+</tool_output_masked>

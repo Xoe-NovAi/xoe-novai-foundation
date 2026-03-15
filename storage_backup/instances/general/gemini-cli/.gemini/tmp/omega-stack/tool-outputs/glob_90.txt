@@ -1,0 +1,1 @@
+No files found matching pattern "docs/**/*GitHub*" within 2 workspace directories

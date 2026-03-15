@@ -1,0 +1,3 @@
+{
+  "output": "Output: ls: cannot access 'mcp-servers/memory-bank-mcp/requirements.txt': No such file or directory\nExit Code: 2\nProcess Group PGID: 786351"
+}

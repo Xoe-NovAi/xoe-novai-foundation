@@ -1,0 +1,20 @@
+Output: ============================================
+XNAi Foundation Stack Health Check
+Sun Mar  8 17:32:53 ADT 2026
+============================================
+
+Redis (10.89.0.5:6379)... ✗ FAIL
+Vikunja API (http://localhost:8000/vikunja/api/v1/info)... ✗ FAIL
+Qdrant Vector DB (http://10.89.0.6:6333/healthz)... ✗ FAIL
+Memory Bank MCP (Redis-check)... ✓ PASS (Process)
+
+Container Status:
+  ✓ xnai_redis (Up 5 hours (healthy))
+  ✓ xnai_qdrant (Up 5 hours (unhealthy))
+  ✓ xnai_postgres (Up 5 hours (healthy))
+
+============================================
+Summary: 1 passed, 3 failed
+Status: ⚠ CHECK FAILURES
+Exit Code: 1
+Process Group PGID: 418230

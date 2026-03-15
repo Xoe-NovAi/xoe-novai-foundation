@@ -1,0 +1,15 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/observer.py (1 replacements). Here is the updated code:
+...
+import anyio
+import time
+import json
+from pathlib import Path
+
+METRICS_DIR = Path("/tmp/metrics")
+OBSERVABILITY_LOG = Path("/tmp/omega_observer.jsonl")
+
+async def record_gear_shift(agent: str, gear: str, duration: float, metadata: dict):
+    """Records a specific step in the agentic process."""
+    entry = {
+        "timestamp": time.time(),
+...

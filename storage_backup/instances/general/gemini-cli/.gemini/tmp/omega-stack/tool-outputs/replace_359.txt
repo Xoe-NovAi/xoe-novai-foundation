@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+    secrets:
+      - redis_password
+      - api_key
+    networks:
+      - xnai_db_network
+      - xnai_app_network
+    # ports:
+    #   - "8002:8002" # Removed: metrics routed through Caddy /metrics
+    depends_on:
+      redis:
+        condition: service_healthy
+...

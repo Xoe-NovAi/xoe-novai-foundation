@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.env (1 replacements). Here is the updated code:
+...
+
+# Security Settings
+CHAINLIT_NO_TELEMETRY=true
+APP_UID=1000
+APP_GID=1000
+
+UID=1000
+GID=1000
+
+# Performance Tuning
+OPENBLAS_NUM_THREADS=6
+... Applied fuzzy match at line 30-31.

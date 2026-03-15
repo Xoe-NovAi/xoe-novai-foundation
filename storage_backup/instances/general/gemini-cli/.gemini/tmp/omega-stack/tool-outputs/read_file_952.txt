@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1150-1250 of 1751 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exa
+... [TRUNCATED] ...
+# Check for duplicates\n                            if self._is_duplicate(checksum):\n                                stats.duplicates_found += 1\n                                stats.total_skipped += 1\n                                continue\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773016557849_0_bnbrif.txt
+</tool_output_masked>

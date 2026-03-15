@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\nhydration:\n  event_id: \"HYD-20260312-002\"\n  session_id: \"SESS-16\"\n  coordination_key: \"METROPOLIS-HARDENED-20260312-V2\"\n  timestamp: \"2026-03-12T13:40:00Z\"\n  status: \"HARDENED-INFRA\"\n---\n\n# 🔱 Active Context: Met
+... [TRUNCATED] ...
+g for Next Session\n1.  **Read**: `artifacts/analyst-context-manifest.md`.\n2.  **Verify**: `podman-compose` volume mounts for models/embeddings symlinks.\n3.  **Monitor**: Disk usage (`df -h /`) and zRAM compression (`scripts/monitor_swap.py`).\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773249868391_1_d6a1s9.txt
+</tool_output_masked>

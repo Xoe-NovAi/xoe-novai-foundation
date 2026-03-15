@@ -1,0 +1,22 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/iam_db.py (1 replacements). Here is the updated code:
+...
+    ESCALATION = "escalation"
+    ADMIN = "admin"
+    SYSTEM = "system"
+
+
+@dataclass
+class AgentIdentity:
+    """Agent identity structure for handshake protocol."""
+    id: str
+    did: str
+    name: str
+    public_key_ed25519: Optional[str] = None
+    verified: bool = False
+    last_seen: Optional[datetime] = None
+
+
+class PermissionLevel(str, Enum):
+    """Permission levels for resource access."""
+    READ = "read"
+...

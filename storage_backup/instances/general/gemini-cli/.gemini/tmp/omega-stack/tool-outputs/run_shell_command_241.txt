@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: 13G     /home/arcana-novai/.local/share/containers
+474M    /home/arcana-novai/.cache/tracker3
+464M    /home/arcana-novai/.local/share/opencode
+151M    /home/arcana-novai/.local/share/uv
+126M    /home/arcana-novai/.cache/ms-playwright-go
+115M    /home/arcana-novai/.local/share/pipx
+92M     /home/arcana-novai/.local/share/GitKrakenCLI
+67M     /home/arcana-novai/.cache/node-gyp
+53M     /home/arcana-novai/.cache/gnome-software
+48M     /home/arcana-novai/.cache/nyxt
+
+... [10 lines omitted] ...
+
+2.0M    /home/arcana-novai/.cache/vscode-ripgrep
+1.5M    /home/arcana-novai/.cache/gstreamer-1.0
+1.3M    /home/arcana-novai/.cache/fontconfig
+608K    /home/arcana-novai/.local/share/recently-used.xbel
+520K    /home/arcana-novai/.local/share/gvfs-metadata
+372K    /home/arcana-novai/.cache/gtk-4.0
+308K    /home/arcana-novai/.local/share/nautilus
+228K    /home/arcana-novai/.local/share/crush
+216K    /home/arcana-novai/.cache/ibus
+160K    /home/arcana-novai/.local/share/evolution
+Process Group PGID: 1859512
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773337731984_0_pifcqp.txt
+</tool_output_masked>

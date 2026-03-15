@@ -1,0 +1,2 @@
+Output: 32K     storage/data/qdrant/
+Process Group PGID: 95366

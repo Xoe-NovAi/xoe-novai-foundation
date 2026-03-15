@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/dependencies.py (1 replacements). Here is the updated code:
+...
+import logging
+from pathlib import Path
+from typing import Optional, List, Dict, Any
+from datetime import datetime
+import asyncio
+import anyio
+import httpx
+
+# Retry logic (imported conditionally to avoid import errors)
+# Logging setup (make available before conditional imports)
+logger = logging.getLogger(__name__)
+...

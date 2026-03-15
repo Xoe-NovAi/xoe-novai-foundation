@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "## CLI Environment Architecture\n\n### CLI Environment Distinctions\n\n#### 1. Cline CLI vs Cline Extension\n\n**Cline CLI**\n- **Binary**: `~/.nvm/versions/node/v25.3.0/bin/cline`\n- **Environment**: Standalone terminal application\n-
+... [TRUNCATED] ...
+n pooling\n        # - Implement caching strategies\n        # - Minimize cross-environment communication\n```\n\n---\n\n**Last Updated**: 2026-02-22\n**Owner**: MC-Overseer Agent\n**Dependencies**: Agent Bus, Session Manager, Memory Bank System\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773249868204_0_sixoc.txt
+</tool_output_masked>

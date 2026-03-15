@@ -1,0 +1,48 @@
+Found 11 matches for pattern "grafana" in path "infra/docker/docker-compose.yml":
+---
+File: docker-compose.yml
+L554-       interval: 30s
+L555-       timeout: 10s
+L556-       retries: 3
+L557-       start_period: 10s
+L558- 
+L559:   grafana:
+L560:     image: grafana/grafana:11.4.0
+L561:     container_name: xnai_grafana
+L562-     init: true
+L563-     user: "${APP_UID:-1001}:${APP_GID:-1001}"
+L564-     deploy:
+L565-       resources:
+L566-         limits:
+L567-           memory: 512M
+L568-           cpus: '0.5'
+L569-     ports:
+L570-       - "3000:3000"
+L571-     volumes:
+L572:       - ./monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro,Z,U
+L573:       - ./monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro,Z,U
+L574:       - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro,Z,U
+L575:       - grafana-data:/var/lib/grafana:Z,U
+L576-     environment:
+L577-       - GF_AUTH_ANONYMOUS_ENABLED=false
+L578-       - GF_AUTH_BASIC_ENABLED=true
+L579:       - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+L580:       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+L581-       - GF_USERS_ALLOW_SIGN_UP=false
+L582-       - GF_SERVER_ROOT_URL=http://localhost:3000
+L583-       - GF_INSTALL_PLUGINS=
+L584-       - GF_UNIFIED_ALERTING_ENABLED=true
+L585-       - GF_ALERTING_ENABLED=false
+L816- volumes:
+L817-   huggingface_cache:
+L818-     name: xnai_huggingface_cache
+L819-   victoriametrics-data:
+L820-     name: xnai_victoriametrics_data
+L821:   grafana-data:
+L822:     name: xnai_grafana_data
+L823-   booklore-config:
+L824-     name: xnai_booklore_config
+L825-   open-webui-data:
+L826-     name: xnai_open_webui_data
+L827- 
+---

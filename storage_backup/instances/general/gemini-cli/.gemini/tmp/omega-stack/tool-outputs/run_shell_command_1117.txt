@@ -1,0 +1,22 @@
+Output: 45:AgentIdentity = Any
+./memory_bank/archival/vikunja-dev-history/vikunja-consolidation-v1.0.0.md:      POSTGRES_PASSWORD_FILE: /run/secrets/vikunja-db-pass
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/guides/QUICK_DEPLOY_CHECKLIST.md:      POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:?VIKUNJA_DB_PASSWORD must be set}
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/guides/00_YOUR_3_QUESTIONS_ANSWERED.md:POSTGRES_PASSWORD_FILE: /run/secrets/vikunja_db_password
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/guides/00_YOUR_3_QUESTIONS_ANSWERED.md:  POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:?Must set}
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/guides/UPDATED_VIKUNJA_BLOCKER_RESOLUTION.md:POSTGRES_PASSWORD_FILE: /run/secrets/vikunja_db_password
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/guides/UPDATED_VIKUNJA_BLOCKER_RESOLUTION.md:POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:?Must set VIKUNJA_DB_PASSWORD}
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/guides/UPDATED_VIKUNJA_BLOCKER_RESOLUTION.md:      POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:?VIKUNJA_DB_PASSWORD must be set}
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/guides/UPDATED_VIKUNJA_BLOCKER_RESOLUTION.md:      # REMOVED: POSTGRES_PASSWORD_FILE
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/manual/03-VIKUNJA_DEPLOYMENT.md:      POSTGRES_PASSWORD_FILE: /run/secrets/vikunja_db_password
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/reference/VIKUNJA_PODMAN_SECRETS_DEEP_DIVE.md:    POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:?error}
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/reference/VIKUNJA_PODMAN_SECRETS_DEEP_DIVE.md:    POSTGRES_PASSWORD_FILE: /run/secrets/vikunja_db_password  # ❌ File not mounted
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/reference/VIKUNJA_PODMAN_SECRETS_DEEP_DIVE.md:    POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:?Must set VIKUNJA_DB_PASSWORD}  # ✅ Works
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/_archive/EXECUTIVE_SUMMARY_YOUR_QUESTIONS_ANSWERED.md:    POSTGRES_PASSWORD_FILE: /run/secrets/vikunja_db_password  # ❌ File never appears
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/_archive/EXECUTIVE_SUMMARY_YOUR_QUESTIONS_ANSWERED.md:    POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:?Must set}  # ✅ Works
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/_archive/EXECUTIVE_SUMMARY_YOUR_QUESTIONS_ANSWERED.md:-     POSTGRES_PASSWORD_FILE: /run/secrets/vikunja_db_password
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/_archive/EXECUTIVE_SUMMARY_YOUR_QUESTIONS_ANSWERED.md:+     POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:?error}
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/_archive/VIKUNJA_BLOCKER_RESOLUTION_GUIDE.md:      POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:?VIKUNJA_DB_PASSWORD must be set}
+./memory_bank/archival/vikunja-dev-history/claude-vikunja-guide/_archive/VIKUNJA_MANUAL_PARTS_3-5_QUICK_DEPLOY.md:      POSTGRES_PASSWORD_FILE: /run/secrets/vikunja_db_password
+./memory_bank/archival/vikunja-dev-history/claude-v-new/VIKUNJA_MANUAL_PART_8_MASTER_REFERENCE_COMPLETE.md:  POSTGRES_PASSWORD_FILE: /run/secrets/vikunja_db_password
+./memory_bank/archival/vikunja-dev-history/claude-v-new/VIKUNJA_MANUAL_PART_8_MASTER_REFERENCE_COMPLETE.md:  POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:?VIKUNJA_DB_PASSWORD must be set}
+Process Group PGID: 864906

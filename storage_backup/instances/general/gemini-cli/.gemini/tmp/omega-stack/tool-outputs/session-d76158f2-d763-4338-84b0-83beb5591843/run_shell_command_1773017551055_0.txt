@@ -1,0 +1,1437 @@
+Output: 2026-03-09 00:52:33,442 - stack_scribe - INFO - 🚀 Stack Scribe starting scan...
+2026-03-09 00:52:33,448 - app.XNAi_rag_app.core.config_loader - INFO - Configuration validated against Pydantic schema (v0.1.4-compliant)
+2026-03-09 00:52:33,448 - app.XNAi_rag_app.core.config_loader - INFO - Configuration loaded from /app/app/config.toml (22 sections)
+2026-03-09 00:52:33,464 - stack_scribe - WARNING - ⚠️ Directory not found: docs at /app/docs
+2026-03-09 00:52:33,464 - stack_scribe - INFO - Scanning expert-knowledge in /expert-knowledge...
+2026-03-09 00:52:33,464 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/ctn_build.md
+2026-03-09 00:52:33,465 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553464-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,465 - stack_scribe - INFO -     ✅ Task queued: 1773017553464-0
+2026-03-09 00:52:33,465 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/software_req_win.md
+2026-03-09 00:52:33,465 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553465-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,465 - stack_scribe - INFO -     ✅ Task queued: 1773017553465-0
+2026-03-09 00:52:33,465 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/who_written_for.md
+2026-03-09 00:52:33,466 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553465-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,466 - stack_scribe - INFO -     ✅ Task queued: 1773017553465-1
+2026-03-09 00:52:33,466 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/set_up_git.md
+2026-03-09 00:52:33,466 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553466-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,466 - stack_scribe - INFO -     ✅ Task queued: 1773017553466-0
+2026-03-09 00:52:33,466 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/readme_-_docker.md
+2026-03-09 00:52:33,467 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553466-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,467 - stack_scribe - INFO -     ✅ Task queued: 1773017553466-1
+2026-03-09 00:52:33,467 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/readme_415d83e8.md
+2026-03-09 00:52:33,467 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553467-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,467 - stack_scribe - INFO -     ✅ Task queued: 1773017553467-0
+2026-03-09 00:52:33,467 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/set_up_dev_env.md
+2026-03-09 00:52:33,467 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553467-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,467 - stack_scribe - INFO -     ✅ Task queued: 1773017553467-1
+2026-03-09 00:52:33,467 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/debug.md
+2026-03-09 00:52:33,467 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553467-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,467 - stack_scribe - INFO -     ✅ Task queued: 1773017553467-2
+2026-03-09 00:52:33,468 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/test.md
+2026-03-09 00:52:33,468 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553468-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,468 - stack_scribe - INFO -     ✅ Task queued: 1773017553468-0
+2026-03-09 00:52:33,468 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/cluster_volumes.md
+2026-03-09 00:52:33,468 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553468-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,468 - stack_scribe - INFO -     ✅ Task queued: 1773017553468-1
+2026-03-09 00:52:33,468 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/software_required.md
+2026-03-09 00:52:33,468 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553468-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,468 - stack_scribe - INFO -     ✅ Task queued: 1773017553468-2
+2026-03-09 00:52:33,468 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/set_up_ide.md
+2026-03-09 00:52:33,468 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553468-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,468 - stack_scribe - INFO -     ✅ Task queued: 1773017553468-3
+2026-03-09 00:52:33,468 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/readme.md
+2026-03-09 00:52:33,469 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553469-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,469 - stack_scribe - INFO -     ✅ Task queued: 1773017553469-0
+2026-03-09 00:52:33,469 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/redis-py/readme_8e906e4f.md
+2026-03-09 00:52:33,469 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553469-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,469 - stack_scribe - INFO -     ✅ Task queued: 1773017553469-1
+2026-03-09 00:52:33,469 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/redis-py/readme_-_redis-py.md
+2026-03-09 00:52:33,469 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553469-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,470 - stack_scribe - INFO -     ✅ Task queued: 1773017553469-2
+2026-03-09 00:52:33,470 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/redis-py/readme.md
+2026-03-09 00:52:33,470 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553470-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,470 - stack_scribe - INFO -     ✅ Task queued: 1773017553470-0
+2026-03-09 00:52:33,470 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/SQLAlchemy/page.md
+2026-03-09 00:52:33,470 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553470-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,470 - stack_scribe - INFO -     ✅ Task queued: 1773017553470-1
+2026-03-09 00:52:33,470 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Qdrant/page.md
+2026-03-09 00:52:33,470 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553470-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,470 - stack_scribe - INFO -     ✅ Task queued: 1773017553470-2
+2026-03-09 00:52:33,470 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Anthropic/readme_-_anthropic.md
+2026-03-09 00:52:33,471 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553471-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,471 - stack_scribe - INFO -     ✅ Task queued: 1773017553471-0
+2026-03-09 00:52:33,471 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/crawler_result.md
+2026-03-09 00:52:33,471 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553471-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,471 - stack_scribe - INFO -     ✅ Task queued: 1773017553471-1
+2026-03-09 00:52:33,471 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/browser.md
+2026-03-09 00:52:33,471 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553471-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,471 - stack_scribe - INFO -     ✅ Task queued: 1773017553471-2
+2026-03-09 00:52:33,471 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/readme_85870482.md
+2026-03-09 00:52:33,471 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553471-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,471 - stack_scribe - INFO -     ✅ Task queued: 1773017553471-3
+2026-03-09 00:52:33,471 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/pdf_parsing.md
+2026-03-09 00:52:33,472 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553472-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,472 - stack_scribe - INFO -     ✅ Task queued: 1773017553472-0
+2026-03-09 00:52:33,472 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/readme_-_crawl4ai.md
+2026-03-09 00:52:33,472 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553472-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,472 - stack_scribe - INFO -     ✅ Task queued: 1773017553472-1
+2026-03-09 00:52:33,472 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/index_b4095de9.md
+2026-03-09 00:52:33,472 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553472-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,472 - stack_scribe - INFO -     ✅ Task queued: 1773017553472-2
+2026-03-09 00:52:33,472 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/examples.md
+2026-03-09 00:52:33,472 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553472-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,472 - stack_scribe - INFO -     ✅ Task queued: 1773017553472-3
+2026-03-09 00:52:33,472 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/simple_crawling.md
+2026-03-09 00:52:33,473 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553473-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,473 - stack_scribe - INFO -     ✅ Task queued: 1773017553473-0
+2026-03-09 00:52:33,473 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/v0.8.0_upgrade_guide.md
+2026-03-09 00:52:33,473 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553473-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,473 - stack_scribe - INFO -     ✅ Task queued: 1773017553473-1
+2026-03-09 00:52:33,473 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/index.md
+2026-03-09 00:52:33,473 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553473-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,473 - stack_scribe - INFO -     ✅ Task queued: 1773017553473-2
+2026-03-09 00:52:33,473 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/strategies.md
+2026-03-09 00:52:33,473 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553473-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,473 - stack_scribe - INFO -     ✅ Task queued: 1773017553473-3
+2026-03-09 00:52:33,473 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/chunking.md
+2026-03-09 00:52:33,474 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553473-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,474 - stack_scribe - INFO -     ✅ Task queued: 1773017553473-4
+2026-03-09 00:52:33,474 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/release_v0.7.1.md
+2026-03-09 00:52:33,474 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553474-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,474 - stack_scribe - INFO -     ✅ Task queued: 1773017553474-0
+2026-03-09 00:52:33,474 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/release_v0.7.0.md
+2026-03-09 00:52:33,474 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553474-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,474 - stack_scribe - INFO -     ✅ Task queued: 1773017553474-1
+2026-03-09 00:52:33,474 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/network_console_capture.md
+2026-03-09 00:52:33,474 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553474-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,474 - stack_scribe - INFO -     ✅ Task queued: 1773017553474-2
+2026-03-09 00:52:33,474 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/async_webcrawler.md
+2026-03-09 00:52:33,475 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553474-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,475 - stack_scribe - INFO -     ✅ Task queued: 1773017553474-3
+2026-03-09 00:52:33,475 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/browser_crawler_config.md
+2026-03-09 00:52:33,475 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553475-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,475 - stack_scribe - INFO -     ✅ Task queued: 1773017553475-0
+2026-03-09 00:52:33,475 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/ask_ai.md
+2026-03-09 00:52:33,475 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553475-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,475 - stack_scribe - INFO -     ✅ Task queued: 1773017553475-1
+2026-03-09 00:52:33,475 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/fit_markdown.md
+2026-03-09 00:52:33,475 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553475-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,475 - stack_scribe - INFO -     ✅ Task queued: 1773017553475-2
+2026-03-09 00:52:33,475 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/docker_deployment.md
+2026-03-09 00:52:33,475 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553475-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,475 - stack_scribe - INFO -     ✅ Task queued: 1773017553475-3
+2026-03-09 00:52:33,475 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/digest.md
+2026-03-09 00:52:33,476 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553476-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,476 - stack_scribe - INFO -     ✅ Task queued: 1773017553476-0
+2026-03-09 00:52:33,476 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/self_hosting.md
+2026-03-09 00:52:33,476 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553476-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,476 - stack_scribe - INFO -     ✅ Task queued: 1773017553476-1
+2026-03-09 00:52:33,476 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/url_seeding.md
+2026-03-09 00:52:33,476 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553476-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,476 - stack_scribe - INFO -     ✅ Task queued: 1773017553476-2
+2026-03-09 00:52:33,476 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/readme_47160ece.md
+2026-03-09 00:52:33,476 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553476-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,476 - stack_scribe - INFO -     ✅ Task queued: 1773017553476-3
+2026-03-09 00:52:33,476 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/storage_state_tutorial.md
+2026-03-09 00:52:33,477 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553477-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,477 - stack_scribe - INFO -     ✅ Task queued: 1773017553477-0
+2026-03-09 00:52:33,477 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/release_notes_v0.8.0.md
+2026-03-09 00:52:33,477 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553477-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,477 - stack_scribe - INFO -     ✅ Task queued: 1773017553477-1
+2026-03-09 00:52:33,477 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/index_99f93bd8.md
+2026-03-09 00:52:33,477 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553477-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,477 - stack_scribe - INFO -     ✅ Task queued: 1773017553477-2
+2026-03-09 00:52:33,477 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/parameters.md
+2026-03-09 00:52:33,477 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553477-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,477 - stack_scribe - INFO -     ✅ Task queued: 1773017553477-3
+2026-03-09 00:52:33,477 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/tutorial_dynamic_clicks.md
+2026-03-09 00:52:33,478 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553477-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,478 - stack_scribe - INFO -     ✅ Task queued: 1773017553477-4
+2026-03-09 00:52:33,478 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/installation.md
+2026-03-09 00:52:33,478 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553478-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,478 - stack_scribe - INFO -     ✅ Task queued: 1773017553478-0
+2026-03-09 00:52:33,478 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/adaptive_strategies.md
+2026-03-09 00:52:33,478 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553478-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,478 - stack_scribe - INFO -     ✅ Task queued: 1773017553478-1
+2026-03-09 00:52:33,478 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/virtual_scroll.md
+2026-03-09 00:52:33,478 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553478-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,478 - stack_scribe - INFO -     ✅ Task queued: 1773017553478-2
+2026-03-09 00:52:33,478 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/webscraping_strategy_migration.md
+2026-03-09 00:52:33,478 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553478-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,479 - stack_scribe - INFO -     ✅ Task queued: 1773017553478-3
+2026-03-09 00:52:33,479 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/ghsa_draft_rce_lfi.md
+2026-03-09 00:52:33,479 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553479-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,479 - stack_scribe - INFO -     ✅ Task queued: 1773017553479-0
+2026-03-09 00:52:33,479 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/complete_sdk_reference.md
+2026-03-09 00:52:33,479 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553479-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,479 - stack_scribe - INFO -     ✅ Task queued: 1773017553479-1
+2026-03-09 00:52:33,479 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/deep_crawling.md
+2026-03-09 00:52:33,479 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553479-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,479 - stack_scribe - INFO -     ✅ Task queued: 1773017553479-2
+2026-03-09 00:52:33,479 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/llmtxt.md
+2026-03-09 00:52:33,479 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553479-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,479 - stack_scribe - INFO -     ✅ Task queued: 1773017553479-3
+2026-03-09 00:52:33,480 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/file_downloading.md
+2026-03-09 00:52:33,480 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553480-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,480 - stack_scribe - INFO -     ✅ Task queued: 1773017553480-0
+2026-03-09 00:52:33,480 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/quickstart.md
+2026-03-09 00:52:33,480 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553480-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,480 - stack_scribe - INFO -     ✅ Task queued: 1773017553480-1
+2026-03-09 00:52:33,480 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/undetected_browser.md
+2026-03-09 00:52:33,480 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553480-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,480 - stack_scribe - INFO -     ✅ Task queued: 1773017553480-2
+2026-03-09 00:52:33,480 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/c4a_script.md
+2026-03-09 00:52:33,480 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553480-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,480 - stack_scribe - INFO -     ✅ Task queued: 1773017553480-3
+2026-03-09 00:52:33,480 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/index_b97d0189.md
+2026-03-09 00:52:33,481 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553480-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,481 - stack_scribe - INFO -     ✅ Task queued: 1773017553480-4
+2026-03-09 00:52:33,481 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/link_media.md
+2026-03-09 00:52:33,481 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553481-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,481 - stack_scribe - INFO -     ✅ Task queued: 1773017553481-0
+2026-03-09 00:52:33,481 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/proxy_security.md
+2026-03-09 00:52:33,481 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553481-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,481 - stack_scribe - INFO -     ✅ Task queued: 1773017553481-1
+2026-03-09 00:52:33,481 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/arun_many.md
+2026-03-09 00:52:33,481 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553481-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,481 - stack_scribe - INFO -     ✅ Task queued: 1773017553481-2
+2026-03-09 00:52:33,481 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/lazy_loading.md
+2026-03-09 00:52:33,481 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553481-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,481 - stack_scribe - INFO -     ✅ Task queued: 1773017553481-3
+2026-03-09 00:52:33,481 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/installation_7c7366a5.md
+2026-03-09 00:52:33,482 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553482-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,482 - stack_scribe - INFO -     ✅ Task queued: 1773017553482-0
+2026-03-09 00:52:33,482 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/advanced_features.md
+2026-03-09 00:52:33,482 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553482-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,482 - stack_scribe - INFO -     ✅ Task queued: 1773017553482-1
+2026-03-09 00:52:33,482 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/adaptive_crawler.md
+2026-03-09 00:52:33,482 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553482-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,482 - stack_scribe - INFO -     ✅ Task queued: 1773017553482-2
+2026-03-09 00:52:33,482 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/readme_87041f13.md
+2026-03-09 00:52:33,482 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553482-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,482 - stack_scribe - INFO -     ✅ Task queued: 1773017553482-3
+2026-03-09 00:52:33,482 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/ssl_certificate.md
+2026-03-09 00:52:33,482 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553482-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,483 - stack_scribe - INFO -     ✅ Task queued: 1773017553482-4
+2026-03-09 00:52:33,483 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/llm_strategies.md
+2026-03-09 00:52:33,483 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553483-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,483 - stack_scribe - INFO -     ✅ Task queued: 1773017553483-0
+2026-03-09 00:52:33,483 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/release_v0.7.8.md
+2026-03-09 00:52:33,483 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553483-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,483 - stack_scribe - INFO -     ✅ Task queued: 1773017553483-1
+2026-03-09 00:52:33,483 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/chainlit.md
+2026-03-09 00:52:33,483 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553483-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,483 - stack_scribe - INFO -     ✅ Task queued: 1773017553483-2
+2026-03-09 00:52:33,483 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/clustring_strategies.md
+2026-03-09 00:52:33,483 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553483-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,483 - stack_scribe - INFO -     ✅ Task queued: 1773017553483-3
+2026-03-09 00:52:33,483 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/arun.md
+2026-03-09 00:52:33,484 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553484-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,484 - stack_scribe - INFO -     ✅ Task queued: 1773017553484-0
+2026-03-09 00:52:33,484 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/hooks_auth.md
+2026-03-09 00:52:33,484 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553484-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,484 - stack_scribe - INFO -     ✅ Task queued: 1773017553484-1
+2026-03-09 00:52:33,484 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/release_v0.7.7.md
+2026-03-09 00:52:33,484 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553484-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,484 - stack_scribe - INFO -     ✅ Task queued: 1773017553484-2
+2026-03-09 00:52:33,484 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/cli.md
+2026-03-09 00:52:33,484 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553484-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,484 - stack_scribe - INFO -     ✅ Task queued: 1773017553484-3
+2026-03-09 00:52:33,484 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/release_v0.7.3.md
+2026-03-09 00:52:33,485 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553484-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,485 - stack_scribe - INFO -     ✅ Task queued: 1773017553484-4
+2026-03-09 00:52:33,485 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/tutorial_url_seeder.md
+2026-03-09 00:52:33,485 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553485-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,485 - stack_scribe - INFO -     ✅ Task queued: 1773017553485-0
+2026-03-09 00:52:33,485 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/table_extraction.md
+2026-03-09 00:52:33,485 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553485-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,485 - stack_scribe - INFO -     ✅ Task queued: 1773017553485-1
+2026-03-09 00:52:33,485 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/crawl_result.md
+2026-03-09 00:52:33,485 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553485-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,485 - stack_scribe - INFO -     ✅ Task queued: 1773017553485-2
+2026-03-09 00:52:33,485 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/session_management.md
+2026-03-09 00:52:33,485 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553485-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,485 - stack_scribe - INFO -     ✅ Task queued: 1773017553485-3
+2026-03-09 00:52:33,485 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/c4a_script_reference.md
+2026-03-09 00:52:33,486 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553486-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,486 - stack_scribe - INFO -     ✅ Task queued: 1773017553486-0
+2026-03-09 00:52:33,486 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/crawl_dispatcher.md
+2026-03-09 00:52:33,486 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553486-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,486 - stack_scribe - INFO -     ✅ Task queued: 1773017553486-1
+2026-03-09 00:52:33,486 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/page_interaction.md
+2026-03-09 00:52:33,486 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553486-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,486 - stack_scribe - INFO -     ✅ Task queued: 1773017553486-2
+2026-03-09 00:52:33,486 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/cli_52b65a9c.md
+2026-03-09 00:52:33,486 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553486-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,486 - stack_scribe - INFO -     ✅ Task queued: 1773017553486-3
+2026-03-09 00:52:33,486 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/readme_builtin_browser.md
+2026-03-09 00:52:33,487 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553486-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,487 - stack_scribe - INFO -     ✅ Task queued: 1773017553486-4
+2026-03-09 00:52:33,487 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/full_page_screenshot_and_pdf_export.md
+2026-03-09 00:52:33,487 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553487-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,487 - stack_scribe - INFO -     ✅ Task queued: 1773017553487-0
+2026-03-09 00:52:33,487 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/identity_based_crawling.md
+2026-03-09 00:52:33,487 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553487-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,487 - stack_scribe - INFO -     ✅ Task queued: 1773017553487-1
+2026-03-09 00:52:33,487 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/adaptive_crawling.md
+2026-03-09 00:52:33,487 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553487-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,487 - stack_scribe - INFO -     ✅ Task queued: 1773017553487-2
+2026-03-09 00:52:33,487 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/no_llm_strategies.md
+2026-03-09 00:52:33,487 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553487-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,487 - stack_scribe - INFO -     ✅ Task queued: 1773017553487-3
+2026-03-09 00:52:33,487 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/release_v0.7.5.md
+2026-03-09 00:52:33,488 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553488-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,488 - stack_scribe - INFO -     ✅ Task queued: 1773017553488-0
+2026-03-09 00:52:33,488 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/release_v0.7.4.md
+2026-03-09 00:52:33,488 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553488-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,488 - stack_scribe - INFO -     ✅ Task queued: 1773017553488-1
+2026-03-09 00:52:33,488 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/multi_url_crawling.md
+2026-03-09 00:52:33,488 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553488-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,488 - stack_scribe - INFO -     ✅ Task queued: 1773017553488-2
+2026-03-09 00:52:33,488 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/local_files.md
+2026-03-09 00:52:33,488 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553488-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,488 - stack_scribe - INFO -     ✅ Task queued: 1773017553488-3
+2026-03-09 00:52:33,488 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/cache_modes.md
+2026-03-09 00:52:33,489 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553488-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,489 - stack_scribe - INFO -     ✅ Task queued: 1773017553488-4
+2026-03-09 00:52:33,489 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/release_v0.7.6.md
+2026-03-09 00:52:33,489 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553489-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,489 - stack_scribe - INFO -     ✅ Task queued: 1773017553489-0
+2026-03-09 00:52:33,489 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/readme.md
+2026-03-09 00:52:33,489 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553489-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,489 - stack_scribe - INFO -     ✅ Task queued: 1773017553489-1
+2026-03-09 00:52:33,489 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/content_selection.md
+2026-03-09 00:52:33,489 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553489-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,489 - stack_scribe - INFO -     ✅ Task queued: 1773017553489-2
+2026-03-09 00:52:33,489 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/table_extraction_v073.md
+2026-03-09 00:52:33,489 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553489-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,489 - stack_scribe - INFO -     ✅ Task queued: 1773017553489-3
+2026-03-09 00:52:33,490 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/crawl4ai/markdown_generation.md
+2026-03-09 00:52:33,490 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553490-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,490 - stack_scribe - INFO -     ✅ Task queued: 1773017553490-0
+2026-03-09 00:52:33,490 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/postgresql/readme_-_postgresql.md
+2026-03-09 00:52:33,490 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553490-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,490 - stack_scribe - INFO -     ✅ Task queued: 1773017553490-1
+2026-03-09 00:52:33,490 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/getting_started.md
+2026-03-09 00:52:33,490 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553490-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,490 - stack_scribe - INFO -     ✅ Task queued: 1773017553490-2
+2026-03-09 00:52:33,490 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/promtool_700eff63.md
+2026-03-09 00:52:33,491 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553490-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,491 - stack_scribe - INFO -     ✅ Task queued: 1773017553490-3
+2026-03-09 00:52:33,491 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/https.md
+2026-03-09 00:52:33,491 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553491-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,491 - stack_scribe - INFO -     ✅ Task queued: 1773017553491-0
+2026-03-09 00:52:33,491 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/examples.md
+2026-03-09 00:52:33,491 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553491-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,491 - stack_scribe - INFO -     ✅ Task queued: 1773017553491-1
+2026-03-09 00:52:33,491 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/stability.md
+2026-03-09 00:52:33,491 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553491-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,491 - stack_scribe - INFO -     ✅ Task queued: 1773017553491-2
+2026-03-09 00:52:33,491 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/index.md
+2026-03-09 00:52:33,491 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553491-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,491 - stack_scribe - INFO -     ✅ Task queued: 1773017553491-3
+2026-03-09 00:52:33,491 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/management_api.md
+2026-03-09 00:52:33,492 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553492-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,492 - stack_scribe - INFO -     ✅ Task queued: 1773017553492-0
+2026-03-09 00:52:33,492 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/configuration.md
+2026-03-09 00:52:33,492 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553492-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,492 - stack_scribe - INFO -     ✅ Task queued: 1773017553492-1
+2026-03-09 00:52:33,492 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/federation.md
+2026-03-09 00:52:33,492 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553492-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,492 - stack_scribe - INFO -     ✅ Task queued: 1773017553492-2
+2026-03-09 00:52:33,492 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/storage.md
+2026-03-09 00:52:33,492 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553492-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,492 - stack_scribe - INFO -     ✅ Task queued: 1773017553492-3
+2026-03-09 00:52:33,492 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/feature_flags.md
+2026-03-09 00:52:33,493 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553492-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,493 - stack_scribe - INFO -     ✅ Task queued: 1773017553492-4
+2026-03-09 00:52:33,493 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/api.md
+2026-03-09 00:52:33,493 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553493-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,493 - stack_scribe - INFO -     ✅ Task queued: 1773017553493-0
+2026-03-09 00:52:33,493 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/migration.md
+2026-03-09 00:52:33,493 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553493-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,493 - stack_scribe - INFO -     ✅ Task queued: 1773017553493-1
+2026-03-09 00:52:33,493 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/prometheus_agent.md
+2026-03-09 00:52:33,493 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553493-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,493 - stack_scribe - INFO -     ✅ Task queued: 1773017553493-2
+2026-03-09 00:52:33,493 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/alerting_rules.md
+2026-03-09 00:52:33,493 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553493-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,493 - stack_scribe - INFO -     ✅ Task queued: 1773017553493-3
+2026-03-09 00:52:33,494 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/installation.md
+2026-03-09 00:52:33,494 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553494-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,494 - stack_scribe - INFO -     ✅ Task queued: 1773017553494-0
+2026-03-09 00:52:33,494 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/promtool.md
+2026-03-09 00:52:33,494 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553494-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,494 - stack_scribe - INFO -     ✅ Task queued: 1773017553494-1
+2026-03-09 00:52:33,494 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/operators.md
+2026-03-09 00:52:33,494 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553494-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,494 - stack_scribe - INFO -     ✅ Task queued: 1773017553494-2
+2026-03-09 00:52:33,494 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/http_sd.md
+2026-03-09 00:52:33,494 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553494-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,494 - stack_scribe - INFO -     ✅ Task queued: 1773017553494-3
+2026-03-09 00:52:33,494 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/template_reference.md
+2026-03-09 00:52:33,495 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553495-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,495 - stack_scribe - INFO -     ✅ Task queued: 1773017553495-0
+2026-03-09 00:52:33,495 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/remote_read_api.md
+2026-03-09 00:52:33,495 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553495-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,495 - stack_scribe - INFO -     ✅ Task queued: 1773017553495-1
+2026-03-09 00:52:33,495 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/template_examples.md
+2026-03-09 00:52:33,495 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553495-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,495 - stack_scribe - INFO -     ✅ Task queued: 1773017553495-2
+2026-03-09 00:52:33,495 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/internal_architecture.md
+2026-03-09 00:52:33,495 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553495-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,495 - stack_scribe - INFO -     ✅ Task queued: 1773017553495-3
+2026-03-09 00:52:33,495 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/prometheus.md
+2026-03-09 00:52:33,495 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553495-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,496 - stack_scribe - INFO -     ✅ Task queued: 1773017553495-4
+2026-03-09 00:52:33,496 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/functions.md
+2026-03-09 00:52:33,496 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553496-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,496 - stack_scribe - INFO -     ✅ Task queued: 1773017553496-0
+2026-03-09 00:52:33,496 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/basics.md
+2026-03-09 00:52:33,496 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553496-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,496 - stack_scribe - INFO -     ✅ Task queued: 1773017553496-1
+2026-03-09 00:52:33,496 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/unit_testing_rules.md
+2026-03-09 00:52:33,496 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553496-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,496 - stack_scribe - INFO -     ✅ Task queued: 1773017553496-2
+2026-03-09 00:52:33,496 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/readme_-_prometheus.md
+2026-03-09 00:52:33,496 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553496-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,496 - stack_scribe - INFO -     ✅ Task queued: 1773017553496-3
+2026-03-09 00:52:33,496 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/diagram_note.md
+2026-03-09 00:52:33,497 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553497-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,497 - stack_scribe - INFO -     ✅ Task queued: 1773017553497-0
+2026-03-09 00:52:33,497 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/readme.md
+2026-03-09 00:52:33,497 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553497-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,497 - stack_scribe - INFO -     ✅ Task queued: 1773017553497-1
+2026-03-09 00:52:33,497 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/prometheus/recording_rules.md
+2026-03-09 00:52:33,497 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553497-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,497 - stack_scribe - INFO -     ✅ Task queued: 1773017553497-2
+2026-03-09 00:52:33,497 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_e26334c7.md
+2026-03-09 00:52:33,497 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553497-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,498 - stack_scribe - INFO -     ✅ Task queued: 1773017553497-3
+2026-03-09 00:52:33,498 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_698b0173.md
+2026-03-09 00:52:33,498 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553498-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,498 - stack_scribe - INFO -     ✅ Task queued: 1773017553498-0
+2026-03-09 00:52:33,498 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_46acd633.md
+2026-03-09 00:52:33,498 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553498-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,498 - stack_scribe - INFO -     ✅ Task queued: 1773017553498-1
+2026-03-09 00:52:33,498 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_2ea0b7e3.md
+2026-03-09 00:52:33,498 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553498-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,498 - stack_scribe - INFO -     ✅ Task queued: 1773017553498-2
+2026-03-09 00:52:33,498 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_ee0bbf8f.md
+2026-03-09 00:52:33,498 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553498-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,498 - stack_scribe - INFO -     ✅ Task queued: 1773017553498-3
+2026-03-09 00:52:33,498 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/missing_translation.md
+2026-03-09 00:52:33,499 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553499-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,499 - stack_scribe - INFO -     ✅ Task queued: 1773017553499-0
+2026-03-09 00:52:33,499 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt_0ad375fc.md
+2026-03-09 00:52:33,499 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553499-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,499 - stack_scribe - INFO -     ✅ Task queued: 1773017553499-1
+2026-03-09 00:52:33,499 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt_3195a913.md
+2026-03-09 00:52:33,499 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553499-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,499 - stack_scribe - INFO -     ✅ Task queued: 1773017553499-2
+2026-03-09 00:52:33,499 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_e278527a.md
+2026-03-09 00:52:33,499 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553499-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,499 - stack_scribe - INFO -     ✅ Task queued: 1773017553499-3
+2026-03-09 00:52:33,499 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_be1fb727.md
+2026-03-09 00:52:33,500 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553499-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,500 - stack_scribe - INFO -     ✅ Task queued: 1773017553499-4
+2026-03-09 00:52:33,500 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_7fb0c87d.md
+2026-03-09 00:52:33,500 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553500-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,500 - stack_scribe - INFO -     ✅ Task queued: 1773017553500-0
+2026-03-09 00:52:33,500 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt_2710e85a.md
+2026-03-09 00:52:33,500 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553500-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,500 - stack_scribe - INFO -     ✅ Task queued: 1773017553500-1
+2026-03-09 00:52:33,500 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_600f57e2.md
+2026-03-09 00:52:33,500 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553500-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,500 - stack_scribe - INFO -     ✅ Task queued: 1773017553500-2
+2026-03-09 00:52:33,500 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_acc672ce.md
+2026-03-09 00:52:33,501 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553501-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,501 - stack_scribe - INFO -     ✅ Task queued: 1773017553501-0
+2026-03-09 00:52:33,501 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_2c5210df.md
+2026-03-09 00:52:33,501 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553501-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,501 - stack_scribe - INFO -     ✅ Task queued: 1773017553501-1
+2026-03-09 00:52:33,501 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_a1ae09b5.md
+2026-03-09 00:52:33,501 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553501-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,501 - stack_scribe - INFO -     ✅ Task queued: 1773017553501-2
+2026-03-09 00:52:33,501 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_fcf417ee.md
+2026-03-09 00:52:33,501 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553501-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,501 - stack_scribe - INFO -     ✅ Task queued: 1773017553501-3
+2026-03-09 00:52:33,501 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index.md
+2026-03-09 00:52:33,501 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553501-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,502 - stack_scribe - INFO -     ✅ Task queued: 1773017553501-4
+2026-03-09 00:52:33,502 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_0ff21954.md
+2026-03-09 00:52:33,502 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553502-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,502 - stack_scribe - INFO -     ✅ Task queued: 1773017553502-0
+2026-03-09 00:52:33,502 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_7c8bbc9d.md
+2026-03-09 00:52:33,502 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553502-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,502 - stack_scribe - INFO -     ✅ Task queued: 1773017553502-1
+2026-03-09 00:52:33,502 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_5b2f7d49.md
+2026-03-09 00:52:33,502 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553502-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,502 - stack_scribe - INFO -     ✅ Task queued: 1773017553502-2
+2026-03-09 00:52:33,502 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_b09bd2b9.md
+2026-03-09 00:52:33,502 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553502-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,502 - stack_scribe - INFO -     ✅ Task queued: 1773017553502-3
+2026-03-09 00:52:33,502 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_42ed7f28.md
+2026-03-09 00:52:33,503 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553503-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,503 - stack_scribe - INFO -     ✅ Task queued: 1773017553503-0
+2026-03-09 00:52:33,503 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_fc7213eb.md
+2026-03-09 00:52:33,503 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553503-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,503 - stack_scribe - INFO -     ✅ Task queued: 1773017553503-1
+2026-03-09 00:52:33,503 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_5910b7b1.md
+2026-03-09 00:52:33,503 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553503-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,503 - stack_scribe - INFO -     ✅ Task queued: 1773017553503-2
+2026-03-09 00:52:33,503 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_ec1bef32.md
+2026-03-09 00:52:33,503 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553503-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,503 - stack_scribe - INFO -     ✅ Task queued: 1773017553503-3
+2026-03-09 00:52:33,503 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_a3b70eb4.md
+2026-03-09 00:52:33,504 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553503-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,504 - stack_scribe - INFO -     ✅ Task queued: 1773017553503-4
+2026-03-09 00:52:33,504 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_8dc19479.md
+2026-03-09 00:52:33,504 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553504-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,504 - stack_scribe - INFO -     ✅ Task queued: 1773017553504-0
+2026-03-09 00:52:33,504 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_c1cdcd1d.md
+2026-03-09 00:52:33,504 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553504-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,504 - stack_scribe - INFO -     ✅ Task queued: 1773017553504-1
+2026-03-09 00:52:33,504 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_18a0ba9d.md
+2026-03-09 00:52:33,504 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553504-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,504 - stack_scribe - INFO -     ✅ Task queued: 1773017553504-2
+2026-03-09 00:52:33,504 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_b276ceec.md
+2026-03-09 00:52:33,504 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553504-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,504 - stack_scribe - INFO -     ✅ Task queued: 1773017553504-3
+2026-03-09 00:52:33,504 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner.md
+2026-03-09 00:52:33,505 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553505-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,505 - stack_scribe - INFO -     ✅ Task queued: 1773017553505-0
+2026-03-09 00:52:33,505 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_63d50f38.md
+2026-03-09 00:52:33,505 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553505-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,505 - stack_scribe - INFO -     ✅ Task queued: 1773017553505-1
+2026-03-09 00:52:33,505 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_984a1b88.md
+2026-03-09 00:52:33,505 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553505-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,505 - stack_scribe - INFO -     ✅ Task queued: 1773017553505-2
+2026-03-09 00:52:33,505 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_198c3d6a.md
+2026-03-09 00:52:33,505 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553505-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,505 - stack_scribe - INFO -     ✅ Task queued: 1773017553505-3
+2026-03-09 00:52:33,505 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_people.md
+2026-03-09 00:52:33,506 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553505-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,506 - stack_scribe - INFO -     ✅ Task queued: 1773017553505-4
+2026-03-09 00:52:33,506 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_4da35f6f.md
+2026-03-09 00:52:33,506 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553506-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,506 - stack_scribe - INFO -     ✅ Task queued: 1773017553506-0
+2026-03-09 00:52:33,506 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_de4745a7.md
+2026-03-09 00:52:33,506 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553506-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,506 - stack_scribe - INFO -     ✅ Task queued: 1773017553506-1
+2026-03-09 00:52:33,506 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_d69e60c2.md
+2026-03-09 00:52:33,506 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553506-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,506 - stack_scribe - INFO -     ✅ Task queued: 1773017553506-2
+2026-03-09 00:52:33,506 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_c83882d1.md
+2026-03-09 00:52:33,506 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553506-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,506 - stack_scribe - INFO -     ✅ Task queued: 1773017553506-3
+2026-03-09 00:52:33,507 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_d38dd560.md
+2026-03-09 00:52:33,507 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553507-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,507 - stack_scribe - INFO -     ✅ Task queued: 1773017553507-0
+2026-03-09 00:52:33,507 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_2fef36c4.md
+2026-03-09 00:52:33,507 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553507-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,507 - stack_scribe - INFO -     ✅ Task queued: 1773017553507-1
+2026-03-09 00:52:33,507 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation.md
+2026-03-09 00:52:33,507 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553507-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,507 - stack_scribe - INFO -     ✅ Task queued: 1773017553507-2
+2026-03-09 00:52:33,507 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_1fabadc8.md
+2026-03-09 00:52:33,507 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553507-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,507 - stack_scribe - INFO -     ✅ Task queued: 1773017553507-3
+2026-03-09 00:52:33,507 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_6d15e235.md
+2026-03-09 00:52:33,508 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553508-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,508 - stack_scribe - INFO -     ✅ Task queued: 1773017553508-0
+2026-03-09 00:52:33,508 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_27ea9277.md
+2026-03-09 00:52:33,508 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553508-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,508 - stack_scribe - INFO -     ✅ Task queued: 1773017553508-1
+2026-03-09 00:52:33,508 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_57639100.md
+2026-03-09 00:52:33,508 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553508-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,508 - stack_scribe - INFO -     ✅ Task queued: 1773017553508-2
+2026-03-09 00:52:33,508 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_286c1d42.md
+2026-03-09 00:52:33,508 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553508-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,508 - stack_scribe - INFO -     ✅ Task queued: 1773017553508-3
+2026-03-09 00:52:33,508 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_a829a397.md
+2026-03-09 00:52:33,509 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553508-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,509 - stack_scribe - INFO -     ✅ Task queued: 1773017553508-4
+2026-03-09 00:52:33,509 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_9b2e4d59.md
+2026-03-09 00:52:33,509 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553509-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,509 - stack_scribe - INFO -     ✅ Task queued: 1773017553509-0
+2026-03-09 00:52:33,509 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_3b99a9f9.md
+2026-03-09 00:52:33,509 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553509-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,509 - stack_scribe - INFO -     ✅ Task queued: 1773017553509-1
+2026-03-09 00:52:33,509 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_feb79903.md
+2026-03-09 00:52:33,509 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553509-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,509 - stack_scribe - INFO -     ✅ Task queued: 1773017553509-2
+2026-03-09 00:52:33,509 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_f42221df.md
+2026-03-09 00:52:33,509 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553509-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,509 - stack_scribe - INFO -     ✅ Task queued: 1773017553509-3
+2026-03-09 00:52:33,509 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_9fd6dd8c.md
+2026-03-09 00:52:33,510 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553510-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,510 - stack_scribe - INFO -     ✅ Task queued: 1773017553510-0
+2026-03-09 00:52:33,510 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_48aa284d.md
+2026-03-09 00:52:33,510 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553510-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,510 - stack_scribe - INFO -     ✅ Task queued: 1773017553510-1
+2026-03-09 00:52:33,510 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_4b1b4ab8.md
+2026-03-09 00:52:33,510 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553510-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,510 - stack_scribe - INFO -     ✅ Task queued: 1773017553510-2
+2026-03-09 00:52:33,510 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/contributing.md
+2026-03-09 00:52:33,510 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553510-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,510 - stack_scribe - INFO -     ✅ Task queued: 1773017553510-3
+2026-03-09 00:52:33,510 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_39f3be7f.md
+2026-03-09 00:52:33,511 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553511-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,511 - stack_scribe - INFO -     ✅ Task queued: 1773017553511-0
+2026-03-09 00:52:33,511 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_86918804.md
+2026-03-09 00:52:33,511 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553511-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,511 - stack_scribe - INFO -     ✅ Task queued: 1773017553511-1
+2026-03-09 00:52:33,511 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/newsletter.md
+2026-03-09 00:52:33,511 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553511-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,511 - stack_scribe - INFO -     ✅ Task queued: 1773017553511-2
+2026-03-09 00:52:33,511 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_186d676a.md
+2026-03-09 00:52:33,511 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553511-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,511 - stack_scribe - INFO -     ✅ Task queued: 1773017553511-3
+2026-03-09 00:52:33,511 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt_625d6833.md
+2026-03-09 00:52:33,511 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553511-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,512 - stack_scribe - INFO -     ✅ Task queued: 1773017553511-4
+2026-03-09 00:52:33,512 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_5553f9d0.md
+2026-03-09 00:52:33,512 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553512-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,512 - stack_scribe - INFO -     ✅ Task queued: 1773017553512-0
+2026-03-09 00:52:33,512 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future.md
+2026-03-09 00:52:33,512 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553512-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,512 - stack_scribe - INFO -     ✅ Task queued: 1773017553512-1
+2026-03-09 00:52:33,512 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_87f3c517.md
+2026-03-09 00:52:33,512 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553512-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,512 - stack_scribe - INFO -     ✅ Task queued: 1773017553512-2
+2026-03-09 00:52:33,512 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_15d53482.md
+2026-03-09 00:52:33,512 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553512-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,512 - stack_scribe - INFO -     ✅ Task queued: 1773017553512-3
+2026-03-09 00:52:33,512 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/management.md
+2026-03-09 00:52:33,513 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553513-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,513 - stack_scribe - INFO -     ✅ Task queued: 1773017553513-0
+2026-03-09 00:52:33,513 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_dad9a49a.md
+2026-03-09 00:52:33,513 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553513-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,513 - stack_scribe - INFO -     ✅ Task queued: 1773017553513-1
+2026-03-09 00:52:33,513 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_06b02697.md
+2026-03-09 00:52:33,513 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553513-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,513 - stack_scribe - INFO -     ✅ Task queued: 1773017553513-2
+2026-03-09 00:52:33,513 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test.md
+2026-03-09 00:52:33,513 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553513-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,513 - stack_scribe - INFO -     ✅ Task queued: 1773017553513-3
+2026-03-09 00:52:33,513 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_7ca18277.md
+2026-03-09 00:52:33,514 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553513-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,514 - stack_scribe - INFO -     ✅ Task queued: 1773017553513-4
+2026-03-09 00:52:33,514 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_7d1c716f.md
+2026-03-09 00:52:33,514 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553514-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,514 - stack_scribe - INFO -     ✅ Task queued: 1773017553514-0
+2026-03-09 00:52:33,514 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_f0488694.md
+2026-03-09 00:52:33,514 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553514-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,514 - stack_scribe - INFO -     ✅ Task queued: 1773017553514-1
+2026-03-09 00:52:33,514 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_46336654.md
+2026-03-09 00:52:33,514 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553514-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,514 - stack_scribe - INFO -     ✅ Task queued: 1773017553514-2
+2026-03-09 00:52:33,514 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_5b5afab0.md
+2026-03-09 00:52:33,514 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553514-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,514 - stack_scribe - INFO -     ✅ Task queued: 1773017553514-3
+2026-03-09 00:52:33,514 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_71cdede3.md
+2026-03-09 00:52:33,515 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553514-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,515 - stack_scribe - INFO -     ✅ Task queued: 1773017553514-4
+2026-03-09 00:52:33,515 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_e60d4f1f.md
+2026-03-09 00:52:33,515 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553515-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,515 - stack_scribe - INFO -     ✅ Task queued: 1773017553515-0
+2026-03-09 00:52:33,515 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks.md
+2026-03-09 00:52:33,515 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553515-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,515 - stack_scribe - INFO -     ✅ Task queued: 1773017553515-1
+2026-03-09 00:52:33,515 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_6a26180d.md
+2026-03-09 00:52:33,515 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553515-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,515 - stack_scribe - INFO -     ✅ Task queued: 1773017553515-2
+2026-03-09 00:52:33,515 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_4e10c7c4.md
+2026-03-09 00:52:33,515 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553515-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,515 - stack_scribe - INFO -     ✅ Task queued: 1773017553515-3
+2026-03-09 00:52:33,515 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_cf64fd55.md
+2026-03-09 00:52:33,516 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553516-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,516 - stack_scribe - INFO -     ✅ Task queued: 1773017553516-0
+2026-03-09 00:52:33,516 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_66546590.md
+2026-03-09 00:52:33,516 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553516-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,516 - stack_scribe - INFO -     ✅ Task queued: 1773017553516-1
+2026-03-09 00:52:33,516 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt_d2021675.md
+2026-03-09 00:52:33,516 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553516-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,516 - stack_scribe - INFO -     ✅ Task queued: 1773017553516-2
+2026-03-09 00:52:33,516 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_e4e7808b.md
+2026-03-09 00:52:33,516 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553516-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,516 - stack_scribe - INFO -     ✅ Task queued: 1773017553516-3
+2026-03-09 00:52:33,516 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_7e7746ab.md
+2026-03-09 00:52:33,516 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553516-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,516 - stack_scribe - INFO -     ✅ Task queued: 1773017553516-4
+2026-03-09 00:52:33,516 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_fe90dc2d.md
+2026-03-09 00:52:33,517 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553517-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,517 - stack_scribe - INFO -     ✅ Task queued: 1773017553517-0
+2026-03-09 00:52:33,517 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/release_notes.md
+2026-03-09 00:52:33,517 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553517-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,517 - stack_scribe - INFO -     ✅ Task queued: 1773017553517-1
+2026-03-09 00:52:33,517 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt_e610445c.md
+2026-03-09 00:52:33,517 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553517-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,517 - stack_scribe - INFO -     ✅ Task queued: 1773017553517-2
+2026-03-09 00:52:33,517 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_8e3ed3ee.md
+2026-03-09 00:52:33,517 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553517-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,517 - stack_scribe - INFO -     ✅ Task queued: 1773017553517-3
+2026-03-09 00:52:33,517 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_8a66839e.md
+2026-03-09 00:52:33,518 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553517-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,518 - stack_scribe - INFO -     ✅ Task queued: 1773017553517-4
+2026-03-09 00:52:33,518 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_7b35344b.md
+2026-03-09 00:52:33,518 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553518-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,518 - stack_scribe - INFO -     ✅ Task queued: 1773017553518-0
+2026-03-09 00:52:33,518 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_2c4393ab.md
+2026-03-09 00:52:33,518 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553518-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,518 - stack_scribe - INFO -     ✅ Task queued: 1773017553518-1
+2026-03-09 00:52:33,518 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_64253a80.md
+2026-03-09 00:52:33,518 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553518-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,518 - stack_scribe - INFO -     ✅ Task queued: 1773017553518-2
+2026-03-09 00:52:33,518 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_02077ec6.md
+2026-03-09 00:52:33,518 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553518-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,518 - stack_scribe - INFO -     ✅ Task queued: 1773017553518-3
+2026-03-09 00:52:33,519 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/management_tasks.md
+2026-03-09 00:52:33,519 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553519-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,519 - stack_scribe - INFO -     ✅ Task queued: 1773017553519-0
+2026-03-09 00:52:33,519 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_35fb1c6a.md
+2026-03-09 00:52:33,519 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553519-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,519 - stack_scribe - INFO -     ✅ Task queued: 1773017553519-1
+2026-03-09 00:52:33,519 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_fae8f27e.md
+2026-03-09 00:52:33,519 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553519-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,519 - stack_scribe - INFO -     ✅ Task queued: 1773017553519-2
+2026-03-09 00:52:33,519 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_66479200.md
+2026-03-09 00:52:33,519 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553519-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,519 - stack_scribe - INFO -     ✅ Task queued: 1773017553519-3
+2026-03-09 00:52:33,519 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments.md
+2026-03-09 00:52:33,520 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553520-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,520 - stack_scribe - INFO -     ✅ Task queued: 1773017553520-0
+2026-03-09 00:52:33,520 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_128cc50b.md
+2026-03-09 00:52:33,520 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553520-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,520 - stack_scribe - INFO -     ✅ Task queued: 1773017553520-1
+2026-03-09 00:52:33,520 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt_6e651372.md
+2026-03-09 00:52:33,520 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553520-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,520 - stack_scribe - INFO -     ✅ Task queued: 1773017553520-2
+2026-03-09 00:52:33,520 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_c297ccc0.md
+2026-03-09 00:52:33,520 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553520-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,520 - stack_scribe - INFO -     ✅ Task queued: 1773017553520-3
+2026-03-09 00:52:33,520 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_cfa4ba5f.md
+2026-03-09 00:52:33,521 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553520-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,521 - stack_scribe - INFO -     ✅ Task queued: 1773017553520-4
+2026-03-09 00:52:33,521 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_fae76409.md
+2026-03-09 00:52:33,521 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553521-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,521 - stack_scribe - INFO -     ✅ Task queued: 1773017553521-0
+2026-03-09 00:52:33,521 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_8608752f.md
+2026-03-09 00:52:33,521 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553521-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,521 - stack_scribe - INFO -     ✅ Task queued: 1773017553521-1
+2026-03-09 00:52:33,521 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables.md
+2026-03-09 00:52:33,521 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553521-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,521 - stack_scribe - INFO -     ✅ Task queued: 1773017553521-2
+2026-03-09 00:52:33,521 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_3512281a.md
+2026-03-09 00:52:33,521 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553521-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,521 - stack_scribe - INFO -     ✅ Task queued: 1773017553521-3
+2026-03-09 00:52:33,521 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_586bddf1.md
+2026-03-09 00:52:33,522 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553522-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,522 - stack_scribe - INFO -     ✅ Task queued: 1773017553522-0
+2026-03-09 00:52:33,522 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_fb39d53f.md
+2026-03-09 00:52:33,522 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553522-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,522 - stack_scribe - INFO -     ✅ Task queued: 1773017553522-1
+2026-03-09 00:52:33,522 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_4c1551d3.md
+2026-03-09 00:52:33,522 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553522-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,522 - stack_scribe - INFO -     ✅ Task queued: 1773017553522-2
+2026-03-09 00:52:33,522 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_01a0d2d1.md
+2026-03-09 00:52:33,522 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553522-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,522 - stack_scribe - INFO -     ✅ Task queued: 1773017553522-3
+2026-03-09 00:52:33,522 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_546a0e03.md
+2026-03-09 00:52:33,523 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553522-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,523 - stack_scribe - INFO -     ✅ Task queued: 1773017553522-4
+2026-03-09 00:52:33,523 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_7ce2a89a.md
+2026-03-09 00:52:33,523 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553523-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,523 - stack_scribe - INFO -     ✅ Task queued: 1773017553523-0
+2026-03-09 00:52:33,523 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_2ef3b638.md
+2026-03-09 00:52:33,523 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553523-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,523 - stack_scribe - INFO -     ✅ Task queued: 1773017553523-1
+2026-03-09 00:52:33,523 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt_1dcd29e2.md
+2026-03-09 00:52:33,523 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553523-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,523 - stack_scribe - INFO -     ✅ Task queued: 1773017553523-2
+2026-03-09 00:52:33,523 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_6c184af3.md
+2026-03-09 00:52:33,523 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553523-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,523 - stack_scribe - INFO -     ✅ Task queued: 1773017553523-3
+2026-03-09 00:52:33,523 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_aa79dc5d.md
+2026-03-09 00:52:33,524 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553524-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,524 - stack_scribe - INFO -     ✅ Task queued: 1773017553524-0
+2026-03-09 00:52:33,524 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_c246b62b.md
+2026-03-09 00:52:33,524 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553524-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,524 - stack_scribe - INFO -     ✅ Task queued: 1773017553524-1
+2026-03-09 00:52:33,524 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_cc525bcf.md
+2026-03-09 00:52:33,524 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553524-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,524 - stack_scribe - INFO -     ✅ Task queued: 1773017553524-2
+2026-03-09 00:52:33,524 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_55f3f738.md
+2026-03-09 00:52:33,524 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553524-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,524 - stack_scribe - INFO -     ✅ Task queued: 1773017553524-3
+2026-03-09 00:52:33,524 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_aa766c02.md
+2026-03-09 00:52:33,527 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553524-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,527 - stack_scribe - INFO -     ✅ Task queued: 1773017553524-4
+2026-03-09 00:52:33,527 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_38281892.md
+2026-03-09 00:52:33,527 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553527-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,527 - stack_scribe - INFO -     ✅ Task queued: 1773017553527-0
+2026-03-09 00:52:33,527 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_bf1884c9.md
+2026-03-09 00:52:33,527 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553527-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,527 - stack_scribe - INFO -     ✅ Task queued: 1773017553527-1
+2026-03-09 00:52:33,527 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_674d3c88.md
+2026-03-09 00:52:33,527 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553527-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,527 - stack_scribe - INFO -     ✅ Task queued: 1773017553527-2
+2026-03-09 00:52:33,527 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_756f1289.md
+2026-03-09 00:52:33,528 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553528-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,528 - stack_scribe - INFO -     ✅ Task queued: 1773017553528-0
+2026-03-09 00:52:33,528 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_1a60365d.md
+2026-03-09 00:52:33,528 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553528-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,528 - stack_scribe - INFO -     ✅ Task queued: 1773017553528-1
+2026-03-09 00:52:33,528 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_7731f13e.md
+2026-03-09 00:52:33,528 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553528-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,528 - stack_scribe - INFO -     ✅ Task queued: 1773017553528-2
+2026-03-09 00:52:33,528 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/translation_banner_eb7192a4.md
+2026-03-09 00:52:33,528 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553528-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,528 - stack_scribe - INFO -     ✅ Task queued: 1773017553528-3
+2026-03-09 00:52:33,528 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_a5c1c8ba.md
+2026-03-09 00:52:33,529 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553528-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,529 - stack_scribe - INFO -     ✅ Task queued: 1773017553528-4
+2026-03-09 00:52:33,529 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_72763053.md
+2026-03-09 00:52:33,529 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553529-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,529 - stack_scribe - INFO -     ✅ Task queued: 1773017553529-0
+2026-03-09 00:52:33,529 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_d97e3191.md
+2026-03-09 00:52:33,529 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553529-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,529 - stack_scribe - INFO -     ✅ Task queued: 1773017553529-1
+2026-03-09 00:52:33,529 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_4841c232.md
+2026-03-09 00:52:33,529 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553529-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,529 - stack_scribe - INFO -     ✅ Task queued: 1773017553529-2
+2026-03-09 00:52:33,529 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi_00889d00.md
+2026-03-09 00:52:33,529 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553529-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,529 - stack_scribe - INFO -     ✅ Task queued: 1773017553529-3
+2026-03-09 00:52:33,529 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_499314e6.md
+2026-03-09 00:52:33,530 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553530-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,530 - stack_scribe - INFO -     ✅ Task queued: 1773017553530-0
+2026-03-09 00:52:33,530 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives.md
+2026-03-09 00:52:33,530 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553530-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,530 - stack_scribe - INFO -     ✅ Task queued: 1773017553530-1
+2026-03-09 00:52:33,530 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_df11618b.md
+2026-03-09 00:52:33,530 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553530-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,530 - stack_scribe - INFO -     ✅ Task queued: 1773017553530-2
+2026-03-09 00:52:33,530 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_42729b10.md
+2026-03-09 00:52:33,530 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553530-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,530 - stack_scribe - INFO -     ✅ Task queued: 1773017553530-3
+2026-03-09 00:52:33,530 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_3b15a7e8.md
+2026-03-09 00:52:33,530 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553530-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,530 - stack_scribe - INFO -     ✅ Task queued: 1773017553530-4
+2026-03-09 00:52:33,530 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async.md
+2026-03-09 00:52:33,531 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553531-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,531 - stack_scribe - INFO -     ✅ Task queued: 1773017553531-0
+2026-03-09 00:52:33,531 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_f63f4b92.md
+2026-03-09 00:52:33,531 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553531-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,531 - stack_scribe - INFO -     ✅ Task queued: 1773017553531-1
+2026-03-09 00:52:33,531 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_c0f83342.md
+2026-03-09 00:52:33,531 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553531-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,531 - stack_scribe - INFO -     ✅ Task queued: 1773017553531-2
+2026-03-09 00:52:33,531 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/readme_-_fastapi.md
+2026-03-09 00:52:33,531 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553531-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,531 - stack_scribe - INFO -     ✅ Task queued: 1773017553531-3
+2026-03-09 00:52:33,531 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_954ab1a8.md
+2026-03-09 00:52:33,532 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553531-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,532 - stack_scribe - INFO -     ✅ Task queued: 1773017553531-4
+2026-03-09 00:52:33,532 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_4d1d95d9.md
+2026-03-09 00:52:33,532 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553532-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,532 - stack_scribe - INFO -     ✅ Task queued: 1773017553532-0
+2026-03-09 00:52:33,532 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_32a7de70.md
+2026-03-09 00:52:33,532 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553532-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,532 - stack_scribe - INFO -     ✅ Task queued: 1773017553532-1
+2026-03-09 00:52:33,532 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_fd360fbd.md
+2026-03-09 00:52:33,532 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553532-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,532 - stack_scribe - INFO -     ✅ Task queued: 1773017553532-2
+2026-03-09 00:52:33,532 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_4e9c180b.md
+2026-03-09 00:52:33,532 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553532-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,532 - stack_scribe - INFO -     ✅ Task queued: 1773017553532-3
+2026-03-09 00:52:33,532 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_5496fd54.md
+2026-03-09 00:52:33,533 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553533-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,533 - stack_scribe - INFO -     ✅ Task queued: 1773017553533-0
+2026-03-09 00:52:33,533 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt_db3baebd.md
+2026-03-09 00:52:33,533 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553533-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,533 - stack_scribe - INFO -     ✅ Task queued: 1773017553533-1
+2026-03-09 00:52:33,533 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_94e7e68d.md
+2026-03-09 00:52:33,533 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553533-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,533 - stack_scribe - INFO -     ✅ Task queued: 1773017553533-2
+2026-03-09 00:52:33,533 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_64575fe4.md
+2026-03-09 00:52:33,533 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553533-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,533 - stack_scribe - INFO -     ✅ Task queued: 1773017553533-3
+2026-03-09 00:52:33,533 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_2c8f6e18.md
+2026-03-09 00:52:33,534 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553533-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,534 - stack_scribe - INFO -     ✅ Task queued: 1773017553533-4
+2026-03-09 00:52:33,534 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_2bed193a.md
+2026-03-09 00:52:33,534 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553534-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,534 - stack_scribe - INFO -     ✅ Task queued: 1773017553534-0
+2026-03-09 00:52:33,534 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_4e4602b5.md
+2026-03-09 00:52:33,534 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553534-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,534 - stack_scribe - INFO -     ✅ Task queued: 1773017553534-1
+2026-03-09 00:52:33,534 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_a5080913.md
+2026-03-09 00:52:33,534 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553534-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,534 - stack_scribe - INFO -     ✅ Task queued: 1773017553534-2
+2026-03-09 00:52:33,534 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_b23a7158.md
+2026-03-09 00:52:33,534 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553534-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,534 - stack_scribe - INFO -     ✅ Task queued: 1773017553534-3
+2026-03-09 00:52:33,534 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_5c1ac281.md
+2026-03-09 00:52:33,535 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553535-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,535 - stack_scribe - INFO -     ✅ Task queued: 1773017553535-0
+2026-03-09 00:52:33,535 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/virtual_environments_6db2db8b.md
+2026-03-09 00:52:33,535 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553535-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,535 - stack_scribe - INFO -     ✅ Task queued: 1773017553535-1
+2026-03-09 00:52:33,535 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_ec09cf41.md
+2026-03-09 00:52:33,535 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553535-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,535 - stack_scribe - INFO -     ✅ Task queued: 1773017553535-2
+2026-03-09 00:52:33,535 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_0df25b12.md
+2026-03-09 00:52:33,535 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553535-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,535 - stack_scribe - INFO -     ✅ Task queued: 1773017553535-3
+2026-03-09 00:52:33,535 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_edaa0c4b.md
+2026-03-09 00:52:33,535 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553535-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,535 - stack_scribe - INFO -     ✅ Task queued: 1773017553535-4
+2026-03-09 00:52:33,535 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_318d4ac3.md
+2026-03-09 00:52:33,536 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553536-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,536 - stack_scribe - INFO -     ✅ Task queued: 1773017553536-0
+2026-03-09 00:52:33,536 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_de88fc8a.md
+2026-03-09 00:52:33,536 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553536-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,536 - stack_scribe - INFO -     ✅ Task queued: 1773017553536-1
+2026-03-09 00:52:33,536 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_6ccc69ea.md
+2026-03-09 00:52:33,536 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553536-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,536 - stack_scribe - INFO -     ✅ Task queued: 1773017553536-2
+2026-03-09 00:52:33,536 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_0fe40c9f.md
+2026-03-09 00:52:33,536 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553536-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,536 - stack_scribe - INFO -     ✅ Task queued: 1773017553536-3
+2026-03-09 00:52:33,536 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features.md
+2026-03-09 00:52:33,536 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553536-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,536 - stack_scribe - INFO -     ✅ Task queued: 1773017553536-4
+2026-03-09 00:52:33,536 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt.md
+2026-03-09 00:52:33,537 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553537-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,537 - stack_scribe - INFO -     ✅ Task queued: 1773017553537-0
+2026-03-09 00:52:33,537 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/alternatives_a7657d6b.md
+2026-03-09 00:52:33,537 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553537-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,537 - stack_scribe - INFO -     ✅ Task queued: 1773017553537-1
+2026-03-09 00:52:33,537 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli.md
+2026-03-09 00:52:33,537 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553537-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,537 - stack_scribe - INFO -     ✅ Task queued: 1773017553537-2
+2026-03-09 00:52:33,537 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_3a182184.md
+2026-03-09 00:52:33,537 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553537-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,537 - stack_scribe - INFO -     ✅ Task queued: 1773017553537-3
+2026-03-09 00:52:33,537 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/help_fastapi.md
+2026-03-09 00:52:33,537 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553537-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,537 - stack_scribe - INFO -     ✅ Task queued: 1773017553537-4
+2026-03-09 00:52:33,537 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/environment_variables_4d1adcb1.md
+2026-03-09 00:52:33,538 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553538-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,538 - stack_scribe - INFO -     ✅ Task queued: 1773017553538-0
+2026-03-09 00:52:33,538 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types_ee056aae.md
+2026-03-09 00:52:33,538 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553538-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,538 - stack_scribe - INFO -     ✅ Task queued: 1773017553538-1
+2026-03-09 00:52:33,538 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_19b352bd.md
+2026-03-09 00:52:33,538 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553538-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,538 - stack_scribe - INFO -     ✅ Task queued: 1773017553538-2
+2026-03-09 00:52:33,538 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/index_a3864599.md
+2026-03-09 00:52:33,538 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553538-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,538 - stack_scribe - INFO -     ✅ Task queued: 1773017553538-3
+2026-03-09 00:52:33,538 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_c334b188.md
+2026-03-09 00:52:33,538 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553538-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,538 - stack_scribe - INFO -     ✅ Task queued: 1773017553538-4
+2026-03-09 00:52:33,538 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_b793d628.md
+2026-03-09 00:52:33,539 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553539-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,539 - stack_scribe - INFO -     ✅ Task queued: 1773017553539-0
+2026-03-09 00:52:33,539 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/benchmarks_99d63e8d.md
+2026-03-09 00:52:33,539 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553539-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,539 - stack_scribe - INFO -     ✅ Task queued: 1773017553539-1
+2026-03-09 00:52:33,539 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_effb9e04.md
+2026-03-09 00:52:33,539 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553539-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,539 - stack_scribe - INFO -     ✅ Task queued: 1773017553539-2
+2026-03-09 00:52:33,539 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/async_5a957523.md
+2026-03-09 00:52:33,539 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553539-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,539 - stack_scribe - INFO -     ✅ Task queued: 1773017553539-3
+2026-03-09 00:52:33,539 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/fastapi_cli_7286964d.md
+2026-03-09 00:52:33,539 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553539-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,539 - stack_scribe - INFO -     ✅ Task queued: 1773017553539-4
+2026-03-09 00:52:33,540 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/external_links.md
+2026-03-09 00:52:33,540 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553540-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,540 - stack_scribe - INFO -     ✅ Task queued: 1773017553540-0
+2026-03-09 00:52:33,540 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/history_design_future_3b824f13.md
+2026-03-09 00:52:33,540 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553540-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,540 - stack_scribe - INFO -     ✅ Task queued: 1773017553540-1
+2026-03-09 00:52:33,540 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/features_9853d885.md
+2026-03-09 00:52:33,540 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553540-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,540 - stack_scribe - INFO -     ✅ Task queued: 1773017553540-2
+2026-03-09 00:52:33,540 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/_llm_test_29e98cbe.md
+2026-03-09 00:52:33,540 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553540-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,540 - stack_scribe - INFO -     ✅ Task queued: 1773017553540-3
+2026-03-09 00:52:33,540 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/llm_prompt_d16241aa.md
+2026-03-09 00:52:33,540 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553540-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,540 - stack_scribe - INFO -     ✅ Task queued: 1773017553540-4
+2026-03-09 00:52:33,540 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/project_generation_e3066bcf.md
+2026-03-09 00:52:33,541 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553541-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,541 - stack_scribe - INFO -     ✅ Task queued: 1773017553541-0
+2026-03-09 00:52:33,541 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/FastAPI/python_types.md
+2026-03-09 00:52:33,541 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553541-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,541 - stack_scribe - INFO -     ✅ Task queued: 1773017553541-1
+2026-03-09 00:52:33,541 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/remote_client.md
+2026-03-09 00:52:33,541 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553541-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,541 - stack_scribe - INFO -     ✅ Task queued: 1773017553541-2
+2026-03-09 00:52:33,541 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/mac_client.md
+2026-03-09 00:52:33,541 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553541-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,541 - stack_scribe - INFO -     ✅ Task queued: 1773017553541-3
+2026-03-09 00:52:33,541 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/podman_tutorial.md
+2026-03-09 00:52:33,542 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553541-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,542 - stack_scribe - INFO -     ✅ Task queued: 1773017553541-4
+2026-03-09 00:52:33,542 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/podman_tutorial_cn.md
+2026-03-09 00:52:33,542 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553542-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,542 - stack_scribe - INFO -     ✅ Task queued: 1773017553542-0
+2026-03-09 00:52:33,542 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/rootless_tutorial.md
+2026-03-09 00:52:33,542 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553542-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,542 - stack_scribe - INFO -     ✅ Task queued: 1773017553542-1
+2026-03-09 00:52:33,542 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/socket_activation.md
+2026-03-09 00:52:33,542 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553542-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,542 - stack_scribe - INFO -     ✅ Task queued: 1773017553542-2
+2026-03-09 00:52:33,542 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/readme_-_podman.md
+2026-03-09 00:52:33,542 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553542-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,542 - stack_scribe - INFO -     ✅ Task queued: 1773017553542-3
+2026-03-09 00:52:33,542 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/performance.md
+2026-03-09 00:52:33,543 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553543-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,543 - stack_scribe - INFO -     ✅ Task queued: 1773017553543-0
+2026-03-09 00:52:33,543 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/self_assessment.md
+2026-03-09 00:52:33,543 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553543-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,543 - stack_scribe - INFO -     ✅ Task queued: 1773017553543-1
+2026-03-09 00:52:33,543 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/image_signing.md
+2026-03-09 00:52:33,543 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553543-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,543 - stack_scribe - INFO -     ✅ Task queued: 1773017553543-2
+2026-03-09 00:52:33,543 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/manpage_syntax.md
+2026-03-09 00:52:33,543 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553543-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,543 - stack_scribe - INFO -     ✅ Task queued: 1773017553543-3
+2026-03-09 00:52:33,543 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/podman_install_certificate_authority.md
+2026-03-09 00:52:33,543 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553543-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,543 - stack_scribe - INFO -     ✅ Task queued: 1773017553543-4
+2026-03-09 00:52:33,543 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/kubernetes_support.md
+2026-03-09 00:52:33,544 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553544-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,544 - stack_scribe - INFO -     ✅ Task queued: 1773017553544-0
+2026-03-09 00:52:33,544 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/qemu_remote_tutorial.md
+2026-03-09 00:52:33,544 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553544-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,544 - stack_scribe - INFO -     ✅ Task queued: 1773017553544-1
+2026-03-09 00:52:33,544 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/readme_138cd9ac.md
+2026-03-09 00:52:33,544 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553544-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,544 - stack_scribe - INFO -     ✅ Task queued: 1773017553544-2
+2026-03-09 00:52:33,544 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/mac_win_client.md
+2026-03-09 00:52:33,544 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553544-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,544 - stack_scribe - INFO -     ✅ Task queued: 1773017553544-3
+2026-03-09 00:52:33,544 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/code_structure.md
+2026-03-09 00:52:33,544 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553544-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,544 - stack_scribe - INFO -     ✅ Task queued: 1773017553544-4
+2026-03-09 00:52:33,545 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/basic_networking.md
+2026-03-09 00:52:33,545 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553545-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,545 - stack_scribe - INFO -     ✅ Task queued: 1773017553545-0
+2026-03-09 00:52:33,545 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/podman_derivative_api.md
+2026-03-09 00:52:33,545 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553545-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,545 - stack_scribe - INFO -     ✅ Task queued: 1773017553545-1
+2026-03-09 00:52:33,545 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/podman_for_windows.md
+2026-03-09 00:52:33,545 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553545-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,545 - stack_scribe - INFO -     ✅ Task queued: 1773017553545-2
+2026-03-09 00:52:33,545 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/podman/readme.md
+2026-03-09 00:52:33,545 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553545-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,545 - stack_scribe - INFO -     ✅ Task queued: 1773017553545-3
+2026-03-09 00:52:33,545 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/losses_7b996967.md
+2026-03-09 00:52:33,546 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553545-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,546 - stack_scribe - INFO -     ✅ Task queued: 1773017553545-4
+2026-03-09 00:52:33,546 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/sparseencoder.md
+2026-03-09 00:52:33,546 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553546-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,546 - stack_scribe - INFO -     ✅ Task queued: 1773017553546-0
+2026-03-09 00:52:33,546 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/models_65deacd6.md
+2026-03-09 00:52:33,546 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553546-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,546 - stack_scribe - INFO -     ✅ Task queued: 1773017553546-1
+2026-03-09 00:52:33,546 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/msmarco_v2.md
+2026-03-09 00:52:33,546 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553546-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,546 - stack_scribe - INFO -     ✅ Task queued: 1773017553546-2
+2026-03-09 00:52:33,546 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/readme_-_sentence-transformers.md
+2026-03-09 00:52:33,546 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553546-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,546 - stack_scribe - INFO -     ✅ Task queued: 1773017553546-3
+2026-03-09 00:52:33,546 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/loss_overview_7dae91dd.md
+2026-03-09 00:52:33,547 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553546-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,547 - stack_scribe - INFO -     ✅ Task queued: 1773017553546-4
+2026-03-09 00:52:33,547 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/losses.md
+2026-03-09 00:52:33,547 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553547-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,547 - stack_scribe - INFO -     ✅ Task queued: 1773017553547-0
+2026-03-09 00:52:33,547 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/training_args.md
+2026-03-09 00:52:33,547 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553547-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,547 - stack_scribe - INFO -     ✅ Task queued: 1773017553547-1
+2026-03-09 00:52:33,547 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/nli_models.md
+2026-03-09 00:52:33,547 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553547-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,547 - stack_scribe - INFO -     ✅ Task queued: 1773017553547-2
+2026-03-09 00:52:33,547 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/sampler.md
+2026-03-09 00:52:33,548 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553547-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,548 - stack_scribe - INFO -     ✅ Task queued: 1773017553547-3
+2026-03-09 00:52:33,548 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/callbacks.md
+2026-03-09 00:52:33,548 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553548-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,548 - stack_scribe - INFO -     ✅ Task queued: 1773017553548-0
+2026-03-09 00:52:33,548 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/util.md
+2026-03-09 00:52:33,548 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553548-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,548 - stack_scribe - INFO -     ✅ Task queued: 1773017553548-1
+2026-03-09 00:52:33,548 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/trainer_58cdb6a0.md
+2026-03-09 00:52:33,548 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553548-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,548 - stack_scribe - INFO -     ✅ Task queued: 1773017553548-2
+2026-03-09 00:52:33,548 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/migration_guide.md
+2026-03-09 00:52:33,548 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553548-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,548 - stack_scribe - INFO -     ✅ Task queued: 1773017553548-3
+2026-03-09 00:52:33,548 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/datasets.md
+2026-03-09 00:52:33,548 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553548-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,548 - stack_scribe - INFO -     ✅ Task queued: 1773017553548-4
+2026-03-09 00:52:33,549 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/wikipedia_sections_models.md
+2026-03-09 00:52:33,549 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553549-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,549 - stack_scribe - INFO -     ✅ Task queued: 1773017553549-0
+2026-03-09 00:52:33,549 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/msmarco_v3.md
+2026-03-09 00:52:33,549 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553549-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,549 - stack_scribe - INFO -     ✅ Task queued: 1773017553549-1
+2026-03-09 00:52:33,549 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/installation.md
+2026-03-09 00:52:33,549 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553549-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,549 - stack_scribe - INFO -     ✅ Task queued: 1773017553549-2
+2026-03-09 00:52:33,549 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/mteb_evaluation.md
+2026-03-09 00:52:33,549 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553549-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,549 - stack_scribe - INFO -     ✅ Task queued: 1773017553549-3
+2026-03-09 00:52:33,549 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/loss_overview_b03fab41.md
+2026-03-09 00:52:33,549 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553549-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,549 - stack_scribe - INFO -     ✅ Task queued: 1773017553549-4
+2026-03-09 00:52:33,549 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/publications.md
+2026-03-09 00:52:33,550 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553550-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,550 - stack_scribe - INFO -     ✅ Task queued: 1773017553550-0
+2026-03-09 00:52:33,550 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/evaluation_f3fc6967.md
+2026-03-09 00:52:33,550 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553550-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,550 - stack_scribe - INFO -     ✅ Task queued: 1773017553550-1
+2026-03-09 00:52:33,550 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/loss_overview.md
+2026-03-09 00:52:33,550 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553550-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,550 - stack_scribe - INFO -     ✅ Task queued: 1773017553550-2
+2026-03-09 00:52:33,550 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/training_args_cd197905.md
+2026-03-09 00:52:33,550 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553550-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,550 - stack_scribe - INFO -     ✅ Task queued: 1773017553550-3
+2026-03-09 00:52:33,550 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/ce_msmarco.md
+2026-03-09 00:52:33,550 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553550-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,550 - stack_scribe - INFO -     ✅ Task queued: 1773017553550-4
+2026-03-09 00:52:33,550 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/pretrained_models.md
+2026-03-09 00:52:33,551 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553551-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,551 - stack_scribe - INFO -     ✅ Task queued: 1773017553551-0
+2026-03-09 00:52:33,551 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/pretrained_models_1795a12f.md
+2026-03-09 00:52:33,551 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553551-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,551 - stack_scribe - INFO -     ✅ Task queued: 1773017553551-1
+2026-03-09 00:52:33,551 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/search_engines.md
+2026-03-09 00:52:33,551 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553551-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,551 - stack_scribe - INFO -     ✅ Task queued: 1773017553551-2
+2026-03-09 00:52:33,551 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/trainer.md
+2026-03-09 00:52:33,551 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553551-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,551 - stack_scribe - INFO -     ✅ Task queued: 1773017553551-3
+2026-03-09 00:52:33,551 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/training_args_8637254c.md
+2026-03-09 00:52:33,551 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553551-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,551 - stack_scribe - INFO -     ✅ Task queued: 1773017553551-4
+2026-03-09 00:52:33,551 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/trainer_9eb8ee81.md
+2026-03-09 00:52:33,552 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553551-5 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,552 - stack_scribe - INFO -     ✅ Task queued: 1773017553551-5
+2026-03-09 00:52:33,552 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/msmarco_v1.md
+2026-03-09 00:52:33,552 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553552-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,552 - stack_scribe - INFO -     ✅ Task queued: 1773017553552-0
+2026-03-09 00:52:33,552 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/models.md
+2026-03-09 00:52:33,552 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553552-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,552 - stack_scribe - INFO -     ✅ Task queued: 1773017553552-1
+2026-03-09 00:52:33,552 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/sts_models.md
+2026-03-09 00:52:33,552 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553552-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,552 - stack_scribe - INFO -     ✅ Task queued: 1773017553552-2
+2026-03-09 00:52:33,552 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/evaluation.md
+2026-03-09 00:52:33,552 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553552-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,552 - stack_scribe - INFO -     ✅ Task queued: 1773017553552-3
+2026-03-09 00:52:33,552 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/msmarco_v5.md
+2026-03-09 00:52:33,553 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553552-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,553 - stack_scribe - INFO -     ✅ Task queued: 1773017553552-4
+2026-03-09 00:52:33,553 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/cross_encoder.md
+2026-03-09 00:52:33,553 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553553-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,553 - stack_scribe - INFO -     ✅ Task queued: 1773017553553-0
+2026-03-09 00:52:33,553 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/training_overview_21594cc0.md
+2026-03-09 00:52:33,553 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553553-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,553 - stack_scribe - INFO -     ✅ Task queued: 1773017553553-1
+2026-03-09 00:52:33,553 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/nq_v1.md
+2026-03-09 00:52:33,553 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553553-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,553 - stack_scribe - INFO -     ✅ Task queued: 1773017553553-2
+2026-03-09 00:52:33,553 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/training_overview_214dabdf.md
+2026-03-09 00:52:33,553 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553553-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,553 - stack_scribe - INFO -     ✅ Task queued: 1773017553553-3
+2026-03-09 00:52:33,553 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/quantization.md
+2026-03-09 00:52:33,553 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553553-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,553 - stack_scribe - INFO -     ✅ Task queued: 1773017553553-4
+2026-03-09 00:52:33,554 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/dataset_overview.md
+2026-03-09 00:52:33,554 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553554-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,554 - stack_scribe - INFO -     ✅ Task queued: 1773017553554-0
+2026-03-09 00:52:33,554 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/losses_092f68c4.md
+2026-03-09 00:52:33,554 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553554-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,554 - stack_scribe - INFO -     ✅ Task queued: 1773017553554-1
+2026-03-09 00:52:33,554 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/sentencetransformer.md
+2026-03-09 00:52:33,554 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553554-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,554 - stack_scribe - INFO -     ✅ Task queued: 1773017553554-2
+2026-03-09 00:52:33,554 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/training_overview.md
+2026-03-09 00:52:33,554 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553554-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,554 - stack_scribe - INFO -     ✅ Task queued: 1773017553554-3
+2026-03-09 00:52:33,554 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/dpr.md
+2026-03-09 00:52:33,555 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553554-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,555 - stack_scribe - INFO -     ✅ Task queued: 1773017553554-4
+2026-03-09 00:52:33,555 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/evaluation_5b4dd613.md
+2026-03-09 00:52:33,555 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553555-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,555 - stack_scribe - INFO -     ✅ Task queued: 1773017553555-0
+2026-03-09 00:52:33,555 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/sentence-transformers/pretrained_models_52914ac6.md
+2026-03-09 00:52:33,555 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553555-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,555 - stack_scribe - INFO -     ✅ Task queued: 1773017553555-1
+2026-03-09 00:52:33,555 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/architecture.md
+2026-03-09 00:52:33,555 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553555-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,555 - stack_scribe - INFO -     ✅ Task queued: 1773017553555-2
+2026-03-09 00:52:33,555 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/002_mcp_server.md
+2026-03-09 00:52:33,555 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553555-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,555 - stack_scribe - INFO -     ✅ Task queued: 1773017553555-3
+2026-03-09 00:52:33,555 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/self_assessment.md
+2026-03-09 00:52:33,556 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553556-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,556 - stack_scribe - INFO -     ✅ Task queued: 1773017553556-0
+2026-03-09 00:52:33,556 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/scarf.md
+2026-03-09 00:52:33,556 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553556-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,556 - stack_scribe - INFO -     ✅ Task queued: 1773017553556-1
+2026-03-09 00:52:33,556 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/001_cassandra_find_traces_duration.md
+2026-03-09 00:52:33,556 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553556-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,556 - stack_scribe - INFO -     ✅ Task queued: 1773017553556-2
+2026-03-09 00:52:33,556 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/003_lazy_storage_factory_initialization.md
+2026-03-09 00:52:33,556 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553556-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,556 - stack_scribe - INFO -     ✅ Task queued: 1773017553556-3
+2026-03-09 00:52:33,556 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/assurance_case.md
+2026-03-09 00:52:33,556 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553556-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,556 - stack_scribe - INFO -     ✅ Task queued: 1773017553556-4
+2026-03-09 00:52:33,556 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/verifying_releases.md
+2026-03-09 00:52:33,557 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553557-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,557 - stack_scribe - INFO -     ✅ Task queued: 1773017553557-0
+2026-03-09 00:52:33,557 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/readme_-_jaeger.md
+2026-03-09 00:52:33,557 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553557-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,557 - stack_scribe - INFO -     ✅ Task queued: 1773017553557-1
+2026-03-09 00:52:33,557 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/readme.md
+2026-03-09 00:52:33,557 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553557-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,557 - stack_scribe - INFO -     ✅ Task queued: 1773017553557-2
+2026-03-09 00:52:33,557 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/remove_v1_checklist.md
+2026-03-09 00:52:33,557 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553557-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,557 - stack_scribe - INFO -     ✅ Task queued: 1773017553557-3
+2026-03-09 00:52:33,557 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/Jaeger/threat_model.md
+2026-03-09 00:52:33,557 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553557-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,557 - stack_scribe - INFO -     ✅ Task queued: 1773017553557-4
+2026-03-09 00:52:33,557 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/redis/readme_-_redis_6e6a4569.md
+2026-03-09 00:52:33,558 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553558-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,558 - stack_scribe - INFO -     ✅ Task queued: 1773017553558-0
+2026-03-09 00:52:33,558 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/redis/readme_-_redis.md
+2026-03-09 00:52:33,558 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553558-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,558 - stack_scribe - INFO -     ✅ Task queued: 1773017553558-1
+2026-03-09 00:52:33,558 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/OpenAI/readme_-_openai.md
+2026-03-09 00:52:33,558 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553558-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,558 - stack_scribe - INFO -     ✅ Task queued: 1773017553558-2
+2026-03-09 00:52:33,558 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/grafana/_index.md
+2026-03-09 00:52:33,558 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553558-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,558 - stack_scribe - INFO -     ✅ Task queued: 1773017553558-3
+2026-03-09 00:52:33,558 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/grafana/readme_-_grafana.md
+2026-03-09 00:52:33,559 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553558-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,559 - stack_scribe - INFO -     ✅ Task queued: 1773017553558-4
+2026-03-09 00:52:33,559 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/grafana/agents.md
+2026-03-09 00:52:33,559 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553559-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,559 - stack_scribe - INFO -     ✅ Task queued: 1773017553559-0
+2026-03-09 00:52:33,559 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/grafana/readme.md
+2026-03-09 00:52:33,559 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553559-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,559 - stack_scribe - INFO -     ✅ Task queued: 1773017553559-1
+2026-03-09 00:52:33,559 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/OpenTelemetry/readme_-_opentelemetry.md
+2026-03-09 00:52:33,559 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553559-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,559 - stack_scribe - INFO -     ✅ Task queued: 1773017553559-2
+2026-03-09 00:52:33,559 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/llama-cpp-python/readme_-_llama-cpp-python.md
+2026-03-09 00:52:33,559 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553559-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,559 - stack_scribe - INFO -     ✅ Task queued: 1773017553559-3
+2026-03-09 00:52:33,560 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/llama-cpp-python/server.md
+2026-03-09 00:52:33,560 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553560-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,560 - stack_scribe - INFO -     ✅ Task queued: 1773017553560-0
+2026-03-09 00:52:33,560 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/llama-cpp-python/api_reference.md
+2026-03-09 00:52:33,560 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553560-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,560 - stack_scribe - INFO -     ✅ Task queued: 1773017553560-1
+2026-03-09 00:52:33,560 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/llama-cpp-python/macos.md
+2026-03-09 00:52:33,560 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553560-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,560 - stack_scribe - INFO -     ✅ Task queued: 1773017553560-2
+2026-03-09 00:52:33,561 - stack_scribe - INFO - Scanning library in /library...
+2026-03-09 00:52:33,561 - stack_scribe - INFO -   Indexing: /library/manuals/redis.md
+2026-03-09 00:52:33,561 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553561-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,561 - stack_scribe - INFO -     ✅ Task queued: 1773017553561-0
+2026-03-09 00:52:33,561 - stack_scribe - INFO -   Indexing: /library/manuals/qdrant.md
+2026-03-09 00:52:33,561 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553561-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,561 - stack_scribe - INFO -     ✅ Task queued: 1773017553561-1
+2026-03-09 00:52:33,561 - stack_scribe - INFO -   Indexing: /library/books/plato_republic.md
+2026-03-09 00:52:33,562 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553561-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,562 - stack_scribe - INFO -     ✅ Task queued: 1773017553561-2
+2026-03-09 00:52:33,562 - stack_scribe - INFO -   Indexing: /library/_staging/qdrant_overview.md
+2026-03-09 00:52:33,562 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553562-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,562 - stack_scribe - INFO -     ✅ Task queued: 1773017553562-0
+2026-03-09 00:52:33,562 - stack_scribe - INFO -   Indexing: /library/_staging/444de9552b33e73f.md
+2026-03-09 00:52:33,562 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553562-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,562 - stack_scribe - INFO -     ✅ Task queued: 1773017553562-1
+2026-03-09 00:52:33,562 - stack_scribe - INFO -   Indexing: /library/_staging/c990f1a3ed92214e.md
+2026-03-09 00:52:33,562 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553562-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,562 - stack_scribe - INFO -     ✅ Task queued: 1773017553562-2
+2026-03-09 00:52:33,562 - stack_scribe - INFO -   Indexing: /library/_staging/c625e313163484d5.md
+2026-03-09 00:52:33,563 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553562-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,563 - stack_scribe - INFO -     ✅ Task queued: 1773017553562-3
+2026-03-09 00:52:33,563 - stack_scribe - INFO -   Indexing: /library/_staging/3c55a1c8ef376ed1.md
+2026-03-09 00:52:33,563 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553563-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,563 - stack_scribe - INFO -     ✅ Task queued: 1773017553563-0
+2026-03-09 00:52:33,563 - stack_scribe - INFO -   Indexing: /library/_staging/4f92bc5b37995f18.md
+2026-03-09 00:52:33,563 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553563-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,563 - stack_scribe - INFO -     ✅ Task queued: 1773017553563-1
+2026-03-09 00:52:33,563 - stack_scribe - INFO -   Indexing: /library/_staging/ea547ef98f8d515b.md
+2026-03-09 00:52:33,563 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553563-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,563 - stack_scribe - INFO -     ✅ Task queued: 1773017553563-2
+2026-03-09 00:52:33,563 - stack_scribe - INFO -   Indexing: /library/_staging/0264aeb9b784da94.md
+2026-03-09 00:52:33,563 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553563-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,563 - stack_scribe - INFO -     ✅ Task queued: 1773017553563-3
+2026-03-09 00:52:33,564 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_14.md
+2026-03-09 00:52:33,564 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553564-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,564 - stack_scribe - INFO -     ✅ Task queued: 1773017553564-0
+2026-03-09 00:52:33,564 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_7.md
+2026-03-09 00:52:33,564 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553564-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,564 - stack_scribe - INFO -     ✅ Task queued: 1773017553564-1
+2026-03-09 00:52:33,564 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_4.md
+2026-03-09 00:52:33,564 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553564-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,564 - stack_scribe - INFO -     ✅ Task queued: 1773017553564-2
+2026-03-09 00:52:33,564 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_11.md
+2026-03-09 00:52:33,564 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553564-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,565 - stack_scribe - INFO -     ✅ Task queued: 1773017553564-3
+2026-03-09 00:52:33,565 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_21.md
+2026-03-09 00:52:33,565 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553565-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,565 - stack_scribe - INFO -     ✅ Task queued: 1773017553565-0
+2026-03-09 00:52:33,565 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_0.md
+2026-03-09 00:52:33,565 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553565-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,565 - stack_scribe - INFO -     ✅ Task queued: 1773017553565-1
+2026-03-09 00:52:33,565 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_44.md
+2026-03-09 00:52:33,565 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553565-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,565 - stack_scribe - INFO -     ✅ Task queued: 1773017553565-2
+2026-03-09 00:52:33,565 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_15.md
+2026-03-09 00:52:33,565 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553565-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,565 - stack_scribe - INFO -     ✅ Task queued: 1773017553565-3
+2026-03-09 00:52:33,565 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_37.md
+2026-03-09 00:52:33,566 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553566-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,566 - stack_scribe - INFO -     ✅ Task queued: 1773017553566-0
+2026-03-09 00:52:33,566 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_29.md
+2026-03-09 00:52:33,566 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553566-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,566 - stack_scribe - INFO -     ✅ Task queued: 1773017553566-1
+2026-03-09 00:52:33,566 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_45.md
+2026-03-09 00:52:33,566 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553566-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,566 - stack_scribe - INFO -     ✅ Task queued: 1773017553566-2
+2026-03-09 00:52:33,566 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_28.md
+2026-03-09 00:52:33,566 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553566-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,566 - stack_scribe - INFO -     ✅ Task queued: 1773017553566-3
+2026-03-09 00:52:33,566 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_41.md
+2026-03-09 00:52:33,567 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553566-4 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,567 - stack_scribe - INFO -     ✅ Task queued: 1773017553566-4
+2026-03-09 00:52:33,567 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_26.md
+2026-03-09 00:52:33,567 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553567-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,567 - stack_scribe - INFO -     ✅ Task queued: 1773017553567-0
+2026-03-09 00:52:33,567 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_30.md
+2026-03-09 00:52:33,567 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553567-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,567 - stack_scribe - INFO -     ✅ Task queued: 1773017553567-1
+2026-03-09 00:52:33,567 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_35.md
+2026-03-09 00:52:33,567 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553567-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,567 - stack_scribe - INFO -     ✅ Task queued: 1773017553567-2
+2026-03-09 00:52:33,567 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_48.md
+2026-03-09 00:52:33,567 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553567-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,567 - stack_scribe - INFO -     ✅ Task queued: 1773017553567-3
+2026-03-09 00:52:33,568 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_16.md
+2026-03-09 00:52:33,568 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553568-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,568 - stack_scribe - INFO -     ✅ Task queued: 1773017553568-0
+2026-03-09 00:52:33,568 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_43.md
+2026-03-09 00:52:33,568 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553568-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,568 - stack_scribe - INFO -     ✅ Task queued: 1773017553568-1
+2026-03-09 00:52:33,568 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_36.md
+2026-03-09 00:52:33,568 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553568-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,568 - stack_scribe - INFO -     ✅ Task queued: 1773017553568-2
+2026-03-09 00:52:33,568 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_12.md
+2026-03-09 00:52:33,568 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553568-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,568 - stack_scribe - INFO -     ✅ Task queued: 1773017553568-3
+2026-03-09 00:52:33,568 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_42.md
+2026-03-09 00:52:33,569 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553569-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,569 - stack_scribe - INFO -     ✅ Task queued: 1773017553569-0
+2026-03-09 00:52:33,569 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_27.md
+2026-03-09 00:52:33,569 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553569-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,569 - stack_scribe - INFO -     ✅ Task queued: 1773017553569-1
+2026-03-09 00:52:33,569 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_6.md
+2026-03-09 00:52:33,569 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553569-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,569 - stack_scribe - INFO -     ✅ Task queued: 1773017553569-2
+2026-03-09 00:52:33,569 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_39.md
+2026-03-09 00:52:33,589 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553569-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,589 - stack_scribe - INFO -     ✅ Task queued: 1773017553569-3
+2026-03-09 00:52:33,589 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_24.md
+2026-03-09 00:52:33,590 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553590-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,590 - stack_scribe - INFO -     ✅ Task queued: 1773017553590-0
+2026-03-09 00:52:33,590 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_49.md
+2026-03-09 00:52:33,590 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553590-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,591 - stack_scribe - INFO -     ✅ Task queued: 1773017553590-1
+2026-03-09 00:52:33,591 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_23.md
+2026-03-09 00:52:33,591 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553591-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,591 - stack_scribe - INFO -     ✅ Task queued: 1773017553591-0
+2026-03-09 00:52:33,591 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_47.md
+2026-03-09 00:52:33,591 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553591-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,591 - stack_scribe - INFO -     ✅ Task queued: 1773017553591-1
+2026-03-09 00:52:33,591 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_25.md
+2026-03-09 00:52:33,592 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553592-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,592 - stack_scribe - INFO -     ✅ Task queued: 1773017553592-0
+2026-03-09 00:52:33,592 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_38.md
+2026-03-09 00:52:33,592 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553592-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,592 - stack_scribe - INFO -     ✅ Task queued: 1773017553592-1
+2026-03-09 00:52:33,592 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_46.md
+2026-03-09 00:52:33,592 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553592-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,592 - stack_scribe - INFO -     ✅ Task queued: 1773017553592-2
+2026-03-09 00:52:33,592 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_19.md
+2026-03-09 00:52:33,593 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553593-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,593 - stack_scribe - INFO -     ✅ Task queued: 1773017553593-0
+2026-03-09 00:52:33,593 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_5.md
+2026-03-09 00:52:33,593 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553593-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,593 - stack_scribe - INFO -     ✅ Task queued: 1773017553593-1
+2026-03-09 00:52:33,593 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_31.md
+2026-03-09 00:52:33,593 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553593-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,593 - stack_scribe - INFO -     ✅ Task queued: 1773017553593-2
+2026-03-09 00:52:33,593 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_3.md
+2026-03-09 00:52:33,593 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553593-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,593 - stack_scribe - INFO -     ✅ Task queued: 1773017553593-3
+2026-03-09 00:52:33,593 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_33.md
+2026-03-09 00:52:33,594 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553594-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,594 - stack_scribe - INFO -     ✅ Task queued: 1773017553594-0
+2026-03-09 00:52:33,594 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_2.md
+2026-03-09 00:52:33,594 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553594-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,594 - stack_scribe - INFO -     ✅ Task queued: 1773017553594-1
+2026-03-09 00:52:33,594 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_34.md
+2026-03-09 00:52:33,594 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553594-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,594 - stack_scribe - INFO -     ✅ Task queued: 1773017553594-2
+2026-03-09 00:52:33,594 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_40.md
+2026-03-09 00:52:33,595 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553595-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,595 - stack_scribe - INFO -     ✅ Task queued: 1773017553595-0
+2026-03-09 00:52:33,595 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_18.md
+2026-03-09 00:52:33,595 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553595-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,595 - stack_scribe - INFO -     ✅ Task queued: 1773017553595-1
+2026-03-09 00:52:33,595 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_20.md
+2026-03-09 00:52:33,595 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553595-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,595 - stack_scribe - INFO -     ✅ Task queued: 1773017553595-2
+2026-03-09 00:52:33,595 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_22.md
+2026-03-09 00:52:33,595 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553595-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,595 - stack_scribe - INFO -     ✅ Task queued: 1773017553595-3
+2026-03-09 00:52:33,595 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_1.md
+2026-03-09 00:52:33,596 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553596-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,596 - stack_scribe - INFO -     ✅ Task queued: 1773017553596-0
+2026-03-09 00:52:33,596 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_13.md
+2026-03-09 00:52:33,596 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553596-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,596 - stack_scribe - INFO -     ✅ Task queued: 1773017553596-1
+2026-03-09 00:52:33,596 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_17.md
+2026-03-09 00:52:33,596 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553596-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,596 - stack_scribe - INFO -     ✅ Task queued: 1773017553596-2
+2026-03-09 00:52:33,596 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_9.md
+2026-03-09 00:52:33,596 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553596-3 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,596 - stack_scribe - INFO -     ✅ Task queued: 1773017553596-3
+2026-03-09 00:52:33,596 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_32.md
+2026-03-09 00:52:33,597 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553597-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,597 - stack_scribe - INFO -     ✅ Task queued: 1773017553597-0
+2026-03-09 00:52:33,597 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_10.md
+2026-03-09 00:52:33,597 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553597-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,597 - stack_scribe - INFO -     ✅ Task queued: 1773017553597-1
+2026-03-09 00:52:33,597 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_8.md
+2026-03-09 00:52:33,597 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553597-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,597 - stack_scribe - INFO -     ✅ Task queued: 1773017553597-2
+2026-03-09 00:52:33,597 - stack_scribe - WARNING - ⚠️ Directory not found: memory_bank at /app/memory_bank
+2026-03-09 00:52:33,597 - stack_scribe - INFO - ✨ Scan complete. Queued 476 documentation tasks.
+Process Group PGID: 1288840

@@ -1,0 +1,29 @@
+<tool_output_masked>
+Output too large. Showing first 8,000 and last 32,000 characters. For full output see: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_1773007073688_0.txt
+Output: 7:C 08 Mar 2026 21:52:26.204 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+7:C 08 Mar 2026 21:52:26.204 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+7:C 08 Mar 2026 21:52:26.204 * Redis version=7.4.1, bits=64, commit=00000000, modified=0, pid=7, just started
+7:C 08 Mar 2026 21:52:26.204 * Configuration loaded
+7:M 08 Mar 2026 21:52:26.205 * monotonic clock: POSIX clock_gettime
+7:M 08 Mar 2026 21:52:26.206 * Running mode=standalone, port=6379.
+7:M 08 Mar 2026 21:52:26.207 # Failed to load private key: /tls/redis.key: error:8000000D:system library::Permission denied
+7:M 08 Mar 2026 21:52:26.207 # Failed to configure TLS. Check logs for more info.
+7:C 08 Mar 2026 21:52:28.347 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+7:C 08 Mar 2026 21:52:28.347 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+
+... [305 lines omitted] ...
+
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 45, in <module>
+    from app.XNAi_rag_app.core.agent_bus import AgentBusClient
+  File "/app/app/XNAi_rag_app/core/agent_bus.py", line 9, in <module>
+    from app.XNAi_rag_app.core.iam_handshake import KeyManager
+  File "/app/app/XNAi_rag_app/core/iam_handshake.py", line 25, in <module>
+    from .iam_db import IAMDatabase, AgentIdentity, AgentType
+  File "/app/app/XNAi_rag_app/core/iam_db.py", line 22, in <module>
+    from passlib.context import CryptContext
+ModuleNotFoundError: No module named 'passlib'
+Process Group PGID: 768735
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773007073688_0_hj6z1d.txt
+</tool_output_masked>

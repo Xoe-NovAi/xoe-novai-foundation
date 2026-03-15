@@ -1,0 +1,3 @@
+{
+  "output": "No matches found for pattern \"Greek\\|BERT\\|Krikri\" in path \"expert-knowledge\"."
+}

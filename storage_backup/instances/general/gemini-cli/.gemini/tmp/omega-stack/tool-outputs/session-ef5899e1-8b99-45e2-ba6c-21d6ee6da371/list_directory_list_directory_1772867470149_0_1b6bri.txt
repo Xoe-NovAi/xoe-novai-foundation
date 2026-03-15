@@ -1,0 +1,3 @@
+{
+  "output": "Directory /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances is empty."
+}

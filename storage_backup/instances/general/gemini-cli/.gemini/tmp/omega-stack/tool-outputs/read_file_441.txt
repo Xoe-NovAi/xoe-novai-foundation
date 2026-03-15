@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 840-900 of 1207 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For examp
+... [TRUNCATED] ...
+       parallelism: 1\n        delay: 10s\n  \n  # New modular services in production\n  rag-core:\n    image: xnai/rag-core:${VERSION:-latest}\n    environment:\n      - ENVIRONMENT=production\n      - CONSUL_HOST=consul\n      - REDIS_HOST=redis"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773176116965_0_o61su.txt
+</tool_output_masked>

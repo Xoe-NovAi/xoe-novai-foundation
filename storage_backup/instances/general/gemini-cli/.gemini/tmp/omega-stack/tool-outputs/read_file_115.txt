@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# 🚀 GEMINI.md: DOMAIN CONTEXT — /docs\n\n**Domain**: `/docs`\n**Expertise**: MkDocs, Technical Writing, System Architecture, Omega Stack Protocols\n**Status**: ACTIVE | **Context Mastery**: 100%\n\n---\n\n## 🚨 Active Audit Reference\
+... [TRUNCATED] ...
+# 🛠 Tools & Commands\n- `mkdocs serve` — Local docs preview\n- `mkdocs build` — Build static docs\n\n## 🧠 Local Memory\nUse `./.cli/` within this folder for domain-specific state.\n- Metropolis Map: `docs/architecture/METROPOLIS_WIRING_MAP.md`\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773356307028_0_j5p35t.txt
+</tool_output_masked>

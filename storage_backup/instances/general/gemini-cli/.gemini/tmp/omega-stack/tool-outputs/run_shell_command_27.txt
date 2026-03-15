@@ -1,0 +1,2 @@
+Output: mcp-servers/xnai-rag
+Process Group PGID: 1974974

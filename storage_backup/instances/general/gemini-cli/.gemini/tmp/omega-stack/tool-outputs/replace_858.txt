@@ -1,0 +1,16 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/workers/library_curator.py (1 replacements). Here is the updated code:
+...
+        
+        try:
+            stats = None
+            if source_type == "api":
+                stats = await self.engine.ingest_from_api(api_name, query, max_items=max_items)
+            elif source_type == "local":
+                stats = await self.engine.ingest_from_directory(directory)
+            # RSS currently not implemented in the minimal engine restore
+
+            # Post final result
+            if stats:
+                await self._post_update(task_id, sender, "completed", stats)
+                logger.info(f"Curation complete for task {task_id}: {stats.total_ingested} items")
+...

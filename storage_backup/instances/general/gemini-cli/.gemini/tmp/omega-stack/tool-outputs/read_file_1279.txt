@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# OpenCode Model Comparison Matrix\n## Comprehensive Multi-Model Analysis for Xoe-NovAi Stack\n\n**Version**: 1.0.0  \n**Date**: February 21, 2026  \n**Researcher**: Cline AI Assistant  \n**Status**: Research Complete  \n\n## Executive
+... [TRUNCATED] ...
+s\n- Performance Optimization Standards\n\n---\n\n**Report Status**: Research Complete  \n**Next Steps**: Implementation planning and execution  \n**Confidence Level**: High (comprehensive analysis completed)  \n**Last Updated**: February 21, 2026"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773002572161_2_rixb02.txt
+</tool_output_masked>

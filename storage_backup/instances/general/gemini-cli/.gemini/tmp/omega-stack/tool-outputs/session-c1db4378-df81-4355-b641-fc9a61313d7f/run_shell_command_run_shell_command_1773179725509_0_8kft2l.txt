@@ -1,0 +1,3 @@
+{
+  "output": "Output: [sudo: authenticate] Password: \n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n100  1383  100  1383    0     0   2417      0 --:--:-- --:--:-- --:--:--  2417\n  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0Warning: Failed to open the file infra/docker/models/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf: Permission denied\n  0  468M    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0\ncurl: (23) client returned ERROR on write of 15477 bytes\nExit Code: 23\nProcess Group PGID: 726780"
+}

@@ -1,0 +1,3 @@
+{
+  "error": "File size exceeds the 20MB limit: /tmp/xnai-instances/instance-/gemini-cli/.gemini/tmp/omega-stack/chats/session-2026-03-07T05-39-ef5899e1.json (40.47MB)"
+}

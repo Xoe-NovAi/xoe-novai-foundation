@@ -1,0 +1,10 @@
+Output: xnai_memory_bank_mcp
+Error: no container with name or ID "xnai_memory_bank_mcp" found: no such container
+xnai_redis
+Error: no container with ID or name "xnai_memory_bank_mcp" found: no such container
+xnai_redis
+10e152c149d0b8c6be013e5342596814aa9d574ae859ca66b5a9a0c7bfe51603
+xnai_redis
+97a17b962d8957873debc404734bf76febed4c7f5769cabcf7bbff7b93d87218
+xnai_memory_bank_mcp
+Process Group PGID: 858234

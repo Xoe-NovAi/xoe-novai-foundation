@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 12 matches for pattern \"Metron|DSRC|Gnosis Pack|Refractive Compression\" in path \"docs/\":\n---\nFile: protocols/RCF_MASTER_PROTOCOL.md\nL1: # RCF MASTER PROTOCOL: THE REFRACTIVE COMPRESSION FRAMEWORK\nL11: The **Refractive Com
+... [TRUNCATED] ...
+na, Loki, OpenTelemetry).\n---\nFile: gnostic_architecture/02_oikos_council.md\nL22: | F8       | The Observer | The Sentinel      | Monitoring, Logging, & Self-Reflection (Metron).             | `make facet-summon FACET=facet-8`            |\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/grep_search_grep_search_1773331526002_0_1419zn.txt
+</tool_output_masked>

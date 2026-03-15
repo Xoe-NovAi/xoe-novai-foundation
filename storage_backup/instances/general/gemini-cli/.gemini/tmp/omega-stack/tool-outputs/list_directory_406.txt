@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack:\n[DIR] _archive\n[DIR] .gemini\n[DIR] .git\n[DIR] .github\n[DIR] .logs\n[DIR] .opencode\n[DIR] .pytest_cache\n[DIR] .venv_mcp\n[DIR] .vscode\n[DIR] app\n[DIR] ar
+... [TRUNCATED] ...
+45 bytes)\nOMEGA_TOOLS.yaml (3379 bytes)\nOPUS_STRATEGIC_AUDIT_20260308.md (26665 bytes)\nphotorec.log (55 bytes)\nQUICK_START.md (970 bytes)\nREADME.md (6486 bytes)\nSESSIONS_MAP.md (6360 bytes)\nSTRATEGIC_IMPLEMENTATION_GUIDE_v4.md (15633 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/list_directory_list_directory_1773174167394_0_bep27l.txt
+</tool_output_masked>

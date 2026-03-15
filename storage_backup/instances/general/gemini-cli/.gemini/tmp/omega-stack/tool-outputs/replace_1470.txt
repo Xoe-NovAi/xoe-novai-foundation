@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/memory_bank_fallback.py (1 replacements). Here is the updated code:\n...\n        self.mcp_server = mcp_server\n        self.fal
+... [TRUNCATED] ...
+us\": \"error\", \"message\": f\"Unknown tool: {name}\"}\n\n        # Format result for MCP (same as server.py)\n        from mcp.types import TextContent\n        import json\n        return [TextContent(type=\"text\", text=json.dumps(result))]\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773000121970_0_bzso9.txt
+</tool_output_masked>

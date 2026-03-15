@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\ndocument_type: report\ntitle: MPI\ncreated_by: Haiku-4.5 (Phase 2C Automation)\ncreated_date: 2026-03-14\nversion: 1.0\nstatus: active\nhash_sha256: a3e901c9122eb120c51f70cc1053b934fb98faa80da7a58c41482d10df31cd1d\n---\n\n# 🏙️ XN
+... [TRUNCATED] ...
+ded Confidence**: 82%\n\n---\n\n**Last Updated**: 2026-03-14T04:55:00Z | Haiku 4.5 (Copilot CLI)  \n**Next Review**: Upon Phase 0 completion or GPT-4.1 handoff  \n**Approved By**: Sonnet 4.6 (97% conf) + Grok MC (75% conf) + Haiku 4.5 (95% conf)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773543428969_1_47y5o4.txt
+</tool_output_masked>

@@ -1,0 +1,3 @@
+{
+  "output": "{\n  \"mcpServers\": {\n    \"memory-bank\": {\n      \"command\": \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/run_server.sh\",\n      \"args\": []\n    }\n  },\n  \"experimental\": {\n    \"plan\": true\n  },\n  \"tools\": {\n    \"truncateToolOutputThreshold\": 60000\n  },\n  \"context\": {\n    \"fileFiltering\": {\n      \"respectGitIgnore\": false\n    }\n  },\n  \"model\": {\n    \"compressionThreshold\": 0.6\n  },\n  \"ui\": {\n    \"useAlternateBuffer\": true\n  }\n}"
+}

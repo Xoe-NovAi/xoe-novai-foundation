@@ -1,0 +1,4 @@
+Output: total 8
+drwxrwxr-x  2 100999       100999       4096 Mar 11 15:04 .
+drwxrwxr-x 41 arcana-novai arcana-novai 4096 Mar 11 15:04 ..
+Process Group PGID: 76477

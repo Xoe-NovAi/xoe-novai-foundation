@@ -1,0 +1,3 @@
+{
+  "output": "Output: LLAMA_CPP_USE_MMAP=true\nLLAMA_CPP_N_THREADS=6\nLLAMA_CPP_F16_KV=true\nLLAMA_CPP_USE_MLOCK=false\nProcess Group PGID: 1459033"
+}

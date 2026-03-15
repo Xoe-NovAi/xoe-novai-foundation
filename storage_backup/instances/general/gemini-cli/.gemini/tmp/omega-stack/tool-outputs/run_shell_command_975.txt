@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: xnai_library_curator
+STEP 1/11: FROM xnai-base:latest
+STEP 2/11: LABEL maintainer="Xoe-NovAi Team"
+--> Using cache 9a5203f80bcab3238701d780dfbb5abb4cec5085421bd19c306a06ec07193a59
+--> 9a5203f80bca
+STEP 3/11: LABEL version="0.1.0"
+--> Using cache d29c4e4ec1aa2a6f17394236a644761e5d84db09da51c8c6c668fd293227dfcf
+--> d29c4e4ec1aa
+STEP 4/11: LABEL description="Xoe-NovAi Library Curator Worker"
+--> Using cache f783ee45f10832dfdc0438e49b8cd7ccbdcfffd6933e12ddecdeb01961db84fe
+
+... [39 lines omitted] ...
+
+STEP 9/11: COPY app/ /app/app/
+--> c65805a7953a
+STEP 10/11: COPY scripts/ /app/scripts/
+--> af7821a7e5da
+STEP 11/11: CMD ["python", "-m", "app.XNAi_rag_app.workers.library_curator"]
+COMMIT xnai-library-curator:latest
+--> 428edc6831ce
+Successfully tagged localhost/xnai-library-curator:latest
+428edc6831cef7c04888cab7d2c3fe23177c91b589f38e0007b75b8a010e2c4a
+7686bb6650ea94427eb47411b9e9055897ad7fc881d6616b309f9cbb5204f988
+Process Group PGID: 1222711
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773015129229_0_uzws2i.txt
+</tool_output_masked>

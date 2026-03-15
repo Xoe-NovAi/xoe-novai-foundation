@@ -1,0 +1,3 @@
+{
+  "output": "Output: ID            NAME           CPU %       MEM USAGE / LIMIT  MEM %       NET IO             BLOCK IO    PIDS        CPU TIME      AVG CPU %\n66e43ccbcea4  xnai_caddy     0.10%       8.282MB / 268.4MB  3.09%       6.156kB / 1.748kB  0B / 0B     16          32.966814s    0.10%\nd581bc115d30  xnai_qdrant    0.46%       37.98MB / 7.069GB  0.54%       234.3kB / 5.968kB  0B / 0B     71          2m35.061366s  0.46%\nb47356e5d8fe  xnai_redis     276.04%     544.8kB / 536.9MB  0.10%       90B / 218B         0B / 0B     2           62.919ms      276.04%\nac4b937c2d89  xnai_postgres  0.43%       4.207MB / 7.069GB  0.06%       219.1kB / 978B     0B / 0B     7           2.157004s     0.43%\nProcess Group PGID: 338150"
+}

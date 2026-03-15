@@ -1,0 +1,3 @@
+{
+  "output": "Output: Traceback (most recent call last):\n  File \"/app/mcp-server/server.py\", line 29, in <module>\n    from fastapi import FastAPI, Request\nModuleNotFoundError: No module named 'fastapi'\nExit Code: 1\nProcess Group PGID: 8224"
+}

@@ -1,0 +1,19 @@
+{
+  "sessionId": "34f6e2c7-b124-4efa-abb3-77417765ef8e",
+  "projectHash": "2476bd7a9850651760e85ba3ac3188c94c0588ba952e85515f42602f589ea94f",
+  "startTime": "2026-03-08T17:59:25.531Z",
+  "lastUpdated": "2026-03-08T17:59:25.531Z",
+  "messages": [
+    {
+      "id": "dce0dffc-325c-4e02-8576-3e45ebdf2fb4",
+      "timestamp": "2026-03-08T17:59:25.531Z",
+      "type": "user",
+      "content": [
+        {
+          "text": "Scribe, you are now operating with a dedicated API key (Antipode account). Your task is to perform a complete audit of the documentation in docs/ and the knowledge_base/ directories.\nSpecifically:\n1. Identify stale guides that haven't been updated since the True Soul (Phase 3.0) breakthrough.\n2. Check for missing 'How-to' guides for our new tools: Vampire Control, Facet Summoner, and the Sentinel.\n3. Verify that the 'Master Gnosis' properly links to relevant sub-documents.\n4. Report on what our documentation situation needs right now to be considered 'Sovereign Grade.'\nProvide a TODO list for yourself or other facets."
+        }
+      ]
+    }
+  ],
+  "kind": "main"
+}

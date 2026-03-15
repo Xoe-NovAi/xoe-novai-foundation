@@ -1,0 +1,3 @@
+{
+  "output": "Found 5 matches for pattern \"branch:\" in path \"docs/\":\n---\nFile: 05-research/ADDITIONAL-RESEARCH-NEEDED.md\nL5: git_branch: main\nL175: - **Question**: All documents say `git_branch: main` — should feature branches be used?\n---\nFile: 04-phase-4/NOTEBOOKLM_SERVICE_SUMMARY.md\nL135: 1. Create feature branch: `feature/notebooklm-phase1-jupyter-integration`\n---\nFile: architecture/XNAI-AGENT-TAXONOMY.md\nL5: git_branch: main\n---\nFile: index.json\nL7046:         \"Jules submits branch: feat/langchain-upgrade-xxx\",\n---"
+}

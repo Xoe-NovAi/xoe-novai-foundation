@@ -1,0 +1,33 @@
+<tool_output_masked>
+Output: [1/2] STEP 1/4: FROM python:3.12-slim AS builder
+[1/2] STEP 2/4: WORKDIR /build
+--> Using cache e31617cd784d7ff422dce2a4eb9e85efad6d8f33bb88ea863328dce845aaa559
+--> e31617cd784d
+[1/2] STEP 3/4: RUN apt-get update && apt-get install -y --no-install-recommends     gcc     python3-dev     && rm -rf /var/lib/apt/lists/*
+--> Using cache 39373420232931614365bf779d16fed9633def94b3d0b23cd5037fc68b60a1bd
+--> 393734202329
+[1/2] STEP 4/4: RUN pip install --no-cache-dir --default-timeout=1000     fastapi     uvicorn     litellm     google-cloud-aiplatform     google-genai     python-dotenv     httpx     pyyaml     anyio
+Collecting fastapi
+  Downloading fastapi-0.135.1-py3-none-any.whl.metadata (30 kB)
+
+... [444 lines omitted] ...
+
+--> b57f754caab7
+[2/2] STEP 11/13: USER 1000
+--> 5b512b553ab9
+[2/2] STEP 12/13: EXPOSE 8006
+--> 4d7d851b588c
+[2/2] STEP 13/13: CMD ["uvicorn", "app.oikos_service:app", "--host", "0.0.0.0", "--port", "8006"]
+[2/2] COMMIT docker_oikos
+--> f03309390007
+Successfully tagged localhost/docker_oikos:latest
+f03309390007b169b38ea67ae7009fcbd523b7b87328d44552641aac02d60e5c
+Error: container 43b1cc621f7502555161ac6b1cd762deb5ab4741b061a696e60098690b31e842 conmon exited prematurely, exit code could not be retrieved: internal libpod error
+xnai_oikos
+2dc78a2dc9c4e7c303199bf543a29323db2b86ffeeeb1728cc8600f062c7e59f
+xnai_oikos
+Error: rootlessport listen tcp 0.0.0.0:8000: bind: address already in use
+Process Group PGID: 474420
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/run_shell_command_run_shell_command_1773279348409_0_8zvl5l.txt
+</tool_output_masked>

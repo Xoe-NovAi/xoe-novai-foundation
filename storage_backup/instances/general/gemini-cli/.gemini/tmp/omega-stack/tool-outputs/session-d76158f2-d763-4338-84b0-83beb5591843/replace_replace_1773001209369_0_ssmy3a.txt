@@ -1,0 +1,3 @@
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/dependencies.py (1 replacements). Here is the updated code:\n...\n        **kwargs: Additional parameters\n        \n    Returns:\n        Initialized embeddings\n    \"\"\"\n    return await anyio.to_thread.run_sync(lambda: get_embeddings(model_path, **kwargs))\n\n# ============================================================================\n# VECTORSTORE INITIALIZATION WITH BACKUP FALLBACK\n# ============================================================================\n\n..."
+}

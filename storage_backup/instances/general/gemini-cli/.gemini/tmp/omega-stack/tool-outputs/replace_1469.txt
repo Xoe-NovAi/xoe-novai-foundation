@@ -1,0 +1,22 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+                inputSchema={
+                    "type": "object",
+                    "properties": {},
+                    "required": []
+                }
+            ),
+            Tool(
+                name="get_fallback_status",
+                description="Get the status of the memory bank fallback system",
+                inputSchema={
+                    "type": "object",
+                    "properties": {},
+                    "required": []
+                }
+            )
+        ]
+
+    async def handle_tool_call(self, name: str, arguments: Dict[str, Any]) -> List[TextContent]:
+        """Handle MCP tool calls."""
+...

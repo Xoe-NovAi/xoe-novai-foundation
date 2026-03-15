@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# OpenCode CLI Model Card v1.0.0\n\n**CLI**: OpenCode CLI  \n**Version**: v1.2.6  \n**Free Tier**: Yes (all models built-in, zero cost)  \n**Last Updated**: 2026-02-17  \n**Persona Focus**: Research, Code Exploration, Large Context Ana
+... [TRUNCATED] ...
+b.com/opencode/opencode\n- Documentation: https://docs.opencode.dev\n- Model Providers:\n  - OpenAI: https://openai.com\n  - Moonshot (Kimi): https://www.moonshot.cn\n  - Zhipu (GLM): https://www.zhipuai.cn\n  - MiniMax: https://www.minimaxi.com\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773002523537_0_yx8icl.txt
+</tool_output_masked>

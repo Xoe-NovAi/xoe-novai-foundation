@@ -1,0 +1,2 @@
+Output: -rw-rw-r-- 1 arcana-novai arcana-novai 9923 Mar 11 15:54 infra/docker/monitoring/grafana/dashboards/omega-stack-dashboard.json
+Process Group PGID: 106472

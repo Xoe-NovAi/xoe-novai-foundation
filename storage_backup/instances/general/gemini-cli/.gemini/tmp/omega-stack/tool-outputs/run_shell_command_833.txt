@@ -1,0 +1,29 @@
+<tool_output_masked>
+Output too large. Showing first 8,000 and last 32,000 characters. For full output see: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_1773019893362_0.txt
+Output: Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+
+... [777 lines omitted] ...
+
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Process Group PGID: 1356854
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773019893362_0_a8jvpj.txt
+</tool_output_masked>

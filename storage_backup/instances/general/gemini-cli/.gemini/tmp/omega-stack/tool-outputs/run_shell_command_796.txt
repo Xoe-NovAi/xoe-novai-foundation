@@ -1,0 +1,11 @@
+Output: 20G     /home/arcana-novai/.local/share/containers
+464M    /home/arcana-novai/.local/share/opencode
+151M    /home/arcana-novai/.local/share/uv
+115M    /home/arcana-novai/.local/share/pipx
+92M     /home/arcana-novai/.local/share/GitKrakenCLI
+7.9M    /home/arcana-novai/.local/share/qBittorrent
+3.6M    /home/arcana-novai/.local/share/nyxt
+2.3M    /home/arcana-novai/.local/share/ai.opencode.desktop
+2.0M    /home/arcana-novai/.local/share/opentui
+608K    /home/arcana-novai/.local/share/recently-used.xbel
+Process Group PGID: 78430

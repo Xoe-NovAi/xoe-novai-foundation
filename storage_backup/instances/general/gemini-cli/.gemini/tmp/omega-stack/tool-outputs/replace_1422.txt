@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/test_orchestrator_integration.py (1 replacements). Here is the updated code:
+...
+from app.XNAi_rag_app.core.iam_handshake import KeyManager
+
+async def test_orchestrator_handoff():
+    """Test full delegation/handoff flow via Orchestrator."""
+    os.environ["REDIS_HOST"] = "localhost"
+    os.environ["REDIS_PASSWORD"] = os.getenv("REDIS_PASSWORD", "")
+    
+    db_path = "data/test_orchestrator.db"
+    if os.path.exists(db_path): os.remove(db_path)
+    db = IAMDatabase(db_path)
+    
+...

@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app:\n[DIR] __pycache__\n[DIR] XNAi_rag_app\n__init__.py (64 bytes)\nconfig.toml (14932 bytes)\nGEMINI.md (1621 bytes)"
+}

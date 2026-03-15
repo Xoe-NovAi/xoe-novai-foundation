@@ -1,0 +1,3 @@
+{
+  "output": "Output: scripts/omega_foundry.py:    url = \"http://localhost:8006/health\"\nscripts/omega_foundry.py:    url = \"http://localhost:8006/iris/route\"\nProcess Group PGID: 473211"
+}

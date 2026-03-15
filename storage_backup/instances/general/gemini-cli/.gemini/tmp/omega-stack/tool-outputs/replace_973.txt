@@ -1,0 +1,15 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.curator (1 replacements). Here is the updated code:
+...
+    bcrypt>=4.0.1 \
+    tenacity>=8.2.0 \
+    PyJWT>=2.8.0 \
+    psycopg2-binary>=2.9.9 \
+    aiohttp>=3.10.0 \
+    cryptography>=42.0.0 \
+    sqlalchemy>=2.0.0
+
+# Group 2: Library and Media dependencies
+RUN uv pip install --system --no-cache \
+    feedparser>=6.0.12 \
+    python-magic>=0.4.27 \
+...

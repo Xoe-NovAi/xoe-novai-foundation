@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nXNAi Sentinel Prototype (v0.1.0)\n================================\nA lightweight monitor that watches system resources and broadcasts\nhealth alerts to the Agent Bus.\n\nDependencies: redis, psutil\n\"\
+... [TRUNCATED] ...
+CPU {stats['cpu_percent']}%\")\n                \n                time.sleep(POLL_INTERVAL)\n        except KeyboardInterrupt:\n            logger.info(\"Sentinel shutting down.\")\n\nif __name__ == \"__main__\":\n    s = Sentinel()\n    s.run()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000695613_0_9z7l8c.txt
+</tool_output_masked>

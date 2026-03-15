@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.logs/sessions:\n[DIR] Custom\n[DIR] Dev\n[DIR] General"
+}

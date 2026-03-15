@@ -1,0 +1,1 @@
+No files found matching pattern "_archive/**/{IMPL-*,SESS-*,SUPP-*,YOUR_OMEGA*}" within /home/arcana-novai/Documents/Xoe-NovAi/omega-stack

@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Omega Stack Permissions Healer periodically
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=1h
+Unit=omega-permissions-heal.service
+
+[Install]
+WantedBy=timers.target

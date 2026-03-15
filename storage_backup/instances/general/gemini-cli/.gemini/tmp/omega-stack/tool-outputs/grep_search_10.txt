@@ -1,0 +1,1 @@
+No matches found for pattern "permission|100999|facl|mapping|UID" in path "storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/".

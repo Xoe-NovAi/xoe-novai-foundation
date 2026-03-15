@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (5 replacements). Here is the updated code:\n...\n      - REDIS_PORT=6379\n      - REDIS_PASSWORD=${REDIS_PASSWORD}\n      -
+... [TRUNCATED] ...
+DIS_CA_CERT_PATH=/tls/ca.crt\n      - REDIS_SSL_CERT_REQS=none\n      - HF_TOKEN=${HF_TOKEN:-}\n      - STORAGE_PATH=/storage\n      - CONFIG_PATH=/app/config.toml\n      - PYTHONPATH=/app\n    volumes:\n      - ../../storage_new:/storage:Z,U\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/replace_replace_1773182976461_0_5zn61t.txt
+</tool_output_masked>

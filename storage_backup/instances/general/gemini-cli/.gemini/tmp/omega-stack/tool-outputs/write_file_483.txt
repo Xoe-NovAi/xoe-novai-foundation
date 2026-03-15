@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/circuit_breaker_load_test.py. Here is the updated code:\n...\nPhase 1, Day 2 - Circuit Breaker Implementation & Service Resilience\n\"\"\"\nimport as
+... [TRUNCATED] ...
+- circuit breakers may have triggered\")\n    else:\n        print(\"  🚨 Low success rate - system under heavy pressure\")\n\n    print(\"\\n✅ Load test completed\")\n\nif __name__ == \"__main__\":\n    asyncio.run(load_test_circuit_breakers())\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/write_file_write_file_1773001899205_0_dobexi.txt
+</tool_output_masked>

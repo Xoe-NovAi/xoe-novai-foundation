@@ -1,0 +1,28 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/Makefile (1 replacements). Here is the updated code:
+...
+# ============================================================================
+
+GEMINI_CLI := /home/arcana-novai/.nvm/versions/node/v25.3.0/bin/gemini
+# Default Node memory limit for Gemini CLI stability (Audit C2)
+export NODE_OPTIONS=--max_old_space_size=4096
+# Gnostic Battle Readiness (SESS-23)
+export MAX_TURNS=250
+
+gnostic-audit: ## 🔱 Execute the Global Gnostic Audit (ZLV + TGG + GRA)
+	@echo "$(CYAN)🔱 Initiating Global Gnostic Audit...$(NC)"
+	@python3 scripts/gnostic_audit.py
+
+preflight: ## ✈️  Run mmap-optimized Gnostic Pre-Flight Checks
+	@echo "$(CYAN)✈️  Running Gnostic Pre-Flight...$(NC)"
+	@python3 scripts/gnostic_preflight.py
+
+oikonomia-report: ## 💰 Generate Gnostic Oikonomia (Economy) Report
+	@echo "$(CYAN)💰 Gnostic Oikonomia Report (Sovereign ROI)$(NC)"
+	@if [ -f memory_bank/OIKONOMIA_HISTORY.jsonl ]; then tail -n 10 memory_bank/OIKONOMIA_HISTORY.jsonl; else echo "No history found."; fi
+
+facet-summon: ## 🔱 Summon a specific facet (Usage: make facet-summon FACET=facet-3 MSG="Custom prompt")
+	@if [ -z "$(FACET)" ]; then echo "$(RED)❌ ERROR: FACET is required (e.g., FACET=facet-3)$(NC)"; exit 1; fi
+	@echo "$(CYAN)🏙️  Summoning $(FACET)...$(NC)"
+	@PROMPT=$${MSG:-"You are $(FACET). Use your tools to fulfill your mandate. Access the Memory Bank via standard MCP integration."}; \
+	$(GEMINI_CLI) -i "$$PROMPT"
+...

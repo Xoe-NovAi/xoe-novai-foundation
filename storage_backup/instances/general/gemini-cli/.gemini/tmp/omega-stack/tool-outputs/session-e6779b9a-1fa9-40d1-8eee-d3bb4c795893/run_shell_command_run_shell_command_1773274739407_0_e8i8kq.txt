@@ -1,0 +1,3 @@
+{
+  "output": "Output: APP_UID=1000\nAPP_GID=1000\nProcess Group PGID: 335029"
+}

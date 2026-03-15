@@ -1,0 +1,29 @@
+<tool_output_masked>
+Output: Downloading Ancient-Greek-BERT...
+mkdir -p models/ancient-greek-bert
+wget -P models/ancient-greek-bert https://huggingface.co/pranaydeeps/Ancient-Greek-BERT/resolve/main/pytorch_model.bin
+--2026-03-12 12:45:34--  https://huggingface.co/pranaydeeps/Ancient-Greek-BERT/resolve/main/pytorch_model.bin
+Resolving huggingface.co (huggingface.co)... 2600:9000:27a1:a00:17:b174:6d00:93a1, 2600:9000:27a1:6400:17:b174:6d00:93a1, 2600:9000:27a1:fe00:17:b174:6d00:93a1, ...
+Connecting to huggingface.co (huggingface.co)|2600:9000:27a1:a00:17:b174:6d00:93a1|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://cas-bridge.xethub.hf.co/xet-bridge-us/621ffdc136468d709f17efba/00ed87fc023796fdf5f1e90806283f7286da82f4c258f88785925432e25e9497?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260312%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260312T154535Z&X-Amz-Expires=3600&X-Amz-Signature=357596af171dc8348d1dac9dbe2d1ae115946e088579e9e70d33e4c3f61a643b&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27pytorch_model.bin%3B+filename%3D%22pytorch_model.bin%22%3B&response-content-type=application%2Foctet-stream&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1773333935&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3MzMzMzkzNX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82MjFmZmRjMTM2NDY4ZDcwOWYxN2VmYmEvMDBlZDg3ZmMwMjM3OTZmZGY1ZjFlOTA4MDYyODNmNzI4NmRhODJmNGMyNThmODg3ODU5MjU0MzJlMjVlOTQ5NyoifV19&Signature=VU7EGmfYeMJorbNaG4IbDeH74gcI1RkJXrN5YJoKvZoQuItVr3JimQ4AirGaUdf9V6%7EUdxG4VC6QeMYiBceYfWIa-35YrDszPvZA1UbLsTm%7EF7mC4PitJw1qfnuOtnO0Y2xDY2JYiVe-aTisJ8leCKaJOtqhlgCw7SR3x4LbZ9k0DzoCHmE0NhQz13ormaPK2WvDOzXmxMLpWtFuwbodoaWR%7E-XLgwaUZOUodR5Ojk0%7Er52NgYjJDoX8Ur-YMMBxwX%7EpvM8TrZB2H28jCY76l6BXqY9TesnQQ6o4Hdtu8DADhesLnH9lELA0HFuCVnpm6v0ordBx4V9QfYwq52qtrw__&Key-Pair-Id=K2L8F4GPSG1IFC [following]
+--2026-03-12 12:45:35--  https://cas-bridge.xethub.hf.co/xet-bridge-us/621ffdc136468d709f17efba/00ed87fc023796fdf5f1e90806283f7286da82f4c258f88785925432e25e9497?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260312%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260312T154535Z&X-Amz-Expires=3600&X-Amz-Signature=357596af171dc8348d1dac9dbe2d1ae115946e088579e9e70d33e4c3f61a643b&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27pytorch_model.bin%3B+filename%3D%22pytorch_model.bin%22%3B&response-content-type=application%2Foctet-stream&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1773333935&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3MzMzMzkzNX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82MjFmZmRjMTM2NDY4ZDcwOWYxN2VmYmEvMDBlZDg3ZmMwMjM3OTZmZGY1ZjFlOTA4MDYyODNmNzI4NmRhODJmNGMyNThmODg3ODU5MjU0MzJlMjVlOTQ5NyoifV19&Signature=VU7EGmfYeMJorbNaG4IbDeH74gcI1RkJXrN5YJoKvZoQuItVr3JimQ4AirGaUdf9V6%7EUdxG4VC6QeMYiBceYfWIa-35YrDszPvZA1UbLsTm%7EF7mC4PitJw1qfnuOtnO0Y2xDY2JYiVe-aTisJ8leCKaJOtqhlgCw7SR3x4LbZ9k0DzoCHmE0NhQz13ormaPK2WvDOzXmxMLpWtFuwbodoaWR%7E-XLgwaUZOUodR5Ojk0%7Er52NgYjJDoX8Ur-YMMBxwX%7EpvM8TrZB2H28jCY76l6BXqY9TesnQQ6o4Hdtu8DADhesLnH9lELA0HFuCVnpm6v0ordBx4V9QfYwq52qtrw__&Key-Pair-Id=K2L8F4GPSG1IFC
+Resolving cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)... 18.173.166.74, 18.173.166.5, 18.173.166.82, ...
+
+... [41 lines omitted] ...
+
+Downloading Krikri-8B-Instruct Q5_K_M...
+mkdir -p models
+wget -O models/Krikri-8b-Instruct-Q5_K_M.gguf https://huggingface.co/ilsp/Llama-Krikri-8B-Instruct-GGUF/resolve/main/Llama-Krikri-8B-Instruct-Q5_K_M.gguf
+--2026-03-12 12:47:03--  https://huggingface.co/ilsp/Llama-Krikri-8B-Instruct-GGUF/resolve/main/Llama-Krikri-8B-Instruct-Q5_K_M.gguf
+Resolving huggingface.co (huggingface.co)... 2600:9000:27a1:fc00:17:b174:6d00:93a1, 2600:9000:27a1:8400:17:b174:6d00:93a1, 2600:9000:27a1:a400:17:b174:6d00:93a1, ...
+Connecting to huggingface.co (huggingface.co)|2600:9000:27a1:fc00:17:b174:6d00:93a1|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2026-03-12 12:47:04 ERROR 404: Not Found.
+
+make: *** [Makefile:372: download-krikri] Error 8
+Exit Code: 2
+Process Group PGID: 1243082
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773330333698_0_vrybfe.txt
+</tool_output_masked>

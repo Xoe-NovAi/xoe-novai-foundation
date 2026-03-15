@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/MPI.md (1 replacements). Here is the updated code:\n...\n| **Agent Bus** | ✅ ACTIVE | Redis Stream-based inter-agent communication. | `app/XNAi_
+... [TRUNCATED] ...
+s/vampire_control.sh` |\n| **Stack Sentinel** | 🧪 PROTOTYPE | Autonomous resource-aware administrator. | `scripts/sentinel_prototype.py` |\n\n---\n\n## 🏛️ 2. Scholar Platform (The Great Library)\n*Current Phase: SI1 - LCS Deployment (LIVE)*\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773016224562_0_02zz04v.txt
+</tool_output_masked>

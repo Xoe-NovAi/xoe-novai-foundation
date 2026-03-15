@@ -1,0 +1,3 @@
+{
+  "output": "Output: find: ‘/proc/tty/driver’: Permission denied\n/app/scripts/ingest_library.py\n/app/app/XNAi_rag_app/services/ingest_library.py\nExit Code: 1\nProcess Group PGID: 1302953"
+}

@@ -1,0 +1,24 @@
+Output: 🔱 INITIATING GNOSIS SYSTEM VERIFICATION
+
+🧪 Testing ZLV Crystal Hashing Rigidity...
+  - Hash V1: 83d596e775e49a9d0100fff846afb54965d6a4e954e746446a85f51896e05a80
+  - Hash V2: 83d596e775e49a9d0100fff846afb54965d6a4e954e746446a85f51896e05a80
+✅ ZLV Rigidity Verified.
+🧪 Testing Ancient Greek Normalization...
+  - Input: μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος
+  - Output: μηνιν αειδε θεα πηληιαδεω αχιληος
+✅ Greek Normalization Verified.
+🧪 Testing Resonance Auditor (Cosine Similarity)...
+  📈 Athena Resonance Score: 0.2582
+
+💥 TEST SUITE FAILED: ❌ Low resonance for aligned context: 0.2581988897471611
+Traceback (most recent call last):
+  File "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/test_sess23_gnosis.py", line 111, in <module>
+    test_resonance_auditor()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/test_sess23_gnosis.py", line 63, in test_resonance_auditor
+    assert score > 0.4, f"❌ Low resonance for aligned context: {score}"
+           ^^^^^^^^^^^
+AssertionError: ❌ Low resonance for aligned context: 0.2581988897471611
+Exit Code: 1
+Process Group PGID: 1861953

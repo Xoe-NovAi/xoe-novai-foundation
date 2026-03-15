@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Subagent 'codebase_investigator' finished.\nTermination Reason: GOAL\nResult:\n{\n  \"SummaryOfFindings\": \"The investigation was interrupted, but a comprehensive mental model was constructed. \\n\\n1. **setfacl Strategy**: The '4-Lay
+... [TRUNCATED] ...
+{\n      \"FilePath\": \"scripts/gnostic_audit.py\",\n      \"Reasoning\": \"The audit tool used to enforce TGG compliance and detect 'Brittle-Bone' violations.\",\n      \"KeySymbols\": [\n        \"verify_tgg_compliance\"\n      ]\n    }\n  ]\n}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/codebase_investigator_codebase_investigator_1773543494377_1_gg4rwt.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/protocols/OIKOS_COUNCIL.md. Here is the updated code:\n# 🔱 Protocol: The Oikos Council\n**Status**: ACTIVE | **Version**: 1.0.0\n**Dom
+... [TRUNCATED] ...
+ of the Hearth\nEvery major session or `/compress` event must be followed by an **Oikos Blessing**. \n\n**Command**: `python3 scripts/omega_foundry.py oikos-check`\n\n---\n\n**Mantra**: *The fire never dies while the Council watches the hearth.*\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/write_file_write_file_1773269142374_0_2g6wrs.txt
+</tool_output_masked>

@@ -1,0 +1,29 @@
+<tool_output_masked>
+Output too large. Showing first 8,000 and last 32,000 characters. For full output see: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_1773017551055_0.txt
+Output: 2026-03-09 00:52:33,442 - stack_scribe - INFO - 🚀 Stack Scribe starting scan...
+2026-03-09 00:52:33,448 - app.XNAi_rag_app.core.config_loader - INFO - Configuration validated against Pydantic schema (v0.1.4-compliant)
+2026-03-09 00:52:33,448 - app.XNAi_rag_app.core.config_loader - INFO - Configuration loaded from /app/app/config.toml (22 sections)
+2026-03-09 00:52:33,464 - stack_scribe - WARNING - ⚠️ Directory not found: docs at /app/docs
+2026-03-09 00:52:33,464 - stack_scribe - INFO - Scanning expert-knowledge in /expert-knowledge...
+2026-03-09 00:52:33,464 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/ctn_build.md
+2026-03-09 00:52:33,465 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553464-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,465 - stack_scribe - INFO -     ✅ Task queued: 1773017553464-0
+2026-03-09 00:52:33,465 - stack_scribe - INFO -   Indexing: /expert-knowledge/technical_manuals/docker/software_req_win.md
+2026-03-09 00:52:33,465 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553465-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+
+... [322 lines omitted] ...
+
+2026-03-09 00:52:33,597 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553597-0 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,597 - stack_scribe - INFO -     ✅ Task queued: 1773017553597-0
+2026-03-09 00:52:33,597 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_10.md
+2026-03-09 00:52:33,597 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553597-1 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,597 - stack_scribe - INFO -     ✅ Task queued: 1773017553597-1
+2026-03-09 00:52:33,597 - stack_scribe - INFO -   Indexing: /library/manuals/redis/part_8.md
+2026-03-09 00:52:33,597 - XNAi_rag_app.core.agent_bus - INFO - Task sent: 1773017553597-2 from script:stack_scribe:001 to worker:library_curator:001 (Signed: False)
+2026-03-09 00:52:33,597 - stack_scribe - INFO -     ✅ Task queued: 1773017553597-2
+2026-03-09 00:52:33,597 - stack_scribe - WARNING - ⚠️ Directory not found: memory_bank at /app/memory_bank
+2026-03-09 00:52:33,597 - stack_scribe - INFO - ✨ Scan complete. Queued 476 documentation tasks.
+Process Group PGID: 1288840
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773017551055_0_z875wc.txt
+</tool_output_masked>

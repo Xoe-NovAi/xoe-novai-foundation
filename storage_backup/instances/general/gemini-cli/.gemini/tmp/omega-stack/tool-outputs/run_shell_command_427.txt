@@ -1,0 +1,2 @@
+Output: localhost/xnai-rag:latest 35f32c144bf8
+Process Group PGID: 101071

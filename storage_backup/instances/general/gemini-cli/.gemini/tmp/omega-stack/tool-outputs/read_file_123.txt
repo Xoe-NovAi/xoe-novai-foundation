@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# 🔱 Metropolis Wiring Map & Service Dependencies\n\n**Version**: 1.1.0 (Oikos cognitive mesh integration)\n**Status**: ACTIVE\n**Hardware Context**: Ryzen 7 5700U (Zen 2) | 6.6GB RAM Budget\n\n---\n\n## 🏛️ 1. Network Topology (Zero-T
+... [TRUNCATED] ...
+*OAuth Decryption**: Symmetric Fernet encryption for Gemini credentials (`XNAI_OAUTH_KEY`).\n- **Rainbow Rotation**: Automatic key rotation for high-bandwidth LLM inference.\n\n---\n*Wiring Map Sealed by The Sentinel. Oikos Harmony Achieved. 🔱*\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773354817918_0_ae3rcq.txt
+</tool_output_masked>

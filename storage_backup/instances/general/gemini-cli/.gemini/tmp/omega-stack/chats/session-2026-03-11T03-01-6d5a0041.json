@@ -1,0 +1,31 @@
+{
+  "sessionId": "6d5a0041-1f3b-4d39-b279-9b358e5b4d47",
+  "projectHash": "2476bd7a9850651760e85ba3ac3188c94c0588ba952e85515f42602f589ea94f",
+  "startTime": "2026-03-11T03:01:14.249Z",
+  "lastUpdated": "2026-03-11T03:01:16.747Z",
+  "messages": [
+    {
+      "id": "6998f74b-33bb-4220-ae50-f82262029411",
+      "timestamp": "2026-03-11T03:01:14.249Z",
+      "type": "info",
+      "content": "Waiting for MCP servers to initialize... Slash commands are still available and prompts will be queued."
+    },
+    {
+      "id": "d26c041a-9856-4105-903d-914b2fa409b3",
+      "timestamp": "2026-03-11T03:01:16.666Z",
+      "type": "info",
+      "content": "MCP issues detected. Run /mcp list for status."
+    },
+    {
+      "id": "739949e6-9598-4e58-944f-18b1044129d5",
+      "timestamp": "2026-03-11T03:01:16.747Z",
+      "type": "user",
+      "content": [
+        {
+          "text": "help skills"
+        }
+      ]
+    }
+  ],
+  "kind": "main"
+}

@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - LIBRARY_PATH=/library
+      - KNOWLEDGE_PATH=/expert-knowledge
+      - PYTHONPATH=/app/app
+      - LLM_API_URL=http://host.docker.internal:11434/v1/chat/completions
+      - LLM_MODEL_NAME=qwen2.5:0.5b
+      - REDIS_URL=rediss://redis:6379
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ../../storage:/storage:Z
+      - ./models:/storage/models:ro,Z
+...

@@ -1,0 +1,3 @@
+{
+  "output": "Output: xnai_memory_bank_mcp\nWarning: Could not load config: No module named 'XNAi_rag_app'\nProcess Group PGID: 954730"
+}

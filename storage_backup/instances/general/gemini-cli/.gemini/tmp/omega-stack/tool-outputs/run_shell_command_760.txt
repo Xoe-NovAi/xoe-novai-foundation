@@ -1,0 +1,3 @@
+Output: Movies/  engines/  gnosis_hub/  lexar_backup/  lost+found/  media_archives/  omega-stack/
+ANCESTRAL_HUB/  RECLAIMED_PALACE/  TREAZZURE/  lost+found/  soul_memory/  vector_store/
+Process Group PGID: 261220

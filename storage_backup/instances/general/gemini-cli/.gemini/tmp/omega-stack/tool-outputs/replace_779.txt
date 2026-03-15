@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - ./config/openpipe-config.yaml:/app/config/config.yaml:ro,Z
+      - ./data/openpipe:/app/data:Z,U
+      - ./logs/openpipe:/app/logs:Z,U
+    environment:
+      - OPENPIPE_API_KEY=${OPENPIPE_API_KEY:-}
+      - REDIS_URL=rediss://:${REDIS_PASSWORD}@redis:6379/0
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD:-changeme123}@postgres:5432/xnai
+      - CACHE_TTL=${OPENPIPE_CACHE_TTL:-300}
+      - DEDUPLICATION_WINDOW=${OPENPIPE_DEDUPLICATION_WINDOW:-60}
+      - METRICS_ENABLED=true
+      - SOVEREIGN_MODE=${OPENPIPE_SOVEREIGN_MODE:-true}
+...

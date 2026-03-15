@@ -1,0 +1,5 @@
+Output: total 20
+drwxrwxr-x+ 2 arcana-novai arcana-novai 4096 Mar  7 13:27 .
+drwxrwxr-x 3 arcana-novai arcana-novai 4096 Mar  7 13:27 ..
+-rw-rwxr-- 1 arcana-novai arcana-novai   50 Mar  7 13:27 .project_root
+Process Group PGID: 62408

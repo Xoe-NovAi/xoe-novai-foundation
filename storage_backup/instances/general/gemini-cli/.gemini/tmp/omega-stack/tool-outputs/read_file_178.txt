@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-150 of 1133 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example
+... [TRUNCATED] ...
+an Compute Evolution - GPU acceleration for transformer operations\n# Features:\n# - Vulkan 1.4 cooperative matrix support (VK_KHR_cooperative_matrix)\n# - RDNA2 iGPU optimization with FP16 precision\n# - Wave occupancy tuning (32-wide wavefronts)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/read_file_read_file_1773079885972_0_mjlmw5.txt
+</tool_output_masked>

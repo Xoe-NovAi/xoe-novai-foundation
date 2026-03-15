@@ -1,0 +1,7 @@
+Output: tcp   LISTEN 0      4096                                     127.0.0.1:11434      0.0.0.0:*                                              
+ls: cannot access 'sessions/': No such file or directory
+.logs/:
+total 4
+-rw-rw-r-- 1 arcana-novai arcana-novai    0 Mar  8 13:38 sentinel.log
+drwxrwxr-x 5 arcana-novai arcana-novai 4096 Mar  7 13:37 sessions
+Process Group PGID: 1438091

@@ -1,0 +1,3 @@
+{
+  "output": "Output:       - id: Qwen3-0.6B-Q4_K_M\n        path: \"models/Qwen3-0.6B-Q4_K_M.gguf\"\n        context_window: 32_000\n        notes: \"Fast local model. Good for classification and routing.\"\n      - id: embedding-gemma-300m\n        path: \"models/embedding-gemma-300m.gguf\"\n        notes: \"Local embedding model fallback.\"\n    recommended_use:\n      - Offline operation\n      - Privacy-sensitive tasks\n      - Cost-zero inference\n      - Agent orchestration decisions (small, frequent calls)\n--\n    model: Qwen3-0.6B-Q4_K_M\n    reason: \"Local fallback — always available, fully sovereign\"\nProcess Group PGID: 717363"
+}

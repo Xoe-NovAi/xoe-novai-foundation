@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/facets:\n[DIR] instance-1\n[DIR] instance-2\n[DIR] instance-3\n[DIR] instance-4\n[DIR] instance-5\n[DIR] instance-6\n[DIR] instance-7\n[DIR] instance-8"
+}

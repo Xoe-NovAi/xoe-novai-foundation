@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 44 file(s) matching \"**/*metrics*\" within /home/arcana-novai/Documents/Xoe-NovAi/omega-stack, sorted by modification time (newest first):\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-package
+... [TRUNCATED] ...
+e-NovAi/omega-stack/tests/__pycache__/test_metrics.cpython-313-pytest-9.0.2.pyc\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/benchmarks/KRIKRI_IMPORT_METRICS.md\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/test_metrics.py"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/glob_glob_1773291267940_0_ykac36.txt
+</tool_output_masked>

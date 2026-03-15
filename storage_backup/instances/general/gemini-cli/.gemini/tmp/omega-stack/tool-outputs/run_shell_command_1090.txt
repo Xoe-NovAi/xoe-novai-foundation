@@ -1,0 +1,7 @@
+Output:                total        used        free      shared  buff/cache   available
+Mem:           6.6Gi       3.3Gi       1.7Gi        16Mi       2.1Gi       3.3Gi
+Swap:           11Gi       879Mi        11Gi
+NAME       ALGORITHM DISKSIZE   DATA COMPR  TOTAL STREAMS MOUNTPOINT
+/dev/zram1 zstd            8G 686.8M  136M 144.4M         [SWAP]
+/dev/zram0 lzo-rle         4G 159.6M 54.7M  61.8M         [SWAP]
+Process Group PGID: 955627

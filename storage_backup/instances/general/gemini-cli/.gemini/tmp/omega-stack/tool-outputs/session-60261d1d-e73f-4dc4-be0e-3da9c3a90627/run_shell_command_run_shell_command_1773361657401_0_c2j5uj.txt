@@ -1,0 +1,3 @@
+{
+  "output": "Output: xnai_redis\nxnai_qdrant\nxnai_postgres\nProcess Group PGID: 2025381"
+}

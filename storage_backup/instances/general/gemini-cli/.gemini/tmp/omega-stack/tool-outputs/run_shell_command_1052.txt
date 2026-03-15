@@ -1,0 +1,9 @@
+Output: xnai_memory_bank_mcp
+xnai_redis
+xnai_memory_bank_mcp
+xnai_redis
+52f3ab90a0a48c2fb6fe8fcfc629bf6d4fc8886adb9c8d48418fad1623a048ad
+xnai_redis
+9a036958e3a4b33ecf1991e6d79b5d4c748cf95a7c28abb54ddef0f608b01460
+xnai_memory_bank_mcp
+Process Group PGID: 958509

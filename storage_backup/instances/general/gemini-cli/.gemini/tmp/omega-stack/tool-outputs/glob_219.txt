@@ -1,0 +1,4 @@
+Found 3 file(s) matching "config/**/*model*" within /home/arcana-novai/Documents/Xoe-NovAi/omega-stack, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/config/model-documentation.yaml
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/config/model-router.yaml
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/config/split-test-model-template.yaml

@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/gnostic_architecture:\n00_architect_phronesis.md (2628 bytes)\n01_temple_architecture.md (4936 bytes)\n02_oikos_council.md (2816 bytes)\n03_archetypal_personas.md (1809 bytes)"
+}

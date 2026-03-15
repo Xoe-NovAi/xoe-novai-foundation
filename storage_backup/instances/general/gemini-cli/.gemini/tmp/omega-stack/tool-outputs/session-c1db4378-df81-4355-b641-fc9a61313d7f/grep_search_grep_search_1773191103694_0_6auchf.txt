@@ -1,0 +1,3 @@
+{
+  "output": "No matches found for pattern \"git branch -a\\|git branch -av\" in path \"docs/06-development-log/\"."
+}

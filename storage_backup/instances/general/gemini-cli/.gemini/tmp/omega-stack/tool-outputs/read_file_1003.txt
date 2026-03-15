@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 450-500 of 849 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+args:\n        BUILDKIT_INLINE_CACHE: 1\n    image: xnai-mkdocs:latest\n    container_name: xnai_mkdocs\n    user: \"${APP_UID:-1001}:${APP_GID:-1001}\"\n    deploy:\n      resources:\n        limits:\n          memory: 512M\n          cpus: '0.2'"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773012048061_0_xypwx2j.txt
+</tool_output_masked>

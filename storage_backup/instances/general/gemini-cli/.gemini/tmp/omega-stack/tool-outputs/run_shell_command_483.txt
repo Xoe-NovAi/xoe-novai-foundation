@@ -1,0 +1,4 @@
+Output: 580:  caddy:
+581:    image: caddy:2.8-alpine
+594:      - ./logs/caddy:/var/log/caddy:Z,U
+Process Group PGID: 489118

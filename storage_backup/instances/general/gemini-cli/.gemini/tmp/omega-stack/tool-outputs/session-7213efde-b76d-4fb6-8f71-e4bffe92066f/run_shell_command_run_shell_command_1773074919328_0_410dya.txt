@@ -1,0 +1,3 @@
+{
+  "output": "Output: Collecting aiosqlite\n  Downloading aiosqlite-0.22.1-py3-none-any.whl.metadata (4.3 kB)\nDownloading aiosqlite-0.22.1-py3-none-any.whl (17 kB)\nInstalling collected packages: aiosqlite\nSuccessfully installed aiosqlite-0.22.1\nProcess Group PGID: 207518"
+}

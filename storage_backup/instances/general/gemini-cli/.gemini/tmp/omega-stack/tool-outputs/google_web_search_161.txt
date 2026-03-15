@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"python mcp.server.fastapi SSE transport heartbeat keep-alive logic\":\n\nI will research the `mcp.server.fastapi` implementation and standard SSE heartbeat patterns to determine the best approach for keep-alive
+... [TRUNCATED] ...
+earch.cloud.google.com/grounding-api-redirect/AUZIYQE69zfDLYYPm08wlhcDiA7uhZcvxbcfVzKk-ixuU7Q-jqi29SIEOTOHHA1_K5WhK09uoX88t7j66Y3CtblKLMXCrMyMNa7IQIBYzvrkDE4OLsQm5myLAh0ycOB6FOZ_ztnPmXgTZzJHN_wComuAYzLlbkJj8GJn82FcHqiLGREKDMUqDIrKNId49z8QmDPdOttc)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/google_web_search_google_web_search_1773078545255_0_qtk43.txt
+</tool_output_masked>

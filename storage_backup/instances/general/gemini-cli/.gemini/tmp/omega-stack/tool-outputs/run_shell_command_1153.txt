@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: make: unrecognized option '--build'
+Usage: make [options] [target] ...
+Options:
+  -b, -m                      Ignored for compatibility.
+  -B, --always-make           Unconditionally make all targets.
+  -C DIRECTORY, --directory=DIRECTORY
+                              Change to DIRECTORY before doing anything.
+  -d                          Print lots of debugging information.
+  --debug[=FLAGS]             Print various types of debugging information.
+  -e, --environment-overrides
+
+... [41 lines omitted] ...
+
+xnai_redis
+make: Entering directory '/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker'
+podman-compose -f docker-compose.yml ps
+CONTAINER ID  IMAGE                                    COMMAND               CREATED        STATUS                               PORTS                                                       NAMES
+3ac2f870269c  docker.io/library/redis:7.4.1            redis-server --re...  7 minutes ago  Up 11 seconds (healthy)              0.0.0.0:6379->6379/tcp                                      xnai_redis
+6f17f02eb2ac  docker.io/qdrant/qdrant:v1.13.1          ./entrypoint.sh       7 minutes ago  Up 7 minutes (unhealthy)             0.0.0.0:6333-6334->6333-6334/tcp                            xnai_qdrant
+ba5be9d14b09  docker.io/library/postgres:15            postgres              7 minutes ago  Up 7 minutes (healthy)               0.0.0.0:5432->5432/tcp                                      xnai_postgres
+650ab7675f39  docker.io/library/caddy:2.8-alpine       caddy run --confi...  7 minutes ago  Up 7 minutes (healthy)               0.0.0.0:8000->8000/tcp, 80/tcp, 443/tcp, 2019/tcp, 443/udp  xnai_caddy
+74d67b6498ea  localhost/docker_memory-bank-mcp:latest  python server.py      7 minutes ago  Exited (1) 7 minutes ago (starting)                                                              xnai_memory_bank_mcp
+make: Leaving directory '/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker'
+Process Group PGID: 786774
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773007195120_0_1unjik.txt
+</tool_output_masked>

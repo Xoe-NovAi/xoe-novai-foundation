@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"Model Context Protocol multi-agent collaboration context sharing session handover patterns\":\n\nThe user is inquiring about **Model Context Protocol (MCP) multi-agent collaboration context sharing and session 
+... [TRUNCATED] ...
+the **Blackboard Pattern** combined with **Journaling**. By using the Memory Bank MCP to store \"strategic\" context and writing physical handover logs (like `activeContext.md`), you ensure both machine-readable state and human-auditable progress."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/google_web_search_google_web_search_1773078649403_0_usw4hs.txt
+</tool_output_masked>

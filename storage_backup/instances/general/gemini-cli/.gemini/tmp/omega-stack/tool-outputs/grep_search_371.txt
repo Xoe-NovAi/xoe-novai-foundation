@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 100 matches for pattern \"Jaeger\" in path \".\" (results limited to 100 matches for performance):\n---\nFile: scripts/execute_autonomous_phase4.py\nL6: Executes: OpenTelemetry, Jaeger, FastAPI, redis-py, SQLAlchemy\nL47:     \"J
+... [TRUNCATED] ...
+/xoe-novai-implementation-roadmap-outline.md\nL260: ## PHASE 5D: DISTRIBUTED TRACING (OPENTELEMETRY + JAEGER)\nL266: - Jaeger backend deployment\nL285: 3. **Jaeger Deployment**\nL1037: 4. Phase 5D: Distributed Tracing (OpenTelemetry + Jaeger)\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/grep_search_grep_search_1773176015184_0_2cup93.txt
+</tool_output_masked>

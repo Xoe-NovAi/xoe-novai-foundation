@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: Traceback (most recent call last):
+  File "/usr/local/bin/uvicorn", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+
+... [108 lines omitted] ...
+
+    from scripts.agent_factory import AgentFactory
+  File "/app/scripts/agent_factory.py", line 31, in <module>
+    from app.XNAi_rag_app.core.oauth_manager import OAuthManager, AccountManager
+  File "/app/app/XNAi_rag_app/core/__init__.py", line 6, in <module>
+    from .circuit_breakers import (
+  File "/app/app/XNAi_rag_app/core/circuit_breakers/__init__.py", line 11, in <module>
+    from .circuit_breaker import (
+  File "/app/app/XNAi_rag_app/core/circuit_breakers/circuit_breaker.py", line 16, in <module>
+    import redis.asyncio as redis
+ModuleNotFoundError: No module named 'redis'
+Process Group PGID: 501545
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/run_shell_command_run_shell_command_1773280317858_0_z83eg.txt
+</tool_output_masked>

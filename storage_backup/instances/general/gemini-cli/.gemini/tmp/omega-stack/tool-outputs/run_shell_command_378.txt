@@ -1,0 +1,237 @@
+Output: INFO:     Started server process [7]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8006 (Press CTRL+C to quit)
+INFO:     127.0.0.1:50626 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50642 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43148 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38776 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36106 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53952 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51380 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51078 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52350 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44044 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33620 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55798 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54922 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45882 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60438 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44984 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33352 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38704 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42746 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56988 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59802 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53934 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50896 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50834 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47636 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34712 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49450 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57240 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33654 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54120 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52144 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57622 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42948 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39918 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36612 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33396 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46686 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36064 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49594 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39116 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44288 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43824 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41012 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60304 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43502 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43866 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52702 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43628 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55446 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56066 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35020 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59030 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47366 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42816 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52348 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43118 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54896 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46390 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43838 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44456 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40570 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54130 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36164 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50104 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34702 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43594 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45584 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52676 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35186 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48772 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60088 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60188 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35192 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35328 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43676 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42444 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54732 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.89.1.60:36118 - "GET /health HTTP/1.1" 200 OK
+🌈 Iris (Service): Hearing your request... 'Formulate the SESS-19 Shadow Audit strategy based on data/gnosis_hub contents and address PEM logic porting requirements.'
+📡 Observer: [Iris] shift to gear [LEVEL_2_ESCALATION] recorded.
+02:41:26 - LiteLLM:INFO: utils.py:3919 - 
+LiteLLM completion() model= gemini-2.0-flash; provider = gemini
+INFO:LiteLLM:
+LiteLLM completion() model= gemini-2.0-flash; provider = gemini
+
+Give Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+WARNING:AgentFactory:Auth method 1 exhausted. Rotating...
+INFO:AgentFactory:Activating Local Fallback...
+02:41:27 - LiteLLM:INFO: utils.py:3919 - 
+LiteLLM completion() model= qwen2.5:0.5b; provider = openai
+INFO:LiteLLM:
+LiteLLM completion() model= qwen2.5:0.5b; provider = openai
+INFO:     127.0.0.1:50242 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47482 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52796 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41020 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53606 - "GET /health HTTP/1.1" 200 OK
+INFO:openai._base_client:Retrying request to /chat/completions in 0.423829 seconds
+INFO:     127.0.0.1:58480 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46646 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for background tasks to complete. (CTRL+C to force quit)
+INFO:     Started server process [7]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8006 (Press CTRL+C to quit)
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0021s
+INFO:     10.89.1.61:45678 - "GET /health HTTP/1.1" 200 OK
+🌈 Iris (Service): Hearing your request... 'Formulate the SESS-19 Shadow Audit strategy based on data/gnosis_hub contents and address all current knowledge gaps.'
+🌈 Iris: Level 2 Escalation (Archive Guardian)
+📡 Observer: [Iris] shift to gear [LEVEL_2_ESCALATION] recorded.
+02:45:03 - LiteLLM:INFO: utils.py:3919 - 
+LiteLLM completion() model= gemini-2.0-flash; provider = gemini
+INFO:LiteLLM:
+LiteLLM completion() model= gemini-2.0-flash; provider = gemini
+
+Give Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+WARNING:AgentFactory:Auth method 1 exhausted. Rotating...
+INFO:AgentFactory:Activating Local Fallback...
+02:45:05 - LiteLLM:INFO: utils.py:3919 - 
+LiteLLM completion() model= qwen2.5:0.5b; provider = openai
+INFO:LiteLLM:
+LiteLLM completion() model= qwen2.5:0.5b; provider = openai
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0006s
+INFO:     127.0.0.1:44234 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0006s
+INFO:     127.0.0.1:49528 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0005s
+INFO:     127.0.0.1:45616 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0005s
+INFO:     127.0.0.1:48040 - "GET /health HTTP/1.1" 200 OK
+INFO:openai._base_client:Retrying request to /chat/completions in 0.428117 seconds
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0009s
+INFO:     127.0.0.1:49840 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0005s
+INFO:     127.0.0.1:44264 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0007s
+INFO:     127.0.0.1:34978 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0008s
+INFO:     127.0.0.1:46344 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0008s
+INFO:     127.0.0.1:59120 - "GET /health HTTP/1.1" 200 OK
+INFO:openai._base_client:Retrying request to /chat/completions in 0.997695 seconds
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0008s
+INFO:     127.0.0.1:55680 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0006s
+INFO:     127.0.0.1:55764 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for background tasks to complete. (CTRL+C to force quit)
+INFO:     Started server process [7]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8006 (Press CTRL+C to quit)
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0016s
+INFO:     10.89.1.62:56236 - "GET /health HTTP/1.1" 200 OK
+🌈 Iris (Service): Hearing your request... 'Formulate the SESS-19 Shadow Audit strategy based on data/gnosis_hub contents.'
+🌈 Iris: Level 2 Escalation (Archive Guardian)
+📡 Observer: [Iris] shift to gear [LEVEL_2_ESCALATION] recorded.
+02:51:02 - LiteLLM:INFO: utils.py:3919 - 
+LiteLLM completion() model= gemini-2.0-flash; provider = gemini
+INFO:LiteLLM:
+LiteLLM completion() model= gemini-2.0-flash; provider = gemini
+
+Give Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+WARNING:AgentFactory:⚠️ Account:StaticKey RATE_LIMITED (429)
+INFO:AgentFactory:Activating Local Fallback...
+02:51:03 - LiteLLM:INFO: utils.py:3919 - 
+LiteLLM completion() model= qwen2.5:0.5b; provider = openai
+INFO:LiteLLM:
+LiteLLM completion() model= qwen2.5:0.5b; provider = openai
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0007s
+INFO:     127.0.0.1:50742 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0006s
+INFO:     127.0.0.1:45742 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0004s
+INFO:     127.0.0.1:57316 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0005s
+INFO:     127.0.0.1:43662 - "GET /health HTTP/1.1" 200 OK
+INFO:openai._base_client:Retrying request to /chat/completions in 0.488541 seconds
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0010s
+INFO:     127.0.0.1:59694 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0011s
+INFO:     127.0.0.1:51274 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0008s
+INFO:     127.0.0.1:50372 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0007s
+INFO:     127.0.0.1:47536 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0003s
+INFO:     127.0.0.1:48074 - "GET /health HTTP/1.1" 200 OK
+INFO:openai._base_client:Retrying request to /chat/completions in 0.942453 seconds
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0003s
+INFO:     127.0.0.1:59286 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0004s
+INFO:     127.0.0.1:38620 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0004s
+INFO:     127.0.0.1:35754 - "GET /health HTTP/1.1" 200 OK
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0006s
+INFO:     10.89.1.62:37508 - "GET /health HTTP/1.1" 200 OK
+🌈 Iris (Service): Hearing your request... 'Formulate the SESS-19 Shadow Audit strategy based on data/gnosis_hub contents and address PEM logic porting.'
+🌈 Iris: Level 2 Escalation (Archive Guardian)
+📡 Observer: [Iris] shift to gear [LEVEL_2_ESCALATION] recorded.
+02:57:27 - LiteLLM:INFO: utils.py:3919 - 
+LiteLLM completion() model= gemini-2.0-flash; provider = gemini
+INFO:LiteLLM:
+LiteLLM completion() model= gemini-2.0-flash; provider = gemini
+
+Give Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+WARNING:AgentFactory:⚠️ Account:StaticKey RATE_LIMITED (429)
+INFO:AgentFactory:Activating Local Fallback...
+02:57:28 - LiteLLM:INFO: utils.py:3919 - 
+LiteLLM completion() model= qwen2.5:0.5b; provider = openai
+INFO:LiteLLM:
+LiteLLM completion() model= qwen2.5:0.5b; provider = openai
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0003s
+INFO:     127.0.0.1:39040 - "GET /health HTTP/1.1" 200 OK
+
+Give Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+📡 Oikos API: POST /iris/route - Status: 200 - Time: 407.5873s
+📡 Oikos API: GET /health - Status: 200 - Time: 0.0002s
+INFO:     127.0.0.1:48682 - "GET /health HTTP/1.1" 200 OK
+Process Group PGID: 575543

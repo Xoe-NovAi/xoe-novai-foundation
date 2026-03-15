@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/ALETHIA_REGISTRY.md (1 replacements). Here is the updated code:\n...\n- **SOS-F3 (Schema-Sentry)**: Parity Audit Protocol refined (Structural In
+... [TRUNCATED] ...
+mia-v1-hash` [GT:scripts/gnostic_oikonomia.py]\n  - **Preflight**: `preflight-v1-hash` [GT:scripts/gnostic_preflight.py]\n  - **Audit**: `audit-v1-hash` [GT:scripts/gnostic_audit.py]\n- **Root Rigidity Hash**: `[RIGIDITY-HASH-ALPHA-20260312]`\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773356443823_0_68zn8j.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 900-957 of 957 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+te_stream):\n        init_options = server.create_initialization_options()\n        await server.run(\n            read_stream,\n            write_stream,\n            init_options,\n        )\n\nif __name__ == \"__main__\":\n    anyio.run(main)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000417121_0_6uxv98.txt
+</tool_output_masked>

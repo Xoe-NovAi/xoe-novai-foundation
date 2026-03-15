@@ -1,0 +1,11 @@
+Output: 11G     /home/arcana-novai/Documents
+7.7G    /home/arcana-novai/Desktop
+1.5G    /home/arcana-novai/archive
+1.3G    /home/arcana-novai/snap
+1.2G    /home/arcana-novai/google-cloud-sdk
+878M    /home/arcana-novai/go
+353M    /home/arcana-novai/Downloads
+38M     /home/arcana-novai/old.gemini
+12M     /home/arcana-novai/Pictures
+6.0M    /home/arcana-novai/Xoe-NovAi-core-stack.tar.gz
+Process Group PGID: 78125

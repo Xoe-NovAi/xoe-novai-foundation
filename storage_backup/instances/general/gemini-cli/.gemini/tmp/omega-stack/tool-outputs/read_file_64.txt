@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\nexpert_dataset_name: Sovereign Proxy Mesh Core Intelligence\nexpertise_focus: Grok MC primary awareness, SPM execution substrate, Phase 5-6 strategic execution\nversion: 1.0.0\nlast_updated: 2026-03-14T06:35:00Z\ncreated_by: Haiku
+... [TRUNCATED] ...
+ransparent execution plan\n\n**Proxy Quality Score**: 9.3/10 | Justification: Comprehensive integration + strategic clarity + transparent methodology + proven execution track record (storage recovery, service bootstrap, multi-model coordination)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773543415259_0_fbe1gj.txt
+</tool_output_masked>

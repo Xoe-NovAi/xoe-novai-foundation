@@ -1,0 +1,24 @@
+Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/plans/SESS-18-RESTORATION.md. Here is the updated code:
+# 🔱 SESS-18: The Sovereign Restoration & Mastermind Hardening
+
+## 🎯 Objective
+Achieve the first Research-Grounded Mastermind Decree within a containerized, OAuth-authorized mesh.
+
+## 🏗️ Phase 1: Authentication Hardening
+- **[DOCKER]**: Correct `docker-compose.yml` to use `VERTEXAI_PROJECT` and `VERTEXAI_LOCATION` for standard GCP ADC integration.
+- **[FACTORY]**: Verify `scripts/agent_factory.py` correctly maps `vertex_ai/` models.
+
+## 🛡️ Phase 2: Build & Permission Resilience
+- **[DOCKER]**: Optimize `Dockerfile.oikos` layers to reduce rebuild times and mitigate timeout risks.
+- **[PERMS]**: Execute `scripts/harden_permissions.sh` to ensure host-container alignment.
+
+## 🧠 Phase 3: Grounded Gnosis (The Research Phase)
+- **[SERVICE]**: Implement the **Round 0: Automated Research** loop in `app/oikos_service.py`.
+- **[TOOLS]**: Integrate local `data/gnosis_hub` scanning and `google_web_search` into the Council's reasoning context.
+
+## ⚖️ Phase 4: The First True Decree
+- **[ACT]**: Run `python3 scripts/omega_foundry.py mastermind` with a complex SESS-19 strategic prompt.
+- **[VERIFY]**: Ensure artifacts are created in `.logs/` and `memory_bank/chronicles/`.
+
+---
+**Mantra**: *Grounded in Knowledge, Bound by Protocol, Sovereign in Action.*

@@ -1,0 +1,3 @@
+{
+  "output": "Output: GEMINI_CLI_HOME=/tmp/xnai-instances/instance-/gemini-cli\nINSTANCE_ROOT=/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances-active\n./memory_bank/activeContext.md\nExit Code: 2\nProcess Group PGID: 32333"
+}

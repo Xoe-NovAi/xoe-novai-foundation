@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/redis_health_check.py (1 replacements). Here is the updated code:
+...
+
+def check_redis_cli():
+    """Test Redis using redis-cli (simpler fallback)."""
+    host = os.getenv('REDIS_HOST', '127.0.0.1')
+    port = os.getenv('REDIS_PORT', '6379')
+    password = os.getenv('REDIS_PASSWORD', '')
+    
+    cmd = ['redis-cli', '-h', host, '-p', port, '-a', password, 'PING']
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, timeout=3, text=True)
+...

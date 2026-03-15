@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/circuit_breaker_load_test.py (1 replacements). Here is the updated code:\n...\nimport time\nfrom unittest.mock import MagicMock, patch\n\n# Mock chain
+... [TRUNCATED] ...
+Error: {metadata.get('error')}\"\n    return \"Success\"\n\nasync def load_test_circuit_breakers():\n    \"\"\"Test circuit breakers under concurrent load\"\"\"\n    print(\"🧪 Starting Circuit Breaker Load Test...\")\n    print(\"=\" * 50)\n\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001854351_0_wz6a2b.txt
+</tool_output_masked>

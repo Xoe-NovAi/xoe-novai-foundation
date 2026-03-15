@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 40-60 of 223 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example,
+... [TRUNCATED] ...
+", mkstream=True)\n        except Exception:\n            # Group likely already exists\n            pass\n        return self\n\n    async def __aexit__(self, exc_type, exc_val, exc_tb):\n        \"\"\"Exit the asynchronous context manager.\"\"\""
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773016939248_0_kne0l.txt
+</tool_output_masked>

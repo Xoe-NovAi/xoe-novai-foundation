@@ -1,0 +1,33 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/hestia_memory_lock.py (1 replacements). Here is the updated code:
+...
+            host=host,
+            port=port,
+            password=password,
+            decode_responses=True
+        )
+
+        ping = await r.ping()
+        status_report = []
+        if ping:
+            status_report.append("✅ Redis: Active and Still.")
+            keys = await r.dbsize()
+            status_report.append(f"✅ Memory Density: {keys} keys indexed.")
+
+        for line in status_report:
+            print(f"  {line}")
+
+        # Agentic Insight
+        from scripts.agent_factory import AgentFactory
+        factory = AgentFactory()
+        prompt = f"Memory Status:\n" + "\n".join(status_report) + "\n\nProvide a serene, personified status report on the memory continuity."
+        insight = await factory.think(prompt, "You are Hestia, the Architect of the Center of the Omega Stack. Your tone is serene, stable, and focused on the sacred space of memory.")
+        print(f"\n🕯️ Hestia's Insight:\n{insight}")
+
+        await r.close()
+
+    except Exception as e:
+        print(f"  ❌ Redis: THE CENTER IS IN CHAOS. Error: {e}")
+
+async def main():
+    await check_center()
+...

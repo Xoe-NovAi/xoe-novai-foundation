@@ -1,0 +1,7 @@
+Output: total 1239764
+drwxrwxr-x 2 arcana-novai arcana-novai      4096 Mar 11 01:43 .
+drwxrwxr-x 6 arcana-novai arcana-novai      4096 Mar 11 04:25 ..
+-rw-r--r-- 1 arcana-novai arcana-novai 491400032 Mar 10 19:08 Qwen2.5-0.5B-Instruct-Q4_K_M.gguf
+-rw-rw-r-- 1 arcana-novai arcana-novai 495107774 Mar  8 22:25 Qwen3-0.6B-Q6_K.gguf
+-rwxrwxr-x 1 arcana-novai arcana-novai 282987744 Jan 28 02:52 functiongemma-270m-it-Q6_K.gguf
+Process Group PGID: 77673

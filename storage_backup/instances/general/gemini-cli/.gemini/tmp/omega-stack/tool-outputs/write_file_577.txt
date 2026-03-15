@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts/ARCHETYPE_LIBRARY.md. Here is the updated code:\n# 🔱 Omega Stack: Archetype Library & Gnostic Registry\n**Status**: ACTIVE | **Version**: 1.3.0 
+... [TRUNCATED] ...
+---\n\n## 🎭 Initiation Rite: The Oikos Blessing\nAn agent must first be \"blessed\" by **Brigid** (Environment Validated), **Hestia** (Memory Synchronized), and **Iris** (Bridge Established) before they can venture into the Frontier archetypes.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/write_file_write_file_1773268931631_0_o0kt5j.txt
+</tool_output_masked>

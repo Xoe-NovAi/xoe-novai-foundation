@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: xnai_memory_bank_mcp
+Warning: Could not load config: No module named 'XNAi_rag_app'
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 45, in <module>
+    from app.XNAi_rag_app.core.agent_bus import AgentBusClient
+  File "/app/app/XNAi_rag_app/core/agent_bus.py", line 9, in <module>
+    from app.XNAi_rag_app.core.iam_handshake import KeyManager
+  File "/app/app/XNAi_rag_app/core/iam_handshake.py", line 25, in <module>
+    from .iam_db import IAMDatabase, AgentIdentity, AgentType
+  File "/app/app/XNAi_rag_app/core/iam_db.py", line 590, in <module>
+
+... [121 lines omitted] ...
+
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 622, in _literal_coercion
+    return self._text_coercion(element, argname, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 615, in _text_coercion
+    return _no_text_coercion(element, argname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 585, in _no_text_coercion
+    raise exc_cls(
+sqlalchemy.exc.ArgumentError: Textual SQL expression 'SELECT value FROM config ...' should be explicitly declared as text('SELECT value FROM config ...')
+Process Group PGID: 856057
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773008335616_0_bnipuh.txt
+</tool_output_masked>

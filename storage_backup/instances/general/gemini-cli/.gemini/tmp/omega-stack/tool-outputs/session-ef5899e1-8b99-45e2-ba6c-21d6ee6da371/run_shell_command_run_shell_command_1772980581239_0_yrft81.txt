@@ -1,0 +1,3 @@
+{
+  "output": "Output: [1/2] STEP 1/11: FROM xnai-base:latest AS builder\nError: creating build container: xnai-base:latest: image not known\nExit Code: 125\nProcess Group PGID: 4125111"
+}

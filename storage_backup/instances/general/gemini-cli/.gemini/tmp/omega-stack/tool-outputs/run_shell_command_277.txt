@@ -1,0 +1,29 @@
+Output: total 520
+drwxrwxr-x 25 arcana-novai arcana-novai   4096 Mar 11 14:47 .
+drwxrwxr-x  5 arcana-novai arcana-novai   4096 Mar  7 16:05 ..
+-rwxrwxr-x  1 arcana-novai arcana-novai     50 Mar  7 12:16 .project_root
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar  9 19:25 206be2a9-6d0b-41aa-8a49-330d7324543c
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar  9 16:03 2bba0706-751f-4bdb-8d83-fb35b1556cf3
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 22:47 2be849aa-ee65-4694-a613-2023aee16289
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 10:06 323f9caa-049e-4ef6-b14c-57d779a99bc2
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar  9 19:15 3a4d6480-1520-402d-94fe-21ab2fbd4a71
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 16:28 4a0e9745-9b3e-43e8-9b30-6661f398f718
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 10:03 4dad0c67-e7fb-4cc6-9312-ffea314c9a8c
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 22:48 527ce7cb-57b0-475f-ab7e-11443ae1a73f
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 23:52 55c3cf97-4249-4b60-b23a-131ee86f99a1
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 17:28 60a489d7-8146-4904-b060-2c573f022352
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 22:31 62742be2-2422-4353-a9c3-2c2964ffdbe5
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar  9 13:12 7213efde-b76d-4fb6-8f71-e4bffe92066f
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar  9 20:10 8abcde39-5ce9-4b60-97bc-482106b80c81
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar  9 19:29 952379d6-0620-4c70-9156-d600f394ac1b
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 15:22 a73b3965-c5c8-49e7-bb04-3ce9f0cc1670
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar  9 17:27 a99a2c2a-a758-464d-9ac2-69524b102fae
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 17:03 c1db4378-df81-4355-b641-fc9a61313d7f
+drwxrwxr-x  2 arcana-novai arcana-novai   4096 Mar 11 14:14 chats
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 10:05 d7135056-01f8-4726-88f1-54f70e952ae9
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 11 14:47 e6779b9a-1fa9-40d1-8eee-d3bb4c795893
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar 10 22:43 ead95fff-0fc3-4998-9dd9-1e3e55ffa141
+drwxrwxr-x  3 arcana-novai arcana-novai   4096 Mar  9 11:14 eefe2abd-a67e-4dbd-a6f2-ea55a21f976c
+-rwxrwxr-x  1 arcana-novai arcana-novai 229836 Mar 11 14:18 logs.json
+drwxrwxr-x  9 arcana-novai arcana-novai 192512 Mar 11 14:33 tool-outputs
+Process Group PGID: 93813

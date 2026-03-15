@@ -1,0 +1,27 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/README.md (1 replacements). Here is the updated code:
+...
+> **Production-Tight Local Agentic RAG System**  
+> 100% local · Zero telemetry · Ryzen 5700U Optimized · Maat Ethical Overlay
+
+---
+
+## Metropolis Architecture (v4.1.2-HARDENED) 🏙️
+
+The Omega Stack has evolved into a self-organizing mesh of persistent experts and high-performance retrieval patterns, **hardened for Zen 2 (Ryzen 5700U) environments**.
+
+### 🏛️ Metropolis Master Index
+For all high-level strategy, governance, and infrastructure protocols, see the **[METROPOLIS MASTER INDEX](docs/METROPOLIS_MASTER_INDEX.md)**.
+
+### 🧬 Hardened Stack (2026-03-12)
+- **Metropolis Foundation v4.1.2**: Stabilized mesh standards and hardened infrastructure.
+- **zRAM Restoration**: 12GB total swap capacity optimized for high-density agent workloads.
+- **Observability Baseline**: Real-time Gemini token tracking and zRAM compression monitoring.
+- **Resource Guard (Audit C2)**: Hard-coded memory limits (RAG 2GB, Llama 1.5GB) to prevent OOM.
+- **The Librarian**: Background service for recursive session summarization and archival.
+
+---
+
+## 🛠️ Metropolis Operations (Makefile)
+
+### Stack Lifecycle (Tiered Startup)
+...

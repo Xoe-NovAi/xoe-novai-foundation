@@ -1,0 +1,3 @@
+{
+  "output": "Output: infra/docker/docker-compose.production.yml\nfind: ‘infra/docker/data/postgres’: Permission denied\ninfra/docker/docker-compose.yml\ninfra/docker/docker-compose-noninit.yml\nExit Code: 1\nProcess Group PGID: 100044"
+}

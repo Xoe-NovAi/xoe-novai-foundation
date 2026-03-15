@@ -1,0 +1,3 @@
+{
+  "output": "Output: CONTAINER ID  IMAGE                                  COMMAND               CREATED         STATUS         PORTS       NAMES\nadc65f30daab  localhost/xnai-library-curator:latest  python -m app.XNA...  30 minutes ago  Up 10 minutes              xnai_library_curator\nError: no container with name or ID \"--tail\" found: no such container\nWarning: Using a password with '-a' or '-u' option on the command line interface may not be safe.\n\nI/O error\n\nI/O error\nError: Connection reset by peer\nWarning: Using a password with '-a' or '-u' option on the command line interface may not be safe.\n\nI/O error\n\nI/O error\nError: Connection reset by peer\nExit Code: 1\nProcess Group PGID: 1291106"
+}

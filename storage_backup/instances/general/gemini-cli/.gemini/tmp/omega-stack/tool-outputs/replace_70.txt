@@ -1,0 +1,44 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60261d1d-e73f-4dc4-be0e-3da9c3a90627/plans/sess_23_gnosis_lexicon_and_audit.md (1 replacements). Here is the updated code:
+...
+
+## Objective
+Engrain the Gnostic wisdom acquired in SESS-23 (ZLV, TGG, GRA, RCF) into the stack through formal codification, machine-readable ontology, and automated enforcement via a gnostic audit.
+
+## Key Files & Context
+- `docs/protocols/STUP_MASTER.md`: The **Sovereign Tool-Use Protocol** manual.
+- `artifacts/GNOSTIC_LEXICON.json`: Expanded with **STUP-Tiers**.
+- `app/GEMINI.md`: Inject mandatory STUP adherence for all agents.
+- `mcp-servers/xnai-gnosis/server.py`: SSE-enabled tool-call telemetry.
+- `.gemini/settings.json`: Update **MAX_TURNS** and **Parallelism** defaults.
+
+## Implementation Steps
+
+### 1. Codify the Sovereign Tool-Use Protocol (STUP)
+- Create `docs/protocols/STUP_MASTER.md`:
+    - Define **Golden Tool Chains** (Parallel glob/grep/read).
+    - Codify the **Delegation Threshold**: When to spawn a `generalist` vs. direct execution.
+    - Document **Context-Aware Reads**: Surgical `read_file` vs. full file reads.
+- Update `GNOSTIC_LEXICON.json` to include **STUP** terminology (e.g., "Surgical turns," "Parallelized Inquiries").
+
+### 2. Hydrate Agents & Sub-Agents with STUP
+- **Global System Prompt Injection**: Update sub-agent prompts to prioritize **Parallelism** and **Context Compression** as per STUP.
+- Update **xnai-gnosis MCP**: Provide SSE-streamed "Recommended Tool Chains" based on the current Gnostic context.
+
+### 3. Phronetic Autonomy & Battle Readiness
+- Update `.gemini/settings.json`: Set **MAX_TURNS: 250** and optimize tool-call concurrency.
+- Create `scripts/gnostic_preflight.py`: mmap-optimized check including **STUP-Compliance** verification.
+
+### 4. Manifest the Gnostic Audit & CI/CD Shadow-Gate
+- Update `scripts/gnostic_audit.py` to verify **STUP Adherence** (e.g., checking for inefficient sequential tool calls in logs).
+- Create `scripts/pre_commit_shadow.py`: Continuous resonance and STUP testing.
+
+### 5. The Root of Trust (Registry Manifest)
+- Update `memory_bank/ALETHIA_REGISTRY.md` to anchor the **STUP Master Protocol** and updated agent configs.
+
+## Verification & Testing
+- Run a simulated complex feature implementation and verify:
+    - **Parallelism**: 3+ tool calls per turn.
+    - **Delegation**: Correct use of `generalist` for batch tasks.
+    - **Surgicality**: Minimized token usage via targeted reads.
+- Verify `STUP_MASTER.md` is correctly utilized by a new sub-agent instance.
+

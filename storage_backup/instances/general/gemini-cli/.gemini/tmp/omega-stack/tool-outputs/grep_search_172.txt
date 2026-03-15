@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 1 match for pattern \"entropy|information density\" in path \"docs/\":\n---\nFile: 02-tutorials/advanced-agent-patterns/CR - Autonomous Research System Rule Files!.md\nL487- ---\nL488- \nL489- ## 7. Research Automation Macros\nL4
+... [TRUNCATED] ...
+searching \"MkDocs Zensical\"**\nL581- ```\nL582- User asks: \"What's new with MkDocs Zensical?\"\nL583- \nL584- Research triggered because:\nL585- - Time-sensitive (\"new\")\nL586- - Technology evolution (Zensical replacing Material)\nL587- \n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/grep_search_grep_search_1773187373927_0_f9gfzv.txt
+</tool_output_masked>

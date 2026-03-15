@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 100-150 of 879 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+tionPeriod=365d\"\n      - \"-httpListenAddr=:8428\"\n      - \"-memory.allowedPercent=80\"\n      - \"-search.maxSeries=1000000\"\n    deploy:\n      resources:\n        limits:\n          memory: 1G\n        reservations:\n          memory: 512M"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773279208435_0_ed88x.txt
+</tool_output_masked>

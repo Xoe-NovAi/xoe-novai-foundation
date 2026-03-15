@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"best practices for rootless Podman container health checks and auto-restart stateful services\":\n\nFor rootless Podman, the modern gold standard for health checks and auto-restarts is **Quadlet** integrated wi
+... [TRUNCATED] ...
+google.com/grounding-api-redirect/AUZIYQFmoKq7DvL2ETVILjR6bNXIsCHfMVUDoHxIDPcCG62qSr5rR7XlAVgrTCzituVv5Y-1RjSfDTWRvBrkUJQUs9wqpNFJFlqw0yj2NPaUECafkPrsnpGEBpQz25dButNFb28OTriyD7ozrLuglm2FiswFBkmU30oWRY3rIbOd-Z0CUnmJizcaE9MX6kQcWx7O3j18BTwCWPr14Mpj)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-323f9caa-049e-4ef6-b14c-57d779a99bc2/google_web_search_google_web_search_1773152452304_3_t59d1.txt
+</tool_output_masked>

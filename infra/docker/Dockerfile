@@ -36,10 +36,10 @@ RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
 # Install llama-cpp-python==0.3.16 with Vulkan/OpenBLAS support
 ENV CMAKE_ARGS="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS -DLLAMA_AVX2=ON -DLLAMA_FMA=ON -DLLAMA_F16C=ON -DLLAMA_VULKAN=ON" \
     FORCE_CMAKE=1 \
-    CMAKE_BUILD_PARALLEL_LEVEL=3
-# Force rebuild with new parallel level: 3
+    CMAKE_BUILD_PARALLEL_LEVEL=2
+# Force rebuild with new parallel level: 2 (reduced for 6.6GB RAM system, avoiding OOM)
 RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
-    echo "🔨 Building llama-cpp-python==0.3.16 with Vulkan/OpenBLAS (Parallel level 3)..." && \
+    echo "🔨 Building llama-cpp-python==0.3.16 with Vulkan/OpenBLAS (Parallel level 2)..." && \
     uv pip install --system --verbose llama-cpp-python==0.3.16
 
 # ---- Stage 2: runtime ----

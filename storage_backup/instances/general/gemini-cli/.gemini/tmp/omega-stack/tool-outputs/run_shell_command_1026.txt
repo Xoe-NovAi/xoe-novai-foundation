@@ -1,0 +1,32 @@
+Output: Error: no container with name or ID "xnai_victoriametrics" found: no such container
+Error: no container with name or ID "xnai_grafana" found: no such container
+Error: no container with ID or name "xnai_grafana" found: no such container
+Error: no container with ID or name "xnai_victoriametrics" found: no such container
+✔ docker.io/victoriametrics/victoria-metrics:latest
+Trying to pull docker.io/victoriametrics/victoria-metrics:latest...
+Getting image source signatures
+Copying blob bfb71b6303a0 done   | 
+Copying blob a2ce2560a6e4 done   | 
+Copying blob 589002ba0eae done   | 
+Copying config 5e7fd3af19 done   | 
+Writing manifest to image destination
+0f34fba531c3798cd05fc0f310eddd8fdc213cf1317cc0b830a8344ba61eb3a8
+xnai_victoriametrics
+Resolved "grafana/grafana" as an alias (/etc/containers/registries.conf.d/shortnames.conf)
+Trying to pull docker.io/grafana/grafana:11.4.0...
+Getting image source signatures
+Copying blob 1739eaecb10c done   | 
+Copying blob da9db072f522 done   | 
+Copying blob b2ddcf85da57 done   | 
+Copying blob ebcbc122b722 done   | 
+Copying blob d7013a437817 done   | 
+Copying blob 00a90dd48f56 done   | 
+Copying blob 8964b0551c55 done   | 
+Copying blob e0862465767a done   | 
+Copying blob 989e41ffb5ca done   | 
+Copying blob 9b4925e32b92 done   | 
+Copying config c0b69935a2 done   | 
+Writing manifest to image destination
+92ffbf4067e4938bc4e6c6e568c102988eae3bf6646396877f6bb0b2a13126fd
+xnai_grafana
+Process Group PGID: 970926

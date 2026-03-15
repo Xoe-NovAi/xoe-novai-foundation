@@ -1,0 +1,3 @@
+{
+  "output": "Output: -rw-rw-r-- 1 arcana-novai arcana-novai 1981 Mar  9 00:54 .env\nProcess Group PGID: 8345"
+}

@@ -1,0 +1,3 @@
+{
+  "error": "Invalid regular expression pattern provided: async def register_agent(. Error: Invalid regular expression: /async def register_agent(/: Unterminated group"
+}

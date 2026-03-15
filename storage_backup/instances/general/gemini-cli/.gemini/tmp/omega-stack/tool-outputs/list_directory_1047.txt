@@ -1,0 +1,26 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/data:
+[DIR] cache
+[DIR] cache_v2
+[DIR] caddy
+[DIR] chainlit_files
+[DIR] consul
+[DIR] consul_old
+[DIR] entities
+[DIR] faiss_index
+[DIR] models
+[DIR] open-webui
+[DIR] openpipe
+[DIR] product_knowledge
+[DIR] prometheus-multiproc
+[DIR] qdrant
+[DIR] qdrant.broken
+[DIR] redis
+[DIR] redis.broken
+[DIR] scraping_jobs
+[DIR] scraping_results
+[DIR] service_manuals
+[DIR] ui_config
+[DIR] ui_files
+[DIR] victoriametrics
+[DIR] vikunja
+iam_agents.db (20480 bytes)

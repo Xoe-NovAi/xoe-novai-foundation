@@ -1,0 +1,3 @@
+{
+  "error": "Tool \"facet-7\" not found. Did you mean one of: \"glob\", \"replace\", \"read_file\"?"
+}

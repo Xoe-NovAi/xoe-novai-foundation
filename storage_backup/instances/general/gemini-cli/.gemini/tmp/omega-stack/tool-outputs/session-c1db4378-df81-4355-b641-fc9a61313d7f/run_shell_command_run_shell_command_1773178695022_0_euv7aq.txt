@@ -1,0 +1,3 @@
+{
+  "output": "Output: total 8\n-rw-rw-r-- 1 arcana-novai arcana-novai 19 Mar 10 18:38 api_key.txt\n-rw-rw-r-- 1 arcana-novai arcana-novai 25 Mar 10 18:38 redis_password.txt\nProcess Group PGID: 587342"
+}

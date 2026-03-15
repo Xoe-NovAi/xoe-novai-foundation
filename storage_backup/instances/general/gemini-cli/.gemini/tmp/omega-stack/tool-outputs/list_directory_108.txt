@@ -1,0 +1,2 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/history/omega-stack:
+.project_root (50 bytes)

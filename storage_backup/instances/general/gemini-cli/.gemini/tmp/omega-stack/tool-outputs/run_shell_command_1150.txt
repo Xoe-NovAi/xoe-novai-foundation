@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: make: Entering directory '/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker'
+podman-compose -f docker-compose.yml ps
+CONTAINER ID  IMAGE                                    COMMAND               CREATED         STATUS                     PORTS                                                       NAMES
+6f17f02eb2ac  docker.io/qdrant/qdrant:v1.13.1          ./entrypoint.sh       19 minutes ago  Up 19 minutes (unhealthy)  0.0.0.0:6333-6334->6333-6334/tcp                            xnai_qdrant
+ba5be9d14b09  docker.io/library/postgres:15            postgres              19 minutes ago  Up 19 minutes (healthy)    0.0.0.0:5432->5432/tcp                                      xnai_postgres
+650ab7675f39  docker.io/library/caddy:2.8-alpine       caddy run --confi...  19 minutes ago  Up 19 minutes (healthy)    0.0.0.0:8000->8000/tcp, 80/tcp, 443/tcp, 2019/tcp, 443/udp  xnai_caddy
+acf4702d8042  docker.io/library/redis:7.4.1            redis-server --re...  8 seconds ago   Up 9 seconds (healthy)     0.0.0.0:6379->6379/tcp                                      xnai_redis
+0b314a16daa2  localhost/docker_memory-bank-mcp:latest  python server.py      8 seconds ago   Up 8 seconds (healthy)                                                                 xnai_memory_bank_mcp
+make: Leaving directory '/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker'
+Warning: Could not load config: No module named 'XNAi_rag_app'
+
+... [12 lines omitted] ...
+
+  File "<string>", line 2, in create_engine
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 617, in create_engine
+    dbapi = dbapi_meth(**dbapi_args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 696, in import_dbapi
+    import psycopg2
+ModuleNotFoundError: No module named 'psycopg2'
+Process Group PGID: 838284
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773007927383_0_8ozqgs.txt
+</tool_output_masked>

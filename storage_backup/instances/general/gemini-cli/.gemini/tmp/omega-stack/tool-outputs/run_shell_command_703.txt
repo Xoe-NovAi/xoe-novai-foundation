@@ -1,0 +1,2 @@
+Output: Error: some dependencies of container 20f76ec90d36318ef8d4c5ac69018c4d17d16bd63440792b34be6c7823f3bbb1 are not started: 4e3603134f7ce1e728bb099f825ebf6ced14248a1cf10cb6c4604059ea35aded: container state improper
+Process Group PGID: 106506

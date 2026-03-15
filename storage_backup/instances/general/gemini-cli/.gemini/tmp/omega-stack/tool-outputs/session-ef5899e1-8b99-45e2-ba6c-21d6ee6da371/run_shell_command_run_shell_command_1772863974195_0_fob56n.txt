@@ -1,0 +1,3 @@
+{
+  "output": "Output: bash: line 1: ./_archive/venv_llama/bin/pip: cannot execute: required file not found\nExit Code: 1\nProcess Group PGID: 22740"
+}

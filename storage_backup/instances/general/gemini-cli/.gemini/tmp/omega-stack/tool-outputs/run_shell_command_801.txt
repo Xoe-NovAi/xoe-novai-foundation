@@ -1,0 +1,21 @@
+Output: /media/arcana-novai/omega_library/:
+Movies
+engines
+gnosis_hub
+lexar_backup
+lost+found
+media_archives
+omega-stack
+
+/media/arcana-novai/omega_library/Movies:
+Thor (2011) [REPACK] [2160p] [4K] [BluRay] [5.1] [YTS.MX]
+
+/media/arcana-novai/omega_library/Movies/Thor (2011) [REPACK] [2160p] [4K] [BluRay] [5.1] [YTS.MX]:
+Thor.2011.REPACK.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv
+YTSProxies.com.txt
+www.YTS.MX.jpg
+
+/media/arcana-novai/omega_library/engines:
+gguf
+lmstudio
+Process Group PGID: 77502

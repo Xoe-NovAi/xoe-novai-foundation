@@ -1,0 +1,6 @@
+Output: knowledge_base/expert-knowledge/research/queue/:
+pending
+
+knowledge_base/expert-knowledge/research/queue/pending:
+REQ-2026-02-13-001-big-pickle-analysis.md  REQ-2026-02-13-002-gpt-5-nano-analysis.md  REQ-2026-02-13-003-opencode-comparison-matrix.md
+Process Group PGID: 424034

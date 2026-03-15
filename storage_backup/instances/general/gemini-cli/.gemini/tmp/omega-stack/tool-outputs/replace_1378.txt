@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/security/sanitization.py (1 replacements). Here is the updated code:
+...
+        result = sanitizer.sanitize(content)
+        if result.was_modified:
+            logger.info(f"Sanitized {len(result.matches)} sensitive items")
+            sanitized_content = result.sanitized_content
+        else:
+            sanitized_content = content  # Use original content if no modifications
+    """
+
+    def __init__(
+        self,
+        level: SanitizationLevel = SanitizationLevel.STANDARD,
+...

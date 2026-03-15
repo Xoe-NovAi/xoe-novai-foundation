@@ -1,0 +1,3 @@
+{
+  "output": "Command was automatically cancelled because it exceeded the timeout of 5.0 minutes without output. Below is the output before it was cancelled:\nxnai_qdrant\nxnai_redis\nxnai_postgres\nWARN[0010] StopSignal SIGTERM failed to stop container xnai_rag_api in 10 seconds, resorting to SIGKILL \nxnai_rag_api\nxnai_rag_api\nxnai_postgres\nxnai_qdrant\nxnai_redis\n6b989a28a48bb7d7cfb22653af0aea7382712469a8b6ef7fcff60cd120664e0e\nxnai_redis\neea55a34662304069b73ccb724e56ac438efd5b9c2da96daddcb718f3e55d124\nxnai_qdrant\ne7f0ca3133482141b42c08121fb2aff8984ae856a54b8b1bf3172049171a11c9\nxnai_postgres\nda66f92f258081140bb00ec382db2f433e85e61304ccb8dbcf62a7e7fd4fc418"
+}

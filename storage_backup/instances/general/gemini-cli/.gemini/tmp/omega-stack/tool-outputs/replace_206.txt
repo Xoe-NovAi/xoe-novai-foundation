@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/architecture/METROPOLIS_WIRING_MAP.md (1 replacements). Here is the updated code:\n...\n\n### 🧠 Memory Hard-Caps (6.6GB Total Budget)\n- **Redis**: 51
+... [TRUNCATED] ...
+d in `models/registry.json`.\n\n### 🚀 CPU Steering\n- **Zen 2 Tuning**: Services utilize `OPENBLAS_CORETYPE=ZEN` and `LLAMA_CPP_N_THREADS=6`.\n- **Parallelism**: Background workers restricted to 1-2 threads to prevent cache thrashing.\n\n---\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/replace_replace_1773183718796_0_bcwqzt.txt
+</tool_output_masked>

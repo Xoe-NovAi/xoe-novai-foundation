@@ -1,0 +1,3 @@
+{
+  "output": "Output: STATUS\nexited\nProcess Group PGID: 212992"
+}

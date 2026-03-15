@@ -1,0 +1,3 @@
+{
+  "output": "Output: * Host localhost:8005 was resolved.\n* IPv6: ::1\n* IPv4: 127.0.0.1\n*   Trying [::1]:8005...\n* connect to ::1 port 8005 from ::1 port 53864 failed: Connection refused\n*   Trying 127.0.0.1:8005...\n* connect to 127.0.0.1 port 8005 from 127.0.0.1 port 58092 failed: Connection refused\n* Failed to connect to localhost port 8005 after 0 ms: Could not connect to server\n* closing connection #0\ncurl: (7) Failed to connect to localhost port 8005 after 0 ms: Could not connect to server\nExit Code: 7\nProcess Group PGID: 8177"
+}

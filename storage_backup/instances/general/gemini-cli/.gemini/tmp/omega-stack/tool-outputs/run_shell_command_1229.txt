@@ -1,0 +1,8 @@
+Output: ls: cannot access 'scripts/*cert*': No such file or directory
+ls: cannot access 'scripts/*tls*': No such file or directory
+scripts/quick_gemini_setup.sh           scripts/setup_gemini_access.sh
+scripts/setup-wave4-phase3a.sh          scripts/setup_phase_organization.py
+scripts/setup_dev_venv.py               scripts/setup_semantic_search_service.py
+scripts/setup_diataxis_organization.py  scripts/setup_vikunja_secrets.py
+Exit Code: 2
+Process Group PGID: 439530

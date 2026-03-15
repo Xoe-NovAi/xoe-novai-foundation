@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:\n...\n\n  # ====================================================================
+... [TRUNCATED] ...
+knowledge:z\n      - ../../app:/app/app:ro\n      - ../../scripts:/app/scripts:ro\n      - ./tls/ca.crt:/tls/ca.crt:ro,Z\n    networks:\n      - xnai_db_network\n\n  # ==========================================================================\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773012083796_0_dc9pz.txt
+</tool_output_masked>

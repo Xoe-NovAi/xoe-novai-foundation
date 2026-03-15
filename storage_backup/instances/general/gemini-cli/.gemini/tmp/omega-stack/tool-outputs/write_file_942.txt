@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/stack_scribe.py. Here is the updated code:\n#!/usr/bin/env python3\n\"\"\"\nXNAi Stack Scribe\n=================\n\nAutonomous docum
+... [TRUNCATED] ...
+    ❌ Failed to queue task for {rel_path}: {e}\")\n\n            logger.info(f\"✨ Scan complete. Queued {found_count} documentation tasks.\")\n\nif __name__ == \"__main__\":\n    scribe = StackScribe()\n    asyncio.run(scribe.scan_and_enqueue())\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/write_file_write_file_1773016897870_0_gmb99i.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# Xoe-NovAi — Unified Knowledge Hub (Omega Stack)\n\nWelcome to the central nervous system of the **Omega Stack** (v4.0). This hub coordinates all specialized expertise, strategic blueprints, and cross-project knowledge within the Xoe-
+... [TRUNCATED] ...
+ Xoe-NovAi initiatives:\n- **omega-stack/**: Core RAG and Agent OS.\n- **arcana-stack/**: Esoteric Pantheon personas (Planned).\n- **projects/**: Electronics, Web Redesigns, and Personal Excellence.\n- **shared/**: Global organization standards.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773356347266_0_4j06aj.txt
+</tool_output_masked>

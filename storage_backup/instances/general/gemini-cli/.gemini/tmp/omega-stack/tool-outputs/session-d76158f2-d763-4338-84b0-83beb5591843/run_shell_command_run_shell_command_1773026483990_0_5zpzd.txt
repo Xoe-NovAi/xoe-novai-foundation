@@ -1,0 +1,3 @@
+{
+  "output": "Output: up-core:\nup-app: up-core\nup-full:\ndown:\nstatus:\nProcess Group PGID: 2309260"
+}

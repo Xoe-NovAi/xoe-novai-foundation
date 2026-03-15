@@ -1,0 +1,12 @@
+Output: 4.8M    _archive/2026-03-01-consolidation
+468K    _archive/planning_docs_20260308
+404K    _archive/deprecated
+152K    _archive/versions
+52K     _archive/implementation-completed
+32K     _archive/research-2026-02-27
+16K     _archive/task-dispatch-history
+16K     _archive/session-handoffs
+12K     _archive/strategy-versions
+4.0K    _archive/cleanup-procedures
+4.0K    _archive/ARCHIVE-INDEX.md
+Process Group PGID: 88070

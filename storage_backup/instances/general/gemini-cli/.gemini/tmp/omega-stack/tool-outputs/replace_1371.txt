@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:\n...\n        self.config = load_config()\n        self.redis_url = self._
+... [TRUNCATED] ...
+SENTINEL\"),\n            \"generalist\": os.getenv(\"MCP_TOKEN_GENERALIST\"),\n        }\n        \n        # Redis connection\n        self.redis: Optional[Redis] = None\n        self._initialized = False\n        \n        # Agent registry\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773000997497_0_vpdl6.txt
+</tool_output_masked>

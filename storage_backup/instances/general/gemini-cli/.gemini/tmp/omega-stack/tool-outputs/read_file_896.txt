@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-50 of 91 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, t
+... [TRUNCATED] ...
+        found_count = 0\n            \n            for doc_dir in DOC_PATHS:\n                dir_path = self.root_dir / doc_dir\n                if not dir_path.exists():\n                    logger.warning(f\"⚠️ Directory not found: {doc_dir}\")"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773017459094_0_qzk4d5.txt
+</tool_output_masked>

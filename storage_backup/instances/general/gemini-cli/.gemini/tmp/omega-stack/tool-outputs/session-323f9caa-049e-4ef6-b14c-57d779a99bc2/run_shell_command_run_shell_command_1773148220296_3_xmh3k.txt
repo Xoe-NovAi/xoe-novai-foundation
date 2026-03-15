@@ -1,0 +1,3 @@
+{
+  "output": "Output: -rw-rw-r-- 1 1000 1000  1027 Mar  1 19:19 .env.example\n-rwxrwxr-x 1 1000 1000 14932 Mar  9 10:58 app/config.toml\n-rwxr-xr-x 1 1000 1000 13436 Mar  2 08:12 config/config.toml\nProcess Group PGID: 8086"
+}

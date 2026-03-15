@@ -1,0 +1,146 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (12 replacements). Here is the updated code:
+...
+  # ==========================================================================
+  openpipe:
+    image: python:3.12-slim
+    container_name: xnai_openpipe
+    init: true
+    user: "1000:1000"
+    command: ["python3", "-c", "import time; print('OpenPipe Sovereign Collector Active'); time.sleep(float('inf'))"]
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+...
+  # ==========================================================================
+  qdrant:
+    image: qdrant/qdrant:v1.13.1
+    container_name: xnai_qdrant
+    init: true
+    user: "1000:1000"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+...
+          memory: 2G
+          cpus: '2.0'
+        reservations:
+          memory: 512M
+          cpus: '1.0'
+    user: "1000:1000"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+...
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    image: xnai-ui:latest
+    container_name: xnai_chainlit_ui
+    init: true
+    user: "1000:1000"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+...
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    image: xnai-crawler:latest
+    container_name: xnai_crawler
+    init: true
+    user: "1000:1000"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+...
+      dockerfile: infra/docker/Dockerfile.curation_worker
+    image: xnai-library-curator:latest
+    container_name: xnai_library_curator
+    init: true
+    restart: on-failure
+    user: "1000:1000"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+...
+      dockerfile: infra/docker/Dockerfile.docs
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    image: xnai-mkdocs:latest
+    container_name: xnai_mkdocs
+    user: "1000:1000"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.2'
+...
+      - xnai_db_network
+
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: xnai_caddy
+    user: "1000:1000"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+...
+
+  grafana:
+    image: grafana/grafana:11.4.0
+    container_name: xnai_grafana
+    init: true
+    user: "1000:1000"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+...
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.curation_worker
+    image: xnai-curation-worker:latest
+    container_name: xnai_knowledge_miner
+    init: true
+    user: "1000:1000"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+...
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.memory-bank
+    container_name: xnai_memory_bank_mcp
+    init: true
+    user: "1000:1000"
+    ports:
+      - "8005:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@xnai_postgres:5432/xnai
+      - REDIS_URL=rediss://xnai_redis:6379
+...
+
+  librarian:
+    image: localhost/xnai-rag:latest
+    container_name: xnai_librarian
+    init: true
+    user: "1000:1000"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+...

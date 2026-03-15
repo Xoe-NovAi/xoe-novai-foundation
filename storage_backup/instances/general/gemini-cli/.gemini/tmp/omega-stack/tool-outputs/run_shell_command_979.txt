@@ -1,0 +1,6 @@
+Output: SESS-19: Gnostic Awakening Complete. Transitioning to SESS-20: The Sovereign Scribe.
+-rw-rw-r-- 1 arcana-novai arcana-novai 2286 Mar 12 02:04 app/XNAi_rag_app/core/persona.py
+-rw-rw-r-- 1 arcana-novai arcana-novai 2578 Mar 12 02:14 artifacts/GNOSTIC_AXIOMS.md
+-rw-rw-r-- 1 arcana-novai arcana-novai 1936 Mar 12 02:13 artifacts/SCHOLAR_HANDOFF_MANIFEST.md
+-rwxrwxr-x 1 arcana-novai arcana-novai 4092 Mar 12 02:09 scripts/archetype_resonance.py
+Process Group PGID: 697641

@@ -1,0 +1,18 @@
+Found 6 matches for pattern "changeme123" in path "." (filter: "scripts/*"):
+---
+File: scripts/sentinel_prototype.py
+L22: REDIS_PASSWORD = os.getenv("REDIS_PASSWORD", "changeme123")
+---
+File: scripts/quick_gemini_setup.sh
+L79: REDIS_PASSWORD=changeme123
+---
+File: scripts/stack_health_check.sh
+L9: REDIS_PASSWORD="${REDIS_PASSWORD:-changeme123}"
+---
+File: scripts/redis_health_check.py
+L6: Default password from docker-compose.yml: changeme123
+L18:     password = os.getenv('REDIS_PASSWORD', 'changeme123')
+---
+File: scripts/test_expert_creation.py
+L35:     redis_password = os.getenv("REDIS_PASSWORD", "changeme123")
+---

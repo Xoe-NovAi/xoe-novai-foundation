@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# 🗺️ Omega Stack: Strategic Session Roadmap (v1.3)\n\nThis roadmap assigns all tasks into 9 targeted, context-efficient chat sessions.\n\n---\n\n## 🛡️ SESS-01: Identity & Credentials\n**Focus**: Stabilize ownership and secure credent
+... [TRUNCATED] ...
+stry.\n- [ ] **Hardening pass**: Implement strict validation for model loading and usage.\n\n---\n\n### 📌 Session Hygiene:\n\n- Keep chat context <5MB.\n- **START EVERY SESSION** with an MB-MCP health check: `curl http://localhost:8005/health`.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773192036969_0_gas5g.txt
+</tool_output_masked>

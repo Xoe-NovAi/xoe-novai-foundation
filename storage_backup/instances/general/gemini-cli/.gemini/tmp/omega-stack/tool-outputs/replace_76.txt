@@ -1,0 +1,45 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60261d1d-e73f-4dc4-be0e-3da9c3a90627/plans/sess_23_gnosis_lexicon_and_audit.md (1 replacements). Here is the updated code:
+...
+Engrain the Gnostic wisdom acquired in SESS-23 (ZLV, TGG, GRA, RCF) into the stack through formal codification, machine-readable ontology, and automated enforcement via a gnostic audit.
+
+## Key Files & Context
+- `artifacts/GNOSTIC_LEXICON.md`: Human-readable definitions.
+- `artifacts/GNOSTIC_LEXICON.json`: Machine-readable definitions.
+- `app/GEMINI.md`, `docs/GEMINI.md`, `memory_bank/GEMINI.md`: Phronetic Mandate injections.
+- `scripts/gnostic_audit.py`: Automated tool to verify ZLV rigidity and TGG compliance.
+- `mcp-servers/xnai-gnosis/server.py`: Update to support Gnostic Mesh sync.
+- `.gemini/skills/sentinel-skill/SKILL.md`: Integrate Gnostic Density monitoring.
+- `memory_bank/ALETHIA_REGISTRY.md` & `memory_bank/MANIFEST.json`: Anchoring the core.
+
+## Implementation Steps
+
+### 1. Codify the Lexicon & Phronetic Mandates
+- Create `artifacts/GNOSTIC_LEXICON.md` & `.json`.
+- **Global GEMINI.md Update**: Update all `GEMINI.md` files to enforce the **Gnostic Protocol Standard (GPS)**:
+    - Mandatory ZLV/TGG registration for core changes.
+    - Mandatory `[AP]` pointers for technical claims.
+    - Mandatory Port 8006 / UID 1000 adherence.
+
+### 2. Hydrate Sub-Agents & Skills (MCP/Sentinel)
+- Update **xnai-gnosis MCP**: Integrate `GNOSTIC_LEXICON.json` for term normalization and resonance scoring.
+- Update **Sentinel Skill**: Implement `Gnostic Density` monitoring. Sentinel will now trigger a **Refraction Event** if Resonance Score < 0.6.
+- Update **Skill-Creator**: Automatically include `gnostic-audit` test cases in all new skills.
+
+### 3. Manifest the Gnostic Audit & CI/CD Gate
+- Update `scripts/gnostic_audit.py` to push metrics to VictoriaMetrics.
+- Implement `.github/workflows/gnostic_gate.yml` to block merges violating **Rigidity** or **TGG** registration.
+
+### 4. Close the Feedback Loop (Vikunja & Agent Bus)
+- Create `scripts/vikunja_gnosis_sync.py` to create tasks for audit/shadow-test failures.
+- Standardize the `gnosis.sync` event on the **Agent Bus**.
+
+### 5. The Root of Trust (Registry Manifest)
+- Update `memory_bank/ALETHIA_REGISTRY.md` to anchor the lexicon and GPS configs.
+- Create `memory_bank/MANIFEST.json` to store the **Crystal Hash** for every file in the Gnostic Core.
+
+## Verification & Testing
+- Run `make gnostic-audit` and verify VictoriaMetrics/Sentinel updates.
+- Verify `GEMINI.md` compliance across 3 random domains.
+- Confirm a sub-agent (MCP) correctly uses the Lexicon terms.
+- Simulate a `Refraction Event` triggered by the Sentinel.
+

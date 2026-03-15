@@ -1,0 +1,9 @@
+Output: xnai_grafana
+xnai_victoriametrics
+xnai_grafana
+xnai_victoriametrics
+f710b592007f3787a82844ab55fb61888d98eadba2a1701e7296acb6bd968a54
+xnai_victoriametrics
+f2fb8c9d0e9c7becfe969eb48d8bab5a53dd6b01dd4e1af076b5aa4c13edd63c
+xnai_grafana
+Process Group PGID: 106924

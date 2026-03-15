@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 80-110 of 879 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example
+... [TRUNCATED] ...
+is\n      - REDIS_PORT=6379\n      - GEMINI_API_KEY\n      - GOOGLE_API_KEY\n      - GOOGLE_APPLICATION_CREDENTIALS=/app/secrets/oauth_credentials.json\n      - VERTEXAI_PROJECT=arcana-novai-gemini-1772727596\n      - VERTEXAI_LOCATION=us-central1"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773279222185_0_rata8m.txt
+</tool_output_masked>

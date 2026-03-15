@@ -1,0 +1,21 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - ../../.cli:/app/.cli:Z
+      - ../../.logs:/app/.logs:Z
+      - ../../.env:/app/.env:ro,Z
+      - ../../config.toml:/app/config.toml:ro,Z
+      - /home/arcana-novai/.xnai/oauth_credentials.json:/app/secrets/oauth_credentials.json:ro,Z
+      - /home/arcana-novai/.xnai/.oauth_key:/app/secrets/.oauth_key:ro,Z
+    environment:
+      - REDIS_PASSWORD
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - GEMINI_API_KEY
+      - GOOGLE_API_KEY
+      - XNAI_OAUTH_KEY
+      - VERTEXAI_PROJECT=arcana-novai-gemini-1772727596
+      - VERTEXAI_LOCATION=us-central1
+      - CONFIG_PATH=/app/config.toml
+    deploy:
+      resources:
+...

@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: {{- '<|im_start|>user' }}
+        {%- endif %}
+        {{- '\n<tool_response>\n' }}
+        {{- message.content }}
+        {{- '\n</tool_response>' }}
+        {%- if loop.last or (messages[loop.index0 + 1].role != "tool") %}
+            {{- '<|im_end|>\n' }}
+        {%- endif %}
+    {%- endif %}
+{%- endfor %}
+
+... [20 lines omitted] ...
+
+{"timestamp": "2026-03-10T22:24:36.073582Z", "level": "WARNING", "module": "consul_client", "function": "deregister_service", "line": 109, "message": "\u26a0\ufe0f Consul not connected, skipping deregistration of rag-api-4d4fe8780465", "stack_version": "v0.1.0-alpha", "process_id": 7, "thread_id": 135865898224512}
+{"timestamp": "2026-03-10T22:24:36.073712Z", "level": "INFO", "module": "research_agent", "function": "stop_monitoring", "line": 600, "message": "Research and best practice agent monitoring stopped", "stack_version": "v0.1.0-alpha", "process_id": 7, "thread_id": 135865898224512}
+{"timestamp": "2026-03-10T22:24:36.073838Z", "level": "INFO", "module": "openpipe_integration", "function": "shutdown", "line": 145, "message": "Shutting down SovereignOpenPipe client", "stack_version": "v0.1.0-alpha", "process_id": 7, "thread_id": 135865898224512}
+{"timestamp": "2026-03-10T22:24:36.074731Z", "level": "INFO", "module": "dependencies", "function": "shutdown_dependencies", "line": 450, "message": "HTTP client closed", "stack_version": "v0.1.0-alpha", "process_id": 7, "thread_id": 135865898224512}
+{"timestamp": "2026-03-10T22:24:36.074875Z", "level": "INFO", "module": "services_init", "function": "shutdown_all", "line": 253, "message": "Stack shutdown complete", "stack_version": "v0.1.0-alpha", "process_id": 7, "thread_id": 135865898224512}
+{"timestamp": "2026-03-10T22:24:36.074981Z", "level": "INFO", "module": "entrypoint", "function": "on_shutdown", "line": 250, "message": "[Shutdown] All services shut down.", "stack_version": "v0.1.0-alpha", "process_id": 7, "thread_id": 135865898224512}
+INFO:     Application shutdown complete.
+{"timestamp": "2026-03-10T22:24:36.076467Z", "level": "WARNING", "module": "openpipe_integration", "function": "_emergency_cleanup", "line": 153, "message": "Emergency cleanup triggered for SovereignOpenPipe client", "stack_version": "v0.1.0-alpha", "process_id": 7, "thread_id": 135865898224512}
+TransactionLogger failed to connect to Redis: Error while reading from xnai_redis:6379 : (104, 'Connection reset by peer')
+{"timestamp": "2026-03-10T22:24:48.778551", "level": "INFO", "service": "xnai-rag-api", "message": "Xoe-NovAi Observability: logs enabled successfully", "correlation_id": null, "request_id": null, "user_id": null, "error_type": null, "duration_ms": null, "accessibility_compliant": true, "maat_compliant": true}
+Process Group PGID: 959509
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/run_shell_command_run_shell_command_1773181488584_0_k1ygla.txt
+</tool_output_masked>

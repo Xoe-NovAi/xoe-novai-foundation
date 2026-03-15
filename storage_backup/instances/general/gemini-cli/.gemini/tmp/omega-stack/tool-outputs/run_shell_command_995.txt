@@ -1,0 +1,11 @@
+Output: INFO:XNAi_rag_app.core.config_loader:Configuration validated against Pydantic schema (v0.1.4-compliant)
+INFO:XNAi_rag_app.core.config_loader:Configuration loaded from /app/app/config.toml (22 sections)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/app/XNAi_rag_app/workers/library_curator.py", line 24, in <module>
+    from XNAi_rag_app.services.ingest_library import EnterpriseIngestionEngine, IngestionStats
+  File "/app/app/XNAi_rag_app/services/ingest_library.py", line 75, in <module>
+    from XNAi_rag_app.core.metrics import PerformanceLogger
+ImportError: cannot import name 'PerformanceLogger' from 'XNAi_rag_app.core.metrics' (/app/app/XNAi_rag_app/core/metrics.py)
+Process Group PGID: 1253765

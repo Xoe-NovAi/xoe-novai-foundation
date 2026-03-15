@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# ALETHIA-POINTER (AP) REGISTRY\n# PROTOCOL: Verifiable Ground Truth (Omega Stack v4.2.0)\n\n## 📖 CITATION SYNTAX\n- `[GT:file#line]` -> Ground Truth (Primary Source)\n- `[SESS-XX:Detail]` -> Session Chronicle Reference\n- `[LEX:Term]
+... [TRUNCATED] ...
+[RIGIDITY-HASH-ALPHA-20260312]`\n\n## ⚖️ VERIFICATION RULE\nIf a technical claim is made without an `[AP]` pointer, it is classified as \"Speculative Logos\" and must pass the **Alethia Threshold** (2/3 weighted consensus) before implementation.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773338526086_3_yd5zci.txt
+</tool_output_masked>

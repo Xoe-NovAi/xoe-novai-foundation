@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/memory_bank_fallback.py (1 replacements). Here is the updated code:
+...
+        except Exception as e:
+            self.circuit_breaker.record_failure()
+            return {"status": "error", "message": str(e)}
+
+    async def handle_tool_call(self, name: str, arguments: Dict[str, Any]) -> Any:
+        """Handle MCP tool calls by routing through fallback logic with S2 support."""
+        if name == "register_agent":
+            result = await self.register_agent(
+                arguments["agent_id"],
+                arguments["capabilities"],
+                arguments["memory_limit_gb"]
+...

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n# Xoe-NovAi Curation Worker\n# Guide Ref: Section 8.2 (Pattern: Redis Job Queue Processing)\nimport os\nimport time\nimport json\nimport logging\nfrom datetime import datetime, timezone\nfrom pathlib import Path
+... [TRUNCATED] ...
+\t\t\ttime.sleep(1)\n\t\t\t\tcontinue\n\t\t\tjob_id = job[1]\n\t\t\tprocess_job(job_id)\n\t\texcept redis.ConnectionError as e:\n\t\t\tlogger.error(f\"Redis connection lost: {e}\")\n\t\t\ttime.sleep(5)\n\nif __name__ == \"__main__\":\n    main()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773011992866_0_f2y4ws.txt
+</tool_output_masked>

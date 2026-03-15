@@ -1,0 +1,3 @@
+Output: xnai_memory_bank_mcp
+Warning: Could not load config: No module named 'XNAi_rag_app'
+Process Group PGID: 954730

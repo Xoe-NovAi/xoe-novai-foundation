@@ -1,0 +1,3 @@
+{
+  "error": "Invalid exclude regular expression pattern provided: _archive/**,.git/**. Error: Invalid regular expression: /_archive/**,.git/**/: Nothing to repeat"
+}

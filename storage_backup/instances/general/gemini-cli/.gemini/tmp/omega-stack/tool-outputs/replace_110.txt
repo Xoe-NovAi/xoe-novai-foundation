@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/TGG_GRAPH.json (1 replacements). Here is the updated code:\n...\n          \"re\",\n          \"unicodedata\"\n        ],\n        \"hash\": \"8
+... [TRUNCATED] ...
+core.linguistics\"],\n        \"hash\": \"inherited\"\n      }\n,\n      \"app.core.test\": {\n        \"path\": \"app/core/test.py\",\n        \"hash\": \"abc123hash\",\n        \"type\": \"logic\",\n        \"last_anchored\": \"2026-03-12\"\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773354498461_0_98c9f.txt
+</tool_output_masked>

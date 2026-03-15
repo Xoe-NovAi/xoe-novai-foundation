@@ -1,0 +1,68 @@
+Found 2 matches for pattern "Librarian" in path "memory_bank/":
+---
+File: multi_expert/loading_protocols/agent_loading_guide.md
+L44- 
+L45- **Loading Command**:
+L46- ```
+L47- LOAD_MEMORY_BANK: technical_foundation
+L48- ```
+L49- 
+L50- **Usage Examples**:
+L51- - Answering technical questions about the stack
+L52- - Providing implementation guidance
+L53- - Troubleshooting technical issues
+L54- - Explaining architectural decisions
+L55- - Suggesting performance optimizations
+L56- 
+L57- ### 3. Curation & Knowledge Management Memory Bank
+L58- **Purpose**: Organize and manage the vast knowledge base
+L59: **Best For**: Librarians, knowledge managers, research assistants
+L60- **Key Content**:
+L61- - Document classification systems
+L62- - Knowledge organization patterns
+L63- - Curation workflows
+L64- - Quality assessment criteria
+L65- - Cross-reference mapping
+L66- - Knowledge gap identification
+L67- 
+L68- **Loading Command**:
+L69- ```
+L70- LOAD_MEMORY_BANK: curation_management
+L71- ```
+L72- 
+L73- **Usage Examples**:
+L74- - Organizing new documents into the knowledge base
+---
+File: recall/MULTI-EXPERT-MEMORY-BANK-STRATEGY.md
+L56- - Performance optimization strategies
+L57- - Troubleshooting guides
+L58- 
+L59- **Target Agents**: Technical advisors, developers, system architects
+L60- 
+L61- #### 3. Curation & Knowledge Management Memory Bank
+L62- **Purpose**: Organize and manage the vast knowledge base
+L63- **Content**:
+L64- - Document classification systems
+L65- - Knowledge organization patterns
+L66- - Curation workflows
+L67- - Quality assessment criteria
+L68- - Cross-reference mapping
+L69- - Knowledge gap identification
+L70- 
+L71: **Target Agents**: Librarians, knowledge managers, research assistants
+L72- 
+L73- #### 4. Task Coordination Memory Bank
+L74- **Purpose**: Project management and agent coordination
+L75- **Content**:
+L76- - Task tracking and status
+L77- - Agent assignment and coordination
+L78- - Progress monitoring
+L79- - Resource allocation
+L80- - Priority management
+L81- - Communication protocols
+L82- 
+L83- **Target Agents**: Project managers, coordinators, overseers
+L84- 
+L85- ## Implementation Strategy
+L86- 
+---

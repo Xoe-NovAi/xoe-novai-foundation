@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nSovereign Handshake Protocol - Ed25519 Key Exchange\n====================================================\nFile-based cryptographic handshake for inter-agent authentication.\nImplements challenge-respons
+... [TRUNCATED] ...
+ \"__main__\":\n    # Demo usage - see test_handshake.py for complete example\n    print(\"Sovereign Handshake Protocol - Ed25519 Key Exchange\")\n    print(\"Import this module to use: from iam_handshake import SovereignHandshake, KeyManager\")\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773005403365_0_oltg7.txt
+</tool_output_masked>

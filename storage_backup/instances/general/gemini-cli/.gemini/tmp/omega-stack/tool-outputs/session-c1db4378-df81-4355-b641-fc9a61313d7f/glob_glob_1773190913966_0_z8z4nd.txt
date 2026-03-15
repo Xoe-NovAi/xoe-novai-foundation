@@ -1,0 +1,3 @@
+{
+  "output": "No files found matching pattern \"docs/**/github-protocol-guide.md\" within 2 workspace directories"
+}

@@ -1,0 +1,17 @@
+Output: Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           675M  2.9M  672M   1% /run
+/dev/nvme0n1p2  109G   83G   21G  81% /
+tmpfs           3.3G   15M  3.3G   1% /dev/shm
+efivarfs        128K   11K  113K   9% /sys/firmware/efi/efivars
+tmpfs           5.0M   16K  5.0M   1% /run/lock
+tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+/dev/nvme0n1p1  256M   61M  196M  24% /boot/efi
+tmpfs           3.3G  4.5M  3.3G   1% /tmp
+tmpfs           675M  1.3M  673M   1% /run/user/1000
+/dev/nvme0n1p3  110G   25G   80G  24% /media/arcana-novai/omega_library
+/dev/nvme0n1p4   16G   12G  3.5G  77% /media/arcana-novai/omega_vault
+''$'\004'    Downloads   Public      Xoe-NovAi-core-stack.tar.gz   devops-patterns-sovereign-agents   gse-customize-clock-on-lock-screen   observability-research   snap
+ Desktop     Music       Templates   archive                       go                                 hardinfo2_report-2.html              old.gemini
+ Documents   Pictures    Videos      build_crawler_pid.txt         google-cloud-sdk                   hardinfo2_report.html                scripts
+Process Group PGID: 1326884

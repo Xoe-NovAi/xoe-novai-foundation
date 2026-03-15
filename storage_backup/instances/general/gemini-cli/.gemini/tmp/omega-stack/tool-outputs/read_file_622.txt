@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-100 of 774 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example,
+... [TRUNCATED] ...
+ate: str = \"active\"\n\n\n@dataclass\nclass EmbeddingCacheEntry:\n    \"\"\"Embedding vector structure\"\"\"\n    vector: List[float]\n    chunk_id: str\n    chunk_hash: str\n    model: str\n    dimension: int\n    norm: float\n    timestamp: str"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001155804_0_v21gen.txt
+</tool_output_masked>

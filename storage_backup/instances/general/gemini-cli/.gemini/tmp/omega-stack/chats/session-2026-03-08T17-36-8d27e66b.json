@@ -1,0 +1,25 @@
+{
+  "sessionId": "8d27e66b-423b-46a4-b74d-8edce391a703",
+  "projectHash": "2476bd7a9850651760e85ba3ac3188c94c0588ba952e85515f42602f589ea94f",
+  "startTime": "2026-03-08T17:36:49.988Z",
+  "lastUpdated": "2026-03-08T17:36:49.993Z",
+  "messages": [
+    {
+      "id": "188ede67-bc5a-45ad-9cc5-b5f6cf007361",
+      "timestamp": "2026-03-08T17:36:49.989Z",
+      "type": "info",
+      "content": "Request cancelled."
+    },
+    {
+      "id": "7c7439d3-12d5-419e-b8c6-d03dea7fa27f",
+      "timestamp": "2026-03-08T17:36:49.993Z",
+      "type": "user",
+      "content": [
+        {
+          "text": ".model"
+        }
+      ]
+    }
+  ],
+  "kind": "main"
+}

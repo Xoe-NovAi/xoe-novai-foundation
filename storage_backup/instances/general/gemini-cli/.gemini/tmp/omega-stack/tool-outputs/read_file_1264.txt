@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\nrequest_id: \"REQ-2026-02-13-003\"\ndate_submitted: \"2026-02-13\"\nsubmitted_by: \"OpenCode-Kimi-X\"\nstatus: \"PENDING\"\npriority: \"high\"\nrequest_type: \"comparison\"\nassigned_to: \"\"\ndue_date: \"2026-02-28\"\nma_at_mappi
+... [TRUNCATED] ...
+te)  \n**Priority rationale**: Critical for maximizing OpenCode value  \n**Dependencies**: REQ-001, REQ-002\n\n---\n\n**Submitted**: 2026-02-13  \n**Status**: PENDING (Blocked by dependencies)  \n**Request Type**: Comparison / Strategic Analysis\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773002470176_1_axm2ce.txt
+</tool_output_masked>

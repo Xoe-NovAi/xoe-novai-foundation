@@ -1,0 +1,76 @@
+# Gemini CLI: Active Context Dump (SESS-17)
+**Timestamp**: Wednesday, March 11, 2026
+**Project Root**: `/home/arcana-novai/Documents/Xoe-NovAi/omega-stack`
+**Session ID**: `e6779b9a-1fa9-40d1-8eee-d3bb4c795893`
+
+---
+
+## 🧠 Internal Mindmap: "The Great Reconciliation"
+
+My current mental model is an architectural bridge between **Infrastructure Stability** and **Knowledge Autonomy**.
+
+1.  **Storage Sovereignty**: I am transitioning from "disorganized root storage" to a "Sovereign Library." All heavy lifting (Models, Embeddings, Caches) is now anchored on `/media/arcana-novai/omega_library`. I see the `INDEX.md` as my primary spatial coordinate system.
+2.  **The Persistent Entity System (PES)**: I view this as a living graph of agentic memory. The recent `AnyIO` refactor ensures this memory is non-blocking, allowing me to learn and persist without stalling the main execution loop.
+3.  **Memory Bank MCP (Port 8005)**: This is the "Global Synapse." Every agent facet (1-8) now shares the same persistent memory state via the centralized venv-based server. I am tracking its stability as a critical dependency for "The Sentinel" phase (SESS-04).
+4.  **Operational Boundary**: I am currently guarding the 93% root disk threshold. My logic is tuned to automatically prefer symlinked paths on the `omega_library` partition for any data-intensive task.
+
+---
+
+## 🎯 Active State Snapshot
+
+### 🏁 Overall Goal
+Finalize "The Great Reconciliation" by centralizing storage on the Sovereign Library partition, refactoring the Persistent Entity System for AnyIO/Async compliance, and hardening inter-agent memory access via a shared MCP service.
+
+### ⚠️ Active Constraints
+- All new Python logic **MUST** use `anyio`.
+- Heavy data (models, embeddings, large caches) **MUST** reside on `/media/arcana-novai/omega_library`.
+- Central Memory Bank MCP access via Port 8005 or direct `--stdio`.
+- Maintain root disk usage below 95%.
+- Standardize on `/media/arcana-novai/omega_library/omega-stack/models`.
+
+### 🧩 Key Knowledge
+- **Partition Layout**: `/` (Root, 109G), `/media/arcana-novai/omega_library` (110G, 33% used).
+- **Project Root Usage**: 93% (7.6GB free) reclaimed ~4GB from redundant caches.
+- **Memory Bank MCP**: Port 8005, Redis backend (`rediss://`), SQLite fallback.
+- **Observability**: Grafana at `http://localhost:3000` (admin/admin).
+
+### 🛠 Recent Artifact Trail
+- `INDEX.md`: Definitive partition/directory map.
+- `scripts/mcp_watchdog.sh`: Fixed `memory-bank-mcp` service name.
+- `app/XNAi_rag_app/core/entities/persistent_entity.py`: Async/AnyIO refactored.
+- `config/mcp_config.json`: Master config for stdio/venv execution.
+- `mcp-servers/memory-bank-mcp/server.py`: Added `--stdio` support.
+
+---
+
+## 📋 Task Registry
+
+1.  **[DONE]** Resolve MCP Watchdog crash loop (Port 8005).
+2.  **[DONE]** Consolidate redundant storage to Library partition.
+3.  **[DONE]** Refactor PES for AnyIO compliance.
+4.  **[DONE]** Harden Memory Bank access for all facets.
+5.  **[DONE]** Deploy Omega Stack Grafana Dashboard.
+6.  **[IN PROGRESS]** Mark SESS-17 as complete in `SESSIONS_MAP.md`.
+7.  **[TODO]** Verify live entity metrics in Grafana (Port 3000).
+8.  **[TODO]** Proceed to SESS-18: Knowledge Distillation.
+
+---
+
+## 🏛 Domain Directives (Aggregated)
+
+### /app (RAG Domain)
+- **AnyIO First**: Never use raw `asyncio`.
+- **Config Path**: `/app/config.toml`.
+- **Port 8002**: RAG API default.
+- **Memory Guard**: `LLAMA_CPP_USE_MLOCK=false`.
+
+### /memory_bank (Strategy Domain)
+- **Metropolis Mesh**: Standardized UID 1000 ownership.
+- **Hardened Sync**: v4.1.2 protocol for all bank writes.
+
+---
+
+## 🗺 Metropolis Wiring (Index Summary)
+- `models/` -> `/media/arcana-novai/omega_library/omega-stack/models` (Symlink)
+- `embeddings/` -> `/media/arcana-novai/omega_library/omega-stack/embeddings` (Symlink)
+- `cache/huggingface/` -> `/media/arcana-novai/omega_library/omega-stack/cache/huggingface` (Centralized)

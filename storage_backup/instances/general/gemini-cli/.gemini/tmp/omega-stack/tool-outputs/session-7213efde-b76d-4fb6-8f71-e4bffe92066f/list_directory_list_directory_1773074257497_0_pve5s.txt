@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.gemini/agents:\nfacet-1.md (268 bytes)\nfacet-2.md (268 bytes)\nfacet-3.md (268 bytes)\nfacet-4.md (268 bytes)\nfacet-5.md (268 bytes)\nfacet-6.md (268 bytes)\nfacet-7.md (268 bytes)\nfacet-8.md (268 bytes)"
+}

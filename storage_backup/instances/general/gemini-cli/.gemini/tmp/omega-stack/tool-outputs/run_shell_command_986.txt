@@ -1,0 +1,4 @@
+Output: usage: archetype_resonance.py [-h] file
+archetype_resonance.py: error: unrecognized arguments: Enhancement/V3/PEM_Lilith_v3.txt
+Exit Code: 2
+Process Group PGID: 692799

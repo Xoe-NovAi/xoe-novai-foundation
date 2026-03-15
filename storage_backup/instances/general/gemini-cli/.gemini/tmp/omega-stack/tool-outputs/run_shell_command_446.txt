@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: app/XNAi_rag_app/core/__pycache__/iam_handshake.cpython-313.pyc
+app/XNAi_rag_app/core/__pycache__/oauth_manager.cpython-313.pyc
+app/XNAi_rag_app/core/__pycache__/iam_db.cpython-313.pyc
+app/XNAi_rag_app/core/__pycache__/iam_service.cpython-313.pyc
+app/XNAi_rag_app/core/iam_db.py
+app/XNAi_rag_app/core/iam_service.py
+app/XNAi_rag_app/core/iam_handshake.py
+app/XNAi_rag_app/core/oauth_manager.py
+app/XNAi_rag_app/core/test_iam_handshake.py
+app/XNAi_rag_app/api/auth_service.py
+
+... [162 lines omitted] ...
+
+app/XNAi_rag_app/services/rag/__pycache__:
+__init__.cpython-313.pyc  rag_service.cpython-313.pyc
+
+app/XNAi_rag_app/services/voice:
+__init__.py  exceptions.py             voice_degradation.py  voice_module.py
+__pycache__  voice_command_handler.py  voice_interface.py    voice_recovery.py
+
+app/XNAi_rag_app/services/voice/__pycache__:
+__init__.cpython-313.pyc    voice_degradation.cpython-313.pyc  voice_module.cpython-313.pyc
+exceptions.cpython-313.pyc  voice_interface.cpython-313.pyc    voice_recovery.cpython-313.pyc
+Process Group PGID: 449477
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773005355662_0_ll8djp.txt
+</tool_output_masked>

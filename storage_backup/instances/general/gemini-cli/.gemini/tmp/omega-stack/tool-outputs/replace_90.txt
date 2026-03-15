@@ -1,0 +1,3 @@
+{
+  "error": "Failed to edit, 0 occurrences found for old_string in /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/3bbad171-16be-425c-acf9-f6ce35432090/plans/SESS-19-MIND-MAP-CLOSURE.md. Ensure you're not escaping content incorrectly and check whitespace, indentation, and context. Use read_file tool to verify."
+}

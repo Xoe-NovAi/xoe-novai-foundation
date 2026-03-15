@@ -1,0 +1,5 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/handovers:
+OPUS_SUMMONING_BRIEF.md (1896 bytes)
+OPUS-AGENT-HANDOFF-2026-03-05.md (11679 bytes)
+OPUS-METROPOLIS-HANDOFF-2026-03-04.md (2482 bytes)
+SESSION_20260310_SUMMARY.md (1735 bytes)

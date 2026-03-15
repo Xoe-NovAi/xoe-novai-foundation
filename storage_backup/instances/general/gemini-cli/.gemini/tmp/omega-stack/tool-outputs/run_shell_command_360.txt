@@ -1,0 +1,9 @@
+Output: 4.0K    /home/arcana-novai/Documents/Xoe-NovAi/arcana-stack
+4.0K    /home/arcana-novai/Documents/Xoe-NovAi/data
+4.0K    /home/arcana-novai/Documents/Xoe-NovAi/docs-org
+4.0K    /home/arcana-novai/Documents/Xoe-NovAi/logs
+7.5G    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack
+12K     /home/arcana-novai/Documents/Xoe-NovAi/projects
+4.0K    /home/arcana-novai/Documents/Xoe-NovAi/shared
+Exit Code: 1
+Process Group PGID: 94150

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 400-600 of 884 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+nless-stopped\n    deploy:\n      resources:\n        limits:\n          memory: 256M\n          cpus: '0.2'\n    ports:\n      - \"8002:8000\"\n    volumes:\n      - ./Caddyfile:/etc/caddy/Caddyfile:ro,Z,U\n      - ./logs/caddy:/var/log/caddy:Z,U"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773361547432_0_xq3rri.txt
+</tool_output_masked>

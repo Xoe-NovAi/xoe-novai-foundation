@@ -1,0 +1,3 @@
+{
+  "output": "Output: Collecting prometheus_client\n  Downloading prometheus_client-0.24.1-py3-none-any.whl.metadata (2.1 kB)\nDownloading prometheus_client-0.24.1-py3-none-any.whl (64 kB)\nInstalling collected packages: prometheus_client\nSuccessfully installed prometheus_client-0.24.1\nProcess Group PGID: 1330017"
+}

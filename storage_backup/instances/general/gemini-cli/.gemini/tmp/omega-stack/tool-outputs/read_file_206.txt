@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "{\n  \"LIA_TRIAD\": {\n    \"version\": \"1.0.0\",\n    \"last_updated\": \"2026-03-12T13:10:00Z\",\n    \"anchors\": {\n      \"registry\": \"memory_bank/ALETHIA_REGISTRY.md\",\n      \"architecture\": \"memory_bank/ARCHITECTURE.md\"\
+... [TRUNCATED] ...
+ for Mesh communication\",\n          \"Credential Protection: Never log or print secrets\"\n        ],\n        \"alignment\": \"Preserve permission sets, auth logic, and security headers. Prune redundant alternatives.\"\n      }\n    }\n  }\n}\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773338526399_4_ll3tke.txt
+</tool_output_masked>

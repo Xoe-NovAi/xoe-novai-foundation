@@ -1,0 +1,20 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/iam_db.py (1 replacements). Here is the updated code:
+...
+        self.token_expiry = timedelta(hours=24)
+    
+    def _get_jwt_secret(self) -> str:
+        """Get or generate JWT secret."""
+        secret = self.db.execute(
+            text("SELECT value FROM config WHERE key = 'jwt_secret'")
+        ).scalar()
+        
+        if not secret:
+            secret = secrets.token_urlsafe(64)
+            self.db.execute(
+                text("INSERT INTO config (key, value) VALUES ('jwt_secret', :secret)"),
+                {"secret": secret}
+            )
+            self.db.commit()
+        
+        return secret
+...

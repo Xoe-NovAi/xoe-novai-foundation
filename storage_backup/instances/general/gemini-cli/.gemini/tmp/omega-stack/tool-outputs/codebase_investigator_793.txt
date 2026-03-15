@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Subagent 'codebase_investigator' finished.\nTermination Reason: GOAL\nResult:\n{\n  \"SummaryOfFindings\": \"The investigation revealed a sophisticated but partially reactive architecture. \\n\\n1. **Predictive Models**: Speculative re
+... [TRUNCATED] ...
+\n      \"FilePath\": \"app/XNAi_rag_app/core/curation/optimizer.py\",\n      \"Reasoning\": \"Part of the curation sub-system, implementing autonomous prompt tuning.\",\n      \"KeySymbols\": [\n        \"PromptOptimizer\"\n      ]\n    }\n  ]\n}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/codebase_investigator_codebase_investigator_1773020484740_0_67slub.txt
+</tool_output_masked>

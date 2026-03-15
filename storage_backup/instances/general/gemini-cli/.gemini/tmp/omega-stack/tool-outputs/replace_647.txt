@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/mali_gate.py (1 replacements). Here is the updated code:\n...\nimport json\nfrom pathlib import Path\n\nasync def judge_decree(decree_content: str):
+... [TRUNCATED] ...
+    return True\n    else:\n        # In a real implementation, we would parse the scores more strictly\n        return True\n\nasync def main():\n    import sys\n    if len(sys.argv) < 2:\n        print(\"Usage: mali_gate.py <decree_text>\")\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773274454844_0_davzpp.txt
+</tool_output_masked>

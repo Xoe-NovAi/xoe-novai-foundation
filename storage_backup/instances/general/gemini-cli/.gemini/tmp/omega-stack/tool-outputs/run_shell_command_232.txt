@@ -1,0 +1,15 @@
+Output: 491M    /home/arcana-novai/Documents/RECOVERED_GNOSIS/MASTER_VOICE_VOX.txt
+473M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/models/Qwen3-0.6B-Q6_K.gguf
+469M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/models/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf
+389M    /home/arcana-novai/Desktop/Pictures/Allison - NR - V2.mov
+314M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/models/local/all/embeddinggemma-300M-Q8_0.gguf
+314M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/embeddings/local/all/embeddinggemma-300M-Q8_0.gguf
+273M    /home/arcana-novai/Desktop/Pictures/yeah/Bri/1428.MOV
+148M    /home/arcana-novai/Documents/Programming/Projects/Stitcher/Stitcher_0-9/miniconda.sh
+148M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/projects/Stack-Cat/stack-cat-origins/Stitcher/Stitcher_0-9/miniconda.sh
+139M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/models/local/all/smollm2-135m-instruct-q8_0.gguf
+127M    /home/arcana-novai/Desktop/Pictures/yeah/Bri/MVI_0255.MP4
+115M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/projects/crawl4ai-gui/crawler_gui/lib/python3.12/site-packages/playwright/driver/node
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p2  109G   79G   25G  77% /
+Process Group PGID: 1860535

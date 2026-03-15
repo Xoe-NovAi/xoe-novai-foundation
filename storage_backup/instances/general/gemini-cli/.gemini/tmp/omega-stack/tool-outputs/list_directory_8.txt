@@ -1,0 +1,67 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack:
+[DIR] _archive
+[DIR] .cli
+[DIR] .gemini
+[DIR] .git
+[DIR] .github
+[DIR] .logs
+[DIR] .opencode
+[DIR] .pytest_cache
+[DIR] .venv_mcp
+[DIR] .vscode
+[DIR] app
+[DIR] artifacts
+[DIR] config
+[DIR] dashboard
+[DIR] data
+[DIR] docs
+[DIR] embeddings
+[DIR] entities
+[DIR] entities_test
+[DIR] expert-knowledge
+[DIR] hooks
+[DIR] infra
+[DIR] knowledge
+[DIR] knowledge_base
+[DIR] library
+[DIR] logs
+[DIR] mcp-servers
+[DIR] memory_bank
+[DIR] models
+[DIR] modularization
+[DIR] monitoring
+[DIR] Omegadroid
+[DIR] orchestration
+[DIR] packages
+[DIR] projects
+[DIR] requirements
+[DIR] research_env
+[DIR] scripts
+[DIR] secrets
+[DIR] setup
+[DIR] storage
+[DIR] storage_new
+[DIR] tests
+.dockerignore (95 bytes)
+.env (2246 bytes)
+.env.example (991 bytes)
+.gitignore (568 bytes)
+.oauth_key (44 bytes)
+.opencodeignore (468 bytes)
+.server.pid (6 bytes)
+.watcher.pid (6 bytes)
+chainlit.md (0 bytes)
+CODE_OF_CONDUCT.md (2087 bytes)
+config.toml (14932 bytes)
+CONTRIBUTING.md (14827 bytes)
+INDEX.md (2599 bytes)
+Makefile (99092 bytes)
+mkdocs.yml (9203 bytes)
+OMEGA_TOOLS.yaml (3379 bytes)
+OPUS_STRATEGIC_AUDIT_20260308.md (26665 bytes)
+photorec.log (55 bytes)
+QUICK_START.md (1865 bytes)
+README.md (6807 bytes)
+SESSIONS_MAP.md (9272 bytes)
+start_stack.sh (200 bytes)
+STRATEGIC_IMPLEMENTATION_GUIDE_v4.md (15633 bytes)

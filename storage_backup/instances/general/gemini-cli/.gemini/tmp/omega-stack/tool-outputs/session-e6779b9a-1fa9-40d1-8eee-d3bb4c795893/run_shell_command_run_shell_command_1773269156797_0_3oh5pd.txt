@@ -1,0 +1,3 @@
+{
+  "output": "Output: usage: omega_foundry.py [-h] {oikos-check,synthesize,visualize,broadcast} ...\n\nOmega Foundry CLI\n\npositional arguments:\n  {oikos-check,synthesize,visualize,broadcast}\n\noptions:\n  -h, --help            show this help message and exit\nProcess Group PGID: 271083"
+}

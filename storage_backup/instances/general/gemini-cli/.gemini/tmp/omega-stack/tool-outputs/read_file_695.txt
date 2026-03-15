@@ -1,0 +1,22 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 333-348 of 813 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 349.
+
+--- FILE CONTENT (truncated) ---
+    image: xnai-ui:latest
+    container_name: xnai_chainlit_ui
+    init: true
+    userns_mode: "keep-id"
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+    tmpfs:
+      - /app/logs:size=100m,mode=1777
+    volumes:
+      - ./config.toml:/app/config.toml:ro
+      - ./models:/models:ro
+      - ./app/XNAi_rag_app:/app/XNAi_rag_app

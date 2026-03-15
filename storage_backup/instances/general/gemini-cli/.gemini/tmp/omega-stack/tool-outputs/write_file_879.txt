@@ -1,0 +1,19 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/config/mcp_config.json. Here is the updated code:
+{
+  "mcpServers": {
+    "memory-bank": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py",
+        "--stdio"
+      ],
+      "env": {
+        "STORAGE_PATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage",
+        "PYTHONPATH": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack:/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app"
+      }
+    },
+    "github": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",
+      "args": [
+        "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-github/server.py"
+...

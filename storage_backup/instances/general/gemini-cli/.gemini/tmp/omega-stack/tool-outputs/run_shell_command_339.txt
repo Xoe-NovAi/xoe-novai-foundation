@@ -1,0 +1,27 @@
+Output: Traceback (most recent call last):
+  File "/usr/bin/podman-compose", line 33, in <module>
+    sys.exit(load_entry_point('podman-compose==1.3.0', 'console_scripts', 'podman-compose')())
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/podman_compose.py", line 3711, in main
+    asyncio.run(async_main())
+    ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/podman_compose.py", line 3707, in async_main
+    await podman_compose.run()
+  File "/usr/lib/python3/dist-packages/podman_compose.py", line 1859, in run
+    self._parse_compose_file()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/podman_compose.py", line 1954, in _parse_compose_file
+    with open(filename, "r", encoding="utf-8") as f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'infra/docker/docker-compose.yml'
+Exit Code: 1
+Process Group PGID: 103728

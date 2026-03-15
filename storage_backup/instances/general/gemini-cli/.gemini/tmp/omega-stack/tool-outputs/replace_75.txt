@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/workers/librarian.py (1 replacements). Here is the updated code:\n...\n        self.archive_dir = Path(os.getenv(\"SESSION_ARCHIVE_DIR\", \
+... [TRUNCATED] ...
+def _handle_bloat(self, payload: Dict[str, Any]):\n        \"\"\"Trigger recursive summarization and archival for bloated sessions.\"\"\"\n        session_id = payload.get(\"session_id\")\n        token_count = payload.get(\"token_count\", 0)\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/replace_replace_1773188310913_0_5tdekg.txt
+</tool_output_masked>

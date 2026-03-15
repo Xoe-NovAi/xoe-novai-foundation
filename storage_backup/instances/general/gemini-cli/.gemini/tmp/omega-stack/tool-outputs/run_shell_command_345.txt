@@ -1,0 +1,8 @@
+Output:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1373  100  1373    0     0   1383      0 --:--:-- --:--:-- --:--:--  1382
+Warning: Failed to open the file infra/docker/models/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf: Permission denied
+  0  468M    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0
+curl: (23) client returned ERROR on write of 16384 bytes
+Exit Code: 23
+Process Group PGID: 734777

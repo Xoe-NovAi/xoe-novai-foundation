@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"curl http://localhost:8005/health\":\n\nI will check the health of the Memory Bank MCP service by running the `curl` command.[1]\n\nI will check the health of the Memory Bank MCP service by running the `curl` c
+... [TRUNCATED] ...
+google.com/grounding-api-redirect/AUZIYQEy2_rrHvc1mPBpScaPNF2EmKc5LjRnR0GzvN-xLuDKwVskhMbheYOH8EXrjmXWGQ7OOb-T1b5D04qCXMDJKNMYpSGXAFSURfw4wA0oFjG0Jkm_WCsMMiETdtFU5eBt447BkzzFiutQSiqGAqCcyzWBNx-vKGpNIMV3Yh6KYN3FKF0QVL8sATCSnDmgsdrnUAei9qQt6fbEIoc=)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/google_web_search_google_web_search_1773249556276_0_y51hx7.txt
+</tool_output_masked>

@@ -1,0 +1,52 @@
+Output:           "Mounts": [
+               {
+                    "Type": "bind",
+                    "Source": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/config.toml",
+                    "Destination": "/app/config.toml",
+                    "Driver": "",
+                    "Mode": "",
+                    "Options": [
+                         "rbind"
+                    ],
+                    "RW": false,
+                    "Propagation": "rprivate"
+               },
+               {
+                    "Type": "bind",
+                    "Source": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage_new",
+                    "Destination": "/storage",
+                    "Driver": "",
+                    "Mode": "",
+                    "Options": [
+                         "rbind"
+                    ],
+                    "RW": true,
+                    "Propagation": "rprivate"
+               },
+               {
+                    "Type": "bind",
+                    "Source": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/tls/ca.crt",
+                    "Destination": "/tls/ca.crt",
+                    "Driver": "",
+                    "Mode": "",
+                    "Options": [
+                         "rbind"
+                    ],
+                    "RW": false,
+                    "Propagation": "rprivate"
+               }
+          ],
+          "Dependencies": [
+               "0d19ebcc0a0a5a2d928e36cba1eb3cd664d89d6834b42220ba45c46ede8ec638"
+          ],
+          "NetworkSettings": {
+               "EndpointID": "",
+               "Gateway": "",
+               "IPAddress": "",
+               "IPPrefixLen": 0,
+               "IPv6Gateway": "",
+               "GlobalIPv6Address": "",
+               "GlobalIPv6PrefixLen": 0,
+               "MacAddress": "",
+               "Bridge": "",
+Process Group PGID: 93138

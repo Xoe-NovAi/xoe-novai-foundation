@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/bin/bash\n# XNAi Foundation Stack Health Check\n# Tests all critical services and reports status\n\nset -u\n\nREDIS_HOST=\"${REDIS_HOST:-127.0.0.1}\"\nREDIS_PORT=\"${REDIS_PORT:-6379}\"\nREDIS_PASSWORD=\"${REDIS_PASSWORD:-}\"\n\nVIK
+... [TRUNCATED] ...
+ \"\"\necho \"============================================\"\necho \"Summary: $passed passed, $failed failed\"\nif [[ $failed -eq 0 ]]; then\n    echo \"Status: ✅ HEALTHY\"\n    exit 0\nelse\n    echo \"Status: ⚠ CHECK FAILURES\"\n    exit 1\nfi\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001369608_0_87zovb.txt
+</tool_output_masked>

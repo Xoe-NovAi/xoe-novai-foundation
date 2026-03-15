@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts:\n[DIR] ekb-exports\n[DIR] GetDBInfo\n[DIR] reports\nAGENT_BUS_BOOTSTRAP.py (513 bytes)\nanalyst-context-manifest.md (1168 bytes)\nARCHETYPE_LIBRARY.md 
+... [TRUNCATED] ...
+esearch.yaml (10003 bytes)\ntest_report_20260228_024801.json (1988 bytes)\nthinking_model_test_results_20260224_034315.json (421 bytes)\nvikunja-import.json (229291 bytes)\nVP_VULKANINFO_AMD_Radeon_Graphics_(RADV_RENOIR)_25_3_5.json (185791 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/list_directory_list_directory_1773268583743_0_kdqh5o.txt
+</tool_output_masked>

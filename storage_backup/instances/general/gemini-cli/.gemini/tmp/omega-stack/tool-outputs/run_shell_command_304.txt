@@ -1,0 +1,15 @@
+Output: Dockerfile.api*                           chainlit_app_voice.py  requirements-chainlit.txt*
+Dockerfile.chainlit*                      config.toml*           requirements-crawl.txt*
+Dockerfile.crawl*                         data/                  requirements-curation_worker.txt*
+Dockerfile.curation_worker*               docker-api-build.log   scripts/
+IMPLEMENTATION_COMPLETE_PIPER_ONNX.md     docker-compose.yml*    test_docker_integration.sh*
+LOCAL_TELEMETRY_FREE_TTS_OPTIONS_2025.md  docker-ui-build.log    test_ingestion_demo.py
+Makefile*                                 docs/                  test_voice.py
+PIPER_ONNX_IMPLEMENTATION_SUMMARY.md      embeddings/            tests/
+UPDATES_RUNNING.md                        job.schema.json*       tmp/
+WHEELHOUSE_BUILD_TRACKING.md              knowledge/             versions/
+__pycache__/                              library/               voice_interface.py
+app/                                      logs/                  wheelhouse/
+backups/                                  redis_password.txt     wheelhouse.tgz
+build_tools.log                           requirements-api.txt*
+Process Group PGID: 650469

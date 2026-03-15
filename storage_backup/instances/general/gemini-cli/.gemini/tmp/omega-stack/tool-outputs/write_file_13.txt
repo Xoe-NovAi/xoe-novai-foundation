@@ -1,0 +1,365 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml. Here is the updated code:
+...
+      - /var/run:size=64m,mode=0755
+      - /app/.cache:size=100m,mode=0755
+      - /app/logs:size=100m,mode=1777
+      - /app/data:size=50m,mode=1777
+    volumes:
+      - ./config.toml:/app/config.toml:ro,Z,U
+      - ./models:/models:ro,Z,U
+      - ./embeddings:/embeddings:ro,Z,U
+      - ./library:/library:z
+      - ../../knowledge_new:/knowledge:z
+      - ./data/faiss_index:/app/data/faiss_index:Z
+      - ./data/entities:/app/data/entities:Z
+      - ../../storage_new/data/cache:/home/appuser/.cache:Z
+      - ./backups:/backups:Z
+      - ./data/prometheus-multiproc:/prometheus_data:Z
+      - ./app/XNAi_rag_app:/app/XNAi_rag_app:ro
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+    environment:
+      - OPENBLAS_CORETYPE=ZEN
+      - OPENBLAS_NUM_THREADS=6
+      - LLAMA_CPP_N_THREADS=6
+      - LLAMA_CPP_USE_MLOCK=true
+      - LLAMA_CPP_USE_MMAP=true
+      - OMP_NUM_THREADS=1
+      - LLM_MODEL_PATH=/models/Qwen3-0.6B-Q6_K.gguf
+      - RAG_API_URL=http://rag:8002
+      - REDIS_HOST=xnai_redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=true
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+...
+      qdrant:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+...
+      - uvicorn
+      - XNAi_rag_app.api.entrypoint:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - 8002
+      - --log-level
+      - info
+
+  ui:
+    build:
+...
+          memory: 1G
+          cpus: '1.0'
+    tmpfs:
+      - /app/logs:size=100m,mode=1777
+    volumes:
+      - ./config.toml:/app/config.toml:ro,Z,U
+      - ./models:/models:ro
+      - ./app/XNAi_rag_app:/app/XNAi_rag_app:ro,Z,U
+      - ./assets:/app/assets
+      - ./data/entities:/app/data/entities:Z
+    environment:
+      - OPENBLAS_CORETYPE=ZEN
+      - OPENBLAS_NUM_THREADS=6
+      - CHAINLIT_PORT=8001
+      - CHAINLIT_NO_TELEMETRY=true
+      - RAG_API_URL=http://xnai_rag_api:8002/xnai/api/v1
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - LOG_DIR=/app/logs
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    depends_on:
+...
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+    volumes:
+      - ./config.toml:/app/config.toml:ro,Z,U
+      - ./library:/library:z
+      - ../../knowledge_new:/knowledge:z
+      - ./data/cache:/app/cache:Z
+      - ./app/XNAi_rag_app:/app/XNAi_rag_app:ro
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+      - /tmp/crawl4ai:/app/.crawl4ai
+      - /tmp/crawler_logs:/app/logs
+    environment:
+      - OPENBLAS_CORETYPE=ZEN
+...
+    volumes:
+      - ../../storage_new:/storage:Z
+      - ./models:/storage/models:ro,Z
+      - ./library:/library:z
+      - ../../knowledge_new:/expert-knowledge:z
+      - ../../app:/app:ro
+      - ../../scripts:/app/scripts:ro
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+    networks:
+      - xnai_db_network
+    command: ["python3", "-m", "XNAi_rag_app.workers.library_curator"]
+
+  mkdocs:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.docs
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    image: xnai-mkdocs:latest
+    container_name: xnai_mkdocs
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.2'
+    volumes:
+      - ./mkdocs.yml:/workspace/mkdocs.yml:ro
+      - ./docs:/workspace/docs:ro
+      - ./docs-new:/workspace/docs-new:ro
+    environment:
+      - OPENBLAS_CORETYPE=ZEN
+      - N_THREADS=2
+    networks:
+      - xnai_db_network
+    ports:
+      - "8008:8000"
+    restart: unless-stopped
+    command:
+      - sh
+      - -c
+      - |
+        echo '🚀 Starting XNAi Foundation Docs...'
+        cd /workspace && mkdocs serve --config-file mkdocs.yml --dev-addr=0.0.0.0:8000
+
+  vikunja-db:
+    image: postgres:16-alpine
+    container_name: xnai_vikunja_db
+    user: "1001:1001"
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vikunja
+      POSTGRES_PASSWORD: ${VIKUNJA_DB_PASSWORD:-vikunja123}
+      POSTGRES_DB: vikunja
+    volumes:
+      - ./data/vikunja/db:/var/lib/postgresql/data:Z
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "vikunja"]
+      start_period: 30s
+    networks:
+      - xnai_db_network
+
+  vikunja:
+    image: vikunja/vikunja:0.24.1
+    container_name: xnai_vikunja
+    user: "1001:1001"
+    restart: unless-stopped
+    depends_on:
+      vikunja-db:
+        condition: service_healthy
+    ports:
+      - "3456:3456"
+    environment:
+      VIKUNJA_DATABASE_TYPE: postgres
+      VIKUNJA_DATABASE_HOST: vikunja-db
+      VIKUNJA_DATABASE_USER: vikunja
+      VIKUNJA_DATABASE_PASSWORD: ${VIKUNJA_DB_PASSWORD:-vikunja123}
+      VIKUNJA_DATABASE_DATABASE: vikunja
+      VIKUNJA_SERVICE_PUBLICURL: http://localhost:8000/vikunja
+      VIKUNJA_JWT_SECRET: ${VIKUNJA_JWT_SECRET:-changeme_jwt}
+      VIKUNJA_CORS_ENABLE: "false"
+      VIKUNJA_REDIS_ENABLED: "true"
+      VIKUNJA_REDIS_HOST: redis:6379
+      VIKUNJA_REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      VIKUNJA_REDIS_DB: "5"
+    volumes:
+      - ./data/vikunja/files:/app/vikunja/files:Z
+    networks:
+      - xnai_db_network
+
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: xnai_caddy
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.2'
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro,Z
+      - ./logs/caddy:/var/log/caddy:Z
+    networks:
+      - xnai_app_network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:2019/config/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  grafana:
+    image: grafana/grafana:11.4.0
+    container_name: xnai_grafana
+    init: true
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro,Z
+      - ./monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro,Z
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro,Z
+      - grafana-data:/var/lib/grafana:Z
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=false
+      - GF_AUTH_BASIC_ENABLED=true
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_ROOT_URL=http://localhost:3000
+      - GF_INSTALL_PLUGINS=
+      - GF_UNIFIED_ALERTING_ENABLED=true
+      - GF_ALERTING_ENABLED=false
+    networks:
+      - xnai_db_network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    depends_on:
+      victoriametrics:
+        condition: service_healthy
+
+  booklore:
+    image: ghcr.io/booklore-app/booklore:latest
+    container_name: xnai_booklore
+    expose:
+      - "8080"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./data/booklore:/config:Z
+      - ./library/sorted:/books:z
+      - ./library/bookdrop:/bookdrop:z
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+    networks:
+      - xnai_db_network
+    restart: unless-stopped
+
+  llama_server:
+    image: ghcr.io/abetlen/llama-cpp-python:latest
+    container_name: xnai_llama_server
+    command: python3 -m llama_cpp.server --model /models/Qwen3-0.6B-Q6_K.gguf --n_gpu_layers 0 --n_threads 6 --n_ctx 32768 --host 0.0.0.0 --port 8000 --api_key ${LLAMA_API_KEY:-xnai-local-key}
+    volumes:
+      - ./models:/models:ro
+    environment:
+      - N_THREADS=6
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2.0'
+    networks:
+      - xnai_db_network
+    restart: unless-stopped
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: xnai_open_webui
+    expose:
+      - "8080"
+    environment:
+      - OPENAI_API_BASE_URL=http://xnai_llama_server:8000/v1
+      - OPENAI_API_KEY=${LLAMA_API_KEY:-xnai-local-key}
+      - VECTOR_DB=qdrant
+      - QDRANT_URI=http://qdrant:6333
+      - QDRANT_API_KEY=${QDRANT_API_KEY:-}
+      - ENABLE_PERSISTENT_CONFIG=False
+    volumes:
+      - ./data/open-webui:/app/backend/data:Z
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+    networks:
+      - xnai_db_network
+    restart: unless-stopped
+    depends_on:
+      - llama_server
+
+  knowledge_miner:
+    image: xnai-curation-worker:latest
+    container_name: xnai_knowledge_miner
+    init: true
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+    volumes:
+      - ./app/XNAi_rag_app:/app/XNAi_rag_app:ro
+      - ./tls/ca.crt:/tls/ca.crt:ro
+      - ./scripts:/app/scripts:ro
+      - ./data/entities:/app/data/entities:Z
+      - ./library:/library:z
+      - ../../knowledge_new:/knowledge:z
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=${REDIS_TLS_ENABLED:-true}
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - PYTHONPATH=/app:/app/scripts
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - xnai_db_network
+    restart: unless-stopped
+    command: ["python3", "-m", "XNAi_rag_app.workers.knowledge_miner"]
+
+  memory-bank-mcp:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.memory-bank
+    container_name: xnai_memory_bank_mcp
+...
+    labels:
+      - "com.xnai.component=memory-bank-mcp"
+      - "com.xnai.requires=redis"
+      - "com.xnai.type=mcp-server"
+
+networks:
+  xnai_db_network:
+    name: xnai_db_network
+    internal: true
+  xnai_app_network:
+...

@@ -1,0 +1,2 @@
+Output: -rw-rw-r-- 1 arcana-novai arcana-novai 2980 Mar  5 16:20 /home/arcana-novai/.xnai/oauth_credentials.json
+Process Group PGID: 418346

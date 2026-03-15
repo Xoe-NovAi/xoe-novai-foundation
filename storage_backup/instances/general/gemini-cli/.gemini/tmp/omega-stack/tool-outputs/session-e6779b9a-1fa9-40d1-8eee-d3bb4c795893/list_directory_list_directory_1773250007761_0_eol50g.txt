@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/data:\n[DIR] cache\n[DIR] cache_v2\n[DIR] caddy\n[DIR] chainlit_files\n[DIR] consul\n[DIR] consul_old\n[DIR] entities\n[DIR] faiss_index\n[DIR] models\n[DIR] open-webui\n[DIR] openpipe\n[DIR] product_knowledge\n[DIR] prometheus-multiproc\n[DIR] qdrant\n[DIR] qdrant.broken\n[DIR] redis\n[DIR] redis.broken\n[DIR] scraping_jobs\n[DIR] scraping_results\n[DIR] service_manuals\n[DIR] ui_config\n[DIR] ui_files\n[DIR] victoriametrics\n[DIR] vikunja\niam_agents.db (20480 bytes)"
+}

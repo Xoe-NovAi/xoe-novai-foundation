@@ -1,0 +1,29 @@
+<tool_output_masked>
+Output: victoriametrics:
+    image: victoriametrics/victoria-metrics:latest
+    container_name: xnai_victoriametrics
+    init: true
+    ports:
+      - "8428:8428"
+    volumes:
+      - victoriametrics-data:/victoria-metrics-data:Z
+      - ./configs/victoriametrics:/etc/victoriametrics:ro,Z
+    command:
+
+... [69 lines omitted] ...
+
+      - xnai_db_network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    depends_on:
+ls: cannot access 'infra/docker/monitoring/grafana/': No such file or directory
+Exit Code: 2
+Process Group PGID: 453743
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773005822904_0_pu0ew7.txt
+</tool_output_masked>

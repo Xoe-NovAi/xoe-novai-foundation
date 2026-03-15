@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# ============================================================================\n# Project Metadata\n# ============================================================================\n\n[project]\nname = \"Xoe-NovAi\"\nversion = \"0.2.0\"\
+... [TRUNCATED] ...
+\"perf\",\n    \"refactor\",\n    \"style\",\n    \"test\",\n]\nminor_tags = [\"feat\"]\npatch_tags = [\"fix\", \"perf\"]\ndefault_bump_level = 0\n\n[tool.semantic_release.publish]\ndist_glob_patterns = [\"dist/*\"]\nupload_to_vcs_release = true\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/read_file_read_file_1773079917949_0_jl65ng.txt
+</tool_output_masked>

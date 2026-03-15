@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: REPOSITORY                                  TAG         IMAGE ID      CREATED         SIZE
+<none>                                      <none>      8b965d64c2ab  7 minutes ago   1.87 GB
+<none>                                      <none>      6326e6af9cae  10 minutes ago  1.87 GB
+<none>                                      <none>      a659ac301b92  11 minutes ago  1.87 GB
+localhost/xnai-rag                          latest      35f32c144bf8  18 minutes ago  1.63 GB
+<none>                                      <none>      ab08178450a9  18 minutes ago  1.87 GB
+localhost/xnai_memory_bank_mcp              latest      0796c2fea987  8 hours ago     863 MB
+<none>                                      <none>      f3d634adcb8a  23 hours ago    1.63 GB
+localhost/xnai-library-curator              latest      f40a5fd99efc  26 hours ago    1.02 GB
+localhost/xnai-mkdocs                       latest      6b7bb0dbe248  42 hours ago    913 MB
+
+... [6 lines omitted] ...
+
+docker.io/victoriametrics/victoria-metrics  latest      5e7fd3af19bd  11 days ago     35.4 MB
+docker.io/library/postgres                  16-alpine   108b27c919e6  12 days ago     279 MB
+docker.io/library/postgres                  15          d743cd41504b  12 days ago     452 MB
+docker.io/qdrant/qdrant                     v1.13.1     8e6a3f885f03  13 months ago   192 MB
+ghcr.io/abetlen/llama-cpp-python            latest      d0ee5082ac25  15 months ago   1.01 GB
+docker.io/grafana/grafana                   11.4.0      c0b69935a246  15 months ago   493 MB
+docker.io/library/redis                     7.4.1       2724e40d4303  17 months ago   120 MB
+docker.io/vikunja/vikunja                   0.24.1      db411e036aed  20 months ago   90.4 MB
+docker.io/library/caddy                     2.8-alpine  612f0ff47f33  21 months ago   49.8 MB
+docker.io/library/consul                    1.15.4      686495461132  24 months ago   157 MB
+Process Group PGID: 101259
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/run_shell_command_run_shell_command_1773176309080_0_5iz09.txt
+</tool_output_masked>

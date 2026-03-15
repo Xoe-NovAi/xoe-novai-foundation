@@ -1,0 +1,3 @@
+{
+  "output": "Output: INFO:XNAi_rag_app.core.config_loader:Configuration validated against Pydantic schema (v0.1.4-compliant)\nINFO:XNAi_rag_app.core.config_loader:Configuration loaded from /app/app/config.toml (22 sections)\n{\"timestamp\": \"2026-03-09T01:00:21.757348\", \"level\": \"INFO\", \"module\": \"logging_config\", \"message\": \"Logging configured\"}\nFile: /app/app/XNAi_rag_app/services/ingest_library.py\nMethods: []\nProcess Group PGID: 1299217"
+}

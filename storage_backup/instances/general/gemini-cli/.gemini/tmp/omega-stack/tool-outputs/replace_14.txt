@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/Makefile (1 replacements). Here is the updated code:
+...
+
+gnostic-audit: ## 🔱 Execute the Global Gnostic Audit (ZLV + TGG + GRA)
+	@echo "$(CYAN)🔱 Initiating Global Gnostic Audit...$(NC)"
+	@python3 scripts/gnostic_audit.py
+
+preflight: gnostic-audit ## ✈️  Run mmap-optimized Gnostic Pre-Flight Checks
+	@echo "$(CYAN)✈️  Running Gnostic Pre-Flight...$(NC)"
+	@python3 scripts/gnostic_preflight.py
+
+oikonomia-report: ## 💰 Generate Gnostic Oikonomia (Economy) Report
+	@echo "$(CYAN)💰 Gnostic Oikonomia Report (Sovereign ROI)$(NC)"
+...

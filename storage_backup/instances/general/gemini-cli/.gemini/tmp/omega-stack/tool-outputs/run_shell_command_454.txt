@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: [1/2] STEP 1/11: FROM xnai-base:latest AS builder
+[1/2] STEP 2/11: LABEL maintainer="Xoe-NovAi Team"
+--> Using cache 9a5203f80bcab3238701d780dfbb5abb4cec5085421bd19c306a06ec07193a59
+--> 9a5203f80bca
+[1/2] STEP 3/11: LABEL version="0.1.7"
+--> Using cache 56d0eab88c73e5b123c8f8a98772ddd8a2b617122cdff7b10bc56292f3dd4fa6
+--> 56d0eab88c73
+[1/2] STEP 4/11: LABEL description="Xoe-NovAi RAG API Builder Image"
+--> Using cache 3603313f546671f9f272941f6fccf09096f1d9d3998998ad011602009e8046a5
+--> 3603313f5466
+
+... [275 lines omitted] ...
+
+--> 1860e2715f4a
+[2/2] STEP 14/15: HEALTHCHECK --interval=30s --timeout=15s --retries=10 --start-period=180s     CMD python3 /app/XNAi_rag_app/api/healthcheck.py || exit 1
+--> Using cache 35b40a9ea85ef8ec6eb0a9a587c52bd51d4783cd19632164fbcef2ff70109a5d
+--> 35b40a9ea85e
+[2/2] STEP 15/15: CMD ["uvicorn", "XNAi_rag_app.api.entrypoint:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
+--> Using cache 35f32c144bf854623d959deaa0e6517a939a26189bd4b9ae636785972be596c5
+[2/2] COMMIT localhost/xnai-rag:latest
+--> 35f32c144bf8
+Successfully tagged localhost/xnai-rag:latest
+35f32c144bf854623d959deaa0e6517a939a26189bd4b9ae636785972be596c5
+Process Group PGID: 97603
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/run_shell_command_run_shell_command_1773175836394_0_wf9ae.txt
+</tool_output_masked>

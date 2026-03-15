@@ -1,0 +1,35 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_base/expert-knowledge/model-reference:
+[DIR] _archived
+[DIR] _templates
+[DIR] bert
+[DIR] index
+[DIR] phi
+AI-MODEL-REFERENCE-2026-02-22.md (7894 bytes)
+best-small-coder.md (4433 bytes)
+BIG-PICKLE-MODEL-ANALYSIS-v1.0.0.md (7487 bytes)
+Cline Free-Tier Models Breakdown - 02-05-2026.md (5969 bytes)
+cline-cli-models-v1.0.0.md (14736 bytes)
+copilot-cli-models-v1.0.0.md (18913 bytes)
+distil-large-v3.md (574 bytes)
+embeddinggemma-300m-q8_0.md (996 bytes)
+functiongemma-270m-it-q6_k.md (657 bytes)
+gemma-3-1b_int8_onnx.md (1138 bytes)
+gemma-3-1b-it-heretic-abliterated-i1-q5_k_m.md (831 bytes)
+GPT-5-NANO-EFFICIENCY-ANALYSIS-v1.0.0.md (11006 bytes)
+INDEX.md (1600 bytes)
+Iris-Small-Fast-Models.md (5376 bytes)
+LOCAL-MODELS-REFERENCE-2026-02-16.md (8592 bytes)
+MODEL-CARDS-INDEX.md (670 bytes)
+MODEL-REFERENCE-INDEX-v1.0.0.md (8624 bytes)
+MODEL-RESEARCH-COMPENDIUM.md (4106 bytes)
+opencode-free-models-v1.0.0.md (15643 bytes)
+OPENCODE-MODEL-COMPARISON-MATRIX-v1.0.0.md (14221 bytes)
+piper-tts.md (586 bytes)
+QUICK-REFERENCE.md (2210 bytes)
+qwen-coder-escalation-method.md (5655 bytes)
+qwen3-0.6b-q6_k.md (796 bytes)
+ruvltra-claude-code-0.5b-q4_k_m.md (1982 bytes)
+RuvLTRA-Claude-Coding-LoRA-model.md (5230 bytes)
+silero-tts.md (533 bytes)
+TIERED-MODEL-REFINEMENT-STRATEGY-v1.0.0.md (19289 bytes)
+XNAI-MODEL-INTELLIGENCE-MASTER.md (3736 bytes)

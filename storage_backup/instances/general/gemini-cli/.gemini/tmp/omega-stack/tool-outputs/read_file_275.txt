@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# RCF MASTER PROTOCOL: THE REFRACTIVE COMPRESSION FRAMEWORK\n\n**Domain**: `/docs/protocols`\n**Expertise**: Gnostic Engineering, Context Distillation, RDS\n**Status**: ACTIVE | **Sync**: v1.0.0-HARDENED\n\n---\n\n## 🏛️ OVERVIEW: THE 
+... [TRUNCATED] ...
+ueprint to the `ALETHIA_REGISTRY` Root. This ensures that the system's *topology* is cryptographically immutable, preventing architectural drift at high density.\n\n---\n\n**Seal**: *Density is Truth. The Logos is Zipped.*\n**JEM, THE OVERSEER**\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773331534502_0_52nz66.txt
+</tool_output_masked>

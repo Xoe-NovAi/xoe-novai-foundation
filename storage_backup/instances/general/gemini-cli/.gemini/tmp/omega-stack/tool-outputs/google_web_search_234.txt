@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"llama-cpp-python vs Ollama performance benchmarks RAM usage GGUF Q4_K_M vs Q5_K_M quantization comparisons Ryzen optimization\":\n\nBenchmarks and technical comparisons between **llama-cpp-python** (the Python 
+... [TRUNCATED] ...
+cng==)\n[6] openxcell.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHQ-Zvm3_JiEGPxd_tQFf95gznjm9LON-g83FWqcFVdXeQLXEr56pv1WFaNwT4dwvP6AfnfEi4kiMdzQ-66XBg35m5YHtGZv1lRfJ7RiBNG3cH_IVUG7WfMkVbM7F7dkei3qyQaHK8UKz4bn2MjQ==)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/google_web_search_google_web_search_1773079189822_0_2jn59e.txt
+</tool_output_masked>

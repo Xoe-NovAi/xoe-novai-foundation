@@ -1,0 +1,3 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/history:
+[DIR] omega-stack
+[DIR] scratch

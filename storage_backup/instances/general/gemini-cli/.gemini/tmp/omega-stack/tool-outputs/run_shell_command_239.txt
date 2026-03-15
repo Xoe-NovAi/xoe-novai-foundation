@@ -1,0 +1,4 @@
+Output: Error: cleaning up container 23414bd4c3bcc0ae4875d76459717d782303a63ab69f348c68d8fd5a333e367e: removing container 23414bd4c3bcc0ae4875d76459717d782303a63ab69f348c68d8fd5a333e367e network: 1 error occurred:
+        * rootless netns: kill network process: permission denied
+Exit Code: 125
+Process Group PGID: 1859775

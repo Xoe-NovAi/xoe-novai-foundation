@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/persona.py (1 replacements). Here is the updated code:\n...\n            prefix = random.choice(flavor_prefixes)\n            return f
+... [TRUNCATED] ...
+pu: str, gpu: str, ram: str):\n        \"\"\"Update the Silicon Oracle's knowledge of the machine.\"\"\"\n        self.hardware_context[\"cpu\"] = cpu\n        self.hardware_context[\"gpu\"] = gpu\n        self.hardware_context[\"ram\"] = ram\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773295604623_0_j7oz96.txt
+</tool_output_masked>

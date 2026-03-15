@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/services_init.py (1 replacements). Here is the updated code:
+...
+            
+            # 2.2 Circuit Breakers
+            redis_pass = os.getenv("REDIS_PASSWORD") or self.config.get('redis', {}).get('password', '')
+            redis_host = self.config.get('redis', {}).get('host', 'redis')
+            redis_port = self.config.get('redis', {}).get('port', 6379)
+            redis_url = f"rediss://:{redis_pass}@{redis_host}:{redis_port}/0"
+            try:
+                await initialize_circuit_breakers(redis_url)
+                await initialize_voice_circuit_breakers(redis_url)
+                logger.info("✓ Circuit breakers initialized")
+            except Exception as e:
+...

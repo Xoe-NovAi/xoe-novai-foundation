@@ -1,0 +1,10 @@
+Found 9 file(s) matching "docs/**/*strategy*.md" across 2 workspace directories, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/01-infrastructure/qdrant-query-strategy.md
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/02-tutorials/advanced-agent-patterns/CR - Rules vs Workflows - DeepSeek Review of Cline Strategy.md
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/02-tutorials/gemini-mastery/gemini_cli_strategy_manual.md
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/03-how-to-guides/apt_cache_strategy.md
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/04-explanation/enterprise-strategy.md
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/05-research/strategy-v2.md
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/05-research/wave5-strategy.md
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/06-development-log/OPUS-STRATEGY-REPORT-2026-03-05.md
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/knowledge-management/01-audit-logging-strategy.md

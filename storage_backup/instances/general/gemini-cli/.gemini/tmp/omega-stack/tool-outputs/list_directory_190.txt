@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts:\n[DIR] __pycache__\n[DIR] account_management\n[DIR] build_tools\n[DIR] dispatcher.d\n[DIR] recovery\n[DIR] scrapers\n[DIR] split_test\n[DIR] sql\n[DIR] s
+... [TRUNCATED] ...
+nai-sessions.sh (211 bytes)\nxnai-sync-gemini-configs.sh (2387 bytes)\nxnai-zram-init.sh (925 bytes)\nxnai-zram-multi.sh (1289 bytes)\nzotero_metadata_injector.py (2679 bytes)\nzram_health_monitor.py (1650 bytes)\nzram-health-check.sh (3540 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/list_directory_list_directory_1773333442642_0_hop3i.txt
+</tool_output_masked>

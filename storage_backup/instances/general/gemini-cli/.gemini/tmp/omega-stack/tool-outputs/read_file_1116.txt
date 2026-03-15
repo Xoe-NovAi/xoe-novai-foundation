@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-50 of 595 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, 
+... [TRUNCATED] ...
+lation\"\n    ADMIN = \"admin\"\n    SYSTEM = \"system\"\n\n\nclass PermissionLevel(str, Enum):\n    \"\"\"Permission levels for resource access.\"\"\"\n    READ = \"read\"\n    WRITE = \"write\"\n    EXECUTE = \"execute\"\n    ADMIN = \"admin\"\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773008209773_0_n6bqpi.txt
+</tool_output_masked>

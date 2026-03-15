@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/containers:\nContainerfile.production (3417 bytes)"
+}

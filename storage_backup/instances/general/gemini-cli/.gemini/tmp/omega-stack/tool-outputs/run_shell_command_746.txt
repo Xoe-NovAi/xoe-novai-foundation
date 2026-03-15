@@ -1,0 +1,3 @@
+Output: 🔱 Foundry: Synthesizing domain [docs/]...
+✅ Synthesis Complete: outputs/synthesis_docs/.md
+Process Group PGID: 262384

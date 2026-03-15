@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# Service Wiring & Build Guidelines\n\nThis document explains how the various containers in the Xoe‑NovAi stack are connected and provides guidance\nfor building and slimming images.\n\n## 🧩 High‑Level Architecture\n\n```mermaid\nflow
+... [TRUNCATED] ...
+webui` container is external (GHCR image). Its layers are large (≈4 GB); refer to the\n  handoff note for strategy on building a trimmed fork.\n\n---\n\nThis document should be updated whenever new services are added or the build strategy changes."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773005064138_0_lic28r.txt
+</tool_output_masked>

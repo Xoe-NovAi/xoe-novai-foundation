@@ -1,0 +1,4 @@
+Output: xnai_redis
+xnai_qdrant
+xnai_postgres
+Process Group PGID: 2025381

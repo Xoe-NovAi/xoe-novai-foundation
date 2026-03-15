@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-gnosis/server.py (1 replacements). Here is the updated code:\n...\n\nimport asyncio\nimport hashlib\nimport json\nimport os\nimport re\nimp
+... [TRUNCATED] ...
+  \"status\": status,\n        \"resonance_score\": similarity,\n        \"archetype\": archetype,\n        \"message\": f\"Resonance audit {'passed' if status == 'VERIFIED' else 'failed'}.\"\n    }\n\nif __name__ == \"__main__\":\n    mcp.run()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773335337210_0_rkngcn.txt
+</tool_output_masked>

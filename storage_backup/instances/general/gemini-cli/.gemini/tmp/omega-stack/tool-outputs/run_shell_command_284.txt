@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: Downloading Krikri-8B-Instruct Q5_K_M...
+mkdir -p models
+wget -O models/llama-krikri-8b-instruct-q5_k_m.gguf https://huggingface.co/ilsp/Llama-Krikri-8B-Instruct-GGUF/resolve/main/llama-krikri-8b-instruct-q5_k_m.gguf
+--2026-03-12 12:47:37--  https://huggingface.co/ilsp/Llama-Krikri-8B-Instruct-GGUF/resolve/main/llama-krikri-8b-instruct-q5_k_m.gguf
+Resolving huggingface.co (huggingface.co)... 2600:9000:27a1:8400:17:b174:6d00:93a1, 2600:9000:27a1:fc00:17:b174:6d00:93a1, 2600:9000:27a1:a400:17:b174:6d00:93a1, ...
+Connecting to huggingface.co (huggingface.co)|2600:9000:27a1:8400:17:b174:6d00:93a1|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://cas-bridge.xethub.hf.co/xet-bridge-us/67af61da1834a38932eb0c63/a0a0c92b8dd9792327e91c7b5a0aed602ab05949d6642dbb5273465b1b5e9efa?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260312%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260312T154737Z&X-Amz-Expires=3600&X-Amz-Signature=d802432ed396acc2764498120a09a476887a1fd2ecb4ac208a9a237bb03cdde7&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27llama-krikri-8b-instruct-q5_k_m.gguf%3B+filename%3D%22llama-krikri-8b-instruct-q5_k_m.gguf%22%3B&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1773334057&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3MzMzNDA1N319LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82N2FmNjFkYTE4MzRhMzg5MzJlYjBjNjMvYTBhMGM5MmI4ZGQ5NzkyMzI3ZTkxYzdiNWEwYWVkNjAyYWIwNTk0OWQ2NjQyZGJiNTI3MzQ2NWIxYjVlOWVmYSoifV19&Signature=AVAT5x-Y4CxVBqGIiuGvIVC2XUAUQwpmvDh4z6fzFasPGhhGymfZXq9hvHNaEl9QyBtqCArqiSTEdCBhDkX%7EIgTm8DYvd3TcXoRCTf5zYNOC8JDBzdXO42gbCSmaw80%7EJSXPo7wgWLaHnRFUzmpKrQGIGsHR7y0DUWz%7EbCUC0quiYMWMxKxx%7En4qu-ZE0dE8-I8YJSIq6yErTGHPxlsolNf21HUnF-HY5NXdh7raDQbpI6%7E%7ENP1yequCU7pd6ne4MjtnyZOwZqbyQ1VIq7lBHAl4JUoIKsPuldywRwBsyb4vylzU6VxIi8%7ExZZOtnFT4lOEod0Arg%7Ew9FzPiFfzzag__&Key-Pair-Id=K2L8F4GPSG1IFC [following]
+--2026-03-12 12:47:37--  https://cas-bridge.xethub.hf.co/xet-bridge-us/67af61da1834a38932eb0c63/a0a0c92b8dd9792327e91c7b5a0aed602ab05949d6642dbb5273465b1b5e9efa?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260312%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260312T154737Z&X-Amz-Expires=3600&X-Amz-Signature=d802432ed396acc2764498120a09a476887a1fd2ecb4ac208a9a237bb03cdde7&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27llama-krikri-8b-instruct-q5_k_m.gguf%3B+filename%3D%22llama-krikri-8b-instruct-q5_k_m.gguf%22%3B&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1773334057&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3MzMzNDA1N319LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82N2FmNjFkYTE4MzRhMzg5MzJlYjBjNjMvYTBhMGM5MmI4ZGQ5NzkyMzI3ZTkxYzdiNWEwYWVkNjAyYWIwNTk0OWQ2NjQyZGJiNTI3MzQ2NWIxYjVlOWVmYSoifV19&Signature=AVAT5x-Y4CxVBqGIiuGvIVC2XUAUQwpmvDh4z6fzFasPGhhGymfZXq9hvHNaEl9QyBtqCArqiSTEdCBhDkX%7EIgTm8DYvd3TcXoRCTf5zYNOC8JDBzdXO42gbCSmaw80%7EJSXPo7wgWLaHnRFUzmpKrQGIGsHR7y0DUWz%7EbCUC0quiYMWMxKxx%7En4qu-ZE0dE8-I8YJSIq6yErTGHPxlsolNf21HUnF-HY5NXdh7raDQbpI6%7E%7ENP1yequCU7pd6ne4MjtnyZOwZqbyQ1VIq7lBHAl4JUoIKsPuldywRwBsyb4vylzU6VxIi8%7ExZZOtnFT4lOEod0Arg%7Ew9FzPiFfzzag__&Key-Pair-Id=K2L8F4GPSG1IFC
+Resolving cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)... 18.173.166.82, 18.173.166.74, 18.173.166.5, ...
+
+... [8 lines omitted] ...
+
+
+🚀 Applying Ryzen 5700U Optimizations for Xoe-NovAi...
+[sudo: authenticate] Password: 
+✅ CPU Governor: Performance
+✅ Core Steering: Phys-Cores 0-7 (taskset -cp 0-7)
+✅ Hugepages: Enabled (Always)
+✅ ZRAM: Detected
+NAME       ALGORITHM DISKSIZE   DATA  COMPR  TOTAL STREAMS MOUNTPOINT
+/dev/zram1 zstd            8G 966.3M 209.9M 216.6M         [SWAP]
+🔱 Metropolis Optimization Sealed.
+Process Group PGID: 1244816
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773330456821_0_d6f4j.txt
+</tool_output_masked>

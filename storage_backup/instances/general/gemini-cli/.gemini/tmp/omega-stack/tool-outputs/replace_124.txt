@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/SESSIONS_MAP.md (1 replacements). Here is the updated code:\n...\n- [x] **GRA Resonance**: Integrated tiered resonance thresholds (0.4/0.6/0.8).\n- [x] **Oi
+... [TRUNCATED] ...
+ Rainbow Rotation for triple-persona load.\n- [ ] **ZLV Enforcement**: Ensure persona-logic matches the Crystal Hashes (SOS-F7).\n- [ ] **Metron Dashboard**: Activate live observability for resonance/density.\n\n---\n\n### 📌 Session Hygiene:\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773355485629_0_rq63dh.txt
+</tool_output_masked>

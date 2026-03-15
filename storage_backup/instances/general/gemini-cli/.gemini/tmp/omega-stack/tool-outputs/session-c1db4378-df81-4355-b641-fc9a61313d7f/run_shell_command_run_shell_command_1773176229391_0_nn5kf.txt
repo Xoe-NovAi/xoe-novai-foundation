@@ -1,0 +1,3 @@
+{
+  "output": "Output: localhost/xnai-rag:latest 35f32c144bf8\nProcess Group PGID: 100755"
+}

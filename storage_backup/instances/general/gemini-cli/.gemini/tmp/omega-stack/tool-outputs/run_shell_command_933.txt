@@ -1,0 +1,6 @@
+Output: total 16
+drwx------ 4 arcana-novai arcana-novai 4096 Mar  5 15:21 .
+drwx------ 5 arcana-novai arcana-novai 4096 Aug 18  2025 ..
+drwxrwxr-x 2 arcana-novai arcana-novai 4096 Mar  5 15:20 models
+drwxrwxr-x 2 arcana-novai arcana-novai 4096 Feb 28 20:16 xnai-foundation
+Process Group PGID: 86150

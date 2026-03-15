@@ -1,0 +1,21 @@
+Output: app/:
+GEMINI.md
+XNAi_rag_app
+__init__.py
+__pycache__
+config.toml
+
+app/XNAi_rag_app:
+__init__.py
+__pycache__
+api
+cli
+conversation_ingestion.py
+core
+knowledge_synthesis
+model_intelligence_ingestion.py
+model_router.py
+models
+py.typed
+schemas
+Process Group PGID: 838661

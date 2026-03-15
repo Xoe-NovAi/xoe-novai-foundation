@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: Collecting langgraph
+  Downloading langgraph-1.1.2-py3-none-any.whl.metadata (7.4 kB)
+Collecting langchain-core>=0.1 (from langgraph)
+  Downloading langchain_core-1.2.18-py3-none-any.whl.metadata (4.4 kB)
+Collecting langgraph-checkpoint<5.0.0,>=2.1.0 (from langgraph)
+  Downloading langgraph_checkpoint-4.0.1-py3-none-any.whl.metadata (4.9 kB)
+Collecting langgraph-prebuilt<1.1.0,>=1.0.8 (from langgraph)
+  Downloading langgraph_prebuilt-1.0.8-py3-none-any.whl.metadata (5.2 kB)
+Collecting langgraph-sdk<0.4.0,>=0.3.0 (from langgraph)
+  Downloading langgraph_sdk-0.3.11-py3-none-any.whl.metadata (1.6 kB)
+
+... [52 lines omitted] ...
+
+Downloading packaging-26.0-py3-none-any.whl (74 kB)
+Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+Downloading charset_normalizer-3.4.5-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (195 kB)
+Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+Downloading xxhash-3.6.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (193 kB)
+Downloading zstandard-0.25.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 385.2 kB/s eta 0:00:00
+Installing collected packages: zstandard, xxhash, uuid-utils, urllib3, tenacity, packaging, ormsgpack, orjson, jsonpointer, charset_normalizer, requests, jsonpatch, requests-toolbelt, langgraph-sdk, langsmith, langchain-core, langgraph-checkpoint, langgraph-prebuilt, langgraph
+Successfully installed charset_normalizer-3.4.5 jsonpatch-1.33 jsonpointer-3.0.0 langchain-core-1.2.18 langgraph-1.1.2 langgraph-checkpoint-4.0.1 langgraph-prebuilt-1.0.8 langgraph-sdk-0.3.11 langsmith-0.7.16 orjson-3.11.7 ormsgpack-1.12.2 packaging-26.0 requests-2.32.5 requests-toolbelt-1.0.0 tenacity-9.1.4 urllib3-2.6.3 uuid-utils-0.14.1 xxhash-3.6.0 zstandard-0.25.0
+Process Group PGID: 1860734
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773337897366_0_8kac6a.txt
+</tool_output_masked>

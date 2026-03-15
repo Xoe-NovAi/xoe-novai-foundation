@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 1 match for pattern \"get_event_loop\" in path \".\" (filter: \"app/XNAi_rag_app/core/consul_client.py\"):\n---\nFile: app/XNAi_rag_app/core/consul_client.py\nL131-             return dns_result\nL132- \nL133-         # Fallback 
+... [TRUNCATED] ...
+     return None\nL157- \nL158-             result = await loop.run_in_executor(None, dns_lookup)\nL159-             if result:\nL160-                 logger.debug(f\"✅ Resolved {name} via DNS: {result}\")\nL161-                 return result\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/grep_search_grep_search_1773001222058_0_3jxe9t.txt
+</tool_output_masked>

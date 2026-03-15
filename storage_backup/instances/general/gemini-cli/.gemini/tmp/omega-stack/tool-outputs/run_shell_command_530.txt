@@ -1,0 +1,29 @@
+<tool_output_masked>
+Output too large. Showing first 12,000 and last 48,000 characters. For full output see: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/run_shell_command_1773277433667_0.txt
+Output: STEP 1/11: FROM python:3.12-slim
+STEP 2/11: WORKDIR /app
+--> Using cache 8f12f5108c27b10d337df792ec4e61d315012ba1f6d3ba28a9b5471795fc256b
+--> 8f12f5108c27
+STEP 3/11: RUN apt-get update && apt-get install -y --no-install-recommends     curl     && rm -rf /var/lib/apt/lists/*
+--> Using cache a7477c01afad7e85be63e3a6a03ef6df518f63952fe5c2c0a13ee0d7f0aaf527
+--> a7477c01afad
+STEP 4/11: RUN pip install -v --no-cache-dir --default-timeout=1000     fastapi     uvicorn     litellm     python-dotenv     httpx     pyyaml     anyio     google-cloud-aiplatform
+Using pip 25.0.1 from /usr/local/lib/python3.12/site-packages/pip (python 3.12)
+Collecting fastapi
+
+... [446 lines omitted] ...
+
+--> e52b6181f614
+STEP 11/11: CMD ["uvicorn", "app.oikos_service:app", "--host", "0.0.0.0", "--port", "8006"]
+COMMIT docker_oikos
+--> 3cdbf1026bb1
+Successfully tagged localhost/docker_oikos:latest
+3cdbf1026bb1d556288a02657c6f13df4da06bf3857a3d11b59ba7786117ce13
+xnai_oikos
+xnai_oikos
+7f6d03cf78ebda8584d3d0e9b1f25ddecf6202f1f76ebc92df09a38d781bf817
+xnai_oikos
+Process Group PGID: 422355
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/run_shell_command_run_shell_command_1773277433667_0_x1lp3v.txt
+</tool_output_masked>

@@ -1,0 +1,41 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/activeContext.md. Here is the updated code:
+---
+hydration:
+  event_id: "HYD-20260311-004"
+  session_id: "SESS-18"
+  coordination_key: "METROPOLIS-OIKOS-20260311-V1"
+  timestamp: "2026-03-11T22:00:00Z"
+  status: "SENTINEL-COMPLETE"
+---
+
+# 🔱 Active Context: Metropolis Foundation v4.1.3-OIKOS
+
+**Status**: SENTINEL-ACTIVE ✅ | **Session State**: SESS-18-COMPLETE
+**Coordination Key**: `METROPOLIS-OIKOS-20260311-V1`
+**Handoff Point**: HYDRATION-20260311-V4-COMPLETE
+
+## 📍 Current Focus
+- **SESS-19**: The Shadow Audit (Deep recursive analysis of `./Omegadroid/origins/` to extract and port PEM logic).
+- **SESS-20**: Sovereign Foundry Enhancement (PEM Integration & OpenPipe Trace Harvesting).
+
+## ✅ Accomplishments (SESS-18: The Sovereign Restoration)
+1.  **Oikos Mesh**: Successfully containerized the Oikos cognitive mesh on Port 8006, integrated with the Metropolis Mesh.
+2.  **Authentication Hardening**: Implemented **Rainbow Rotation** with on-the-fly Fernet decryption of OAuth credentials (`XNAI_OAUTH_KEY`).
+3.  **Grounded Research**: Integrated local `data/gnosis_hub` scanning and direct Tavily REST API research into the Council's reasoning loop.
+4.  **Identity Standardization**: Enforced global **UID 1000** (arcana-novai) across ALL 15+ containerized services and related scripts.
+5.  **Secure Ingress**: Shifted stack-wide ingress to Port 8002 via Caddy, with internal routing to Port 8006 for Oikos.
+6.  **Codified Protocols**: Integrated 'Mastermind Decree' and 'Gnostic Briefing' into the global `sentinel-skill`.
+
+## 🛡️ The Sentinel's Prime Directive
+- **Immune Response**: Automatic Vikunja task creation for architectural drift or resource pressure (Disk > 93%).
+- **Chronicle Trigger**: Automatic state snapshots on `/compress` or major task completion via `context_watchdog.sh`.
+
+## 🚨 IMMEDIATE PRIORITY (SESS-19)
+1.  **Shadow Audit**: Initiate deep-scan of ancestral hubs to map PEM logic blocks.
+2.  **PEM Integration**: Port `PEM_Lilith_v3.txt` logic into the Foundry's `synthesize` subcommand.
+3.  **OpenPipe Trace**: Harvest reasoning from Council deliberations for gnostic distillation.
+
+## 🚀 Onboarding for Next Session
+1.  **Read**: `memory_bank/chronicles/` (Latest Mastermind Decrees).
+2.  **Verify**: Podman state via `podman ps --filter "name=xnai"`.
+3.  **Act**: Run `python3 scripts/omega_foundry.py mastermind` for Shadow Audit strategy.

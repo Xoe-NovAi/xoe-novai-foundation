@@ -1,0 +1,57 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 30-80 of 675 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 81.
+
+--- FILE CONTENT (truncated) ---
+        "Performance Monitoring",
+        "Continuous Improvement"
+      ],
+      "LLM_STRATEGY": {
+        "TASK_ALLOCATION": {
+          "distilRoBERTa": "**Metadata refinement (e.g., keyword extraction, categorization), vectorizing, background database enhancement, simple request (e.g., "give me a list of all books by Homer.") and prompt enhancement before delivery to KriKri or agent.**",
+          "Llama-Krikri-8B-Instruct-16fp": "**Complex tasks such as advanced content generation and summarization. Database enrichment during downtime (e.g., summaries, embeddings, translations), data will be used as a training set for distilRoBERTa.**",
+          "Grok_API": "**Analysis of database entries, recommendations for system improvements, and generation of potential training data.**"
+        },
+        "OPTIMIZATION_TECHNIQUES": [
+          "**LoRA Adapters**: Fine-tuning models for specific tasks without full retraining.",
+          "**Quantization**: Reducing model size and accelerating inference (e.g., 16-bit).",
+          "**zRam**: Utilizing compressed RAM to increase effective memory.",
+          "**Mixed Precision (FP16)**: Reducing memory usage and speeding up computations where possible.",
+          "Potentially **single-thread-per-core reasoning** for managing CPU load."
+        ],
+        "ADDITIONAL_RECOMMENDATIONS": [
+          "**Task Queue Management (e.g., Celery)**: For efficient workload management and prioritization [5].",
+          "**FAISS Integration**: Complementing Qdrant for potentially faster vector searches on large datasets [4]."
+        ]
+      },
+      "RAG_SYSTEM_DEPLOYMENT": {
+        "OVERVIEW": "**A structured, step-by-step approach to building the local RAG system.**",
+        "KEY_STEPS": [
+          "**Vector Database (Qdrant) Setup.**",
+          "**FastAPI API Implementation for LLM interactions.**",
+          "**Background tasks for continuous database enhancement using KriKri-8B-Instruct-16fp.**",
+          "**Grok API integration for periodic data analysis and insights.**",
+          "**Continuous performance monitoring of CPU, RAM, and GPU usage.**"
+        ],
+        "CONTINUOUS_IMPROVEMENT": "**Leveraging Grok's analysis and background tasks for ongoing refinement of the RAG system and its components [8, 9].**"
+      },
+      "HARDWARE_STATUS": {
+        "CPU": "AMD Ryzen 7 5700U",
+        "GPU": "AMD Radeon Lucienne",
+        "RAM": "32GB DDR4",
+        "STORAGE": "256GB NVMe"
+      },
+      "RESOURCE_PROFILES": {
+        "DistilRoBERTa":  {"CPU": 4, "RAM": "4G"} , "lightweight",
+        "Llama-Krikri-8B-Instruct-Q8": {"CPU": 8, "RAM": "8G"} , "high"
+      }
+    }
+  }
+}
+
+'''
+
+
+# Utility functions refactored from duplicate code
+def extract_hardware_info(text: str, patterns: Dict[str, str]) -> Dict[str, str]:

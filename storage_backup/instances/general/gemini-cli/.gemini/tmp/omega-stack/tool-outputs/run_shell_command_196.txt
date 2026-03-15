@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: Deleted Volumes
+xnai_victoriametrics_data
+xnai_grafana_data
+data
+d85a7054a57458f8965864f634d804c873df24d054e884573430b2c372c9dbf9
+77267b657ef7d67e62d782e9b309419d0fc040df2c5ea9864ac12fbd4227decf
+xnai_huggingface_cache
+xnai_booklore_config
+xnai_open_webui_data
+8a196dcb69adf8874da9e3ab06747a88a48424cefbe5d4cd4b06bfbdb25a51b3
+
+... [13 lines omitted] ...
+
+14a1895079628bef85d8a5deee3f12bb12dd5392594c37e0d9f5b1a5df07885c
+c0b69935a2469f0add84fa71a1632a2594c78aeeb016ba9f5d8728a4b4c1b976
+6a2843a2da184dffd13302f8a474c986d0a6e2a0392e6d4c8086f53ccaf1fb62
+a3320de6f16782ae75a59d28b7c4251f6e7cc09a850f0031a4a5edb425ff57e4
+Deleted Networks
+xnai_db_network
+xnai_app_network
+Total reclaimed space: 7.162GB
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p2  109G   83G   21G  81% /
+Process Group PGID: 1859891
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773337778912_0_bi2zoa.txt
+</tool_output_masked>

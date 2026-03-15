@@ -1,0 +1,2 @@
+Found 1 file(s) matching ".cli/SESS-20-SYNCHRONIZATION-MANIFEST.md" within /home/arcana-novai/Documents/Xoe-NovAi/omega-stack, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.cli/SESS-20-SYNCHRONIZATION-MANIFEST.md

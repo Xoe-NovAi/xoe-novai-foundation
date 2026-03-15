@@ -1,0 +1,21 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/config/Caddyfile (1 replacements). Here is the updated code:
+...
+      header_up Host {host}
+      header_up X-Real-IP {remote_host}
+    }
+  }
+
+  # 1.5 Oikos Mastermind Mesh (Internal Cognitive Mesh)
+  handle /oikos/* {
+    reverse_proxy xnai_oikos:8006 {
+      header_up Host {host}
+      header_up X-Real-IP {remote_host}
+    }
+  }
+
+  # 2. Open WebUI - Main Route
+  handle_path /chat/* {
+    reverse_proxy xnai_open_webui:8080 {
+      header_up Host {host}
+      header_up X-Real-IP {remote_host}
+...

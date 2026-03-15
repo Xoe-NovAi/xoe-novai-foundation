@@ -1,0 +1,5 @@
+Output: storage/instances/facets/instance-1/gemini-cli/.gemini/mcp_config.json  storage/instances/facets/instance-5/gemini-cli/.gemini/mcp_config.json
+storage/instances/facets/instance-2/gemini-cli/.gemini/mcp_config.json  storage/instances/facets/instance-6/gemini-cli/.gemini/mcp_config.json
+storage/instances/facets/instance-3/gemini-cli/.gemini/mcp_config.json  storage/instances/facets/instance-7/gemini-cli/.gemini/mcp_config.json
+storage/instances/facets/instance-4/gemini-cli/.gemini/mcp_config.json  storage/instances/facets/instance-8/gemini-cli/.gemini/mcp_config.json
+Process Group PGID: 102615

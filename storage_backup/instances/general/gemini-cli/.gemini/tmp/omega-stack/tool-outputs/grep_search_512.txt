@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 2 matches for pattern \"memory-bank-mcp\" in path \"infra/docker/docker-compose.yml\":\n---\nFile: docker-compose.yml\nL675-       - REDIS_HOST=redis\nL676-       - REDIS_PORT=6379\nL677-       - REDIS_PASSWORD=${REDIS_PASSWORD}\
+... [TRUNCATED] ...
+nL741-     internal: true\nL742-   xnai_app_network:\nL743-     name: xnai_app_network\nL744- \nL745- volumes:\nL746-   victoriametrics-data:\nL747-     name: xnai_victoriametrics_data\nL748-   grafana-data:\nL749-     name: xnai_grafana_data\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/grep_search_grep_search_1773173698775_0_3iy9f.txt
+</tool_output_masked>

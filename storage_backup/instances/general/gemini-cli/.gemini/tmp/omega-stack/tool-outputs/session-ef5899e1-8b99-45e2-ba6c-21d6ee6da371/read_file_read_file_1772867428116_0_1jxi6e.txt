@@ -1,0 +1,3 @@
+{
+  "output": "domains:\n  architect: { id: 1, role: \"System Blueprinting & Architecture\" }\n  api:       { id: 2, role: \"Backend, AnyIO, & Redis Streams\" }\n  ui:        { id: 3, role: \"Frontend, UX, & Dashboard\" }\n  voice:     { id: 4, role: \"Audio, STT/TTS Protocols\" }\n  data:      { id: 5, role: \"RAG, Qdrant, & Gnosis Engine\" }\n  ops:       { id: 6, role: \"Infra, Podman, & Caddy\" }\n  research:  { id: 7, role: \"Scholarly Mining & Metadata\" }\n  test:      { id: 8, role: \"QA, Pytest, & Validation\" }\n"
+}

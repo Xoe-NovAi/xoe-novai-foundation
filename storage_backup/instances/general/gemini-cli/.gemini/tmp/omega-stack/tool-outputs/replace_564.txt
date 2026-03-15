@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/QUICK_START.md (1 replacements). Here is the updated code:\n...\n\nThis means your Omega Stack system is working perfectly - it just needs a valid API key t
+... [TRUNCATED] ...
+ion:\n\n```bash\nexport MCP_TOKEN_GEMINI=\"your_secret_token\"\nexport MCP_TOKEN_ANTIGRAVITY=\"your_other_token\"\n```\n\n### Step 3: Setup Gemini API Keys\n```bash\n# Run this command and follow the prompts:\n./scripts/setup_gemini_access.sh\n```"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001953786_0_6puw17.txt
+</tool_output_masked>

@@ -1,0 +1,27 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/SESSIONS_MAP.md (1 replacements). Here is the updated code:
+...
+## 📚 SESS-09: Documentation Management & Cleanup
+**Focus**: Final synchronization of all diagrams and manuals.
+- [ ] **Mermaid Sync**: Update all architectural diagrams to match Metropolis Mesh.
+- [ ] **Diátaxis Alignment**: Refactor `docs/` into Tutorial/How-to/Reference/Explanation.
+
+## 🗺️ SESS-10: zRAM Hardening & Crisis Management
+**Focus**: Address missing swap capacity and implement fine-grained monitoring.
+- [ ] **Capacity Restoration**: Fix missing 4GB swap (restore level=3 zstd).
+- [ ] **2-Tier Deployment**: Implement `lz4` (fast) + `zstd` (bulk) tiered setup.
+- [ ] **Fine-Grained Monitoring**: Deploy `zramctl` analysis and `node_exporter` metrics.
+- [ ] **Resource Tools**: Integrate `glances` or `bottom` for individual device tracking.
+
+## 🧠 SESS-11: Context Management & Summarization Agent
+**Focus**: Keep Gemini sessions performant via automated summarization.
+- [ ] **Agent Design**: Implement local agent using `Qwen3-0.6B`.
+- [ ] **History Crawling**: Periodic scan of oldest messages in session context.
+- [ ] **Summarization Protocol**: Replace old turns with high-fidelity summaries.
+- [ ] **Performance Benchmarking**: Measure context reduction impact.
+
+---
+
+### 📌 Session Hygiene:
+- Keep chat context <5MB.
+- **START EVERY SESSION** with an MB-MCP health check: `curl http://localhost:8005/health`.
+...

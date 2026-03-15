@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 100 matches for pattern \"token|history|context_window\" in path \".\" (filter: \"app/**/*.py\") (results limited to 100 matches for performance):\n---\nFile: app/XNAi_rag_app/api/healthcheck.py\nL71:     2. LLM can generate toke
+... [TRUNCATED] ...
+ession_data.get(\"conversation_history\", []))\nL546:         recent = history[-max_turns:]\nL561:             \"conversation_history\": [],\nL588:             \"conversation_turns\": len(self._session_data.get(\"conversation_history\", [])),\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/grep_search_grep_search_1773184493287_0_4tibhu.txt
+</tool_output_masked>

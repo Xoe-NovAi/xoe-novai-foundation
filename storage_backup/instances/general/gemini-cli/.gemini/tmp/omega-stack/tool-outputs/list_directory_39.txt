@@ -1,0 +1,8 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage:
+[DIR] artifacts
+[DIR] backups
+[DIR] data
+[DIR] db
+[DIR] instances
+[DIR] instances-active
+[DIR] models

@@ -1,0 +1,7 @@
+Output:   antipode:
+    email: "Antipode2727@gmail.com"
+    provider: "gemini"
+    auth_method: "api_key"
+    model: "gemini-2.0-flash"
+    assigned_to: "facet-4"
+Process Group PGID: 408075

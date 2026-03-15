@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# syntax=docker/dockerfile:1\n# ============================================================================\n# Xoe-NovAi Base Image Dockerfile\n# ============================================================================\n# Purpose:
+... [TRUNCATED] ...
+        toml>=0.10.2\n\n# Create a non-root user\nRUN groupadd -g 1001 appuser && \\\n    useradd -m -u 1001 -g 1001 -s /bin/bash appuser\n\nRUN mkdir -p /app/logs /app/data && \\\n    chmod 1777 /app/logs /app/data\n\nWORKDIR /app\nCMD [\"bash\"]"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773012964613_0_arp3xr.txt
+</tool_output_masked>

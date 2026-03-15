@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_base/expert-knowledge/research:\n[DIR] _templates\n[DIR] queue\nANTIGRAVITY-AUTH-DISCOVERY-2026-02-18.md (6728 bytes)\nANTIGRAVITY-OAUTH-QUICKGUIDE-2026
+... [TRUNCATED] ...
+2026-02-23.md (6057 bytes)\nTTL-CLEANUP-RESEARCH-2026-02-22.md (3349 bytes)\nWEB-BASED-CHAT-INTERFACE-SOLUTIONS.md (15413 bytes)\nXNAI-CONTEXT-ENGINEERING-BENCHMARK-2026-02-19.md (40318 bytes)\nXNAI-FOUNDATION-MEMORY-BANK-ANALYSIS.md (10714 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/list_directory_list_directory_1773002534897_0_zrpohz.txt
+</tool_output_masked>

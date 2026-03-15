@@ -1,0 +1,9 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.gemini/agents:
+facet-1.md (268 bytes)
+facet-2.md (268 bytes)
+facet-3.md (268 bytes)
+facet-4.md (268 bytes)
+facet-5.md (268 bytes)
+facet-6.md (268 bytes)
+facet-7.md (268 bytes)
+facet-8.md (268 bytes)

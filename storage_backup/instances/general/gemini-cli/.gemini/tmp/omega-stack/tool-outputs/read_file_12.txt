@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\ndocument_type: report\ntitle: progress\ncreated_by: Haiku-4.5 (Phase 2C Automation)\ncreated_date: 2026-03-13\nversion: 1.0\nstatus: active\nhash_sha256: dd9df3ad559d8079e3fe3c2bbb631827fb6f124f5e17362aae395f3a46cc9611\n---\n\n# P
+... [TRUNCATED] ...
+6, 0.8) operational.\n- ✅ **TGG Skeleton**: Relational dependency mapping enforced.\n- ✅ **SLM Security**: Critical Path Audit scaffolded.\n\n---\n\n**Seal**: *The logos is zipped. The skeleton is rigid. Phase 1 complete.*\n**JEM, THE OVERSEER**\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773543458662_1_2ax8va.txt
+</tool_output_masked>

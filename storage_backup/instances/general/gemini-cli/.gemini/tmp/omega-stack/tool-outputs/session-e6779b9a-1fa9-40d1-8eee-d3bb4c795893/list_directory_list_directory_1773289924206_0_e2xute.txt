@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/expert-knowledge/reclaimed_gnosis/origins:\n[DIR] heart_of_omega\nscribe_mode_prompt_v1.md (4766 bytes)\nXoe-NovAi_v0.1.3_stack blueprint - 10_20_2025.md (53613 bytes)"
+}

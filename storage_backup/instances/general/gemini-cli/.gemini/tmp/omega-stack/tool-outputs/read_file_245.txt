@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\nblock:\n  label: system_patterns\n  description: Architecture patterns, design decisions, code standards, and system design principles\n  chars_limit: 8000\n  read_only: false\n  tier: core\n  priority: 3\ncreated: 2026-02-20\nmod
+... [TRUNCATED] ...
+ GGUF, Vulkan, pynvml\n\n### Container Security\n- **Rootless** - Services run as UID 1001\n- **Read-Only** - Immutable runtime filesystem\n\n---\n**Last Updated**: 2026-03-12 (Jem Overseer SESS-20)\n**Owner**: Jem (Overseer - Gemini CLI v4.1.2)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773326239092_0_358jk.txt
+</tool_output_masked>

@@ -1,0 +1,23 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/oikos_service.py (1 replacements). Here is the updated code:
+...
+
+# Initialize Oikos Mesh
+app = FastAPI(title="🔱 XNA Oikos Mesh Service", version="1.0.0")
+factory = AgentFactory(model_name="gemini/gemini-2.0-flash")
+
+# --- 🛰️ OBSERVABILITY MIDDLEWARE ---
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    start_time = time.time()
+    response = await call_next(request)
+    process_time = time.time() - start_time
+    print(f"📡 Oikos API: {request.method} {request.url.path} - Status: {response.status_code} - Time: {process_time:.4f}s")
+    return response
+
+# --- 🌈 IRIS: THE FRONT-FACING ROUTER ---
+
+@app.post("/iris/route")
+async def iris_route(req: MastermindRequest, background_tasks: BackgroundTasks):
+    """
+...

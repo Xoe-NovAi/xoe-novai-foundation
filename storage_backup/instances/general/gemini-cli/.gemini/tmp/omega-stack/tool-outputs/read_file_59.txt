@@ -1,0 +1,238 @@
+#!/usr/bin/env python3
+"""
+🔱 OMEGA LINGUISTICS: The Morphological Oracle
+Scholarly root-mapping for Ancient Greek and Russian to zip complex intent.
+[AP:memory_bank/ALETHIA_REGISTRY.md#L15] (SOS-F7: ZLV/Techne)
+"""
+import ast
+import hashlib
+import json
+import re
+import unicodedata
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Set
+
+# Root Mappings (Ancient Greek & Russian)
+GNOSTIC_ROOTS = {
+    # Ancient Greek (Suffixes & Roots)
+    "logia": {"concept": "study/reasoning", "example": "Logos, Ontology, Biology"},
+    "logy": {"concept": "study/reasoning", "example": "Ontology, Biology"},
+    "nomia": {"concept": "law/arrangement", "example": "Eunomia, Economy"},
+    "phron": {"concept": "practical wisdom", "example": "Phronesis"},
+    "gnos": {"concept": "knowledge/insight", "example": "Gnosis, Diagnostic"},
+    "daimon": {"concept": "spirit/guiding power", "example": "Eudaimonia"},
+    
+    # Russian (Suffixes & Roots)
+    "ost": {"concept": "abstract quality/state", "example": "Dukhovnost (Spirituality)"},
+    "stvo": {"concept": "community/collective", "example": "Sobornost (Collective Unity)"},
+    "mir": {"concept": "world/peace", "example": "Mirozdanie (Cosmic Order)"},
+}
+
+def normalize_ancient_greek(text: str) -> str:
+    """
+    Standardizes Ancient Greek text for BERT processing.
+    Performs lower-casing and removes diacritics (accents/breathings).
+    [AP:memory_bank/techContext.md#L14] (Ancient-Greek-BERT)
+    """
+    # Decompose unicode characters into base + combining marks
+    normalized = unicodedata.normalize('NFD', text)
+    # Filter out non-spacing marks (combining accents)
+    de_accented = "".join(c for c in normalized if not unicodedata.combining(c))
+    # Re-normalize to NFC and return lower-cased
+    return unicodedata.normalize('NFC', de_accented).lower()
+
+class BrittleBoneException(Exception):
+    """Raised when an implementation violates the Topological Gnosis-Graph (TGG) skeleton."""
+    pass
+
+class ZLVTransformer(ast.NodeTransformer):
+    """
+    🔱 ZLV Transformer
+    Strips docstrings and type hints from the AST for functional rigidity.
+    """
+    def _strip_docstring(self, node):
+        if (node.body and 
+            isinstance(node.body[0], ast.Expr) and 
+            isinstance(node.body[0].value, (ast.Constant, ast.Str))):
+            val = node.body[0].value
+            if isinstance(val, ast.Constant) and isinstance(val.value, str):
+                node.body.pop(0)
+            elif isinstance(val, ast.Str):
+                node.body.pop(0)
+
+    def visit_Module(self, node):
+        self._strip_docstring(node)
+        return self.generic_visit(node)
+
+    def visit_ClassDef(self, node):
+        self._strip_docstring(node)
+        return self.generic_visit(node)
+
+    def visit_FunctionDef(self, node):
+        self._strip_docstring(node)
+        node.returns = None
+        for arg in node.args.args + node.args.kwonlyargs:
+            arg.annotation = None
+        if node.args.vararg: node.args.vararg.annotation = None
+        if node.args.kwarg: node.args.kwarg.annotation = None
+        return self.generic_visit(node)
+
+    def visit_AsyncFunctionDef(self, node):
+        return self.visit_FunctionDef(node)
+
+    def visit_AnnAssign(self, node):
+        if node.value:
+            return ast.Assign(targets=[node.target], value=node.value, lineno=node.lineno)
+        return None
+
+class ZippedLogosDecoder:
+    """
+    🔱 Zipped Logos Validator (ZLV) & Decoder
+    Implements Crystal Hashing of AST signatures for functional verification.
+    Anchors implementation paths into the TGG (Topological Gnosis-Graph) 
+    and SLM (Security Logic Matrix).
+    """
+
+    def __init__(self, registry_path: Optional[str] = None):
+        self.registry_path = registry_path
+        self.transformer = ZLVTransformer()
+
+    def generate_crystal_hash(self, source_code: str) -> str:
+        """
+        Generates a Crystal Hash (SHA-256) of the AST signature.
+        This ignores comments, docstrings, and type hints to ensure functional rigidity.
+        """
+        try:
+            tree = ast.parse(source_code)
+            # Transform AST to strip non-functional elements
+            transformed_tree = self.transformer.visit(tree)
+            # ast.dump(tree) provides a canonical string representation of the AST
+            ast_signature = ast.dump(transformed_tree, annotate_fields=False, include_attributes=False)
+            return hashlib.sha256(ast_signature.encode("utf-8")).hexdigest()
+        except SyntaxError:
+            # Fallback for non-Python content or invalid syntax
+            return hashlib.sha256(source_code.encode("utf-8")).hexdigest()
+
+    def verify_integrity(self, source_code: str, expected_hash: str) -> bool:
+        """Verifies the implementation integrity against the Crystal Hash."""
+        actual_hash = self.generate_crystal_hash(source_code)
+        return actual_hash == expected_hash
+
+    def anchor_to_gnosis(self, implementation_path: str, crystal_hash: str) -> Dict[str, Any]:
+        """
+        Anchors the implementation path into the TGG (Topological Gnosis-Graph).
+        [AP:memory_bank/ALETHIA_REGISTRY.md#L12] (SOS-F5/TGG)
+        """
+        graph_path = Path("memory_bank/TGG_GRAPH.json")
+        if not graph_path.is_absolute():
+             # Try to find it relative to project root
+             graph_path = Path(__file__).parent.parent.parent.parent / graph_path
+             
+        if graph_path.exists():
+            graph_data = json.loads(graph_path.read_text())
+            # Registration in the node-based graph
+            node_id = implementation_path.replace("/", ".").replace(".py", "")
+            graph_data["TGG"]["nodes"][node_id] = {
+                "path": implementation_path,
+                "hash": crystal_hash,
+                "type": "logic",
+                "last_anchored": "2026-03-12"
+            }
+            # Commit to disk (Persistence enabled)
+            graph_path.write_text(json.dumps(graph_data, indent=2))
+            
+        return {
+            "path": implementation_path,
+            "hash": crystal_hash,
+            "status": "ANCHORED",
+            "matrix": "SLM-ALPHA",
+            "graph": "TGG-NODE"
+        }
+
+    def verify_tgg_compliance(self, file_path: str) -> bool:
+        """
+        Verifies if the file's imports are registered in the TGG.
+        Raises BrittleBoneException on violation.
+        [AP:docs/protocols/RCF_MASTER_PROTOCOL.md#L71]
+        """
+        path = Path(file_path)
+        if not path.exists():
+            return True # Cannot verify non-existent file
+            
+        tree = ast.parse(path.read_text())
+        imports = []
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                for alias in node.names:
+                    imports.append(alias.name)
+            elif isinstance(node, ast.ImportFrom):
+                imports.append(node.module)
+
+        # Load TGG
+        graph_path = Path(__file__).parent.parent.parent.parent / "memory_bank/TGG_GRAPH.json"
+        if not graph_path.exists():
+            return True # Skip if graph not initialized
+            
+        graph_data = json.loads(graph_path.read_text())
+        registered_nodes = graph_data["TGG"]["nodes"].keys()
+        
+        # We only check internal 'app' or 'mcp' imports for TGG compliance
+        for imp in imports:
+            if imp and (imp.startswith("app") or imp.startswith("mcp")):
+                if imp not in registered_nodes:
+                    raise BrittleBoneException(f"Brittle-Bone: Import '{imp}' not registered in TGG schema.")
+        
+        return True
+
+    def SLM_check(self, execution_path: List[str]) -> bool:
+        """
+        Verifies security logic matrix compliance.
+        Checks if the execution path violates functional axioms.
+        [AP:docs/protocols/RCF_MASTER_PROTOCOL.md#L55]
+        """
+        # Placeholder: Rejects path if it touches 'secrets' without 'Phylax'
+        if "secrets" in execution_path and "Phylax" not in execution_path:
+            return False
+        return True
+
+def analyze(term: str) -> Dict[str, str]:
+    """Analyze a term for morphological gnostic roots."""
+    term_lower = term.lower()
+    results = {"term": term, "roots": []}
+    
+    for root, data in GNOSTIC_ROOTS.items():
+        if root in term_lower:
+            results["roots"].append({
+                "root": root,
+                "concept": data["concept"],
+                "example": data["example"]
+            })
+            
+    return results
+
+def zip_logos(intent: str) -> str:
+    """
+    Experimental: Linguistic compression of English intent into Gnostic terms.
+    Example: "Implement a wise and orderly system" -> "Phronetic Eunomia implementation"
+    """
+    # TODO: Implement NLP-based intent-to-root mapping
+    return intent
+
+if __name__ == "__main__":
+    # Simple test
+    test_terms = ["Phronesis", "Sobornost", "Ontology", "Eudaimonia"]
+    for t in test_terms:
+        print(f"Analysis of '{t}': {analyze(t)}")
+    
+    # Test ZLV
+    decoder = ZippedLogosDecoder()
+    sample_code = "def hello(): print('world')"
+    c_hash = decoder.generate_crystal_hash(sample_code)
+    print(f"Crystal Hash: {c_hash}")
+    print(f"Integrity: {decoder.verify_integrity(sample_code, c_hash)}")
+
+    # Test Ancient Greek Normalization
+    greek_text = "μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος"
+    normalized_greek = normalize_ancient_greek(greek_text)
+    print(f"Original: {greek_text}")
+    print(f"Normalized: {normalized_greek}")

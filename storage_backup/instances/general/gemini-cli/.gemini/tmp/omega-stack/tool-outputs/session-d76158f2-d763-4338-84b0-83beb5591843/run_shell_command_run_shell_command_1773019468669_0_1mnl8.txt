@@ -1,0 +1,3 @@
+{
+  "output": "Output: ./embeddings/embeddinggemma-300m-Q6_K.gguf\n./embeddings/functiongemma-270m-it-Q6_K.gguf\n./embeddings/all-MiniLM-L6-v2-f16.gguf\nfind: ‘./infra/docker/data/postgres’: Permission denied\nExit Code: 1\nProcess Group PGID: 1326210"
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/MPI.md (1 replacements). Here is the updated code:\n...\n| **Metropolis Network Shield** | ✅ LIVE | Zero-trust partitioning and Redis TLS backbo
+... [TRUNCATED] ...
+ `app/XNAi_rag_app/core/vulkan_acceleration.py` |\n| **OpenPipe Integration**| LLM evaluation and caching. | ❄️ COLD | `infra/docker/docker-compose.yml` |\n\n---\n\n## 🔬 4. Active Research Threads\n*Tracking the frontier of the Omega Stack.*\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773011649963_0_3e3fvo.txt
+</tool_output_masked>

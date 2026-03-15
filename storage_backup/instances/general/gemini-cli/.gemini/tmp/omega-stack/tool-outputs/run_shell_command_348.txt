@@ -1,0 +1,21 @@
+Output: 51G     /home/arcana-novai/
+22G     /home/arcana-novai/.local
+21G     /home/arcana-novai/.local/share
+20G     /home/arcana-novai/.local/share/containers
+11G     /home/arcana-novai/Documents
+7.7G    /home/arcana-novai/Desktop
+7.5G    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack
+7.5G    /home/arcana-novai/Documents/Xoe-NovAi
+3.4G    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi
+3.4G    /home/arcana-novai/Desktop/GitHub
+1.9G    /home/arcana-novai/Desktop/Pictures
+1.5G    /home/arcana-novai/archive/foundation-legacy/versions
+1.5G    /home/arcana-novai/archive/foundation-legacy
+1.5G    /home/arcana-novai/archive
+1.5G    /home/arcana-novai/Desktop/Pictures/yeah
+1.3G    /home/arcana-novai/snap
+1.2G    /home/arcana-novai/google-cloud-sdk
+1.1G    /home/arcana-novai/snap/chromium/common
+1.1G    /home/arcana-novai/snap/chromium
+497M    /home/arcana-novai/Documents/RECOVERED_GNOSIS
+Process Group PGID: 97539

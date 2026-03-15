@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# Documentation Index & Navigation Map\n\n**Last Updated**: March 7, 2026  \n**Maintenance**: Auto-generated, keep current!\n\n---\n\n## 🚀 START HERE\n\n**New to the project?**\n1. Read: `README.md`\n2. Follow: `QUICK_START.md`\n3. Un
+... [TRUNCATED] ...
+OR OPUS 4.6\n\nSee these detailed analyses for strategic review:\n- **OPUS_4_6_COMPREHENSIVE_HANDOFF.md** - Main strategic document\n- **Additional analyses in session workspace** - Deep dives\n\n---\n\n**Navigation Last Updated**: March 7, 2026\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773016001044_0_up8yz8.txt
+</tool_output_masked>

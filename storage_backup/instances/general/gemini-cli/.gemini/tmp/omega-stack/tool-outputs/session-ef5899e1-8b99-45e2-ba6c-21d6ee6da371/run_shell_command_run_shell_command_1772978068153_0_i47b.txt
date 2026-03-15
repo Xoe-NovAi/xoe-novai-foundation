@@ -1,0 +1,3 @@
+{
+  "output": "Output: xnai_qdrant\n✓ Qdrant stopped to free up CPU\nCONTAINER ID  IMAGE                            COMMAND          CREATED       STATUS                                        PORTS                             NAMES\n3ec57fc5ab70  docker.io/qdrant/qdrant:v1.13.1  ./entrypoint.sh  17 hours ago  Exited (1) Less than a second ago (starting)  0.0.0.0:6333-6334->6333-6334/tcp  xnai_qdrant\nFilesystem      Size  Used Avail Use% Mounted on\n/dev/nvme0n1p2  109G   93G   11G  90% /\nProcess Group PGID: 3985007"
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 1 match for pattern \"def sanitize\\(\" in path \".\" (filter: \"app/XNAi_rag_app/core/security/sanitization.py\"):\n---\nFile: app/XNAi_rag_app/core/security/sanitization.py\nL275-         result = sanitizer.sanitize(content)\nL
+... [TRUNCATED] ...
+inal = match.group(0)\nL372-             start, end = match.span()\nL373- \nL374-             # Determine action based on match type\nL375-             if match_type in (\"api_key\", \"private_key\", \"password\", \"secret\", \"credential\"):\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/grep_search_grep_search_1773000888956_0_sbx46r.txt
+</tool_output_masked>

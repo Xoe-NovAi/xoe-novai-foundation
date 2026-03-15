@@ -1,0 +1,18 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+        redis_cfg = self.config.get('redis', {})
+        
+        # Check environment variable first (Docker compose sets REDIS_URL)
+        env_url = os.environ.get('REDIS_URL')
+        if env_url:
+            return env_url.replace('redis://', 'rediss://', 1)
+...
+        if password:
+            return f"rediss://:{password}@{host}:{port}"
+        return f"rediss://{host}:{port}"
+
+    async def _ensure_redis(self) -> bool:
+        """MB4: Check Redis connection and attempt reconnect if needed."""
+        if self.redis is None:
+            try:
+...

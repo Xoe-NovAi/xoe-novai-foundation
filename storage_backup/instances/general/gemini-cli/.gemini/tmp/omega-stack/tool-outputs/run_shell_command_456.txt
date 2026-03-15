@@ -1,0 +1,8 @@
+Output: xnai_oikos
+xnai_oikos
+c1c9a3671a250513001d82945d856a70cc8e8f7035fe6274a9ceff35ca463d45
+xnai_oikos
+🔱 Foundry: Sending problem to Iris Bridge (Port 8006)...
+❌ Connection Error: Oikos Service is likely offline. ()
+💡 Suggestion: Start the service with 'python3 app/oikos_service.py'
+Process Group PGID: 500682

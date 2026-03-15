@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 100 matches for pattern \"zram|lz4|zstd|setfacl|100999|UID\" in path \".\" (results limited to 100 matches for performance):\n---\nFile: infra/docker/Dockerfile.oikos\nL46: # Create internal directories and set permissions for UI
+... [TRUNCATED] ...
+\n---\nFile: infra/monitoring/grafana/dashboards/xoe-novai-observability.json\nL2:   \"uid\": \"xoe-novai-observability\",\n---\nFile: infra/monitoring/grafana/dashboards/postgresql-dashboard.json\nL639:   \"uid\": \"xnai-postgresql-detail\",\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/grep_search_grep_search_1773543358140_2_8n1uy.txt
+</tool_output_masked>

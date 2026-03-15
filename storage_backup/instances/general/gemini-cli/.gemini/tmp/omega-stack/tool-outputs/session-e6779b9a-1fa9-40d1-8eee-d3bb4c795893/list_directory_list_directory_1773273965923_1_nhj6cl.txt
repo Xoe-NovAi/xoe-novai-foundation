@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements:\nrequirements-api.in (1274 bytes)\nrequirements-api.txt (9298 bytes)\nrequirements-chainlit.in (2938 bytes)\nrequirements-chainlit.txt (4217 bytes)\nrequirements-crawl.in (1081 bytes)\nrequirements-crawl.txt (8676 bytes)\nrequirements-curation_worker.in (313 bytes)\nrequirements-curation_worker.txt (5048 bytes)\nrequirements-ui-core.txt (519 bytes)\nrequirements.in (171 bytes)\nrequirements.txt (35343 bytes)"
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 1 match for pattern \"def .*response\" in path \".\" (filter: \"app/XNAi_rag_app/ui/chainlit_app_unified.py\"):\n---\nFile: app/XNAi_rag_app/ui/chainlit_app_unified.py\nL384- - RAG: {\"On\" if stats[\"use_rag\"] else \"Off\"}\nL3
+... [TRUNCATED] ...
+lient initialized\")\nL480-         except Exception as e:\nL481-             logger.warning(f\"Knowledge client init failed: {e}\")\nL482-             _knowledge_client = None\nL483- \nL484-     # Initialize voice module (if feature enabled)\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/grep_search_grep_search_1773001803972_0_lna3xa.txt
+</tool_output_masked>

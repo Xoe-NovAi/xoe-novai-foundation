@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/MPI.md (1 replacements). Here is the updated code:\n...\n*Current Phase: 4.0 (Continuous Integrity)*\n\n| Project | Status | Description | Conte
+... [TRUNCATED] ...
+Auth Protocol** | ✅ ACTIVE | Mandatory `auth_token` for all MCP/API tools. | `docs/OMEGA_HARDENING_ROADMAP_2026.md` |\n| **Red-Phone protocol**| ✅ VERIFIED | Global emergency stop via Redis Streams. | `tests/test_red_phone_kill_switch.py` |\n\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773005087604_0_8nxw8.txt
+</tool_output_masked>

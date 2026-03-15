@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\"\"\"Identity and Access Management Database for Omega-Stack Agent-Bus.\n\nThis module provides comprehensive IAM functionality including:\n- Agent authentication and authorization\n- Capability-based permissions\n- JWT token manageme
+... [TRUNCATED] ...
+       self.logger.error(f\"Error cleaning up expired sessions: {e}\")\n\n\n# Global IAM instance\niam_database = IAMDatabase()\n\n\ndef get_iam_database() -> IAMDatabase:\n    \"\"\"Get global IAM database instance.\"\"\"\n    return iam_database"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773005375315_0_98pwha.txt
+</tool_output_masked>

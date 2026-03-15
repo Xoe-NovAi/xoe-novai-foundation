@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: xnai_library_curator
+INFO:XNAi_rag_app.core.config_loader:Configuration validated against Pydantic schema (v0.1.4-compliant)
+INFO:XNAi_rag_app.core.config_loader:Configuration loaded from /app/app/config.toml (22 sections)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/app/XNAi_rag_app/workers/library_curator.py", line 24, in <module>
+    from XNAi_rag_app.services.ingest_library import EnterpriseIngestionEngine, IngestionStats
+  File "/app/app/XNAi_rag_app/services/ingest_library.py", line 75, in <module>
+    from XNAi_rag_app.core.metrics import PerformanceLogger
+
+... [18 lines omitted] ...
+
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2325, in wrapper
+    return await func(*args)
+           ^^^^^^^^^^^^^^^^^
+  File "/app/app/XNAi_rag_app/workers/library_curator.py", line 41, in start
+    async with self as bus:
+               ^^^^
+TypeError: 'LibraryCuratorWorker' object does not support the asynchronous context manager protocol (missed __aexit__ method)
+Process Group PGID: 1254835
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773015557092_0_a5ok1l.txt
+</tool_output_masked>

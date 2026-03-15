@@ -1,0 +1,12 @@
+Output: total 76
+drwxrwxr-x  8 arcana-novai arcana-novai  4096 Mar 10 22:11 .
+drwxrwxr-x  3 arcana-novai arcana-novai  4096 Mar 10 22:11 ..
+drwxrwxr-x  4 arcana-novai arcana-novai  4096 Mar 10 22:11 app
+drwxrwxr-x  4 arcana-novai arcana-novai  4096 Mar 10 22:11 config
+-rw-rw-r--  1 arcana-novai arcana-novai 24033 Mar 10 22:11 docker-compose.yml
+drwxr-xr-x 27 arcana-novai arcana-novai  4096 Mar 10 22:11 docs
+drwxrwxr-x  6 arcana-novai arcana-novai  4096 Mar 10 22:11 infra
+drwxrwxr-x 17 arcana-novai arcana-novai  4096 Mar 10 22:11 memory_bank
+-rw-rw-r--  1 arcana-novai arcana-novai  9203 Mar 10 22:11 mkdocs.yml
+drwxrwxr-x 12 arcana-novai arcana-novai 12288 Mar 10 22:11 scripts
+Process Group PGID: 93470

@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/iam_db.py (1 replacements). Here is the updated code:
+...
+from dataclasses import dataclass, asdict
+from enum import Enum
+import hashlib
+import secrets
+from passlib.context import CryptContext
+from sqlalchemy import Column, String, DateTime, JSON, Boolean, UUID, ForeignKey, Table, Index, text
+from sqlalchemy.dialects.postgresql import UUID as PGUUID
+from sqlalchemy.orm import relationship, declarative_base, Session
+from sqlalchemy.sql import func
+import jwt
+
+...

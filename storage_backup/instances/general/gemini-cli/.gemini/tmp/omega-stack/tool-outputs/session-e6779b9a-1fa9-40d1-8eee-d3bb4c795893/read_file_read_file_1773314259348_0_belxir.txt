@@ -1,0 +1,3 @@
+{
+  "output": "{\n  \"error\": \"File not found: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/plans/pan-optic-gnosis-matrix-roadmap.md\"\n}"
+}

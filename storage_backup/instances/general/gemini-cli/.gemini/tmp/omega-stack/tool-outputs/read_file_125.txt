@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 20-38 of 38 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, 
+... [TRUNCATED] ...
+y.\n\n---\n\n### 📌 Session Hygiene:\n- Keep chat context <5MB.\n- **START EVERY SESSION** with an MB-MCP health check: `curl http://localhost:8005/health`.\n- **GNOSTIC MANDATE**: All technical claims must be anchored in the `ALETHIA_REGISTRY`.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773355479561_0_ukdpj.txt
+</tool_output_masked>

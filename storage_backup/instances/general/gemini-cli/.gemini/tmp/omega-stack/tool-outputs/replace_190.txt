@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/activeContext.md (1 replacements). Here is the updated code:\n...\n\n**Status**: RCF-MANIFESTED ✅ | **Session State**: SESS-21-INITIATED\n**Coor
+... [TRUNCATED] ...
+dration**: Automate sub-agent hydration via `LIA_TRIAD_SEEDS.json`.\n2.  **TGG Recursive Mapping**: Expand the TGG to cover the entire `infra/docker/` mesh.\n3.  **Metron Dashboard**: Activate the live VictoriaMetrics/Grafana observability view.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773351162738_0_8u87hm.txt
+</tool_output_masked>

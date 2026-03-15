@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1000-1150 of 1731 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exa
+... [TRUNCATED] ...
+                  metadata.tags.extend(summary_data.get(\"keywords\", []))\n                        metadata.tags = list(set(metadata.tags))\n\n                    # Enrich metadata\n                    metadata = self._enrich_metadata(metadata)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773018188230_0_fgnbmvj.txt
+</tool_output_masked>

@@ -1,0 +1,17 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD:-changeme123}@postgres:5432/xnai
+      - LIBRARY_PATH=/library
+      - KNOWLEDGE_PATH=/expert-knowledge
+      - PYTHONPATH=/app/app
+      - LLM_MODEL_PATH=/storage/models/Qwen3-0.6B-Q6_K.gguf
+    volumes:
+      - ../../storage:/storage:Z
+      - ./models:/storage/models:ro,Z
+      - ../../library:/library:z
+      - ../../knowledge:/expert-knowledge:z
+      - ../../app:/app/app:ro
+      - ../../scripts:/app/scripts:ro
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+...

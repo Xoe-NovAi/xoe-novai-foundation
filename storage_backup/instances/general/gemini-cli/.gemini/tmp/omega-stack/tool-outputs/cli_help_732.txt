@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Subagent 'cli_help' finished.\nTermination Reason: GOAL\nResult:\n{\n  \"answer\": \"To list and summon Metropolis experts or facets in Gemini CLI (v0.33.0), use the following commands:\\n\\n### 1. Listing Experts and Facets\\nYou can 
+... [TRUNCATED] ...
+flow.\",\n  \"sources\": [\n    \"docs/METROPOLIS_MASTER_INDEX.md\",\n    \"docs/GEMINI_FACET_6_SESSION_MANAGEMENT_GUIDE.md\",\n    \"config/metropolis-domains.yaml\",\n    \"docs/GEMINI.md\",\n    \"artifacts/analyst-context-manifest.md\"\n  ]\n}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/cli_help_cli_help_1773290864187_0_9nwga.txt
+</tool_output_masked>

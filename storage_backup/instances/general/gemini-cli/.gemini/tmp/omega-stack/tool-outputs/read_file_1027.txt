@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "xnai_memory_bank_mcp\nxnai_memory_bank_mcp\nError: no container with name or ID \"xnai_memory_bank_mcp\" found: no such container\nTraceback (most recent call last):\n  File \"/usr/bin/podman-compose\", line 33, in <module>\n    sys.ex
+... [TRUNCATED] ...
+vices[service][\"_deps\"])\n                                    ~~~~~~~~~~~~~~~~^^^^^^^^^\nKeyError: 'memory-bank'\nError: no container with name or ID \"xnai_memory_bank_mcp\" found: no such container\nxnai_memory_bank_mcp\nxnai_memory_bank_mcp\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773250364125_0_xhs6i.txt
+</tool_output_masked>

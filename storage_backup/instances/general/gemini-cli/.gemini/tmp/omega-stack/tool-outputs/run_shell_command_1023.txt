@@ -1,0 +1,4 @@
+Output: infra/docker/Dockerfile        infra/docker/Dockerfile.chainlit  infra/docker/Dockerfile.curation_worker  infra/docker/Dockerfile.memory-bank
+infra/docker/Dockerfile.base   infra/docker/Dockerfile.cline     infra/docker/Dockerfile.curator
+infra/docker/Dockerfile.build  infra/docker/Dockerfile.crawl     infra/docker/Dockerfile.docs
+Process Group PGID: 1041377

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\n🌈 IRIS BRIDGE: The Messenger of the Rainbow\nA high-bandwidth synchronization layer between Cloud (LLM) and Local (Oikos).\n\"\"\"\nimport anyio\nimport sys\nimport argparse\nfrom typing import Dict, An
+... [TRUNCATED] ...
+ for oikos-check\n    if not args.sync and not args.balance:\n        args.sync = True\n\n    if args.sync:\n        await sync_worlds()\n    if args.balance:\n        await balance_spectrum()\n\nif __name__ == \"__main__\":\n    anyio.run(main)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773279297543_0_xzqg3q.txt
+</tool_output_masked>

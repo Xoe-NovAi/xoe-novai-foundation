@@ -1,0 +1,3 @@
+{
+  "output": "Output: agent_coordinator.log  caddy/      migration.log  xnai-observability.log\nagent_watcher.log      curations/  openpipe/\nProcess Group PGID: 384543"
+}

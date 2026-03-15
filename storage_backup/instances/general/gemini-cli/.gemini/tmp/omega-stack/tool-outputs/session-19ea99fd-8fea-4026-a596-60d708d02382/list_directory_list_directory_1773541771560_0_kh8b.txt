@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers:\n[DIR] memory-bank-mcp\n[DIR] xnai-agentbus\n[DIR] xnai-github\n[DIR] xnai-gnosis\n[DIR] xnai-memory\n[DIR] xnai-rag\n[DIR] xnai-sambanova\n[DIR] xnai-stats-mcp\n[DIR] xnai-vikunja\n[DIR] xnai-websearch"
+}

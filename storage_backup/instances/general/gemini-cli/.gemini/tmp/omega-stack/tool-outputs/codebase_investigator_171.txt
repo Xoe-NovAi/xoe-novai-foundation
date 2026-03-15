@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Subagent 'codebase_investigator' finished.\nTermination Reason: GOAL\nResult:\n{\n  \"SummaryOfFindings\": \"The investigation of the 'dark layers' reveals the following:\\n\\n1. **Vulkan Acceleration:** `vulkan_acceleration.py` is a c
+... [TRUNCATED] ...
+on/wisdom.py\",\n      \"Reasoning\": \"Manages shared wisdom and lessons learned, which aligns with the 'Wisdom' ideal in Maat's guardrails.\",\n      \"KeySymbols\": [\n        \"WisdomProvider\",\n        \"AgentLesson\"\n      ]\n    }\n  ]\n}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/codebase_investigator_codebase_investigator_1773017318899_0_0p78phi.txt
+</tool_output_masked>

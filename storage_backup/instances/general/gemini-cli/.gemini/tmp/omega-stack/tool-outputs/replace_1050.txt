@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_TLS_ENABLED=true
+      - REDIS_CA_CERT_PATH=/tls/ca.crt
+      - STORAGE_PATH=/storage
+      - LOG_LEVEL=info
+      - PYTHONPATH=/app
+    volumes:
+      - ../../storage:/storage:Z
+      - ../../app:/app/app:ro
+      - ../../mcp-servers/memory-bank-mcp:/app/mcp-server:ro
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+...

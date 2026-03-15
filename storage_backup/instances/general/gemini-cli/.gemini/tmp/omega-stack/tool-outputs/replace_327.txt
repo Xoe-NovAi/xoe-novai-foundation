@@ -1,0 +1,15 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:
+...
+      - ../../mcp-servers/memory-bank-mcp:/app/mcp-server:ro
+      - ./tls/ca.crt:/tls/ca.crt:ro,Z
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    networks:
+      - xnai_db_network
+      - xnai_app_network
+    restart: on-failure:3
+    deploy:
+...

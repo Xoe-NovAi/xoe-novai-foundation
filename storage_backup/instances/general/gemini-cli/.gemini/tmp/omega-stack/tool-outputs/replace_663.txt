@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/quick_gemini_setup.sh (1 replacements). Here is the updated code:
+...
+# ==========================================================================
+
+# Redis Configuration
+REDIS_HOST=redis
+REDIS_PORT=6379
+REDIS_PASSWORD=
+
+# Qdrant Configuration (Phase 3 Vector Database)
+QDRANT_URL=http://qdrant:6333
+QDRANT_API_KEY=  # Optional: leave empty for development
+VECTOR_SIZE=384
+...

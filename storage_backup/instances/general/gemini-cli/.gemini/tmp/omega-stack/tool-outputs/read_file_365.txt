@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "memory-bank": {
+      "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/run_server.sh",
+      "args": []
+    }
+  },
+  "experimental": {
+    "plan": true
+  },
+  "tools": {
+    "truncateToolOutputThreshold": 60000
+  },
+  "context": {
+    "fileFiltering": {
+      "respectGitIgnore": false
+    }
+  },
+  "model": {
+    "compressionThreshold": 0.6
+  },
+  "ui": {
+    "useAlternateBuffer": true
+  }
+}

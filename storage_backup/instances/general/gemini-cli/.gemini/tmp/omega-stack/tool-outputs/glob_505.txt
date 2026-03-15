@@ -1,0 +1,7 @@
+Found 6 file(s) matching "requirements/*.txt" across 2 workspace directories, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements-api.txt
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements-chainlit.txt
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements-crawl.txt
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements-curation_worker.txt
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements-ui-core.txt
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/requirements/requirements.txt

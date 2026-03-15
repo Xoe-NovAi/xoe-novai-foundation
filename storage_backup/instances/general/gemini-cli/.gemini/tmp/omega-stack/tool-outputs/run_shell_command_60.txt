@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: #!/bin/bash
+# xnai-dispatcher.sh - Universal Omega Stack Dispatcher
+# Supports: gemini, opencode, copilot, cline
+# Usage: ln -sf xnai-dispatcher.sh xnai-gemini-dispatcher.sh
+
+set -u
+
+# 1. Resolve OMEGA_ROOT and Paths
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+OMEGA_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+... [19 lines omitted] ...
+
+fi
+
+# 4. Load Tool Configuration
+CONF_FILE="${SCRIPT_DIR}/dispatcher.d/${TOOL}.conf"
+if [[ -f "$CONF_FILE" ]]; then
+    source "$CONF_FILE"
+else
+    echo "Error: Configuration for tool '$TOOL' not found at $CONF_FILE"
+    exit 1
+fi
+Process Group PGID: 62537
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/run_shell_command_run_shell_command_1773542443153_1_q2s3kd.txt
+</tool_output_masked>

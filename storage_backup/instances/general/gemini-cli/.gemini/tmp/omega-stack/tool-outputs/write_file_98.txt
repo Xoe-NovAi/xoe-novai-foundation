@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/gnostic_preflight.py. Here is the updated code:\n#!/usr/bin/env python3\n\"\"\"\n🔱 GNOSTIC PRE-FLIGHT: Crystal-Verified Rigidity Audit\nPerforms i
+... [TRUNCATED] ...
+ Health Check\n    config_link = PROJECT_ROOT / \"app/config.toml\"\n    if config_link.is_symlink() or config_link.exists():\n        print(\"✅ Symlink Health: OK\")\n    else:\n        print(\"⚠️ Warning: config.toml missing in app core.\")\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773356492042_0_0qa9rp.txt
+</tool_output_masked>

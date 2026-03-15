@@ -1,0 +1,1070 @@
+Output: [1/2] STEP 1/4: FROM python:3.12-slim AS builder
+[1/2] STEP 2/4: WORKDIR /build
+--> Using cache 045ba9c5a5fa6283f8669cc0867fc79f0884da097383fb840e9591a769b60198
+--> 045ba9c5a5fa
+[1/2] STEP 3/4: RUN apt-get update && apt-get install -y --no-install-recommends     gcc     python3-dev     && rm -rf /var/lib/apt/lists/*
+--> Using cache 0f67f2fd97352c8cb6609eff3a3381c64c544e8a294182be435f64d90991f6af
+--> 0f67f2fd9735
+[1/2] STEP 4/4: RUN pip install --no-cache-dir --default-timeout=1000     fastapi     uvicorn     litellm     google-cloud-aiplatform     google-genai     python-dotenv     httpx     pyyaml     anyio     redis     aiofiles
+Collecting fastapi
+  Downloading fastapi-0.135.1-py3-none-any.whl.metadata (30 kB)
+Collecting uvicorn
+  Downloading uvicorn-0.41.0-py3-none-any.whl.metadata (6.7 kB)
+Collecting litellm
+  Downloading litellm-1.82.1-py3-none-any.whl.metadata (30 kB)
+Collecting google-cloud-aiplatform
+  Downloading google_cloud_aiplatform-1.141.0-py2.py3-none-any.whl.metadata (46 kB)
+Collecting google-genai
+  Downloading google_genai-1.67.0-py3-none-any.whl.metadata (52 kB)
+Collecting python-dotenv
+  Downloading python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+Collecting httpx
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting pyyaml
+  Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting anyio
+  Downloading anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+Collecting redis
+  Downloading redis-7.3.0-py3-none-any.whl.metadata (12 kB)
+Collecting aiofiles
+  Downloading aiofiles-25.1.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting starlette>=0.46.0 (from fastapi)
+  Downloading starlette-0.52.1-py3-none-any.whl.metadata (6.3 kB)
+Collecting pydantic>=2.7.0 (from fastapi)
+  Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi)
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi)
+  Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi)
+  Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Collecting click>=7.0 (from uvicorn)
+  Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn)
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting aiohttp>=3.10 (from litellm)
+  Downloading aiohttp-3.13.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+Collecting fastuuid>=0.13.0 (from litellm)
+  Downloading fastuuid-0.14.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.1 kB)
+Collecting importlib-metadata>=6.8.0 (from litellm)
+  Downloading importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting jinja2<4.0.0,>=3.1.2 (from litellm)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting jsonschema<5.0.0,>=4.23.0 (from litellm)
+  Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting openai>=2.8.0 (from litellm)
+  Downloading openai-2.26.0-py3-none-any.whl.metadata (29 kB)
+Collecting tiktoken>=0.7.0 (from litellm)
+  Downloading tiktoken-0.12.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+Collecting tokenizers (from litellm)
+  Downloading tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,<3.0.0,>=1.34.1 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,<3.0.0,>=1.34.1->google-cloud-aiplatform)
+  Downloading google_api_core-2.30.0-py3-none-any.whl.metadata (3.1 kB)
+Collecting google-auth<3.0.0,>=2.47.0 (from google-cloud-aiplatform)
+  Downloading google_auth-2.49.1-py3-none-any.whl.metadata (6.2 kB)
+Collecting proto-plus<2.0.0,>=1.22.3 (from google-cloud-aiplatform)
+  Downloading proto_plus-1.27.1-py3-none-any.whl.metadata (2.2 kB)
+Collecting protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<7.0.0,>=3.20.2 (from google-cloud-aiplatform)
+  Downloading protobuf-6.33.5-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+Collecting packaging>=14.3 (from google-cloud-aiplatform)
+  Downloading packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting google-cloud-storage<4.0.0,>=1.32.0 (from google-cloud-aiplatform)
+  Downloading google_cloud_storage-3.9.0-py3-none-any.whl.metadata (15 kB)
+Collecting google-cloud-bigquery!=3.20.0,<4.0.0,>=1.15.0 (from google-cloud-aiplatform)
+  Downloading google_cloud_bigquery-3.40.1-py3-none-any.whl.metadata (8.2 kB)
+Collecting google-cloud-resource-manager<3.0.0,>=1.3.3 (from google-cloud-aiplatform)
+  Downloading google_cloud_resource_manager-1.16.0-py3-none-any.whl.metadata (9.9 kB)
+Collecting docstring_parser<1 (from google-cloud-aiplatform)
+  Downloading docstring_parser-0.17.0-py3-none-any.whl.metadata (3.5 kB)
+Collecting requests<3.0.0,>=2.28.1 (from google-genai)
+  Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting tenacity<9.2.0,>=8.2.3 (from google-genai)
+  Downloading tenacity-9.1.4-py3-none-any.whl.metadata (1.2 kB)
+Collecting websockets<17.0,>=13.0.0 (from google-genai)
+  Downloading websockets-16.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+Collecting distro<2,>=1.7.0 (from google-genai)
+  Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+Collecting sniffio (from google-genai)
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting certifi (from httpx)
+  Downloading certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx)
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx)
+  Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp>=3.10->litellm)
+  Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp>=3.10->litellm)
+  Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting attrs>=17.3.0 (from aiohttp>=3.10->litellm)
+  Downloading attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp>=3.10->litellm)
+  Downloading frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp>=3.10->litellm)
+  Downloading multidict-6.7.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+Collecting propcache>=0.2.0 (from aiohttp>=3.10->litellm)
+  Downloading propcache-0.4.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp>=3.10->litellm)
+  Downloading yarl-1.23.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+Collecting googleapis-common-protos<2.0.0,>=1.56.3 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,<3.0.0,>=1.34.1->google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,<3.0.0,>=1.34.1->google-cloud-aiplatform)
+  Downloading googleapis_common_protos-1.73.0-py3-none-any.whl.metadata (9.4 kB)
+Collecting grpcio<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,<3.0.0,>=1.34.1->google-cloud-aiplatform)
+  Downloading grpcio-1.78.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.8 kB)
+Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,<3.0.0,>=1.34.1->google-cloud-aiplatform)
+  Downloading grpcio_status-1.78.0-py3-none-any.whl.metadata (1.3 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth<3.0.0,>=2.47.0->google-cloud-aiplatform)
+  Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting cryptography>=38.0.3 (from google-auth<3.0.0,>=2.47.0->google-cloud-aiplatform)
+  Downloading cryptography-46.0.5-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting google-cloud-core<3.0.0,>=2.4.1 (from google-cloud-bigquery!=3.20.0,<4.0.0,>=1.15.0->google-cloud-aiplatform)
+  Downloading google_cloud_core-2.5.0-py3-none-any.whl.metadata (3.1 kB)
+Collecting google-resumable-media<3.0.0,>=2.0.0 (from google-cloud-bigquery!=3.20.0,<4.0.0,>=1.15.0->google-cloud-aiplatform)
+  Downloading google_resumable_media-2.8.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting python-dateutil<3.0.0,>=2.8.2 (from google-cloud-bigquery!=3.20.0,<4.0.0,>=1.15.0->google-cloud-aiplatform)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting grpc-google-iam-v1<1.0.0,>=0.14.0 (from google-cloud-resource-manager<3.0.0,>=1.3.3->google-cloud-aiplatform)
+  Downloading grpc_google_iam_v1-0.14.3-py3-none-any.whl.metadata (9.2 kB)
+Collecting google-crc32c<2.0.0,>=1.1.3 (from google-cloud-storage<4.0.0,>=1.32.0->google-cloud-aiplatform)
+  Downloading google_crc32c-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl.metadata (1.7 kB)
+Collecting zipp>=3.20 (from importlib-metadata>=6.8.0->litellm)
+  Downloading zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2<4.0.0,>=3.1.2->litellm)
+  Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema<5.0.0,>=4.23.0->litellm)
+  Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting referencing>=0.28.4 (from jsonschema<5.0.0,>=4.23.0->litellm)
+  Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.25.0 (from jsonschema<5.0.0,>=4.23.0->litellm)
+  Downloading rpds_py-0.30.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting jiter<1,>=0.10.0 (from openai>=2.8.0->litellm)
+  Downloading jiter-0.13.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+Collecting tqdm>4 (from openai>=2.8.0->litellm)
+  Downloading tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.7.0->fastapi)
+  Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic>=2.7.0->fastapi)
+  Downloading pydantic_core-2.41.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting charset_normalizer<4,>=2 (from requests<3.0.0,>=2.28.1->google-genai)
+  Downloading charset_normalizer-3.4.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (39 kB)
+Collecting urllib3<3,>=1.21.1 (from requests<3.0.0,>=2.28.1->google-genai)
+  Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting regex>=2022.1.18 (from tiktoken>=0.7.0->litellm)
+  Downloading regex-2026.2.28-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting huggingface-hub<2.0,>=0.16.4 (from tokenizers->litellm)
+  Downloading huggingface_hub-1.6.0-py3-none-any.whl.metadata (13 kB)
+Collecting cffi>=2.0.0 (from cryptography>=38.0.3->google-auth<3.0.0,>=2.47.0->google-cloud-aiplatform)
+  Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Collecting filelock>=3.10.0 (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm)
+  Downloading filelock-3.25.2-py3-none-any.whl.metadata (2.0 kB)
+Collecting fsspec>=2023.5.0 (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm)
+  Downloading fsspec-2026.2.0-py3-none-any.whl.metadata (10 kB)
+Collecting hf-xet<2.0.0,>=1.3.2 (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm)
+  Downloading hf_xet-1.4.1-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+Collecting typer (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm)
+  Downloading typer-0.24.1-py3-none-any.whl.metadata (16 kB)
+Collecting pyasn1<0.7.0,>=0.6.1 (from pyasn1-modules>=0.2.1->google-auth<3.0.0,>=2.47.0->google-cloud-aiplatform)
+  Downloading pyasn1-0.6.2-py3-none-any.whl.metadata (8.4 kB)
+Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.8.2->google-cloud-bigquery!=3.20.0,<4.0.0,>=1.15.0->google-cloud-aiplatform)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=38.0.3->google-auth<3.0.0,>=2.47.0->google-cloud-aiplatform)
+  Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting shellingham>=1.3.0 (from typer->huggingface-hub<2.0,>=0.16.4->tokenizers->litellm)
+  Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting rich>=12.3.0 (from typer->huggingface-hub<2.0,>=0.16.4->tokenizers->litellm)
+  Downloading rich-14.3.3-py3-none-any.whl.metadata (18 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=12.3.0->typer->huggingface-hub<2.0,>=0.16.4->tokenizers->litellm)
+  Downloading markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=12.3.0->typer->huggingface-hub<2.0,>=0.16.4->tokenizers->litellm)
+  Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=12.3.0->typer->huggingface-hub<2.0,>=0.16.4->tokenizers->litellm)
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Downloading fastapi-0.135.1-py3-none-any.whl (116 kB)
+Downloading uvicorn-0.41.0-py3-none-any.whl (68 kB)
+Downloading litellm-1.82.1-py3-none-any.whl (15.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.3/15.3 MB 1.5 MB/s eta 0:00:00
+Downloading google_cloud_aiplatform-1.141.0-py2.py3-none-any.whl (8.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.4/8.4 MB 3.4 MB/s eta 0:00:00
+Downloading google_genai-1.67.0-py3-none-any.whl (733 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 733.5/733.5 kB 3.8 MB/s eta 0:00:00
+Downloading python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 4.9 MB/s eta 0:00:00
+Downloading anyio-4.12.1-py3-none-any.whl (113 kB)
+Downloading redis-7.3.0-py3-none-any.whl (404 kB)
+Downloading aiofiles-25.1.0-py3-none-any.whl (14 kB)
+Downloading aiohttp-3.13.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 2.9 MB/s eta 0:00:00
+Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Downloading click-8.3.1-py3-none-any.whl (108 kB)
+Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+Downloading docstring_parser-0.17.0-py3-none-any.whl (36 kB)
+Downloading fastuuid-0.14.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (278 kB)
+Downloading google_api_core-2.30.0-py3-none-any.whl (173 kB)
+Downloading google_auth-2.49.1-py3-none-any.whl (240 kB)
+Downloading google_cloud_bigquery-3.40.1-py3-none-any.whl (262 kB)
+Downloading google_cloud_resource_manager-1.16.0-py3-none-any.whl (400 kB)
+Downloading google_cloud_storage-3.9.0-py3-none-any.whl (321 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading idna-3.11-py3-none-any.whl (71 kB)
+Downloading importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Downloading openai-2.26.0-py3-none-any.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 3.7 MB/s eta 0:00:00
+Downloading packaging-26.0-py3-none-any.whl (74 kB)
+Downloading proto_plus-1.27.1-py3-none-any.whl (50 kB)
+Downloading protobuf-6.33.5-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+Downloading pydantic_core-2.41.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 3.7 MB/s eta 0:00:00
+Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+Downloading certifi-2026.2.25-py3-none-any.whl (153 kB)
+Downloading starlette-0.52.1-py3-none-any.whl (74 kB)
+Downloading tenacity-9.1.4-py3-none-any.whl (28 kB)
+Downloading tiktoken-0.12.0-cp312-cp312-manylinux_2_28_x86_64.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 4.8 MB/s eta 0:00:00
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Downloading websockets-16.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (184 kB)
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Downloading tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 3.0 MB/s eta 0:00:00
+Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+Downloading charset_normalizer-3.4.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (196 kB)
+Downloading cryptography-46.0.5-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 1.5 MB/s eta 0:00:00
+Downloading frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (242 kB)
+Downloading google_cloud_core-2.5.0-py3-none-any.whl (29 kB)
+Downloading google_crc32c-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl (33 kB)
+Downloading google_resumable_media-2.8.0-py3-none-any.whl (81 kB)
+Downloading googleapis_common_protos-1.73.0-py3-none-any.whl (297 kB)
+Downloading grpc_google_iam_v1-0.14.3-py3-none-any.whl (32 kB)
+Downloading grpcio-1.78.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.7/6.7 MB 2.6 MB/s eta 0:00:00
+Downloading grpcio_status-1.78.0-py3-none-any.whl (14 kB)
+Downloading huggingface_hub-1.6.0-py3-none-any.whl (612 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 612.9/612.9 kB 17.0 MB/s eta 0:00:00
+Downloading jiter-0.13.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (360 kB)
+Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Downloading multidict-6.7.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (256 kB)
+Downloading propcache-0.4.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (221 kB)
+Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+Downloading regex-2026.2.28-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (802 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 802.0/802.0 kB 1.9 MB/s eta 0:00:00
+Downloading rpds_py-0.30.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (394 kB)
+Downloading tqdm-4.67.3-py3-none-any.whl (78 kB)
+Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+Downloading yarl-1.23.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (100 kB)
+Downloading zipp-3.23.0-py3-none-any.whl (10 kB)
+Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (219 kB)
+Downloading filelock-3.25.2-py3-none-any.whl (26 kB)
+Downloading fsspec-2026.2.0-py3-none-any.whl (202 kB)
+Downloading hf_xet-1.4.1-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 2.6 MB/s eta 0:00:00
+Downloading pyasn1-0.6.2-py3-none-any.whl (83 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading typer-0.24.1-py3-none-any.whl (56 kB)
+Downloading rich-14.3.3-py3-none-any.whl (310 kB)
+Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+Downloading markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 3.7 MB/s eta 0:00:00
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Installing collected packages: zipp, websockets, urllib3, typing-extensions, tqdm, tenacity, sniffio, six, shellingham, rpds-py, regex, redis, pyyaml, python-dotenv, pygments, pycparser, pyasn1, protobuf, propcache, packaging, multidict, mdurl, MarkupSafe, jiter, idna, hf-xet, h11, google-crc32c, fsspec, frozenlist, filelock, fastuuid, docstring_parser, distro, click, charset_normalizer, certifi, attrs, annotated-types, annotated-doc, aiohappyeyeballs, aiofiles, yarl, uvicorn, typing-inspection, requests, referencing, python-dateutil, pydantic-core, pyasn1-modules, proto-plus, markdown-it-py, jinja2, importlib-metadata, httpcore, grpcio, googleapis-common-protos, google-resumable-media, cffi, anyio, aiosignal, tiktoken, starlette, rich, pydantic, jsonschema-specifications, httpx, grpcio-status, cryptography, aiohttp, typer, openai, jsonschema, grpc-google-iam-v1, google-auth, fastapi, huggingface-hub, google-api-core, tokenizers, google-genai, google-cloud-core, litellm, google-cloud-storage, google-cloud-resource-manager, google-cloud-bigquery, google-cloud-aiplatform
+Successfully installed MarkupSafe-3.0.3 aiofiles-25.1.0 aiohappyeyeballs-2.6.1 aiohttp-3.13.3 aiosignal-1.4.0 annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.12.1 attrs-25.4.0 certifi-2026.2.25 cffi-2.0.0 charset_normalizer-3.4.5 click-8.3.1 cryptography-46.0.5 distro-1.9.0 docstring_parser-0.17.0 fastapi-0.135.1 fastuuid-0.14.0 filelock-3.25.2 frozenlist-1.8.0 fsspec-2026.2.0 google-api-core-2.30.0 google-auth-2.49.1 google-cloud-aiplatform-1.141.0 google-cloud-bigquery-3.40.1 google-cloud-core-2.5.0 google-cloud-resource-manager-1.16.0 google-cloud-storage-3.9.0 google-crc32c-1.8.0 google-genai-1.67.0 google-resumable-media-2.8.0 googleapis-common-protos-1.73.0 grpc-google-iam-v1-0.14.3 grpcio-1.78.0 grpcio-status-1.78.0 h11-0.16.0 hf-xet-1.4.1 httpcore-1.0.9 httpx-0.28.1 huggingface-hub-1.6.0 idna-3.11 importlib-metadata-8.7.1 jinja2-3.1.6 jiter-0.13.0 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 litellm-1.82.1 markdown-it-py-4.0.0 mdurl-0.1.2 multidict-6.7.1 openai-2.26.0 packaging-26.0 propcache-0.4.1 proto-plus-1.27.1 protobuf-6.33.5 pyasn1-0.6.2 pyasn1-modules-0.4.2 pycparser-3.0 pydantic-2.12.5 pydantic-core-2.41.5 pygments-2.19.2 python-dateutil-2.9.0.post0 python-dotenv-1.2.2 pyyaml-6.0.3 redis-7.3.0 referencing-0.37.0 regex-2026.2.28 requests-2.32.5 rich-14.3.3 rpds-py-0.30.0 shellingham-1.5.4 six-1.17.0 sniffio-1.3.1 starlette-0.52.1 tenacity-9.1.4 tiktoken-0.12.0 tokenizers-0.22.2 tqdm-4.67.3 typer-0.24.1 typing-extensions-4.15.0 typing-inspection-0.4.2 urllib3-2.6.3 uvicorn-0.41.0 websockets-16.0 yarl-1.23.0 zipp-3.23.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.0.1
+[notice] To update, run: pip install --upgrade pip
+--> fdb1ee6728b3
+[2/2] STEP 1/13: FROM python:3.12-slim
+[2/2] STEP 2/13: WORKDIR /app
+--> Using cache 8f12f5108c27b10d337df792ec4e61d315012ba1f6d3ba28a9b5471795fc256b
+--> 8f12f5108c27
+[2/2] STEP 3/13: COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+--> 71ab9bd0e91d
+[2/2] STEP 4/13: COPY --from=builder /usr/local/bin /usr/local/bin
+--> 546c3ff288ff
+[2/2] STEP 5/13: RUN apt-get update && apt-get install -y --no-install-recommends     curl     && rm -rf /var/lib/apt/lists/*
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+Get:4 http://deb.debian.org/debian trixie/main amd64 Packages [9670 kB]
+Get:5 http://deb.debian.org/debian trixie-updates/main amd64 Packages [5412 B]
+Get:6 http://deb.debian.org/debian-security trixie-security/main amd64 Packages [111 kB]
+Fetched 9878 kB in 6s (1648 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libbrotli1 libcom-err2 libcurl4t64 libgnutls30t64 libgssapi-krb5-2 libidn2-0
+  libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap2 libnghttp2-14
+  libnghttp3-9 libp11-kit0 libpsl5t64 librtmp1 libsasl2-2 libsasl2-modules-db
+  libssh2-1t64 libtasn1-6 libunistring5
+Suggested packages:
+  gnutls-bin krb5-doc krb5-user
+Recommended packages:
+  bash-completion krb5-locales libldap-common publicsuffix libsasl2-modules
+The following NEW packages will be installed:
+  curl libbrotli1 libcom-err2 libcurl4t64 libgnutls30t64 libgssapi-krb5-2
+  libidn2-0 libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap2
+  libnghttp2-14 libnghttp3-9 libp11-kit0 libpsl5t64 librtmp1 libsasl2-2
+  libsasl2-modules-db libssh2-1t64 libtasn1-6 libunistring5
+0 upgraded, 22 newly installed, 0 to remove and 0 not upgraded.
+Need to get 4885 kB of archives.
+After this operation, 14.7 MB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian trixie/main amd64 libbrotli1 amd64 1.1.0-2+b7 [307 kB]
+Get:2 http://deb.debian.org/debian trixie/main amd64 libkrb5support0 amd64 1.21.3-5 [33.0 kB]
+Get:3 http://deb.debian.org/debian trixie/main amd64 libcom-err2 amd64 1.47.2-3+b7 [25.0 kB]
+Get:4 http://deb.debian.org/debian trixie/main amd64 libk5crypto3 amd64 1.21.3-5 [81.5 kB]
+Get:5 http://deb.debian.org/debian trixie/main amd64 libkeyutils1 amd64 1.6.3-6 [9456 B]
+Get:6 http://deb.debian.org/debian trixie/main amd64 libkrb5-3 amd64 1.21.3-5 [326 kB]
+Get:7 http://deb.debian.org/debian trixie/main amd64 libgssapi-krb5-2 amd64 1.21.3-5 [138 kB]
+Get:8 http://deb.debian.org/debian trixie/main amd64 libunistring5 amd64 1.3-2 [477 kB]
+Get:9 http://deb.debian.org/debian trixie/main amd64 libidn2-0 amd64 2.3.8-2 [109 kB]
+Get:10 http://deb.debian.org/debian trixie/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg1-9 [19.8 kB]
+Get:11 http://deb.debian.org/debian trixie/main amd64 libsasl2-2 amd64 2.1.28+dfsg1-9 [57.5 kB]
+Get:12 http://deb.debian.org/debian trixie/main amd64 libldap2 amd64 2.6.10+dfsg-1 [194 kB]
+Get:13 http://deb.debian.org/debian trixie/main amd64 libnghttp2-14 amd64 1.64.0-1.1 [76.0 kB]
+Get:14 http://deb.debian.org/debian trixie/main amd64 libnghttp3-9 amd64 1.8.0-1 [67.7 kB]
+Get:15 http://deb.debian.org/debian trixie/main amd64 libpsl5t64 amd64 0.21.2-1.1+b1 [57.2 kB]
+Get:16 http://deb.debian.org/debian trixie/main amd64 libp11-kit0 amd64 0.25.5-3 [425 kB]
+Get:17 http://deb.debian.org/debian trixie/main amd64 libtasn1-6 amd64 4.20.0-2 [49.9 kB]
+Get:18 http://deb.debian.org/debian-security trixie-security/main amd64 libgnutls30t64 amd64 3.8.9-3+deb13u2 [1468 kB]
+Get:19 http://deb.debian.org/debian trixie/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b5 [58.8 kB]
+Get:20 http://deb.debian.org/debian trixie/main amd64 libssh2-1t64 amd64 1.11.1-1 [245 kB]
+Get:21 http://deb.debian.org/debian trixie/main amd64 libcurl4t64 amd64 8.14.1-2+deb13u2 [391 kB]
+Get:22 http://deb.debian.org/debian trixie/main amd64 curl amd64 8.14.1-2+deb13u2 [270 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 22.)
+debconf: falling back to frontend: Teletype
+debconf: unable to initialize frontend: Teletype
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Noninteractive
+Fetched 4885 kB in 5s (1009 kB/s)
+Selecting previously unselected package libbrotli1:amd64.
+(Reading database ... 5645 files and directories currently installed.)
+Preparing to unpack .../00-libbrotli1_1.1.0-2+b7_amd64.deb ...
+Unpacking libbrotli1:amd64 (1.1.0-2+b7) ...
+Selecting previously unselected package libkrb5support0:amd64.
+Preparing to unpack .../01-libkrb5support0_1.21.3-5_amd64.deb ...
+Unpacking libkrb5support0:amd64 (1.21.3-5) ...
+Selecting previously unselected package libcom-err2:amd64.
+Preparing to unpack .../02-libcom-err2_1.47.2-3+b7_amd64.deb ...
+Unpacking libcom-err2:amd64 (1.47.2-3+b7) ...
+Selecting previously unselected package libk5crypto3:amd64.
+Preparing to unpack .../03-libk5crypto3_1.21.3-5_amd64.deb ...
+Unpacking libk5crypto3:amd64 (1.21.3-5) ...
+Selecting previously unselected package libkeyutils1:amd64.
+Preparing to unpack .../04-libkeyutils1_1.6.3-6_amd64.deb ...
+Unpacking libkeyutils1:amd64 (1.6.3-6) ...
+Selecting previously unselected package libkrb5-3:amd64.
+Preparing to unpack .../05-libkrb5-3_1.21.3-5_amd64.deb ...
+Unpacking libkrb5-3:amd64 (1.21.3-5) ...
+Selecting previously unselected package libgssapi-krb5-2:amd64.
+Preparing to unpack .../06-libgssapi-krb5-2_1.21.3-5_amd64.deb ...
+Unpacking libgssapi-krb5-2:amd64 (1.21.3-5) ...
+Selecting previously unselected package libunistring5:amd64.
+Preparing to unpack .../07-libunistring5_1.3-2_amd64.deb ...
+Unpacking libunistring5:amd64 (1.3-2) ...
+Selecting previously unselected package libidn2-0:amd64.
+Preparing to unpack .../08-libidn2-0_2.3.8-2_amd64.deb ...
+Unpacking libidn2-0:amd64 (2.3.8-2) ...
+Selecting previously unselected package libsasl2-modules-db:amd64.
+Preparing to unpack .../09-libsasl2-modules-db_2.1.28+dfsg1-9_amd64.deb ...
+Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg1-9) ...
+Selecting previously unselected package libsasl2-2:amd64.
+Preparing to unpack .../10-libsasl2-2_2.1.28+dfsg1-9_amd64.deb ...
+Unpacking libsasl2-2:amd64 (2.1.28+dfsg1-9) ...
+Selecting previously unselected package libldap2:amd64.
+Preparing to unpack .../11-libldap2_2.6.10+dfsg-1_amd64.deb ...
+Unpacking libldap2:amd64 (2.6.10+dfsg-1) ...
+Selecting previously unselected package libnghttp2-14:amd64.
+Preparing to unpack .../12-libnghttp2-14_1.64.0-1.1_amd64.deb ...
+Unpacking libnghttp2-14:amd64 (1.64.0-1.1) ...
+Selecting previously unselected package libnghttp3-9:amd64.
+Preparing to unpack .../13-libnghttp3-9_1.8.0-1_amd64.deb ...
+Unpacking libnghttp3-9:amd64 (1.8.0-1) ...
+Selecting previously unselected package libpsl5t64:amd64.
+Preparing to unpack .../14-libpsl5t64_0.21.2-1.1+b1_amd64.deb ...
+Unpacking libpsl5t64:amd64 (0.21.2-1.1+b1) ...
+Selecting previously unselected package libp11-kit0:amd64.
+Preparing to unpack .../15-libp11-kit0_0.25.5-3_amd64.deb ...
+Unpacking libp11-kit0:amd64 (0.25.5-3) ...
+Selecting previously unselected package libtasn1-6:amd64.
+Preparing to unpack .../16-libtasn1-6_4.20.0-2_amd64.deb ...
+Unpacking libtasn1-6:amd64 (4.20.0-2) ...
+Selecting previously unselected package libgnutls30t64:amd64.
+Preparing to unpack .../17-libgnutls30t64_3.8.9-3+deb13u2_amd64.deb ...
+Unpacking libgnutls30t64:amd64 (3.8.9-3+deb13u2) ...
+Selecting previously unselected package librtmp1:amd64.
+Preparing to unpack .../18-librtmp1_2.4+20151223.gitfa8646d.1-2+b5_amd64.deb ...
+Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b5) ...
+Selecting previously unselected package libssh2-1t64:amd64.
+Preparing to unpack .../19-libssh2-1t64_1.11.1-1_amd64.deb ...
+Unpacking libssh2-1t64:amd64 (1.11.1-1) ...
+Selecting previously unselected package libcurl4t64:amd64.
+Preparing to unpack .../20-libcurl4t64_8.14.1-2+deb13u2_amd64.deb ...
+Unpacking libcurl4t64:amd64 (8.14.1-2+deb13u2) ...
+Selecting previously unselected package curl.
+Preparing to unpack .../21-curl_8.14.1-2+deb13u2_amd64.deb ...
+Unpacking curl (8.14.1-2+deb13u2) ...
+Setting up libkeyutils1:amd64 (1.6.3-6) ...
+Setting up libbrotli1:amd64 (1.1.0-2+b7) ...
+Setting up libnghttp2-14:amd64 (1.64.0-1.1) ...
+Setting up libcom-err2:amd64 (1.47.2-3+b7) ...
+Setting up libkrb5support0:amd64 (1.21.3-5) ...
+Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg1-9) ...
+Setting up libp11-kit0:amd64 (0.25.5-3) ...
+Setting up libunistring5:amd64 (1.3-2) ...
+Setting up libk5crypto3:amd64 (1.21.3-5) ...
+Setting up libsasl2-2:amd64 (2.1.28+dfsg1-9) ...
+Setting up libnghttp3-9:amd64 (1.8.0-1) ...
+Setting up libtasn1-6:amd64 (4.20.0-2) ...
+Setting up libkrb5-3:amd64 (1.21.3-5) ...
+Setting up libssh2-1t64:amd64 (1.11.1-1) ...
+Setting up libldap2:amd64 (2.6.10+dfsg-1) ...
+Setting up libidn2-0:amd64 (2.3.8-2) ...
+Setting up libgssapi-krb5-2:amd64 (1.21.3-5) ...
+Setting up libgnutls30t64:amd64 (3.8.9-3+deb13u2) ...
+Setting up libpsl5t64:amd64 (0.21.2-1.1+b1) ...
+Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b5) ...
+Setting up libcurl4t64:amd64 (8.14.1-2+deb13u2) ...
+Setting up curl (8.14.1-2+deb13u2) ...
+Processing triggers for libc-bin (2.41-12+deb13u1) ...
+--> d544bd591a2e
+[2/2] STEP 6/13: COPY app/oikos_service.py ./app/
+--> b43fcf2e21ca
+[2/2] STEP 7/13: COPY scripts/ ./scripts/
+--> f05fff0629b4
+[2/2] STEP 8/13: RUN mkdir -p /app/.logs /app/memory_bank /app/artifacts/metrics     && chown -R 1000:1000 /app
+--> 3489e2a9c3bf
+[2/2] STEP 9/13: ENV PYTHONPATH=/app
+--> a177c00c2273
+[2/2] STEP 10/13: ENV PYTHONUNBUFFERED=1
+--> dede3ab25d72
+[2/2] STEP 11/13: USER 1000
+--> a914a5c083ad
+[2/2] STEP 12/13: EXPOSE 8006
+--> 462f3c67c4ec
+[2/2] STEP 13/13: CMD ["uvicorn", "app.oikos_service:app", "--host", "0.0.0.0", "--port", "8006"]
+[2/2] COMMIT docker_oikos
+--> 6c89e801c627
+Successfully tagged localhost/docker_oikos:latest
+6c89e801c6275085b3a114ef12b6511101bf9a0f527d49cd1799ac9e4fd6c341
+f6f84129209845893965c37a11f73dfa29f529fbc75a66c680cdaa40ce7f67e8
+xnai_redis
+66e46f19d7a783896dcc1c68909fb9890814f6db12c53026f4820aba710c58ee
+xnai_oikos
+Resolved "victoriametrics/victoria-metrics" as an alias (/home/arcana-novai/.cache/containers/short-name-aliases.conf)
+Trying to pull docker.io/victoriametrics/victoria-metrics:latest...
+Getting image source signatures
+Copying blob bfb71b6303a0 done   | 
+Copying blob a2ce2560a6e4 done   | 
+Copying blob 589002ba0eae done   | 
+Copying config 5e7fd3af19 done   | 
+Writing manifest to image destination
+0bcd57c92ba35ceea6efbd36b0628349cedda5becb3cb82a123612adb8b98fa6
+xnai_victoriametrics
+Resolved "qdrant/qdrant" as an alias (/home/arcana-novai/.cache/containers/short-name-aliases.conf)
+Trying to pull docker.io/qdrant/qdrant:v1.13.1...
+Getting image source signatures
+Copying blob 579c9e67b7f1 [--------------------------------------] 0.0b / 14.5MiB | 0.0 b/s
+Copying blob 579c9e67b7f1 [--------------------------------------] 0.0b / 14.5MiB | 0.0 b/s
+Copying blob 579c9e67b7f1 [--------------------------------------] 107.4KiB / 14.5MiB | 779.4 KiB/s
+Copying blob 579c9e67b7f1 [>-------------------------------------] 201.2KiB / 14.5MiB | 406.8 KiB/s
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 579c9e67b7f1 done   | 
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 2cf3efd5b42f done   | 
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 990ba334cef3 done   | 
+Copying blob cd63c68dd7d2 done   | 
+Copying blob 0a6a6f1fb7b5 done   | 
+Copying blob 438d06cebfee done   | 
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying config 8e6a3f885f done   | 
+Writing manifest to image destination
+29d3751b4d07df7c4476ec57079d3758af3d5c478af2ef5e5efe3fc5e1f53594
+xnai_qdrant
+Resolved "postgres" as an alias (/home/arcana-novai/.cache/containers/short-name-aliases.conf)
+Trying to pull docker.io/library/postgres:15...
+Getting image source signatures
+Copying blob 67266521af9d [--------------------------------------] 0.0b / 1.3MiB | 0.0 b/s
+Copying blob 0c725cebedaa done   | 
+Copying blob 0c725cebedaa done   | 
+Copying blob b6de334a9157 [==>-----------------------------------] 575.5KiB / 7.8MiB | 850.5 KiB/s
+Copying blob b6de334a9157 [==>-----------------------------------] 735.5KiB / 7.8MiB | 925.5 KiB/s
+Copying blob 0c725cebedaa done   | 
+Copying blob b6de334a9157 [===>----------------------------------] 943.5KiB / 7.8MiB | 779.0 KiB/s
+Copying blob b6de334a9157 [====>---------------------------------] 1.0MiB / 7.8MiB | 767.8 KiB/s
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob bae50de223a4 done   | 
+Copying blob b6de334a9157 done   | 
+Copying blob 206356c42440 skipped: already exists  
+Copying blob c2358c04556d done   | 
+Copying blob fd349cbbb730 done   | 
+Copying blob b480546e671b done   | 
+Copying blob 8d9526eade8e done   | 
+Copying blob 2f8ddeccdf2d done   | 
+Copying blob f0c010f1448f done   | 
+Copying blob f080c6a4c94c done   | 
+Copying blob e01de8c32e6c done   | 
+Copying blob 2e180f475c84 done   | 
+Copying config d743cd4150 done   | 
+Writing manifest to image destination
+691fbcf4003f921823e7e19ec9066732e5e141a652270f6db69adfbd2f29bd51
+xnai_postgres
+Resolved "caddy" as an alias (/home/arcana-novai/.cache/containers/short-name-aliases.conf)
+Trying to pull docker.io/library/caddy:2.8-alpine...
+Getting image source signatures
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 6ccef1045412 done   | 
+Copying blob 63b69af3dc55 done   | 
+Copying blob 60177795cab3 done   | 
+Copying blob b44c500748de done   | 
+Copying config 612f0ff47f done   | 
+Writing manifest to image destination
+7c1192e480eb58f8a3778d4be22f57169ddf9a200634ef3d7dce991050370707
+xnai_caddy
+Resolved "grafana/grafana" as an alias (/etc/containers/registries.conf.d/shortnames.conf)
+Trying to pull docker.io/grafana/grafana:11.4.0...
+Getting image source signatures
+Copying blob da9db072f522 [--------------------------------------] 0.0b / 3.5MiB
+Copying blob da9db072f522 [--------------------------------------] 0.0b / 3.5MiB
+Copying blob da9db072f522 [==========>---------------------------] 1.0MiB / 3.5MiB | 2.9 MiB/s
+Copying blob da9db072f522 done   | 
+Copying blob 1739eaecb10c done   | 
+Copying blob b2ddcf85da57 done   | 
+Copying blob ebcbc122b722 done   | 
+Copying blob 00a90dd48f56 done   | 
+Copying blob d7013a437817 done   | 
+Copying blob 8964b0551c55 done   | 
+Copying blob e0862465767a done   | 
+Copying blob 989e41ffb5ca done   | 
+Copying blob 9b4925e32b92 done   | 
+Copying config c0b69935a2 done   | 
+Writing manifest to image destination
+c314e0244763b9b3b6b243b2ffacaaf5508ff0dc28a04d388072de371b007911
+xnai_grafana
+Process Group PGID: 2009501

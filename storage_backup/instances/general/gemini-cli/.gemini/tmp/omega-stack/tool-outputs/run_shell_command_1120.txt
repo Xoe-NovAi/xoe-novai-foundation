@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: xnai_memory_bank_mcp
+Warning: Could not load config: No module named 'XNAi_rag_app'
+Database error in _get_jwt_secret: (psycopg2.ProgrammingError) invalid dsn: invalid connection option "check_same_thread"
+
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 45, in <module>
+    from app.XNAi_rag_app.core.agent_bus import AgentBusClient
+  File "/app/app/XNAi_rag_app/core/agent_bus.py", line 9, in <module>
+    from app.XNAi_rag_app.core.iam_handshake import KeyManager
+
+... [29 lines omitted] ...
+
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 45, in <module>
+    from app.XNAi_rag_app.core.agent_bus import AgentBusClient
+  File "/app/app/XNAi_rag_app/core/agent_bus.py", line 9, in <module>
+    from app.XNAi_rag_app.core.iam_handshake import KeyManager
+  File "/app/app/XNAi_rag_app/core/iam_handshake.py", line 25, in <module>
+    from .iam_db import IAMDatabase, AgentIdentity, AgentType
+ImportError: cannot import name 'AgentIdentity' from 'app.XNAi_rag_app.core.iam_db' (/app/app/XNAi_rag_app/core/iam_db.py)
+Process Group PGID: 860677
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773008587508_0_q57v0u.txt
+</tool_output_masked>

@@ -1,0 +1,3 @@
+{
+  "output": "Output: lrwxrwxrwx 1 arcana-novai arcana-novai 49 Mar  7 01:08 storage/instances-active/instance-1/gemini-cli/.gemini/mcp_config.json -> /home/arcana-novai/.config/gemini/mcp_config.json\nProcess Group PGID: 19276"
+}

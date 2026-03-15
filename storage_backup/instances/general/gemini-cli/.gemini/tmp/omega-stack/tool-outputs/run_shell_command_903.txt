@@ -1,0 +1,6 @@
+Output: total 16
+drwxrwxr-x 4 arcana-novai arcana-novai 4096 Mar  8 15:12 .
+drwxrwxr-x 7 arcana-novai arcana-novai 4096 Mar  8 15:26 ..
+drwxrwxr-x 2 arcana-novai arcana-novai 4096 Mar  8 15:12 bin
+drwxrwxr-x 3 arcana-novai arcana-novai 4096 Mar  8 15:12 omega-stack
+Process Group PGID: 96207

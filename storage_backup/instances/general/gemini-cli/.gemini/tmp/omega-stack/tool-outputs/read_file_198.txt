@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-2000 of 2224 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+ation (docs/ → site/)...$(NC)\"\n\t@mkdocs build\n\t@echo \"$(GREEN)✅ Public docs built$(NC)\"\n\t@echo \"\"\n\t@echo \"$(CYAN)🏗️  Building internal documentation (internal_docs/ → site-internal/)...$(NC)\"\n\t@mkdocs build -f mkdocs-internal.yml"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/read_file_read_file_1773076470727_0_wh92f.txt
+</tool_output_masked>

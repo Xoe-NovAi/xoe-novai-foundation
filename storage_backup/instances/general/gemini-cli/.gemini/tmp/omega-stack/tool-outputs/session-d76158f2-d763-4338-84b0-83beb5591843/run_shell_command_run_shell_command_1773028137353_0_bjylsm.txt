@@ -1,0 +1,3 @@
+{
+  "output": "Output: # [redis] - Redis 7.4.1 Configuration\n# ============================================================================\n[redis]\nversion = \"7.4.1\"\nhost = \"redis\"\nport = 6379\npassword = \"\"\ntimeout_seconds = 60\nProcess Group PGID: 2738328"
+}

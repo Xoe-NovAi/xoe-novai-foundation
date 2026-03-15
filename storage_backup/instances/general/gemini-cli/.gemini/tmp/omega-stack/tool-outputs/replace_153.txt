@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/linguistics.py (1 replacements). Here is the updated code:\n...\n             # Try to find it relative to project root\n             
+... [TRUNCATED] ...
+ SLM_check(self, execution_path: List[str]) -> bool:\n        \"\"\"\n        Verifies security logic matrix compliance.\n        Checks if the execution path violates functional axioms.\n        [AP:docs/protocols/RCF_MASTER_PROTOCOL.md#L55]\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773339534825_0_ftvm9.txt
+</tool_output_masked>

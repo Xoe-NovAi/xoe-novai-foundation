@@ -1,0 +1,31 @@
+<tool_output_masked>
+Output too large. Showing first 8,000 and last 32,000 characters. For full output see: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/run_shell_command_1.txt
+Output too large. Showing first 8,000 and last 32,000 characters. For full output see: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_1773019450229_0.txt
+Output: ./projects/nova/.Trashes/502/GPT-voice-setup/.venv/lib/python3.12/site-packages/pip/_internal/network/._download.py
+./projects/nova/.Trashes/502/GPT-voice-setup/.venv/lib/python3.12/site-packages/pip/_internal/network/download.py
+./knowledge/technical_manuals/crawl4ai/file_downloading.md
+./.venv_mcp/lib/python3.13/site-packages/pip/_internal/network/__pycache__/download.cpython-313.pyc
+./.venv_mcp/lib/python3.13/site-packages/pip/_internal/network/download.py
+./.venv_mcp/lib/python3.13/site-packages/pip/_internal/commands/__pycache__/download.cpython-313.pyc
+./.venv_mcp/lib/python3.13/site-packages/pip/_internal/commands/download.py
+./scripts/download_wheelhouse.sh
+./scripts/build_tools/enhanced_download_wheelhouse.py
+find: ‘./infra/docker/data/postgres’: Permission denied
+
+... [31 lines omitted] ...
+
+./_archive/planning_docs_20260308/context_for_opus.md:{"timestamp": "2026-02-28T03:07:55.819117", "level": "ERROR", "service": "xnai-rag-api", "message": "Query failed: LLM model not found: /models/Qwen3-0.6B-Q6_K.gguf\nPlease ensure the model file exists or update LLM_MODEL_PATH in .env", "correlation_id": null, "request_id": null, "user_id": null, "error_type": null, "duration_ms": null, "accessibility_compliant": true, "maat_compliant": true}
+./_archive/planning_docs_20260308/context_for_opus.md:{"timestamp": "2026-02-28T03:07:55.834728", "level": "ERROR", "service": "xnai-rag-api", "message": "Failed to initialize LLM: LLM model not found: /models/Qwen3-0.6B-Q6_K.gguf\nPlease ensure the model file exists or update LLM_MODEL_PATH in .env", "correlation_id": null, "request_id": null, "user_id": null, "error_type": null, "duration_ms": null, "accessibility_compliant": true, "maat_compliant": true}
+./_archive/planning_docs_20260308/context_for_opus.md:{"timestamp": "2026-02-28T03:07:55.835139", "level": "ERROR", "service": "xnai-rag-api", "message": "Query failed: LLM model not found: /models/Qwen3-0.6B-Q6_K.gguf\nPlease ensure the model file exists or update LLM_MODEL_PATH in .env", "correlation_id": null, "request_id": null, "user_id": null, "error_type": null, "duration_ms": null, "accessibility_compliant": true, "maat_compliant": true}
+./_archive/planning_docs_20260308/COMPREHENSIVE_SYSTEMS_AUDIT_20260307.md:llm_path: /storage/models/Qwen3-0.6B-Q6_K.gguf
+grep: ./infra/docker/data/postgres: Permission denied
+grep: ./infra/docker/data/redis/dump.rdb: Permission denied
+./infra/docker/docker-compose.yml:      - LLM_MODEL_PATH=/models/Qwen3-0.6B-Q6_K.gguf
+./infra/docker/docker-compose.yml:      - LLM_MODEL_PATH=/storage/models/Qwen3-0.6B-Q6_K.gguf
+./infra/docker/docker-compose.yml:    command: python3 -m llama_cpp.server --model /models/Qwen3-0.6B-Q6_K.gguf --n_gpu_layers 0 --n_threads 6 --n_ctx 32768 --host 0.0.0.0 --port 8000 --api_key ${LLAMA_API_KEY:-xnai-local-key}
+./infra/docker/docker-compose-noninit.yml:      - LLM_MODEL_PATH=/models/Qwen3-0.6B-Q6_K.gguf
+Exit Code: 2
+Process Group PGID: 1325940
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773019450229_0_7othy.txt
+</tool_output_masked>

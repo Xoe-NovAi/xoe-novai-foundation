@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/MANIFEST.json. Here is the updated code:\n{\n  \"manifest\": {\n    \"version\": \"1.0.0\",\n    \"session_id\": \"SESS-23\",\n 
+... [TRUNCATED] ...
+a Hydration (Adversarial)\",\n      \"SESS-24: Isis Persona Hydration (Wisdom)\"\n    ],\n    \"oikonomia_metrics\": {\n      \"context_efficiency\": 0.92,\n      \"token_usage_roi\": \"HIGH\",\n      \"cache_resonance\": \"STABLE\"\n    }\n  }\n}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773354841411_0_v5d7a.txt
+</tool_output_masked>

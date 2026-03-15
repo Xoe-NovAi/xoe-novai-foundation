@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/test_sess23_gnosis.py (1 replacements). Here is the updated code:
+...
+    score = auditor.cosine_similarity(
+        auditor.vectorize(context),
+        auditor.vectorize(seed)
+    )
+    print(f"  📈 Athena Resonance Score: {score:.4f}")
+    assert score > 0.2, f"❌ Low resonance for aligned context: {score}"
+    
+    # Low resonance: Random words vs Athena seed
+    noise = "The quick brown fox jumps over the lazy dog."
+    score_noise = auditor.cosine_similarity(
+        auditor.vectorize(noise),
+...

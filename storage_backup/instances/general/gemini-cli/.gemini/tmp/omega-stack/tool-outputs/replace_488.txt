@@ -1,0 +1,13 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.oikos (1 replacements). Here is the updated code:
+...
+    fastapi \
+    uvicorn \
+    litellm \
+    google-cloud-aiplatform \
+    google-genai \
+    python-dotenv \
+    httpx \
+    pyyaml \
+    anyio
+
+...

@@ -1,0 +1,15 @@
+Output: xnai_memory_bank_mcp
+xnai_redis
+xnai_postgres
+xnai_memory_bank_mcp
+xnai_postgres
+xnai_redis
+b2a38a92fff930ff7dfc27197e4b314c99c4573a394037fa7109498fd6211457
+xnai_redis
+1b5a3f99f82e0cecceb95cd13633f5e57aa21b8846dae73fdce84ec6919af062
+xnai_postgres
+12dd1121032bdbd8b2517281267e315ab104f027bdf60ef9e2108561bf922919
+xnai_memory_bank_mcp
+CONTAINER ID  IMAGE                                    COMMAND           CREATED        STATUS        PORTS       NAMES
+12dd1121032b  localhost/docker_memory-bank-mcp:latest  python server.py  5 seconds ago  Up 5 seconds              xnai_memory_bank_mcp
+Process Group PGID: 969371

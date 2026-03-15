@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/test_expert_creation.py (1 replacements). Here is the updated code:
+...
+logger = logging.getLogger("test_expert_creation")
+
+async def run_test():
+    # 1. Configuration
+    redis_host = os.getenv("REDIS_HOST", "localhost") # Use localhost if running on host
+    redis_password = os.getenv("REDIS_PASSWORD", "")
+    
+    logger.info(f"Connecting to Redis at {redis_host}...")
+    
+    try:
+        # 2. Initialize Redis client
+...

@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/models:\nQwen3-0.6B-Q6_K.gguf (495107774 bytes)"
+}

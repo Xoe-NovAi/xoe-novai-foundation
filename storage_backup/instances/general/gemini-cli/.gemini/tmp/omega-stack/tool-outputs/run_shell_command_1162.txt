@@ -1,0 +1,7 @@
+Output: CONTAINER ID  IMAGE                                    COMMAND               CREATED        STATUS                                        PORTS                                                       NAMES
+3ac2f870269c  docker.io/library/redis:7.4.1            redis-server --re...  5 minutes ago  Exited (1) Less than a second ago (starting)  0.0.0.0:6379->6379/tcp                                      xnai_redis
+6f17f02eb2ac  docker.io/qdrant/qdrant:v1.13.1          ./entrypoint.sh       5 minutes ago  Up 5 minutes (unhealthy)                      0.0.0.0:6333-6334->6333-6334/tcp                            xnai_qdrant
+ba5be9d14b09  docker.io/library/postgres:15            postgres              5 minutes ago  Up 5 minutes (healthy)                        0.0.0.0:5432->5432/tcp                                      xnai_postgres
+650ab7675f39  docker.io/library/caddy:2.8-alpine       caddy run --confi...  5 minutes ago  Up 5 minutes (healthy)                        0.0.0.0:8000->8000/tcp, 80/tcp, 443/tcp, 2019/tcp, 443/udp  xnai_caddy
+74d67b6498ea  localhost/docker_memory-bank-mcp:latest  python server.py      5 minutes ago  Exited (1) 5 minutes ago (starting)                                                                       xnai_memory_bank_mcp
+Process Group PGID: 765773

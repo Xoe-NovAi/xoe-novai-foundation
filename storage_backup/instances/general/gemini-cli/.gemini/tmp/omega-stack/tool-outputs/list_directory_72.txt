@@ -1,0 +1,9 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/3bbad171-16be-425c-acf9-f6ce35432090/plans:
+sess-18-synchronization-and-sess-19-strategy.md (2587 bytes)
+sess-19-gnostic-awakening-and-scribe-protocol.md (5205 bytes)
+sess-19-gnostic-awakening-and-shadow-audit.md (2856 bytes)
+SESS-19-GNOSTIC-CHECKPOINT.md (1175 bytes)
+sess-19-maat-ceremony-and-shadow-audit.md (2757 bytes)
+sess-19-mali-awakening-and-imperial-archive.md (2946 bytes)
+SESS-19-MIND-MAP-CLOSURE.md (5598 bytes)
+sess-19-shadow-audit-and-imperial-archive.md (2722 bytes)

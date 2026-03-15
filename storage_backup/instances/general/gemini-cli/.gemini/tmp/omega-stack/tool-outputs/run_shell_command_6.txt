@@ -1,0 +1,15 @@
+Command was cancelled by user before it could complete. Below is the output before it was cancelled:
+[1/2] STEP 1/11: FROM xnai-base:latest AS builder
+✔ docker.io/library/xnai-base:latest
+Trying to pull docker.io/library/xnai-base:latest...
+Error: creating build container: initializing source docker://xnai-base:latest: reading manifest latest in docker.io/library/xnai-base: requested access to the resource is denied
+ERROR:podman_compose:Build command failed
+176b498ad669bf49a785b3677925c9f95ae5f439789d8d105b74d24a63f7389c
+xnai_redis
+77a936f4e6bac339a28a17b4e6c949c13d5b8c406a11fdd43c5f26bea51cb041
+xnai_qdrant
+8d49962292c6afe021e2c3f97f1c7b70fe920be3c6da4d0de32ebaafc87b89af
+xnai_postgres
+✔ docker.io/library/xnai-rag:latest
+Trying to pull docker.io/library/xnai-rag:latest...
+Error: initializing source docker://xnai-rag:latest: reading manifest latest in docker.io/library/xnai-rag: requested access to the resource is denied

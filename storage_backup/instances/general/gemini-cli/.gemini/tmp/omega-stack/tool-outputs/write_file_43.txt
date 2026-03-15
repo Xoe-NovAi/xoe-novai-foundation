@@ -1,0 +1,33 @@
+Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/0b7aad79-273c-449a-b54e-d21d3583f693/plans/gnostic-matrix-spec.md. Here is the updated code:
+# Implementation Spec: Gnostic Architecture (Phase 1)
+
+This plan details the content for the 13+ files required to codify the Pan-Optic Gnosis Matrix.
+
+## 1. `docs/gnostic_architecture/00_architect_phronesis.md`
+- **Focus**: The Iterative Refinement Cycle.
+- **Key Axiom**: "The Architect's Phronesis Guides the Iteration."
+- **Content**: Formalizes human-in-the-loop validation as a "Primary Gnosis Directive."
+
+## 2. `docs/gnostic_architecture/01_temple_architecture.md` (Update)
+- **Updates**: 
+    - Integrate the **Pan-Optic Gnosis Matrix** Mermaid diagram.
+    - Add sections for **Orchestrion**, **Logosforge**, and **Phylax**.
+    - Define the **Metron & Pathos** observability stack.
+
+## 3. `docs/protocols/MB_MCP_API_SPEC.md` & `MB_MCP_EVENTS.md`
+- **API**: Define FastAPI endpoints for `/prosopon/ingest`, `/prosopon/query`, and `/prosopon/status`.
+- **Events**: Define Redis Stream schemas: `gnosis.request`, `gnosis.response`, `gnosis.alethia_report`.
+
+## 4. `docs/protocols/THEMIS_PROTOCOLS.md` & `ORACLE_PROTOCOL.md`
+- **Themis**: Define I_AM policies for "Sovereign Only" vs "Cloud Permitted" Gnosis.
+- **Oracle**: Define the weighted consensus algorithm for multi-model truth validation.
+
+## 5. `config/local_inference_models.yaml` & `openpipe-config.yaml` (Update)
+- **Local**: Define ports for Krikri-8B and AGB microservices.
+- **OpenPipe**: Add logic for "Routing to Local if Sensitivity > 0.7".
+
+## 6. `artifacts/GNOSTIC_AXIOMS.md` (Update)
+- **New Axioms**:
+    - **Metron Guides the Logos Flow**: Observability is guidance.
+    - **Gnosis Bears Its Chronos**: Provenance is non-negotiable.
+    - **Apatheia Encompasses Sovereignty**: Sovereignty through internal tranquility.

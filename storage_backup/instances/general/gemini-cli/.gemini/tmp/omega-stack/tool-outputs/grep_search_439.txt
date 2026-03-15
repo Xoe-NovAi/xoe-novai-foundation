@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 2 matches for pattern \"xnai_llama_server\" in path \"infra/docker/docker-compose.yml\":\n---\nFile: docker-compose.yml\nL600-     volumes:\nL601-       - ./data/booklore:/config:Z,U\nL602-       - ./library/sorted:/books:z,U\nL6
+... [TRUNCATED] ...
+/app/backend/data:Z,U\nL644-     extra_hosts:\nL645-       - \"host.docker.internal:host-gateway\"\nL646-     deploy:\nL647-       resources:\nL648-         limits:\nL649-           memory: 1G\nL650-           cpus: '0.5'\nL651-     networks:\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/grep_search_grep_search_1773173387877_0_v2qnop.txt
+</tool_output_masked>

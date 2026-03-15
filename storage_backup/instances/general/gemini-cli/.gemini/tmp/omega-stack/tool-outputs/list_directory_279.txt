@@ -1,0 +1,5 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/expert-knowledge/reclaimed_gnosis/origins/heart_of_omega/NotebookLM Chat Log:
+Chat_Logger_from-PEM_Lilith-simplified.txt (2392 bytes)
+Chat_Logger_from-scratch_V2_formatted.txt (2647 bytes)
+Chat_Logger_from-scratch.txt (1813 bytes)
+Gemini Report - Hacking NBLM to record chats.pdf (261890 bytes)

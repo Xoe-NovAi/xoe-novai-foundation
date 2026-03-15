@@ -1,0 +1,11 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/consul_client.py (1 replacements). Here is the updated code:
+import os
+import logging
+import asyncio
+import anyio
+from typing import Optional, List, Dict, Any
+import httpx
+import dns.resolver
+from pydantic import BaseModel
+
+...

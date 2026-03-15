@@ -1,0 +1,3 @@
+{
+  "output": "Output: gemini-cli/\nProcess Group PGID: 19060"
+}

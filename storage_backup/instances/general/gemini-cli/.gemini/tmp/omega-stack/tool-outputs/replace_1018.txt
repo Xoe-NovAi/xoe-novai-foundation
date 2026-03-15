@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/test_red_phone_kill_switch.py (1 replacements). Here is the updated code:\n...\n        assert len(messages) > 0\n        msg_id, data = messages[0]\n
+... [TRUNCATED] ...
+"verified\"] is True, \"Task should be cryptographically verified\"\n        \n        payload = json.loads(data[\"payload\"])\n        assert payload[\"reason\"] == reason\n        \n    print(f\"✅ Red-Phone Protocol Verified: {task_id}\")\n\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773011623742_0_3s0jhn.txt
+</tool_output_masked>

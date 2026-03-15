@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/dependencies.py (1 replacements). Here is the updated code:
+...
+        **kwargs: Additional parameters
+        
+    Returns:
+        Initialized LLM
+    """
+    return await anyio.to_thread.run_sync(lambda: get_llm(model_path, **kwargs))
+
+# ============================================================================
+# EMBEDDINGS INITIALIZATION
+# ============================================================================
+
+...

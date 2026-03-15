@@ -1,0 +1,3 @@
+{
+  "output": "Output: ./  ../  .gemini/\nProcess Group PGID: 19066"
+}

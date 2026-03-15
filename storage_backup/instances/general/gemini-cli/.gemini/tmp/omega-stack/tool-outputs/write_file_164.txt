@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/protocols/STUP_MASTER.md. Here is the updated code:\n# 🔱 Sovereign Tool-Use Protocol (STUP)\n**Version**: 1.0.0 (SESS-23)\n**Mandate**
+... [TRUNCATED] ...
+sonance, trigger an immediate Octave Council review.\n\n## 5. Alethia-Anchoring (AP)\nEvery technical claim MUST include an **Alethia-Pointer** `[AP:file#line]` to its Ground Truth. Any claim without an AP is classified as **Speculative Logos**.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773354389624_0_4iehac.txt
+</tool_output_masked>

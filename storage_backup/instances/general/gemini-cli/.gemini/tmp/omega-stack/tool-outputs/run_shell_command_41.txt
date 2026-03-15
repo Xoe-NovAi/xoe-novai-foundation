@@ -1,0 +1,9 @@
+Output: usage: server.py [-h] [--stdio] [--port PORT]
+
+Memory Bank MCP Server
+
+options:
+  -h, --help   show this help message and exit
+  --stdio      Run in stdio mode
+  --port PORT  Port for SSE mode
+Process Group PGID: 1971673

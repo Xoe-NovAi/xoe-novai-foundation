@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/tests/test_sess23_gnosis.py. Here is the updated code:\n#!/usr/bin/env python3\n\"\"\"\n🔱 SESS-23: Gnosis System Integration Test\nTests ZL
+... [TRUNCATED] ...
+n        test_slm_check()\n        print(\"\\n🏆 ALL SESS-23 INTEGRATION TESTS PASSED.\")\n    except Exception as e:\n        print(f\"\\n💥 TEST SUITE FAILED: {e}\")\n        import traceback\n        traceback.print_exc()\n        sys.exit(1)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773336400888_0_n1nof.txt
+</tool_output_masked>

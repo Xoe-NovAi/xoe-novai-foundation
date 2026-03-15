@@ -1,0 +1,24 @@
+Output: ERROR:app.XNAi_rag_app.core.oauth_manager:Failed to load accounts config from /app/config/cline-accounts.yaml: [Errno 2] No such file or directory: '/app/config/cline-accounts.yaml'
+INFO:     Started server process [7]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8006 (Press CTRL+C to quit)
+INFO:     10.89.0.61:57078 - "GET /health HTTP/1.1" 200 OK
+🌈 Iris (Service): Hearing your request... 'Define the SESS-19 Shadow Audit strategy based on data/gnosis_hub contents and address all current knowledge gaps.'
+📡 Observer: [Iris] shift to gear [LEVEL_2_ESCALATION] recorded.
+01:55:55 - LiteLLM:INFO: utils.py:3919 - 
+LiteLLM completion() model= gemini-2.0-flash; provider = gemini
+INFO:LiteLLM:
+LiteLLM completion() model= gemini-2.0-flash; provider = gemini
+
+Give Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+WARNING:AgentFactory:Auth method 1 exhausted. Rotating...
+INFO:AgentFactory:Activating Local Fallback...
+01:55:57 - LiteLLM:INFO: utils.py:3919 - 
+LiteLLM completion() model= qwen2.5:0.5b; provider = openai
+INFO:LiteLLM:
+LiteLLM completion() model= qwen2.5:0.5b; provider = openai
+INFO:     127.0.0.1:46322 - "GET /health HTTP/1.1" 200 OK
+Process Group PGID: 521178

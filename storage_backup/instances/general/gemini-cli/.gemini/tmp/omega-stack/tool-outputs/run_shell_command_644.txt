@@ -1,0 +1,4 @@
+Output: 🔱 Foundry: Sending problem to Iris Bridge (Port 8006)...
+❌ Connection Error: Oikos Service is likely offline. (All connection attempts failed)
+💡 Suggestion: Start the service with 'python3 app/oikos_service.py'
+Process Group PGID: 332269

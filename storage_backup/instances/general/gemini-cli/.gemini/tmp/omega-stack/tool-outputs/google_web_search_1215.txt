@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"\"OAuth2\" scopes for AI agent microservices inter-agent authentication RBAC\":\n\nDesigning OAuth2 scopes for AI agent microservices requires a shift from traditional user-centric permissions to **capability-b
+... [TRUNCATED] ...
+adius.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZ5AjEYmOw9S63O2icLVjp9Lke4wTfwrbmnPeUFYrS_P8t9ZD1gwDe8M4dszkuB05jQ1XFMjO1amuPeK7kprzrCQfh55QwmgKawXKC0z5f9GmBI5Ig6r91Z2gvEmoB-vJimy-gNzFwnLyxgpEUrTfUttnUwNuMoC5viw==)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/google_web_search_google_web_search_1773003306692_0_8tz7j8.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nXoe-NovAi Crawler Service\n=========================\nSimplified and robust crawler for knowledge mining.\n\"\"\"\n\nimport argparse\nimport os\nimport time\nimport anyio\nimport logging\nfrom datetime i
+... [TRUNCATED] ...
+tadata']\n    with open(meta_path, 'w') as f: toml.dump(metadata, f)\n\n    return len(results), time.time() - start_time\n\nasync def main():\n    print(\"XNAi Crawler Service initialized.\")\n\nif __name__ == \"__main__\":\n    anyio.run(main)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773011938079_0_u5y8mq.txt
+</tool_output_masked>

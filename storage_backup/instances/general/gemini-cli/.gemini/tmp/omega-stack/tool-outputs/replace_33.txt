@@ -1,0 +1,31 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/TGG_GRAPH.json (1 replacements). Here is the updated code:
+...
+      "app.core.test": {
+        "path": "app/core/test.py",
+        "hash": "abc123hash",
+        "type": "logic",
+        "last_anchored": "2026-03-12"
+      },
+      "scripts.gnostic_oikonomia": {
+        "path": "scripts/gnostic_oikonomia.py",
+        "type": "logic",
+        "imports": ["prometheus_client", "psutil"],
+        "hash": "oikonomia-v1-hash"
+      },
+      "scripts.gnostic_preflight": {
+        "path": "scripts/gnostic_preflight.py",
+        "type": "logic",
+        "imports": ["mmap", "hashlib"],
+        "hash": "preflight-v1-hash"
+      },
+      "scripts.gnostic_audit": {
+        "path": "scripts/gnostic_audit.py",
+        "type": "logic",
+        "imports": ["socket", "json"],
+        "hash": "audit-v1-hash"
+      }
+    },
+    "anchors": {
+      "F7-Techne": "app.XNAi_rag_app.core.linguistics"
+    }
+...

@@ -1,0 +1,15 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/soul_distiller.py (1 replacements). Here is the updated code:
+...
+import yaml
+import time
+from pathlib import Path
+from datetime import datetime
+
+SOUL_PATH = Path("/app/memory_bank/SOUL_PATHS.yaml")
+CHRONICLE_DIR = Path("/app/memory_bank/chronicles")
+
+async def distill_cycle(session_id: str, turn_count: int, context_summary: str):
+    """
+    Distills the current cycle into the Soul Path.
+    1. Extracts 'Gnosis' from context.
+...

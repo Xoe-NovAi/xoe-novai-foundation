@@ -1,0 +1,18 @@
+Output: CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 42, in <module>
+    from XNAi_rag_app.core.config_loader import load_config
+ModuleNotFoundError: No module named 'XNAi_rag_app'
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 42, in <module>
+    from XNAi_rag_app.core.config_loader import load_config
+ModuleNotFoundError: No module named 'XNAi_rag_app'
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 42, in <module>
+    from XNAi_rag_app.core.config_loader import load_config
+ModuleNotFoundError: No module named 'XNAi_rag_app'
+Traceback (most recent call last):
+  File "/app/mcp-server/server.py", line 42, in <module>
+    from XNAi_rag_app.core.config_loader import load_config
+ModuleNotFoundError: No module named 'XNAi_rag_app'
+Process Group PGID: 961918

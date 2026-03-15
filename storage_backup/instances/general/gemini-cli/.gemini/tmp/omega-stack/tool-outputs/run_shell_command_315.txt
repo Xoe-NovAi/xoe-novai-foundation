@@ -1,0 +1,2 @@
+Output: expert-knowledge/reclaimed_gnosis/origins/scribe_mode_prompt_v1.md:     - **Story Archive:** Amplify rants/dialogues from "GROK Unlocked", "Ω" chats, focusing on AI skepticism, Lilith Tarot origins, dark night of the soul, and resurrection. Organize chronologically (e.g., "The Grind: 3000 Hours"). Integrate expert agent perspectives (coder, philosopher, Classicist/linguist, science expert, project manager, stack resources/monitoring specialist, librarian/curator, and more).
+Process Group PGID: 646738

@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/data:\n[DIR] cache\n[DIR] consul\n[DIR] curations\n[DIR] data\n[DIR] entities\n[DIR] feedback\n[DIR] models\n[DIR] prometheus-multiproc\n[DIR] qdrant\n[DIR] redis\n[DIR] vikunja"
+}

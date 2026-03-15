@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/agent_factory.py (1 replacements). Here is the updated code:\n...\n                if system_instruction:\n                    messages.append({\"ro
+... [TRUNCATED] ...
+ponse = await anyio.to_thread.run_sync(\n                    lambda: completion(**kwargs)\n                )\n                return response.choices[0].message.content\n\n            except Exception as e:\n                error_msg = str(e)\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773277267070_0_9l4rq5.txt
+</tool_output_masked>

@@ -14,14 +14,15 @@ I have successfully completed the **Documentation Foundation Phase** for the Ome
 
 ### 📋 **Core Documentation Suite**
 
-#### 1. **Architecture Overview** (`docs/ARCHITECTURE_OVERVIEW.md`)
+#### 1. **Architecture Overview** (`docs/gnostic_architecture/01_temple_architecture.md`)
 - **Quality:** ✅ Comprehensive
-- **Content:** Complete system architecture with Mermaid diagrams
+- **Content:** Complete system architecture with gnostic framework and Mermaid diagrams
 - **Key Features:**
-  - Multi-agent orchestration patterns
+  - Multi-agent orchestration patterns (Temple architecture)
   - Provider integration architecture
   - Security and performance optimization strategies
   - Deployment and monitoring patterns
+- **Note:** Supersedes the original `docs/ARCHITECTURE_OVERVIEW.md` (archived 2026-03-14)
 
 #### 2. **Contribution Guide** (`CONTRIBUTING.md`)
 - **Quality:** ✅ Comprehensive  

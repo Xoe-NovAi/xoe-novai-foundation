@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 2 matches for pattern \"Librarian\" in path \"memory_bank/\":\n---\nFile: multi_expert/loading_protocols/agent_loading_guide.md\nL44- \nL45- **Loading Command**:\nL46- ```\nL47- LOAD_MEMORY_BANK: technical_foundation\nL48- ```\nL
+... [TRUNCATED] ...
+ation\nL78- - Progress monitoring\nL79- - Resource allocation\nL80- - Priority management\nL81- - Communication protocols\nL82- \nL83- **Target Agents**: Project managers, coordinators, overseers\nL84- \nL85- ## Implementation Strategy\nL86- \n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/grep_search_grep_search_1773186437658_0_rlj8p.txt
+</tool_output_masked>

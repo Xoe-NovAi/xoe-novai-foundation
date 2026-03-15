@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\"\"\"\nChainlit Curator Interface\n===========================\n\nIntegration module for Natural Language Curator Interface with Chainlit UI.\nEnables chatbot-style curator commands in the Chainlit web interface.\n\nFeatures:\n- Parse
+... [TRUNCATED] ...
+rror')}\")\n\n        print(\"-\" * 80)\n\n    print(\"\\n\" + \"=\" * 80)\n    print(\"DEMO COMPLETE\")\n    print(\"=\" * 80 + \"\\n\")\n\n\nif __name__ == \"__main__\":\n    # Run demo if script executed directly\n    demo_curator_interface()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773186173045_0_8foiwp.txt
+</tool_output_masked>

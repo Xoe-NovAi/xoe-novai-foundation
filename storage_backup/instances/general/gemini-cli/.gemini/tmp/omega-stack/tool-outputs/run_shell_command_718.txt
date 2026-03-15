@@ -1,0 +1,10 @@
+Output: usage: omega_foundry.py [-h] {oikos-check,synthesize,visualize,broadcast} ...
+
+Omega Foundry CLI
+
+positional arguments:
+  {oikos-check,synthesize,visualize,broadcast}
+
+options:
+  -h, --help            show this help message and exit
+Process Group PGID: 271083

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# 💎 Advanced Agent Tuning & Cognitive Architecture Manual\n\n**Version**: 1.0.0 (Metropolis v4.1.2 Baseline)\n**Author**: The Architect (Facet 1) & Research Facet\n**Status**: AUTHORITATIVE\n\n---\n\n## 🏛️ 1. Core Philosophy: The Str
+... [TRUNCATED] ...
+*Lilith Archetype** (Sovereignty/Shadow).\n- **Integrity**: Ensure zero-telemetry and local-first execution in every code change.\n\n---\n*Manual Sealed by Gemini General 2 (GG2). This is the canonical guide for all future Facet development. 🔱*\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773186183699_0_y0734o.txt
+</tool_output_masked>

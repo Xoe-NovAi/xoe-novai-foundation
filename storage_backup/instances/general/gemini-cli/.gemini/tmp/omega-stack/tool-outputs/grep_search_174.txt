@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 2 matches for pattern \"class LlamaCppEmbeddings\" in path \"app/\":\n---\nFile: XNAi_rag_app/core/dependencies.py\nL64- except ImportError:\nL65-     logger.debug(\"fastapi not available - Request/Depends type hints will be disa
+... [TRUNCATED] ...
+0] * len(texts)\nL35- \nL36-     def embed_query(self, text: str) -> float:\nL37-         \"\"\"Embed query using fallback implementation\"\"\"\nL38-         logger.warning(\"Using LlamaCppEmbeddings shim - actual embedding not implemented\")\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/grep_search_grep_search_1773079911582_0_qdaqgk.txt
+</tool_output_masked>

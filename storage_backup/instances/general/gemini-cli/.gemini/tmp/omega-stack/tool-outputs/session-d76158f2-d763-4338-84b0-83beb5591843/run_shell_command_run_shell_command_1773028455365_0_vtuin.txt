@@ -1,0 +1,3 @@
+{
+  "output": "Output: xnai_library_curator\nxnai_redis\nxnai_postgres\n49f750e0f681ce1173ae2d70165596c1d4121f8612350381ec00d31874998071\n61664ee9fef1b528e42dff08ac52dc0f7db0afceff8a894bdc817e3e3c151adb\nWarning: Using a password with '-a' or '-u' option on the command line interface may not be safe.\nCould not connect to Redis at :6379: Name or service not known\nExit Code: 1\nProcess Group PGID: 2850016"
+}

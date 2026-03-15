@@ -1,0 +1,3 @@
+Output: INFO:__main__:Memory Bank MCP Script Started
+INFO:__main__:Memory Bank MCP Server initialized
+Process Group PGID: 970363

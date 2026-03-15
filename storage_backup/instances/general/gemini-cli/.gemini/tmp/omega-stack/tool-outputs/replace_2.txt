@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/SESSIONS_MAP.md (1 replacements). Here is the updated code:\n...\n- [ ] **Token Tracker**: Implement a tool or dashboard to track tokens per turn and cumula
+... [TRUNCATED] ...
+red models.\n- [ ] **Omega Indexing**: Register found models in the Omega stack model registry.\n- [ ] **Hardening pass**: Implement strict validation for model loading and usage.\n\n---\n\n### 📌 Session Hygiene:\n\n- Keep chat context <5MB.\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/replace_replace_1773180623337_0_bjlt6.txt
+</tool_output_masked>

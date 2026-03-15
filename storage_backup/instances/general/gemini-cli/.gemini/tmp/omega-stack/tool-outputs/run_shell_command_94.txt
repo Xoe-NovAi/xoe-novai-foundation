@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: ls: storage/instances/general/gemini-cli/.gemini/: not listing already-listed directory
+ls: storage/instances/general/gemini-cli/.gemini/history: not listing already-listed directory
+ls: storage/instances/general/gemini-cli/.gemini/tmp: not listing already-listed directory
+storage/instances/general/gemini-cli/.gemini/:
+total 92
+-rwxrwx--- 1 100999 100999 1567 Mar 14 23:28 oauth_creds.json
+-rwxrwx--- 1 100999 100999 1260 Mar 14 23:14 settings.json
+drwxrwx---+ 7 100999 100999 4096 Mar 14 23:14 .
+-rwxrwx--- 1 100999 100999  123 Mar 14 22:21 trustedFolders.json
+-rwxrwx--- 1 100999 100999    5 Mar 14 14:41 trustedFolders.json.backup
+
+... [24 lines omitted] ...
+
+drwxrwx--- 5 100999 100999 4096 Mar 12 21:39 ..
+drwxrwx---+ 2 100999 100999 4096 Mar  7 16:05 .
+-rwxrwx--- 1 100999 100999   46 Mar  7 16:05 .project_root
+
+storage/instances/general/gemini-cli/.gemini/history/omega-stack:
+total 20
+drwxrwx--- 5 100999 100999 4096 Mar 12 21:39 ..
+drwxrwx---+ 2 100999 100999 4096 Mar  7 12:16 .
+-rwxrwx--- 1 100999 100999   50 Mar  7 12:16 .project_root
+ls: Broken pipe
+Process Group PGID: 62009
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/run_shell_command_run_shell_command_1773542334074_0_bmsfzqh.txt
+</tool_output_masked>

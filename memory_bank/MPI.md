@@ -25,7 +25,8 @@ hash_sha256: a3e901c9122eb120c51f70cc1053b934fb98faa80da7a58c41482d10df31cd1d
 | **Enterprise IAM** | ✅ ACTIVE | Scoped API Keys (IA1) + Ed25519 Signatures (IA2). | `app/XNAi_rag_app/core/iam_service.py` |
 | **Secrets Rotation** | ✅ COMPLETE | Purged `changeme123` & `vikunja123`; implemented random base64 secrets. | `docs/protocols/SECRETS_ENFORCEMENT_PROTOCOL.md` |
 | **Memory Bank MCP** | ✅ ACTIVE | Refactored for **SSE/FastAPI** (Port 8000). Watchdog active. | `mcp-servers/memory-bank-mcp/server.py` |
-| **Metropolis Caps**| ✅ ACTIVE | Enforced 6.6GB RAM + 12GB zRAM budget across stack. | `infra/docker/docker-compose.yml` |
+| **Permissions Model** | ✅ HARDENED | 4-Layer recursive `setfacl` for UID 1000/100999 mapping. | `memory_bank/specification_permissions-4layer-model_v1.0_20260315_active.md` |
+| **Metropolis Caps**| ✅ HARDENED | Enforced 6.6GB RAM + 12GB zRAM (4GB lz4 + 8GB zstd) budget. | `infra/docker/docker-compose.yml` |
 | **The Librarian** | ✅ LIVE | Recursive summarization & archival service. | `app/XNAi_rag_app/workers/librarian.py` |
 
 ---

@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: WARN[0010] StopSignal SIGTERM failed to stop container xnai_library_curator in 10 seconds, resorting to SIGKILL 
+xnai_library_curator
+INFO:XNAi_rag_app.core.config_loader:Configuration validated against Pydantic schema (v0.1.4-compliant)
+INFO:XNAi_rag_app.core.config_loader:Configuration loaded from /app/app/config.toml (22 sections)
+INFO:XNAi_rag_app.core.config_loader:Configuration validated against Pydantic schema (v0.1.4-compliant)
+INFO:XNAi_rag_app.core.config_loader:Configuration loaded from /app/app/config.toml (22 sections)
+INFO:XNAi_rag_app.core.config_loader:Configuration validated against Pydantic schema (v0.1.4-compliant)
+INFO:XNAi_rag_app.core.config_loader:Configuration loaded from /app/app/config.toml (22 sections)
+INFO:XNAi_rag_app.core.config_loader:Configuration validated against Pydantic schema (v0.1.4-compliant)
+INFO:XNAi_rag_app.core.config_loader:Configuration loaded from /app/app/config.toml (22 sections)
+
+... [12 lines omitted] ...
+
+{"timestamp": "2026-03-09T01:12:06.729632", "level": "INFO", "module": "library_curator", "message": "Curation complete for task 1773017553482-3: 0 items"}
+{"timestamp": "2026-03-09T01:12:11.920890", "level": "INFO", "module": "logging_config", "message": "Logging configured"}
+{"timestamp": "2026-03-09T01:12:11.959827", "level": "INFO", "module": "library_curator", "message": "\ud83d\udcca Curation metrics exporter started on port 8004"}
+{"timestamp": "2026-03-09T01:12:11.970405", "level": "INFO", "module": "config_loader", "message": "Configuration validated against Pydantic schema (v0.1.4-compliant)"}
+{"timestamp": "2026-03-09T01:12:11.970535", "level": "INFO", "module": "config_loader", "message": "Configuration loaded from /app/app/config.toml (22 sections)"}
+{"timestamp": "2026-03-09T01:12:12.021692", "level": "INFO", "module": "dependencies", "message": "Redis client connected: redis:6379"}
+{"timestamp": "2026-03-09T01:12:12.022508", "level": "INFO", "module": "library_curator", "message": "LibraryCuratorWorker worker:library_curator:001 started and listening..."}
+{"timestamp": "2026-03-09T01:12:12.026001", "level": "INFO", "module": "library_curator", "message": "Processing curation for script:stack_scribe:001: local (Query: 'ssl_certificate.md', Category: 'stack-doc-/expert-knowledge')"}
+{"timestamp": "2026-03-09T01:12:12.030759", "level": "WARNING", "module": "ingest_library", "message": "Local LLM summarization failed: name 'anyio' is not defined"}
+{"timestamp": "2026-03-09T01:12:15.035162", "level": "WARNING", "module": "ingest_library", "message": "Local LLM summarization failed: name 'anyio' is not defined"}
+Process Group PGID: 1312995
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773018716488_0_jv4upa.txt
+</tool_output_masked>

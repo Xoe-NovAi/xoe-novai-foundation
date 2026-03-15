@@ -1,0 +1,137 @@
+<tool_output_masked>
+Output too large. Showing first 12,000 and last 48,000 characters. For full output see: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_1773336600792_0.txt
+Command was automatically cancelled because it exceeded the timeout of 5.0 minutes without output. Below is the output before it was cancelled:
+[1/2] STEP 1/6: FROM xnai-base:latest AS builder
+[1/2] STEP 1/6: FROM xnai-base:latest AS builder
+[1/2] STEP 1/6: FROM xnai-base:latest AS builder
+[1/2] STEP 1/7: FROM xnai-base:latest AS builder
+[1/2] STEP 2/6: LABEL stage="builder"
+[1/2] STEP 2/6: LABEL stage="builder"
+[1/2] STEP 2/6: LABEL stage="builder"
+[1/2] STEP 2/7: LABEL stage="builder"
+
+... [440 lines omitted] ...
+
+Setting up g++-14-x86-64-linux-gnu (14.2.0-19) ...
+Setting up g++-x86-64-linux-gnu (4:14.2.0-1) ...
+Setting up g++-14 (14.2.0-19) ...
+Setting up gcc (4:14.2.0-1) ...
+DEBUG [44/84] /usr/bin/g++ -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -DLLAMA_BUILD -DLLAMA_SHARED -Dllama_EXPORTS -I/root/.cache/uv/sdists-v6/pypi/llama-cpp-python/0.3.16/LoPsrOTUyql_GwUbrsajP/src/vendor/llama.cpp/src/. -I/root/.cache/uv/sdists-v6/pypi/llama-cpp-python/0.3.16/LoPsrOTUyql_GwUbrsajP/src/vendor/llama.cpp/src/../include -I/root/.cache/uv/sdists-v6/pypi/llama-cpp-python/0.3.16/LoPsrOTUyql_GwUbrsajP/src/vendor/llama.cpp/ggml/src/../include -O3 -DNDEBUG -fPIC -Wmissing-declarations -Wmissing-noreturn -Wall -Wextra -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -MD -MT vendor/llama.cpp/src/CMakeFiles/llama.dir/llama-model-loader.cpp.o -MF vendor/llama.cpp/src/CMakeFiles/llama.dir/llama-model-loader.cpp.o.d -o vendor/llama.cpp/src/CMakeFiles/llama.dir/llama-model-loader.cpp.o -c /root/.cache/uv/sdists-v6/pypi/llama-cpp-python/0.3.16/LoPsrOTUyql_GwUbrsajP/src/vendor/llama.cpp/src/llama-model-loader.cpp
+Setting up g++ (4:14.2.0-1) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up build-essential (12.12) ...
+Processing triggers for libc-bin (2.41-12+deb13u1) ...
+container exited on killed
+Error: building at STEP "RUN --mount=type=cache,id=xnai-pip-cache,target=/root/.cache/pip,uid=0,gid=0 --mount=type=cache,id=xnai-uv-cache,target=/root/.cache/uv,uid=0,gid=0 echo "📦 Installing Curation Worker dependencies..." &&     uv pip install --system --verbose --upgrade pip setuptools wheel &&     uv pip install --system --verbose -r requirements/requirements-curation_worker.txt": while running runtime: exit status 1
+--> 3e68f44fe43f
+[1/2] STEP 6/7: COPY requirements/requirements-ui-core.txt .
+--> a7f35d052dff
+[1/2] STEP 7/7: RUN echo "📦 Installing Chainlit UI dependencies (CORE)..." &&     uv pip install --system --upgrade pip setuptools wheel &&     uv pip install --system -r requirements/requirements-ui-core.txt
+📦 Installing Chainlit UI dependencies (CORE)...
+Using Python 3.12.13 environment at: /usr/local
+Resolved 4 packages in 1.05s
+Prepared 4 packages in 3.17s
+Uninstalled 1 package in 43ms
+Installed 4 packages in 38ms
+ + packaging==26.0
+ - pip==25.0.1
+ + pip==26.0.1
+ + setuptools==82.0.1
+ + wheel==0.46.3
+error: File not found: `requirements/requirements-ui-core.txt`
+Error: building at STEP "RUN echo "📦 Installing Chainlit UI dependencies (CORE)..." &&     uv pip install --system --upgrade pip setuptools wheel &&     uv pip install --system -r requirements/requirements-ui-core.txt": while running runtime: exit status 2
+ERROR:podman_compose:Build command failed
+Error: no container with name or ID "xnai_chainlit_ui" found: no such container
+Error: no container with name or ID "xnai_crawler" found: no such container
+Error: no container with name or ID "xnai_library_curator" found: no such container
+xnai_rag_api
+Error: no container with name or ID "xnai_knowledge_miner" found: no such container
+xnai_llama_server
+xnai_qdrant
+xnai_jaeger
+xnai_open_webui
+xnai_vikunja
+xnai_vikunja_db
+xnai_mkdocs
+xnai_librarian
+xnai_openpipe
+xnai_redis
+xnai_grafana
+xnai_consul
+xnai_victoriametrics
+xnai_booklore
+xnai_caddy
+xnai_memory_bank_mcp
+xnai_postgres
+Error: removing container dfa469cf0b8d6f5f13f5e47b72a316353febd346b4d9a5f4f3935cf5f7f30c84 network: 1 error occurred:
+        * rootless netns: kill network process: permission denied
+Error: no container with ID or name "xnai_crawler" found: no such container
+Error: no container with ID or name "xnai_chainlit_ui" found: no such container
+xnai_rag_api
+xnai_memory_bank_mcp
+Error: no container with ID or name "xnai_library_curator" found: no such container
+xnai_librarian
+Error: no container with ID or name "xnai_knowledge_miner" found: no such container
+xnai_open_webui
+xnai_grafana
+xnai_vikunja
+xnai_openpipe
+xnai_jaeger
+xnai_llama_server
+xnai_booklore
+xnai_caddy
+xnai_vikunja_db
+xnai_mkdocs
+xnai_postgres
+xnai_qdrant
+xnai_victoriametrics
+xnai_oikos
+xnai_redis
+xnai_consul
+428296e120920f49e2c1c27cec104752de5232ca407f952c280536e808de4cf6
+xnai_app_network
+xnai_db_network
+23870afeb957f4dd2753d8b6dcad471e721404c934b417730734f74e16b23792
+bd540d3f7a1b462891cde79102572a17eb29eaeea7e0fd5363b317f493fd7472
+Error: unable to start container "bd540d3f7a1b462891cde79102572a17eb29eaeea7e0fd5363b317f493fd7472": 1 error occurred:
+        * rootless netns: kill network process: permission denied
+
+
+b9aa6ab3cb18cff7e6268ec7af75b58036832c018f54f97cf85e68552aadafd2
+xnai_redis
+bae54d09bc1f4c00a4ca14fb6b9257e2aecfa651c1f7ca398c51b9a969aaf42d
+xnai_oikos
+cb012e20d879fe4f042f55166ca2e05a84e89c12cb1b334f558d90042474cd7d
+xnai_victoriametrics
+15894cefe6d14d8244a07007d8656b1b699b8a2581eca994bd1b750c9f3b1257
+xnai_qdrant
+e9d1bdf6d9e7ab96f3fe512d9069812a5183ae4b55b8dc24ec2f08485c22bd56
+xnai_postgres
+a6fcda1108535e6fc4daff71442fd3f7ece621d15deff70cf388e6aecdd10b23
+xnai_mkdocs
+23414bd4c3bcc0ae4875d76459717d782303a63ab69f348c68d8fd5a333e367e
+xnai_vikunja_db
+ead6fe4f2871b33fa1feb436230fd3892349105a6c3a3eb1d8f0972c13895410
+xnai_caddy
+57859d85f2419c2be0799a0cc08e0c3619a0fcfc09e15ebd1dc454b94d9acd34
+xnai_booklore
+5a0c1277f12ca93e8e0a102ed2076d46fedd3a14c6dca82214611afed0b0f42e
+xnai_llama_server
+35a86645e7ced96ba3e4cfb844174a377544a5493ce8f81892399fe357a4bf8d
+xnai_jaeger
+d64d8dadbca9c9e7e2639b05d27124b1a6843eef495427197b8fe2e6e90bc05e
+xnai_openpipe
+Resolved "vikunja/vikunja" as an alias (/home/arcana-novai/.cache/containers/short-name-aliases.conf)
+Trying to pull docker.io/vikunja/vikunja:latest...
+Getting image source signatures
+Copying blob 4bb7957820d8 done   | 
+Copying blob dae7187f03a7 done   | 
+Copying blob bbb53722ccc2 done   | 
+Copying config a3320de6f1 done   | 
+Writing manifest to image destination
+bb3b018bbc838c04e21422dc6bf11bb7dffefc93df0f99de1eade084eca951f0
+xnai_vikunja
+7f2edb3536b501e329f6256deb2e172eb60c9867dd85a0310379e67b09427532
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773336600792_0_s1jzwu.txt
+</tool_output_masked>

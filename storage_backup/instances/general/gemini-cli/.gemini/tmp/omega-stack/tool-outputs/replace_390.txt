@@ -1,0 +1,64 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/agent_factory.py (1 replacements). Here is the updated code:
+...
+        if not auth_list:
+            logger.error("No authentication methods found (OAuth or API Keys).")
+            return await self._local_fallback(prompt, temperature)
+
+        # Try Rainbow Rotation
+        attempts = []
+        for i in range(len(auth_list)):
+            idx = (self.current_auth_index + i) % len(auth_list)
+            auth = auth_list[idx]
+            auth_desc = f"Account:{auth.get('account_id', 'StaticKey')}"
+            
+            try:
+                messages = []
+                if system_instruction:
+                    messages.append({"role": "system", "content": system_instruction})
+                messages.append({"role": "user", "content": prompt})
+...
+                    "messages": messages,
+                    "temperature": temperature,
+                }
+
+                if auth["type"] == "oauth":
+                    kwargs["model"] = "vertex_ai/gemini-2.0-flash"
+                    kwargs["custom_llm_provider"] = "vertex_ai"
+                    kwargs["vertex_project"] = os.getenv("VERTEXAI_PROJECT", "arcana-novai-gemini-1772727596")
+                    kwargs["vertex_location"] = os.getenv("VERTEXAI_LOCATION", "us-central1")
+                    kwargs["api_key"] = auth["credentials"].get("access_token")
+                else:
+                    kwargs["model"] = "gemini/gemini-2.0-flash"
+                    kwargs["custom_llm_provider"] = "gemini"
+                    kwargs["api_key"] = auth["value"]
+
+                start_inf = time.time()
+                response = await anyio.to_thread.run_sync(
+                    lambda: completion(**kwargs)
+                )
+                latency = time.time() - start_inf
+                logger.info(f"✅ {auth_desc} SUCCESS in {latency:.2f}s")
+                return response.choices[0].message.content
+
+            except Exception as e:
+                error_msg = str(e)
+                attempts.append(f"{auth_desc}: {error_msg}")
+                if "429" in error_msg or "quota" in error_msg.lower():
+                    logger.warning(f"⚠️ {auth_desc} RATE_LIMITED (429)")
+                else:
+                    logger.error(f"❌ {auth_desc} ERROR: {error_msg}")
+        
+        # Update index for next time
+        self.current_auth_index = (self.current_auth_index + 1) % len(auth_list)
+        
+        fallback_res = await self._local_fallback(prompt, temperature)
+        if "AgentFactory: All paths" in fallback_res:
+            return f"❌ All Cloud Paths Failed:\n" + "\n".join(attempts) + f"\n\nLocal Fallback: {fallback_res}"
+        return fallback_res
+
+    async def _local_fallback(self, prompt: str, temperature: float) -> str:
+        """Fallback to local Ollama instance."""
+        logger.info("Activating Local Fallback...")
+        try:
+            response = await anyio.to_thread.run_sync(
+...

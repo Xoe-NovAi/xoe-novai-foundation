@@ -1,0 +1,42 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/omega_foundry.py (1 replacements). Here is the updated code:
+...
+            else:
+                print("⚠️ Oikos Service returned non-200 status.")
+        except Exception as e:
+            print(f"❌ Connection Error: Oikos Service is offline. ({e})")
+
+async def wait_for_service(url: str, retries: int = 5, delay: int = 3):
+    """Wait for the Oikos service to become responsive."""
+    import httpx
+    import time
+    print(f"📡 Foundry: Waiting for Oikos Service at {url}...")
+    async with httpx.AsyncClient() as client:
+        for i in range(retries):
+            try:
+                response = await client.get(url.replace("/iris/route", "/health"), timeout=5.0)
+                if response.status_code == 200:
+                    print("✅ Oikos Service is ONLINE.")
+                    return True
+            except Exception:
+                pass
+            print(f"  (Attempt {i+1}/{retries}) Service starting...")
+            await anyio.sleep(delay)
+    return False
+
+async def mastermind(problem: str):
+    """Runs the Oikos Mastermind session via the FastAPI Service."""
+    import httpx
+    
+    url = "http://localhost:8006/iris/route"
+    
+    if not await wait_for_service(url):
+        print("❌ Error: Oikos Service timed out. Please check logs.")
+        return
+
+    print(f"🔱 Foundry: Sending problem to Iris Bridge...")
+    payload = {"problem": problem, "session_id": "SESS-18-Resurrection"}
+    
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.post(url, json=payload, timeout=30.0)
+...

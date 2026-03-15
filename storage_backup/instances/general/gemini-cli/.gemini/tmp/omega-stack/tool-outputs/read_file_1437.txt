@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-100 of 957 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example,
+... [TRUNCATED] ...
+ity: int = 1\n\n# --- Pydantic Models for Hardened Validation ---\n\nclass ContextDataModel(BaseModel):\n    \"\"\"Schema for context content update.\"\"\"\n    relevance_score: float = Field(0.0, ge=0.0, le=1.0)\n    summary: Optional[str] = None"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000436028_0_ejxqf9.txt
+</tool_output_masked>

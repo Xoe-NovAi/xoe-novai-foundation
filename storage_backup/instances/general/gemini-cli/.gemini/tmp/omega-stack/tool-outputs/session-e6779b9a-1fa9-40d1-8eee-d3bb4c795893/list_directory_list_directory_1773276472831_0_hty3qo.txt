@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/secrets:\napi_key.txt (19 bytes)\ngemini_api_key.txt (27 bytes)\npostgres_password.txt (33 bytes)\nredis_password.txt (25 bytes)\nvikunja_db_password.txt (45 bytes)\nvikunja_jwt_secret.txt (90 bytes)\nvikunja-db-pass (45 bytes)\nvikunja-jwt-secret (90 bytes)"
+}

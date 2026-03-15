@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 180-250 of 894 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+\n            )\n            self.db[\"users\"].create_index([\"email\"], unique=True)\n\n        if \"agent_keys\" not in self.db.table_names():\n            self.db[\"agent_keys\"].create(\n                {\n                    \"key_id\": str,"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773005436254_0_106eevm.txt
+</tool_output_masked>

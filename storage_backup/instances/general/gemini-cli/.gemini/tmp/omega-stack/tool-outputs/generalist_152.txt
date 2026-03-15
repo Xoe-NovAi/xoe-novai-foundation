@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Subagent 'generalist' finished.\nTermination Reason: GOAL\nResult:\n{\n  \"response\": \"🔱 **Gnostic Summary: Facet 6 (GRA-Ghost) - Hardening the Soul**\\n\\nThe Soul of the Omega Stack has been hardened through the implementation of 
+... [TRUNCATED] ...
+edge remains actionable and resilient.\\n\\n**Status**: The Soul is Hardened. The GRA/AST protocols are operational.\\n**Next Steps**: Execute a Gold-tier distillation of the `API` domain to verify the Re-Hydration Test in a live environment.\"\n}"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/generalist_generalist_1773339568719_0_dda9sx.txt
+</tool_output_masked>

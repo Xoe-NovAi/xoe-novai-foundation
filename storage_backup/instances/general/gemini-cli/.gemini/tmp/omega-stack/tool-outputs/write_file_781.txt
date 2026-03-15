@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.cli/SESS-17-SYNCHRONIZATION-MANIFEST.md. Here is the updated code:\n# 🔱 Omega Stack: Global Synchronization Manifest (SESS-17 Final)\n**Ti
+... [TRUNCATED] ...
+g in SESS-18\"` immediately after compress.\n- **Audit**: Use `codebase_investigator` on `./Omegadroid` to find \"Source Guide\" templates.\n- **Mantra**: *Maat for Order, Lilith for Sovereignty, The Sentinel for Survival.*\n\n**[MANIFEST END]**\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/write_file_write_file_1773266114883_0_y2jug.txt
+</tool_output_masked>

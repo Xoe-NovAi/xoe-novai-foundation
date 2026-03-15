@@ -1,0 +1,15 @@
+Found 1 match for pattern "Redis\(|Redis\.from_url\(" in path "." (filter: "app/XNAi_rag_app/core/redis_schemas.py"):
+---
+File: app/XNAi_rag_app/core/redis_schemas.py
+L757-         import os
+L758-         redis_url = os.getenv("REDIS_URL", "redis://redis:6379")
+L759- 
+L760-     try:
+L761-         pool = ConnectionPool.from_url(redis_url, max_connections=50)
+L762:         redis_client = redis.Redis(connection_pool=pool)
+L763- 
+L764-         # Test connection
+L765-         await redis_client.ping()
+L766- 
+L767-         manager = RedisSchemaManager(redis_client)
+---

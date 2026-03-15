@@ -1,0 +1,6 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app:
+[DIR] __pycache__
+[DIR] XNAi_rag_app
+__init__.py (64 bytes)
+config.toml (14932 bytes)
+GEMINI.md (1621 bytes)

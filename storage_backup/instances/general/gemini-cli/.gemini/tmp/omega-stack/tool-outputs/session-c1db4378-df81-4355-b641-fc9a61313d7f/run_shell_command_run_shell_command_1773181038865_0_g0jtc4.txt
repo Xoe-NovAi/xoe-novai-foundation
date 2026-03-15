@@ -1,0 +1,3 @@
+{
+  "output": "Output: 66df2406ecfc  localhost/xnai-rag:latest                          uvicorn XNAi_rag_...  6 minutes ago   Up 22 seconds (starting)  8000/tcp, 8002/tcp                                                                                                                  xnai_rag_api\n667f9047cf68  localhost/xnai-rag:latest                          python3 -m llama_...  36 seconds ago  Up 36 seconds             8000/tcp, 8002/tcp                                                                                                                  xnai_llama_server\nExit Code: 1\nProcess Group PGID: 906159"
+}

@@ -1,0 +1,3 @@
+{
+  "output": "Output: {\n  \"mcpServers\": {\n    \"memory-bank\": {\n      \"command\": \"python3\",\n      \"args\": [\n        \"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py\"\n      ]\n    }\n  }\n}\nProcess Group PGID: 22703"
+}

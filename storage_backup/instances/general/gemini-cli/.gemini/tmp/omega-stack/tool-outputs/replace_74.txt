@@ -1,0 +1,46 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60261d1d-e73f-4dc4-be0e-3da9c3a90627/plans/sess_23_gnosis_lexicon_and_audit.md (1 replacements). Here is the updated code:
+...
+
+## Objective
+Engrain the Gnostic wisdom acquired in SESS-23 (ZLV, TGG, GRA, RCF) into the stack through formal codification, machine-readable ontology, and automated enforcement via a gnostic audit.
+
+## Key Files & Context
+- `artifacts/GNOSTIC_LEXICON.md`: Expanded definitions (GPS, SSE, Refraction, etc).
+- `artifacts/GNOSTIC_LEXICON.json`: Machine-readable definitions.
+- `mcp-servers/xnai-gnosis/server.py`: Implement **Gnostic-SSE** bridge.
+- `.gemini/settings.json`: Update **MAX_TURNS** and context limits.
+- `scripts/gnostic_preflight.py`: Background audit for CLI startup.
+- `Makefile`: Entry point for the audit (`make gnostic-audit`, `make preflight`).
+
+## Implementation Steps
+
+### 1. Codify the Expanded Lexicon & Phronetic Mandates
+- Create `artifacts/GNOSTIC_LEXICON.md` & `.json` with new terms:
+    - **GPS** (Metadata Standard)
+    - **Gnostic-SSE** (Context Streaming)
+    - **Refraction Gate** (Security Checkpoint)
+    - **MAX_TURNS: 250** (High-Phronesis autonomy)
+
+### 2. Gnostic-SSE Context Injection (MCP-Enhanced)
+- Update **xnai-gnosis MCP**:
+    - Implement a FastAPI-based SSE bridge to stream Gnosis Packs directly to agents.
+    - Enable **Selective Hydration**: stream specific AST nodes to reduce context bloat.
+
+### 3. Gemini CLI Battle Readiness (Hardening)
+- Update `.gemini/settings.json` to support elevated **MAX_TURNS (250)** for phronetic tasks.
+- Create `scripts/gnostic_preflight.py`: A fast background audit that runs on CLI startup to verify the **Root Rigidity Hash**.
+- Implement **Checkpointing** in `sentinel-skill` to allow tasks to resume from the last Gnostic Anchor.
+
+### 4. Manifest the Gnostic Audit & CI/CD Gate
+- Update `scripts/gnostic_audit.py` to support **SSE-streamed metrics**.
+- Implement `.github/workflows/gnostic_gate.yml` to enforce the **Refraction Gate** on all PRs.
+
+### 5. The Root of Trust (Registry Manifest)
+- Update `memory_bank/ALETHIA_REGISTRY.md` to anchor the new Lexicon and Gnostic-SSE protocols.
+
+## Verification & Testing
+- Run `make preflight` and verify the background audit.
+- Simulate a high-turn task (200+ turns) and verify checkpointing.
+- Verify Gnostic-SSE streaming from the MCP to a sub-agent.
+- Confirm the `Refraction Gate` blocks a non-resonant tool-call.
+

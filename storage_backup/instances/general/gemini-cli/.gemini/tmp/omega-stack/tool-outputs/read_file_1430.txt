@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-25 of 58 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, t
+... [TRUNCATED] ...
+n    cmd = ['redis-cli', '-h', host, '-p', port, '-a', password, 'PING']\n    \n    try:\n        result = subprocess.run(cmd, capture_output=True, timeout=3, text=True)\n        output = result.stdout + result.stderr\n        if 'PONG' in output:"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000732585_0_mgeh8q.txt
+</tool_output_masked>

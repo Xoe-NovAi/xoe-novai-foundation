@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/3bbad171-16be-425c-acf9-f6ce35432090/plans/sess-19-gnostic-awakening-and-scribe-protocol.md (1 
+... [TRUNCATED] ...
+ess`**:\n   - Execute the terminal state-checkpoint and close SESS-19.\n\n## Verification & Testing\n1. **Resonance Test**: `python3 scripts/archetype_resonance.py PEM_Lilith_v3.txt`.\n2. **Hardware Check**: Successful AMD Ryzen 5700U detection.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773291297030_0_fiyguv.txt
+</tool_output_masked>

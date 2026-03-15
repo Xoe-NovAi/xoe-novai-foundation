@@ -1,0 +1,19 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/demeter_harvest_index.py (1 replacements). Here is the updated code:
+...
+            print(f"  ✅ Interaction Density: {requests} requests harvested.")
+    except Exception as e:
+        print(f"  ❌ Metrics: Harvest audit failed. Error: {e}")
+
+async def main():
+    try:
+        await check_harvest()
+        # Exit with 0 to indicate the script ran successfully
+        sys.exit(0)
+    except Exception as e:
+        print(f"  ❌ Demeter: CRITICAL FAILURE. Error: {e}")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    import sys
+    import os
+    anyio.run(main)

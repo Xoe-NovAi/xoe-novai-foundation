@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/README.md (1 replacements). Here is the updated code:\n...\n> **Production-Tight Local Agentic RAG System**  \n> 100% local · Zero telemetry · Ryzen 5700U O
+... [TRUNCATED] ...
+o all 8 experts |\n| `make metropolis-save` | 💾 Checkpoint experts to persistent storage |\n| `make metropolis-load` | 🔄 Restore experts from persistent storage |\n| `make metropolis-stats` | 📊 Collect token/request metrics for dashboard |\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001931782_0_78k8.txt
+</tool_output_masked>

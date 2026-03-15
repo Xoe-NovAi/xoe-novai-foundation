@@ -1,0 +1,25 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts:
+[DIR] ekb-exports
+[DIR] GetDBInfo
+[DIR] reports
+AGENT_BUS_BOOTSTRAP.py (513 bytes)
+analyst-context-manifest.md (1168 bytes)
+AUDIT_TRAIL_SYSTEM.md (10217 bytes)
+Cline_Kat_Coder_Gemini_General_Handover.md (13036 bytes)
+facet-6-mind-map.md (2214 bytes)
+GEM-AWAKENING-SESS-16.md (1571 bytes)
+GEMINI_FACET_6_SESSION_MANAGEMENT_GUIDE.md (6719 bytes)
+GEMINI_FACET_6_SESSION_SUMMARY.md (5892 bytes)
+GEMINI_GENERAL_ARCHON_HANDOVER.md (20457 bytes)
+gemini-conversation-1771310721241.json (2549044 bytes)
+gemini-conversation-1772341695559.json (632249 bytes)
+integration_test_report.json (1884 bytes)
+JOB_OC1_SUMMARY.yaml (4188 bytes)
+notebook_validation_report.json (866 bytes)
+omega_instance_metrics.json (2797 bytes)
+omega-context-pack.md (21312 bytes)
+opencode_multi_account_research.yaml (10003 bytes)
+test_report_20260228_024801.json (1988 bytes)
+thinking_model_test_results_20260224_034315.json (421 bytes)
+vikunja-import.json (229291 bytes)
+VP_VULKANINFO_AMD_Radeon_Graphics_(RADV_RENOIR)_25_3_5.json (185791 bytes)

@@ -1,0 +1,25 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/agent_factory.py (1 replacements). Here is the updated code:
+...
+"""
+import anyio
+import os
+import json
+import time
+import litellm
+from typing import List, Dict, Any, Optional
+from litellm import completion
+from dotenv import load_dotenv
+
+# Load environment
+load_dotenv()
+
+# Force LiteLLM defaults to avoid OpenAI fallback
+litellm.api_key = "None"
+litellm.openai_key = "None"
+
+class AgentFactory:
+    def __init__(self, model_name: str = "gemini/gemini-2.0-flash"):
+        self.model_name = model_name
+        self.keys = self._load_keys()
+        self.current_key_index = 0
+...

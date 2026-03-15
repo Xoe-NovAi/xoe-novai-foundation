@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/multi_expert/coordination_protocols:\nbasic_coordination_protocols.md (21979 bytes)"
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/services/ingest_library.py. Here is the updated code:\n...\n# ============================================================================
+... [TRUNCATED] ...
+ encoding=\"utf-8\", errors=\"ignore\") as f:\n                        content = await f.read()\n                    metadata = ContentMetadata(\n                        source='local_file',\n                        source_url=str(file_path),\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/write_file_write_file_1773018471158_0_pjb6w.txt
+</tool_output_masked>

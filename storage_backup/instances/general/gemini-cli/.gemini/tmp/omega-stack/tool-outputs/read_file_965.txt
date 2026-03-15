@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nXNAi Stack Sentinel\n===================\n\nAutonomous administrator for the Omega Stack.\nMonitors hardware telemetry and manages service lifecycle.\n\nAutomation Tasks:\n1.  Resource-Aware Service Mana
+... [TRUNCATED] ...
+o stop crawler: {e}\")\n\n        # Priority 2: Clear Caches\n        # await self.redis.flushdb()\n\nif __name__ == \"__main__\":\n    logging.basicConfig(level=logging.INFO)\n    sentinel = StackSentinel()\n    anyio.run(sentinel.monitor_loop)\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773016201122_2_c1jnvt.txt
+</tool_output_masked>

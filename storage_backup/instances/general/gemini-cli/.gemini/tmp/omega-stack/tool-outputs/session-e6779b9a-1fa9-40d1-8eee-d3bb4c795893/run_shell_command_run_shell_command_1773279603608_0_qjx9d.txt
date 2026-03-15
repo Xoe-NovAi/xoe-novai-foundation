@@ -1,0 +1,3 @@
+{
+  "output": "Output: 580:  caddy:\n581:    image: caddy:2.8-alpine\n594:      - ./logs/caddy:/var/log/caddy:Z,U\nProcess Group PGID: 489118"
+}

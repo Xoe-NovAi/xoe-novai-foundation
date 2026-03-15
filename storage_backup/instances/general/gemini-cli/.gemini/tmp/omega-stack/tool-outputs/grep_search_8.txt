@@ -1,0 +1,138 @@
+Found 100 matches for pattern "palace|facet" in path "." (results limited to 100 matches for performance):
+---
+File: memory_bank/MASTER_INDEX.md
+L35: *Focus: Persistent Facets, Headless Archon Mode, and A2A Telepathy.*
+L39: - **Agent Ops**: `docs/03-how-to-guides/agent-ops/SUMMONING-FACETS.md`
+---
+File: memory_bank/MPI.md
+L65: | **SESS-11** | Context Summarizer | Facet 5 | 🔵 PLANNED |
+L85: | **SESS-01** | Identity & Credentials | Facet 1 | ✅ COMPLETE |
+L86: | **SESS-02** | Memory Bank Core | Facet 7 | 🟡 NEXT |
+L87: | **SESS-03** | Infra & Capacity | Facet 6 | 🟡 PENDING |
+L88: | **SESS-04** | The Sentinel | Facet 3 | 🟡 PENDING |
+---
+File: memory_bank/recall/enterprise_documentation_system.md
+L48: - Advanced filtering and faceting
+---
+File: memory_bank/protocols/SESSION_SEALING_PROTOCOL.md
+L13: *   Verify that each delegation has a clear owner (Agent/Facet), a primary task, and a starting coordinate (Context Key).
+---
+File: memory_bank/protocols/MEMORY_BANK_EVOLUTION_PLAN.md
+L19: To ensure each Facet develops a unique perspective, we will implement **Namespaced Vector Storage**.
+L23: *   **Benefit**: Allows for efficient "Cross-Pollination" (General can query *all* namespaces) while maintaining "Ego Integrity" (Facets primarily query their own namespace).
+L50: | **3.2** | **Isolate** | Qdrant Namespacing per Facet | ⏳ Pending |
+---
+File: memory_bank/protocols/OCTA_FACET_AUDIT_PROTOCOL.md
+L1: # 🔱 Octa-Facet Strategic Audit Protocol
+L12: ### 1. 🏗️ Facet 1: The Architect (Structural Integrity)
+L17: ### 2. 🛡️ Facet 2: The Sentinel (Security & Hardening)
+L22: ### 3. 🔬 Facet 3: The Researcher (Observability & Metrics)
+L27: ### 4. 🏛️ Facet 4: The Scribe (Documentation & Strategy)
+L32: ### 5. 🌑 Facet 5: The Oracle (Model Intelligence)
+L37: ### 6. 🔱 Facet 6: The Archon (Governance & Orchestration)
+L42: ### 🔨 7. Facet 7: The Builder (Deployment & Stability)
+L47: ### 🎨 8. Facet 8: The Visionary (Creative Direction)
+L55: 1.  **Discovery-First**: Each facet MUST run `grep`, `cat`, or `run_shell_command` to verify their domain.
+L56: 2.  **No Partial Reports**: Facets must continue discovery until they conclude of their own volition.
+L57: 3.  **Handoff Protocol**: Each report must end with a "Handoff" to the next specific Facet.
+L65: **Task 0**: Each Facet/Agent, upon initialization in a new session, MUST:
+L68: 3.  **Creation**: Generate or update its unique Soul File (e.g., `entities/facet-1-soul.md`) to lock in its personality, ethics, and technical focus.
+---
+File: memory_bank/handovers/SUPPLEMENTAL_MANDATES_20260309.md
+L17: - **WebSearch MCP**: Priority 3. Integrate Tavily/Serper into Facet discovery loops.
+L20: - Each Facet is now responsible for its own evolutionary path. The "Soul Shaping" Task 0 is mandatory for all new sessions.
+---
+File: memory_bank/handovers/MASTER_SESSION_SUMMARY_20260309.md
+L37: | **SESS-01** | Facet 1 | Restore 4GB zRAM + Vulkan Optimization. |
+L38: | **SESS-02** | Facet 7 | Build Stabilized llama-cpp-python 0.3.16. |
+L39: | **SESS-03** | Facet 6 | CLI -> Omega Bus + GitHub Integration. |
+L40: | **SESS-04** | Facet 3 | Qdrant/FAISS Optimization + Philology. |
+L41: | **SESS-05** | General | Octa-Facet Protocol + Web Search Mandate. |
+---
+File: memory_bank/reports/OCTA_FACET_AUDIT_REPORT_v1.0.0.md
+L1: # 🔱 Octa-Facet Strategic Audit Master Report v1.0.0
+---
+File: memory_bank/tasks/active_sprint.md
+L7: 2.  **Activate Telepathy**: Enable A2A Handshake between Facets.
+---
+File: scripts/summon_facet.sh
+L3: # XNAi Facet Summoner (v0.1.0)
+L5: # Purpose: Spawns a full, persistent Gemini CLI instance for a specific Facet.
+L9: FACET_ID=$1
+L12: if [ -z "$FACET_ID" ]; then
+L13:     echo "Usage: $0 <facet_number_1_to_8> \"Your prompt here\""
+L17: INSTANCE_DIR="/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/facets/instance-$FACET_ID"
+L20:     echo "❌ Error: Facet $FACET_ID directory not found at $INSTANCE_DIR"
+L36: # Force the High-Quota Flash Model for all Facets
+L46: echo "🧙 Summoning Facet $FACET_ID (Archon Mode)..."
+L58:         gemini -r latest --prompt "$PROMPT" 2>&1 | tee /tmp/facet_output.log
+L61:         gemini --prompt "$PROMPT" 2>&1 | tee /tmp/facet_output.log
+L65:     if grep -q "MAXS_TURNS" /tmp/facet_output.log; then
+L69:     elif grep -q "Quota exceeded" /tmp/facet_output.log; then
+L72:     elif grep -q "Validation failed" /tmp/facet_output.log; then
+---
+File: scripts/dispatcher.d/gemini.conf
+L11:         export GEMINI_CLI_HOME="${INSTANCE_ROOT}/facets/instance-${INSTANCE_ID}/gemini-cli"
+L35:     # HARDENING: Resource Constraints for Facets
+L36:     # Prevents combined overhead of 8 facets from overwhelming RAM
+---
+File: scripts/xnai-sync-gemini-configs.sh
+L59: # 2. Sync Instances 1-8 (Facets)
+L61:     TARGET_DIR="${INSTANCE_ROOT}/facets/instance-${i}/gemini-cli/.gemini"
+---
+File: scripts/test_a2a_telepathy.py
+L42:             # 3. Test A2A Query from 'facet_1'
+L43:             # First register facet_1
+L45:                 "agent_id": "facet_1",
+L53:                 "requesting_agent_id": "facet_1"
+---
+File: _archive/deprecated/OPUS_4_6_AUDIT_HANDOFF.md
+L6: The stack has transitioned from a monolithic assistant to a **Fractal Hive Mind**. Phase 3.0 has successfully implemented the **"True Soul"** architecture, providing 8 specialized agents (Facets) with persistent memory and autonomous execution capabilities.
+L15: *   **Persistent Facets**: 8 isolated instances in `storage/instances/facets/`. Each has a unique `expert_soul.md` and persistent `chats/`.
+L21: *   **The Relay Race**: Protocol to bypass `MAXS_TURNS` by re-summoning persistent agents via `scripts/summon_facet.sh`.
+L26: 1.  **Phase 4.0 Launch**: Formalize **Distributed Reasoning** protocols using the 8 persistent Facets.
+L28: 3.  **Account Balancing**: Distribute the remaining Facets to unique API keys as they become available.
+---
+File: _archive/implementation-completed/GEMINI_CLI_FIX_SUMMARY.md
+L19: - All 8 Facets from loading
+L48: - Facet instances from loading
+L132: ### ✅ Gemini Facets System
+L133: - All 8 persistent facets can now load:
+L145: - Context sharing between facets can work
+L151: - Tool calling between facets now works
+L174:    - [ ] Confirm Facets all load properly
+L188:     └─ Provides tools for all 8 Facets
+L233: Your Gemini Oversoul with 8 Facets can now properly load and use the memory-bank MCP server. The system is fully integrated into your Omega Stack infrastructure and ready for use.
+---
+File: _archive/planning_docs_20260308/RESOLUTION_COMPLETE.md
+L16: 4. ✅ **Mapped Gemini Facets** - All 8 persistent instances documented
+L53: ├── /storage/instances/facets/          ✅ CENTRALIZED (8 facets)
+L87: ├─ 8 Persistent Facets (Scribe, Architect, Auditor, Researcher, Coder, Analyst, Strategist, Guardian)
+L132: ├─ Gemini facets/models      46MB ✅
+L143: - **All 8 Facets** - Load properly (Scribe, Architect, Auditor, Researcher, Coder, Analyst, Strategist, Guardian)
+L162: ### Gemini Oversoul with 8 Facets
+L183: **Each Facet**:
+L190: - Orchestrates facet assignments
+L191: - Routes queries to appropriate facets
+L274: ### Priority 4: DOCUMENT GEMINI FACETS (KNOWLEDGE)
+L276: Create usage guide for your 8-Facet system:
+L278: # Show facet identities
+L279: ls -la /storage/instances/facets/*/gemini-cli/.gemini/expert_soul.md
+L304:    - ✅ Facets in /storage/instances/facets/
+L320:    - Verify all 8 facets load
+L324:    - Test context sharing between facets
+L359: │  │  8 Persistent Facets with MaLi Balance           │  │
+L362: │  │  └─ Storage: /storage/instances/facets/         │  │
+L389: - **Distributed**: 8 facets coordinate via Redis Streams and Agent Bus
+L390: - **Persistent**: Facet identities and chat histories survive restarts
+L414: For multi-agent architectures like Gemini Facets:
+L433: - [ ] Document Gemini Facets system for team
+L458: 3. **Facets Not Initializing**
+L459:    - Verify: `/storage/instances/facets/instance-1/` through `instance-8/` exist
+L461:    - Test: Each facet loads: `gemini --resume latest`
+L478: ║  8 Facets:        ✅ ALL CONFIGURED                           ║
+---
+File: _archive/planning_docs_20260308/COMPREHENSIVE_SYSTEMS_AUDIT_20260307.md
+L17: | Gemini Oversoul + 8 Facets | ✅ OPERATIONAL | Full persistent identity system working |
+L35: │ ├─ Facet-1: The Scribe (Chronicler)                            │
+---

@@ -1,0 +1,19 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/oikos_service.py (1 replacements). Here is the updated code:
+...
+            # Escalation Level 2
+            print("🌈 Iris: Level 2 Escalation (Archive Guardian)")
+            await record_gear_shift("Iris", "LEVEL_2_ESCALATION", time.time() - start_time, {"problem": req.problem})
+            # Simulate Level 2 model thought
+            response = await factory.think(f"Problem: {req.problem}. Decide if this requires the Oikos Council.", "You are the Archive Guardian (Level 2). Provide a decision and a refined prompt.")
+
+            # Check for error in response
+            if "❌" in response:
+                return {"decision": "ERROR_IN_INFERENCE", "response": response}
+
+            return {"decision": "LEVEL_2_LOCAL_LARGE", "response": response}
+        else:
+            # Escalation Level 3 (Mastermind)
+            print("🌈 Iris: Level 3 Escalation (Mastermind Council)")
+            await record_gear_shift("Iris", "LEVEL_3_ESCALATION", time.time() - start_time, {"problem": req.problem})
+            background_tasks.add_task(orchestrate_mastermind, req.problem, req.session_id)
+...

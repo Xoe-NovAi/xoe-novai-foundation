@@ -1,0 +1,152 @@
+Output: Error: no container with name or ID "xnai_llama_server" found: no such container
+Error: no container with ID or name "xnai_llama_server" found: no such container
+Trying to pull ghcr.io/abetlen/llama-cpp-python:latest...
+Getting image source signatures
+Copying blob 34df56406cb6 done   | 
+Copying blob bc0965b23a04 done   | 
+Copying blob 31679bb6d802 done   | 
+Copying blob b2274c5340d4 done   | 
+Copying blob 5b0f4af99364 done   | 
+Copying blob f58b46c63ae2 done   | 
+Copying blob 4f4fb700ef54 skipped: already exists  
+Copying blob 3d8dd8f39459 done   | 
+Copying blob e093d4e44be0 done   | 
+Copying blob bffb2015d801 done   | 
+Copying blob fd216bb09d84 done   | 
+Copying config d0ee5082ac done   | 
+Writing manifest to image destination
+a9a3f3ba370384244d30f14eeb56ae26223bf5b533ef5033cb2af04b711f4d23
+xnai_llama_server
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/app/llama_cpp/__init__.py", line 1, in <module>
+    from .llama_cpp import *
+  File "/app/llama_cpp/llama_cpp.py", line 38, in <module>
+    _lib = load_shared_library(_lib_base_name, _base_path)
+  File "/app/llama_cpp/_ctypes_extensions.py", line 71, in load_shared_library
+    raise FileNotFoundError(
+        f"Shared library with base name '{lib_base_name}' not found"
+    )
+FileNotFoundError: Shared library with base name 'llama' not found
+Process Group PGID: 1328272

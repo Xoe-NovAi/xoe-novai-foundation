@@ -1,0 +1,31 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/oikos_service.py (1 replacements). Here is the updated code:
+...
+            return "\n".join(results)
+    except Exception as e:
+        return f"Web Search Failed: {str(e)}"
+
+async def orchestrate_mastermind(problem: str, session_id: str):
+    """Grounded Mastermind session with Local and Web research (State Tracked)."""
+    print(f"🔱 Mastermind (Service): Initiating session on: {problem}")
+    SESSION_STATES[session_id]["status"] = "RESEARCHING"
+    
+    # --- Round 0: Research Phase ---
+    # ... existing research logic ...
+    
+    SESSION_STATES[session_id]["status"] = "COUNCIL_DELIBERATION"
+    # ... existing insight logic ...
+    
+    SESSION_STATES[session_id]["status"] = "MALI_JUDGMENT"
+    # ... existing synthesis logic ...
+    
+    SESSION_STATES[session_id]["status"] = "DISTILLING_GNOSIS"
+    await distill_cycle(session_id, 20, f"Oikos Council Mastermind for: {problem}")
+    
+    SESSION_STATES[session_id]["status"] = "COMPLETE"
+    SESSION_STATES[session_id]["response"] = "The Council has spoken. Decree etched in the Chronicles."
+    print(f"✅ Mastermind Session Complete for [{session_id}].")
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ACTIVE", "hearth": "WARM"}
+...

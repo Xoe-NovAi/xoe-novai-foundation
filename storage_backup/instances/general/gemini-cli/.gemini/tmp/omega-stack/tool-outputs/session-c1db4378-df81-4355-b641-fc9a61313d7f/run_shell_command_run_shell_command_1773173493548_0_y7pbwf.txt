@@ -1,0 +1,3 @@
+{
+  "output": "Output: CONTAINER ID  IMAGE                                    COMMAND               CREATED       STATUS                   PORTS       NAMES\n5e5aeb880d95  ghcr.io/abetlen/llama-cpp-python:latest  python3 -m llama_...  23 hours ago  Exited (1) 22 hours ago  8000/tcp    xnai_llama_server\nProcess Group PGID: 60290"
+}

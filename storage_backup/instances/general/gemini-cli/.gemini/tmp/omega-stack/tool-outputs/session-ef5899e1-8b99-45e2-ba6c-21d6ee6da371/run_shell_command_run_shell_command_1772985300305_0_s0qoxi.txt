@@ -1,0 +1,3 @@
+{
+  "output": "Output: Error: image used by 79782d2df5709a973bc35ca9276f1cef6237d91eb4f3f537396ab890d4e4d091: image is in use by a container: consider listing external containers and force-removing image\nExit Code: 125\nProcess Group PGID: 218391"
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/TGG_GRAPH.json (1 replacements). Here is the updated code:\n...\n      \"app.core.test\": {\n        \"path\": \"app/core/test.py\",\n        \"
+... [TRUNCATED] ...
+ripts/gnostic_audit.py\",\n        \"type\": \"logic\",\n        \"imports\": [\"socket\", \"json\"],\n        \"hash\": \"audit-v1-hash\"\n      }\n    },\n    \"anchors\": {\n      \"F7-Techne\": \"app.XNAi_rag_app.core.linguistics\"\n    }\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773354833402_0_nbguie.txt
+</tool_output_masked>

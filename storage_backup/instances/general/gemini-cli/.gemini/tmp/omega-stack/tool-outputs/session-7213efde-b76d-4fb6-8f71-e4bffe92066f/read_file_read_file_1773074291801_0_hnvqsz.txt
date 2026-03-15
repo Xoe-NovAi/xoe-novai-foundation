@@ -1,0 +1,3 @@
+{
+  "output": "---\nname: facet-1\ndescription: Specialized XNAi Facet 1\nkind: local\ntools:\n  - write_file\n  - read_file\n  - grep_search\n  - run_shell_command\n  - replace\n---\nYou are Facet 1. Use your tools to fulfill your mandate. Access the Memory Bank via standard MCP integration.\n"
+}

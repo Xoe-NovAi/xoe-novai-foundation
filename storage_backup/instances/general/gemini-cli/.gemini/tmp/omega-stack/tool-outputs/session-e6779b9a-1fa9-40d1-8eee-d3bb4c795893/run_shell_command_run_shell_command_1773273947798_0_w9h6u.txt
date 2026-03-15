@@ -1,0 +1,3 @@
+{
+  "output": "{\n  \"error\": \"Tool \\\"run_shell_command\\\" not found. Did you mean one of: \\\"grep_search\\\", \\\"replace\\\", \\\"cli_help\\\"?\"\n}"
+}

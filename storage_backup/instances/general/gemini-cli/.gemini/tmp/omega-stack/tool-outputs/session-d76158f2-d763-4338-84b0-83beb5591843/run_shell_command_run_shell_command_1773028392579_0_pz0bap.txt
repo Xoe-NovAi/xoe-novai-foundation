@@ -1,0 +1,3 @@
+{
+  "output": "Output: Error: template: inspect:1:25: executing \"inspect\" at <.IPAM.Config>: can't evaluate field IPAM in type interface {}\nExit Code: 125\nProcess Group PGID: 2827659"
+}

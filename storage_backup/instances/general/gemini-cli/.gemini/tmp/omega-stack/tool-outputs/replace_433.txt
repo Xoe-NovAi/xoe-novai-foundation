@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/mcp_watchdog.sh (1 replacements). Here is the updated code:
+...
+echo "[$(date)] 🛡️ MCP Watchdog starting..." >> $LOG_FILE
+
+while true; do
+    if ! podman ps | grep -q "$CONTAINER_NAME"; then
+        echo "[$(date)] 🚨 MCP DOWN! Attempting restart..." >> $LOG_FILE
+        podman start $CONTAINER_NAME || (cd infra/docker && podman-compose up -d memory-bank-mcp)
+    fi
+    
+    # Check health (Host exposed port)
+    if ! curl -s http://localhost:8005/health | grep -q "ok"; then
+        echo "[$(date)] ⚠️ MCP UNHEALTHY! Restarting..." >> $LOG_FILE
+...

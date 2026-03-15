@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\n🔱 OMEGA LINGUISTICS: The Morphological Oracle\nScholarly root-mapping for Ancient Greek and Russian to zip complex intent.\n[AP:memory_bank/ALETHIA_REGISTRY.md#L15] (SOS-F7: ZLV/Techne)\n\"\"\"\nimport 
+... [TRUNCATED] ...
+ ZippedLogosDecoder()\n    sample_code = \"def hello(): print('world')\"\n    c_hash = decoder.generate_crystal_hash(sample_code)\n    print(f\"Crystal Hash: {c_hash}\")\n    print(f\"Integrity: {decoder.verify_integrity(sample_code, c_hash)}\")\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/read_file_read_file_1773330035007_0_yks7fd.txt
+</tool_output_masked>

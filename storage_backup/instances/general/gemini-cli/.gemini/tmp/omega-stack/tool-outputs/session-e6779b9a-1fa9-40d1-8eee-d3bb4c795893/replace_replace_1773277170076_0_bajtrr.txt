@@ -1,0 +1,3 @@
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/agent_factory.py (1 replacements). Here is the updated code:\n...\nclass AgentFactory:\n    def __init__(self, model_name: str = \"gemini/gemini-2.0-flash\"):\n        self.model_name = model_name\n        self.keys = self._load_keys()\n        self.current_key_index = 0\n        self.local_fallback_url = os.getenv(\"LOCAL_LLM_URL\", \"http://host.containers.internal:11434/v1\") # Podman host bridge\n\n    def _load_keys(self) -> List[str]:\n        \"\"\"Loads all available Gemini keys from environment.\"\"\"\n        keys = []\n        # Check standard names\n..."
+}

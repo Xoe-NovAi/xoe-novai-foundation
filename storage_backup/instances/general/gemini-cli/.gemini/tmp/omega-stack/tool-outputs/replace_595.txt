@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/stack_health_check.sh (1 replacements). Here is the updated code:\n...\nelse\n    echo \"✗ FAIL\"\n    ((failed++))\nfi\n\n# Test Qdrant (P2)\necho 
+... [TRUNCATED] ...
+    echo \"✗ FAIL\"\n        ((failed++))\n    fi\nfi\n\n# Test Podman containers\necho \"\"\necho \"Container Status:\"\nif command -v podman &>/dev/null; then\n    podman ps --format \"{{.Names}}\\t{{.Status}}\" | while read name status; do\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001375660_0_19nrha.txt
+</tool_output_masked>

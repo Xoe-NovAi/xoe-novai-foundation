@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/dependencies.py (1 replacements). Here is the updated code:
+...
+        port=port,
+        password=password,
+        decode_responses=True,
+        ssl=tls_enabled,
+        ssl_ca_certs=ca_cert_path if tls_enabled else None,
+        ssl_cert_reqs='none' if tls_enabled else None
+    )
+
+# ============================================================================
+# HTTP CLIENT
+# ============================================================================
+...

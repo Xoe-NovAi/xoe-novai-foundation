@@ -1,0 +1,3 @@
+{
+  "output": "Output: 00000000: 4747 5546                                GGUF\nProcess Group PGID: 583720"
+}

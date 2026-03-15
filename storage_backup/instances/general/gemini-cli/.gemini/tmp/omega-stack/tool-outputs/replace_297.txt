@@ -1,0 +1,16 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.oikos (1 replacements). Here is the updated code:
+...
+    google-cloud-aiplatform \
+    google-genai \
+    python-dotenv \
+    httpx \
+    pyyaml \
+    anyio \
+    redis \
+    aiofiles
+
+# Final Stage
+FROM python:3.12-slim
+
+WORKDIR /app
+...

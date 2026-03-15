@@ -1,0 +1,3 @@
+{
+  "output": "No matches found for pattern \"Bard 0|Bard0|Oversoul|Strategos\" in path \"memory_bank/\"."
+}

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"\"Ancient Greek BERT\" models HuggingFace CLTK embeddings\":\n\nThe landscape of **Ancient Greek BERT** models and embeddings has evolved significantly, moving from the static word embeddings of the **Classical
+... [TRUNCATED] ...
+-uSTi2rgpck=)\n[4] github.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEHO41pOPOArrJ0mFAgIbGtPru88hmZmnRjG8PlDwXg9fiY55lcn3QepXfDGeOiZF-XXA31HheJZfxZJigAkFtx1t3uSjG_sF3IinQQGls6N32ldsgIGhC_TUYgGQOuDZV-Nd1c_8FMAB36apQ=)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/google_web_search_google_web_search_1773003028154_0_437ky.txt
+</tool_output_masked>

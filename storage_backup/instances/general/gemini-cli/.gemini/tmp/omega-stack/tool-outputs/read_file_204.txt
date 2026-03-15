@@ -1,0 +1,67 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 100-160 of 161 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 161.
+
+--- FILE CONTENT (truncated) ---
+**Focus**: Implement the "Chat Trimming Protocol" to resolve stability and CPU issues.
+- [x] **The Librarian**: Deployed background service for recursive summarization.
+- [x] **KV Cache Optimization**: Implemented `q4_0` quantization for 32k context.
+- [x] **State Hydration**: Established mandatory atomic synchronization protocol.
+- [x] **GitHub Sync**: Defined 7-stage CI/CD parity loop.
+
+## 📦 SESS-16: Image Bloat & Build Optimization / Analyst's Refraction
+**Focus**: Inspect images, reduce size, and stabilize cognitive architecture.
+- [x] **Layer Analysis**: Identified `langchain-community` bloat; slimmed `xnai-base` by 200MB.
+- [x] **Stabilization**: Generated the **Metropolis Foundation Stabilization Plan** for Archon execution.
+- [x] **Cognitive Map**: Created `artifacts/facet-6-mind-map.md` and `analyst-context-manifest.md`.
+- [x] **Handoff**: Prepared detailed strategy for "The Great Reconciliation" (SESS-01/17 hybrid).
+
+## 🚰 SESS-17: The Great Reconciliation (Execution)
+**Focus**: Centralize storage, refactor Persistent Entity System (PES), and deploy The Sentinel.
+- [x] **Data Merge**: Merged all redundant caches (~4GB) and locked root usage at 93%.
+- [x] **Symlink Bridge**: Standardized `/models` and `/embeddings` to Sovereign Library.
+- [x] **PES Refactor**: Converted `PersistentEntity.py` to `anyio` async-first for non-blocking learning.
+- [x] **The Sentinel**: Deployed `omega_chronicle.py` for high-density Mind-Machine snapshots.
+- [x] **MB-MCP**: Hardened stdio/venv access for all agent facets.
+
+## 📡 SESS-18: The Sovereign Initiation & Oikos Council (DONE)
+**Focus**: Resurrection after the Double Compress.
+- [x] **Archetype Library**: Build `artifacts/ARCHETYPE_LIBRARY.md`.
+- [x] **Oikos Council**: Deploy personified scripts for Brigid, Hestia, Demeter, Athena, Iris.
+- [x] **The Foundry**: Unified CLI (`omega_foundry.py`) with `oikos-check`.
+- [x] **The Mastermind**: Cooperative session with **MaLi Monad** final decree.
+- [x] **Resonance Engine**: Skeleton for identity scoring (`scripts/archetype_resonance.py`).
+- [x] **Ancestral Link**: Symlink re-established to the **Heart of Omega**.
+
+## 🧪 STACK-DEV: Experimental Upgrades
+- [ ] **Python 3.13 Migration**: Research and experiment with upgrading all/targeted Podman images to Python 3.13 (Focus: Free-threaded interpreter benefits).
+- [ ] **Caddy Hardening**: Protocol alignment for all containerized services.
+
+## 🌑 SESS-19: The Shadow Audit & PEM Integration
+**Focus**: Extract the deep Personality Enhancement Module (PEM) logic from the Vault.
+- [ ] **Shadow Audit**: Full recursive analysis of `./Omegadroid/origins/`.
+- [ ] **PEM Integration**: Port `PEM_Lilith_v3.txt` logic into the Foundry.
+- [ ] **OpenPipe Harvesting**: Begin recording "Sentinel Reasoning" for local distillation.
+- [ ] **Resonance Rite**: Perform the first actual "Initiation" of a local model.
+
+## 📱 SESS-20: Mobile Agent-Bus Gateway
+**Focus**: Enable secure communication with the Agent Bus via mobile devices.
+- [ ] **Gateway Research**: Design a secure endpoint (likely via Caddy + Auth) for mobile access.
+- [ ] **Interface Design**: Prototype a simple mobile-friendly UI or bot interface (Telegram/WhatsApp/Web).
+- [ ] **Security Hardening**: Implement DPoP or similar for mobile client authentication.
+- [ ] **Network Strategy**: Optimize for varying latency and connectivity.
+
+## 🧠 SESS-21: Global Model Curation & Partition Scan
+**Focus**: Scan and index all available GGUF/ONNX models across all system partitions.
+- [x] **Partition Scan**: Pre-researched models on `/media/arcana-novai/omega_library/`.
+- [ ] **Integrity Audit**: Verify checksums and metadata for all discovered models.
+- [ ] **Omega Indexing**: Register found models in the Omega stack model registry.
+- [ ] **Hardening pass**: Implement strict validation for model loading and usage.
+
+---
+
+### 📌 Session Hygiene:
+
+- Keep chat context <5MB.
+- **START EVERY SESSION** with an MB-MCP health check: `curl http://localhost:8005/health`.

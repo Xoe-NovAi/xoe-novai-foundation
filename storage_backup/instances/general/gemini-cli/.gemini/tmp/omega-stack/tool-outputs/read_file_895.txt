@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# 📄 Analyst's Context Manifest (Active Attention Window)\n**Session**: SESS-16 (Refraction Point)\n**Primary Focus**: Infrastructure Stabilization & Model Registry\n\n## 🔍 Observed Files (High Attention)\n- `app/XNAi_rag_app/core/age
+... [TRUNCATED] ...
+ve MCP Servants\n1. `memory-bank`: Port 8005 (The Long-Term Memory).\n2. `omega-stats`: ZRAM/GPU monitoring (The Biological Status).\n3. `xnai-github`: Local Git Ops (The Historical Record).\n4. `xnai-websearch`: DDG/Tavily (The External World).\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773249914274_0_bkecej.txt
+</tool_output_masked>

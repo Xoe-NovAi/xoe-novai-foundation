@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/generate_tls_certs.sh. Here is the updated code:\n#!/bin/bash\n# scripts/generate_tls_certs.sh\n# Generate self-signed certificates 
+... [TRUNCATED] ...
+f not already there\nif ! grep -q \"infra/docker/tls/\" .gitignore; then\n    echo -e \"\\n# Redis TLS Certificates\\ninfra/docker/tls/\" >> .gitignore\n    echo \"✅ Updated .gitignore\"\nfi\n\necho \"✨ TLS Certificates generated successfully.\"\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/write_file_write_file_1773004316301_0_usj1jj.txt
+</tool_output_masked>

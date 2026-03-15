@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: 68M     /home/arcana-novai/Documents/Programming/Projects/Save_Web_Page_Batch/pyinstaller/pyinstaller/.git
+68M     /home/arcana-novai/Documents/Programming/Projects/Save_Web_Page_Batch/pyinstaller/.git
+41M     /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.git
+23M     /home/arcana-novai/Documents/Cline/MCP/claude-code-plugins-plus-skills/.git
+8.5M    /home/arcana-novai/Documents/Cursor.old/User/globalStorage/saoudrizwan.claude-dev/checkpoints/4150843883/.git
+3.8M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/projects/crawl4ai-gui/crawler_gui/lib/python3.12/site-packages/numpy/_core/tests/__pycache__
+3.8M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/.venv/lib/python3.12/site-packages/numpy/_core/tests/__pycache__
+3.7M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/projects/crawl4ai-gui/crawler_gui/lib/python3.12/site-packages/pygments/lexers/__pycache__
+3.7M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/.venv/lib/python3.12/site-packages/pygments/lexers/__pycache__
+2.8M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/.git
+
+... [11 lines omitted] ...
+
+1.3M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/projects/crawl4ai-gui/crawler_gui/lib/python3.12/site-packages/rich/__pycache__
+1.3M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/projects/crawl4ai-gui/crawler_gui/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__
+1.3M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/projects/crawl4ai-gui/crawler_gui/lib/python3.12/site-packages/numpy/lib/tests/__pycache__
+1.3M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/.venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__
+1.3M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/.venv/lib/python3.12/site-packages/numpy/lib/tests/__pycache__
+1.3M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/.venv/lib/python3.12/site-packages/langchain_community/llms/__pycache__
+1.2M    /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/aiohttp/__pycache__
+1.2M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/projects/crawl4ai-gui/crawler_gui/lib/python3.12/site-packages/huggingface_hub/__pycache__
+1.2M    /home/arcana-novai/Desktop/GitHub/Xoe-NovAi/.venv/lib/python3.12/site-packages/langchain_community/chat_models/__pycache__
+sort: write failed: 'standard output': Broken pipe
+Process Group PGID: 1860146
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773337808569_0_rydyg.txt
+</tool_output_masked>

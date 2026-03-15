@@ -1,0 +1,3 @@
+{
+  "output": "No matches found for pattern \"ACL|setfacl\" in path \"storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/\"."
+}

@@ -1,0 +1,3 @@
+{
+  "output": "Output: xnai_redis: map[xnai_db_network:0xc000820360]\nxnai_postgres: map[xnai_db_network:0xc0007ca000]\nProcess Group PGID: 2578234"
+}

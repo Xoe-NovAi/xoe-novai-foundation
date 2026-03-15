@@ -1,0 +1,5 @@
+Found 4 file(s) matching "docs/**/*model*" within /home/arcana-novai/Documents/Xoe-NovAi/omega-stack, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/02-tutorials/prompt-engineering/model-analysis.md
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/04-explanation/EmbeddingGemma model card.md
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/microservices/docgen/models.py
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/microservices/docvalidator/models.py

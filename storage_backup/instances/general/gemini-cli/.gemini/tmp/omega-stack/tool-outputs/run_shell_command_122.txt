@@ -1,0 +1,17 @@
+Output: total 88
+drwxrwxr-x+  8 arcana-novai arcana-novai 4096 Mar 14 22:22 .
+drwxr-x--- 60 arcana-novai arcana-novai 4096 Mar 14 22:09 ..
+drwxrwsr-t+  2 arcana-novai arcana-novai 4096 Mar 14 21:45 memory_bank
+-rw-rwx---  1 arcana-novai arcana-novai 1779 Mar 14 21:44 oauth_creds.json
+-rw-rwxr--  1 arcana-novai arcana-novai   53 Mar 11 12:20 google_accounts.json
+-rw-rwxr--  1 arcana-novai arcana-novai   21 Mar 11 01:43 state.json
+drwxrwxr-x  2 arcana-novai arcana-novai 4096 Mar 11 00:21 acknowledgments
+-rw-rwx---  1 arcana-novai arcana-novai   74 Mar 11 00:20 trustedFolders.json
+drwxrwxr-x  2 arcana-novai arcana-novai 4096 Mar  8 16:28 chats
+lrwxrwxrwx  1 arcana-novai arcana-novai  109 Mar  8 13:37 settings.json -> /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/settings.json
+drwxrwxr-x  8 arcana-novai arcana-novai 4096 Mar  7 15:28 antigravity
+drwxrwxr-x  4 arcana-novai arcana-novai 4096 Mar  7 13:39 tmp
+-rw-rwxr--  1 arcana-novai arcana-novai   36 Mar  7 13:38 installation_id
+-rw-rwxr--  1 arcana-novai arcana-novai   95 Mar  7 13:27 projects.json
+drwxrwxr-x  3 arcana-novai arcana-novai 4096 Mar  7 13:27 history
+Process Group PGID: 62014

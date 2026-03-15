@@ -1,0 +1,2 @@
+Output: -rw-rw-r-- 1 arcana-novai arcana-novai 473M Mar  8 22:25 infra/docker/models/Qwen3-0.6B-Q6_K.gguf
+Process Group PGID: 1327386

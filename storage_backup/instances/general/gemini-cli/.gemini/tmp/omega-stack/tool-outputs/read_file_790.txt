@@ -1,0 +1,106 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 1-100 of 608 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 101.
+
+--- FILE CONTENT (truncated) ---
+---
+title: Omega Metropolis Context Pack
+generated_at: 2026-03-05 00:06
+architecture: Hierarchical 8-Domain Expert Network
+---
+
+# 🏙️ Omega Metropolis Context Pack
+
+## 📊 Inventory Summary
+Tree summary unavailable.
+
+
+## 📄 File: memory_bank/activeContext.md
+```markdown
+# XNAi Foundation — Active Context
+
+> **Last updated**: 2026-03-04 (Metropolis v5.3 Definitive Hardening)
+> **Current agent**: Gemini CLI (MC-Overseer)
+> **Strategy Status**: 🚀 **WAVE 6: HIERARCHICAL ORCHESTRATION**
+> **Coordination Key**: `OMEGA-METROPOLIS-V5`
+
+---
+
+## 🚀 March 4, 2026 - Metropolis Hardening & Hierarchical Matrix
+
+### Current Session Status
+**Goal**: Finalize 8-domain isolation, multi-provider hierarchy, and toolkit consolidation.
+**Status**: ✅ **SYSTEM DEFINITIVE - READY FOR PR**
+**Achievements**:
+- **Soul Evolution Engine**: Implemented the "Weighing of the Heart" ceremony balancing Maat (Order) and Lilith (Sovereignty).
+- **Persistent Archetypes**: Created `maat.json` and `lilith.json` learning entities.
+- **3-Level Hierarchy**: Established Prime (Gemini), Sub-Expert (SambaNova/OpenCode), and Validator (Local) levels.
+- **Dynamic Domains**: Refactored dispatcher to load technical domains from `config/metropolis-domains.yaml`.
+- **Quota Heatmap**: Implemented real-time visual tracking of provider health in the dashboard.
+
+### 📋 Next Steps
+- **Llama 405B Review**: Execute the deep architectural audit via the hierarchical broker.
+- **Antigravity Flow**: Restore full OAuth connectivity for Opus 4.6 access.
+- **Community Release**: Finalize `METROPOLIS-SETUP-GUIDE.md` for public sharing.
+
+### 🏗️ Architectural Updates
+- **Isolated State**: Total isolation for Gemini, OpenCode, Cline, and Copilot via Technical Domain (1-8) mappings.
+- **Expert Souls**: Persistent `expert_soul.md` updates now automated per domain cluster.
+- **Unified Dashboard**: Real-time observability via `make dashboard`.
+
+---
+**Coordination Key**: `OMEGA-METROPOLIS-V5`
+**Custodian**: Gemini CLI (MC-Overseer)
+
+```
+
+## 📄 File: memory_bank/techContext.md
+```markdown
+---
+block:
+  label: tech_context
+  description: Technology stack, versions, dependencies, and development environment setup
+  chars_limit: 5000
+  read_only: false
+  tier: core
+  priority: 3
+created: 2026-02-20
+modified: 2026-03-04
+version: "1.1"
+---
+
+# Tech Context - Xoe-NovAi Foundation Stack
+
+## Technology Stack
+
+| Component | Technology | Version | Purpose |
+|-----------|-----------|---------|---------|
+| **Framework** | FastAPI | Latest | REST API server |
+| **Async Runtime** | AnyIO | Python 3.12 | Async task management |
+| **LLM** | GGUF/ONNX | Quantized | Local language model |
+| **Vector DB** | FAISS/Qdrant | Latest | Semantic search |
+| **Cache** | Redis | 7.1.1 | State persistence, caching |
+| **Database** | PostgreSQL | 14+ | Data persistence |
+| **Reverse Proxy** | Caddy | 2.8 | Load balancing, routing |
+| **Speculative Search**| Funnel Retrieval | 128d -> 4096d | 1.0.0 | High-speed-to-deep retrieval |
+| **Escalation**      | Hierarchical Research | 150M -> 8B | 1.0.0 | 4-level agent reasoning |
+| **Container Runtime** | Podman | Latest | Rootless containers |
+| **Metrics** | VictoriaMetrics | Latest | Time-series storage |
+| **Documentation** | MkDocs | 1.6.1 + Material 10.0.2 | Knowledge base |
+
+## Stack Constraints
+
+| Constraint | Requirement | Rationale |
+|------------|-------------|-----------|
+| Torch-free | No PyTorch/Torch/Triton/CUDA | Sovereignty, resource efficiency |
+| Python | 3.12-slim containers | Modern async, smaller images |
+| Async | AnyIO TaskGroups (never asyncio.gather) | Safer cancellation, structured concurrency |
+| Containers | Rootless Podman with `:Z,U` volumes | Security, no root privileges |
+
+## Service Ports
+
+| Service | Port | Purpose |
+|---------|------|---------|
+| Caddy (main proxy) | 8000 | Public API |
+| MkDocs (internal) | 8001 | Internal KB |

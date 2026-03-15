@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# ==========================================================================\n# Xoe-NovAi Phase 1 v0.1.2 Environment Configuration\n# ==========================================================================\n\n# DO NOT COMMIT REAL SE
+... [TRUNCATED] ...
+th within the project to ensure sessions survive restarts.\n# Default (volatile): /tmp/xnai-instances\nINSTANCE_ROOT=\"/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances-active\"\n# ---------------------------------------------\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/read_file_read_file_1773175255804_0_5hx4v8.txt
+</tool_output_masked>

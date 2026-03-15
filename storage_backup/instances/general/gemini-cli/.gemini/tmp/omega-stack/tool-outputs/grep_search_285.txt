@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 4 matches for pattern \"Store not initialized\" in path \"mcp-servers/memory-bank-mcp/\":\n---\nFile: memory_bank_store.py\nL232-         memory_limit_gb: float\nL233-     ) -> Dict[str, Any]:\nL234-         \"\"\"Register an age
+... [TRUNCATED] ...
+Store not initialized\"}\nL438- \nL439-             sql = \"\"\"\nL440-                 SELECT c.context_id, c.agent_id, c.context_type, c.tier,\nL441-                        c.version, c.content, rank\nL442-                 FROM contexts_fts\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/grep_search_grep_search_1773074772390_0_tlr5a7.txt
+</tool_output_masked>

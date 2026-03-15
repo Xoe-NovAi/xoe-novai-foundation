@@ -1,0 +1,3 @@
+{
+  "output": "Found 4 file(s) matching \"**/*BOOTSTRAP*\" across 2 workspace directories, sorted by modification time (newest first):\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts/AGENT_BUS_BOOTSTRAP.py\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/sqlalchemy/testing/plugin/__pycache__/bootstrap.cpython-313.pyc\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/sqlalchemy/testing/plugin/bootstrap.py\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/bootstrap-config.sh"
+}

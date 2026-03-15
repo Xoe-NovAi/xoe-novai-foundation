@@ -1,0 +1,3 @@
+{
+  "output": "Output: 2592b104f3fa05ffdcf2f5186049b036ba26f59502648655cb85610a86f8b2a8\nError: not all containers could be removed from pod 4086d10a4d7f23b9464d653ac9295df605c8127fe4a5802f14f6acf2cef717b7: removing pod containers\nError: error removing container cfb1fb05dd426c83de42eb96f594d2290a19cd2af6cbc41bf96e2ab2f99c1e8f from pod 4086d10a4d7f23b9464d653ac9295df605c8127fe4a5802f14f6acf2cef717b7: cleaning up container cfb1fb05dd426c83de42eb96f594d2290a19cd2af6cbc41bf96e2ab2f99c1e8f: removing container cfb1fb05dd426c83de42eb96f594d2290a19cd2af6cbc41bf96e2ab2f99c1e8f network: 1 error occurred:\n        * rootless netns: kill network process: permission denied\nExit Code: 123\nProcess Group PGID: 428421"
+}

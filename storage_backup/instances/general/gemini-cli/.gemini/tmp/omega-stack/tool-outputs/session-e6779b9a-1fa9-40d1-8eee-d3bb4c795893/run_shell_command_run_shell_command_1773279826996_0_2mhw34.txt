@@ -1,0 +1,3 @@
+{
+  "output": "Output: xnai_oikos\n🔱 Foundry: Sending problem to Iris Bridge (Port 8006)...\n❌ Connection Error: Oikos Service is likely offline. ()\n💡 Suggestion: Start the service with 'python3 app/oikos_service.py'\nProcess Group PGID: 493289"
+}

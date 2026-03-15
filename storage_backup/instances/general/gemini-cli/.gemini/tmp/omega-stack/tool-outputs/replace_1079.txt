@@ -1,0 +1,17 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+    ToolResultContent,
+)
+from mcp.server.stdio import stdio_server
+
+# XNAi Foundation imports
+from XNAi_rag_app.core.config_loader import load_config
+from XNAi_rag_app.core.logging_config import get_logger
+from XNAi_rag_app.core.dependencies import get_vectorstore, get_llm_async
+from XNAi_rag_app.core.agent_bus import AgentBusClient
+
+
+from memory_bank_fallback import MemoryBankFallbackWrapper
+from memory_bank_store import MemoryBankStore
+
+...

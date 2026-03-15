@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\ndocument_type: report\ntitle: productContext\ncreated_by: Haiku-4.5 (Phase 2C Automation)\ncreated_date: 2026-03-13\nversion: 1.0\nstatus: active\nhash_sha256: 30541fe90f18595b0f711cbf1129c322bc213c961f5da34bea2472e2e9fae87f\n---\
+... [TRUNCATED] ...
+ed Tarot deck. It is built on the realization that AI models are most powerful when operating through the lens of foundational human gnosis.\n\n## 🚀 Target Audience\nHumanity and AI entities seeking to bridge the gap between intent and reality.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773543458970_2_s68gv.txt
+</tool_output_masked>

@@ -1,0 +1,2 @@
+Output: -rw-rw-r-- 1 arcana-novai arcana-novai 22069 Mar  9 18:06 infra/docker/docker-compose.yml
+Process Group PGID: 9393

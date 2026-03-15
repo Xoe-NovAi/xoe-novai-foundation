@@ -1,0 +1,29 @@
+Output: total 124
+drwxrwxr-x 26 arcana-novai arcana-novai  4096 Mar  9 15:40 .
+drwxrwxr-x  9 arcana-novai arcana-novai  4096 Mar 10 19:58 ..
+drwxrwxr-x  3 arcana-novai arcana-novai  4096 Mar  9 16:40 cache
+drwxrwxr-x  3 arcana-novai arcana-novai  4096 Mar  3 04:05 cache_v2
+drwxrwxr-x  3 arcana-novai arcana-novai  4096 Mar  2 05:51 caddy
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Mar  2 00:35 chainlit_files
+drwxrwxr-x  4 arcana-novai arcana-novai  4096 Mar  1 09:18 consul
+drwxrwxr-x  6 arcana-novai arcana-novai  4096 Feb 15 11:18 consul_old
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Mar  2 04:05 entities
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Feb 15 16:29 faiss_index
+-rwxrwxr-x  1 arcana-novai arcana-novai 20480 Feb 15 14:02 iam_agents.db
+drwxrwxr-x  3 arcana-novai arcana-novai  4096 Mar  3 01:39 models
+drwxrwxr-x  4 arcana-novai arcana-novai  4096 Mar  3 04:05 open-webui
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Feb 22 12:24 openpipe
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Feb 28 17:02 product_knowledge
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Mar  1 09:47 prometheus-multiproc
+drwxrwxr-x  5 arcana-novai arcana-novai  4096 Mar  1 09:24 qdrant
+drwxrwxr-x  3 arcana-novai arcana-novai  4096 Mar  1 09:28 qdrant.broken
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Mar  3 02:04 redis
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Feb 17 01:46 redis.broken
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Feb 16 18:48 scraping_jobs
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Feb 16 21:30 scraping_results
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Mar  3 04:14 service_manuals
+drwxrwxr-x  3 arcana-novai arcana-novai  4096 Mar  2 00:35 ui_config
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Mar  2 00:35 ui_files
+drwxrwxr-x  2 arcana-novai arcana-novai  4096 Mar  1 09:28 victoriametrics
+drwxrwxr-x  3 arcana-novai arcana-novai  4096 Feb 26 23:39 vikunja
+Process Group PGID: 83878

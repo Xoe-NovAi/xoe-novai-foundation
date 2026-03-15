@@ -1,0 +1,5 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/gnostic_architecture:
+00_architect_phronesis.md (2628 bytes)
+01_temple_architecture.md (4936 bytes)
+02_oikos_council.md (2816 bytes)
+03_archetypal_personas.md (1809 bytes)

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml. Here is the updated code:\n...\n    restart: unless-stopped\n\n  # =======================================================
+... [TRUNCATED] ...
+"\n      - \"com.xnai.requires=redis\"\n      - \"com.xnai.type=mcp-server\"\n\nnetworks:\n  xnai_db_network:\n    name: xnai_db_network\n    internal: true\n  xnai_app_network:\n    name: xnai_app_network\n\nvolumes:\n  victoriametrics-data:\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/write_file_write_file_1773079998829_0_pxppl8.txt
+</tool_output_masked>

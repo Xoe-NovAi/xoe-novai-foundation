@@ -1,0 +1,24 @@
+Output:   llama_server:
+    image: ghcr.io/abetlen/llama-cpp-python:latest
+    container_name: xnai_llama_server
+    command: python3 -m llama_cpp.server --model /models/Qwen3-0.6B-Q6_K.gguf --n_gpu_layers 0 --n_threads 6 --n_ctx 32768 --host 0.0.0.0 --port 8000 --api_key ${LLAMA_API_KEY:-xnai-local-key}
+    volumes:
+      - ./models:/models:ro
+    environment:
+      - N_THREADS=6
+    deploy:
+      resources:
+        limits:
+--
+      - OPENAI_API_BASE_URL=http://xnai_llama_server:8000/v1
+      - OPENAI_API_KEY=${LLAMA_API_KEY:-xnai-local-key}
+      - VECTOR_DB=qdrant
+      - QDRANT_URI=http://qdrant:6333
+      - QDRANT_API_KEY=${QDRANT_API_KEY:-}
+      - ENABLE_PERSISTENT_CONFIG=False
+    volumes:
+      - ./data/open-webui:/app/backend/data:Z
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    deploy:
+Process Group PGID: 1318103

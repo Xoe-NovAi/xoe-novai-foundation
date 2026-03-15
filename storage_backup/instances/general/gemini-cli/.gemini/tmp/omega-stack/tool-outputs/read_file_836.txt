@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 550-600 of 1100 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For examp
+... [TRUNCATED] ...
+al[str] = None, **kwargs) -> LlamaCpp:\n    \"\"\"\n    Async wrapper for LLM initialization.\n    \n    Args:\n        model_path: Path to model\n        **kwargs: Additional parameters\n        \n    Returns:\n        Initialized LLM\n    \"\"\""
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773018860883_0_igahl.txt
+</tool_output_masked>

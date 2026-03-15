@@ -1,0 +1,8 @@
+Output: xnai_oikos
+xnai_oikos
+43b1cc621f7502555161ac6b1cd762deb5ab4741b061a696e60098690b31e842
+xnai_oikos
+🔱 Foundry: Sending problem to Iris Bridge (Port 8006)...
+🌈 Iris Decision: LEVEL_2_LOCAL_LARGE
+🔱 Response: ❌ AgentFactory: All paths exhausted. Error: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+Process Group PGID: 444922

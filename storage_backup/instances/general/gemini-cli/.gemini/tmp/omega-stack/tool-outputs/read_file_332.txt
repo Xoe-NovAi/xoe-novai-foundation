@@ -1,0 +1,57 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 350-401 of 401 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 402.
+
+--- FILE CONTENT (truncated) ---
+    
+    _initialized = False
+    
+    async def _ensure_initialized():
+        nonlocal _initialized
+        if not _initialized:
+            try:
+                await memory_bank_mcp.initialize()
+                _initialized = True
+            except Exception as e:
+                logger.error(f"Initialization failed: {e}")
+                _initialized = True
+
+    @server.list_tools()
+    async def list_tools():
+        return await mcp_instance.get_capabilities()
+
+    @server.call_tool()
+    async def call_tool(name: str, arguments: Dict[str, Any]):
+        await _ensure_initialized()
+        return await memory_bank_mcp.handle_tool_call(name, arguments)
+    
+    return server
+
+app = FastAPI(title="Memory Bank MCP Server (SSE)")
+sse = SseServerTransport("/messages/")
+
+@app.get("/sse")
+async def handle_sse(request: Request):
+    server = await create_mcp_server()
+    async with sse.connect_sse(
+        request.scope, request.receive, request._send
+    ) as streams:
+        await server.run(
+            streams[0],
+            streams[1],
+            server.create_initialization_options()
+        )
+
+@app.post("/messages/")
+async def handle_messages(request: Request):
+    await sse.handle_post_message(request.scope, request.receive, request._send)
+    return Response(status_code=204)
+
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000, timeout_keep_alive=65)

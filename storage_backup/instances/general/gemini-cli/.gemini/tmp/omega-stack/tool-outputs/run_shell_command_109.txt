@@ -1,0 +1,6 @@
+Output: -rwxrwxr-x+ 1 arcana-novai arcana-novai 2.1K Mar  7 13:42 .logs/sessions/General/2026-03-07_13-41-49_gemini_0.log
+-rwxrwxr-x+ 1 arcana-novai arcana-novai 1.5K Mar  7 15:50 .logs/sessions/General/2026-03-07_15-50-15_gemini_0.log
+-rwxrwxr-x+ 1 arcana-novai arcana-novai 1.5K Mar  7 15:25 .logs/sessions/General/2026-03-07_15-25-13_gemini_0.log
+-rwxrwxr-x+ 1 arcana-novai arcana-novai 1.5K Mar  7 14:11 .logs/sessions/General/2026-03-07_14-11-14_gemini_0.log
+-rwxrwxr-x+ 1 arcana-novai arcana-novai 1.5K Mar  7 13:58 .logs/sessions/General/2026-03-07_13-57-55_gemini_0.log
+Process Group PGID: 60646

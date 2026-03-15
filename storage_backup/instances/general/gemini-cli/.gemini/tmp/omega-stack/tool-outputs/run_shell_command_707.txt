@@ -1,0 +1,3 @@
+Output: cp: cannot create regular file 'infra/docker/monitoring/grafana/dashboards/omega-stack-dashboard.json': Permission denied
+Exit Code: 1
+Process Group PGID: 105321

@@ -1,0 +1,14 @@
+Output: 🔱 Initiating Global Gnostic Audit...
+🔍 Auditing: app/XNAi_rag_app/core/linguistics.py
+🔍 Auditing: app/XNAi_rag_app/core/dependencies.py
+🔍 Auditing: mcp-servers/xnai-gnosis/server.py
+
+🔱 GNOSTIC AUDIT COMPLETE
+✅ PASSED: 3
+❌ FAILED: 0
+✈️  Running Gnostic Pre-Flight...
+🔱 OMEGA STACK: Pre-Flight Gnostic Audit
+❌ Brittle: app/XNAi_rag_app/core/linguistics.py (Hash Mismatch)
+✅ Symlink Health: OK
+✅ UID Integrity: 1000 (Sovereign)
+Process Group PGID: 1953909

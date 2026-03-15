@@ -1,0 +1,2 @@
+Output: -rw-rw-r-- 1 arcana-novai arcana-novai 11187 Mar 11 15:47 /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py
+Process Group PGID: 1971524

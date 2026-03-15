@@ -1,0 +1,25 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/TGG_GRAPH.json (1 replacements). Here is the updated code:
+...
+          "re",
+          "unicodedata"
+        ],
+        "hash": "83d596e775e49a9d0100fff846afb54965d6a4e954e746446a85f51896e05a80"
+      },
+      "mcp.server.fastmcp": {
+        "path": "builtin",
+        "type": "external",
+        "imports": []
+      },
+      "mcp-servers.xnai-gnosis.server": {
+        "path": "mcp-servers/xnai-gnosis/server.py",
+        "type": "mcp",
+        "imports": ["mcp.server.fastmcp", "prometheus_client", "app.XNAi_rag_app.core.linguistics"],
+        "hash": "inherited"
+      }
+,
+      "app.core.test": {
+        "path": "app/core/test.py",
+        "hash": "abc123hash",
+        "type": "logic",
+        "last_anchored": "2026-03-12"
+...

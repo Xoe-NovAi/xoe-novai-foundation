@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: /usr/local/lib/python3.12/site-packages/bin/llama-mtmd-cli
+/usr/local/lib/python3.12/site-packages/langchain_classic/chat_models/ollama.py
+/usr/local/lib/python3.12/site-packages/langchain_classic/llms/ollama.py
+/usr/local/lib/python3.12/site-packages/langchain_classic/llms/llamacpp.py
+/usr/local/lib/python3.12/site-packages/langchain_classic/retrievers/llama_index.py
+/usr/local/lib/python3.12/site-packages/langchain_classic/embeddings/ollama.py
+/usr/local/lib/python3.12/site-packages/langchain_classic/embeddings/llamacpp.py
+/usr/local/lib/python3.12/site-packages/langchain_community/chat_models/llama_edge.py
+/usr/local/lib/python3.12/site-packages/langchain_community/chat_models/ollama.py
+/usr/local/lib/python3.12/site-packages/langchain_community/chat_models/llamacpp.py
+
+... [20 lines omitted] ...
+
+/usr/local/lib/python3.12/site-packages/llama_cpp/llama_chat_format.py
+/usr/local/lib/python3.12/site-packages/llama_cpp/llama_cache.py
+/usr/local/lib/python3.12/site-packages/llama_cpp/llama_speculative.py
+/usr/local/lib/python3.12/site-packages/llama_cpp/llama_tokenizer.py
+/usr/local/lib/python3.12/site-packages/llama_cpp/llama_grammar.py
+/usr/local/lib/python3.12/site-packages/llama_cpp/lib/libllama.so
+/usr/local/lib/python3.12/site-packages/onnxruntime/transformers/models/llama
+/usr/local/lib/python3.12/site-packages/onnxruntime/transformers/models/llama/llama_inputs.py
+/usr/local/lib/python3.12/site-packages/onnxruntime/transformers/models/llama/llama_torch.py
+/usr/local/lib/python3.12/site-packages/onnxruntime/transformers/models/llama/llama_parity.py
+Process Group PGID: 101437
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/run_shell_command_run_shell_command_1773176354474_0_m0nzfw.txt
+</tool_output_masked>

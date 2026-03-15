@@ -1,0 +1,3 @@
+{
+  "output": "Output:                total        used        free      shared  buff/cache   available\nMem:           6.6Gi       3.3Gi       1.7Gi        16Mi       2.1Gi       3.3Gi\nSwap:           11Gi       879Mi        11Gi\nNAME       ALGORITHM DISKSIZE   DATA COMPR  TOTAL STREAMS MOUNTPOINT\n/dev/zram1 zstd            8G 686.8M  136M 144.4M         [SWAP]\n/dev/zram0 lzo-rle         4G 159.6M 54.7M  61.8M         [SWAP]\nProcess Group PGID: 955627"
+}

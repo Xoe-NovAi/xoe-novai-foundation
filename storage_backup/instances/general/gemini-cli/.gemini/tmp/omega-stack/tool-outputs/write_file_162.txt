@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts/GNOSTIC_LEXICON.json. Here is the updated code:\n{\n  \"version\": \"1.0.0\",\n  \"last_updated\": \"2026-03-12T15:30:00Z\",\n  \"
+... [TRUNCATED] ...
+ - Metadata Schema\",\n    \"STUP\": \"Sovereign Tool-Use Protocol - Efficiency Mandate\",\n    \"Oikonomia\": \"Gnostic Economy - Token/Cache Telemetry\",\n    \"CrystalHash\": \"Functional SHA-256 of AST (strips non-functional nodes)\"\n  }\n}\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773354391144_2_ii6fcp.txt
+</tool_output_masked>

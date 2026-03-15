@@ -1,0 +1,5 @@
+Found 4 file(s) matching "**/*BOOTSTRAP*" across 2 workspace directories, sorted by modification time (newest first):
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts/AGENT_BUS_BOOTSTRAP.py
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/sqlalchemy/testing/plugin/__pycache__/bootstrap.cpython-313.pyc
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/lib/python3.13/site-packages/sqlalchemy/testing/plugin/bootstrap.py
+/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/bootstrap-config.sh

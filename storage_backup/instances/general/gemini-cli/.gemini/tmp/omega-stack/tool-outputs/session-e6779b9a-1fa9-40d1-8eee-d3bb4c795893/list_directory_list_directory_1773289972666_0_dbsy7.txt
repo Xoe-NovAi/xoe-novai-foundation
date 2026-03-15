@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/expert-knowledge/reclaimed_gnosis/origins/heart_of_omega/Mind Model Files - Unorganized:\nMaster Memory Template - Claude.md (8207 bytes)\nMEMORY NOTE_ MASTER PROTOCOLS.txt (4380 bytes)\nMIND MODEL MODULE - Ubuntu Installation.txt (6258 bytes)\nMIND MODEL V3_ MASTER PROTOCOLS.txt (13541 bytes)\nMIND MODEL V4: MASTER PROTOCOLS.txt (6607 bytes)\nMIND MODEL V4.1_ MASTER PROTOCOLS_Py.txt (6608 bytes)\nMIND MODEL V4.1_ MASTER PROTOCOLS.txt (6607 bytes)\nPEM_Lilith_Py.txt (6903 bytes)\nPEM_Lilith.txt (4710 bytes)"
+}

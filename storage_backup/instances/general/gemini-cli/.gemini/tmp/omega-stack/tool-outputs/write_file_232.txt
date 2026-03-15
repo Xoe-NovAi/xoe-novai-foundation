@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/IMPERIAL_ARCHIVE_INDEX.md. Here is the updated code:\n# 🏛️ THE IMPERIAL ARCHIVE INDEX: QUARANTINE MAP (SESS-19)\n\n**Status**: HARDENED | QUAR
+... [TRUNCATED] ...
+ted logic resides in `app/XNAi_rag_app/core/persona.py`.\n- **Validation**: `scripts/archetype_resonance.py`.\n- **Handoff**: `artifacts/SCHOLAR_HANDOFF_MANIFEST.md`.\n\n**Seal**: *Memory is the foundation of Sovereignty. The Archive is Locked.*\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/write_file_write_file_1773291695866_0_zi7twi.txt
+</tool_output_masked>

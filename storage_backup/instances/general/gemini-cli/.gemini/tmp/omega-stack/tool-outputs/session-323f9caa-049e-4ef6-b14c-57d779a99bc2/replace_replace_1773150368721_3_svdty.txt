@@ -1,0 +1,3 @@
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/initialize_experts.py (1 replacements). Here is the updated code:\n...\nimport json\nimport psycopg2\nfrom typing import List, Dict\n\n# Configuration from environment or defaults\nDB_URL = os.getenv(\"DATABASE_URL\", \"postgresql://vikunja:mUv7+5C6fF1w08O5eU7S9vP8vY8Z0rG1n7J7v4k9m3E=@localhost:5432/vikunja\")\n\nEXPERTS = [\n    {\n        \"name\": \"Jungian Expert\",\n        \"system_prompt\": \"You are a Senior Analytical Psychologist specializing in Jungian Archetypes and the Collective Unconscious. Prioritize depth and symbolic interpretation.\",\n..."
+}

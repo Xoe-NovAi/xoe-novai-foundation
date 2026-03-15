@@ -1,0 +1,6 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge:
+[DIR] model_cards
+[DIR] schemas
+[DIR] technical_manuals
+[DIR] vectors
+model_cards_inventory.json (325 bytes)

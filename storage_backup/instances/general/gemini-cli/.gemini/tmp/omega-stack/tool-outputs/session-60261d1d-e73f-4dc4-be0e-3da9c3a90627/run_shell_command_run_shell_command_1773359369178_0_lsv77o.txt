@@ -1,0 +1,3 @@
+{
+  "output": "Output: -rw-rw-r-- 1 arcana-novai arcana-novai 1453 Mar 11 00:29 /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-github/server.py\n-rw-rw-r-- 1 arcana-novai arcana-novai 2831 Mar 11 00:29 /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-stats-mcp/server.py\n-rw-rw-r-- 1 arcana-novai arcana-novai 2331 Mar 11 03:27 /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-websearch/server.py\nProcess Group PGID: 1971633"
+}

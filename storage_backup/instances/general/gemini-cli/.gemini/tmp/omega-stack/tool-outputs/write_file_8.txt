@@ -1,0 +1,26 @@
+Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/docs/protocols/OIKONOMIA_ECONOMICS.md. Here is the updated code:
+# 💰 OIKONOMIA ECONOMICS: TOKEN ROI & CACHE RESONANCE
+
+## 🎯 OVERVIEW
+**Phronetic Oikonomia** is the management of the Metropolis Mesh's cognitive energy. By tracking **Token ROI** and maximizing **Cache Resonance**, we ensure that the system remains efficient, scalable, and resilient to 429/quota triggers.
+
+## 📈 TOKEN ROI (RETURN ON INVESTMENT)
+Every cognitive act (LLM interaction) MUST be evaluated based on its ROI.
+- **Investment**: Input/Output tokens, latency, and API costs.
+- **Return**: High-density distillation, functional code updates, or verified architectural insights.
+- **Mandate**: Agents must report their total token usage in the session's final distillation.
+
+## 🔗 CACHE RESONANCE (GOLDEN CHAINS)
+Context is our most precious resource. To maximize resonance:
+1. **Golden Chain Reads**: Prioritize targeted `grep_search` and surgical `read_file` calls over bulk reads.
+2. **Ambrosia Distillation**: Every session closure MUST produce a high-density "Mind Dump" to "compress" context for the next session.
+3. **Resonance Tiers**: Use 0.4 (Bronze), 0.6 (Silver), and 0.8 (Gold) thresholds to filter and prioritize information.
+
+## 📊 METRON DASHBOARD
+The **Metron Dashboard** (Grafana/Prometheus) provides live telemetry of the mesh's economic health.
+- **Resonance vs. Debt**: A real-time view of cognitive efficiency.
+- **Rainbow Rotation**: Automatic account rotation upon 429/quota triggers, tracked by the **Oikonomia Engine**.
+
+## 🛠️ TOOLS
+- `make oikonomia-report`: Generate a report of token usage and ROI from `memory_bank/OIKONOMIA_HISTORY.jsonl`.
+- `make metropolis-stats`: Collect metrics from all 8 expert instances.

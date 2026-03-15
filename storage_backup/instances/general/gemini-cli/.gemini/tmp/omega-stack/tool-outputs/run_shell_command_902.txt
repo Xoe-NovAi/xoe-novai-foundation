@@ -1,0 +1,2 @@
+Output: 16K     /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/facets/instance-6/gemini-cli/.gemini/tmp/omega-stack/
+Process Group PGID: 96289

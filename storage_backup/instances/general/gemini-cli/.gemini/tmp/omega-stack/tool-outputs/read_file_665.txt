@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 70-90 of 174 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example,
+... [TRUNCATED] ...
+ttp://qdrant:6333\nQDRANT_API_KEY=  # Optional: leave empty for development\nVECTOR_SIZE=384\nFAISS_INDEX_PATH=/app/data/faiss_index\n\n# Phase 2 Feature Flags\nPHASE2_QDRANT_ENABLED=false  # Enable for vector search enhancement\n\n# Service Ports"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000816892_0_mp6qul.txt
+</tool_output_masked>

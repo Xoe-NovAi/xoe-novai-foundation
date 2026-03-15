@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "---\ndocument_type: report\ntitle: RESEARCH FINDINGS MULTI CLI INTEGRATION 20260314\ncreated_by: Haiku-4.5 (Phase 2C Automation)\ncreated_date: 2026-03-14\nversion: 1.0\nstatus: active\nhash_sha256: a58a46f15960c85dc57c1c7ddef592563b99
+... [TRUNCATED] ...
+n**Reference**: memory_bank/RESEARCH_FINDINGS_MULTI_CLI_INTEGRATION_20260314.md  \n**Authority**: 88% confidence (production codebase validated, external gaps identified)  \n**Next Step**: Integrate into system prompt v2.3 + Phase -1 execution\n\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/read_file_read_file_1773542053312_1_tikt9.txt
+</tool_output_masked>

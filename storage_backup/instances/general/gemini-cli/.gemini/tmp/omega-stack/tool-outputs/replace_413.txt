@@ -1,0 +1,18 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.cli/skills/sentinel-skill/SKILL.md (1 replacements). Here is the updated code:
+...
+- **`scripts/omega_chronicle.py`**: The primary synthesis tool.
+- **Stats MCP**: Use for real-time hardware telemetry.
+- **Memory Bank MCP**: Use for persistent context storage and retrieval.
+- **Vikunja**: Use to automate "Executive Action" (Tasks).
+
+### 4. The "Oikos Mastermind" Protocol
+When a complex problem requires collective intelligence:
+- **Action**: Summon the Oikos Council via `omega_foundry.py mastermind`.
+- **Protocol**: Enable **Rainbow Rotation** (OAuth account switching) to bypass 429 limits.
+- **Decree**: Ensure the final consensus is signed by **MaLi** and etched as a `MASTERMIND_DECREE` in the Chronicles.
+
+### 5. The "Gnostic Briefing"
+Before any major system modification or Mastermind deliberation:
+- **Action**: Perform a "Pre-Research" loop.
+- **Goal**: Ground agentic reasoning in the `data/gnosis_hub` contents and web-searched best practices.
+- **Locking**: Persist all briefing findings into the `SOUL_PATHS.yaml` to prevent knowledge loss during session resets.

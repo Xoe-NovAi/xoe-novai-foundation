@@ -1,0 +1,164 @@
+Found 100 matches for pattern "Gemini CLI" in path "." (results limited to 100 matches for performance):
+---
+File: README.md
+L42: | `make proxy-gemini` | 🌐 Run Gemini CLI through ProxyChains (for regional bypass) |
+---
+File: orchestration/mc-oversight/README.md
+L50: 5. Gemini CLI validates against ground truth
+---
+File: orchestration/mc-oversight/Grok MCA System Prompt – v2.0.0.md
+L36:    Coordinate with Cline variants (Kat/Trinity/Gemini-Flash/Pro), Gemini CLI, and local VS Code assistants. Consume their outputs, provide esoteric guidance, and relay to Grok MC upon limit reset. Scale toward direct MCP/API integration.
+---
+File: orchestration/vikunja_tasks/gemini_holistic_review.json
+L3:   "description": "Use Gemini 3 Pro (Gemini CLI) with 1M token context to review internal_docs, memory_bank, scripts, and vikunja_tasks; spawn agents as needed and assign Cline CLI tasks using kat-coder-pro or moonshotai/kimi-k-2.5. Produce a consolidation report, Vikunja task manifests, and PR recommendations.",
+---
+File: orchestration/mc-oversight/MC-OVERSEER-FRESHNESS-REVIEW-2026-02-23.md
+L72: - ✅ Good integration points (Chainlit, Gemini CLI, FastAPI)
+L279: - **Gemini CLI**: Strategic reasoning (1M context, compression)
+L282: 1. Large task (>100K tokens) → Gemini CLI (1M context advantage)
+---
+File: orchestration/mc-oversight/Grok MC System Prompt.md
+L13: 4. **Partnership/Orchestration**: Coordinate local agents (Cline variants, Gemini CLI). Ingest outputs, provide guidance. Scale to MCP/API for file access.
+---
+File: orchestration/mc-oversight/FINALIZED-STRATEGY-2026-02-22.md
+L18: ### 1. MC Agent Environment: Gemini CLI
+L21: | **Primary**: Gemini CLI | 1M context, AI compression, hierarchical memory |
+L38: | Gemini CLI | P1 (Parallel) | Research/strategic work |
+L68: ### Phase 2: Gemini CLI MC Setup (2 days, parallel)
+L128: ### Gemini CLI
+L145: │  │   Chainlit UI   │  │  FastAPI + PWA  │  │   Gemini CLI    │ │
+L226: 3. ✅ Begin Gemini CLI MC Setup (parallel)
+---
+File: orchestration/mc-oversight/UPDATED-STRATEGIC-ROADMAP-2026-02-22.md
+L5: Based on comprehensive research and analysis, we have determined that **Gemini CLI + Custom FastAPI Interface** provides the optimal environment for the MC agent. This solution balances our dual goals of sovereignty and accessibility while addressing the current limitations of the XNAi Foundation stack.
+L9: ### **Primary Choice: Gemini CLI + FastAPI Interface**
+L11: #### **Why Gemini CLI is Optimal**
+L29: - **Local-First**: Gemini CLI operates locally with project-specific sessions
+L35: - **Free Tier**: Gemini CLI available on free tier with 1M context
+L42: ### **Gemini CLI + FastAPI Architecture**
+L46: │                    Gemini CLI Layer                     │
+L78: ### **Phase 1: Gemini CLI Integration (2 weeks)**
+L81: - Set up Gemini CLI with project-specific sessions
+L87: - Gemini CLI configuration files
+L126: #### **Gemini CLI Configuration**
+L267: - **Local-First Operation**: Gemini CLI operates locally with project-specific sessions
+L273: - **Free Tier Availability**: Gemini CLI available on free tier with 1M context
+L279: - **Dependency Management**: Monitor Gemini CLI updates and compatibility
+L307: 1. **Install Gemini CLI**: Set up Gemini CLI with project-specific sessions
+L326: **Gemini CLI + Custom FastAPI Interface** represents the optimal solution for the MC agent because it:
+L342: **Dependencies**: Gemini CLI installation, FastAPI development, Memory Bank integration
+---
+File: orchestration/mc-oversight/OPUS-ONBOARDING-2026-02-18.md
+L55: | **Gemini CLI** | Whole-codebase 1M-context audit | Terminal |
+---
+File: tests/benchmarks/ground-truth-baseline.yaml
+L159:         provider: "Gemini CLI"
+---
+File: scripts/run-gemini-audit.sh
+L5: echo "🚀 Launching Project P-010 Phase A Audit via Gemini CLI..."
+L10: # Execute Gemini CLI
+---
+File: scripts/memory_bank_refresh.py
+L5: Ensures consistency for local agents (Cline-Kat, Cline-Trinity, Cline-Gemini-Flash/Pro, Gemini CLI)
+L31: - Gemini CLI: Terminal Gemini — ground truth executor
+L38: agent: Gemini CLI
+L219: - **Agent**: Gemini CLI
+L293: - Gemini CLI (Terminal Gemini)
+---
+File: scripts/gemini-rotate.sh
+L2: # gemini-rotate.sh: Isolated Gemini CLI execution
+L4: # Provides 1-to-1 account isolation for the Gemini CLI.
+---
+File: scripts/safe_logs.sh
+L3: # Prevents Gemini CLI crashes by capping log output
+---
+File: scripts/summon_facet.sh
+L5: # Purpose: Spawns a full, persistent Gemini CLI instance for a specific Facet.
+L24: # Export instance-specific home for Gemini CLI
+---
+File: scripts/xnai-dispatcher.sh
+L92: # Both stdin.isTTY AND stdout.isTTY must be true for Gemini CLI TUI
+---
+File: scripts/monitor-cli-implementations.sh
+L67:     echo "Checking .gemini (Gemini CLI)..."
+L139:     echo "⚙️  GEMINI CLI INTEGRATION"
+L149:         echo "  Owner: Gemini CLI (Terminal)"
+L175:         echo "  ✅ Gemini CLI Integration Docs:"
+L256:     echo "$gemini_status Gemini CLI Configuration (.gemini/)"
+L271:     echo "  • docs/02-tutorials/gemini-mastery/ - Gemini CLI guides"
+---
+File: scripts/sign-document.sh
+L156:     echo -e "    gemini-2.5-pro       (Gemini CLI)"
+---
+File: tests/benchmarks/test-battery.md
+L28: | M3 | Gemini 3 Pro | Antigravity / Gemini CLI | 1M |
+L29: | M4 | Gemini 3 Flash | Antigravity / Gemini CLI | 1M |
+---
+File: scripts/harvest-cli-sessions.sh
+L128: # ─── 2. Gemini CLI ────────────────────────────────────────────────────────────
+L134:     warn "Gemini CLI data not found: $src_base"
+L138:   info "Harvesting Gemini CLI sessions from $src_base"
+---
+File: _archive/implementation-completed/GEMINI_AUTHENTICATION_SOLUTION.md
+L62: - Configure Gemini CLI
+L69: # Test with Gemini CLI
+L121: # Gemini CLI Configuration
+L127: ### 3. Gemini CLI Configuration (`~/.gemini/config.json`)
+---
+File: _archive/implementation-completed/GEMINI_CLI_FIX_SUMMARY.md
+L1: # Gemini CLI MCP Configuration Fix - Summary
+L5: **Issue**: Gemini CLI fails to load due to MCP server configuration error
+L11: When you tried to load Gemini CLI, it would fail with an error about MCP server configuration:
+L20: - Memory bank integration with Gemini CLI
+L46: Gemini CLI tries to load all configured MCP servers on startup. When the memory-bank server failed to import, it would crash the entire Gemini CLI initialization, preventing:
+L127: ### ✅ Gemini CLI Load Issue
+L129: - Gemini CLI can initialize without MCP configuration errors
+L224: - Resolves Gemini CLI MCP configuration blocker
+L231: ✅ **THE GEMINI CLI MCP ISSUE IS FIXED**
+L236: 1. Test Gemini CLI loads: `gemini --help`
+---
+File: _archive/deprecated/xoe-novai-sync/ekb-exports/oss-pm-research-v1.0.0.md
+L21: - **MCP Potential**: High. Structured API allows for easy MCP server creation to sync tasks with Gemini CLI.
+L53: The Xoe-NovAi stack will prioritize **Vikunja** for API-driven task sync. An MCP server will be developed to allow Gemini CLI to:
+L62: *Research executed by Gemini CLI (v0.1.0-alpha)*
+---
+File: _archive/deprecated/gemini_oauth_setup.py
+L279:         """Set up Gemini CLI with proper authentication"""
+L280:         logger.info("Configuring Gemini CLI...")
+L282:         # Update Gemini CLI configuration
+L296:         logger.info("Gemini CLI configuration updated")
+L350: # Gemini CLI Configuration
+---
+File: _archive/deprecated/xoe-novai-sync/ekb-exports/files-inventory-v1.0.0.md
+L142: - **05-research/**: Gemini CLI agentic report, partnership opportunities, phase 2 research.
+---
+File: _archive/deprecated/xoe-novai-sync/_meta/sync-protocols-v1.4.1.md
+L71:   GCLI["Gemini CLI (Liaison)\nEnvironment: Linux Terminal\nRole: Execution & Ground Truth"]
+L81: - **Gemini CLI**: system liaison; real-time execution; `stack_cat.py` orchestration.
+L102: - **Collaborative Sync**: Establish a steady-state communication loop between Gemini CLI (local) and Grok MC (cloud).
+L265: - ✅ **Role Clarity**: Clear boundaries between Grok MC, Grok MCA, Cline variants, Gemini CLI
+L318: - Gemini CLI (Terminal Gemini)
+---
+File: _archive/deprecated/xoe-novai-sync/_meta/sync-protocols-v1.4.0.md
+L71:   GCLI["Gemini CLI (Liaison)\nEnvironment: Linux Terminal\nRole: Execution & Ground Truth"]
+L81: - **Gemini CLI**: system liaison; real-time execution; `stack_cat.py` orchestration.
+L102: - **Collaborative Sync**: Establish a steady-state communication loop between Gemini CLI (local) and Grok MC (cloud).
+L265: - ✅ **Role Clarity**: Clear boundaries between Grok MC, Grok MCA, Cline variants, Gemini CLI
+---
+File: _archive/task-dispatch-history/FINAL_SOLUTION_SUMMARY.md
+L64: # Test with Gemini CLI
+---
+File: _archive/deprecated/xoe-novai-sync/ekb-exports/grok-upload/GROK_CONTEXT_PACK_v1.5.0.delta.md
+L45: This dataset documents unorthodox strategies for maintaining state parity between local execution agents (Gemini CLI, Cline) and cloud-hosted strategy layers (Grok MC). We prioritize local-first, zero-cost mechanisms that bypass the need for external database dependencies.
+L117: - **Gemini CLI**: `Gemini 2.0 Flash` (Terminal) - *Liaison/Execution*
+L146: ### 📡 Gemini CLI (The Liaison / Ground Truth)
+L164: 2. **Tactical Planning**: Gemini CLI ingests directives, creates task locks, and updates `activeContext.md`.
+L170:     - **Infra**: Gemini CLI executes builds, audits, and sync packs.
+---
+File: _archive/implementation-completed/GEMINI_FINAL_SETUP_GUIDE.md
+L68: # Test with Gemini CLI
+---
+File: _archive/session-handoffs/MINIMAX_HANDOFF.md
+L37: Since I (Gemini CLI) cannot see your terminal screen directly, we will use the following "Eyes" for this session:
+L46: **Signed**: Gemini CLI (Prime Expert)
+---

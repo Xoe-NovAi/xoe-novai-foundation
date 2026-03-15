@@ -1,0 +1,57 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 200-250 of 401 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 251.
+
+--- FILE CONTENT (truncated) ---
+                    with open(context_file, 'r') as f:
+                        data = json.load(f)
+                        # Sync back to Redis
+                        if self.redis:
+                            await self.redis.set(redis_key, json.dumps(data))
+                except Exception as e:
+                    logger.error(f"Filesystem read failed: {e}")
+
+        if data:
+            # Update LRU Cache
+            self.context_cache[context_id] = data
+            if len(self.context_cache) > self.cache_limit:
+                self.context_cache.popitem(last=False)
+            
+            if keys:
+                return {k: data.get(k) for k in keys if k in data}
+            return data
+
+        return {"status": "success", "content": {}, "source": "empty"}
+
+    async def update_context(self, agent_id: str, context_type: str, context_data: dict, tier: str = "hot") -> dict:
+        """Update context with Write-Through (LRU + Redis + Filesystem)."""
+        context_id = f"{agent_id}:{context_type}:{tier}"
+        redis_key = f"xnai:ctx:{context_id}"
+        context_file = self.memory_bank_path / f"{agent_id}_{context_type}_{tier}.json"
+        
+        # Load existing data (Try Cache -> Redis -> Filesystem)
+        existing_data = await self.get_context(agent_id, context_type, tier)
+        if isinstance(existing_data, dict) and "status" in existing_data and existing_data["status"] == "success" and "content" in existing_data:
+            existing_data = {} # Reset if it was just the empty template
+        
+        # Update
+        existing_data.update(context_data)
+        data_json = json.dumps(existing_data)
+        
+        # 1. Update LRU Cache
+        self.context_cache[context_id] = existing_data
+        self.context_cache.move_to_end(context_id)
+        if len(self.context_cache) > self.cache_limit:
+            self.context_cache.popitem(last=False)
+        
+        # 2. Update Redis
+        if await self._ensure_redis():
+            try:
+                await self.redis.set(redis_key, data_json)
+            except Exception as e:
+                logger.error(f"Redis update failed: {e}")
+
+        # 3. Update Filesystem (Durability)
+        try:
+            with open(context_file, 'w') as f:

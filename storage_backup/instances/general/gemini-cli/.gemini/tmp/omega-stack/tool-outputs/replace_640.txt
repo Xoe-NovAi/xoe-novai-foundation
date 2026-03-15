@@ -1,0 +1,11 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile.oikos (1 replacements). Here is the updated code:
+# 🔱 Xoe-NovAi Oikos Mesh Service
+# Focus: FastAPI + LiteLLM for Oikos Council Mastermind
+
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+...

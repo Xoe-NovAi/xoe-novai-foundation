@@ -1,0 +1,3 @@
+{
+  "output": "# 🔱 Agent Bus Auto-Connect Logic\nasync def bootstrap_registration(self):\n    \"\"\"S4: Automated identity broadcast on startup.\"\"\"\n    identity_payload = {\n        \"agent_id\": self.agent_id,\n        \"did\": self.agent_did,\n        \"capabilities\": self.capabilities,\n        \"timestamp\": datetime.now(timezone.utc).isoformat()\n    }\n    await self.send_task(target_did=\"*\", task_type=\"identity_announcement\", payload=identity_payload)\n    logger.info(f\"🔱 Metropolis: Agent {self.agent_id} has joined the mesh.\")\n"
+}

@@ -1,0 +1,14 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/Dockerfile (1 replacements). Here is the updated code:
+...
+    LLAMA_CPP_USE_MMAP=true \
+    OPENBLAS_NUM_THREADS=6 \
+    OPENBLAS_CORETYPE=ZEN \
+    OPENBLAS_VERBOSE=0 \
+    OMP_NUM_THREADS=1
+OMP_NUM_THREADS=1
+
+USER appuser
+
+CMD ["uvicorn", "XNAi_rag_app.api.entrypoint:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
+
+ Applied fuzzy match at line 79-88.

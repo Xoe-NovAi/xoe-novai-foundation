@@ -1,0 +1,15 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/sentinel_prototype.py (1 replacements). Here is the updated code:
+...
+from datetime import datetime
+
+# Configuration
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
+REDIS_PASSWORD = os.getenv("REDIS_PASSWORD", "")
+BUS_STREAM = "xnai:agent_bus"
+POLL_INTERVAL = 30  # seconds
+MEM_THRESHOLD = 85.0  # percentage
+
+logging.basicConfig(
+    level=logging.INFO,
+...

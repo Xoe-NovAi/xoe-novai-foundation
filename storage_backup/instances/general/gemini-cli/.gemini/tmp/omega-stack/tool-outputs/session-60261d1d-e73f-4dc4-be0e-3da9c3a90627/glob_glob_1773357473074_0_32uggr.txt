@@ -1,0 +1,3 @@
+{
+  "output": "Found 1 file(s) matching \"memory_bank/seeds/LIA_TRIAD_SEEDS.json\" across 2 workspace directories, sorted by modification time (newest first):\n/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank/seeds/LIA_TRIAD_SEEDS.json"
+}

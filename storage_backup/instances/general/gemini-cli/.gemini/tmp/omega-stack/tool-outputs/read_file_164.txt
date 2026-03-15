@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1620-1650 of 2223 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exa
+... [TRUNCATED] ...
+lhouse  # Setup wheelhouse$(NC)\"\n\t@echo \"$(CYAN)   make docs-optimization # Complete setup$(NC)\"\n\t@echo \"$(CYAN)   make build            # Build with optimizations$(NC)\"\n\n\nenterprise-buildkit: ## 🏗️ Enable enterprise BuildKit features"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773295918072_0_rbmwkh.txt
+</tool_output_masked>

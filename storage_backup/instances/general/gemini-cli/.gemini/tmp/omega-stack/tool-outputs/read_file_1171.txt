@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 600-630 of 843 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+   - GF_USERS_ALLOW_SIGN_UP=false\n      - GF_SERVER_ROOT_URL=http://localhost:3000\n      - GF_INSTALL_PLUGINS=\n      - GF_UNIFIED_ALERTING_ENABLED=true\n      - GF_ALERTING_ENABLED=false\n    networks:\n      - xnai_db_network\n    healthcheck:"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773004741269_0_27oynv.txt
+</tool_output_masked>

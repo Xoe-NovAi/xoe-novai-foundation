@@ -1,0 +1,3 @@
+{
+  "output": "Output: localhost/xnai-library-curator              latest      d586c7e5bf7b  14 hours ago   1.02 GB\nProcess Group PGID: 265778"
+}

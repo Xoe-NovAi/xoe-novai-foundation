@@ -1,0 +1,3 @@
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:\n...\n      resources:\n        limits:\n          memory: 2G\n          cpus: '2.0'\n        reservations:\n          memory: 512M\n          cpus: '1.0'\n    user: \"${APP_UID:-1001}:${APP_GID:-1001}\"\n    security_opt:\n      - no-new-privileges:true\n    read_only: true\n..."
+}

@@ -1,0 +1,6 @@
+Output: infra/docker/docker-compose.production.yml
+find: ‘infra/docker/data/postgres’: Permission denied
+infra/docker/docker-compose.yml
+infra/docker/docker-compose-noninit.yml
+Exit Code: 1
+Process Group PGID: 100044

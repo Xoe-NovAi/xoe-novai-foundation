@@ -1,0 +1,13 @@
+Output: xnai_redis
+xnai_postgres
+xnai_memory_bank_mcp
+xnai_memory_bank_mcp
+Error: container 32345816b4b51d0b189f99d8c8337ebb96ce9410545489391bf70d7eec30e223 has dependent containers which must be removed before it: 9b10f2ef5faf892b3dc2642c683eeb53ae99ad30d98a08db24790ff3bd70500c: container already exists
+Error: container 0d19ebcc0a0a5a2d928e36cba1eb3cd664d89d6834b42220ba45c46ede8ec638 has dependent containers which must be removed before it: 8733f6104940b3c8500bc27246974e6846cc820f7f46abf8ca4d7059251df536, 42db9f299a17a0c23a0eb99f0dc43b4d714afd2a848f38073e36e97e33c96698, 9b10f2ef5faf892b3dc2642c683eeb53ae99ad30d98a08db24790ff3bd70500c: container already exists
+Error: creating container storage: the container name "xnai_redis" is already in use by 0d19ebcc0a0a5a2d928e36cba1eb3cd664d89d6834b42220ba45c46ede8ec638. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_redis
+Error: creating container storage: the container name "xnai_postgres" is already in use by 32345816b4b51d0b189f99d8c8337ebb96ce9410545489391bf70d7eec30e223. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_postgres
+85994891a0d949a0027fcc2451aa2d1b94f44517d61998cf22ced60b35e597cf
+xnai_memory_bank_mcp
+Process Group PGID: 72862

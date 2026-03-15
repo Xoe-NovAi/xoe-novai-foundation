@@ -1,0 +1,14 @@
+
+IMPORTANT: The file content has been truncated.
+Status: Showing lines 30-38 of 38 total lines.
+Action: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example, to read the next section of the file, use start_line: 39.
+
+--- FILE CONTENT (truncated) ---
+- [ ] **Metron Dashboard**: Activate live observability for resonance/density.
+
+---
+
+### 📌 Session Hygiene:
+- Keep chat context <5MB.
+- **START EVERY SESSION** with an MB-MCP health check: `curl http://localhost:8005/health`.
+- **GNOSTIC MANDATE**: All technical claims must be anchored in the `ALETHIA_REGISTRY`.

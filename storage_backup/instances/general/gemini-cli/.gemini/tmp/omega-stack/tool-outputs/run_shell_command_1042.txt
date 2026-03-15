@@ -1,0 +1,5 @@
+Output: ./app/XNAi_rag_app/services/ingest_library.py
+./scripts/ingest_library.py
+find: ‘./infra/docker/data/postgres’: Permission denied
+Exit Code: 1
+Process Group PGID: 978651

@@ -1,0 +1,15 @@
+Output: total 52
+drwxrwxr-x 13 arcana-novai arcana-novai 4096 Mar 11 13:52 .
+drwxrwxr-x 41 arcana-novai arcana-novai 4096 Mar 11 15:04 ..
+drwxr-xr-x  2 arcana-novai arcana-novai 4096 Mar 11 00:35 cache
+drwxr-xr-x  2 root         root         4096 Mar 11 00:35 consul
+drwxr-xr-x  2 arcana-novai arcana-novai 4096 Mar 11 00:35 curations
+drwxrwxr-x  3 arcana-novai arcana-novai 4096 Mar 10 18:29 data
+drwxrwxr-x  2 arcana-novai arcana-novai 4096 Mar 11 13:52 entities
+drwxrwxr-x  2 arcana-novai arcana-novai 4096 Mar 11 13:52 feedback
+drwxr-xr-x  2 arcana-novai arcana-novai 4096 Mar 10 18:08 models
+drwxr-xr-x  2 arcana-novai arcana-novai 4096 Mar 11 00:35 prometheus-multiproc
+drwxr-xr-x  2 arcana-novai arcana-novai 4096 Mar 11 00:35 qdrant
+drwxr-xr-x  2 arcana-novai arcana-novai 4096 Mar 11 00:35 redis
+drwxr-xr-x  2 arcana-novai arcana-novai 4096 Mar 11 00:35 vikunja
+Process Group PGID: 95697

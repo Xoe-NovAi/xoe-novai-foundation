@@ -1,0 +1,3 @@
+Output: Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p2  109G   96G  7.6G  93% /
+Process Group PGID: 104152

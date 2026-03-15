@@ -1,0 +1,3 @@
+{
+  "output": "Output: ✈️  Running Gnostic Pre-Flight...\n🔱 OMEGA STACK: Pre-Flight Gnostic Audit\n❌ Brittle: app/XNAi_rag_app/core/linguistics.py (Hash Mismatch)\n✅ Symlink Health: OK\n✅ UID Integrity: 1000 (Sovereign)\n🔱 Initiating Global Gnostic Audit...\n🔍 Auditing: app/XNAi_rag_app/core/linguistics.py\n🔍 Auditing: app/XNAi_rag_app/core/dependencies.py\n🔍 Auditing: mcp-servers/xnai-gnosis/server.py\n  ❌ Brittle: Brittle-Bone: Import 'mcp.server.fastmcp' not registered in TGG schema.\n\n🔱 GNOSTIC AUDIT COMPLETE\n✅ PASSED: 2\n❌ FAILED: 1\n\n⚠️  Action Required: Fix Brittle-Bone violations in TGG.\nProcess Group PGID: 1944287"
+}

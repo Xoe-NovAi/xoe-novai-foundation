@@ -1,0 +1,3 @@
+Output: 6.0G    /var/log
+Exit Code: 1
+Process Group PGID: 79362

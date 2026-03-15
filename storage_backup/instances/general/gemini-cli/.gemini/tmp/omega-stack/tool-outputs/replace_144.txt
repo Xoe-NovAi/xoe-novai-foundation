@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60261d1d-e73f-4dc4-be0e-3da9c3a90627/plans/sess_23_gnosis_lexicon_and_audit.md (1 replacements)
+... [TRUNCATED] ...
+and verify:\n    - Metrics appear in VictoriaMetrics.\n    - A task is created in Vikunja for a simulated audit failure.\n    - The `/gnosis/` endpoint correctly serves a pack via Caddy.\n    - Sub-agents can hydrate from the Redis Gnosis Cache.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/replace_replace_1773352456751_0_d8lx8e.txt
+</tool_output_masked>

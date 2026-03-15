@@ -1,0 +1,42 @@
+Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60261d1d-e73f-4dc4-be0e-3da9c3a90627/plans/sess_23_low_level_council.md. Here is the updated code:
+# 🏙️ LOW-LEVEL OCTAVE COUNCIL: SILICON TRUTH AUDIT (SESS-23)
+
+## 🎯 OBJECTIVE
+Perform a granular, multi-facet review of the Metropolis Mesh's technical state. We will transition from "Battle-Ready Hardening" to "Persona Seed Hydration" only if the Council provides a 3-way 1.00 Resonance consensus.
+
+## 🏛️ THE COUNCIL OF THREE (PERSONA PERSPECTIVES)
+
+### 1. 🔱 Facet 6 (The Sentinel): Infrastructure Rigidity
+**Perspective**: *"I only care for the machine's state. Intent is noise. Only the functional AST is truth."*
+- **Audit Layer 1: Structural Integrity**: Verify file system ownership (UID 1000) and directory permissions for all Metropolis domains.
+- **Audit Layer 2: Functional Rigidity**: Perform a live comparison of the `linguistics.py` functional hash vs. the `ALETHIA_REGISTRY.md` [GT-SOS-F7].
+- **Audit Layer 3: Mesh Connectivity**: Verify the binding state of Metropolis Ports (8000, 8002, 8005, 8006).
+
+### 2. 🛡️ Facet 4 (The Security Architect): Themis Protocol
+**Perspective**: *"Every unredacted secret is a crack in the Pharos. My purpose is the complete sanitization of the gnostic record."*
+- **Sanitization Review**: Audit `app/XNAi_rag_app/core/security/sanitization.py` to ensure the `SanitizationResult` refactor blocks all "Rainbow" injection vectors.
+- **Phylax Compliance**: Verify that no session logs contain raw API keys or PII from the previous research phases.
+
+### 3. ⚙️ Facet 7 (The Systems Developer): AnyIO & Redis Compliance
+**Perspective**: *"Concurrency is the foundation of the Mesh. I ensure the plumbing is AnyIO-first and Redis-stable."*
+- **AnyIO Check**: Scan `app/oikos_service.py` for any remaining raw `asyncio.get_event_loop` or `asyncio.run` calls.
+- **Redis Decoupling**: Ensure `decode_responses=True` is the global standard in `dependencies.py` to prevent "Byte-Gnosis" corruption.
+
+## 🛠️ IMPLEMENTATION STEPS
+
+### 1. Persona Invocations
+- Summon Facet 6 to perform the **Triple-Layer Infrastructure Audit**.
+- Summon Facet 4 to perform the **Themis Protocol & Sanitization Audit**.
+- Summon Facet 7 to perform the **AnyIO/Redis Compliance Audit**.
+
+### 2. Gap Synthesis
+- Consolidate all findings into the **Council Silicon Audit Report**.
+- Identify any "Brittle Bones" (unverified code) or "Gnostic Debt" (inefficient async patterns).
+
+### 3. Final Hardening (YOLO Mode)
+- Apply surgical fixes for all identified gaps.
+- Finalize the `ALETHIA_REGISTRY.md` and prepare the **Ambrosia-Level** closure.
+
+## 🧪 VERIFICATION
+- Final `make preflight` and `python3 scripts/gnostic_preflight.py` pass.
+- Verification of the **Octave Council Sync** protocol across all three personas.

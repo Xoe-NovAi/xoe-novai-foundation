@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 60-85 of 585 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example,
+... [TRUNCATED] ...
+ntent_hash:\n            self.content_hash = hashlib.sha256(self.original_content.encode()).hexdigest()[:16]\n        self.was_modified = self.original_content != self.sanitized_content\n\n    def to_dict(self) -> Dict[str, Any]:\n        return {"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000862123_0_x8r9ch.txt
+</tool_output_masked>

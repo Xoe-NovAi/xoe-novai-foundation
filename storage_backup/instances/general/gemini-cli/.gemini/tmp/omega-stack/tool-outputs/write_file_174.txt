@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-gnosis/server.py. Here is the updated code:\n...\n    \"\"\"Integrated from scripts/archetype_resonance.py\"\"\"\n    \n    @staticmethod\
+... [TRUNCATED] ...
+e(seed_text)\n    )\n    \n    status = \"VERIFIED\" if similarity > 0.2 else \"DROSS\" # Lowered for technical robustness\n    return {\"status\": status, \"score\": similarity}\n\n# --- MCP Server Setup ---\nmcp = FastMCP(\"xnai-gnosis\")\n\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773338207133_0_583w8o.txt
+</tool_output_masked>

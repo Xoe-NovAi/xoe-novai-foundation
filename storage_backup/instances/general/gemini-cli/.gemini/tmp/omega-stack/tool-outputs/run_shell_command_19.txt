@@ -1,0 +1,3 @@
+Output: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack
+infra/docker/docker-compose.yml
+Process Group PGID: 1978717

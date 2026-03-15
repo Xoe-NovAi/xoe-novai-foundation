@@ -1,0 +1,46 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/memory_bank:
+[DIR] _archive
+[DIR] activeContext
+[DIR] archival
+[DIR] chronicles
+[DIR] facets
+[DIR] handovers
+[DIR] infrastructure
+[DIR] multi_expert
+[DIR] PHASES
+[DIR] progress
+[DIR] protocols
+[DIR] recall
+[DIR] reports
+[DIR] research
+[DIR] strategies
+[DIR] tasks
+[DIR] usage
+ACCOUNT-REGISTRY.yaml (9909 bytes)
+activeContext.md (3276 bytes)
+AGENTS.md (15995 bytes)
+ANCHOR_MANIFEST.md (1133 bytes)
+antigravity_strategic_hot.json (374 bytes)
+ARCHITECTURE.md (11380 bytes)
+BLOCKS.yaml (11674 bytes)
+DEPRECATION_SCHEDULE.md (857 bytes)
+expert_soul.md (1656 bytes)
+GEMINI.md (1579 bytes)
+IMPERIAL_ARCHIVE_INDEX.md (2185 bytes)
+INDEX.md (15724 bytes)
+MA_LI_GUARDIAN_MANIFEST.md (2033 bytes)
+MASTER_INDEX.md (2608 bytes)
+MPI.md (5537 bytes)
+OPERATIONS.md (11612 bytes)
+productContext.md (1055 bytes)
+progress.md (7070 bytes)
+projectbrief.md (2145 bytes)
+RESEARCH_COMPLETION_SUMMARY.md (8462 bytes)
+SESS_19_CLOSING_DECREE.md (2485 bytes)
+SESS_19_FINAL_MIND_MAP.md (5598 bytes)
+SOUL_PATHS.yaml (882 bytes)
+STRATEGY_SESS-19-SHADOW_AUDIT.md (2446 bytes)
+systemPatterns.md (4576 bytes)
+teamProtocols.md (7772 bytes)
+techContext.md (4872 bytes)
+TIMELINE_EVOLUTION.md (2410 bytes)

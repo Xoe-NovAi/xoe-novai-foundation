@@ -1,0 +1,31 @@
+{
+  "sessionId": "58904afa-49a6-4774-8fb0-f85968b41b72",
+  "projectHash": "2476bd7a9850651760e85ba3ac3188c94c0588ba952e85515f42602f589ea94f",
+  "startTime": "2026-03-08T18:11:51.018Z",
+  "lastUpdated": "2026-03-08T18:11:51.422Z",
+  "messages": [
+    {
+      "id": "e7d23d2e-430a-45f7-a018-83be20fe76ac",
+      "timestamp": "2026-03-08T18:11:51.018Z",
+      "type": "user",
+      "content": [
+        {
+          "text": "config set model.apiKey AIzaSyAdZ9zMDf_8CrCFVx7LlTvLV6jq2GlrcuY"
+        }
+      ]
+    },
+    {
+      "id": "0b6e620b-91d0-4671-bf42-051f3fb0c4d8",
+      "timestamp": "2026-03-08T18:11:51.422Z",
+      "type": "error",
+      "content": "[API Error: {\"error\":{\"message\":\"{\\n  \\\"error\\\": {\\n    \\\"code\\\": 400,\\n    \\\"message\\\": \\\"API key not valid. Please pass a valid API key.\\\",\\n    \\\"status\\\": \\\"INVALID_ARGUMENT\\\",\\n    \\\"details\\\": [\\n      {\\n        \\\"@type\\\": \\\"type.googleapis.com/google.rpc.ErrorInfo\\\",\\n        \\\"reason\\\": \\\"API_KEY_INVALID\\\",\\n        \\\"domain\\\": \\\"googleapis.com\\\",\\n        \\\"metadata\\\": {\\n          \\\"service\\\": \\\"generativelanguage.googleapis.com\\\"\\n        }\\n      },\\n      {\\n        \\\"@type\\\": \\\"type.googleapis.com/google.rpc.LocalizedMessage\\\",\\n        \\\"locale\\\": \\\"en-US\\\",\\n        \\\"message\\\": \\\"API key not valid. Please pass a valid API key.\\\"\\n      }\\n    ]\\n  }\\n}\\n\",\"code\":400,\"status\":\"Bad Request\"}}]"
+    },
+    {
+      "id": "3406d326-bb8f-4d7a-9a3e-52b041bfa69e",
+      "timestamp": "2026-03-08T18:11:51.422Z",
+      "type": "info",
+      "content": "This request failed. Press F12 for diagnostics, or set ui.errorVerbosity to full for full details."
+    }
+  ],
+  "kind": "main"
+}

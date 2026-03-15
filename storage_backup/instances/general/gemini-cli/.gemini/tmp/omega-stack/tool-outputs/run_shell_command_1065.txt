@@ -1,0 +1,34 @@
+<tool_output_masked>
+Output too large. Showing first 8,000 and last 32,000 characters. For full output see: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_1773009264623_0.txt
+Command was automatically cancelled because it exceeded the timeout of 5.0 minutes without output. Below is the output before it was cancelled:
+[1/2] STEP 1/11: FROM xnai-base:latest AS builder
+[1/2] STEP 2/11: LABEL maintainer="Xoe-NovAi Team"
+--> Using cache 9a5203f80bcab3238701d780dfbb5abb4cec5085421bd19c306a06ec07193a59
+--> 9a5203f80bca
+[1/2] STEP 3/11: LABEL version="0.1.7"
+--> Using cache 56d0eab88c73e5b123c8f8a98772ddd8a2b617122cdff7b10bc56292f3dd4fa6
+--> 56d0eab88c73
+[1/2] STEP 4/11: LABEL description="Xoe-NovAi RAG API Builder Image"
+
+... [209 lines omitted] ...
+
+--> 319400478a85
+[2/2] STEP 15/16: HEALTHCHECK --interval=30s --timeout=15s --retries=10 --start-period=180s     CMD python3 /app/XNAi_rag_app/api/healthcheck.py || exit 1
+WARN[1077] HEALTHCHECK is not supported for OCI image format and will be ignored. Must use `docker` format 
+--> d8e78aea02f3
+[2/2] STEP 16/16: CMD ["uvicorn", "XNAi_rag_app.api.entrypoint:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
+[2/2] COMMIT xnai-rag:latest
+WARN[1077] HEALTHCHECK is not supported for OCI image format and will be ignored. Must use `docker` format 
+--> f1bdbf82a79a
+Successfully tagged localhost/xnai-rag:latest
+f1bdbf82a79a0eb19717cd20e7158603a42e97252fb8ec9c155c7177f0f99130
+Error: creating container storage: the container name "xnai_redis" is already in use by f04416de61b6732df24e123bf5fefdf899e3244bf0456bee02be4d255d8e3af0. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_redis
+Error: creating container storage: the container name "xnai_qdrant" is already in use by 4c839c2637950fdbaa15cc0704d14c7cb18e781e1334192cd865fb1acece0b34. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_qdrant
+Error: creating container storage: the container name "xnai_postgres" is already in use by 3adc1d4f429d381ba803a68bc5a01f1902da3b968840e2f1da5f93ba40142a3a. You have to remove that container to be able to reuse that name: that name is already in use, or use --replace to instruct Podman to do so.
+xnai_postgres
+Error: --userns and --pod cannot be set together
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773009264623_0_9bw77m.txt
+</tool_output_masked>

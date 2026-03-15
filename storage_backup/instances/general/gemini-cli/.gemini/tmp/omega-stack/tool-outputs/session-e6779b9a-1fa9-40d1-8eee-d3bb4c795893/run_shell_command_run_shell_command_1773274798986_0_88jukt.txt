@@ -1,0 +1,3 @@
+{
+  "output": "Output: sudo-rs: interactive authentication is required\nSudo NOT available\nProcess Group PGID: 335713"
+}

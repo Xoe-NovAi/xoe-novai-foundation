@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/60261d1d-e73f-4dc4-be0e-3da9c3a90627/plans/sess_23_gnosis_packs_final.md. Here is the updated 
+... [TRUNCATED] ...
+tion & Testing\n- **Metron Validation**: Achieve >90% compression with <2% resonance loss.\n- **Dross Recovery Test**: Verify automatic fallback on low resonance.\n- **Atomic Rollback**: Ensure `ALETHIA_REGISTRY` consistency after a failed seal.\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773336252100_0_3qs9s.txt
+</tool_output_masked>

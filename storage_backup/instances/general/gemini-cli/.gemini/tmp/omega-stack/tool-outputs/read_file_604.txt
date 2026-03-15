@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# 🔱 Xoe-NovAi Oikos Mesh Service\n# Focus: FastAPI + LiteLLM for Oikos Council Mastermind\n\nFROM python:3.12-slim\n\nWORKDIR /app\n\n# Install system dependencies\nRUN apt-get update && apt-get install -y --no-install-recommends \\\n
+... [TRUNCATED] ...
+mory_bank /app/artifacts/metrics \\\n    && chown -R 1000:1000 /app\n\n# Ensure scripts are in path\nENV PYTHONPATH=/app\n\nUSER 1000\n\n\nEXPOSE 8006\n\nCMD [\"uvicorn\", \"app.oikos_service:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8006\"]\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/read_file_read_file_1773275732392_0_gqq5po.txt
+</tool_output_masked>

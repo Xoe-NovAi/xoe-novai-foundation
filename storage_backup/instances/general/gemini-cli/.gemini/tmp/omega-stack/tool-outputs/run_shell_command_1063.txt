@@ -1,0 +1,13 @@
+Output: xnai_memory_bank_mcp
+xnai_redis
+xnai_postgres
+xnai_memory_bank_mcp
+xnai_postgres
+xnai_redis
+0e717c7ef872ef8626785eb03de729850c78617e68e600bfbbebfb30059d86f8
+xnai_redis
+823034074af10c290c4495a909bcbc955243125615ee4f283109ec0930d8fa52
+xnai_postgres
+58ef48850e5c5ac4e3166ec7a158130040043bd17aee8bf2f082ae8fc7dd6a5a
+xnai_memory_bank_mcp
+Process Group PGID: 967298

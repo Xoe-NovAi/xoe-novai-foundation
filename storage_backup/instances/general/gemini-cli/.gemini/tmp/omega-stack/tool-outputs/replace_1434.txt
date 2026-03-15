@@ -1,0 +1,16 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/memory-bank-mcp/server.py (1 replacements). Here is the updated code:
+...
+from app.XNAi_rag_app.core.config_loader import load_config
+from app.XNAi_rag_app.core.logging_config import get_logger
+from app.XNAi_rag_app.core.dependencies import get_vectorstore, get_llm_async
+from app.XNAi_rag_app.core.agent_bus import AgentBusClient
+
+from memory_bank_fallback import MemoryBankFallbackWrapper
+from memory_bank_store import MemoryBankStore
+
+logger = get_logger(__name__)
+
+class ContextTier(str, Enum):
+    """Memory bank context tiers for progressive loading."""
+    HOT = "hot"      # Frequently accessed, <100MB
+...

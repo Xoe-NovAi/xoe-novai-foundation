@@ -1,0 +1,3 @@
+{
+  "output": "Output: 🔱 Hardening permissions for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack...\n  ✅ Hardening .logs...\n  ✅ Hardening memory_bank...\n  ✅ Hardening artifacts...\n  ✅ Hardening app...\nchmod: changing permissions of 'app/config.toml': Operation not permitted\n  ✅ Hardening scripts...\n  ✅ Hardening data...\nchmod: changing permissions of 'data/consul': Operation not permitted\n✅ Permissions Hardening Complete.\nProcess Group PGID: 368582"
+}

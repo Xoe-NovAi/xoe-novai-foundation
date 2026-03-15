@@ -1,0 +1,8 @@
+Output: 11G     /media/arcana-novai/omega_library/media_archives
+7.9G    /media/arcana-novai/omega_library/engines
+6.3G    /media/arcana-novai/omega_library/Movies
+6.0G    /media/arcana-novai/omega_library/lexar_backup
+4.9G    /media/arcana-novai/omega_library/omega-stack
+368K    /media/arcana-novai/omega_library/gnosis_hub
+16K     /media/arcana-novai/omega_library/lost+found
+Process Group PGID: 87002

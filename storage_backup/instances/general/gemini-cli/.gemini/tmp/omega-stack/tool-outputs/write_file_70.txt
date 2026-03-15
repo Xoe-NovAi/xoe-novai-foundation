@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully created and wrote to new file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts/GNOSTIC_AXIOMS.md. Here is the updated code:\n# 🔱 GNOSTIC AXIOMS: THE ARCHITECTURAL COMMANDMENTS\n\n**Status**: TRANSMUTED | SESS
+... [TRUNCATED] ...
+rcher) must be summoned periodically to index and transmute conversation logs into technical axioms.\n- **Ancestral Origin**: `Ω Omnidroid BIOS Loader.txt`.\n\n**Seal**: *Knowledge is Power. Gnosis is Sovereignty. The 1-Year Bridge is Complete.*\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/write_file_write_file_1773291886033_0_lukhvp.txt
+</tool_output_masked>

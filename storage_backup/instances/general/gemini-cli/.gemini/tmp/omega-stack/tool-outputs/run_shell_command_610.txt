@@ -1,0 +1,5 @@
+Output: xnai_oikos
+xnai_oikos
+1638ddc49d81f317833f29b072bd07e8824a2d9f18bea7f2c1fdffad86c64a76
+xnai_oikos
+Process Group PGID: 365462

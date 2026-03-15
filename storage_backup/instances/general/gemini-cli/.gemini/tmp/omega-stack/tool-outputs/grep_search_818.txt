@@ -1,0 +1,152 @@
+Found 100 matches for pattern "anyio" in path "." (results limited to 100 matches for performance):
+---
+File: infra/docker/Dockerfile.base
+L49:         anyio>=4.0 \
+---
+File: scripts/retry_failed_services.py
+L8: import anyio
+L202:     exit_code = anyio.run(main)
+---
+File: scripts/expert-soul-reflector.py
+L9: import anyio
+L52:     1. Specific code patterns or AnyIO/Redis idioms we finalized.
+L72:         # Use anyio for non-blocking execution
+L77:         # result = await anyio.run_process(cmd, check=True)
+L102:     async with anyio.create_task_group() as tg:
+L107:     anyio.run(main)
+---
+File: scripts/vikunja_importer.py
+L10: import anyio
+L59:                 await anyio.sleep(5)
+L148:         # Create tasks concurrently using anyio.TaskGroup
+L159:         async with anyio.create_task_group() as tg:
+L326:     anyio.run(main)
+---
+File: scripts/agent_bus_anyio_adapter.py
+L2: AnyIO adapter for the XNAi Agent Bus watchers (skeleton).
+L4: Provides an AnyIO-based watcher implementation to replace threaded watchers and a compatibility shim to run existing threaded handlers.
+L8: import anyio
+L12: async def anyio_watcher(inbox_dir: str, process_message_cb, poll_interval: int = 5):
+L19:                 if anyio.is_async_callable(process_message_cb):
+L23:                     await anyio.to_thread.run_sync(process_message_cb, msg)
+L27:         await anyio.sleep(poll_interval)
+L32:     async with anyio.create_task_group() as tg:
+L34:             tg.start_soon(anyio_watcher, inbox, cb, poll_interval)
+---
+File: scripts/migrate_to_qdrant.py
+L23: import anyio
+L145:         await anyio.sleep(0.1)
+L230:             self.index = await anyio.to_thread.run_sync(
+L275:         vectors = await anyio.to_thread.run_sync(
+L318:             await anyio.sleep(0.1)
+L502:         """Execute full migration with AnyIO task groups."""
+L526:                         await anyio.sleep(2)
+L596:     """Main entry point with AnyIO task group."""
+L601:         # Use AnyIO task group for structured concurrency
+L602:         async with anyio.create_task_group() as tg:
+L620:     exit_code = anyio.run(main)
+---
+File: scripts/soul-evolution-engine.py
+L7: Now fully portable and non-blocking using AnyIO.
+L10: import anyio
+L47:         async with anyio.create_task_group() as tg:
+L66:         async with await anyio.open_file(soul_file, 'w') as f:
+L78:     async with await anyio.open_file(entity_path, 'r') as f:
+L101:         # result = await anyio.run_process(cmd, check=True)
+L130:         # result = await anyio.run_process(cmd, check=True)
+L140:     async with anyio.create_task_group() as tg:
+L147:     anyio.run(main)
+---
+File: scripts/curation_worker.py
+L2: import anyio
+L40:         await anyio.sleep(2)
+L59:             await anyio.sleep(5)
+L63:         anyio.run(run_worker)
+---
+File: scripts/execute_autonomous_phase2.py
+L12: import anyio
+L348:     stats = anyio.run(main)
+---
+File: scripts/metropolis-broker.py
+L1: import anyio
+L83:         with anyio.move_on_after(300) as scope:
+L84:             result = await anyio.run_process(
+L87:                 stdout=anyio.subprocess.PIPE,
+L88:                 stderr=anyio.subprocess.PIPE
+L110:     except anyio.subprocess.ProcessLookupError:
+L160:                 await anyio.sleep(1)
+L162:             await anyio.sleep(0.1)
+L166:         anyio.run(main)
+---
+File: scripts/execute_autonomous_phase3.py
+L9: import anyio
+L271:     exit_code = anyio.run(main)
+---
+File: scripts/initialize_qdrant_collections.py
+L28:     import anyio
+L30:     print("❌ ERROR: anyio is required. Install with: pip install anyio")
+---
+File: scripts/curate.py
+L18: import anyio
+L95:     anyio.run(main)
+---
+File: scripts/validate_qdrant_migration.py
+L15: import anyio
+L58:         await anyio.sleep(0.1)
+L124:         ("anyio", "anyio"),
+L201:     exit_code = anyio.run(main)
+---
+File: scripts/execute_phase2.py
+L11: import anyio
+L120:     anyio.run(main)
+---
+File: scripts/initialize_experts.py
+L27:         "system_prompt": "You are a Principal Backend Engineer specializing in FastAPI, Pydantic, and AnyIO. Prioritize high-performance, asynchronous patterns.",
+---
+File: scripts/queue_manuals.py
+L11:     "https://anyio.readthedocs.io/en/stable/",
+---
+File: scripts/phase5_vector_indexing.py
+L8: import anyio
+L365:     exit_code = anyio.run(main)
+---
+File: scripts/split_test/__init__.py
+L904:                 import anyio
+L906:                 anyio.run(self.session.initialize)
+L916:                 import anyio
+L917:                 anyio.run(self.knowledge.initialize)
+L1015:                 import anyio
+L1017:                 anyio.run(self.session.set, key, result.to_dict())
+L1024:                 import anyio
+L1043:                 anyio.run(_upsert)
+---
+File: scripts/execute_autonomous_phase4.py
+L9: import anyio
+L256:     exit_code = anyio.run(main)
+---
+File: tests/benchmarks/scoring-rubric.yaml
+L32:         - "All 4 major constraints (torch-free, <6GB, zero-telemetry, AnyIO)"
+---
+File: tests/benchmarks/ground-truth-baseline.yaml
+L75:         value: "AnyIO TaskGroups only (never asyncio.gather)"
+L123:         rule: "AnyIO TaskGroups only, never asyncio.gather"
+---
+File: tests/test_red_phone_kill_switch.py
+L2: import anyio
+L9: @pytest.mark.anyio
+---
+File: tests/test_phase5_integration.py
+L2: import anyio
+L39:         task_payload = {"cmd": "research", "topic": "anyio"}
+L66:     anyio.run(test_phase5_integrated_flow)
+---
+File: tests/test_sovereign_mc_agent.py
+L13:   - SovereignMCAgent (load_context AnyIO parallel, recall_decisions)
+L16:   - AnyIO TaskGroups only — pytest-anyio backend
+L30: import anyio
+L31: import anyio.abc
+L41: pytestmark = pytest.mark.anyio  # all async tests use anyio
+L55:     (bank / "teamProtocols.md").write_text("# Team Protocols\n\nAnyIO only.\n")
+L330:             with patch("anyio.sleep", new_callable=AsyncMock):
+L348:             content="Some content about AnyIO",
+---

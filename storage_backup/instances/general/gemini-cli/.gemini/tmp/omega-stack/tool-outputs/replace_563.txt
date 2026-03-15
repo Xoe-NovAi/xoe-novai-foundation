@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/omega_foundry.py (1 replacements). Here is the updated code:\n...\n    print(f\"🔱 Foundry: Broadcasting [{input_file}]...\")\n    # TODO: Implement
+... [TRUNCATED] ...
+n    # Oikos Check\n    subparsers.add_parser(\"oikos-check\")\n\n    # Synthesize\n    sync_parser = subparsers.add_parser(\"synthesize\")\n    sync_parser.add_argument(\"domain\", help=\"The domain/folder to synthesize\")\n\n    # Visualize\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/replace_replace_1773269142576_1_h7oa7a.txt
+</tool_output_masked>

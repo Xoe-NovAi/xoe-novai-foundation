@@ -1,0 +1,3 @@
+{
+  "output": "Output: xnai_app_network\nxnai_db_network\nProcess Group PGID: 2833651"
+}

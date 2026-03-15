@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/gnostic_preflight.py. Here is the updated code:\n#!/usr/bin/env python3\n\"\"\"\n🔱 GNOSTIC PRE-FLIGHT: mmap-Optimized Crystal Rigidity Audit\nHigh
+... [TRUNCATED] ...
+   print(f\"⚠️ Port {port}: {name} OFFLINE\")\n\n    # 3. UID Integrity\n    if os.getuid() == 1000:\n        print(\"✅ UID Integrity: 1000 (Sovereign)\")\n    else:\n        print(f\"⚠️ Warning: Non-standard UID detected ({os.getuid()})\")\n\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/write_file_write_file_1773357142812_0_5t7rku.txt
+</tool_output_masked>

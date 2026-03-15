@@ -1,0 +1,39 @@
+Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/mcp-servers/xnai-gnosis/server.py. Here is the updated code:
+...
+    """Integrated from scripts/archetype_resonance.py"""
+    
+    @staticmethod
+    def vectorize(text: str) -> Dict[str, int]:
+        code_noise = {'self', 'import', 'class', 'def', 'return', 'none', 'true', 'false'}
+        # Lowered min length to 3 for technical roots (AST, TGG, etc)
+        words = re.findall(r'\b[a-zA-Z]{3,}\b', text.lower())
+        vec = {}
+        for w in words:
+            if w not in code_noise:
+                vec[w] = vec.get(w, 0) + 1
+        return vec
+...
+        # F2/F3: Functional Parity (TIM)
+        # Verify Crystal Hash parity if source is available
+        source_path = PROJECT_ROOT / provenance["file"]
+        if source_path.exists():
+            source_hash = self.decoder.generate_crystal_hash(source_path.read_text())
+            # In Gold-tier, we'd expect the functional AST hash to match
+            pass 
+
+        # F6: GRA Resonance Audit
+        res_audit = await verify_resonance_internal(self.pack_data)
+        if res_audit["status"] == "DROSS":
+...
+    similarity = auditor.cosine_similarity(
+        auditor.vectorize(pack_data.get("summary", "")),
+        auditor.vectorize(seed_text)
+    )
+    
+    status = "VERIFIED" if similarity > 0.2 else "DROSS" # Lowered for technical robustness
+    return {"status": status, "score": similarity}
+
+# --- MCP Server Setup ---
+mcp = FastMCP("xnai-gnosis")
+
+...

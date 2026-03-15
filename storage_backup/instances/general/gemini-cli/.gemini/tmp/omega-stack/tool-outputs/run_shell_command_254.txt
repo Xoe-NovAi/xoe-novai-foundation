@@ -1,0 +1,3 @@
+Output: Error: no container with name or ID "xnai_rag_api" found: no such container
+Exit Code: 125
+Process Group PGID: 1701794

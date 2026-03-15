@@ -1,0 +1,3 @@
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage:\n[DIR] artifacts\n[DIR] backups\n[DIR] data\n[DIR] db\n[DIR] instances\n[DIR] instances-active\n[DIR] models"
+}

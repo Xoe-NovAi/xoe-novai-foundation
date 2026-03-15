@@ -1,0 +1,11 @@
+Output: /home/arcana-novai/.bun/install/cache/opencode-antigravity-auth@1.5.5@@@1/package.json
+/home/arcana-novai/.bun/install/cache/opencode-anthropic-auth@0.0.13@@@1/package.json
+/home/arcana-novai/.bun/install/cache/opencode-antigravity-auth-remix@1.5.2@@@1/package.json
+/home/arcana-novai/.bun/install/cache/opencode-antigravity-auth@1.6.0@@@1/package.json
+/home/arcana-novai/.bun/install/cache/@openauthjs/openauth@0.4.3@@@1/package.json
+/home/arcana-novai/.bun/install/cache/opencode-antigravity-auth@1.5.3@@@1/package.json
+/home/arcana-novai/.bun/install/cache/opencode-anthropic-auth@0.0.5@@@1/package.json
+/home/arcana-novai/.bun/install/cache/opencode-antigravity-auth@1.5.1@@@1/package.json
+/home/arcana-novai/.bun/install/cache/opencode-antigravity-auth@1.5.2@@@1/package.json
+/home/arcana-novai/.bun/install/cache/opencode-copilot-auth@0.0.9@@@1/package.json
+Process Group PGID: 494815

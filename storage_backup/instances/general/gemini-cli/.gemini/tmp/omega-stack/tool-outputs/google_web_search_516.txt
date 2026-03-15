@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Web search results for \"litellm vertex_ai environment variables project location credentials\":\n\nI will search the codebase for existing LiteLLM and Vertex AI configurations to identify the required environment variables and their c
+... [TRUNCATED] ...
+CbXGUHmK_wF4eZRbAlbwHBDvXmhtnEvx42XmuzqkfjZNKDUOkHXWcbygD8fkGkICfTS17EoHfrUIS2QPo_IeVW9FsuUICMowfAbHMJ-oMhZ7UEBUlx7YtUmLkpVO-ywsuR2Yt5cUNZj9ndB3XEdwdMS6X-zMMzFjImetjlMrGTYNrVfzU9Dy_pXwYiOPdVoRQFGYdqcdPEv1Yk0_R_NLDs0kOM24QJ4T_uLaTUmaEix6SB7_wo81M=)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/google_web_search_google_web_search_1773278192036_0_bswb3.txt
+</tool_output_masked>

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 100 matches for pattern \"Gemini CLI\" in path \".\" (results limited to 100 matches for performance):\n---\nFile: README.md\nL42: | `make proxy-gemini` | 🌐 Run Gemini CLI through ProxyChains (for regional bypass) |\n---\nFile: 
+... [TRUNCATED] ...
+est with Gemini CLI\n---\nFile: _archive/session-handoffs/MINIMAX_HANDOFF.md\nL37: Since I (Gemini CLI) cannot see your terminal screen directly, we will use the following \"Eyes\" for this session:\nL46: **Signed**: Gemini CLI (Prime Expert)\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/grep_search_grep_search_1773187470618_0_9get5.txt
+</tool_output_masked>

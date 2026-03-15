@@ -1,0 +1,3 @@
+{
+  "output": "Output: Loaded cached credentials.\nNo MCP servers configured.\nProcess Group PGID: 22377"
+}

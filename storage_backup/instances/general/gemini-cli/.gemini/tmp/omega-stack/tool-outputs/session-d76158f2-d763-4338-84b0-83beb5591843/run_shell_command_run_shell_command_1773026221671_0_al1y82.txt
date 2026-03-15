@@ -1,0 +1,3 @@
+{
+  "output": "Output: ✅ Safely rotated Redis/Postgres passwords.\nProcess Group PGID: 2276144"
+}

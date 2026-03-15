@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "import pytest\nimport anyio\nimport json\nimport os\nfrom datetime import datetime, timezone\nfrom app.XNAi_rag_app.core.agent_bus import AgentBusClient\n\n@pytest.mark.anyio\nasync def test_red_phone_protocol():\n    \"\"\"VR1: Verify
+... [TRUNCATED] ...
+yload\"])\n        assert payload[\"reason\"] == reason\n        \n    print(f\"✅ Red-Phone Protocol Verified: {task_id}\")\n\nif __name__ == \"__main__\":\n    # Manual run support\n    import asyncio\n    asyncio.run(test_red_phone_protocol())\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773011601838_0_qrcdui.txt
+</tool_output_masked>

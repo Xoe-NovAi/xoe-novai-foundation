@@ -1,0 +1,29 @@
+<tool_output_masked>
+Output: find: ‘/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/data/vikunja/db’: Permission denied
+find: ‘/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/data/postgres’: Permission denied
+find: ‘/home/arcana-novai/Documents/Archives/Old-Stacks/Xoe-NovAi/data/curations’: Permission denied
+find: ‘/home/arcana-novai/Documents/Archives/Old-Stacks/Xoe-NovAi/data/cache’: Permission denied
+find: ‘/home/arcana-novai/Documents/Archives/Old-Stacks/Xoe-NovAi/data/faiss_index’: Permission denied
+find: ‘/home/arcana-novai/Documents/Archives/Old-Stacks/Xoe-NovAi/data/redis.blocked’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/11791007f8ad1ba38660a0c6024c8c3c3ce7d5558d603ce7d2c29ef70ed95453/work/work’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/f240ec5977fb8ce369b1e405d8475fa0ead3e567aca046fbbc352715c0f1299b/work/work’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/03507ebfd75f3b0e17387294f2a7fbf596aa961e55fd7d9365abd8f10f76f9be/work/work’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/2f6ca4eba2257f0ae3a9ad43229cfc29b1e1af947b6ae643f02380baa6490398/work/work’: Permission denied
+
+... [73 lines omitted] ...
+
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/7e80864273ec41dbffcd7526cb33f404b02f16c62c49192b2cac727997dc4ce4/work/work’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/6eca7d0d9dead9a1f844b5206e43055a26825906e4481920363ba64f14a86a9e/diff/var/cache/apt/archives/partial’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/ed7259f6268ce22229f0965071f0cb296b589b51f54fa355a735530dbcf7ae0b/work/work’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/289f9f336fd47979f7c36fbd5dae611aebe36dc4e9106dacd89f194528cc8c55/diff/var/cache/apt/archives/partial’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/2fb0979958a96fbf3d125246d624b3c672e8c34e3a0ed58ce3d4bfdc9371e81d/diff/var/cache/apt/archives/partial’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/71369f01a18630ebdfc08cb7386c611e9f98224c7f6ca74445d66b9f3053d527/work/work’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/2552fe1cf643782a837771f4f1337ad9332ac27dcb52678ace463370f0978f80/work/work’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/71b8dde7f8377b2ed0f07c923ef496e003590484ae45fa2146ceb18fb1998b0e/work/work’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/7a9499637c3eee0e9aec3f95170015d2fca20855718df00cbf5e1a683ef720f3/work/work’: Permission denied
+find: ‘/home/arcana-novai/.local/share/containers/storage/overlay/9c7e6859a6a5e877adec5a716de5b63298ddb8e92f50eb1d60e7aea3d2eecae0/work/work’: Permission denied
+Exit Code: 1
+Process Group PGID: 1860268
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-60261d1d-e73f-4dc4-be0e-3da9c3a90627/run_shell_command_run_shell_command_1773337821192_0_phx3v0i.txt
+</tool_output_masked>

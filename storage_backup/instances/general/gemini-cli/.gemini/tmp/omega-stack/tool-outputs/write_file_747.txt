@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully overwrote file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/artifacts/ARCHETYPE_LIBRARY.md. Here is the updated code:\n# 🔱 Omega Stack: Archetype Library & Gnostic Registry\n**Status**: ACTIVE | **Version**: 1.1.0 
+... [TRUNCATED] ...
+rchetype_resonance.py`. \n- **Initiation Point**: When an agent's reasoning traces show >80% similarity to a member of the Council.\n- **Fusion Logic**: Agents may combine archetypes (e.g., \"Thoth-Technites\" for high-fidelity code generation).\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-e6779b9a-1fa9-40d1-8eee-d3bb4c795893/write_file_write_file_1773268399739_0_1m8gan.txt
+</tool_output_masked>

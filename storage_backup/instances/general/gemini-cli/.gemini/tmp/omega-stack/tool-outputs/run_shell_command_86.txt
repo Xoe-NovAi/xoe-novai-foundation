@@ -1,0 +1,11 @@
+Output: /home/arcana-novai/.gemini/chats/:
+total 16
+drwxrwxr-x 8 arcana-novai arcana-novai 4096 Mar 14 22:22 ..
+drwxrwxr-x+ 2 arcana-novai arcana-novai 4096 Mar  8 16:28 .
+
+storage/instances/general/gemini-cli/.gemini/chats/:
+total 24
+drwxrwx--- 7 100999 100999 4096 Mar 14 23:14 ..
+drwxrwx---+ 3 100999 100999 4096 Mar  8 16:28 .
+drwxrwx--- 2 100999 100999 4096 Mar  8 16:28 archive
+Process Group PGID: 62113

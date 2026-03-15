@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/agent_bus.py (1 replacements). Here is the updated code:\n...\n\n            if response:\n                for _, messages in response
+... [TRUNCATED] ...
+get(\"type\"),\n                                    \"payload\": json.loads(data.get(\"payload\")),\n                                }\n                            )\n        return tasks\n\n    async def acknowledge_task(self, task_id: str):\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/replace_replace_1773001327320_0_5luk2j.txt
+</tool_output_masked>

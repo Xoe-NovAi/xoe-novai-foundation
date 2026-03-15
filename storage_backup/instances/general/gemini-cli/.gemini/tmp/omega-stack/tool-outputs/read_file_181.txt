@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "# ============================================================================\n# Qdrant Configuration - XNAi Foundation Stack\n# Optimized for: AMD Ryzen 7 5700U (6.6GB RAM)\n# Purpose: Vector database with on-disk persistence and mem
+... [TRUNCATED] ...
+:\n  # REST API\n  http:\n    host: 0.0.0.0\n    port: 6333\n    read_only: false\n  \n  # gRPC API\n  grpc:\n    host: 0.0.0.0\n    port: 6334\n\n# Cluster Settings (single node)\ncluster:\n  enabled: false\n\n# Logging\nlogging:\n  level: info\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-7213efde-b76d-4fb6-8f71-e4bffe92066f/read_file_read_file_1773077664046_0_1yrt5i.txt
+</tool_output_masked>

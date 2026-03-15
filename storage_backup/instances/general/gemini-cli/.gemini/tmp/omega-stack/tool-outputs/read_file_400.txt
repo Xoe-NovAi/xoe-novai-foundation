@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 195-220 of 595 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+', :secret)\",\n                {\"secret\": secret}\n            )\n            self.db.commit()\n        \n        return secret\n    \n    def register_agent(\n        self,\n        did: str,\n        name: str,\n        agent_type: AgentType,"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773008233839_0_2qme2.txt
+</tool_output_masked>

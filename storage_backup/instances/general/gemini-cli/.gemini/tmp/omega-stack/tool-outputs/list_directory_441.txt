@@ -1,0 +1,2 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/containers:
+Containerfile.production (3417 bytes)

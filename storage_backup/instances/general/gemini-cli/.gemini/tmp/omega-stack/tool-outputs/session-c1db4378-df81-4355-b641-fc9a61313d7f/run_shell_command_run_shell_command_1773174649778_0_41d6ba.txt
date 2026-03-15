@@ -1,0 +1,3 @@
+{
+  "output": "Output: REPOSITORY          TAG         IMAGE ID      CREATED       SIZE\nlocalhost/xnai-rag  latest      f3d634adcb8a  23 hours ago  1.63 GB\nProcess Group PGID: 69684"
+}

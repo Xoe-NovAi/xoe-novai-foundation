@@ -1,0 +1,6 @@
+Output:   6438612      4 -rwxrwxr-x   1 arcana-novai arcana-novai     2119 Mar  7 13:42 .logs/sessions/General/2026-03-07_13-41-49_gemini_0.log
+  6439934      4 -rwxrwxr-x   1 arcana-novai arcana-novai     1491 Mar  7 15:50 .logs/sessions/General/2026-03-07_15-50-15_gemini_0.log
+  6439872      4 -rwxrwxr-x   1 arcana-novai arcana-novai     1491 Mar  7 15:25 .logs/sessions/General/2026-03-07_15-25-13_gemini_0.log
+  6438963      4 -rwxrwxr-x   1 arcana-novai arcana-novai     1491 Mar  7 14:11 .logs/sessions/General/2026-03-07_14-11-14_gemini_0.log
+  6438619      4 -rwxrwxr-x   1 arcana-novai arcana-novai     1491 Mar  7 13:58 .logs/sessions/General/2026-03-07_13-57-55_gemini_0.log
+Process Group PGID: 61962

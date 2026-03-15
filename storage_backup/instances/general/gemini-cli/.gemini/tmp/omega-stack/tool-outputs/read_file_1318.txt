@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 651-1042 of 1042 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exam
+... [TRUNCATED] ...
+ess.run(\n        [\n            \"chainlit\",\n            \"run\",\n            \"chainlit_app_unified.py\",\n            \"--host\",\n            host,\n            \"--port\",\n            port,\n            \"--headless\",\n        ]\n    )\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001823643_0_s3ejwp.txt
+</tool_output_masked>

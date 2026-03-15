@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Found 12 matches for pattern \"setfacl|ACL\" in path \"_archive/\":\n---\nFile: 2026-03-14/OPUS_STRATEGIC_AUDIT_20260308.md\nL220: @dataclass\n---\nFile: 2026-03-01-consolidation/by_date/root-cleanup-2026-02-26/OpenPipe_Integration_Blu
+... [TRUNCATED] ...
+nnacle of 2026 Cline usage—used by top contributors for legacy migrations and new builds. Start with Steps 1-3, then layer on. Your Xoe-NovAi project (torch-free, MkDocs-focused) is perfect for this! Let me know which part to prototype first.\n---"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-19ea99fd-8fea-4026-a596-60d708d02382/grep_search_grep_search_1773543493983_0_oaeemn.txt
+</tool_output_masked>

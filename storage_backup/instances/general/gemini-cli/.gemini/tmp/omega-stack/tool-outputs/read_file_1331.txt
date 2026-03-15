@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 1-100 of 127 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For example,
+... [TRUNCATED] ...
+       super().__init__(agent_did)\n        self.group_name = \"gap_detection_group\"\n\n    async def start_listening(self):\n        \"\"\"Monitor stream for gap events.\"\"\"\n        logger.info(\"GapListener started...\")\n        while True:"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773001301320_0_0g78b.txt
+</tool_output_masked>

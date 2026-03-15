@@ -1,0 +1,3 @@
+Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/data/cache_v2/huggingface/hub:
+[DIR] .locks
+[DIR] models--Systran--faster-distil-whisper-large-v3

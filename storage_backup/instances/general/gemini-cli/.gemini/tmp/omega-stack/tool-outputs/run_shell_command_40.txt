@@ -1,0 +1,2 @@
+Output: .gemini
+Process Group PGID: 1971750

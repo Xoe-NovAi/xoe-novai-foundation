@@ -1,0 +1,3 @@
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:\n...\n      - ./config.toml:/app/config.toml:ro\n      - ./library:/library:z\n      - ./knowledge:/knowledge:z\n      - ./data/cache:/app/cache:Z\n      - ./app/XNAi_rag_app:/app/XNAi_rag_app\n      - ./tls/ca.crt:/tls/ca.crt:ro,Z\n      - /tmp/crawl4ai:/app/.crawl4ai\n      - /tmp/crawler_logs:/app/logs\n    environment:\n      - OPENBLAS_CORETYPE=ZEN\n      - N_THREADS=6\n..."
+}

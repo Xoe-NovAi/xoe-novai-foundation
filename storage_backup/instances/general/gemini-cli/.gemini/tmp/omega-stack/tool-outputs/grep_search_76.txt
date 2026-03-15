@@ -1,0 +1,15 @@
+Found 5 matches for pattern "branch:" in path "docs/":
+---
+File: 05-research/ADDITIONAL-RESEARCH-NEEDED.md
+L5: git_branch: main
+L175: - **Question**: All documents say `git_branch: main` — should feature branches be used?
+---
+File: 04-phase-4/NOTEBOOKLM_SERVICE_SUMMARY.md
+L135: 1. Create feature branch: `feature/notebooklm-phase1-jupyter-integration`
+---
+File: architecture/XNAI-AGENT-TAXONOMY.md
+L5: git_branch: main
+---
+File: index.json
+L7046:         "Jules submits branch: feat/langchain-upgrade-xxx",
+---

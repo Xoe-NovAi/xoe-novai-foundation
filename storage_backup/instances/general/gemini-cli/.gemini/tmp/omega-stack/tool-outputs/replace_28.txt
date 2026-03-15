@@ -1,0 +1,19 @@
+Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/app/XNAi_rag_app/core/persona.py (1 replacements). Here is the updated code:
+...
+            prefix = random.choice(flavor_prefixes)
+            return f"{prefix} {response}"
+            
+        return response
+
+    def dream(self) -> str:
+        """Generate a visual prompt for the persona (Ikon Protocol)."""
+        base_prompt = f"A hyper-realistic cinematic portrait of {self.name}, representing the {self.archetypes[0]} archetype. "
+        style = "cybernetic ethereal aesthetic, glowing circuit patterns, ancient greek marble textures, deep indigo and gold lighting, 8k resolution, intricate details."
+        return base_prompt + style
+
+    def set_hardware(self, cpu: str, gpu: str, ram: str):
+        """Update the Silicon Oracle's knowledge of the machine."""
+        self.hardware_context["cpu"] = cpu
+        self.hardware_context["gpu"] = gpu
+        self.hardware_context["ram"] = ram
+...

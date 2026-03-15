@@ -1,0 +1,67 @@
+Output: /media/arcana-novai/omega_library/omega-stack/:
+cache  data  embeddings  infra_models  models
+
+/media/arcana-novai/omega_library/omega-stack/cache:
+huggingface
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface:
+hub  xet
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface/hub:
+models--Systran--faster-distil-whisper-large-v3
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface/hub/models--Systran--faster-distil-whisper-large-v3:
+blobs  refs  snapshots
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface/hub/models--Systran--faster-distil-whisper-large-v3/blobs:
+0adcd01e7c237205d593b707e66dd5d7bc785d2d  499468d516090aee836412556ca759be4e9e73f7  b79368e19b6623813609431a6e5ee309a71506701ebc49fd7820e692dec7c5f5
+3a5e2ba63acdcac9a19ba56cf9bd27f185bfff61  931c77a740890c46365c7ae0c9d350ba3cca908f  b79368e19b6623813609431a6e5ee309a71506701ebc49fd7820e692dec7c5f5.incomplete
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface/hub/models--Systran--faster-distil-whisper-large-v3/refs:
+main
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface/hub/models--Systran--faster-distil-whisper-large-v3/snapshots:
+c3058b475261292e64a0412df1d2681c06260fab
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface/hub/models--Systran--faster-distil-whisper-large-v3/snapshots/c3058b475261292e64a0412df1d2681c06260fab:
+config.json  model.bin  preprocessor_config.json  tokenizer.json  vocabulary.json
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface/xet:
+https___cas_serv-tGqkUaZf_CBPHQ6h  logs
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface/xet/https___cas_serv-tGqkUaZf_CBPHQ6h:
+staging
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface/xet/https___cas_serv-tGqkUaZf_CBPHQ6h/staging:
+
+/media/arcana-novai/omega_library/omega-stack/cache/huggingface/xet/logs:
+xet_20260309T194001422+0000_9.log  xet_20260310T213024160+0000_7.log  xet_20260310T213924427+0000_7.log  xet_20260310T214716796+0000_7.log
+
+/media/arcana-novai/omega_library/omega-stack/data:
+cache
+
+/media/arcana-novai/omega_library/omega-stack/data/cache:
+huggingface
+
+/media/arcana-novai/omega_library/omega-stack/data/cache/huggingface:
+hub
+
+/media/arcana-novai/omega_library/omega-stack/data/cache/huggingface/hub:
+models--Systran--faster-distil-whisper-large-v3
+
+/media/arcana-novai/omega_library/omega-stack/data/cache/huggingface/hub/models--Systran--faster-distil-whisper-large-v3:
+blobs
+
+/media/arcana-novai/omega_library/omega-stack/data/cache/huggingface/hub/models--Systran--faster-distil-whisper-large-v3/blobs:
+0adcd01e7c237205d593b707e66dd5d7bc785d2d  499468d516090aee836412556ca759be4e9e73f7  b79368e19b6623813609431a6e5ee309a71506701ebc49fd7820e692dec7c5f5
+3a5e2ba63acdcac9a19ba56cf9bd27f185bfff61  931c77a740890c46365c7ae0c9d350ba3cca908f
+
+/media/arcana-novai/omega_library/omega-stack/embeddings:
+all-MiniLM-L6-v2-f16.gguf  embeddinggemma-300m-Q6_K.gguf  en_US-john-medium.onnx  en_US-john-medium.onnx.json
+
+/media/arcana-novai/omega_library/omega-stack/infra_models:
+Qwen2.5-0.5B-Instruct-Q4_K_M.gguf  Qwen3-0.6B-Q6_K.gguf
+
+/media/arcana-novai/omega_library/omega-stack/models:
+Qwen2.5-0.5B-Instruct-Q4_K_M.gguf  Qwen3-0.6B-Q6_K.gguf  functiongemma-270m-it-Q6_K.gguf
+Process Group PGID: 87661

@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "#!/usr/bin/env python3\n\"\"\"\nMemory Bank MCP Fallback Wrapper\n=================================\nWraps the MemoryBankMCP server and provides automatic fallback to SQLite when\nthe primary Redis backend becomes unavailable.\n\nImple
+... [TRUNCATED] ...
+            \"fallback_store\": store_metrics,\n            \"mcp_server_available\": self.mcp_server is not None\n        }\n\n    async def close(self) -> None:\n        \"\"\"Close connections.\"\"\"\n        await self.fallback_store.close()\n"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773000084599_0_gpzn2.txt
+</tool_output_masked>

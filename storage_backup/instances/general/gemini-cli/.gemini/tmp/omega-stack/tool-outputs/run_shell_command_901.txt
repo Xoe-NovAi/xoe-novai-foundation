@@ -1,0 +1,5 @@
+Output: total 12
+drwxrwxr-x 3 arcana-novai arcana-novai 4096 Mar 10 22:11 .
+drwxrwxr-x 9 arcana-novai arcana-novai 4096 Mar 10 19:58 ..
+drwxrwxr-x 8 arcana-novai arcana-novai 4096 Mar 10 22:11 SNAP-20260312-METROPOLIS-HARDENED
+Process Group PGID: 96496

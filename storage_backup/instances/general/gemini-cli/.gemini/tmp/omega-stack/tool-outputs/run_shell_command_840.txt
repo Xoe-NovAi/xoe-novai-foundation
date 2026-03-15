@@ -1,0 +1,28 @@
+<tool_output_masked>
+Output: WARN[0010] StopSignal SIGTERM failed to stop container xnai_library_curator in 10 seconds, resorting to SIGKILL 
+xnai_library_curator
+INFO:XNAi_rag_app.core.config_loader:Configuration validated against Pydantic schema (v0.1.4-compliant)
+INFO:XNAi_rag_app.core.config_loader:Configuration loaded from /app/app/config.toml (22 sections)
+INFO:XNAi_rag_app.core.config_loader:Configuration validated against Pydantic schema (v0.1.4-compliant)
+INFO:XNAi_rag_app.core.config_loader:Configuration loaded from /app/app/config.toml (22 sections)
+{"timestamp": "2026-03-09T01:26:08.044603", "level": "INFO", "module": "library_curator", "message": "Processing curation for script:stack_scribe:001: local (Query: 'ssl_certificate.md', Category: 'stack-doc-/expert-knowledge')"}
+{"timestamp": "2026-03-09T01:26:08.049991", "level": "INFO", "module": "dependencies", "message": "Loading LLM from /storage/models/Qwen3-0.6B-Q6_K.gguf (0.46GB)"}
+{"timestamp": "2026-03-09T01:26:08.050400", "level": "INFO", "module": "dependencies", "message": "No Vulkan ICD files found - GPU acceleration not available"}
+{"timestamp": "2026-03-09T01:26:08.050544", "level": "INFO", "module": "dependencies", "message": "\ud83d\udd04 Vulkan iGPU not available - using CPU-only mode"}
+
+... [6 lines omitted] ...
+
+{"timestamp": "2026-03-09T01:26:09.052833", "level": "INFO", "module": "dependencies", "message": "LLM initialization: n_ctx=2048, n_threads=12, f16_kv=True, use_mlock=True"}
+{"timestamp": "2026-03-09T01:26:09.053153", "level": "ERROR", "module": "dependencies", "message": "LLM backend not available: No module named 'langchain_community'"}
+{"timestamp": "2026-03-09T01:26:09.053247", "level": "ERROR", "module": "dependencies", "message": "LLM initialization failed: No module named 'langchain_community'"}
+{"timestamp": "2026-03-09T01:26:11.053950", "level": "INFO", "module": "dependencies", "message": "Loading LLM from /storage/models/Qwen3-0.6B-Q6_K.gguf (0.46GB)"}
+{"timestamp": "2026-03-09T01:26:11.054419", "level": "INFO", "module": "dependencies", "message": "No Vulkan ICD files found - GPU acceleration not available"}
+{"timestamp": "2026-03-09T01:26:11.054552", "level": "INFO", "module": "dependencies", "message": "\ud83d\udd04 Vulkan iGPU not available - using CPU-only mode"}
+{"timestamp": "2026-03-09T01:26:11.054734", "level": "INFO", "module": "dependencies", "message": "LLM initialization: n_ctx=2048, n_threads=12, f16_kv=True, use_mlock=True"}
+{"timestamp": "2026-03-09T01:26:11.055187", "level": "ERROR", "module": "dependencies", "message": "LLM backend not available: No module named 'langchain_community'"}
+{"timestamp": "2026-03-09T01:26:11.055349", "level": "ERROR", "module": "dependencies", "message": "LLM initialization failed: No module named 'langchain_community'"}
+{"timestamp": "2026-03-09T01:26:11.055945", "level": "WARNING", "module": "ingest_library", "message": "Local LLM summarization failed: Failed to initialize LLM after retries: No module named 'langchain_community'\nCheck model path, memory availability, and system resources."}
+Process Group PGID: 1327507
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/run_shell_command_run_shell_command_1773019552000_0_xr7xgj.txt
+</tool_output_masked>

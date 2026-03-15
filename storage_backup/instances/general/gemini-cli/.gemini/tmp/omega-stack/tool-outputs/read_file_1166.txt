@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "\nIMPORTANT: The file content has been truncated.\nStatus: Showing lines 810-830 of 843 total lines.\nAction: To read more of the file, you can use the 'start_line' and 'end_line' parameters in a subsequent 'read_file' call. For exampl
+... [TRUNCATED] ...
+======= \nnetworks:\n  xnai_db_network:\n    name: xnai_db_network\n    internal: true  # Backends cannot reach the internet\n  xnai_app_network:\n    name: xnai_app_network\n\nvolumes:\n  victoriametrics-data:\n    name: xnai_victoriametrics_data"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/read_file_read_file_1773004786220_0_ps25a.txt
+</tool_output_masked>

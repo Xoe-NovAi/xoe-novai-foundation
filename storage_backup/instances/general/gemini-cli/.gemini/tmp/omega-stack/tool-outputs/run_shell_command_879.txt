@@ -1,0 +1,7 @@
+Output: Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+1
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+OK
+WARN[0010] StopSignal SIGTERM failed to stop container xnai_library_curator in 10 seconds, resorting to SIGKILL 
+xnai_library_curator
+Process Group PGID: 1307658

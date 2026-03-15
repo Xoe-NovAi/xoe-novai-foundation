@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/infra/docker/docker-compose.yml (1 replacements). Here is the updated code:\n...\n      - xnai_db_network\n    restart: unless-stopped\n\n  llama_server:\n 
+... [TRUNCATED] ...
+          memory: 2G\n          cpus: '2.0'\n    networks:\n      - xnai_db_network\n    restart: unless-stopped\n  open-webui:\n    image: ghcr.io/open-webui/open-webui:main\n    container_name: xnai_open_webui\n    expose:\n      - \"8080\"\n..."
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-c1db4378-df81-4355-b641-fc9a61313d7f/replace_replace_1773175986441_0_2fv8ob.txt
+</tool_output_masked>

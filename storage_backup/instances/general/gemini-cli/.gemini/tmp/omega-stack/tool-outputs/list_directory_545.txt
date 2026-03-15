@@ -1,0 +1,9 @@
+<tool_output_masked>
+{
+  "output": "Directory listing for /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/knowledge_base/expert-knowledge:\n[DIR] _archive\n[DIR] _meta\n[DIR] agent-tooling\n[DIR] architect\n[DIR] architecture\n[DIR] assistant_toolbox\n[DIR] cline\n[DI
+... [TRUNCATED] ...
+OUNT-EMAIL-REGISTRY-2026-02-23.md (15128 bytes)\nOPENCODE-CLI-COMPREHENSIVE-GUIDE-v1.0.0.md (17660 bytes)\nOPENCODE-CLI-MODELS-v1.0.0.md (9620 bytes)\nphase5a-best-practices.md (5619 bytes)\nREADME.md (10524 bytes)\nurl-registry.json (14134 bytes)"
+}
+
+Output too large. Full output available at: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/storage/instances/general/gemini-cli/.gemini/tmp/omega-stack/tool-outputs/session-d76158f2-d763-4338-84b0-83beb5591843/list_directory_list_directory_1773002513491_0_i7zden.txt
+</tool_output_masked>

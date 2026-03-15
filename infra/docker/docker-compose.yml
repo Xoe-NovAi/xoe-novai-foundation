@@ -12,6 +12,7 @@ services:
   # ==========================================================================
   consul:
     image: consul:1.15.4
+    userns_mode: keep-id
     container_name: xnai_consul
     init: true
     user: "1000:1000"
@@ -841,7 +842,6 @@ services:
       - CONFIG_PATH=/app/config.toml
       - HSA_OVERRIDE_GFX_VERSION=9.0.0
       - SESSION_ARCHIVE_DIR=/storage/recall/archives
-      - HSA_OVERRIDE_GFX_VERSION=9.0.0
     volumes:
       - ../../storage:/storage:Z,U
       - ./tls/ca.crt:/tls/ca.crt:ro,Z
