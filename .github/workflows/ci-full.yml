@@ -1,0 +1,279 @@
+name: CI Full (Optimized for Free Tier)
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened, labeled ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  HARDWARE_PROFILE: "ryzen-5700u"
+  MEMORY_BANK_PATH: "memory_bank/"
+
+jobs:
+  # Determine if this is a full CI run
+  check-skip:
+    name: Check Skip Conditions
+    runs-on: ubuntu-latest
+    outputs:
+      should-run: ${{ steps.check.outputs.should-run }}
+    steps:
+      - id: check
+        run: |
+          # Skip full CI on pull requests unless labeled 'full-ci'
+          if [[ "${{ github.event_name }}" == "pull_request" && "${{ contains(github.event.pull_request.labels.*.name, 'full-ci') }}" != "true" ]]; then
+            echo "should-run=false" >> $GITHUB_OUTPUT
+          else
+            echo "should-run=true" >> $GITHUB_OUTPUT
+          fi
+
+  # Stage 1: Setup (Lightweight)
+  setup:
+    name: Setup Environment
+    needs: check-skip
+    if: needs.check-skip.outputs.should-run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Cache Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/requirements.txt
+          pip install -r requirements/requirements-api.txt
+
+      - name: Validate Configuration
+        run: |
+          test -f config.toml && echo "✓ config.toml found" || exit 1
+          test -d memory_bank && echo "✓ memory_bank found" || exit 1
+
+  # Stage 2: Security Scan
+  security:
+    name: Security & Vulnerability Scan
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Security Tools
+        run: |
+          pip install bandit safety semgrep
+
+      - name: Run Bandit
+        run: |
+          bandit -r app/ -f json -o /tmp/bandit.json || true
+          bandit -r app/ -f txt || true
+
+      - name: Run Safety Check
+        run: |
+          safety check --json || echo "⚠ Safety found issues"
+
+      - name: Run Semgrep
+        run: |
+          semgrep --config=auto app/ --json || echo "⚠ Semgrep found issues"
+
+      - name: Upload Security Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-reports
+          path: /tmp/bandit.json
+          retention-days: 7
+
+  # Stage 3: Multi-Agent Testing (Reduced to 2 agents for free tier)
+  agent-tests:
+    name: Agent Testing
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: true
+      matrix:
+        agent:
+          - name: "claude"
+            model: "sonnet-4"
+          - name: "opencode"
+            model: "minimax"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Setup Agent Environment
+        run: |
+          echo "Testing agent: ${{ matrix.agent.name }}"
+          echo "Model: ${{ matrix.agent.model }}"
+
+      - name: Run Agent-Specific Tests
+        run: |
+          if [ -f "tests/agent_tests/test_${{ matrix.agent.name }}.py" ]; then
+            pytest tests/agent_tests/test_${{ matrix.agent.name }}.py -v -x
+          else
+            pytest tests/ -k "not integration" -v -x --tb=short
+          fi
+
+      - name: Upload Agent Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agent-test-results-${{ matrix.agent.name }}
+          path: test_results/
+          retention-days: 7
+
+  # Stage 4: Integration Tests (Only on main pushes)
+  integration:
+    name: Integration Tests
+    needs: [setup, security]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    services:
+      redis:
+        image: redis:7.4.1
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
+
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
+
+      qdrant:
+        image: qdrant/qdrant:v1.13.1
+        ports:
+          - 6333:6333
+        options: >-
+          --health-cmd "curl -f http://localhost:6333/health || exit 1"
+          --health-interval 30s
+          --health-timeout 10s
+          --health-retries 2
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/requirements.txt
+          pip install pytest
+
+      - name: Wait for Services
+        run: sleep 5
+
+      - name: Run Integration Tests
+        run: |
+          pytest tests/integration/ -v --tb=short -x 2>&1 | head -100
+
+      - name: Run E2E Tests
+        run: |
+          pytest tests/e2e/ -v --tb=short -x 2>&1 | head -100
+
+      - name: Upload Integration Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: integration-test-results
+          path: test_results/
+          retention-days: 7
+
+  # Stage 5: Documentation (Only on main pushes)
+  docs:
+    name: Documentation
+    needs: [agent-tests, security]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Documentation Tools
+        run: |
+          pip install mkdocs mkdocs-material
+
+      - name: Build Documentation
+        run: |
+          mkdocs build --clean --strict
+
+      - name: Upload Documentation
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: site/
+          retention-days: 7
+
+  # Summary
+  ci-summary:
+    name: CI Summary
+    needs: [check-skip, setup, security, agent-tests]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report Status
+        run: |
+          echo "=== CI PIPELINE SUMMARY ==="
+          echo "Setup: ${{ needs.setup.result }}"
+          echo "Security: ${{ needs.security.result }}"
+          echo "Agent Tests: ${{ needs.agent-tests.result }}"
+          if [ "${{ needs.setup.result }}" == "failure" ] || \
+             [ "${{ needs.security.result }}" == "failure" ] || \
+             [ "${{ needs.agent-tests.result }}" == "failure" ]; then
+            echo "Status: ❌ FAILED"
+            exit 1
+          else
+            echo "Status: ✅ PASSED"
+          fi

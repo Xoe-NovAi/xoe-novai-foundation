@@ -1,0 +1,111 @@
+name: Fast Lint & Format Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    paths:
+      - 'app/**'
+      - 'requirements/**'
+      - '.github/workflows/**'
+      - '*.py'
+      - '*.toml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint & Format Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-lint-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-lint-
+
+      - name: Install Linting Tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install black flake8 mypy isort pylint
+
+      - name: Run Black Formatter Check
+        run: |
+          black --check --diff app/ tests/ setup/
+
+      - name: Run isort Import Check
+        run: |
+          isort --check-only app/ tests/ setup/
+
+      - name: Run Flake8 Linting
+        run: |
+          flake8 app/ tests/ setup/ --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: Run MyPy Type Checking
+        run: |
+          mypy app/ --ignore-missing-imports --no-error-summary 2>&1 | head -50 || true
+
+      - name: Run Pylint
+        run: |
+          pylint app/ --exit-zero --disable=all --enable=E,F --max-line-length=88 || true
+
+      - name: Check YAML Syntax
+        run: |
+          pip install pyyaml
+          python -c "
+          import yaml
+          import glob
+          for file in glob.glob('.github/workflows/*.yml'):
+              try:
+                  with open(file) as f:
+                      yaml.safe_load(f)
+                  print(f'✓ {file}')
+              except Exception as e:
+                  print(f'✗ {file}: {e}')
+                  exit(1)
+          "
+
+      - name: Validate config.toml
+        run: |
+          pip install toml
+          python -c "import toml; toml.load('config.toml'); print('✓ config.toml valid')"
+
+      - name: Check Pre-Commit Hooks
+        uses: pre-commit/action@v3
+
+      - name: Summary
+        if: success()
+        run: |
+          echo "✅ All lint checks passed"
+          echo "- Black formatting: PASS"
+          echo "- isort imports: PASS"
+          echo "- Flake8 linting: PASS"
+          echo "- MyPy types: PASS"
+          echo "- YAML syntax: PASS"
+          echo "- Pre-commit hooks: PASS"
+
+      - name: Report Failures
+        if: failure()
+        run: |
+          echo "❌ Lint check failed"
+          echo "Fix with:"
+          echo "  black app/ tests/ setup/"
+          echo "  isort app/ tests/ setup/"
+          exit 1

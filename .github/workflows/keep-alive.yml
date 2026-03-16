@@ -1,0 +1,40 @@
+name: Keep Repository Active
+
+on:
+  schedule:
+    - cron: '0 2 * * 0'  # Weekly on Sunday at 2 AM UTC
+
+permissions:
+  contents: write
+
+jobs:
+  keep-alive:
+    name: Update Repository Activity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update Activity Timestamp
+        run: |
+          # Create or update a marker file with current timestamp
+          mkdir -p .github/marks
+          echo "Last activity: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > .github/marks/keep-alive.txt
+          cat .github/marks/keep-alive.txt
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .github/marks/keep-alive.txt
+          git commit -m "chore: update activity timestamp [skip ci]" || echo "No changes to commit"
+          git push origin main || echo "Nothing to push"
+
+      - name: Verify Activity
+        run: |
+          echo "✅ Repository activity updated"
+          echo "Last updated: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
