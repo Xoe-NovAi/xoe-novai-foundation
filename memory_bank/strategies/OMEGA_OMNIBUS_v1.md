@@ -27,20 +27,32 @@ We are transitioning from a fragmented "Xoe-NovAi Foundation" to a unified "Omeg
 
 ---
 
-## 3. THE UNIFIED TOOLING STRATEGY
-**Problem**: Tool fragmentation (Cline, Gemini, Copilot, OpenCode).
-**Solution**: **The Unified Omega CLI**.
--   **Strategy**: Fork **OpenCode** (or similar lightweight CLI) to serve as the central hub.
--   **Integration**: Direct connection to the **Agent Bus** (Redis Streams) for cross-agent coordination.
+## 3. THE UNIFIED TOOLING STRATEGY (The 5-CLI Ecosystem)
+**Problem**: Tool fragmentation.
+**Solution**: **Symbiotic Orchestration**.
+-   **Gemini CLI (Archon)**: The Orchestrator, Researcher, and "Glue".
+-   **OpenCode (Workbench)**: The TUI Core, hosting the **Antigravity** plugin (OAuth unlocker).
+-   **Cline (Surgeon)**: The VSCodium IDE extension for deep coding.
+-   **Copilot (Assistant)**: The GitHub CLI wrapper for PRs and quick tasks.
+-   **Antigravity (Unlocker)**: The OAuth plugin providing access to frontier models.
 
 ### **GitHub Strategy (Free-Tier Optimized)**
 -   **Goal**: Optimize CI/CD for GitHub Free Tier (2,000 mins/month).
 -   **Reference**: `docs/strategies/GITHUB_STRATEGY.md` (Version 2.0).
--   **Key Tactics**: Fail-Fast CI, Layered CI, Smart Caching, Selective Job Execution, Artifact Cleanup, Workflow Event Filtering.
 
 ---
 
-## 4. AUTOMATED CURATION (GMC WORKER)
+## 4. THE HAIKU PROTOCOL (v4.5 Integration)
+**Source**: `artifacts/haiku_sync/`
+**Mandate**: Align tactical execution with Haiku's research.
+1.  **Session Management**: Adopt the **Hybrid Model** (Redis Hot + Disk Persistent).
+2.  **Startup**: Enforce **Tiered Startup** (Core -> App -> Full) to respect 12GB RAM.
+3.  **Handoff**: Use "Smart Handoff" protocol (Archon suggests, User confirms).
+4.  **Knowledge Map**: The `XNA_OMEGA_SYSTEM_KNOWLEDGE_MAP_v1.1.md` is the shared Source of Truth.
+
+---
+
+## 5. AUTOMATED CURATION (GMC WORKER)
 **Spec**: "Gnostic Memory Curator" (GMC).
 -   **Role**: The "Cleaner" and "Librarian" of the stack.
 -   **Function 1 (Hygiene)**: Strip backslash bloat (`re.sub(r'\\+', r'\', content)`) before writing.
