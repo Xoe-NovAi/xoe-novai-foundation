@@ -50,7 +50,8 @@ RUN pip install --no-cache-dir uv==0.5.21 && \
         httpx>=0.28.1 \
         redis>=7.3.0 \
         pyyaml>=6.0 \
-        toml>=0.10.2
+        toml>=0.10.2 \
+        psutil
 
 # Create a non-root user
 RUN groupadd -g 1000 appuser && \

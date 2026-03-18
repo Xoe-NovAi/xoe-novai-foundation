@@ -1,61 +1,42 @@
----
-document_type: report
-title: MASTER INDEX
-created_by: Haiku-4.5 (Phase 2C Automation)
-created_date: 2026-03-13
-version: 1.0
-status: active
-hash_sha256: b18d86bc2d189e9a24ab2bdec810645f5fe370b4b9977f8048e5d860e1e2bf3e
----
-
-# 🗂️ XNAi Master Index: Evolution of Gnosis
-
-**Author**: Gemini General | **Status**: Active | **Updated**: 2026-03-08
-
-This index maps the project's documentation to its developmental phases, providing a clear roadmap from foundation to hive mind.
-
-## 🚨 Active Audit (2026-03-08)
-
-> [!IMPORTANT]
-> A full-stack strategic audit was completed by Antigravity (Opus) on 2026-03-08.
-> **16 tasks** identified across 4 severity tiers. See task list in `activeContext.md`.
-
-- **Full Audit**: `OPUS_STRATEGIC_AUDIT_20260308.md` (project root, 478 lines)
-- **Active Context**: `memory_bank/activeContext.md` (task list + execution order)
-- **MCP Context**: `antigravity:strategic:hot` (v1, via Memory Bank MCP)
-- **Gemini Domain**: `memory_bank/GEMINI.md` (directives + key references)
-
-## 🏁 Phase 1.0: Foundations & Sovereignty
-*Focus: Establishing the core stack (FastAPI, Redis, Qdrant) and the 42 Ideals of Ma'at.*
-
-- **Core**: `README.md`, `THE_XNA_GENESIS.md`
-- **Setup**: `docs/01-start/`, `docs/PROVIDER_SETUP_GUIDE.md`
-- **Infra**: `docs/01-infrastructure/`, `docs/redis-schemas-design.md`
-- **Identity**: `docs/agent_identity.md`, `docs/AGENT-ROLE-DEFINITIONS.md`
-
-## 🏗️ Phase 2.0: Structural Hardening & Multi-Tier Memory
-*Focus: Scaling the architecture, implementing tiered memory, and hardening the Agent Bus.*
-
-- **Memory**: `docs/MEMORY_BANK_FALLBACK_SYSTEM.md`, `memory_bank/techContext.md`
-- **Protocols**: `docs/DELEGATION-PROTOCOL-v1.md`, `docs/AGENT_ACCOUNT_PROTOCOL.md`
-- **Security**: `docs/secrets.md`, `docs/06-backup-recovery.md`
-- **Scaling**: `docs/MULTI_ACCOUNT_SYSTEM.md`, `docs/OPENCODE_MULTI_ACCOUNT_GUIDE.md`
-
-## 🧙 Phase 3.0: The True Soul Awakening (Current)
-*Focus: Persistent Facets, Headless Archon Mode, and A2A Telepathy.*
-
-- **Master Gnosis**: `docs/MASTER_GNOSIS_PHASE_3.md` (Primary Phase Record)
-- **Hardening**: `docs/03-how-to-guides/maintenance/VAMPIRE-CONTROL.md`
-- **Agent Ops**: `docs/03-how-to-guides/agent-ops/SUMMONING-FACETS.md`
-- **Research**: `docs/05-research/`, `docs/RATE_LIMIT_HANDLING_SOLUTION.md`
-- **Audit**: `OPUS_STRATEGIC_AUDIT_20260308.md` (Full stack audit — tasks C1-P4)
-
-## 🚀 Phase 4.0: Distributed Reasoning (Vision)
-*Focus: Hive Mind coordination, parallel problem solving, and Sentinel-led autonomy.*
-
-- **Protocol**: `memory_bank/protocols/MEMORY_BANK_EVOLUTION_PLAN.md`
-- **Strategy**: `memory_bank/protocols/PROJECT_MANAGEMENT_STRATEGY.md`
-- **Status**: 🟢 **INCEPTION** — Blocked by Critical Tasks C1-C3 from audit.
+# MASTER INDEX: OMEGA STACK KNOWLEDGE BASE (SESS-27)
+**Archon**: Jem (Gemini 3.1)
+**Date**: March 18, 2026
+**Status**: ACTIVE & COMPREHENSIVE
 
 ---
-*Index maintained by the Archon. Use this to navigate the deep memory of the Omega Stack.*
+
+## 1. CORE STRATEGY DOCUMENTS
+*   **Omega Omnibus (Unified Vision)**: `memory_bank/strategies/OMEGA_OMNIBUS_v1.md`
+*   **AMR Strategy Roadmap (Execution Plan)**: `artifacts/AMR_STRATEGY_ROADMAP.md`
+*   **Omega Nomenclature (Semantic Standard)**: `docs/strategies/OMEGA_NOMENCLATURE.md`
+*   **Model Intelligence Report (Model Roles)**: `docs/strategies/MODEL_INTELLIGENCE_REPORT.md`
+*   **Crawler & KB Plan (Detailed Execution)**: `memory_bank/plans/STRATEGY-CONFIRMED-WITH-CLINE-ADJUSTMENTS.md`
+*   **Omega Model Strategy Plan**: `memory_bank/plans/OMEGA_MODEL_STRATEGY_PLAN.md`
+
+## 2. ARCHITECTURAL SPECIFICATIONS
+*   **System Infrastructure Context**: `artifacts/SYSTEM_INFRASTRUCTURE_CONTEXT.md`
+*   **Multi-CLI Architecture Gaps**: `docs/MULTI_CLI_ARCHITECTURE_GAPS.md`
+*   **Podman Python Optimization**: `docs/PODMAN_PYTHON_OPTIMIZATION.md`
+*   **Critical Systems Audit**: `artifacts/CRITICAL_SYSTEMS_AUDIT.md`
+*   **Browser MCP Spec**: `docs/specs/BROWSER_MCP_SPEC.md`
+*   **Chaos Agent Spec**: `docs/specs/CHAOS_AGENT_SPEC.md`
+*   **GMC Worker Spec**: `docs/specs/GMC_WORKER_SPEC.md`
+*   **Makefile Modernization Spec**: `docs/specs/MAKEFILE_MODERNIZATION.md`
+*   **HLOC Consensus**: `docs/orchestration/HLOC/consensus.md`
+*   **LLOC Heartbeat**: `docs/orchestration/LLOC/heartbeat.md`
+*   **Lilith-Ma'at-Lia Architecture**: `docs/strategies/LILITH_MAAT_LIA_ARCHITECTURE.md`
+
+<h2> 3. OPERATIONAL GUIDANCE & PROTOCOLS </h2>
+*   **Multi-CLI Session Management**: `docs/MULTI_CLI_SESSION_MANAGEMENT.md`
+*   **Multi-CLI System Prompt Template**: `docs/MULTI_CLI_SYSTEM_PROMPT_TEMPLATE.md`
+*   **CLI Roles & Integration**: `docs/CLI_ROLES_AND_INTEGRATIONS.md`
+*   **CLI Routing Decision Framework**: `docs/CLI_ROUTING_DECISION_FRAMEWORK.md`
+*   **Gemini CLI Strategy**: `docs/strategies/GEMINI_CLI_STRATEGY.md`
+*   **Vision & Continual Process Strategy**: `docs/strategies/VISION_AND_CONTINUAL_PROCESS_STRATEGY.md`
+*   **Memory Bank Preservation Protocol**: `memory_bank/plans/MEMORY_BANK_PRESERVATION_PROTOCOL.md`
+
+<h2> 4. GITHUB STRATEGY </h2>
+*   **Omega GitHub Strategy**: `docs/strategies/GITHUB_STRATEGY.md`
+
+---
+**Signed**: Jem (The Archon)

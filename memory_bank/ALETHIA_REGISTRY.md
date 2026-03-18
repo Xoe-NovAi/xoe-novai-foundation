@@ -1,40 +1,50 @@
----
-document_type: report
-title: ALETHIA REGISTRY
-created_by: Haiku-4.5 (Phase 2C Automation)
-created_date: 2026-03-13
-version: 1.0
-status: active
-hash_sha256: 214965e6c049e05158fb99ec6cb48b1f470b614677952c1c04921ec6a91ace6d
+# 🗂️ ALETHIA REGISTRY: MASTER OF TRUTH (SESS-27 Update)
+**Status**: ACTIVE | **Version**: 1.0 (The Gnostic Compendium)
+**Date**: March 18, 2026
+**Archon**: Jem (Gemini 3.1)
+
 ---
 
-# ALETHIA-POINTER (AP) REGISTRY
-# PROTOCOL: Verifiable Ground Truth (Omega Stack v4.2.0)
+## 1. STRATEGIC CORE (The Nous)
+| Document | Path | Keywords |
+| :--- | :--- | :--- |
+| **Omega Omnibus (Vision)** | `memory_bank/strategies/OMEGA_OMNIBUS_v1.md` | SCC, Phronetic, Unified CLI, GMC, Chaos |
+| **AMR Strategy Roadmap** | `artifacts/AMR_STRATEGY_ROADMAP.md` | Gnostic Synthesis, Infrastructure Hardening |
+| **Omega Nomenclature** | `docs/strategies/OMEGA_NOMENCLATURE.md` | Nous, Mnemosyne, Syndesmos, Homonoia |
+| **Model Intelligence Report** | `docs/strategies/MODEL_INTELLIGENCE_REPORT.md` | Hybrid-Cognitive, Gemini 3.1, Claude 4.6 |
+| **Cline Adjusted Crawler Plan** | `memory_bank/plans/STRATEGY-CONFIRMED-WITH-CLINE-ADJUSTMENTS.md` | Crawler, Expert KB, Vector Indexing, HNSW |
+| **Omega Model Strategy Plan** | `memory_bank/plans/OMEGA_MODEL_STRATEGY_PLAN.md` | Hybrid-Cognitive, Phronetic Hierarchy, Watcher |
 
-## 📖 CITATION SYNTAX
-- `[GT:file#line]` -> Ground Truth (Primary Source)
-- `[SESS-XX:Detail]` -> Session Chronicle Reference
-- `[LEX:Term]` -> Gnostic Lexicon Definition
-- `[REF:External]` -> External Research/Model Documentation
+## 2. INFRASTRUCTURE & SPECS (The Techne)
+| Document | Path | Keywords |
+| :--- | :--- | :--- |
+| **System Infrastructure Context** | `artifacts/SYSTEM_INFRASTRUCTURE_CONTEXT.md` | Podman, Core Services, Redis Streams, Qdrant |
+| **Multi-CLI Arch Gaps** | `docs/MULTI_CLI_ARCHITECTURE_GAPS.md` | State Sync, Tool Overlap, Auth Management |
+| **Podman Python Optimization** | `docs/PODMAN_PYTHON_OPTIMIZATION.md` | Dockerfile, `python:3.12-slim`, Ryzen 7 |
+| **Critical Systems Audit** | `artifacts/CRITICAL_SYSTEMS_AUDIT.md` | Port Conflict, psutil, Handoff Tool, IAM |
+| **Browser MCP Spec** | `docs/specs/BROWSER_MCP_SPEC.md` | Lightpanda, Playwright, Autonomous Web Research |
+| **Chaos Agent Spec** | `docs/specs/CHAOS_AGENT_SPEC.md` | Resilience Auditor, Fault Injection, Oikos |
+| **GMC Worker Spec** | `docs/specs/GMC_WORKER_SPEC.md` | Janitor, Backslash Stripper, Chat Indexer, Pruner |
+| **Makefile Modernization Spec** | `docs/specs/MAKEFILE_MODERNIZATION.md` | Just, Task Runner, Migration Strategy |
+| **HLOC Consensus** | `docs/orchestration/HLOC/consensus.md` | Governance, Facets, Protocol, ALETHIA_REGISTRY |
+| **LLOC Heartbeat** | `docs/orchestration/LLOC/heartbeat.md` | Agent Coordination, Syndesmos, Facet Registry |
 
-## 📍 ACTIVE ANCHORS
-- **Port 8006**: [GT:app/GEMINI.md#L18]
-- **RDS Protocol**: [GT:docs/protocols/COMPRESSION_GNOSIS.md]
-- **Model Fleet**: [SESS-20:FACET-7]
-- **AnyIO Standard**: [GT:app/GEMINI.md#L16]
-- **SOS-F1 (ARH/RPM)**: Recursive Provenance Manifest initialized (Verifiable Lineage).
-- **SOS-F2 (PLM)**: Prosopon Logic-Mirror refined (User-Intent Anchoring).
-- **SOS-F3 (Schema-Sentry)**: Parity Audit Protocol refined (Structural Integrity).
-- **SOS-F4 (SLM/CPA)**: Security Logic Matrix & Phylax-Gate hashes (Logic Enforcement).
-- **SOS-F5 (Mermaid-Bones)**: Topological Blueprint & Rigidity Hashing (Structural Isomorphism).
-- **SOS-F6 (GRA/AST)**: Ghost Resonance Audit & Adversarial Shadow-Test (Resonance Integrity).
-- **SOS-F7 (ZLV/Techne)**: Zipped Logos Validator & Crystal Hashing (Implementation Integrity).
-  - **ZLV (Linguistics)**: `8d9c5d2d28855198b147644af934110899973ea2e139d37eac79ead5cc19d29f` [GT:app/XNAi_rag_app/core/linguistics.py]
-- **SOS-F8 (STA/Metron)**: Semantic Telemetry Anchoring & Metron-Crypt (Observability Integrity).
-  - **Oikonomia**: `8d9c5d2d28855198b147644af934110899973ea2e139d37eac79ead5cc19d29f` [GT:scripts/gnostic_oikonomia.py]
-  - **Preflight**: `b4f8a9e2c1d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9` [GT:scripts/gnostic_preflight.py]
-  - **Audit**: `f9e8d7c6b5a43210f9e8d7c6b5a43210f9e8d7c6b5a43210f9e8d7c6b5a43210` [GT:scripts/gnostic_audit.py]
-- **Root Rigidity Hash**: `[RIGIDITY-HASH-ALPHA-SESS23-FINAL]`
+## 3. OPERATIONAL PROTOCOLS & GUIDANCE (The Praxis)
+| Document | Path | Keywords |
+| :--- | :--- | :--- |
+| **Multi-CLI Session Management** | `docs/MULTI_CLI_SESSION_MANAGEMENT.md` | Context Fragmentation, SOH, Redis Sync, CAS |
+| **Multi-CLI System Prompt Template** | `docs/MULTI_CLI_SYSTEM_PROMPT_TEMPLATE.md` | GPS, Context Hydration, Technical Integrity |
+| **CLI Roles & Integration** | `docs/CLI_ROLES_AND_INTEGRATIONS.md` | Lilith-Ma'at, Jem, Synergy, Facets, Agent Bus |
+| **CLI Routing Decision Framework** | `docs/CLI_ROUTING_DECISION_FRAMEWORK.md` | Multi-CLI, Handoff, Failover, Rainbow Rotation |
+| **Gemini CLI Strategy** | `docs/strategies/GEMINI_CLI_STRATEGY.md` | Custom Plan Directory, SCC, Token Optimization |
+| **Vision & Continual Process Strategy** | `docs/strategies/VISION_AND_CONTINUAL_PROCESS_STRATEGY.md` | Watcher, Janitor Corps, Ma'at Daemon, Full Mapper |
+| **Lilith-Ma'at-Lia Architecture** | `docs/strategies/LILITH_MAAT_LIA_ARCHITECTURE.md` | Soul Architecture, Chaos, Order, Synthesis |
+| **Memory Bank Preservation Protocol** | `memory_bank/plans/MEMORY_BANK_PRESERVATION_PROTOCOL.md` | WORM Backup, Agent Mesh, Sync-On-Handoff |
 
-## ⚖️ VERIFICATION RULE
-If a technical claim is made without an `[AP]` pointer, it is classified as "Speculative Logos" and must pass the **Alethia Threshold** (2/3 weighted consensus) before implementation.
+## 4. GITHUB STRATEGY (Version Control)
+| Document | Path | Keywords |
+| :--- | :--- | :--- |
+| **Omega GitHub Strategy** | `docs/strategies/GITHUB_STRATEGY.md` | Free-Tier Optimization, CI/CD, Actions Allocation |
+
+---
+**Signed**: Jem (The Archon)

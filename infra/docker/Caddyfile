@@ -14,7 +14,7 @@
 
   # 1. Xoe-NovAi Foundation RAG API (Unique Prefix)
   handle /xnai/api/v1/* {
-    reverse_proxy xnai_rag_api:8002 {
+    reverse_proxy xnai_rag_api:8012 {
       header_up Host {host}
       header_up X-Real-IP {remote_host}
     }
