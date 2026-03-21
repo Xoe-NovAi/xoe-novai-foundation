@@ -59,7 +59,11 @@ Agents do not modify shared memory directly. They use the **Inbox System**:
 
 ### 3.2 The "Aisthesis" (Vision/Audio) Layer
 -   **Watcher**: Use Gemini 3.1 Flash for sub-second analysis of screenshots in `inbox/vision_drop/`.
--   **Sovereignty**: All external API calls MUST have a local fallback (Qwen/Llama).
+-   **Sovereignty**: All external API calls MUST have a local fallback.
+    -   **Tier 1**: Qwen 2.5 1.5b (Fast Routing).
+    -   **Tier 2**: **Gemma 4b** / **RocRaccoon** (Creative/Logic).
+    -   **Tier 3**: **Krikri-8b-Instruct** (Advanced Reasoning).
+    -   **Enforcement**: Use `mmap` for all Tier 2/3 models to preserve RAM for the AnyIO mesh.
 
 ---
 

@@ -4,22 +4,36 @@
 
 ---
 
-## 1. Vision Strategy (Beyond Screenshots)
+## 1. Local Model Strategy (16GB Sovereignty)
+**Goal**: High-fidelity local reasoning with zero external latency.
+
+### **A. Tiered Local Models**
+*   **Small (0.5b - 1.5b)**: Qwen 2.5 1.5b (for sub-second routing/summarization).
+*   **Medium (3b - 8b)**: **Gemma 4b** (Excellent logic/follow-through), **RocRaccoon** (Creative/Unfiltered), **Krikri-8b-Instruct** (Advanced Instruction Following).
+*   **Optimization**: Use `mmap` for all 8b models to ensure zero-copy loading and preserve RAM for the AnyIO mesh.
+
+### **B. The "Sovereign Fallback"**
+*   **Design**: If Claude/Gemini APIs are unavailable or high-latency (>2s), the Archon automatically routes to the local **Krikri-8b-Instruct**.
+*   **Context**: Use the `session_library` (Zettelkasten) to provide highly filtered, dense context to the local model to maximize its performance within its smaller context window.
+
+---
+
+## 2. Vision Strategy (Beyond Screenshots)
 **Goal**: Real-time visual understanding of the user's workflow.
 
 ### **A. The "Watcher" (Screenshots)**
 *   **Status**: Defined in `docs/specs/BROWSER_MCP_SPEC.md` and `VISION_AND_CONTINUAL_PROCESS_STRATEGY.md`.
-*   **Tech**: `watchdog` + `mss` + Gemini 1.5 Flash.
+*   **Tech**: `watchdog` + `mss` + Gemini 3.1 Flash.
 
 ### **B. The "Streamer" (Video/Live Feed)**
 *   **Gap**: We lack a strategy for continuous video analysis.
-*   **Solution**: **Gstreamer + Gemini 1.5 Flash (Multimodal API)**.
+*   **Solution**: **Gstreamer + Gemini 3.1 Flash (Multimodal API)**.
     *   **Pipeline**: `ffmpeg` captures screen -> HLS stream -> Gemini API (Frame sampling @ 1fps).
     *   **Use Case**: "Watch me debug this" (Agent proactively intervenes when it sees an error in the terminal).
 
 ---
 
-## 2. Audio Strategy (The Voice of Jem)
+## 3. Audio Strategy (The Voice of Jem)
 **Goal**: Low-latency, full-duplex voice interaction.
 
 ### **A. Accessibility Mandate (Hands-Free)**
@@ -35,18 +49,19 @@
 
 ---
 
-## 3. Infrastructure Optimization: `mmap` for Embeddings
-**Goal**: Load massive vector indexes without consuming RAM.
+## 4. Infrastructure Optimization: `mmap` for Embeddings & Weights
+**Goal**: Load massive vector indexes and model weights without consuming RAM.
 
 ### **The "Zero-Copy" Protocol**
-*   **Problem**: Loading 1GB of embeddings into RAM kills the 16GB limit.
+*   **Problem**: Loading 1GB of embeddings or 5GB of model weights into RAM kills the 16GB limit.
 *   **Solution**: **Memory-Mapped Files (`mmap`)**.
     *   **Qdrant**: Already supports `mmap` storage backend. We must *enforce* it in `config.toml`.
+    *   **Llama.cpp**: Ensure `--mmap` is enabled for all local model loading.
     *   **Implementation**: Ensure `storage_type: mmap` is set for all Qdrant collections in `infra/docker/docker-compose.yml` (environment variables).
 
 ---
 
-## 4. The Curator & Linguistic Strategy
+## 5. The Curator & Linguistic Strategy
 **Goal**: Semantic consistency and knowledge ingestion.
 
 ### **A. The Curator (Ingestion)**
