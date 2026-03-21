@@ -54,3 +54,4 @@ _archive/**/*.json
 
 # Redis TLS Certificates
 infra/docker/tls/
+projects/

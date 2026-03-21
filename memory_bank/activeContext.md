@@ -14,7 +14,7 @@ status: RIGID
 
 ## 📌 CRITICAL TO-DO (Do Not Remove)
 - [ ] **RAM UPDATE**: Update all code, specs, and infra docs from 12GB to 16GB limit.
-- [ ] **Fix MCP Port 8005**: Restore Memory Bank MCP connectivity.
+- [x] **MB-MCP Maintenance Protocol**: Automate daily cache pruning, Redis DB flush, and directory verification via Systemd timer.
 - [ ] **GMC Worker**: Implement the "Backslash Stripper" and Chat Indexer.
 
 ---

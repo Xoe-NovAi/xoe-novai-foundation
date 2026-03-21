@@ -55,13 +55,13 @@ token_rate_max = 25
 # Memory limits in bytes (1 GB = 1073741824 bytes)
 
 memory_limit_bytes = 12884901888  # 12.0 GB
-memory_warning_threshold_bytes = 11274289152  # 10.5 GB
+memory_warning_threshold_bytes = 10737418240  # 10.0 GB (Operational Gate)
 memory_critical_threshold_bytes = 12348030976  # 11.5 GB
 
 # Legacy GB settings (DEPRECATED - use _bytes values above)
 
 memory_limit_gb = 12.0  # DEPRECATED - minimum required by validation (5-32GB range)
-memory_warning_threshold_gb = 10.5  # DEPRECATED
+memory_warning_threshold_gb = 10.0  # DEPRECATED
 memory_critical_threshold_gb = 11.5  # DEPRECATED
 latency_target_ms = 1000
 latency_warning_ms = 1500
@@ -83,7 +83,7 @@ crawl_rate_target = 50
 # ============================================================================
 [server]
 host = "0.0.0.0"
-port = 8000
+port = 8012
 workers = 1
 max_body_size = "100MB"
 timeout_seconds = 30
@@ -139,6 +139,13 @@ commands_enabled = true
 session_persist = true
 
 
+# ============================================================================
+# [redis] - Redis 7.4.1 Configuration
+# ============================================================================
+[redis]
+host = "redis"
+port = 6379
+password = ""  # Security Fix: Set to null/empty in config.toml (Use REDIS_PASSWORD env)
 timeout_seconds = 60
 max_connections = 50
 appendonly = true
@@ -261,7 +268,7 @@ distance = "cosine"
 # [api] - API Endpoints Configuration
 # ============================================================================
 [api]
-base_url = "http://rag:8000"
+base_url = "http://rag:8012"
 health_endpoint = "/health"
 query_endpoint = "/query"
 stream_endpoint = "/stream"

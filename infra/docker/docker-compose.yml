@@ -137,7 +137,7 @@ services:
     image: localhost/xnai-rag:latest
     container_name: xnai_rag_api
     init: true
-    user: "100999:100999"
+    user: "1000:1000"
     deploy:
       resources:
         limits:
@@ -248,10 +248,9 @@ services:
     networks:
       - xnai_db_network
       - xnai_app_network
+    ports:
+      - "8005:8000"
     restart: unless-stopped
-
-  # ==========================================================================
-  # CURATION WORKER - Ingestion Engine (Pre-built)
   # ==========================================================================
   curation_worker:
     image: localhost/xnai-curation-worker:latest
