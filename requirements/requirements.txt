@@ -5,143 +5,148 @@
 #    pip-compile --output-file=requirements.txt requirements.in
 #
 aiobreaker==1.2.0
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
 aiofiles==24.1.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   chainlit
     #   crawl4ai
 aiohappyeyeballs==2.6.1
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   aiohttp
 aiohttp==3.13.3
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   crawl4ai
     #   langchain-community
+    #   lightrag-hku
     #   litellm
     #   traceloop-sdk
 aiosignal==1.4.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   aiohttp
 aiosqlite==0.22.1
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 alphashape==1.3.1
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 annotated-doc==0.0.4
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
     #   fastapi
     #   typer
 annotated-types==0.7.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   pydantic
 anthropic==0.79.0
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   opentelemetry-instrumentation-bedrock
 anyio==4.12.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   anthropic
     #   asyncer
     #   crawl4ai
+    #   google-genai
     #   httpx
     #   mcp
     #   openai
     #   sse-starlette
     #   starlette
     #   watchfiles
+ascii-colors==0.11.21
+    # via pipmaster
 asgiref==3.11.1
     # via opentelemetry-instrumentation-asgi
 asyncer==0.0.13
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
 attrs==25.4.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   aiohttp
     #   jsonschema
     #   referencing
-audioop-lts==0.2.2
-    # via chainlit==3.8.5
 av==16.1.0
     # via faster-whisper
 bcrypt==5.0.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
 beautifulsoup4==4.14.3
     # via
-    #   -r requirements-api.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   crawl4ai
 bidict==0.23.1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   python-socketio
 brotli==1.2.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 certifi==2026.1.4
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   httpcore
     #   httpx
     #   requests
 cffi==2.0.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   cryptography
-chainlit==3.8.5
-    # via -r requirements-chainlit.in
+    #   sounddevice
+chainlit==2.8.5
+    # via -r requirements/requirements-chainlit.in
 chardet==5.2.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 charset-normalizer==3.4.4
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   requests
 chevron==0.14.0
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   literalai
 click==8.3.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   alphashape
-    #   chainlit==3.8.5
+    #   chainlit
     #   click-default-group
     #   click-log
     #   crawl4ai
@@ -154,114 +159,134 @@ click-default-group==1.2.4
     # via sqlite-utils
 click-log==0.4.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   alphashape
 colorama==0.4.6
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   griffecli
     #   traceloop-sdk
+configparser==7.2.0
+    # via lightrag-hku
 crawl4ai==0.8.0
-    # via -r requirements-crawl.in
+    # via -r requirements/requirements-crawl.in
 cryptography==46.0.5
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
+    #   google-auth
     #   pyjwt
     #   pyopenssl
 cssselect==1.4.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 ctranslate2==4.7.1
     # via faster-whisper
 cuid==0.4
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 dataclasses-json==0.6.7
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
     #   langchain-community
 deprecated==1.3.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
     #   limits
     #   traceloop-sdk
 distro==1.9.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   anthropic
+    #   google-genai
     #   openai
+dnspython==2.7.0
+    # via
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
 docstring-parser==0.17.0
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   anthropic
 faiss-cpu==1.13.2
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
 fake-http-header==0.3.5
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   tf-playwright-stealth
 fake-useragent==2.2.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 fastapi==0.129.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-curation_worker.in
+    #   chainlit
+fastembed==0.7.4
+    # via -r requirements/requirements-api.in
 faster-whisper==1.2.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
 fastuuid==0.14.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   litellm
 feedparser==6.0.12
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
 filelock==3.21.2
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   huggingface-hub
 filetype==1.2.0
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
 flatbuffers==25.12.19
     # via onnxruntime
 frozenlist==1.8.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   aiohttp
     #   aiosignal
 fsspec==2026.2.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   huggingface-hub
+google-api-core==2.30.0
+    # via lightrag-hku
+google-auth[requests]==2.49.1
+    # via
+    #   google-api-core
+    #   google-genai
+google-genai==1.68.0
+    # via lightrag-hku
 googleapis-common-protos==1.72.0
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
+    #   google-api-core
     #   opentelemetry-exporter-otlp-proto-grpc
     #   opentelemetry-exporter-otlp-proto-http
 greenlet==3.3.1
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   patchright
     #   playwright
     #   sqlalchemy
 griffe==2.0.0
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
 griffecli==2.0.0
     # via griffe
 griffelib==2.0.0
@@ -270,50 +295,55 @@ griffelib==2.0.0
     #   griffecli
 grpcio==1.78.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   grpcio-tools
     #   opentelemetry-exporter-otlp-proto-grpc
+    #   qdrant-client
+grpcio-tools==1.78.0
+    # via qdrant-client
 h11==0.16.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   httpcore
     #   uvicorn
     #   wsproto
 h2==4.3.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   httpx
 hf-xet==1.2.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   huggingface-hub
 hpack==4.1.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   h2
 httpcore==1.0.9
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   httpx
 httptools==0.7.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
 httpx[http2]==0.28.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-curation_worker.in
     #   anthropic
-    #   chainlit==3.8.5
+    #   chainlit
     #   crawl4ai
+    #   google-genai
     #   huggingface-hub
     #   langgraph-sdk
     #   langsmith
@@ -321,101 +351,112 @@ httpx[http2]==0.28.1
     #   literalai
     #   mcp
     #   openai
+    #   qdrant-client
 httpx-sse==0.4.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   langchain-community
     #   mcp
-huggingface-hub==1.4.1
+huggingface-hub==1.5.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   fastembed
     #   faster-whisper
     #   tokenizers
 humanize==4.15.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 hyperframe==6.1.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   h2
 idna==3.11
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   anyio
     #   httpx
     #   requests
     #   yarl
 importlib-metadata==8.7.1
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   litellm
     #   opentelemetry-api
 inflection==0.5.1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   opentelemetry-instrumentation-llamaindex
 jinja2==3.1.6
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   litellm
     #   traceloop-sdk
 jiter==0.13.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   anthropic
     #   openai
 joblib==1.5.3
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   nltk
 json-log-formatter==1.1.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
+json-repair==0.58.6
+    # via lightrag-hku
 jsonpatch==1.33
     # via langchain-core
 jsonpointer==3.0.0
     # via jsonpatch
 jsonschema==4.26.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   litellm
     #   mcp
 jsonschema-specifications==2025.9.1
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   jsonschema
 langchain==1.2.10
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
 langchain-classic==1.0.1
     # via langchain-community
 langchain-community==0.4.1
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
 langchain-core==1.2.12
     # via
     #   langchain
     #   langchain-classic
     #   langchain-community
+    #   langchain-qdrant
     #   langchain-text-splitters
     #   langgraph
     #   langgraph-checkpoint
     #   langgraph-prebuilt
+langchain-qdrant==1.0.0
+    # via
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-curation_worker.in
 langchain-text-splitters==1.1.0
     # via langchain-classic
 langgraph==1.0.8
-    # via langchain
+    # via
+    #   -r requirements/requirements-api.in
+    #   langchain
 langgraph-checkpoint==4.0.0
     # via
     #   langgraph
@@ -431,100 +472,116 @@ langsmith==0.7.2
     #   langchain-core
 lark==1.3.1
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 lazify==0.4.0
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
+lightrag-hku==1.4.11
+    # via -r requirements/requirements-curation_worker.in
 limits==5.8.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
     #   slowapi
 litellm==1.81.11
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 literalai==0.1.201
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
+loguru==0.7.3
+    # via fastembed
 lxml==5.4.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 markdown-it-py==4.0.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   rich
 markupsafe==3.0.3
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   jinja2
 marshmallow==3.26.2
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   dataclasses-json
 mcp==1.26.0
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
 mdurl==0.1.2
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   markdown-it-py
+mmh3==5.2.1
+    # via fastembed
 mpmath==1.3.0
     # via sympy
 multidict==6.7.1
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   aiohttp
     #   yarl
 mypy-extensions==1.1.0
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   typing-inspect
+nano-vectordb==0.0.4.3
+    # via lightrag-hku
 nest-asyncio==1.6.0
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
 networkx==3.6.1
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   alphashape
+    #   lightrag-hku
 nltk==3.9.2
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 numpy==2.4.2
     # via
-    #   -r requirements-api.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-crawl.in
     #   alphashape
     #   crawl4ai
     #   ctranslate2
     #   faiss-cpu
+    #   fastembed
     #   langchain-community
+    #   lightrag-hku
+    #   nano-vectordb
     #   onnxruntime
+    #   pandas
+    #   qdrant-client
     #   rank-bm25
     #   scipy
     #   shapely
     #   trimesh
 onnxruntime==1.24.1
     # via
-    #   -r requirements-api.in
+    #   -r requirements/requirements-api.in
+    #   fastembed
     #   faster-whisper
     #   piper-tts
 openai==2.20.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   litellm
 opentelemetry-api==1.39.1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   opentelemetry-exporter-otlp-proto-grpc
     #   opentelemetry-exporter-otlp-proto-http
     #   opentelemetry-exporter-prometheus
@@ -573,23 +630,23 @@ opentelemetry-api==1.39.1
     #   traceloop-sdk
 opentelemetry-exporter-otlp-proto-common==1.39.1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   opentelemetry-exporter-otlp-proto-grpc
     #   opentelemetry-exporter-otlp-proto-http
 opentelemetry-exporter-otlp-proto-grpc==1.39.1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-exporter-otlp-proto-http==1.39.1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-exporter-prometheus==0.60b1
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
 opentelemetry-instrumentation==0.60b1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
     #   opentelemetry-instrumentation-agno
     #   opentelemetry-instrumentation-alephalpha
     #   opentelemetry-instrumentation-anthropic
@@ -631,171 +688,171 @@ opentelemetry-instrumentation==0.60b1
     #   opentelemetry-instrumentation-writer
 opentelemetry-instrumentation-agno==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-alephalpha==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-anthropic==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-asgi==0.60b1
     # via opentelemetry-instrumentation-fastapi
 opentelemetry-instrumentation-bedrock==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-chromadb==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-cohere==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-crewai==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-fastapi==0.60b1
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
 opentelemetry-instrumentation-google-generativeai==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-groq==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-haystack==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-lancedb==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-langchain==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-llamaindex==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-logging==0.60b1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-marqo==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-mcp==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-milvus==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-mistralai==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-ollama==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-openai==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-openai-agents==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-pinecone==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-qdrant==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-redis==0.60b1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-replicate==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-requests==0.60b1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-sagemaker==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-sqlalchemy==0.60b1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-threading==0.60b1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-together==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-transformers==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-urllib3==0.60b1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-vertexai==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-voyageai==0.52.3
     # via traceloop-sdk
 opentelemetry-instrumentation-watsonx==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-weaviate==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-instrumentation-writer==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   traceloop-sdk
 opentelemetry-proto==1.39.1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   opentelemetry-exporter-otlp-proto-common
     #   opentelemetry-exporter-otlp-proto-grpc
     #   opentelemetry-exporter-otlp-proto-http
 opentelemetry-sdk==1.39.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
     #   opentelemetry-exporter-otlp-proto-grpc
     #   opentelemetry-exporter-otlp-proto-http
     #   opentelemetry-exporter-prometheus
     #   traceloop-sdk
 opentelemetry-semantic-conventions==0.60b1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   opentelemetry-instrumentation
     #   opentelemetry-instrumentation-agno
     #   opentelemetry-instrumentation-alephalpha
@@ -837,7 +894,7 @@ opentelemetry-semantic-conventions==0.60b1
     #   opentelemetry-sdk
 opentelemetry-semantic-conventions-ai==0.4.13
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   opentelemetry-instrumentation-agno
     #   opentelemetry-instrumentation-alephalpha
     #   opentelemetry-instrumentation-anthropic
@@ -872,373 +929,449 @@ opentelemetry-semantic-conventions-ai==0.4.13
     #   traceloop-sdk
 opentelemetry-util-http==0.60b1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   opentelemetry-instrumentation-asgi
     #   opentelemetry-instrumentation-fastapi
     #   opentelemetry-instrumentation-requests
     #   opentelemetry-instrumentation-urllib3
 orjson==3.11.7
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   langgraph-sdk
     #   langsmith
 ormsgpack==1.12.2
     # via langgraph-checkpoint
 packaging==26.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   chainlit
     #   faiss-cpu
     #   huggingface-hub
     #   langchain-core
     #   langsmith
+    #   lightrag-hku
     #   limits
     #   literalai
     #   marshmallow
     #   onnxruntime
     #   opentelemetry-instrumentation
     #   opentelemetry-instrumentation-sqlalchemy
+    #   pipmaster
+pandas==2.3.3
+    # via lightrag-hku
+passlib==1.7.4
+    # via
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-curation_worker.in
+    #   -r requirements/requirements.in
 patchright==1.58.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
-pillow==12.1.1
+pillow==11.3.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
+    #   fastembed
 piper-tts==1.4.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+pipmaster==1.1.2
+    # via lightrag-hku
 playwright==1.58.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
     #   tf-playwright-stealth
 pluggy==1.6.0
     # via sqlite-utils
+portalocker==2.10.1
+    # via qdrant-client
 prometheus-client==0.24.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-curation_worker.in
     #   opentelemetry-exporter-prometheus
+    #   prometheus-fastapi-instrumentator
+prometheus-fastapi-instrumentator==7.1.0
+    # via -r requirements/requirements-api.in
 propcache==0.4.1
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   aiohttp
     #   yarl
+proto-plus==1.27.1
+    # via google-api-core
 protobuf==6.33.5
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
+    #   google-api-core
     #   googleapis-common-protos
+    #   grpcio-tools
     #   onnxruntime
     #   opentelemetry-proto
+    #   proto-plus
 psutil==7.2.2
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   crawl4ai
+psycopg2-binary==2.9.11
+    # via -r requirements/requirements-curation_worker.in
+py-rust-stemmers==0.1.5
+    # via fastembed
+pyasn1==0.6.3
+    # via pyasn1-modules
+pyasn1-modules==0.4.2
+    # via google-auth
+pyaudio==0.2.14
+    # via -r requirements/requirements-chainlit.in
 pybreaker==1.4.1
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
 pycparser==3.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   cffi
 pydantic==2.12.5
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   anthropic
-    #   chainlit==3.8.5
+    #   chainlit
     #   crawl4ai
     #   fastapi
+    #   google-genai
     #   langchain
     #   langchain-classic
     #   langchain-core
+    #   langchain-qdrant
     #   langgraph
     #   langsmith
+    #   lightrag-hku
     #   litellm
     #   literalai
     #   mcp
     #   openai
     #   pydantic-settings
+    #   qdrant-client
     #   traceloop-sdk
 pydantic-core==2.41.5
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   pydantic
 pydantic-settings==2.12.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
     #   langchain-community
     #   mcp
 pyee==13.0.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   patchright
     #   playwright
 pygments==2.19.2
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   rich
 pyjwt[crypto]==2.11.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
+    #   chainlit
     #   mcp
 pyopenssl==25.3.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
+pypinyin==0.55.0
+    # via lightrag-hku
+python-consul2==0.1.5
+    # via -r requirements/requirements.in
 python-dateutil==2.9.0.post0
-    # via sqlite-utils
+    # via
+    #   pandas
+    #   sqlite-utils
 python-dotenv==1.2.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
+    #   chainlit
     #   crawl4ai
+    #   lightrag-hku
     #   litellm
     #   pydantic-settings
 python-engineio==4.13.1
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   python-socketio
 python-magic==0.4.27
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
 python-multipart==0.0.22
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
     #   mcp
 python-socketio==5.16.1
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
 pyttsx3==2.99
-    # via -r requirements-api.in
+    # via -r requirements/requirements-api.in
+pytz==2026.1.post1
+    # via pandas
 pyyaml==6.0.3
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
     #   ctranslate2
     #   huggingface-hub
     #   langchain-classic
     #   langchain-community
     #   langchain-core
+qdrant-client==1.13.2
+    # via
+    #   -r requirements/requirements-api.in
+    #   langchain-qdrant
 rank-bm25==0.2.2
     # via
-    #   -r requirements-api.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 redis==7.1.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
 referencing==0.37.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   jsonschema
     #   jsonschema-specifications
 regex==2026.1.15
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   nltk
     #   tiktoken
 requests==2.32.5
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
+    #   fastembed
+    #   google-api-core
+    #   google-auth
+    #   google-genai
     #   langchain-classic
     #   langchain-community
     #   langsmith
     #   opentelemetry-exporter-otlp-proto-http
+    #   python-consul2
     #   requests-toolbelt
     #   tiktoken
 requests-toolbelt==1.0.0
     # via langsmith
-rich==14.3.2
+rich==14.3.3
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
     #   typer
 rpds-py==0.30.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   jsonschema
     #   referencing
 rtree==1.4.1
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   alphashape
 scipy==1.17.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   alphashape
 sgmllib3k==1.0.0
     # via
-    #   -r requirements-api.in
+    #   -r requirements/requirements-api.in
     #   feedparser
 shapely==2.1.2
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   alphashape
     #   crawl4ai
 shellingham==1.5.4
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   huggingface-hub
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   typer
 simple-websocket==1.1.0
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   python-engineio
 six==1.17.0
-    # via python-dateutil
+    # via
+    #   python-consul2
+    #   python-dateutil
 slowapi==0.1.9
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
 sniffio==1.3.1
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   anthropic
     #   asyncer
+    #   google-genai
     #   openai
 snowballstemmer==2.2.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
+sounddevice==0.5.5
+    # via -r requirements/requirements-chainlit.in
 soupsieve==2.8.3
     # via
-    #   -r requirements-api.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-crawl.in
     #   beautifulsoup4
 sqlalchemy==2.0.46
     # via
+    #   -r requirements/requirements-curation_worker.in
     #   langchain-classic
     #   langchain-community
 sqlite-fts4==1.0.3
     # via sqlite-utils
 sqlite-utils==3.39
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
 sse-starlette==3.2.0
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
     #   mcp
 starlette==0.52.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
     #   fastapi
     #   mcp
+    #   prometheus-fastapi-instrumentator
     #   sse-starlette
+    #   starlette-context
+starlette-context==0.5.1
+    # via -r requirements/requirements-api.in
 sympy==1.14.0
     # via onnxruntime
 syncer==2.0.3
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
 tabulate==0.9.0
     # via sqlite-utils
 tenacity==9.1.4
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
+    #   google-genai
     #   langchain-community
     #   langchain-core
+    #   lightrag-hku
     #   traceloop-sdk
 tf-playwright-stealth==1.2.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
 tiktoken==0.12.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
+    #   lightrag-hku
     #   litellm
 tokenizers==0.22.2
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   fastembed
     #   faster-whisper
     #   litellm
     #   opentelemetry-instrumentation-bedrock
 toml==0.10.2
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
 tomli==2.4.0
     # via
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
 tqdm==4.67.3
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   fastembed
     #   faster-whisper
     #   huggingface-hub
     #   nltk
     #   openai
 traceloop-sdk==0.52.3
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   literalai
 trimesh==4.11.2
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   alphashape
 typer==0.23.1
-    # via typer-slim
+    # via
+    #   huggingface-hub
+    #   typer-slim
 typer-slim==0.23.1
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   huggingface-hub
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
 typing-extensions==4.15.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
+    #   aiosignal
     #   anthropic
+    #   anyio
     #   beautifulsoup4
     #   fastapi
+    #   google-genai
     #   grpcio
     #   huggingface-hub
     #   langchain-core
@@ -1253,27 +1386,33 @@ typing-extensions==4.15.0
     #   pydantic
     #   pydantic-core
     #   pyee
+    #   pyopenssl
+    #   referencing
     #   sqlalchemy
+    #   starlette
     #   typing-inspect
     #   typing-inspection
 typing-inspect==0.9.0
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   dataclasses-json
 typing-inspection==0.4.2
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
-    #   -r requirements-curation_worker.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   -r requirements/requirements-curation_worker.in
     #   fastapi
     #   mcp
     #   pydantic
     #   pydantic-settings
+tzdata==2025.3
+    # via pandas
 urllib3==2.6.3
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
+    #   qdrant-client
     #   requests
 uuid-utils==0.14.0
     # via
@@ -1281,26 +1420,30 @@ uuid-utils==0.14.0
     #   langsmith
 uvicorn==0.40.0
     # via
-    #   -r requirements-api.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-curation_worker.in
+    #   chainlit
     #   mcp
 uvloop==0.22.1
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
 watchfiles==0.24.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
-    #   chainlit==3.8.5
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   chainlit
+wcwidth==0.6.0
+    # via ascii-colors
 websockets==16.0
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
+    #   google-genai
 wrapt==1.17.3
     # via
-    #   -r requirements-api.in
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-api.in
+    #   -r requirements/requirements-chainlit.in
     #   deprecated
     #   opentelemetry-instrumentation
     #   opentelemetry-instrumentation-redis
@@ -1309,23 +1452,25 @@ wrapt==1.17.3
     #   opentelemetry-instrumentation-urllib3
 wsproto==1.3.2
     # via
-    #   -r requirements-chainlit.in
+    #   -r requirements/requirements-chainlit.in
     #   simple-websocket
+xlsxwriter==3.2.9
+    # via lightrag-hku
 xxhash==3.6.0
     # via
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-crawl.in
     #   crawl4ai
     #   langgraph
     #   langsmith
 yarl==1.22.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   aiohttp
 zipp==3.23.0
     # via
-    #   -r requirements-chainlit.in
-    #   -r requirements-crawl.in
+    #   -r requirements/requirements-chainlit.in
+    #   -r requirements/requirements-crawl.in
     #   importlib-metadata
 zstandard==0.25.0
     # via langsmith
@@ -1333,6 +1478,3 @@ zstandard==0.25.0
 # The following packages are considered to be unsafe in a requirements file:
 # pip
 # setuptools
-python-consul2>=0.1.5
-qdrant-client==1.13.2
-passlib==1.7.4
