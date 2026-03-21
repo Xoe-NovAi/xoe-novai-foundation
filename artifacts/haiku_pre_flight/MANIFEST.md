@@ -8,12 +8,29 @@ These files are the **primary context** for Cloud Haiku.
 
 | File | Purpose |
 | :--- | :--- |
-| `OMEGA_CRITICAL_INSIGHTS.md` | **STRATEGY**: The "What Now" (7-Domain Plan). |
+| `AISTHESIS_STRATEGY.md` | **STRATEGY**: General AI Aisthesis Strategy. |
+| `AMR_STRATEGY_ROADMAP.md` | **STRATEGY**: Autonomous Marathon Roadmap. |
+| `BEST_PRACTICES_GUIDE.md` | **GUIDANCE**: Best Practices for Omega Stack v2.0. |
+| `BROWSER_MCP_SPEC.md` | **SPEC**: Browser Micro-Control Protocol Specification. |
+| `CHAOS_AGENT_SPEC.md` | **SPEC**: Chaos Agent Design and Protocol. |
+| `GEMINI_CLI_STRATEGY.md` | **STRATEGY**: Gemini CLI operational guidelines. |
+| `GITHUB_STRATEGY.md` | **STRATEGY**: GitHub workflow and policies. |
+| `GMC_WORKER_SPEC.md` | **SPEC**: General Multi-Container Worker Specification. |
+| `LILITH_MAAT_LIA_ARCHITECTURE.md` | **ARCHITECTURE**: Lilith Ma'at LIA System Design. |
+| `MAKEFILE_MODERNIZATION.md` | **STRATEGY**: Makefile Modernization Plan. |
+| `MANIFEST.md` | **OVERVIEW**: This manifest itself, a guide to the bundle. |
 | `MNEMOSYNE_AUDIT_REPORT.md` | **TASK**: The "How-To" for Memory Bank Migration. |
-| `README_RESEARCH.txt` | **CONTEXT**: The "Why" (Research Findings). |
-| `QUICK_START.md` | **EXECUTION**: The "Get Started" Guide. |
+| `MODEL_INTELLIGENCE_REPORT.md` | **REPORT**: Model Performance and Insights. |
+| `OBSIDIAN_NEURAL_INTERFACE.md` | **DESIGN**: Obsidian Neural Interface Concept. |
+| `OMEGA_CRITICAL_INSIGHTS.md` | **STRATEGY**: The "What Now" (7-Domain Plan). |
+| `OMEGA_NOMENCLATURE.md` | **REFERENCE**: Standardized naming conventions. |
 | `OMEGA_OMNIBUS_v1.md` | **LIBRARY**: Full System Architecture. |
+| `QUICK_START.md` | **EXECUTION**: The "Get Started" Guide. |
+| `README_RESEARCH.txt` | **CONTEXT**: The "Why" (Comprehensive Research Findings). |
 | `SYSTEM_INFRASTRUCTURE_CONTEXT.md` | **MAP**: Current Infrastructure State. |
+| `VISION_AND_CONTINUAL_PROCESS_STRATEGY.md` | **STRATEGY**: Vision and Process for Evolution. |
+| `XNA_OMEGA_SYSTEM_KNOWLEDGE_MAP_v1.1.md` | **MAP**: XNAi Omega System Knowledge Graph. |
+
 
 ## 📂 Project Root Context
 These files provide the **environment** for Cloud Haiku.

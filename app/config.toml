@@ -138,14 +138,7 @@ theme = "dark"
 commands_enabled = true
 session_persist = true
 
-# ============================================================================
-# [redis] - Redis 7.4.1 Configuration
-# ============================================================================
-[redis]
-version = "7.4.1"
-host = "localhost"
-port = 6379
-password = ""
+
 timeout_seconds = 60
 max_connections = 50
 appendonly = true

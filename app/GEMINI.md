@@ -28,7 +28,7 @@
 ## 🎯 Domain Directives
 1.  **AnyIO First**: Always use `anyio` (not raw `asyncio`).
 2.  **Config First**: Use `CONFIG_PATH=/app/config.toml` (standardized across the mesh).
-3.  **Port 8006**: RAG/Oikos API operates on Port 8006 (Caddy routes internally).
+3. Port 8000: RAG/Oikos API operates on Port 8000. (Caddy routes internally from 8006).
 4.  **OAuth Protocol**: Use `OAuthManager` for decrypted credential handling (`XNAI_OAUTH_KEY`).
 5.  **Rainbow Rotation**: Implement automatic account rotation upon 429/quota triggers.
 6.  **Redis Standard**: `decode_responses=True` and `REDIS_SSL_CERT_REQS=none`.
