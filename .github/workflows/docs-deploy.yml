@@ -54,7 +54,7 @@ jobs:
           mkdocs build --clean --strict
 
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           path: './site'
 
