@@ -1,0 +1,78 @@
+﻿# Vision and Strategy Overview for Personal AI System Development
+
+
+## Core Vision
+
+
+To establish a **powerful, flexible, and cost-effective personal AI system** that supports the user's diverse goals, including **mastering Classical Greek**, developing proficiency in **Python for AI development**, and generating income through **AI-driven content creation and software engineering**. This system will leverage a **hybrid architecture**, combining the benefits of **local processing** and **free cloud-hosted Large Language Model (LLM) APIs**, optimized for **limited hardware resources** and a **zero initial budget**.
+
+
+## Strategic Goals
+
+
+*   **Build a Comprehensive Digital Library:** Create a well-organized and searchable knowledge base focusing initially on **Classical Greek texts**, but with the capacity to expand into other areas of interest (e.g., mythology, botany, occult).
+*   **Develop a Robust Retrieval-Augmented Generation (RAG) System:** Implement a local RAG pipeline that can efficiently retrieve relevant information from the digital library to augment the capabilities of both local and cloud-hosted LLMs.
+*   **Master Prompt Engineering and LLM Interaction:** Cultivate the skills necessary to effectively communicate with and leverage the strengths of various LLMs for different tasks.
+*   **Automate Key Workflows with AI Agents:** Develop a suite of autonomous agents to streamline data ingestion, embedding generation, knowledge curation, and task routing within the AI ecosystem.
+*   **Establish a Scalable System:** Design the system with modularity and future growth in mind, ensuring that progress made with current constraints can be seamlessly transitioned to more powerful hardware in the future.
+
+
+## Key Constraints
+
+
+*   **Zero Initial Budget:** All software and services utilized in the initial setup must be free or open-source.
+*   **Limited Hardware:** The system must operate efficiently on an AMD Ryzen 7 5700U CPU, Radeon 5700U integrated graphics, 16GB of RAM, and a 256GB SSD, running Ubuntu 24.04.
+
+
+## Core Interests
+
+
+*   **Classical Greek Language and Literature:** A primary focus for digital library development and potential fine-tuning of local LLMs.
+*   **Python Programming:** A key skill to be developed for building and integrating the various components of the AI system.
+*   **AI-Driven Content Creation:** Utilizing LLMs to generate tutorials, articles, and other forms of content related to the user's interests and AI development journey.
+*   **Software Engineering:** Developing AI-powered tools and services for potential monetization.
+*   **Secondary Interests:** Mythology, botany, and the occult, which may be incorporated into the digital library and future projects.
+
+
+## Proposed Hybrid Architecture
+
+
+The AI system will employ a hybrid architecture that strategically combines local resources with free cloud-hosted services:
+
+
+*   **Local Components:**
+    *   **Digital Library:** Stored and managed locally using a lightweight database like **DuckDB**.
+    *   **Vector Database:** **FAISS/Qdrant** will be used for efficient storage and retrieval of vector embeddings generated from the digital library.
+    *   **Embedding Model:** Efficient CPU-friendly models such as **DistilBERT** or **Sentence-Transformers (e.g., all-MiniLM-L6-v2)** will be used to create embeddings. Ancient-Greek-BERT for Ancient Greek; new embedders to check out: embeddingGemma, Qwen embedder
+    *   **Orchestration Framework:** **LangChain** will serve as the central framework for integrating the various local and cloud components, managing workflows, and implementing the RAG pipeline.
+    *   **AI Agents:** A suite of Python-based agents will be developed to automate key tasks, including data ingestion, embedding generation, and query routing.
+*   **Cloud Components:**
+    *   **Primary LLM for Complex Tasks:** **Krikri-7B-Instruct** got ancient Greek and esoteric, **Qwen-2.5-Code-7B** for complex coding, will be the primary resource for tasks requiring significant processing power, such as complex content generation, coding assistance, and in-depth analysis. Additional LLMs TBD.
+    *   **Potential Secondary Cloud LLM (for Exploration):** Explore the free tier of **Gemini CLI** as a powerful alternative or supplementary resource for complex tasks, keeping in mind potential rate limits.
+
+
+## Local RAG System LLM Options (To Be Determined)
+
+
+Given the current hardware limitations, running a large local LLM for the RAG system is not immediately feasible. The initial focus will be on leveraging cloud APIs for intensive LLM tasks and building a robust RAG pipeline with efficient embedding and retrieval. As hardware capabilities improve in the future, the following local LLM options (identified in previous discussions) may be considered for integration into the local RAG system:
+
+
+*   **Quantized models (Various sizes, e.g., 1B, 3B, 7B):** Offers a balance of performance and potential for local execution, especially with quantization techniques. For coding: **Qwen-2.5-Code-1.5B**, escalates to **Qwen-2.5-Code-3B**, --> **Qwen-2.5-Code-7B** for the most complex coding. RuvLTRA providing structured prompts between model switches.
+*   **embeddingGemma:** A powerful transformer model that can be run locally for certain tasks, though potentially resource-intensive.
+*   **Smaller, Task-Specific Fine-tuned Models (e.g., Unbabel/xlm-roberta-comet-small/Ancient-Greek-BERT):** Efficient models that can be fine-tuned on specific datasets (like Classical Greek) to provide targeted expertise within local resource constraints.
+
+
+The decision on the specific local LLM for the RAG system will be made based on future hardware upgrades and experimentation with different models within the constraints. The current strategy prioritizes building the data infrastructure and leveraging cloud APIs for primary LLM capabilities.
+
+
+## Initial Development Roadmap
+
+
+1.  **Develop Foundational AI Agents:** Prioritize the creation of the Data Ingestion Agent, Embedding Agent, and Curation Agent to build the digital library and vector embeddings.
+2.  **Build the Initial Digital Library:** Focus on a core collection of Classical Greek texts using automated ingestion scripts.
+3.  **Set Up the Local RAG Foundation:** Integrate **SQLite**, **FAISS**, **Qdrant**, **Redis** and **LangChain** to enable retrieval from the local knowledge base.
+4.  **Implement Basic Query Routing:** Develop an agent to direct complex queries to **Gemini CLI** and potentially handle simpler retrieval-based queries locally.
+6.  **Continuously Monitor and Iterate:** Track system performance and refine components based on usage and needs.
+
+
+This overview provides a comprehensive understanding of the user's vision, strategy, goals, constraints, and interests, optimized for analysis by AI chatbots to guide the selection of the best implementation choices for their personal AI system.

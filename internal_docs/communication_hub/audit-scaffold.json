@@ -1,0 +1,28 @@
+{
+  "operation": "Foundation Stack Audit",
+  "version": "1.0",
+  "status": "active",
+  "assignments": [
+    {
+      "agent": "cline",
+      "focus": "Core API & Service Orchestration",
+      "targets": ["rag_api", "chainlit_ui", "consul"],
+      "task": "Audit FastAPI endpoint stability, circuit breaker state persistence, and AnyIO TaskGroup compliance.",
+      "template_id": "SYSTEM-AUDIT-TEMPLATE.md"
+    },
+    {
+      "agent": "copilot",
+      "focus": "Data Persistence & Identity",
+      "targets": ["iam_db", "redis_streams", "sqlite_wal"],
+      "task": "Audit IAM v2.0 schema integrity, Redis stream consumer group lag, and Ed25519 signature performance.",
+      "template_id": "SYSTEM-AUDIT-TEMPLATE.md"
+    },
+    {
+      "agent": "gemini",
+      "focus": "Integration & Curation Readiness",
+      "targets": ["vikunja", "faiss_index", "curation_worker"],
+      "task": "Audit Vikunja reachability, FAISS embedding serialization, and manual curation trigger logic.",
+      "template_id": "SYSTEM-AUDIT-TEMPLATE.md"
+    }
+  ]
+}

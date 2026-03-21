@@ -1,0 +1,52 @@
+name: Phase-5A Integration (staging)
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  phase5a-integration:
+    # NOTE: this job requires a self-hosted privileged runner that can perform system changes.
+    # Use a labeled runner (e.g., `self-hosted`, `linux`, `privileged`) in your environment.
+    runs-on: [self-hosted, linux, privileged]
+    environment: staging
+    permissions: write-all
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+          pip install pytest
+
+      - name: Install stress-ng (requires privileged runner)
+        run: sudo apt-get update && sudo apt-get install -y stress-ng util-linux || true
+
+      - name: Run Phase-5A unit tests (rollback & health-check)
+        run: |
+          sudo python3 -m pip install pytest || true
+          sudo pytest -q tests/test_phase5a_rollback.py tests/test_zram_health_check.py -q
+
+      - name: Run Phase-5A validation
+        run: sudo python3 scripts/validate-phase-5a.py
+
+      - name: Run Phase-5A staged stress test (staging)
+        run: |
+          sudo python3 scripts/phase-5a-stress-test.py --staging --duration 300 --workers 3
+
+      - name: Upload logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase5a-logs
+          path: |
+            /tmp/phase5a-*
+            /var/log/syslog
+            /var/log/messages

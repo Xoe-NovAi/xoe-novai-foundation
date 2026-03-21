@@ -1,0 +1,73 @@
+{
+  "phase": "5",
+  "name": "Sovereign Multi-Agent Cloud Discovery",
+  "status": "active",
+  "global_constraints": {
+    "host": "Ryzen 7 5700U",
+    "ram_limit": "6.6GB",
+    "concurrency_standard": "AnyIO TaskGroups"
+  },
+  "research_tree": [
+    {
+      "id": "5.1",
+      "topic": "Agent Bus Scaling",
+      "owner": "cline",
+      "subtasks": [
+        {
+          "id": "5.1.1",
+          "subject": "Redis Stream Consumer Groups",
+          "action": "Research XGROUP task distribution efficiency on local host",
+          "output_file": "expert-knowledge/agent-tooling/redis-stream-bus-patterns.md"
+        },
+        {
+          "id": "5.1.2",
+          "subject": "AnyIO Bus Wrapper",
+          "action": "Propose AnyIO-wrapped AgentBusClient implementation",
+          "output_file": "internal_docs/04-code-quality/07-agent-bus-client-design.md"
+        }
+      ]
+    },
+    {
+      "id": "5.2",
+      "topic": "Identity & Federation",
+      "owner": "copilot",
+      "subtasks": [
+        {
+          "id": "5.2.1",
+          "subject": "Human-DID Account Mapping",
+          "action": "Design IAM v2.0 schema for agent-to-human mapping",
+          "output_file": "expert-knowledge/security/iam-v2-schema-design.md"
+        },
+        {
+          "id": "5.2.2",
+          "subject": "Handshake Hardening",
+          "action": "Define Ed25519 administrative verification flow",
+          "output_file": "internal_docs/04-code-quality/08-handshake-admin-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "5.3",
+      "topic": "Resource & Lifecycle",
+      "owner": "gemini",
+      "status": "complete",
+      "subtasks": [
+        {
+          "id": "5.3.1",
+          "subject": "Memory Partitioning",
+          "status": "complete",
+          "action": "Audit memory usage of concurrent agents and propose RAM quotas",
+          "output_file": "expert-knowledge/environment/multi-agent-resource-limits.md"
+        },
+        {
+          "id": "5.3.2",
+          "subject": "Context Continuity",
+          "status": "complete",
+          "action": "Design cross-agent state sharing (Redis vs. File)",
+          "output_file": "internal_docs/01-strategic-planning/agent-context-continuity.md"
+        }
+      ]
+    }
+  ],
+  "index_file": "memory_bank/phase5-research-index.md"
+}

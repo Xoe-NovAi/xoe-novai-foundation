@@ -1,0 +1,18 @@
+{
+  "name": "test-exp-project",
+  "type": "experimental-project",
+  "status": "active",
+  "created": "2026-01-21T16:55:32.365044",
+  "last_modified": "2026-01-21T16:55:32.365044",
+  "description": "A test experimental project",
+  "path": "/home/arcana-novai/Documents/Xoe-NovAi/projects/test-exp-project",
+  "template_used": "experimental-project",
+  "version": "1.0.0",
+  "tags": [],
+  "milestones": [],
+  "dependencies": [],
+  "evaluation_criteria": {
+    "success_metrics": [],
+    "completion_criteria": []
+  }
+}

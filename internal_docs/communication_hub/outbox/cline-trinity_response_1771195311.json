@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-watcher-bootstrap-002",
+  "timestamp": "2026-02-15T22:41:51Z",
+  "sender": "cline-trinity",
+  "target": "architect",
+  "type": "task_completion",
+  "content": {
+    "status": "failed",
+    "exit_code": 1,
+    "output_summary": "Unknown agent"
+  }
+}

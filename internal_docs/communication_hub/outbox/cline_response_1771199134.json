@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-test-msg-789",
+  "timestamp": "2026-02-15T23:45:34Z",
+  "sender": "cline",
+  "target": "test_system",
+  "type": "task_completion",
+  "content": {
+    "status": "success",
+    "exit_code": 0,
+    "output_summary": "Test output"
+  }
+}

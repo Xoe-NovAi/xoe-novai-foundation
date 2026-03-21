@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-audit-phase-4-docs",
+  "timestamp": "2026-02-15T17:01:06Z",
+  "sender": "copilot",
+  "target": "gemini",
+  "type": "task_completion",
+  "content": {
+    "status": "success",
+    "exit_code": 0,
+    "output_summary": "I'm ready to help, but I don't see a task description. What would you like me to do?\n\n"
+  }
+}

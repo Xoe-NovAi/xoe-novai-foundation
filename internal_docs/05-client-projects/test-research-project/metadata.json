@@ -1,0 +1,18 @@
+{
+  "name": "test-research-project",
+  "type": "research-project",
+  "status": "active",
+  "created": "2026-01-21T16:55:32.362580",
+  "last_modified": "2026-01-21T16:55:32.362580",
+  "description": "A test research project",
+  "path": "/home/arcana-novai/Documents/Xoe-NovAi/projects/test-research-project",
+  "template_used": "research-project",
+  "version": "1.0.0",
+  "tags": [],
+  "milestones": [],
+  "dependencies": [],
+  "evaluation_criteria": {
+    "success_metrics": [],
+    "completion_criteria": []
+  }
+}

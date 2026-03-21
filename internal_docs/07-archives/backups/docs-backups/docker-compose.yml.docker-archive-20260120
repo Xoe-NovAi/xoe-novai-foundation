@@ -1,0 +1,361 @@
+# ============================================================================
+# Xoe-NovAi Phase 1 v0.1.5 Docker Compose Configuration
+# ============================================================================
+# Purpose: Multi-service orchestration for RAG stack with CrawlModule
+# Guide Reference: Section 6 (Complete docker-compose.yml)
+# Last Updated: 2026-01-10 (v0.1.5 Voice Integration)
+# Changes from v0.1.4:
+#   - Added named volumes for faiss_index and prometheus_data (persistence)
+#   - Enhanced depends_on with service_healthy conditions (dep ordering)
+#   - Added BUILD_DATE ARG for cache busting (build caching)
+#   - Added internal network for Prometheus (security isolation)
+#   - Updated healthcheck timeouts per Grok Code Audit recommendations
+# ============================================================================
+
+services:
+  # ==========================================================================
+  # REDIS SERVICE - Cache & Streams Coordinator (7.4.1)
+  # ==========================================================================
+  redis:
+    image: redis:7.4.1
+    container_name: xnai_redis
+    command: redis-server --requirepass "${REDIS_PASSWORD:?REDIS_PASSWORD must be set}" --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    environment:
+      - REDIS_PASSWORD
+      - REDIS_STREAM_MAX_LEN=${REDIS_STREAM_MAX_LEN:-1000}
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a \"$REDIS_PASSWORD\" ping || exit 1"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 30s
+    networks:
+      - xnai_network
+    restart: unless-stopped
+
+  # ==========================================================================
+  # RAG SERVICE - FastAPI Backend with LLM/FAISS (Zero-Trust Security)
+  # ==========================================================================
+  rag:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    container_name: xnai_rag_api
+
+    # CRITICAL FIX: Memory limits (both v2.4 and v3 syntax for compatibility)
+    mem_limit: 4g
+    memswap_limit: 4g
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '2.0'
+        reservations:
+          memory: 2G
+          cpus: '1.0'
+
+    # Enterprise Security Hardening
+    user: "${APP_UID:-1001}:${APP_GID:-1001}"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+      - CHOWN
+      - SETUID
+      - SETGID
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+      - /var/run:size=64m,mode=0755
+      - /app/XNAi_rag_app/logs:size=100m,mode=0755
+      - /app/.cache:size=50m,mode=0755
+    volumes:
+      # Configuration
+      - ./config.toml:/config.toml:ro
+
+      # Models (always bind mounts - large files)
+      - ./models:/models:ro
+      - ./embeddings:/embeddings:ro
+
+      # IMPORTANT: Create these directories with correct permissions BEFORE starting:
+      # sudo mkdir -p library knowledge data/faiss_index backups
+      # sudo chown -R 1001:1001 library knowledge data/faiss_index backups
+
+      # Development: Bind mounts (default)
+      - ./library:/library
+      - ./knowledge:/knowledge
+      - ./data/faiss_index:/app/XNAi_rag_app/faiss_index
+      - ./backups:/backups
+      - ./data/prometheus-multiproc:/prometheus_data
+
+      # Development: Live code reload (comment for production)
+      # - ./app/XNAi_rag_app:/app/XNAi_rag_app
+
+      # Production: Use named volumes instead (see bottom of file)
+      # - library:/library
+      # - knowledge:/knowledge
+      # - faiss_index:/app/XNAi_rag_app/faiss_index
+      # - faiss_backup:/backups
+
+    environment:
+      - RAG_API_URL=http://rag:8000
+      - LLM_MODEL_PATH=/models/gemma-3-4b-it-UD-Q5_K_XL.gguf
+      - EMBEDDING_MODEL_PATH=/embeddings/all-MiniLM-L12-v2.Q8_0.gguf
+      - RAG_PER_DOC_CHARS=${RAG_PER_DOC_CHARS:-500}
+      - RAG_TOTAL_CHARS=${RAG_TOTAL_CHARS:-2048}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD_FILE=/run/secrets/redis_password
+      - API_KEY_FILE=/run/secrets/api_key
+      - REDIS_CACHE_TTL=${REDIS_CACHE_TTL:-3600}
+      - ERROR_RECOVERY_ENABLED=${ERROR_RECOVERY_ENABLED:-true}
+      - BACKUP_ENABLED=${BACKUP_ENABLED:-true}
+      - BACKUP_INTERVAL_HOURS=${BACKUP_INTERVAL_HOURS:-24}
+      - CIRCUIT_BREAKER_ENABLED=true
+      - CIRCUIT_BREAKER_FAIL_MAX=5
+      - CIRCUIT_BREAKER_TIMEOUT=60
+      - MEMORY_WARNING_THRESHOLD_GB=3.2
+      - MEMORY_CRITICAL_THRESHOLD_GB=3.6
+      - PYTHONUNBUFFERED=1
+      - DEBUG_MODE=true
+    secrets:
+      - redis_password
+      - api_key
+    networks:
+      - xnai_network
+    ports:
+      - "8000:8000"
+      - "8002:8002"
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    # REMOVED: user: "0:0" - Let Dockerfile control user permissions
+    command:
+      - sh
+      - -c
+      - |
+        echo '🚀 Starting RAG API service...'
+        echo '🔍 Checking environment variables...'
+        [ -n "$REDIS_PASSWORD" ] || (echo '❌ REDIS_PASSWORD not set' && exit 1)
+        echo '✅ Environment OK - Starting uvicorn...'
+        uvicorn XNAi_rag_app.main:app --host 0.0.0.0 --port 8000 --log-level info
+
+  # ==========================================================================
+  # UI SERVICE - Chainlit Frontend (Zero-Trust Security)
+  # ==========================================================================
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.chainlit
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    image: xnai-ui:latest
+    container_name: chainlit
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 1G
+          cpus: '0.5'
+    volumes:
+      # Configuration
+      - ./config.toml:/config.toml:ro
+      
+      # Development: Live code reload (comment for production)
+      - ./app/XNAi_rag_app:/app/XNAi_rag_app
+    environment:
+      - CHAINLIT_PORT=${CHAINLIT_PORT:-8001}
+      - CHAINLIT_NO_TELEMETRY=${CHAINLIT_NO_TELEMETRY:-true}
+      - RAG_API_URL=${RAG_API_URL:-http://rag:8000}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - PYTHONUNBUFFERED=1
+      - DEBUG_MODE=true
+    depends_on:
+      redis:
+        condition: service_started
+      rag:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 90s
+    networks:
+      - xnai_network
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+    # REMOVED: user: "0:0" - Let Dockerfile control user permissions
+    command:
+      - sh
+      - -c
+      - |
+        echo '🚀 Starting Chainlit UI service...'
+        echo '🔍 Checking environment variables...'
+        [ -n "$RAG_API_URL" ] || (echo '❌ RAG_API_URL not set' && exit 1)
+        echo '✅ Environment OK - Starting Chainlit...'
+        chainlit run XNAi_rag_app/chainlit_app_voice.py --host 0.0.0.0 --port 8001
+
+  # ==========================================================================
+  # CRAWLER SERVICE - CrawlModule v0.1.7
+  # ==========================================================================
+  crawler:
+    build:
+      context: .
+      dockerfile: Dockerfile.crawl
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    container_name: xnai_crawler
+    volumes:
+      # Configuration
+      - ./config.toml:/config.toml:ro
+      
+      # IMPORTANT: Ensure directories exist with correct permissions:
+      # sudo mkdir -p library knowledge data/cache
+      # sudo chown -R 1001:1001 library knowledge data/cache
+      
+      # Development: Bind mounts (default)
+      - ./library:/library
+      - ./knowledge:/knowledge
+      - ./data/cache:/app/cache
+      
+      # Development: Live code reload (comment for production)
+      - ./app/XNAi_rag_app:/app/XNAi_rag_app
+      
+      # Production: Use named volumes instead
+      # - library:/library
+      # - knowledge:/knowledge
+      # - crawler_cache:/app/cache
+      
+    environment:
+      - CRAWL4AI_NO_TELEMETRY=${CRAWL4AI_NO_TELEMETRY:-true}
+      - CRAWL4AI_MAX_DEPTH=${CRAWL4AI_MAX_DEPTH:-2}
+      - CRAWL_RATE_LIMIT_PER_MIN=${CRAWL_RATE_LIMIT_PER_MIN:-30}
+      - CRAWL_SANITIZE_SCRIPTS=${CRAWL_SANITIZE_SCRIPTS:-true}
+      - CRAWL_MAX_ITEMS=${CRAWL_MAX_ITEMS:-50}
+      - CRAWL_ALLOWLIST_URLS=${CRAWL_ALLOWLIST_URLS}
+      - CRAWL_CACHE_DIR=/app/cache
+      - CRAWL_CACHE_TTL=${CRAWL_CACHE_TTL:-86400}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - LIBRARY_PATH=/library
+      - KNOWLEDGE_PATH=/knowledge
+    depends_on:
+      redis:
+        condition: service_healthy
+      rag:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import crawl4ai; print('OK')"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 60s
+    networks:
+      - xnai_network
+    restart: unless-stopped
+    user: "${APP_UID}:${APP_GID}"
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETGID
+      - SETUID
+      - CHOWN
+    security_opt:
+      - no-new-privileges:false
+    tmpfs:
+      - /tmp:mode=1777,size=512m
+
+  curation_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.curation_worker
+    image: xnai_curation_worker:latest
+    restart: on-failure
+    depends_on:
+      - redis
+    environment:
+      REDIS_URL: "redis://:${REDIS_PASSWORD}@redis:6379/0"
+      QUEUE_KEY: "curation_queue"
+      JOB_PREFIX: "curation:"
+      LOG_DIR: "/app/logs/curations"
+      DATA_DIR: "/app/data/curations"
+      WORKER_NAME: "curation-worker-1"
+      MAX_ATTEMPTS: "3"
+    volumes:
+      - ./data/curations:/app/data/curations
+      - ./logs/curations:/app/logs/curations
+
+  # ==========================================================================
+  # DOCS SERVICE - MkDocs Documentation Server (Python 3.12 + uv)
+  # ==========================================================================
+  # SECURITY: Named volumes replace bind mounts for isolation
+  # PERFORMANCE: 2GB memory limit matches build script requirements
+  # MONITORING: Enhanced health checks and metrics
+      # SECURITY: Named volumes replace vulnerable bind mounts
+  redis_data:
+    driver: local
+  # Documentation service secure volumes
+  docs_source:
+    driver: local
+  docs_build_cache:
+    driver: local
+  docs_plugins_cache:
+    driver: local
+
+# ============================================================================
+# SECRETS (Enterprise Security)
+# ============================================================================
+secrets:
+  redis_password:
+    file: ./secrets/redis_password.txt
+  api_key:
+    file: ./secrets/api_key.txt
+
+# ============================================================================
+# TROUBLESHOOTING PERMISSION ISSUES
+# ============================================================================
+# If you encounter permission errors:
+#
+# 1. Verify directories exist with correct ownership:
+#    sudo mkdir -p library knowledge data/faiss_index data/cache backups
+#    sudo chown -R 1001:1001 library knowledge data backups
+#
+# 2. Check .env file has correct UID/GID:
+#    APP_UID=1001
+#    APP_GID=1001
+#
+# 3. Rebuild containers to pick up ownership changes:
+#    sudo docker compose down
+#    sudo docker compose build --no-cache
+#    sudo docker compose up -d
+#
+# 4. Verify container user matches:
+#    sudo docker exec xnai_rag_api id
+#    # Should show: uid=1001(appuser) gid=1001(appuser)
+#
+# 5. Check mounted directory permissions inside container:
+#    sudo docker exec xnai_rag_api ls -la /library
+#    sudo docker exec xnai_crawler ls -la /library
+#
+# 6. If issues persist, temporarily use root user for debugging:
+#    user: "0:0"  # root - ONLY FOR DEBUGGING
+#
+# ============================================================================

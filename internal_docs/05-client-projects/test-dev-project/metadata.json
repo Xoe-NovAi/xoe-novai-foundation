@@ -1,0 +1,18 @@
+{
+  "name": "test-dev-project",
+  "type": "development-project",
+  "status": "active",
+  "created": "2026-01-21T16:55:32.363662",
+  "last_modified": "2026-01-21T16:55:32.363662",
+  "description": "A test development project",
+  "path": "/home/arcana-novai/Documents/Xoe-NovAi/projects/test-dev-project",
+  "template_used": "development-project",
+  "version": "1.0.0",
+  "tags": [],
+  "milestones": [],
+  "dependencies": [],
+  "evaluation_criteria": {
+    "success_metrics": [],
+    "completion_criteria": []
+  }
+}

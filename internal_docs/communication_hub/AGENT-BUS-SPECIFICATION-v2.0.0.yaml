@@ -1,0 +1,922 @@
+# Agent Bus Integration Specification
+# ====================================
+# Version: 2.0.0
+# Last Updated: 2026-02-23
+# 
+# Comprehensive specification for Agent Bus message formats,
+# MCP server registration, and service discovery patterns
+
+## JOB-AB1: Agent Bus Message Format Specification
+
+agent_bus_protocol:
+  version: "1.0.0"
+  purpose: "Filesystem-based asynchronous message bus for autonomous multi-agent coordination"
+  transport: "Redis Streams (xnai:agent_bus) with consumer groups"
+  architecture:
+    diagram: |
+      Agent A → publish_task → Redis Stream (xnai:agent_bus) → read_tasks → Agent B
+                                           ↑
+                                    Consumer Group
+                                   (xnai-mcp-server)
+
+### Message Format Specification
+
+message_structure:
+  standard_message:
+    description: "Base message structure for all Agent Bus communications"
+    schema:
+      message_id:
+        type: "uuid-v4"
+        description: "Unique identifier for this message"
+        example: "550e8400-e29b-41d4-a716-446655440000"
+      
+      timestamp:
+        type: "ISO 8601 datetime"
+        description: "When the message was created"
+        example: "2026-02-23T14:30:00Z"
+      
+      sender:
+        type: "string"
+        description: "Originating agent name"
+        example: "opencode-a1b2c3d4"
+        values: ["opencode-{hash}", "cline-{hash}", "gemini-{hash}", "grok-mc"]
+      
+      target:
+        type: "string"
+        description: "Target agent name or broadcast identifier"
+        example: "all-agents"
+      
+      type:
+        type: "enum"
+        description: "Message type classification"
+        values:
+          - "task_assignment"      # Send work to agents
+          - "task_completion"      # Report task completion
+          - "state_update"         # Agent state change
+          - "error_report"         # Error occurred
+          - "assistance_request"   # Request for help
+          - "acknowledgment"       # Confirm receipt
+      
+      priority:
+        type: "enum"
+        description: "Message priority level"
+        values:
+          - "high"       # <5 min response (critical, security, production)
+          - "medium"     # <30 min response (features, optimization)
+          - "low"        # <2 hours response (research, reviews, improvements)
+      
+      content:
+        type: "object"
+        description: "Message-type-specific payload"
+      
+      correlation_id:
+        type: "uuid-v4 (optional)"
+        description: "Links related messages (for request/response tracking)"
+      
+      target_did:
+        type: "string (optional)"
+        description: "Decentralized identifier for specific agent routing"
+        example: "did:xnai:sovereign-mc-v1"
+
+### Message Type Details
+
+message_types:
+  
+  task_assignment:
+    description: "Assign work to an agent"
+    example:
+      type: "task_assignment"
+      content:
+        task: "implement_feature"
+        priority: "high"
+        deadline: "2026-02-28"
+        description: "Implement Redis-backed circuit breakers"
+        requirements:
+          - "redis_connection"
+          - "graceful_degradation"
+          - "monitoring"
+        deliverables:
+          - "circuit_breaker_module"
+          - "unit_tests"
+          - "integration_tests"
+          - "documentation"
+        context:
+          related_files: ["src/core/infrastructure/"]
+          previous_attempts: []
+    required_fields:
+      - task
+      - description
+      - requirements
+      - deliverables
+
+  task_completion:
+    description: "Report successful or failed task completion"
+    example:
+      type: "task_completion"
+      content:
+        task: "implement_feature"
+        status: "success"  # success | failed | partial
+        result:
+          files_created:
+            - "src/core/circuit_breakers/__init__.py"
+            - "src/core/circuit_breakers/breaker.py"
+            - "tests/test_circuit_breaker.py"
+          tests_passed: 18
+          tests_failed: 0
+          performance_impact: "2%"
+          coverage: 95.2
+          notes: "All requirements met. Ready for review."
+        metrics:
+          execution_time_seconds: 1234
+          tokens_used: 45000
+          memory_peak_mb: 512
+    status_values:
+      - "success"   # Task completed successfully
+      - "failed"    # Task failed, cannot be retried
+      - "partial"   # Task partially completed
+
+  state_update:
+    description: "Agent status and health update"
+    example:
+      type: "state_update"
+      content:
+        agent: "opencode-a1b2c3d4"
+        status: "active"  # active | inactive | busy | error | offline
+        current_task: "implement_feature"
+        progress: 0.65  # 0.0-1.0
+        memory_usage_mb: 512.3
+        last_heartbeat: "2026-02-23T14:30:00Z"
+        error_count: 0
+        success_count: 12
+        total_tasks: 12
+    status_values:
+      - "active"    # Agent ready for work
+      - "inactive"  # Agent idle (not accepting tasks)
+      - "busy"      # Agent processing a task
+      - "error"     # Agent in error state
+      - "offline"   # Agent not responding
+
+  error_report:
+    description: "Report errors or exceptions"
+    example:
+      type: "error_report"
+      content:
+        error_type: "redis_connection_failed"
+        message: "Cannot connect to Redis server at redis://localhost:6379"
+        severity: "critical"  # critical | error | warning
+        stack_trace: "Traceback (most recent call last)..."
+        context:
+          agent: "opencode-a1b2c3d4"
+          task: "implement_feature"
+          timestamp: "2026-02-23T14:30:00Z"
+          environment:
+            redis_host: "localhost"
+            redis_port: 6379
+
+  assistance_request:
+    description: "Request help from other agents"
+    example:
+      type: "assistance_request"
+      content:
+        request_type: "technical"  # technical | research | validation | code_review
+        description: "Need validation of circuit breaker implementation"
+        urgency: "high"  # high | medium | low
+        expected_response_time_minutes: 30
+        required_agents:
+          - "opencode-*"  # Wildcard for agent role
+          - "security-agent"
+        context_required:
+          - "source_files"
+          - "test_results"
+          - "performance_metrics"
+
+### Redis Streams Implementation
+
+redis_streams:
+  stream_key: "xnai:agent_bus"
+  consumer_group: "xnai-mcp-server"
+  consumer_name_format: "mcp-{uuid_hex_8chars}"
+  
+  operations:
+    publish:
+      command: "XADD xnai:agent_bus * {message_dict}"
+      returns: "message_id (e.g., 1614059222062-0)"
+      idempotency: "Use correlation_id for deduplication"
+    
+    consume:
+      command: "XREADGROUP GROUP xnai-mcp-server {consumer_name} STREAMS xnai:agent_bus >"
+      blocks: "Optional block_ms parameter"
+      returns: "Messages with entry_id"
+      guarantees:
+        - "Each message delivered to exactly one consumer in group"
+        - "No delivery until acknowledged (XACK)"
+        - "Stale messages auto-reclaimed after 30s (XAUTOCLAIM)"
+    
+    acknowledge:
+      command: "XACK xnai:agent_bus xnai-mcp-server {message_id}"
+      purpose: "Mark message as processed"
+      failure_mode: "If not ACK'd within 30s, message reclaimed and reassigned"
+    
+    recover:
+      command: "XAUTOCLAIM xnai:agent_bus xnai-mcp-server {consumer} 30000 0"
+      purpose: "Reclaim messages idle >30 seconds"
+      use_case: "Handle crashed consumers and stale messages"
+
+---
+
+## JOB-AB2: MCP Server Registration & Discovery
+
+mcp_server_architecture:
+  
+  overview: |
+    MCP (Model Context Protocol) servers provide specialized tools to AI agents.
+    Registration is via configuration files or dynamic discovery.
+    The xnai-agentbus server exemplifies the pattern.
+
+  framework: "MCP Server Protocol v1.0"
+  transport: "stdio (stdin/stdout) or HTTP"
+
+### MCP Server Registration Patterns
+
+registration_methods:
+  
+  configuration_file_registration:
+    description: "Register via opencode.json or similar config"
+    file: ".opencode/opencode.json"
+    example:
+      mcp:
+        servers:
+          xnai-agentbus:
+            command: "python"
+            args: ["mcp-servers/xnai-agentbus/server.py"]
+            env:
+              REDIS_URL: "redis://localhost:6379"
+              LOG_LEVEL: "info"
+              CONSUMER_GROUP: "xnai-mcp-server"
+            env_pass: []  # Environment variables to pass through
+    
+    required_fields:
+      - command        # Executable to run
+      - args           # Arguments for executable
+      - env            # Environment variables
+    
+    optional_fields:
+      - disabled       # Set to true to disable server
+      - cwd            # Working directory
+      - env_pass       # Pass through parent process env vars
+
+  dynamic_consul_registration:
+    description: "Register service with Consul for discovery"
+    service_type: "MCP-Server"
+    registry: "Consul HTTP API"
+    
+    example:
+      method: "PUT"
+      endpoint: "/v1/agent/service/register"
+      payload:
+        Name: "xnai-agentbus"
+        ID: "xnai-agentbus-1"
+        Port: 3000
+        Address: "localhost"
+        Tags:
+          - "mcp-server"
+          - "agent-bus"
+          - "redis"
+        Check:
+          HTTP: "http://localhost:3000/health"
+          Interval: "10s"
+          Timeout: "5s"
+    
+    health_check:
+      endpoint: "/health"
+      interval: "10 seconds"
+      timeout: "5 seconds"
+      expected_response: '{"status": "healthy"}'
+    
+    deregistration:
+      method: "PUT"
+      endpoint: "/v1/agent/service/deregister/{service_id}"
+      example_id: "xnai-agentbus-1"
+
+### Capability Advertisement
+
+capability_declaration:
+  
+  description: |
+    MCP servers advertise their capabilities (tools) via the list_tools() method.
+    This enables intelligent routing and capability discovery.
+  
+  tool_declaration_pattern:
+    server_method: "@server.list_tools()"
+    return_type: "List[Tool]"
+    
+    tool_structure:
+      example:
+        name: "publish_task"
+        description: "Publish a task to the Agent Bus for multi-agent coordination"
+        inputSchema:
+          type: "object"
+          properties:
+            role:
+              type: "string"
+              description: "Agent role (architect, coder, security, documenter, researcher)"
+            action:
+              type: "string"
+              description: "Action to perform"
+            payload:
+              type: "object"
+              description: "Task payload (any schema)"
+            target_did:
+              type: "string"
+              description: "Optional target agent DID"
+          required: ["role", "action", "payload"]
+      
+      required_fields:
+        - name              # Unique tool identifier
+        - description       # Human-readable purpose
+        - inputSchema       # JSON Schema for parameters
+      
+      optional_fields:
+        - output_schema     # Expected output schema
+        - examples          # Usage examples
+
+  capability_metadata:
+    description: "Extended capability information for discovery"
+    example:
+      capabilities:
+        - id: "publish_task"
+          category: "communication"
+          reliability: "guaranteed"
+          latency_ms: 100
+          max_payload_bytes: 1000000
+        
+        - id: "read_tasks"
+          category: "communication"
+          reliability: "at_least_once"
+          latency_ms: 50
+          max_results: 100
+
+### Service Discovery Mechanism
+
+service_discovery:
+  
+  agent_bus_specific:
+    discovery_method: "Redis-based consumer group"
+    registry_key: "xnai:agent_bus"
+    consumer_group: "xnai-mcp-server"
+    
+    discovery_flow:
+      1. "Agent creates consumer in group (XGROUP CREATE)"
+      2. "Consumer publishes capability announcement to stream"
+      3. "Other agents read announcements from stream"
+      4. "Agents cache capability information"
+      5. "On disconnect, consumer auto-cleaned after heartbeat timeout"
+    
+    announcement_message:
+      type: "capability_announcement"
+      content:
+        consumer_name: "mcp-a1b2c3d4"
+        capabilities:
+          - "publish_task"
+          - "read_tasks"
+          - "ack_task"
+          - "recover_tasks"
+          - "bus_health"
+        version: "1.0.0"
+        timestamp: "2026-02-23T14:30:00Z"
+
+  generic_mcp_discovery:
+    methods:
+      - "Configuration scanning"
+      - "Environment variable discovery"
+      - "Consul service catalog"
+      - "Direct filesystem scanning (mcp-servers/)"
+    
+    resolution_order:
+      1: "Explicit configuration (opencode.json)"
+      2: "Environment variables (MCP_SERVERS)"
+      3: "Consul catalog query"
+      4: "Filesystem directory scan"
+
+### Health Check Protocol
+
+health_check_implementation:
+  
+  agent_bus_health:
+    tool_name: "bus_health"
+    description: "Check Redis connection and consumer group health"
+    
+    implementation:
+      operation: "Redis PING + GROUP INFO"
+      timeout_ms: 1000
+      
+    response_structure:
+      example:
+        status: "healthy"  # healthy | degraded | unhealthy
+        redis_connection: true
+        consumer_group: "xnai-mcp-server"
+        message_lag: 0
+        last_check_ms: 42
+        timestamp: "2026-02-23T14:30:00Z"
+    
+    status_meanings:
+      healthy: "All systems operational"
+      degraded: "Partial functionality (e.g., slow consumer group)"
+      unhealthy: "Cannot operate (e.g., Redis down)"
+
+  heartbeat_mechanism:
+    interval_seconds: 30
+    timeout_threshold: 90  # 3x heartbeat interval
+    
+    heartbeat_message:
+      type: "state_update"
+      content:
+        status: "active"
+        last_heartbeat: "{timestamp}"
+    
+    stale_detection:
+      query: "Agent timestamp - now > timeout_threshold"
+      action: "Remove from active agent registry"
+      notification: "Send error_report to all connected agents"
+
+---
+
+### MCP Server Integration Examples
+
+xnai_agentbus_server:
+  
+  file_location: "mcp-servers/xnai-agentbus/server.py"
+  language: "Python"
+  dependencies:
+    - "redis>=4.5"
+    - "mcp[server]>=1.0"
+  
+  startup_sequence:
+    1: "Import MCP Server framework"
+    2: "Initialize Redis connection (lazy)"
+    3: "Create Server instance with name 'xnai-agentbus'"
+    4: "Register tool handlers via @server.list_tools()"
+    5: "Ensure consumer group exists (XGROUP CREATE with MKSTREAM)"
+    6: "Start stdio_server to accept MCP protocol"
+  
+  configuration_example:
+    ".opencode/opencode.json":
+      mcp:
+        servers:
+          xnai-agentbus:
+            command: "python"
+            args: ["mcp-servers/xnai-agentbus/server.py"]
+            env:
+              REDIS_URL: "redis://localhost:6379"
+              STREAM_KEY: "xnai:agent_bus"
+              CONSUMER_GROUP: "xnai-mcp-server"
+              AUTOCLAIM_IDLE_MS: "30000"
+  
+  tools_provided:
+    - publish_task      # Publish message to stream
+    - read_tasks        # Consume messages from stream
+    - ack_task          # Acknowledge processed message
+    - recover_tasks     # Reclaim stale messages
+    - bus_health        # Health check
+
+memory_bank_mcp_server:
+  
+  file_location: "mcp-servers/memory-bank-mcp/server.py"
+  language: "Python"
+  
+  startup_sequence:
+    1: "Load configuration"
+    2: "Initialize Redis connection"
+    3: "Create memory_bank directory"
+    4: "Start background tasks (heartbeat monitor, cleanup)"
+    5: "Register tool handlers"
+    6: "Start stdio_server"
+  
+  tools_provided:
+    - register_agent         # Register agent with capabilities
+    - get_context           # Load context with progressive loading
+    - update_context        # Update context with versioning
+    - sync_context          # Synchronize context between agents
+  
+  registration_tool:
+    name: "register_agent"
+    parameters:
+      agent_id:
+        type: "string"
+        description: "Unique agent identifier"
+      capabilities:
+        type: "array of strings"
+        description: "List of capability names"
+        examples:
+          - ["publish_task", "read_tasks"]
+          - ["code_generation", "testing"]
+      memory_limit_gb:
+        type: "float"
+        description: "Maximum memory this agent can use"
+        constraint: "Total must not exceed 6GB per custom instructions"
+    
+    backend_storage:
+      type: "Redis Hash"
+      key: "memory_bank:agents:{agent_id}"
+      data: "AgentCapability dataclass (agent_id, capabilities, memory_limit_gb, last_seen, performance_score)"
+    
+    response:
+      success:
+        status: "success"
+        agent_id: "{agent_id}"
+        capabilities: "[...]"
+        registration_time: "ISO 8601"
+      error:
+        status: "error"
+        message: "{error_description}"
+
+---
+
+### New MCP Server Registration Steps
+
+registration_process:
+  
+  step_1_implementation:
+    title: "Implement MCP Server"
+    files:
+      - "mcp-servers/{server_name}/server.py"
+      - "mcp-servers/{server_name}/requirements.txt"
+      - "mcp-servers/{server_name}/README.md"
+    
+    boilerplate:
+      server.py: |
+        from mcp.server import Server
+        from mcp.server.stdio import stdio_server
+        from mcp.types import Tool, TextContent
+        
+        server = Server("{server_name}")
+        
+        @server.list_tools()
+        async def list_tools() -> list[Tool]:
+            return [
+                Tool(
+                    name="your_tool_name",
+                    description="Tool description",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "param": {
+                                "type": "string",
+                                "description": "Parameter description"
+                            }
+                        },
+                        "required": ["param"]
+                    }
+                )
+            ]
+        
+        @server.call_tool()
+        async def call_tool(name: str, arguments: dict) -> list[TextContent]:
+            if name == "your_tool_name":
+                # Implementation
+                pass
+            return [TextContent(type="text", text="result")]
+        
+        if __name__ == "__main__":
+            stdio_server(server)
+  
+  step_2_configuration:
+    title: "Register in OpenCode Config"
+    file: ".opencode/opencode.json"
+    
+    add_to_mcp.servers:
+      "{server_name}":
+        command: "python"
+        args: ["mcp-servers/{server_name}/server.py"]
+        env:
+          VAR_NAME: "value"
+    
+    validation:
+      - "JSON syntax valid"
+      - "File paths exist"
+      - "Environment variables correct"
+  
+  step_3_capability_declaration:
+    title: "Declare Capabilities"
+    in_server.py:
+      method: "@server.list_tools()"
+      requirement: "Each tool is a capability"
+      example:
+        tools:
+          - name: "tool_1"
+            description: "Purpose of tool"
+            inputSchema: "{JSON Schema}"
+          - name: "tool_2"
+            description: "Purpose of tool"
+            inputSchema: "{JSON Schema}"
+  
+  step_4_health_check:
+    title: "Implement Health Check"
+    pattern: |
+      @server.list_tools()
+      async def list_tools():
+          return [
+              Tool(
+                  name="health",
+                  description="Check server health",
+                  inputSchema={"type": "object", "properties": {}}
+              )
+          ]
+      
+      @server.call_tool()
+      async def call_tool(name: str, arguments: dict):
+          if name == "health":
+              return [TextContent(
+                  type="text",
+                  text=json.dumps({
+                      "status": "healthy",
+                      "timestamp": datetime.now().isoformat()
+                  })
+              )]
+  
+  step_5_verification:
+    title: "Test Registration"
+    commands:
+      test_startup: "python mcp-servers/{server_name}/server.py"
+      expected_output: "MCP server listening on stdio"
+    
+    manual_test:
+      - "Run server in terminal"
+      - "Call list_tools() via MCP protocol"
+      - "Verify tools are advertised"
+      - "Call each tool with sample input"
+  
+  step_6_documentation:
+    title: "Document Server"
+    files:
+      - "mcp-servers/{server_name}/README.md"
+      - "docs/api/mcp-servers/{server_name}.md"
+    
+    readme_contents:
+      - "Purpose and overview"
+      - "Installation instructions"
+      - "Configuration options"
+      - "Tool specifications"
+      - "Usage examples"
+      - "Health check details"
+      - "Troubleshooting"
+
+---
+
+### Required Capability Declarations
+
+capability_requirements:
+  
+  minimum_capabilities:
+    - "health_check"      # Service health verification
+    - "list_tools"        # Advertise available tools
+    - "error_handling"    # Graceful error responses
+  
+  redis_based_servers:
+    - "publish_message"   # Send to stream
+    - "consume_messages"  # Read from stream with consumer group
+    - "acknowledge"       # Mark as processed
+    - "recover"           # Handle stale messages
+  
+  agent_servers:
+    - "register"          # Register capability and metadata
+    - "heartbeat"         # Send periodic health updates
+    - "deregister"        # Clean shutdown notification
+
+---
+
+### Deregistration & Cleanup
+
+deregistration_procedure:
+  
+  graceful_shutdown:
+    sequence:
+      1: "Send final state_update with status: 'offline'"
+      2: "Acknowledge any pending messages"
+      3: "Close Redis connection"
+      4: "Exit with code 0"
+    
+    notification_message:
+      type: "state_update"
+      content:
+        agent: "{agent_id}"
+        status: "offline"
+        reason: "graceful_shutdown"
+        timestamp: "{current_timestamp}"
+  
+  error_shutdown:
+    sequence:
+      1: "Send error_report"
+      2: "Attempt to acknowledge pending messages"
+      3: "Close Redis connection"
+      4: "Exit with code 1"
+    
+    automatic_cleanup:
+      trigger: "Consumer not seen for > 90 seconds"
+      action: "Remove from agent registry"
+      notification: "Send error_report to all agents"
+  
+  consul_deregistration:
+    method: "PUT"
+    endpoint: "/v1/agent/service/deregister/{service_id}"
+    timing: "Before MCP server shutdown"
+    verification: "Service no longer appears in /v1/agent/services"
+
+---
+
+## Error Handling & Edge Cases
+
+error_scenarios:
+  
+  redis_unavailable:
+    detection: "redis.RedisError on XADD/XREADGROUP"
+    response: |
+      {
+        "status": "error",
+        "error": "Redis connection failed",
+        "detail": "Cannot connect to redis://localhost:6379",
+        "recovery": "Automatic retry with exponential backoff (max 5 attempts)",
+        "fallback": "Graceful degradation to local message queuing"
+      }
+  
+  message_corruption:
+    detection: "JSON decode error on payload"
+    response: |
+      {
+        "status": "error",
+        "error": "Corrupted message",
+        "message_id": "{message_id}",
+        "action": "ACK message to prevent reprocessing, log to dead letter queue"
+      }
+  
+  consumer_timeout:
+    detection: "Message not ACK'd within 30 seconds"
+    response: |
+      Automatic XAUTOCLAIM to reassign message to available consumer
+  
+  agent_not_registered:
+    detection: "Agent ID not in registry"
+    response: |
+      {
+        "status": "error",
+        "error": "Agent not registered",
+        "agent_id": "{agent_id}",
+        "recovery": "Call register_agent tool with agent capabilities"
+      }
+
+---
+
+## Performance Characteristics
+
+performance_metrics:
+  
+  publish_task:
+    latency_p50: "~5ms"
+    latency_p99: "~50ms"
+    throughput: "1000+ messages/sec"
+    payload_max: "512MB per Redis config"
+  
+  read_tasks:
+    latency_p50: "~10ms"
+    batch_max_default: "10 messages"
+    batch_max_hard: "100 messages"
+    block_max: "Until message available or block_ms timeout"
+  
+  ack_task:
+    latency_p50: "~2ms"
+    failure_recovery: "Automatic re-delivery after 30s"
+  
+  recover_tasks:
+    scan_interval: "30 seconds idle time"
+    max_recover_per_call: "10 messages"
+    purpose: "Prevent message loss from crashed consumers"
+
+---
+
+## Security Considerations
+
+security_model:
+  
+  authentication:
+    method: "Redis AUTH (password)"
+    scope: "All Redis operations"
+    configuration: "REDIS_URL with credentials"
+    example: "redis://:password@localhost:6379"
+  
+  authorization:
+    model: "Redis ACLs (v6.0+) or consumer group isolation"
+    enforcement: "Separate Redis namespace per team/project"
+    isolation: "Consumer groups prevent cross-contamination"
+  
+  message_signing:
+    recommendation: "Sign correlation_id with HMAC"
+    use_case: "Prevent message tampering"
+    implementation: "Optional layer above Agent Bus"
+  
+  audit_trail:
+    logging: "All publish/consume operations"
+    retention: "Redis Streams retention policy"
+    querying: "XINFO STREAM for audit logs"
+
+---
+
+## Integration Checklist
+
+integration_checklist:
+
+  pre_registration:
+    - "[ ] MCP server executable works standalone"
+    - "[ ] All dependencies in requirements.txt"
+    - "[ ] Environment variables documented"
+    - "[ ] Health check endpoint responds"
+  
+  registration:
+    - "[ ] opencode.json updated with server config"
+    - "[ ] Tools properly declared with schemas"
+    - "[ ] Command and args paths correct"
+    - "[ ] Environment variables match server expectations"
+  
+  discovery:
+    - "[ ] Server appears in tool list after startup"
+    - "[ ] Capability names unique and descriptive"
+    - "[ ] Input schemas valid JSON Schema"
+  
+  operation:
+    - "[ ] Messages published successfully"
+    - "[ ] Messages consumed by target agents"
+    - "[ ] Acknowledgment mechanism working"
+    - "[ ] Error handling graceful"
+    - "[ ] Health checks pass"
+  
+  monitoring:
+    - "[ ] Logging captures all errors"
+    - "[ ] Metrics exported to monitoring system"
+    - "[ ] Alerting configured for failures"
+    - "[ ] Stale consumer cleanup working"
+
+---
+
+## Examples & Recipes
+
+example_task_message_flow:
+  
+  step_1_publish:
+    sender: "opencode-abc123"
+    action: "Publish task to Agent Bus"
+    message:
+      message_id: "550e8400-e29b-41d4-a716-446655440000"
+      timestamp: "2026-02-23T14:30:00Z"
+      sender: "opencode-abc123"
+      target: "cline-cli"
+      type: "task_assignment"
+      priority: "high"
+      correlation_id: "550e8400-e29b-41d4-a716-446655440001"
+      content:
+        task: "implement_auth"
+        description: "Implement JWT-based authentication"
+        requirements: ["jwt", "redis_session", "password_hashing"]
+        deliverables: ["auth_module", "tests", "docs"]
+  
+  step_2_redis_stream:
+    stream: "xnai:agent_bus"
+    operation: "XADD"
+    entry_id: "1614059222062-0"
+    data: "{message_json}"
+  
+  step_3_consumer_reads:
+    consumer: "mcp-xyz789"
+    group: "xnai-mcp-server"
+    operation: "XREADGROUP GROUP xnai-mcp-server mcp-xyz789 STREAMS xnai:agent_bus >"
+    receives:
+      - entry_id: "1614059222062-0"
+        data: "{message_json}"
+  
+  step_4_agent_processes:
+    agent: "cline-cli"
+    action: "Execute task_assignment"
+    result: "Implements auth module..."
+  
+  step_5_acknowledge:
+    consumer: "mcp-xyz789"
+    operation: "XACK xnai:agent_bus xnai-mcp-server 1614059222062-0"
+    effect: "Message removed from pending list"
+  
+  step_6_completion:
+    sender: "cline-cli"
+    type: "task_completion"
+    correlation_id: "550e8400-e29b-41d4-a716-446655440001"
+    content:
+      task: "implement_auth"
+      status: "success"
+      result:
+        files_created: ["src/auth/jwt.py", "src/auth/session.py"]
+        tests_passed: 24
+        coverage: 98.1
+
+---
+
+**Document Version**: 2.0.0  
+**Last Updated**: 2026-02-23  
+**Author**: Copilot CLI (Research Phase)  
+**Status**: Specification Complete  
+**Next Review**: 2026-03-23

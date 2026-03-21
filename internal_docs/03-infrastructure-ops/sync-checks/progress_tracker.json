@@ -1,0 +1,346 @@
+{
+  "last_sync": "2026-01-30T10:53:11.823043",
+  "file_hashes": {},
+  "included_files": [
+    {
+      "filepath": "memory_bank/activeContext.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "6f214ef4088e71704ec6cf1b2721b009406207e5fa1a8578bc1763a40dbcbda9"
+    },
+    {
+      "filepath": "memory_bank/environmentContext.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "116ad080a0a5a3d6ce15a0af76ccd48ab64aeb0249c27fdc94ecffaa2156cc54"
+    },
+    {
+      "filepath": "memory_bank/teamProtocols.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "160f802d8e747bcb4c9db5547a468210af177e1dfaee3c05edf3934f740df5cf"
+    },
+    {
+      "filepath": "memory_bank/agent_capabilities_summary.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "4bab66931bf9b4244c2bab18228f2d351e786327f1712ae13e6cd97e9c575895"
+    },
+    {
+      "filepath": "memory_bank/projectbrief.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "6f2d8a3b8698fe0fd021755fa6f4afea61022f9c77bb591186974bb8ca5198ba"
+    },
+    {
+      "filepath": "memory_bank/productContext.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "2fbdc658959636c8656b7a9594918c6a57c2b86b3bfb4d51eb048253e7189e3d"
+    },
+    {
+      "filepath": "memory_bank/techContext.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "a1fb942eb72cf942243275b1da649558417d9a69b8730154bee33fd358ab24f5"
+    },
+    {
+      "filepath": "memory_bank/systemPatterns.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "341a24318fdc5d8591a1e7da2b555e134a8f9c78547160da1288c401c47054f8"
+    },
+    {
+      "filepath": "internal_docs/Grok MC/Grok-MC-stack-mermaid.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "94682630f054b12cad52cf20685fe2f0d253e9f47052e93aa44c8a87be668a41"
+    },
+    {
+      "filepath": "expert-knowledge/sync/sovereign-synergy-expert-v1.0.0.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "012a764a2628c57baf2137d22fa676c9f231e690477c3ed87b4624a703ea51a5"
+    },
+    {
+      "filepath": "expert-knowledge/infrastructure/ryzen-hardening-expert-v1.0.0.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "eaf3b5c36480fe76c495ec6d23dadac456227163bda96e243475f71b589d8cde"
+    },
+    {
+      "filepath": "expert-knowledge/security/sovereign-trinity-expert-v1.0.0.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "f0eb49833e29c1c747ba63b85f72e6fd104f55474416c2d95673ae7c62850d03"
+    },
+    {
+      "filepath": "expert-knowledge/origins/xoe-journey-v1.0.0.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "7c5314cedb12b2167d08f77e1a2b123008f6d1b4ffa236f73172579fd9099c90"
+    },
+    {
+      "filepath": "expert-knowledge/research/ekb-research-master-v1.0.0.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "282dde852e5a9621d1c822b9b27313e1a2e3058d700e47687a37b4f2cfe8234d"
+    },
+    {
+      "filepath": "expert-knowledge/protocols/workflows-master-v1.0.0.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "202182bbf1e3c76f0856374a2dec154701f1380afed92f18c7fecbe4ad36dd44"
+    },
+    {
+      "filepath": "xoe-novai-sync/ekb-exports/files-inventory-v1.0.0.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "15cf7d296f50bf76c611fa77c07158bf21cd1b553e82f174611961dee6ba70a5"
+    },
+    {
+      "filepath": "xoe-novai-sync/ekb-exports/oss-pm-research-v1.0.0.md",
+      "included_at": "2026-01-30T10:53:11.823694",
+      "hash": "fa970316656fb20a165e0c7e772eb30963353b23c0fb5ddf3facd4d61a411b9a"
+    },
+    {
+      "filepath": "memory_bank/activeContext.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "8b923f0ff1a86658f332478bbe60125e5fcdc44815dc1b4fa0dbb61eee2edb82"
+    },
+    {
+      "filepath": "memory_bank/environmentContext.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "116ad080a0a5a3d6ce15a0af76ccd48ab64aeb0249c27fdc94ecffaa2156cc54"
+    },
+    {
+      "filepath": "memory_bank/teamProtocols.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "160f802d8e747bcb4c9db5547a468210af177e1dfaee3c05edf3934f740df5cf"
+    },
+    {
+      "filepath": "memory_bank/agent_capabilities_summary.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "4bab66931bf9b4244c2bab18228f2d351e786327f1712ae13e6cd97e9c575895"
+    },
+    {
+      "filepath": "memory_bank/projectbrief.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "6f2d8a3b8698fe0fd021755fa6f4afea61022f9c77bb591186974bb8ca5198ba"
+    },
+    {
+      "filepath": "memory_bank/productContext.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "2fbdc658959636c8656b7a9594918c6a57c2b86b3bfb4d51eb048253e7189e3d"
+    },
+    {
+      "filepath": "memory_bank/techContext.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "a1fb942eb72cf942243275b1da649558417d9a69b8730154bee33fd358ab24f5"
+    },
+    {
+      "filepath": "memory_bank/systemPatterns.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "341a24318fdc5d8591a1e7da2b555e134a8f9c78547160da1288c401c47054f8"
+    },
+    {
+      "filepath": "internal_docs/Grok MC/Grok-MC-stack-mermaid.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "94682630f054b12cad52cf20685fe2f0d253e9f47052e93aa44c8a87be668a41"
+    },
+    {
+      "filepath": "expert-knowledge/sync/sovereign-synergy-expert-v1.0.0.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "012a764a2628c57baf2137d22fa676c9f231e690477c3ed87b4624a703ea51a5"
+    },
+    {
+      "filepath": "expert-knowledge/infrastructure/ryzen-hardening-expert-v1.0.0.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "eaf3b5c36480fe76c495ec6d23dadac456227163bda96e243475f71b589d8cde"
+    },
+    {
+      "filepath": "expert-knowledge/security/sovereign-trinity-expert-v1.0.0.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "f0eb49833e29c1c747ba63b85f72e6fd104f55474416c2d95673ae7c62850d03"
+    },
+    {
+      "filepath": "expert-knowledge/origins/xoe-journey-v1.0.0.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "7c5314cedb12b2167d08f77e1a2b123008f6d1b4ffa236f73172579fd9099c90"
+    },
+    {
+      "filepath": "expert-knowledge/research/ekb-research-master-v1.0.0.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "282dde852e5a9621d1c822b9b27313e1a2e3058d700e47687a37b4f2cfe8234d"
+    },
+    {
+      "filepath": "expert-knowledge/protocols/workflows-master-v1.0.0.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "202182bbf1e3c76f0856374a2dec154701f1380afed92f18c7fecbe4ad36dd44"
+    },
+    {
+      "filepath": "xoe-novai-sync/ekb-exports/files-inventory-v1.0.0.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "15cf7d296f50bf76c611fa77c07158bf21cd1b553e82f174611961dee6ba70a5"
+    },
+    {
+      "filepath": "xoe-novai-sync/ekb-exports/oss-pm-research-v1.0.0.md",
+      "included_at": "2026-01-30T11:04:24.461836",
+      "hash": "fa970316656fb20a165e0c7e772eb30963353b23c0fb5ddf3facd4d61a411b9a"
+    },
+    {
+      "filepath": "memory_bank/activeContext.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "fe82b54da84f30775aa75f9a27279f573facef1cf8bbaa151191ab918eaf6189"
+    },
+    {
+      "filepath": "memory_bank/environmentContext.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "116ad080a0a5a3d6ce15a0af76ccd48ab64aeb0249c27fdc94ecffaa2156cc54"
+    },
+    {
+      "filepath": "memory_bank/teamProtocols.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "160f802d8e747bcb4c9db5547a468210af177e1dfaee3c05edf3934f740df5cf"
+    },
+    {
+      "filepath": "memory_bank/agent_capabilities_summary.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "4bab66931bf9b4244c2bab18228f2d351e786327f1712ae13e6cd97e9c575895"
+    },
+    {
+      "filepath": "memory_bank/projectbrief.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "6f2d8a3b8698fe0fd021755fa6f4afea61022f9c77bb591186974bb8ca5198ba"
+    },
+    {
+      "filepath": "memory_bank/productContext.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "2fbdc658959636c8656b7a9594918c6a57c2b86b3bfb4d51eb048253e7189e3d"
+    },
+    {
+      "filepath": "memory_bank/techContext.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "a1fb942eb72cf942243275b1da649558417d9a69b8730154bee33fd358ab24f5"
+    },
+    {
+      "filepath": "memory_bank/systemPatterns.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "341a24318fdc5d8591a1e7da2b555e134a8f9c78547160da1288c401c47054f8"
+    },
+    {
+      "filepath": "internal_docs/Grok MC/Grok-MC-stack-mermaid.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "94682630f054b12cad52cf20685fe2f0d253e9f47052e93aa44c8a87be668a41"
+    },
+    {
+      "filepath": "expert-knowledge/sync/sovereign-synergy-expert-v1.0.0.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "012a764a2628c57baf2137d22fa676c9f231e690477c3ed87b4624a703ea51a5"
+    },
+    {
+      "filepath": "expert-knowledge/infrastructure/ryzen-hardening-expert-v1.0.0.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "eaf3b5c36480fe76c495ec6d23dadac456227163bda96e243475f71b589d8cde"
+    },
+    {
+      "filepath": "expert-knowledge/security/sovereign-trinity-expert-v1.0.0.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "f0eb49833e29c1c747ba63b85f72e6fd104f55474416c2d95673ae7c62850d03"
+    },
+    {
+      "filepath": "expert-knowledge/origins/xoe-journey-v1.0.0.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "7c5314cedb12b2167d08f77e1a2b123008f6d1b4ffa236f73172579fd9099c90"
+    },
+    {
+      "filepath": "expert-knowledge/research/ekb-research-master-v1.0.0.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "282dde852e5a9621d1c822b9b27313e1a2e3058d700e47687a37b4f2cfe8234d"
+    },
+    {
+      "filepath": "expert-knowledge/protocols/workflows-master-v1.0.0.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "202182bbf1e3c76f0856374a2dec154701f1380afed92f18c7fecbe4ad36dd44"
+    },
+    {
+      "filepath": "xoe-novai-sync/ekb-exports/files-inventory-v1.0.0.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "15cf7d296f50bf76c611fa77c07158bf21cd1b553e82f174611961dee6ba70a5"
+    },
+    {
+      "filepath": "xoe-novai-sync/ekb-exports/oss-pm-research-v1.0.0.md",
+      "included_at": "2026-01-31T08:03:39.133837",
+      "hash": "fa970316656fb20a165e0c7e772eb30963353b23c0fb5ddf3facd4d61a411b9a"
+    },
+    {
+      "filepath": "memory_bank/activeContext.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "c35343b8b63e2a406bd9c20a59d15135eb255c93cd96b0e7b667a1df155ac4c9"
+    },
+    {
+      "filepath": "memory_bank/environmentContext.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "116ad080a0a5a3d6ce15a0af76ccd48ab64aeb0249c27fdc94ecffaa2156cc54"
+    },
+    {
+      "filepath": "memory_bank/teamProtocols.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "160f802d8e747bcb4c9db5547a468210af177e1dfaee3c05edf3934f740df5cf"
+    },
+    {
+      "filepath": "memory_bank/agent_capabilities_summary.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "4bab66931bf9b4244c2bab18228f2d351e786327f1712ae13e6cd97e9c575895"
+    },
+    {
+      "filepath": "memory_bank/projectbrief.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "6f2d8a3b8698fe0fd021755fa6f4afea61022f9c77bb591186974bb8ca5198ba"
+    },
+    {
+      "filepath": "memory_bank/productContext.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "2fbdc658959636c8656b7a9594918c6a57c2b86b3bfb4d51eb048253e7189e3d"
+    },
+    {
+      "filepath": "memory_bank/techContext.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "a1fb942eb72cf942243275b1da649558417d9a69b8730154bee33fd358ab24f5"
+    },
+    {
+      "filepath": "memory_bank/systemPatterns.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "341a24318fdc5d8591a1e7da2b555e134a8f9c78547160da1288c401c47054f8"
+    },
+    {
+      "filepath": "internal_docs/Grok MC/Grok-MC-stack-mermaid.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "94682630f054b12cad52cf20685fe2f0d253e9f47052e93aa44c8a87be668a41"
+    },
+    {
+      "filepath": "expert-knowledge/sync/sovereign-synergy-expert-v1.0.0.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "012a764a2628c57baf2137d22fa676c9f231e690477c3ed87b4624a703ea51a5"
+    },
+    {
+      "filepath": "expert-knowledge/infrastructure/ryzen-hardening-expert-v1.0.0.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "eaf3b5c36480fe76c495ec6d23dadac456227163bda96e243475f71b589d8cde"
+    },
+    {
+      "filepath": "expert-knowledge/security/sovereign-trinity-expert-v1.0.0.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "f0eb49833e29c1c747ba63b85f72e6fd104f55474416c2d95673ae7c62850d03"
+    },
+    {
+      "filepath": "expert-knowledge/origins/xoe-journey-v1.0.0.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "7c5314cedb12b2167d08f77e1a2b123008f6d1b4ffa236f73172579fd9099c90"
+    },
+    {
+      "filepath": "expert-knowledge/research/ekb-research-master-v1.0.0.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "282dde852e5a9621d1c822b9b27313e1a2e3058d700e47687a37b4f2cfe8234d"
+    },
+    {
+      "filepath": "expert-knowledge/protocols/workflows-master-v1.0.0.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "202182bbf1e3c76f0856374a2dec154701f1380afed92f18c7fecbe4ad36dd44"
+    },
+    {
+      "filepath": "xoe-novai-sync/ekb-exports/files-inventory-v1.0.0.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "15cf7d296f50bf76c611fa77c07158bf21cd1b553e82f174611961dee6ba70a5"
+    },
+    {
+      "filepath": "xoe-novai-sync/ekb-exports/oss-pm-research-v1.0.0.md",
+      "included_at": "2026-01-31T08:04:49.783047",
+      "hash": "fa970316656fb20a165e0c7e772eb30963353b23c0fb5ddf3facd4d61a411b9a"
+    }
+  ]
+}

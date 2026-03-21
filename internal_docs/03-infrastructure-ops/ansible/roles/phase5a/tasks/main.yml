@@ -1,0 +1,71 @@
+---
+# Tasks to apply Phase-5A configuration
+- name: Ensure node_exporter textfile collector dir exists
+  file:
+    path: /var/lib/node_exporter/textfile_collector
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Install sysctl tuning file
+  copy:
+    src: "{{ zram_sysctl_src }}"
+    dest: /etc/sysctl.d/99-xnai-zram-tuning.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: reload sysctl
+
+- name: Copy zram systemd service
+  copy:
+    src: "{{ zram_service_src }}"
+    dest: /etc/systemd/system/xnai-zram.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify: daemon-reload
+
+- name: Copy health-check service and timer
+  copy:
+    src: "{{ zram_health_service_src }}"
+    dest: /etc/systemd/system/xnai-zram-health.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify: daemon-reload
+- copy:
+    src: "{{ zram_health_timer_src }}"
+    dest: /etc/systemd/system/xnai-zram-health.timer
+    owner: root
+    group: root
+    mode: '0644'
+  notify: daemon-reload
+
+- name: Enable and start zram service
+  systemd:
+    name: xnai-zram.service
+    enabled: yes
+    state: started
+
+- name: Enable and start health-check timer
+  systemd:
+    name: xnai-zram-health.timer
+    enabled: yes
+    state: started
+
+- name: Set CPUAffinity for health-check (optional)
+  systemd:
+    name: xnai-zram-health.service
+    properties:
+      CPUAffinity: "{{ cpu_affinity_for_health }}"
+
+# Handlers
+- name: daemon-reload
+  become: true
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: reload sysctl
+  command: sysctl --system
+  become: true

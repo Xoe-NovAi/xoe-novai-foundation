@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-a9b8c7d6-e5f4-3c2b-1a0f-9e8d7c6b5a4f",
+  "timestamp": "2026-02-15T03:03:38Z",
+  "sender": "copilot",
+  "target": "copilot",
+  "type": "task_completion",
+  "content": {
+    "status": "success",
+    "exit_code": 0,
+    "output_summary": "I'm ready to help! However, I don't see a task or description in your message. Could you please let me know what you'd like me to do?\n\nFor example, you might want me to:\n- Fix a bug or issue\n- Implement a feature\n- Review or refactor code\n- Debug a failing test\n- Make configuration changes\n- Or something else?\n\nPlease describe what you need, and I'll get started.\n\n"
+  }
+}

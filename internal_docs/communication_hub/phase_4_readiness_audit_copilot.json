@@ -1,0 +1,384 @@
+{
+  "review_timestamp": "2026-02-15T15:25:26.721Z",
+  "audit_scope": "Phase 4.2 Implementation Readiness (Tiered Degradation)",
+  "status": "READY_WITH_CRITICAL_REFINEMENTS",
+  "overall_completion": "75%",
+  "audit_findings": {
+    "phase_4_implementations": {
+      "4.2.1_consul_infrastructure": {
+        "status": "✅ COMPLETE",
+        "file": "docs/03-infrastructure-ops/consul-setup.md",
+        "findings": [
+          "Rootless Podman Consul v1.15.4 deployment documented",
+          "HTTP API (8500) and DNS interface (8600) configured",
+          "Volume persistence in data/consul verified",
+          "Zero external telemetry constraints respected"
+        ],
+        "risk_level": "LOW"
+      },
+      "4.2.2_consul_client_httpx": {
+        "status": "✅ COMPLETE",
+        "file": "app/XNAi_rag_app/core/consul_client.py",
+        "findings": [
+          "ConsulClient class fully implemented with httpx (async-native)",
+          "ServiceRegistration and ServiceCheck Pydantic models defined",
+          "Health check configuration: 10s interval, 5s timeout, 30s deregistration",
+          "DNS resolution with dual fallback (DNS → API → default naming)",
+          "Error handling: Logs warnings when Consul unavailable, continues gracefully",
+          "Global singleton pattern: consul_client module-level instance"
+        ],
+        "strengths": [
+          "Async-first design prevents CPU stalls during I/O",
+          "Resilient fallback chain (DNS → API → container naming)",
+          "Proper error boundaries"
+        ],
+        "risk_level": "LOW"
+      },
+      "4.2.2_service_orchestrator": {
+        "status": "✅ COMPLETE",
+        "file": "app/XNAi_rag_app/core/services_init.py",
+        "findings": [
+          "ServiceOrchestrator._register_with_consul() method present",
+          "Called during initialize_all() before circuit breaker init",
+          "Service ID: rag-api-{hostname} with hostname fallback",
+          "Health check URL configured: http://{hostname}:{port}/health",
+          "Deregistration on shutdown integrated (line 166)",
+          "Graceful degradation: Logs warning but continues if Consul unavailable"
+        ],
+        "integration_points": [
+          "startup event (line 209: degradation_manager.start_monitoring())",
+          "shutdown event (line 219: degradation_manager.stop_monitoring())"
+        ],
+        "risk_level": "LOW"
+      },
+      "4.2.3_degradation_tier_manager": {
+        "status": "🟡 PARTIAL - NEEDS REFINEMENT",
+        "file": "app/XNAi_rag_app/core/degradation.py",
+        "current_implementation": {
+          "tier_system": {
+            "tier_1": "Normal - Full context (0-85% memory)",
+            "tier_2": "Constrained - Reduced context (85-92% memory)",
+            "tier_3": "Critical - Cache-only (92-97% memory)",
+            "tier_4": "Failover - Read-only (97%+ memory)"
+          },
+          "monitoring": {
+            "interval": "5 seconds",
+            "metrics": ["memory_percent", "cpu_percent"],
+            "broadcast": "Redis Streams (xnai_degradation) + PubSub"
+          }
+        },
+        "critical_findings": [
+          "✅ Tier detection logic correctly implemented",
+          "✅ Redis signaling functional (xadd + publish)",
+          "✅ Background monitoring task with error handling",
+          "⚠️ CRITICAL GAP: No tier-specific configuration parameters defined",
+          "⚠️ CRITICAL GAP: No adaptation logic hooks for consumers",
+          "⚠️ CRITICAL GAP: No factory methods for tier-specific service configs"
+        ],
+        "risk_level": "HIGH"
+      }
+    },
+    "adaptation_logic_injection_points": {
+      "status": "🔴 NOT_YET_IMPLEMENTED",
+      "required_by_phase_4_2_3": [
+        {
+          "component": "RAG API - Context Window Reduction",
+          "location": "app/XNAi_rag_app/api/routers/query.py",
+          "current_behavior": "Uses fixed rag.top_k (line 39) and performance.total_chars (rag_service.py:68)",
+          "tier_2_requirement": "Reduce context window by 40% (2048 → ~1200 chars)",
+          "tier_3_requirement": "Reduce to minimal (500 chars max)",
+          "tier_4_requirement": "Cache-only, no fresh retrieval",
+          "injection_point": "Lines 50-54 in query.py where RAG context is retrieved",
+          "implementation_gap": "No conditional logic based on degradation_manager.current_tier",
+          "severity": "CRITICAL"
+        },
+        {
+          "component": "Voice STT - Whisper Model Switching",
+          "location": "app/XNAi_rag_app/services/voice/voice_interface.py",
+          "current_behavior": "Always loads DISTIL_LARGE model (line 281)",
+          "tier_1_requirement": "distil-large-v3 (current)",
+          "tier_2_requirement": "base model",
+          "tier_3_requirement": "tiny model (as fallback, voice_recovery.py:144)",
+          "tier_4_requirement": "Emergency: Pyttsx3 fallback (line 64)",
+          "injection_point": "Lines 325-345 where WhisperModel is instantiated",
+          "implementation_gap": "No dynamic model selection based on degradation tier",
+          "severity": "CRITICAL"
+        },
+        {
+          "component": "LLM Token Budget Management",
+          "location": "app/XNAi_rag_app/api/routers/query.py",
+          "current_behavior": "Uses QueryRequest.max_tokens (default typically 128-256)",
+          "tier_1_requirement": "max_tokens: 256 (full generation)",
+          "tier_2_requirement": "max_tokens: 150 (reduced output)",
+          "tier_3_requirement": "max_tokens: 100 (minimal output)",
+          "tier_4_requirement": "Cached responses only",
+          "injection_point": "Line 63 in query.py llm.invoke() call",
+          "implementation_gap": "No tier-based max_tokens override",
+          "severity": "CRITICAL"
+        },
+        {
+          "component": "Vector Search - Top-K Reduction",
+          "location": "app/XNAi_rag_app/services/rag/rag_service.py",
+          "current_behavior": "Retrieves top_k documents (line 39, default=5)",
+          "tier_1_requirement": "top_k: 5",
+          "tier_2_requirement": "top_k: 3",
+          "tier_3_requirement": "top_k: 1 (best match only)",
+          "tier_4_requirement": "No retrieval (cache only)",
+          "injection_point": "Line 44 in rag_service.py asimilarity_search()",
+          "implementation_gap": "No tier-based k override",
+          "severity": "CRITICAL"
+        },
+        {
+          "component": "Embedding Cache Strategy",
+          "location": "app/XNAi_rag_app/services/rag/retrievers.py",
+          "current_behavior": "No embedding cache detected",
+          "tier_1_requirement": "Fresh embeddings on every query",
+          "tier_2_requirement": "Cache embeddings for 30s TTL",
+          "tier_3_requirement": "Cache embeddings for 5min TTL",
+          "tier_4_requirement": "Cache-only (no fresh embeddings)",
+          "injection_point": "Before vectorstore.asimilarity_search() call",
+          "implementation_gap": "No caching layer implemented",
+          "severity": "HIGH"
+        }
+      ],
+      "currently_integrated": [
+        {
+          "file": "app/XNAi_rag_app/api/entrypoint.py",
+          "integration": "degradation_manager.start_monitoring() on startup (line 210)",
+          "status": "✅ Present"
+        },
+        {
+          "file": "app/XNAi_rag_app/api/middleware.py",
+          "integration": "Logs degradation_manager.current_tier to Redis Stream (line 30)",
+          "status": "✅ Present - Observability only, not adaptation"
+        },
+        {
+          "file": "app/XNAi_rag_app/api/routers/query.py",
+          "integration": "None currently",
+          "status": "❌ Missing adaptation logic"
+        }
+      ]
+    },
+    "circuit_breaker_degradation_integration": {
+      "status": "✅ PRESENT - FOUNDATION READY",
+      "file": "app/XNAi_rag_app/core/circuit_breakers/graceful_degradation.py",
+      "findings": [
+        "DegradationStrategy abstraction with 4 implementations (Fallback, CacheFirst, DegradedMode, CircuitBreaker)",
+        "ServiceDegradationManager for service-level strategy management",
+        "IntegratedDegradationManager bridging circuit breakers + degradation patterns",
+        "Priority-based strategy execution (fallback chain)",
+        "Factory functions for LLM, Redis, vector search degradation"
+      ],
+      "readiness_for_tier_binding": "✅ READY - Can be extended with tier-aware strategy selection"
+    },
+    "dependency_injection_framework": {
+      "status": "✅ GOOD FOUNDATION",
+      "file": "app/XNAi_rag_app/core/dependencies.py",
+      "findings": [
+        "get_config_value() pattern for dynamic configuration",
+        "rag.top_k and performance.total_chars already configurable (lines 39, 67-68)",
+        "No degradation-tier-specific config variants yet"
+      ],
+      "readiness": "✅ Can be extended with tier-specific config accessors"
+    }
+  },
+  "readiness_assessment": {
+    "phase_4_2_1_infrastructure": {
+      "status": "✅ READY",
+      "blockers": []
+    },
+    "phase_4_2_2_service_registration": {
+      "status": "✅ READY",
+      "blockers": []
+    },
+    "phase_4_2_3_tiered_degradation": {
+      "status": "🟡 PARTIALLY_READY",
+      "blockers": [
+        "NO_TIER_AWARE_RAG_ADAPTATION: RAG API does not adjust context_window based on degradation tier",
+        "NO_DYNAMIC_WHISPER_SWITCHING: Voice interface always loads distil-large, not tier-aware model selection",
+        "NO_TOKEN_BUDGET_MANAGEMENT: LLM token limits not adjusted for degradation tiers",
+        "NO_EMBEDDING_CACHE: Missing embedding cache for Tier 3-4 (cache-first strategy)",
+        "MISSING_TIER_CONFIG_FACTORY: No factory for creating tier-specific service configurations"
+      ],
+      "ready_elements": [
+        "DegradationTierManager (monitors and broadcasts tier changes)",
+        "Redis Streams signaling (xnai_degradation topic)",
+        "Circuit breaker foundation (graceful_degradation.py)",
+        "Observability hooks (middleware logging tier)"
+      ]
+    }
+  },
+  "next_steps": {
+    "phase_4_2_3_implementation_tasks": [
+      {
+        "priority": "CRITICAL",
+        "task_id": "4.2.3.1",
+        "title": "Create Tier Configuration Factory",
+        "description": "Implement DegradationConfigFactory class that returns tier-specific configs (context_window, max_tokens, top_k, model_name)",
+        "file_to_create": "app/XNAi_rag_app/core/tier_config.py",
+        "pseudo_code": "class DegradationConfigFactory:\n  @staticmethod\n  def get_rag_config(tier: int) -> RAGTierConfig:\n    configs = {\n      1: RAGTierConfig(top_k=5, max_context_chars=2048, retrieval_enabled=True),\n      2: RAGTierConfig(top_k=3, max_context_chars=1200, retrieval_enabled=True),\n      3: RAGTierConfig(top_k=1, max_context_chars=500, retrieval_enabled=True),\n      4: RAGTierConfig(top_k=0, max_context_chars=0, retrieval_enabled=False, cache_only=True)\n    }\n    return configs.get(tier, configs[1])"
+      },
+      {
+        "priority": "CRITICAL",
+        "task_id": "4.2.3.2",
+        "title": "Inject Context Window Adaptation in RAG API",
+        "description": "Modify query.py to use tier-specific context limits before calling rag_service.retrieve_context()",
+        "files_to_modify": [
+          "app/XNAi_rag_app/api/routers/query.py",
+          "app/XNAi_rag_app/services/rag/rag_service.py"
+        ],
+        "changes": [
+          "Import degradation_manager and DegradationConfigFactory in query.py",
+          "Before line 50, get tier config: rag_config = DegradationConfigFactory.get_rag_config(degradation_manager.current_tier)",
+          "Pass rag_config.top_k to rag_service.retrieve_context()",
+          "Modify rag_service.retrieve_context() to accept top_k override parameter",
+          "Modify rag_service._build_truncated_context() to respect tier-specific total_limit"
+        ]
+      },
+      {
+        "priority": "CRITICAL",
+        "task_id": "4.2.3.3",
+        "title": "Implement Dynamic Whisper Model Switching",
+        "description": "Modify VoiceInterface to dynamically load correct Whisper model based on degradation tier",
+        "file_to_modify": "app/XNAi_rag_app/services/voice/voice_interface.py",
+        "changes": [
+          "Add method _select_whisper_model(tier: int) → str returning 'distil-large-v3' | 'base' | 'tiny'",
+          "At VoiceInterface.__init__, call degradation_manager to get current tier",
+          "Store selected model in self.selected_whisper_model",
+          "Use self.selected_whisper_model when instantiating WhisperModel (lines 332-338)",
+          "Listen to degradation events (Redis PubSub) to reload model when tier changes"
+        ]
+      },
+      {
+        "priority": "CRITICAL",
+        "task_id": "4.2.3.4",
+        "title": "Add LLM Token Budget Management",
+        "description": "Override max_tokens in query endpoint based on degradation tier",
+        "file_to_modify": "app/XNAi_rag_app/api/routers/query.py",
+        "changes": [
+          "Import DegradationConfigFactory",
+          "Get LLM config: llm_config = DegradationConfigFactory.get_llm_config(degradation_manager.current_tier)",
+          "Before llm.invoke() call (line 61), apply tier-based max_tokens override",
+          "Logic: max_tokens_effective = min(query_req.max_tokens, llm_config.max_tokens_tier_limit)",
+          "Pass max_tokens_effective to llm.invoke()"
+        ]
+      },
+      {
+        "priority": "HIGH",
+        "task_id": "4.2.3.5",
+        "title": "Implement Embedding Cache Layer",
+        "description": "Add Redis-backed embedding cache to skip vectorstore queries during Tier 3-4",
+        "file_to_create": "app/XNAi_rag_app/core/embedding_cache.py",
+        "pseudo_code": "class EmbeddingCache:\n  async def get_cached_results(query: str, tier: int) -> Optional[List[Document]]:\n    if tier <= 2: return None  # Tier 1-2: fresh embeddings\n    cache_key = f'embed:{hash(query)}'\n    ttl = {3: 300, 4: 3600}.get(tier, 3600)\n    return await redis.get(cache_key) or None"
+      },
+      {
+        "priority": "HIGH",
+        "task_id": "4.2.3.6",
+        "title": "Add Redis PubSub Listener for Tier Changes",
+        "description": "Implement async listener that notifies services when degradation tier changes",
+        "file_to_create": "app/XNAi_rag_app/core/tier_change_listener.py",
+        "features": [
+          "Subscribe to xnai_degradation_events PubSub channel",
+          "Broadcast tier changes to service handlers (RAG, Voice, LLM)",
+          "Reload critical resources (e.g., Whisper model) on tier transition",
+          "Integrate into ServiceOrchestrator.initialize_all()"
+        ]
+      },
+      {
+        "priority": "MEDIUM",
+        "task_id": "4.2.3.7",
+        "title": "Add Health Check Endpoint for Degradation Status",
+        "description": "Enhance /health endpoint to report current degradation tier",
+        "file_to_modify": "app/XNAi_rag_app/api/routers/health.py",
+        "changes": [
+          "Add degradation_tier field to health response",
+          "Add tier_description field (e.g., 'Reduced Context - Cache Priority')",
+          "Add memory_percent, cpu_percent to health metadata"
+        ]
+      },
+      {
+        "priority": "MEDIUM",
+        "task_id": "4.2.3.8",
+        "title": "Create Integration Tests for Tier Adaptation",
+        "description": "Test that services adapt correctly to each degradation tier",
+        "file_to_create": "tests/integration/test_tiered_degradation.py",
+        "test_cases": [
+          "test_tier_1_full_context_retrieved()",
+          "test_tier_2_context_reduced_by_40_percent()",
+          "test_tier_3_minimal_context_single_doc()",
+          "test_tier_4_cache_only_no_retrieval()",
+          "test_tier_transition_whisper_model_reload()",
+          "test_tier_transition_token_budget_applied()",
+          "test_concurrent_requests_during_tier_change()"
+        ]
+      }
+    ],
+    "refinement_recommendations": [
+      {
+        "category": "Degradation Tier Manager",
+        "recommendation": "Add hysteresis (e.g., tier_2 transition at 85%, but back to tier_1 only at 80%) to prevent thrashing",
+        "severity": "MEDIUM"
+      },
+      {
+        "category": "Degradation Tier Manager",
+        "recommendation": "Log tier transitions with full context (memory, CPU, services affected) for audit trail",
+        "severity": "MEDIUM"
+      },
+      {
+        "category": "Circuit Breaker Integration",
+        "recommendation": "Bind circuit breaker thresholds to degradation tier (e.g., Tier 3+ uses more aggressive failure detection)",
+        "severity": "MEDIUM"
+      },
+      {
+        "category": "Error Handling",
+        "recommendation": "Define fallback behaviors per service when tier changes mid-request",
+        "severity": "MEDIUM"
+      },
+      {
+        "category": "Observability",
+        "recommendation": "Add Prometheus metrics for tier-specific latencies and throughput to validate SLA under degradation",
+        "severity": "LOW"
+      }
+    ]
+  },
+  "success_criteria_assessment": {
+    "zero_ooms_during_10_query_burst": {
+      "status": "🟡 DEPENDS_ON_IMPLEMENTATION",
+      "assessment": "Tier 3-4 context reduction + embedding cache should prevent OOMs, but requires implementation of 4.2.3.1-4.2.3.5"
+    },
+    "auto_recovery_within_30s": {
+      "status": "✅ READY",
+      "assessment": "Degradation monitor polls every 5s; tier transition is immediate via Redis Streams. Service reload (Whisper model) requires 4.2.3.3 implementation (few seconds)"
+    },
+    "full_audit_trail_in_redis": {
+      "status": "✅ PARTIAL",
+      "assessment": "xnai_queries Redis Stream logs initiated/completed status. Enhancement: Log tier at query initiation (already in middleware line 30)"
+    }
+  },
+  "risk_summary": {
+    "high_risk_gaps": [
+      "No RAG context window adaptation when tier changes",
+      "No Whisper model switching based on tier",
+      "No LLM token budget reduction for degraded tiers",
+      "No embedding cache for cache-only tiers"
+    ],
+    "medium_risk_gaps": [
+      "No tier-aware circuit breaker thresholds",
+      "No hysteresis in tier transitions",
+      "Missing tier change listener/broadcast to services"
+    ],
+    "low_risk_gaps": [
+      "No Prometheus metrics for tier-specific latencies",
+      "Limited audit logging of tier transitions"
+    ]
+  },
+  "recommendations_summary": {
+    "immediate_next_actions": [
+      "✅ Phase 4.2.1 (Infrastructure): DEPLOY immediately - Ready",
+      "✅ Phase 4.2.2 (Service Registration): DEPLOY immediately - Ready",
+      "🔧 Phase 4.2.3 (Tiered Degradation): IMPLEMENT 8 tasks (priority order: 4.2.3.1, 4.2.3.2, 4.2.3.3, 4.2.3.4, 4.2.3.5, then lower priority)"
+    ],
+    "implementation_timeline": "Estimated 6-8 hours for all 8 tasks (assuming 45-60 min each for core components, 30-45 min for tests)",
+    "go_live_criteria": "Complete and pass all Phase 4.2.3 integration tests before deploying degradation monitor in production"
+  }
+}

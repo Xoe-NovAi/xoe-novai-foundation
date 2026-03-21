@@ -1,0 +1,11 @@
+- name: Apply Phase-5A zRAM configuration (idempotent)
+  hosts: all
+  become: true
+  vars:
+    zram_sysctl_src: "{{ playbook_dir }}/../../TEMPLATE-sysctl-zram-tuning.conf"
+    zram_service_src: "{{ playbook_dir }}/../../TEMPLATE-xnai-zram.service"
+    zram_health_service_src: "{{ playbook_dir }}/../../TEMPLATE-xnai-zram-health.service"
+    zram_health_timer_src: "{{ playbook_dir }}/../../TEMPLATE-xnai-zram-health.timer"
+    cpu_affinity_for_health: "0"
+  roles:
+    - phase5a

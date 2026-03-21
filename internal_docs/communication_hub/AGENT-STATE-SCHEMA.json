@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Xoe-NovAi AI Agent State Schema",
+  "description": "Standardized JSON heartbeat and state tracking for agents within the CNS.",
+  "type": "object",
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "enum": ["gemini-cli", "copilot-raptor", "cline", "grok-mc", "grok-mc-arcana", "grok", "gemini", "human-director"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["idle", "processing", "error", "waiting", "offline"]
+    },
+    "current_task": {
+      "type": "object",
+      "properties": {
+        "task_id": { "type": "string" },
+        "source": { "type": "string", "enum": ["vikunja", "agent-bus", "human"] },
+        "description": { "type": "string" }
+      },
+      "required": ["task_id", "source"]
+    },
+    "resource_usage": {
+      "type": "object",
+      "properties": {
+        "cpu_percent": { "type": "number" },
+        "memory_mb": { "type": "number" },
+        "context_window_usage_percent": { "type": "number" }
+      }
+    },
+    "last_handoff": {
+      "type": "object",
+      "properties": {
+        "to_agent": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "summary_file": { "type": "string" }
+      }
+    },
+    "heartbeat_interval_seconds": {
+      "type": "integer",
+      "default": 300
+    }
+  },
+  "required": ["agent_id", "timestamp", "status", "current_task"]
+}

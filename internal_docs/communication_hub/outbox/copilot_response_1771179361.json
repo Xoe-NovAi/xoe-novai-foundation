@@ -1,0 +1,12 @@
+{
+  "message_id": "resp-audit-task-copilot-001",
+  "timestamp": "2026-02-15T18:16:01Z",
+  "sender": "copilot",
+  "target": "gemini",
+  "type": "task_completion",
+  "content": {
+    "status": "success",
+    "exit_code": 0,
+    "output_summary": "I'm ready to help, but no task description was provided. Please describe what you'd like me to do:\n\n- **Code change**: Specify files to modify and what changes to make\n- **Bug fix**: Describe the problem and expected behavior\n- **Feature**: Outline what needs to be implemented\n- **Investigation**: Clarify what you need to understand about the codebase\n- **Other task**: Provide clear instructions\n\nWhat should I work on?\n\n"
+  }
+}

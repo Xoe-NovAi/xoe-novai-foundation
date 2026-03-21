@@ -1,0 +1,17 @@
+{
+    "message_id": "92a34b2f-76c2-4aef-b31f-13a8501f09c2",
+    "timestamp": "2026-02-24T04:35:00Z",
+    "sender": "gemini-cli",
+    "target": "opencode",
+    "type": "task_assignment",
+    "priority": "high",
+    "content": {
+        "task": "research_deep_voice_os_cli_control",
+        "description": "Research mechanisms for achieving full CLI and computer control by voice only. Focus on cross-platform capabilities (macOS accessibility APIs vs Linux X11/Wayland/CLI tools) and how to bridge VoiceOS intents into autonomous desktop/terminal actions.",
+        "deliverables": [
+            "Voice-to-CLI translation architecture guide",
+            "macOS vs Linux deep accessibility framework comparison",
+            "Recommendations for integrating OS control into the Foundation stack"
+        ]
+    }
+}

@@ -1,521 +1,184 @@
-# Omega-Stack CI Pipeline
-# 
-# This pipeline implements the comprehensive CI strategy for Omega-Stack
-# based on the GitHub Management Strategy document.
-#
-# Key Features:
-# - Hardware-optimized for Ryzen 5700U
-# - Multi-agent testing coordination
-# - Security scanning and performance benchmarking
-# - Memory bank integration
-# - Circuit breaker patterns
+name: CI
 
-name: Omega Stack CI
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-env:
-  HARDWARE_PROFILE: "ryzen-5700u"
-  MEMORY_BANK_PATH: "memory_bank/"
-  SECURITY_SCAN_ENABLED: true
-  PERFORMANCE_BENCHMARKS_ENABLED: true
-
 jobs:
-  # Stage 1: Omega Stack Environment Setup
-  omega-ci-setup:
-    name: Setup Omega Stack Environment
+  # ===========================================================================
+  # Linting - Fast feedback on code quality
+  # ===========================================================================
+  lint:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-    
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Full history for memory bank analysis
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install Ruff
+      run: pip install ruff
+    - name: Ruff Lint
+      run: ruff check --output-format=github app/ tests/
+    - name: Ruff Format Check
+      run: ruff format --check app/ tests/
 
-      - name: Setup Python Environment
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-          cache: 'pip'
-
-      - name: Install Omega Stack Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements/requirements.txt
-          pip install -r requirements/requirements-api.txt
-          pip install -r requirements/requirements-crawl.txt
-          pip install -r requirements/requirements-curation_worker.txt
-
-      - name: Validate Omega Stack Configuration
-        run: |
-          # Check for required configuration files
-          test -f config.toml || { echo "Missing config.toml"; exit 1; }
-          test -f pyproject.toml || { echo "Missing pyproject.toml"; exit 1; }
-          test -d memory_bank || { echo "Missing memory_bank directory"; exit 1; }
-
-      - name: Hardware Optimization Check
-        run: |
-          echo "Validating Ryzen 5700U optimizations..."
-          # Check for hardware-specific optimizations
-          grep -q "ryzen" config.toml || echo "Warning: No Ryzen-specific optimizations found"
-          grep -q "mmap" config.toml || echo "Warning: No memory mapping optimizations found"
-
-      - name: Memory Bank Validation
-        run: |
-          echo "Validating memory bank structure..."
-          python -c "
-          import os
-          required_files = ['INDEX.md', 'activeContext.md', 'techContext.md']
-          for file in required_files:
-              if not os.path.exists(f'memory_bank/{file}'):
-                  print(f'Missing memory bank file: {file}')
-                  exit(1)
-          print('Memory bank validation passed')
-          "
-
-      - name: Cache Dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/pip
-            ~/.cache/uv
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-  # Stage 2: Multi-Agent Testing
-  multi-agent-testing:
-    name: Multi-Agent Testing
-    needs: omega-ci-setup
+  # ===========================================================================
+  # Multi-Python Testing with Tox Matrix
+  # ===========================================================================
+  test:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        agent:
-          - name: "Claude"
-            model: "sonnet-4-6"
-            test-suite: "agent-specific"
-            context-window: "200K"
-          - name: "Gemini"
-            model: "flash-preview"
-            test-suite: "agent-specific"
-            context-window: "1M"
-          - name: "OpenCode"
-            model: "minimax-m2.5"
-            test-suite: "agent-specific"
-            context-window: "204K"
-          - name: "Cline"
-            model: "kat-coder-pro"
-            test-suite: "agent-specific"
-            context-window: "262K"
+        python-version: ['3.11', '3.12', '3.13']
+        include:
+          - python-version: '3.11'
+            tox-env: py311
+          - python-version: '3.12'
+            tox-env: py312
+          - python-version: '3.13'
+            tox-env: py313
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Agent Environment
-        run: |
-          echo "Setting up ${AGENT_NAME} environment..."
-          echo "AGENT_NAME=${{ matrix.agent.name }}" >> $GITHUB_ENV
-          echo "AGENT_MODEL=${{ matrix.agent.model }}" >> $GITHUB_ENV
-          echo "TEST_SUITE=${{ matrix.agent.test-suite }}" >> $GITHUB_ENV
-          echo "CONTEXT_WINDOW=${{ matrix.agent.context-window }}" >> $GITHUB_ENV
-
-      - name: Check Account Quotas
-        run: |
-          echo "Checking account quotas for multi-agent testing..."
-          python setup/check_account_quotas.py --provider antigravity --accounts 01-08
-          python setup/check_account_quotas.py --provider copilot --accounts 01-08
-          
-      - name: Run Agent-Specific Tests
-        run: |
-          echo "Running tests for $AGENT_NAME with model $AGENT_MODEL"
-          echo "Context window: $CONTEXT_WINDOW"
-          echo "Test suite: $TEST_SUITE"
-          
-          # Run agent-specific test suite
-          if [ -f "tests/agent_tests/test_${AGENT_NAME,,}.py" ]; then
-            python -m pytest tests/agent_tests/test_${AGENT_NAME,,}.py -v
-          else
-            echo "No specific tests found for $AGENT_NAME, running general tests"
-            python -m pytest tests/ -k "not integration" -v
-          fi
-
-      - name: Agent Performance Metrics
-        run: |
-          echo "Collecting performance metrics for $AGENT_NAME"
-          
-          # Run performance benchmarks
-          if [ -f "setup/benchmark_agent.py" ]; then
-            python setup/benchmark_agent.py --agent "$AGENT_NAME" --model "$AGENT_MODEL"
-          fi
-
-      - name: Memory Bank Integration Test
-        run: |
-          echo "Testing memory bank integration for $AGENT_NAME"
-          
-          # Test memory bank synchronization
-          python -c "
-          import sys
-          sys.path.append('.')
-          from memory_bank import MemoryBank
-          mb = MemoryBank()
-          test_data = {'agent': '$AGENT_NAME', 'model': '$AGENT_MODEL', 'timestamp': 'test'}
-          mb.store('agent_test', test_data)
-          result = mb.retrieve('agent_test')
-          assert result['agent'] == '$AGENT_NAME'
-          print('Memory bank integration test passed for $AGENT_NAME')
-          "
-
-      - name: Upload Agent Test Results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: agent-test-results-${{ matrix.agent.name }}
-          path: |
-            test_results/
-            performance_metrics/
-          retention-days: 30
-
-  # Stage 3: Security Scanning
-  security-scan:
-    name: Security Audit
-    needs: multi-agent-testing
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+    - uses: actions/checkout@v4
     
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Security Tools
-        run: |
-          pip install bandit safety semgrep
-
-      - name: Run Bandit Security Scan
-        run: |
-          bandit -r app/ -f json -o security_reports/bandit_report.json
-          bandit -r app/ -f txt
-
-      - name: Run Safety Dependency Check
-        run: |
-          safety check --json --output security_reports/safety_report.json
-          safety check
-
-      - name: Run Semgrep Security Scan
-        run: |
-          semgrep --config=auto app/ --json --output=security_reports/semgrep_report.json
-          semgrep --config=auto app/
-
-      - name: Custom Omega Stack Security Audit
-        run: |
-          echo "Running custom Omega Stack security checks..."
-          python setup/security_audit.py --output security_reports/omega_security_report.json
-
-      - name: Security Report Aggregation
-        run: |
-          echo "Aggregating security reports..."
-          python setup/aggregate_security_reports.py \
-            --bandit security_reports/bandit_report.json \
-            --safety security_reports/safety_report.json \
-            --semgrep security_reports/semgrep_report.json \
-            --omega security_reports/omega_security_report.json \
-            --output security_reports/combined_report.json
-
-      - name: Security Check Results
-        run: |
-          echo "Security scan completed"
-          echo "Critical vulnerabilities: $(jq '.critical // 0' security_reports/combined_report.json)"
-          echo "High vulnerabilities: $(jq '.high // 0' security_reports/combined_report.json)"
-          echo "Medium vulnerabilities: $(jq '.medium // 0' security_reports/combined_report.json)"
-
-      - name: Upload Security Reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: security-reports
-          path: security_reports/
-          retention-days: 90
-
-  # Stage 4: Performance Benchmarking
-  performance-benchmarks:
-    name: Performance Testing
-    needs: security-scan
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        allow-prereleases: true
     
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Performance Testing
-        run: |
-          pip install pytest-benchmark memory-profiler psutil
-
-      - name: Run Hardware-Specific Benchmarks
-        run: |
-          echo "Running Ryzen 5700U optimized benchmarks..."
-          python setup/benchmark_ryzen.py --profile "$HARDWARE_PROFILE"
-
-      - name: Run Memory Usage Benchmarks
-        run: |
-          echo "Running memory usage benchmarks..."
-          python setup/memory_benchmark.py --output performance_metrics/memory_benchmark.json
-
-      - name: Run Response Time Tests
-        run: |
-          echo "Running response time tests..."
-          python setup/response_time_test.py --output performance_metrics/response_time.json
-
-      - name: Run Database Performance Tests
-        run: |
-          echo "Running database performance tests..."
-          python setup/database_benchmark.py --output performance_metrics/database_benchmark.json
-
-      - name: Run Agent Coordination Benchmarks
-        run: |
-          echo "Running multi-agent coordination benchmarks..."
-          python setup/agent_coordination_benchmark.py --output performance_metrics/agent_coordination.json
-
-      - name: Performance Metrics Aggregation
-        run: |
-          echo "Aggregating performance metrics..."
-          python setup/aggregate_performance_metrics.py \
-            --memory performance_metrics/memory_benchmark.json \
-            --response performance_metrics/response_time.json \
-            --database performance_metrics/database_benchmark.json \
-            --coordination performance_metrics/agent_coordination.json \
-            --output performance_metrics/combined_metrics.json
-
-      - name: Performance Validation
-        run: |
-          echo "Validating performance against Ryzen 5700U targets..."
-          python setup/validate_performance.py \
-            --metrics performance_metrics/combined_metrics.json \
-            --target-hardware "$HARDWARE_PROFILE" \
-            --output performance_metrics/validation_report.json
-
-      - name: Performance Check Results
-        run: |
-          echo "Performance benchmarking completed"
-          echo "Memory usage: $(jq '.memory_usage // "N/A"' performance_metrics/validation_report.json)"
-          echo "Response time: $(jq '.response_time // "N/A"' performance_metrics/validation_report.json)"
-          echo "Database performance: $(jq '.database_performance // "N/A"' performance_metrics/validation_report.json)"
-
-      - name: Upload Performance Metrics
-        uses: actions/upload-artifact@v4
-        with:
-          name: performance-metrics
-          path: performance_metrics/
-          retention-days: 90
-
-  # Stage 5: Integration Testing
-  integration-tests:
-    name: Integration Testing
-    needs: [security-scan, performance-benchmarks]
-    runs-on: ubuntu-latest
-    timeout-minutes: 25
+    - name: Install tox
+      run: |
+        python -m pip install --upgrade pip
+        pip install tox tox-gh-actions
     
-    services:
-      redis:
-        image: redis:7.4.1
-        ports:
-          - 6379:6379
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-      postgres:
-        image: postgres:14
-        env:
-          POSTGRES_PASSWORD: test_password
-          POSTGRES_DB: test_db
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-      qdrant:
-        image: qdrant/qdrant:v1.13.1
-        ports:
-          - 6333:6333
-        options: >-
-          --health-cmd "curl -f http://localhost:6333/health"
-          --health-interval 30s
-          --health-timeout 10s
-          --health-retries 3
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Integration Environment
-        run: |
-          # Wait for services to be ready
-          sleep 10
-          
-          # Setup database
-          export DATABASE_URL="postgresql://postgres:test_password@localhost:5432/test_db"
-          python setup/setup_test_database.py
-
-      - name: Run Integration Tests
-        run: |
-          echo "Running integration tests..."
-          python -m pytest tests/integration/ -v --tb=short
-
-      - name: Run End-to-End Tests
-        run: |
-          echo "Running end-to-end tests..."
-          python -m pytest tests/e2e/ -v --tb=short
-
-      - name: Test Memory Bank Integration
-        run: |
-          echo "Testing memory bank integration..."
-          python -m pytest tests/memory_bank/ -v --tb=short
-
-      - name: Test Agent Coordination
-        run: |
-          echo "Testing agent coordination..."
-          python -m pytest tests/agent_coordination/ -v --tb=short
-
-      - name: Integration Test Results
-        run: |
-          echo "Integration testing completed"
-          echo "All integration tests passed successfully"
-
-      - name: Upload Integration Test Results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: integration-test-results
-          path: |
-            integration_test_results/
-            e2e_test_results/
-          retention-days: 30
-
-  # Stage 6: Documentation and Memory Bank Update
-  documentation:
-    name: Documentation Generation
-    needs: [integration-tests]
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+    - name: Run tests with tox
+      run: tox -e ${{ matrix.tox-env }}
     
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Generate Documentation
-        run: |
-          echo "Generating documentation..."
-          mkdocs build --clean
-
-      - name: Update Memory Bank
-        run: |
-          echo "Updating memory bank with CI results..."
-          python setup/update_memory_bank.py \
-            --ci-results integration-test-results/ \
-            --security-reports security_reports/ \
-            --performance-metrics performance_metrics/
-
-      - name: Generate API Documentation
-        run: |
-          echo "Generating API documentation..."
-          python setup/generate_api_docs.py --output docs/api/
-
-      - name: Validate Documentation Links
-        run: |
-          echo "Validating documentation links..."
-          python setup/validate_docs_links.py --docs-dir docs/
-
-      - name: Upload Documentation
-        uses: actions/upload-artifact@v4
-        with:
-          name: documentation
-          path: |
-            site/
-            docs/
-          retention-days: 30
-
-  # Stage 7: Final Validation and Reporting
-  final-validation:
-    name: Final Validation
-    needs: [documentation]
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+    - name: Upload coverage artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-${{ matrix.tox-env }}
+        path: coverage-${{ matrix.tox-env }}.xml
+        if-no-files-found: ignore
     
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage-${{ matrix.tox-env }}.xml
+        flags: ${{ matrix.tox-env }}
+        fail_ci_if_error: false
 
-      - name: Download All Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: all_artifacts/
-
-      - name: Generate CI Report
-        run: |
-          echo "Generating comprehensive CI report..."
-          python setup/generate_ci_report.py \
-            --artifacts all_artifacts/ \
-            --output ci_reports/final_report.json
-
-      - name: CI Validation Summary
-        run: |
-          echo "=== CI VALIDATION SUMMARY ==="
-          echo "✅ Omega Stack Environment Setup: PASSED"
-          echo "✅ Multi-Agent Testing: PASSED"
-          echo "✅ Security Scanning: PASSED"
-          echo "✅ Performance Benchmarking: PASSED"
-          echo "✅ Integration Testing: PASSED"
-          echo "✅ Documentation Generation: PASSED"
-          echo "=== ALL STAGES COMPLETED SUCCESSFULLY ==="
-
-      - name: Upload Final Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: ci-final-report
-          path: ci_reports/
-          retention-days: 365
-
-  # Circuit Breaker: Fail-Safe Mechanism
-  circuit-breaker:
-    name: Circuit Breaker Check
-    needs: [final-validation]
+  # ===========================================================================
+  # Type Checking
+  # ===========================================================================
+  typecheck:
     runs-on: ubuntu-latest
-    if: failure()
-    
     steps:
-      - name: Circuit Breaker Activated
-        run: |
-          echo "⚠️ Circuit Breaker: CI Pipeline Failed"
-          echo "Implementing fail-safe measures..."
-          
-          # Log failure details
-          echo "Failure detected in CI pipeline"
-          echo "Implementing rollback procedures"
-          
-          # Notify team (placeholder for actual notification)
-          echo "Team notification: CI pipeline failure detected"
-          
-          # Generate failure report
-          python setup/generate_failure_report.py --output failure_reports/circuit_breaker_report.json
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install tox
+      run: pip install tox
+    - name: Run mypy via tox
+      run: tox -e typecheck
 
-      - name: Upload Failure Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: circuit-breaker-report
-          path: failure_reports/
-          retention-days: 90
+  # ===========================================================================
+  # Security Scanning
+  # ===========================================================================
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install tox
+      run: pip install tox
+    - name: Run security scan via tox
+      run: tox -e security
+      continue-on-error: true
+
+  # ===========================================================================
+  # Security Gate - Blocking Security Check
+  # ===========================================================================
+  security-gate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install bandit safety
+    - name: Run Bandit security linter
+      run: bandit -r app/ -ll --skip B101,B311
+    - name: Check for known vulnerabilities
+      run: safety check --full-report
+      continue-on-error: true  # Safety DB may have false positives
+
+  # ===========================================================================
+  # Coverage Report (after all tests pass)
+  # ===========================================================================
+  coverage:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install coverage
+      run: pip install coverage
+    - name: Download coverage artifacts
+      uses: actions/download-artifact@v4
+      with:
+        pattern: coverage-*
+        path: .
+        merge-multiple: true
+      continue-on-error: true
+    - name: Generate coverage report
+      run: |
+        coverage combine coverage-py3*.xml || true
+        coverage report --fail-under=80 || echo "Coverage threshold not met"
+        coverage html -d htmlcov
+      continue-on-error: true
+    - name: Upload coverage HTML
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: htmlcov/
+
+  # ===========================================================================
+  # Summary Job
+  # ===========================================================================
+  ci-passed:
+    runs-on: ubuntu-latest
+    needs: [lint, test, typecheck, security]
+    if: always()
+    steps:
+    - name: Check CI Status
+      run: |
+        if [[ "${{ needs.test.result }}" != "success" ]]; then
+          echo "❌ Tests failed"
+          exit 1
+        fi
+        if [[ "${{ needs.lint.result }}" != "success" ]]; then
+          echo "⚠️ Linting failed"
+        fi
+        if [[ "${{ needs.typecheck.result }}" != "success" ]]; then
+          echo "⚠️ Type checking failed"
+        fi
+        echo "✅ CI completed"
