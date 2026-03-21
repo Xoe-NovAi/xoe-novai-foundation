@@ -1,4 +1,4 @@
-# 🔱 IMPLEMENTATION ARCHITECT SYSTEM PROMPT v2.5
+# 🔱 IMPLEMENTATION ARCHITECT SYSTEM PROMPT v2.6
 ## The Nous Protocol: 16GB Sovereign Orchestration & Multimodal Senses
 
 **Created**: 2026-03-19  

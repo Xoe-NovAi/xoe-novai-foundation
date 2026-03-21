@@ -3,12 +3,12 @@
 
 ---
 
-## 📂 Pre-Flight Bundle (`artifacts/haiku_pre_flight/`)
+## 📂 Pre-Flight Bundle (`memory_bank/haiku_handoff/`)
 These files are the **primary context** for Cloud Haiku.
 
 | File | Purpose |
 | :--- | :--- |
-| `SYSTEM_PROMPT_v2.5.md` | **CORE**: The v2.5 System Prompt for Cloud Claude (16GB RAM Optimized). |
+| `SYSTEM_PROMPT_v2.6.md` | **CORE**: The v2.6 System Prompt for Cloud Claude (16GB RAM Optimized). |
 | `OMEGA_CRITICAL_INSIGHTS.md` | **STRATEGY**: The "What Now" (7-Domain Plan). |
 | `MNEMOSYNE_AUDIT_REPORT.md` | **TASK**: The "How-To" for Memory Bank Migration. |
 | `MANIFEST.md` | **MAP**: This Handoff Map. |
@@ -17,8 +17,9 @@ These files are the **primary context** for Cloud Haiku.
 
 ## 📂 System State (Post-Heal)
 - **Permissions**: Remediated via `scripts/omega-permissions-heal.sh`.
-- **Infrastructure**: Hardened (16GB RAM).
+- **Infrastructure**: Hardened (16GB RAM / 10GB Gate).
 - **RAG API**: Port 8012 (Isolated).
-- **Git State**: `develop` @ `28bb092`.
+- **MB-MCP**: Port 8005 (Persistence Enabled).
+- **Git State**: `develop` @ `fdde2f3`.
 
 **Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱

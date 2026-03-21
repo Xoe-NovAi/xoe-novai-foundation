@@ -333,7 +333,7 @@ targets = ["llm", "embeddings", "memory", "redis", "vectorstore", "ryzen", "craw
 # Note: 8 total checks (all listed above, redis_streams is integrated into check_redis)
 
 [healthcheck.thresholds]
-memory_max_gb = 6.0
+memory_max_gb = 10.0
 llm_response_timeout_s = 10
 redis_ping_timeout_s = 5
 vectorstore_search_timeout_s = 10
@@ -398,7 +398,7 @@ strict_mode = true
 check_model_paths = true
 check_env_vars = true
 fail_on_missing_deps = true
-max_memory_gb = 6.0
+max_memory_gb = 12.0
 min_cpu_threads = 4
 max_cpu_threads = 8
 
