@@ -70,6 +70,9 @@ If a branch reports "unrelated histories," it is **Corrupted Context**.
 ## 5. AUTOMATION & TOOLING
 -   **Commit Msg**: Must follow `Type: Subject (Context)` format.
     -   *Example*: `Feat: Add MB-MCP maintenance script (SESS-27.7)`
--   **GitIgnore**: `projects/`, `.env`, `*.log`, `__pycache__/` must be globally ignored.
+-   **GitIgnore**: 
+    -   **Security**: `secrets/`, `.env`, `.oauth_key`, `internal_docs/`
+    -   **Noise**: `projects/`, `*.log`, `__pycache__/`, `_archive/`, `backups/`
+    -   **Gemini**: `.gemini/`, `**/*list_directory*`
 
 **Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱

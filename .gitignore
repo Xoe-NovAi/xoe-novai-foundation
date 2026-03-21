@@ -57,3 +57,8 @@ infra/docker/tls/
 projects/
 .gemini/
 **/*list_directory*
+internal_docs/
+backups/
+_archive/
+**/_archive/
+**/*backup*
