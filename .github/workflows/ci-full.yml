@@ -102,7 +102,7 @@ jobs:
           semgrep --config=auto app/ --json || echo "⚠ Semgrep found issues"
 
       - name: Upload Security Reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: security-reports
           path: /tmp/bandit.json
@@ -144,7 +144,7 @@ jobs:
           fi
 
       - name: Upload Agent Test Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: agent-test-results-${{ matrix.agent.name }}
@@ -219,7 +219,7 @@ jobs:
           pytest tests/e2e/ -v --tb=short -x 2>&1 | head -100
 
       - name: Upload Integration Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: integration-test-results
@@ -250,7 +250,7 @@ jobs:
           mkdocs build --clean --strict
 
       - name: Upload Documentation
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: documentation
           path: site/

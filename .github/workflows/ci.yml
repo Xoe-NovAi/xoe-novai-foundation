@@ -177,7 +177,7 @@ jobs:
           "
 
       - name: Upload Agent Test Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: agent-test-results-${{ matrix.agent.name }}
@@ -239,7 +239,7 @@ jobs:
           echo "Medium vulnerabilities: $(jq '.medium // 0' security_reports/combined_report.json)"
 
       - name: Upload Security Reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: security-reports
           path: security_reports/
@@ -311,7 +311,7 @@ jobs:
           echo "Database performance: $(jq '.database_performance // "N/A"' performance_metrics/validation_report.json)"
 
       - name: Upload Performance Metrics
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: performance-metrics
           path: performance_metrics/
@@ -397,7 +397,7 @@ jobs:
           echo "All integration tests passed successfully"
 
       - name: Upload Integration Test Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: integration-test-results
@@ -441,7 +441,7 @@ jobs:
           python setup/validate_docs_links.py --docs-dir docs/
 
       - name: Upload Documentation
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: documentation
           path: |
@@ -484,7 +484,7 @@ jobs:
           echo "=== ALL STAGES COMPLETED SUCCESSFULLY ==="
 
       - name: Upload Final Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ci-final-report
           path: ci_reports/
@@ -514,7 +514,7 @@ jobs:
           python setup/generate_failure_report.py --output failure_reports/circuit_breaker_report.json
 
       - name: Upload Failure Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: circuit-breaker-report
           path: failure_reports/
