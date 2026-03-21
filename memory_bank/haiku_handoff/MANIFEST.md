@@ -11,6 +11,9 @@ These files are the **primary context** for Cloud Haiku.
 | `SYSTEM_PROMPT_v2.6.md` | **CORE**: The v2.6 System Prompt for Cloud Claude (16GB RAM Optimized). |
 | `OMEGA_CRITICAL_INSIGHTS.md` | **STRATEGY**: The "What Now" (7-Domain Plan). |
 | `MNEMOSYNE_AUDIT_REPORT.md` | **TASK**: The "How-To" for Memory Bank Migration. |
+| `AMR_STRATEGY_ROADMAP.md` | **STRATEGY**: Autonomous Marathon (AMR) Roadmap. |
+| `SESS-27-MASTER-AMR-SaR.md` | **RECOVERY**: Master Search & Rescue (SaR) Strategy. |
+| `GMC_WORKER_SPEC.md` | **SPEC**: Gnostic Memory Curator (Backslash Stripper). |
 | `MANIFEST.md` | **MAP**: This Handoff Map. |
 
 ---
