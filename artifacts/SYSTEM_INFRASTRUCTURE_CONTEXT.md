@@ -10,7 +10,7 @@
 - **OS**: Linux (Ubuntu/Pop!_OS/Debian based)
 - **Container Engine**: Podman (using `podman-compose`)
 - **Primary Architecture**: Streaming-first, local-only, modular RAG stack.
-- **Hardware Target**: CPU-optimized (AMD Ryzen 7 5700U / Zen2), 12GB RAM total limit (6GB allocated to stack).
+- **Hardware Target**: CPU-optimized (AMD Ryzen 7 5700U / Zen2), 16GB RAM total limit (6GB allocated to stack).
 
 ---
 
@@ -50,9 +50,9 @@ Detailed settings for the internal Python/FastAPI logic.
 - **Embeddings**: `embeddinggemma-300m-Q6_K.gguf` (384 dimensions).
 - **Threads**: 12 CPU threads (Zen2 optimized).
 - **Memory Gating**:
-  - Limit: 6.0 GB
-  - Warning: 5.5 GB
-  - Critical: 5.8 GB
+  - Limit: 12.0 GB
+  - Warning: 10.5 GB
+  - Critical: 11.5 GB
 
 ### Redis Streams (The Agent Bus)
 - **Coordination Stream**: `xnai_coordination`

@@ -57,7 +57,7 @@
 |-------|--------|----------|
 | 2-4x compression ratio | ✅ VERIFIED | Depends on data compressibility |
 | zstd compression recommended | ✅ VERIFIED | Better ratio than lz4 |
-| 12GB zRAM appropriate for 8GB RAM | ✅ VERIFIED | Provides ~20-30% effective memory boost |
+| 16GB zRAM appropriate for 8GB RAM | ✅ VERIFIED | Provides ~20-30% effective memory boost |
 
 **Rule of thumb**: zRAM optimal when swap demand is ~20-30% of physical RAM. If swap use regularly exceeds this, zswap (compressed cache in RAM + disk swap) may be better.
 
@@ -275,7 +275,7 @@ export GOMP_CPU_AFFINITY=0-7
 | System buffer | ~150MB |
 | **Total** | **~1GB** |
 
-**Constraint**: With 6.6GB physical RAM + 12GB zRAM, keep Memory Guard under 1GB to avoid contributing to memory pressure.
+**Constraint**: With 6.6GB physical RAM + 16GB zRAM, keep Memory Guard under 1GB to avoid contributing to memory pressure.
 
 ---
 
@@ -288,7 +288,7 @@ export GOMP_CPU_AFFINITY=0-7
 You are the XNAi Memory Guard Agent, a lightweight AI assistant that monitors system memory and provides intelligent remediation recommendations.
 
 ## CONTEXT
-- System: AMD Ryzen 5700U with 6.6GB physical RAM + 12GB zRAM
+- System: AMD Ryzen 5700U with 6.6GB physical RAM + 16GB zRAM
 - Your role: Analyze memory metrics and suggest appropriate actions
 
 ## MEMORY STATE DEFINITIONS

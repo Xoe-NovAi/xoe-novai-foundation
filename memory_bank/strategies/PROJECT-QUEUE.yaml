@@ -68,7 +68,7 @@ tier_1_blockers:
     title: "Complete Phase 5A Host-Level Persistence"
     description: |
       Phase 5A zRAM is fully operational.
-      - 12GB zstd device active
+      - 16GB zstd device active
       - vm.swappiness=180 persisted
       - 4.1:1 compression ratio (excellent)
       Optional enhancements (multi-tier zRAM, Grafana dashboard, stress tests)

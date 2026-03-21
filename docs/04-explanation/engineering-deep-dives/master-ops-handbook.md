@@ -2009,7 +2009,7 @@ CPU_OPTIMIZATIONS = {
         'total_ram_gb': 16,
         'allocation_strategy': {
             'system_reserved': '2GB',
-            'docker_limit': '12GB',
+            'docker_limit': '16GB',
             'per_model_budget': '4GB',
             'cache_budget': '2GB'
         },
@@ -3006,7 +3006,7 @@ CPU_OPTIMIZATIONS = {
         'total_ram_gb': 16,
         'allocation_strategy': {
             'system_reserved': '2GB',
-            'docker_limit': '12GB',
+            'docker_limit': '16GB',
             'per_model_budget': '4GB',
             'cache_budget': '2GB'
         },

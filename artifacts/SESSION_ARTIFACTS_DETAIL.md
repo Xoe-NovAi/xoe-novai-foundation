@@ -8,7 +8,7 @@ This document provides a comprehensive, metadata-rich index of all files created
 ---
 ### File: `./memory_bank/strategies/OMEGA_OMNIBUS_v1.md`
 **Role**: The Unified Strategic Vision (The Omnibus)
-**Summary**: This document outlines the core vision of the Omega Stack, transitioning from a fragmented foundation to a unified, Gnostic orchestration. It defines "Seeded Cognitive Compression" (SCC), the Phronetic Hierarchy (Logos -> Praxis -> Archon), infrastructure hardening mandates (12GB RAM, zRAM, Vulkan, Port Isolation), the Unified Omega CLI strategy (OpenCode fork), and the automated curation (GMC Worker) specifications. It also lists research and resilience initiatives (Chaos Monkey, Panda Browser, Media MCP) and the handover protocols for Opus 4.6.
+**Summary**: This document outlines the core vision of the Omega Stack, transitioning from a fragmented foundation to a unified, Gnostic orchestration. It defines "Seeded Cognitive Compression" (SCC), the Phronetic Hierarchy (Logos -> Praxis -> Archon), infrastructure hardening mandates (16GB RAM, zRAM, Vulkan, Port Isolation), the Unified Omega CLI strategy (OpenCode fork), and the automated curation (GMC Worker) specifications. It also lists research and resilience initiatives (Chaos Monkey, Panda Browser, Media MCP) and the handover protocols for Opus 4.6.
 **Keywords**: Nous, SCC, Phronetic Hierarchy, Unified CLI, GMC, Chaos Monkey, Panda Browser, Media MCP, Opus Handoff.
 
 ---
@@ -26,7 +26,7 @@ This document provides a comprehensive, metadata-rich index of all files created
 ---
 ### File: `./artifacts/AMR_STRATEGY_ROADMAP.md`
 **Role**: Automated Marathon Run (AMR) Strategy & Roadmap (Execution Plan)
-**Summary**: This document describes the AMR Strategy and Roadmap for Opus 4.6. It covers the "Gnostic Synthesis" goal to transition to the Omega Stack, detailing Core Philosophy (SCC, Phronetic Hierarchy), Infrastructure Hardening (12GB Mandate, zRAM, Vulkan, Port Isolation), the Unified Omega CLI solution, and the GMC Worker specification. It also outlines Research Initiatives (Chaos Monkey, Panda Browser, Media MCP) and the Handover Protocols for Opus 4.6.
+**Summary**: This document describes the AMR Strategy and Roadmap for Opus 4.6. It covers the "Gnostic Synthesis" goal to transition to the Omega Stack, detailing Core Philosophy (SCC, Phronetic Hierarchy), Infrastructure Hardening (16GB Mandate, zRAM, Vulkan, Port Isolation), the Unified Omega CLI solution, and the GMC Worker specification. It also outlines Research Initiatives (Chaos Monkey, Panda Browser, Media MCP) and the Handover Protocols for Opus 4.6.
 **Keywords**: AMR, Opus 4.6, Gnostic Synthesis, SCC, Phronetic Hierarchy, Infrastructure Hardening, Unified CLI, GMC, Chaos Monkey, Panda Browser.
 
 ---

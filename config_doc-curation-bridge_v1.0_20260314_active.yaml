@@ -164,7 +164,7 @@ metadata_extraction:
         cpu: "AMD Ryzen 5700U (Zen 2)"
         ram: "6.6GB available"
         gpu: "AMD Radeon Graphics (RADV RENOIR)"
-        zram: "12GB zstd swap"
+        zram: "16GB zstd swap"
         vulkan: "25.3.5"
 
   manual_review:

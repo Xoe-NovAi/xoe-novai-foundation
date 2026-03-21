@@ -54,7 +54,7 @@
 ### SESS-15: Infrastructure Hardening (DONE)
 - ✅ **Librarian Implemented**: Chat history trimming service active.
 - ✅ **KV Cache Optimization**: Quantization benchmarks verified.
-- ✅ **zRAM Restoration**: Recovered 12GB total swap capacity (Zen 2).
+- ✅ **zRAM Restoration**: Recovered 16GB total swap capacity (Zen 2).
 - ✅ **Swap Visibility**: Metrics exporter for zRAM compression active.
 - ✅ **Gemini Tracking**: Token usage counters implemented in `metrics.py`.
 

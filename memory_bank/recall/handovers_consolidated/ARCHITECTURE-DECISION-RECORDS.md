@@ -67,7 +67,7 @@ Use ONNX Runtime for background inference (research jobs, curation, maintenance)
 
 ### Rationale
 - **Torch-free mandate**: Zero PyTorch, CUDA, or Triton imports
-- **Memory efficient**: <6GB RAM target (vs. PyTorch 12GB+)
+- **Memory efficient**: <6GB RAM target (vs. PyTorch 16GB+)
 - **Vulkan support**: Works with AMD RADV on current hardware
 - **Zero-telemetry**: Runs completely locally, no external APIs
 
@@ -79,7 +79,7 @@ Use ONNX Runtime for background inference (research jobs, curation, maintenance)
 ### Alternatives Considered
 1. **PyTorch**: Larger ecosystem, more models
    - Pros: More models available
-   - Cons: Violates torch-free mandate, 12GB+ RAM
+   - Cons: Violates torch-free mandate, 16GB+ RAM
 2. **CTranslate2**: Optimized for inference
    - Pros: Fast inference
    - Cons: Specialized for language models only

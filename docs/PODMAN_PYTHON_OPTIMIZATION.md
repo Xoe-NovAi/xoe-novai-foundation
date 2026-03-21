@@ -1,6 +1,6 @@
 # 🐍 Podman Python 3.12 Optimization Guide (XNAi Standard)
 **Date**: Wednesday, March 18, 2026
-**Target**: Ryzen 7 5700U (Zen2) | 12GB Total System RAM
+**Target**: Ryzen 7 5700U (Zen2) | 16GB Total System RAM
 **Objective**: Hardened, low-footprint Python 3.12 containers.
 
 ---

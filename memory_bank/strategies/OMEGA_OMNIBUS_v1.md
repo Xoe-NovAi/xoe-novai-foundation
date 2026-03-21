@@ -13,10 +13,10 @@ We are transitioning from a fragmented "Xoe-NovAi Foundation" to a unified "Omeg
 
 ---
 
-## 2. INFRASTRUCTURE HARDENING (12GB CONSTRAINT)
-**Hardware Reality**: AMD Ryzen 7 5700U (Zen 2) | 12GB RAM | 8GB zRAM (lz4/zstd).
+## 2. INFRASTRUCTURE HARDENING (16GB CONSTRAINT)
+**Hardware Reality**: AMD Ryzen 7 5700U (Zen 2) | 16GB RAM | 8GB zRAM (lz4/zstd).
 **Mandates**:
-1.  **Turn-Based Queue**: Concurrent services must be gated to stay under 6.5GB RAM.
+1.  **Turn-Based Queue**: Concurrent services must be gated to stay under 10GB RAM.
 2.  **Vulkan Acceleration**: `llama-cpp-python` must use iGPU (Vega 8) for inference (2x speedup).
 3.  **Port Isolation**:
     -   `RAG API`: **8012** (Resolved conflict with Prometheus on 8002).
@@ -46,7 +46,7 @@ We are transitioning from a fragmented "Xoe-NovAi Foundation" to a unified "Omeg
 **Source**: `artifacts/haiku_sync/`
 **Mandate**: Align tactical execution with Haiku's research.
 1.  **Session Management**: Adopt the **Hybrid Model** (Redis Hot + Disk Persistent).
-2.  **Startup**: Enforce **Tiered Startup** (Core -> App -> Full) to respect 12GB RAM.
+2.  **Startup**: Enforce **Tiered Startup** (Core -> App -> Full) to respect 16GB RAM.
 3.  **Handoff**: Use "Smart Handoff" protocol (Archon suggests, User confirms).
 4.  **Knowledge Map**: The `XNA_OMEGA_SYSTEM_KNOWLEDGE_MAP_v1.1.md` is the shared Source of Truth.
 

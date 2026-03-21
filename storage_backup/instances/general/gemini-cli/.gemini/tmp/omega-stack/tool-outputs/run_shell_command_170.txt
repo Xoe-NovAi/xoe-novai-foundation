@@ -20,7 +20,7 @@ hydration:
 - **SESS-19**: Gemini Observability (Token Tracking & Model Work Time).
 
 ## ✅ Accomplishments (SESS-15.5 Infra Hardening)
-1.  **zRAM Restoration**: Restored 12GB zRAM capacity and recovered the "missing 4GB".
+1.  **zRAM Restoration**: Restored 16GB zRAM capacity and recovered the "missing 4GB".
 2.  **Swap Visibility**: Deployed `scripts/monitor_swap.py` for real-time zRAM compression monitoring.
 3.  **Gemini Metrics**: Implemented token tracking counters and model work-time gauges in `metrics.py`.
 4.  **Task C2 Applied**: Hard-coded 2GB limits for RAG and 1.5GB for Llama to prevent Zen 2 OOM.

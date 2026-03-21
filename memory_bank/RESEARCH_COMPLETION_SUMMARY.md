@@ -176,7 +176,7 @@ storage/models/
 ### **Phase 1: Immediate (Priority 1)**
 - [ ] Deploy Stable Diffusion with GGUF quantization
 - [ ] Configure Vulkan backend for CPU+Vulkan optimization
-- [ ] Set up zRAM for 12GB memory management
+- [ ] Set up zRAM for 16GB memory management
 - [ ] Verify Ancient-Greek-BERT integration
 
 ### **Phase 2: Medium-term (Priority 2)**
@@ -196,7 +196,7 @@ storage/models/
 ### **Hardware Optimization**:
 - **CPU**: Multi-threading with AVX2/AVX512 optimizations
 - **Vulkan**: GPU offloading for compute-intensive layers
-- **zRAM**: 12GB lz4-compressed swap for memory extension
+- **zRAM**: 16GB lz4-compressed swap for memory extension
 - **Memory**: 400MB model footprint with incremental loading
 
 ### **Model Specifications**:

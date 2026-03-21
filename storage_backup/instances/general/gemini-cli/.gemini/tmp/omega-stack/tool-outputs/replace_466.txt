@@ -5,7 +5,7 @@ Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/S
 
 ## 🗺️ SESS-10: zRAM Hardening & Crisis Management
 **Focus**: Address missing swap capacity and implement fine-grained monitoring.
-- [x] **Capacity Restoration**: Fixed missing 4GB swap (12GB total zstd).
+- [x] **Capacity Restoration**: Fixed missing 4GB swap (16GB total zstd).
 - [x] **Fine-Grained Monitoring**: Deployed `monitor_swap.py` exporter.
 - [x] **Resource Guard**: Applied Task C2 memory limits.
 

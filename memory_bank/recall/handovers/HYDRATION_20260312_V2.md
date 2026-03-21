@@ -8,7 +8,7 @@
 ---
 
 ## 📍 Key Changes
-- **Infrastructure**: Restored **12GB zRAM** configuration to prevent OOM and recovered the "missing 4GB" segment.
+- **Infrastructure**: Restored **16GB zRAM** configuration to prevent OOM and recovered the "missing 4GB" segment.
 - **Monitoring**: Deployed `scripts/monitor_swap.py` (Exporter on Port 9101) for real-time zRAM compression and usage tracking.
 - **Observability**: Implemented **Gemini Token Tracking** in `app/XNAi_rag_app/core/metrics.py` (Counters for input/output tokens and Gauge for model work time).
 - **Resource Guard**: Applied **Task C2** memory limit reductions in `docker-compose.yml` (RAG 4G→2G, Llama 2G→1.5G).

@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-03-16T00:36:13.950109+00:00",
+    "event_type": "observability_initialized",
+    "details": {
+      "enabled": false,
+      "tracing": true,
+      "metrics": true,
+      "logs": true,
+      "maat_compliance": true
+    },
+    "source": "observability"
+  },
+  {
+    "timestamp": "2026-03-16T01:20:43.217037+00:00",
+    "event_type": "observability_shutdown",
+    "details": {},
+    "source": "observability"
+  }
+]

@@ -5,7 +5,7 @@ Successfully modified file: /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/m
 | **DG-001** | **Compose Drift** | 🟡 MEDIUM | Multiple versions: `.yml`, `-noninit.yml`, `.production.yml`. Needs consolidation. |
 | **DG-002** | **Docker Drift** | 🟡 LOW | Multiple Dockerfiles for same services. Needs standardization. |
 | **DG-003** | **Archival Sync** | 🔴 HIGH | Critical code (`rate_limit_handler`) prematurely archived. Fixed in SESS-01. |
-| **DG-004** | **zRAM Capacity Gap** | 🟢 LOW | Fixed: Restored 12GB total swap capacity (Zen 2 Optimized). |
+| **DG-004** | **zRAM Capacity Gap** | 🟢 LOW | Fixed: Restored 16GB total swap capacity (Zen 2 Optimized). |
 
 ---
 

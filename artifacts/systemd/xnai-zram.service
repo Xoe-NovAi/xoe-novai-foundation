@@ -1,0 +1,11 @@
+[Unit]
+Description=XNAi Omega Persistent Tiered zRAM
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /home/arcana-novai/Documents/Xoe-NovAi/omega-stack/scripts/xnai-zram-multi.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

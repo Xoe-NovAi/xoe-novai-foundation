@@ -8,19 +8,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 import subprocess
 from app.XNAi_rag_app.core.agent_bus import AgentBusClient
+from app.XNAi_rag_app.core.infrastructure.resource_hub import ResourceHub
+from app.XNAi_rag_app.core.xnai_zram_monitor import wait_for_resource_availability
 
-# --- Config ---
-LOG_DIR = Path(os.getenv("LOG_DIR", "logs/curations"))
-DATA_DIR = Path(os.getenv("DATA_DIR", "data/curations"))
-LOG_DIR.mkdir(parents=True, exist_ok=True)
-DATA_DIR.mkdir(parents=True, exist_ok=True)
-
-logging.basicConfig(
-    level=logging.INFO,
-    format='{"time":"%(asctime)s","level":"%(levelname)s","msg":"%(message)s"}',
-    handlers=[logging.FileHandler(LOG_DIR / "worker.log"), logging.StreamHandler()]
-)
-logger = logging.getLogger("curation_worker")
+# Initialize hub
+hub = ResourceHub()
 
 async def process_curation_task(task: dict):
     """Actual ingestion logic."""
@@ -28,7 +20,14 @@ async def process_curation_task(task: dict):
     source = payload.get("source_path")
     vikunja_id = payload.get("vikunja_task_id")
     
+    # 🔱 RESOURCE HARDENING GATE
+    # Wait for zRAM availability before potentially intensive ingestion
+    await wait_for_resource_availability()
+    
     logger.info(f"INGESTING: {source} (Vikunja Task: {vikunja_id})")
+    
+    # Example of model usage via ResourceHub (if needed for extraction/summarization)
+    # llm = await hub.get_model('llm')
     
     # Mock command for technical manual ingestion
     # In production, this calls ingest_library.py

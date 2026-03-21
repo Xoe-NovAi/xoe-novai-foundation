@@ -14,7 +14,7 @@ For all high-level strategy, governance, and infrastructure protocols, see the *
 
 ### 🧬 Hardened Stack (2026-03-12)
 - **Metropolis Foundation v4.1.2**: Stabilized mesh standards and hardened infrastructure.
-- **zRAM Restoration**: 12GB total swap capacity optimized for high-density agent workloads.
+- **zRAM Restoration**: 16GB total swap capacity optimized for high-density agent workloads.
 - **Observability Baseline**: Real-time Gemini token tracking and zRAM compression monitoring.
 - **Resource Guard (Audit C2)**: Hard-coded memory limits (RAG 2GB, Llama 1.5GB) to prevent OOM.
 - **The Librarian**: Background service for recursive session summarization and archival.

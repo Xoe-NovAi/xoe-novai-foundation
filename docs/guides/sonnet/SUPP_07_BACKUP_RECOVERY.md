@@ -39,7 +39,7 @@ last_updated: "2026-03-13"
 | omega_library media | `/media/arcana-novai/omega_library/` | Monthly | 🟡 MEDIUM | 45GB |
 
 > **⚠️ VAULT SPACE WARNING:**  
-> omega_vault is at 75% capacity (12GB/16GB, 4GB free). Backup data must fit within 4GB. Implement backup rotation immediately.
+> omega_vault is at 75% capacity (16GB/16GB, 4GB free). Backup data must fit within 4GB. Implement backup rotation immediately.
 
 ---
 

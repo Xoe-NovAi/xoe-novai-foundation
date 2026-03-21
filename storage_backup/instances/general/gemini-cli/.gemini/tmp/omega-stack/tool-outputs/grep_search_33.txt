@@ -65,7 +65,7 @@ File: scripts/omega_chronicle.py
 L37:         "zram_info": subprocess.getoutput("zramctl --noheadings") if os.path.exists("/usr/bin/zramctl") else "N/A"
 ---
 File: scripts/xnai-zram-init.sh
-L11: echo "XNAi zRAM Init: Activating 12GB zstd swap..."
+L11: echo "XNAi zRAM Init: Activating 16GB zstd swap..."
 L17:         /usr/sbin/zramctl --reset "$dev" 2>/dev/null || true
 L26: /usr/sbin/zramctl --find --size "${ZRAM_MB}M" --algorithm zstd
 L38: /usr/sbin/zramctl
@@ -140,7 +140,7 @@ File: expert-knowledge/infrastructure/postgres-performance.md
 L40: - **`wal_compression = lz4`**: High-speed WAL compression.
 ---
 File: _archive/research-2026-02-27/RESEARCH_TASK_SUMMARY.md
-L166: - **zRAM**: 12GB lz4-compressed swap for memory extension
+L166: - **zRAM**: 16GB lz4-compressed swap for memory extension
 ---
 File: _archive/research-2026-02-27/SMALL_MODELS_RESEARCH_REPORT.md
 L277: echo lz4 | sudo tee /sys/block/zram0/comp_algorithm

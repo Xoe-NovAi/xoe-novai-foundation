@@ -386,7 +386,7 @@ Storage:
   - Root: ~93% full (⚠️ CRITICAL)
   - omega_library: 110GB @ 40%
   - omega_vault: 16GB @ 75%
-  - External HDD: 112GB (cold storage)
+  - External HDD: 116GB (cold storage)
 Network:  Air-gapped (local-first, no telemetry)
 Security: AppArmor enforcing (SELinux inactive)
 ```

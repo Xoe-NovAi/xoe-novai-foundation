@@ -68,7 +68,7 @@ import asyncio  # Still needed for Task type and create_task (migrate to TaskGro
 | Component | Status | Evidence |
 |-----------|--------|----------|
 | Torch-free codebase | ✅ CLEAN | No torch imports in app/ |
-| zRAM memory | ✅ ACTIVE | 12GB, 4.1:1 compression |
+| zRAM memory | ✅ ACTIVE | 16GB, 4.1:1 compression |
 | MCP Server | ✅ IMPLEMENTED | Memory Bank MCP server |
 | Grafana Dashboards | ✅ COMPLETE | Week 2 observability |
 | VictoriaMetrics | ✅ FOUNDATION | Week 1 metrics |

@@ -135,7 +135,7 @@ This index provides a comprehensive overview of the XNAi Foundation's production
 ### **📊 Performance Metrics**
 
 **Current Performance:**
-- **Memory Usage**: 6GB (optimized for 6.5GB limit)
+- **Memory Usage**: 6GB (optimized for 10GB limit)
 - **CPU Threads**: 12 (Ryzen 7 5700U optimized)
 - **Token Rate**: 15-25 tokens/second
 - **Latency**: <1000ms (target: <500ms)

@@ -28,7 +28,7 @@
 ## 🏙️ 2. METROPOLIS STORAGE REDIRECTION
 
 - **Storage Redirect**: `storage/` directory symlinked to `/media/arcana-novai/omega_library/omega_storage/stack_storage/`.
-- **Impact**: All Qdrant WAL and vector growth now occurs on the 112GB partition, protecting the 109GB root partition.
+- **Impact**: All Qdrant WAL and vector growth now occurs on the 116GB partition, protecting the 109GB root partition.
 - **Root Status**: 90% used (12G Avail) after "The Great Purge" of caches and archives.
 
 ---

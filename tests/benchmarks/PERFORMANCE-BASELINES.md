@@ -316,7 +316,7 @@ All benchmarks were conducted on production-like hardware with multiple iteratio
 | Vector Dimension | Raw Size | With Index | Overhead | Total per 1M |
 |-----------------|----------|-----------|----------|-------------|
 | 384-dim | 1.5KB | +2KB (HNSW) | 133% | 3.5GB |
-| 768-dim | 3KB | +3.5KB (HNSW) | 117% | 6.5GB |
+| 768-dim | 3KB | +3.5KB (HNSW) | 117% | 10GB |
 | 1152-dim | 4.5KB | +5KB (HNSW) | 111% | 9.5GB |
 
 **Memory Optimization**:

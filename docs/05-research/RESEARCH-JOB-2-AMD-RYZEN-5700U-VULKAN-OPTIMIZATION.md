@@ -175,7 +175,7 @@ memory_budget:
 zram:
   primary: lz4  # Fast compression for active memory
   secondary: zstd  # High compression for swap
-  size: 12GB
+  size: 16GB
 ```
 
 ## Performance Benchmarks and Validation

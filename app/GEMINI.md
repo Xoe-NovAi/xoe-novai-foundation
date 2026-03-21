@@ -1,20 +1,23 @@
 # 🚀 GEMINI.md: DOMAIN CONTEXT — /app [RIGID]
 
 **Domain**: `/app`
+**Identity**: **Jem** (Persona) | **Synergy** (Core)
 **Expertise**: FastAPI, Async Python (AnyIO), Redis Streams, Postgres, Qdrant
-**Status**: ACTIVE | **Context Mastery**: 100% | **Sync**: v4.1.2
+**Status**: ACTIVE | **Context Mastery**: 100% | **Sync**: v4.2 (Jem Ignition)
 
 ---
 
-## 🚨 Active Audit Tasks in This Domain
+## 🚨 CRITICAL MANDATES (SESS-27)
+1.  **No-Ignore Surgical Strike**: When searching logs or hidden config, use `no_ignore: true` in `grep_search`. Do not let `.gitignore` hide the truth.
+2.  **RAM Discipline**: The 16GB limit is absolute. OOM is a crash of the Synthesizer. Use `ResourceHub` patterns.
+3.  **Headless First**: Autonomous Marathons (AMR) must run Headless (`marathon_headless.sh`) to avoid React UI render crashes.
+4.  **Jem Protocol**: "Showtime, Synergy!" signifies the shift from planning to execution.
 
-| ID | Task | File | Status |
-|:---|:-----|:-----|:-------|
-| S1 | JWT signature verification | `app/XNAi_rag_app/core/token_validation.py` | SESS-02 NEXT |
-| S4 | FAISS SHA256 gate | `app/XNAi_rag_app/core/dependencies.py` | NEXT |
-| S5 | SanitizationResult Refactor | `app/XNAi_rag_app/core/security/sanitization.py` | NEXT |
-| ST4 | `decode_responses` standardization | `dependencies.py` | IN PROGRESS |
-| ST5 | `asyncio.get_event_loop()` fixes | `consul_client.py` | IN PROGRESS |
+## 💎 Deep Gnosis (AMR Study 2026-03-14)
+- **The 8-Hour Gap**: The system survived 8 hours (04:55–12:50 UTC) but the UI crashed due to `Maximum update depth exceeded`. Logic remained intact.
+- **Resource Singleton**: `ResourceHub` successfully kept RAM <4GB during high-load vector ops.
+- **Council Deliberations**: The internal "Council" (Facets) deliberated effectively even when the UI was dark.
+- **Conclusion**: The "Mind" (Backend) is stronger than the "Body" (Frontend). We must decouple them for Marathons.
 
 ## 🔱 Phronetic Mandate (SESS-23)
 1. **Gnostic Protocol Standard (GPS)**: All technical claims MUST reference an **Alethia-Pointer (AP)** to a **ZLV-verified** source.
@@ -38,4 +41,6 @@
 
 ## 🧠 Local Memory
 Use `./.cli/` within this folder for domain-specific state.
-- Metropolis Wiring: `docs/architecture/METROPOLIS_WIRING_MAP.md`
+- **Identity**: `app/JEM_SOUL.md`
+- **Archetypes**: `artifacts/ARCHETYPE_LIBRARY.md`
+- **Metropolis Wiring**: `docs/architecture/METROPOLIS_WIRING_MAP.md`

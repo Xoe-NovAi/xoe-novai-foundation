@@ -181,12 +181,20 @@ class AgentBusClient:
                             sig_status = "verified" if verified else ("unsigned" if not sig else "failed")
                             BUS_SIG_VERIFICATION.labels(status=sig_status).inc()
 
+                            # SI1: Robust payload parsing
+                            raw_payload = data.get("payload")
+                            try:
+                                payload = json.loads(raw_payload) if raw_payload else {}
+                            except (json.JSONDecodeError, TypeError):
+                                logger.warning(f"Malformed payload in message {msg_id}")
+                                payload = {}
+
                             tasks.append(
                                 {
                                     "id": msg_id,
                                     "sender": sender,
                                     "type": data.get("type"),
-                                    "payload": json.loads(data.get("payload")),
+                                    "payload": payload,
                                     "verified": verified,
                                 }
                             )

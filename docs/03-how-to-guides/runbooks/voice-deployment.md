@@ -10,7 +10,7 @@
 Hardware Requirements:
 - [ ] NVIDIA GPU with CUDA Compute Capability 7.0+ (RTX 3060+ recommended)
 - [ ] CUDA 12.x with cuBLAS and cuDNN 9 installed
-- [ ] 12GB+ VRAM (16GB+ for production)
+- [ ] 16GB+ VRAM (16GB+ for production)
 - [ ] 8GB+ system RAM minimum
 - [ ] Microphone and speaker connected
 

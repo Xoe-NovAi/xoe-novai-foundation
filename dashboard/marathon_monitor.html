@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jem Marathon Monitor</title>
+    <style>
+        body { font-family: 'Courier New', monospace; background: #0d0d0d; color: #00ff41; margin: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #ff00ff; text-align: center; } /* Jem Pink */
+        .panel { border: 1px solid #333; padding: 15px; margin-bottom: 20px; background: #111; }
+        .status-ok { color: #00ff41; }
+        .status-warn { color: #ffcc00; }
+        .status-crit { color: #ff0000; }
+        #log-feed { height: 400px; overflow-y: scroll; border: 1px solid #444; padding: 10px; background: #000; }
+        .log-entry { margin-bottom: 5px; border-bottom: 1px dashed #222; }
+        .timestamp { color: #888; margin-right: 10px; }
+        .agent { color: #00ccff; font-weight: bold; margin-right: 5px; }
+        #steering-input { width: 100%; padding: 10px; background: #222; color: #fff; border: 1px solid #444; }
+        button { background: #ff00ff; color: #fff; border: none; padding: 10px 20px; cursor: pointer; margin-top: 10px; font-weight: bold; }
+        button:hover { background: #d400d4; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💎 JEM MARATHON MONITOR</h1>
+        
+        <div class="panel">
+            <h2>SYSTEM VITALS</h2>
+            <div id="vitals">
+                <p>Status: <span id="sys-status" class="status-ok">ONLINE</span></p>
+                <p>RAM Usage: <span id="ram-usage">--</span> / 12.0 GB</p>
+                <p>CPU Usage: <span id="cpu-usage">--</span> %</p>
+                <p>Heartbeat: <span id="heartbeat">WAITING...</span></p>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>COUNCIL FEED</h2>
+            <div id="log-feed">
+                <!-- Logs will be injected here via JS -->
+                <div class="log-entry"><span class="timestamp">--:--:--</span> <span class="agent">[SYSTEM]</span> Dashboard initialized. Connecting to API...</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>STEERING INTERFACE</h2>
+            <p>Direct the autonomous agent in real-time.</p>
+            <textarea id="steering-input" rows="3" placeholder="Enter new directive..."></textarea>
+            <button onclick="sendSteering()">TRANSMIT DIRECTIVE</button>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "http://localhost:8007";
+
+        async function sendSteering() {
+            const input = document.getElementById('steering-input').value;
+            if (!input) return;
+
+            try {
+                const response = await fetch(`${API_URL}/steer`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ directive: input })
+                });
+                
+                if (response.ok) {
+                    alert("Directive Transmitted to Jem!");
+                    document.getElementById('steering-input').value = "";
+                    addLog("USER", `Steering Update: ${input}`);
+                } else {
+                    alert("Transmission Failed.");
+                }
+            } catch (e) {
+                console.error(e);
+                alert("Error connecting to Dashboard API. Is python scripts/dashboard_api.py running?");
+            }
+        }
+
+        async function pollHeartbeat() {
+            try {
+                const response = await fetch(`${API_URL}/heartbeat`);
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('ram-usage').innerText = `${data.ram_used_gb} GB (${data.ram_percent}%)`;
+                    document.getElementById('cpu-usage').innerText = `${data.cpu_percent}`;
+                    document.getElementById('heartbeat').innerText = data.timestamp;
+                }
+            } catch (e) {
+                // API might be down or no heartbeat yet
+            }
+        }
+
+        function addLog(agent, message) {
+            const feed = document.getElementById('log-feed');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            const time = new Date().toLocaleTimeString();
+            entry.innerHTML = `<span class="timestamp">${time}</span> <span class="agent">[${agent}]</span> ${message}`;
+            feed.prepend(entry);
+        }
+
+        // Poll every 5 seconds
+        setInterval(pollHeartbeat, 5000);
+    </script>
+</body>
+</html>

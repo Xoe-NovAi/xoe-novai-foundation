@@ -27,7 +27,7 @@ The "Nervous System" of the hive mind.
 
 ### 2.4. The Sentinel (Omniscient Oversight)
 A lightweight resource guardian (`scripts/sentinel_prototype.py`).
-*   **Role**: Monitors the 12GB ZRAM swap and physical RAM.
+*   **Role**: Monitors the 16GB ZRAM swap and physical RAM.
 *   **Observability**: Heartbeats system health to the Agent Bus (Redis) every 30s.
 *   **Prevention**: Alerts agents to throttle inference before an OOM (Out of Memory) hang occurs.
 
@@ -42,7 +42,7 @@ We discovered a hardcoded safety ceiling (`MAXS_TURNS`) in the underlying engine
 
 ## 4. Hardware Optimization (zRAM & Parallelism)
 *   **Thrashing Fix**: Proven that limiting parallel build jobs (`CMAKE_BUILD_PARALLEL_LEVEL=2`) prevents memory thrashing and CPU saturation.
-*   **Persistence**: Synchronized `/etc/systemd/zram-generator.conf` to ensure the 4GB+8GB (12GB total) multi-tier swap is permanent.
+*   **Persistence**: Synchronized `/etc/systemd/zram-generator.conf` to ensure the 4GB+8GB (16GB total) multi-tier swap is permanent.
 
 ## 5. Dev Ops Field Lessons (Critical Edge Cases)
 The following lessons were gained through active development struggles and are essential for reliable stack operation:

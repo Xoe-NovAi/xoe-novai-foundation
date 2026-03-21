@@ -26,3 +26,9 @@ toml
 lightrag-hku
 psutil
 prometheus_client
+passlib
+sqlalchemy
+psycopg2-binary
+PyJWT
+bcrypt
+langchain-qdrant

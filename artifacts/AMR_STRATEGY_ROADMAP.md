@@ -16,12 +16,12 @@
 
 ---
 
-## 2. INFRASTRUCTURE HARDENING (The 12GB Mandate)
-**Constraint**: 12GB Physical RAM + 8GB zRAM (Dual-Tier lz4/zstd).
+## 2. INFRASTRUCTURE HARDENING (The 16GB Mandate)
+**Constraint**: 16GB Physical RAM + 8GB zRAM (Dual-Tier lz4/zstd).
 **Strategy**:
 1.  **zRAM Hardening**: Enforce persistent 8GB swap.
 2.  **Vulkan Inference**: Deploy `llama-cpp-python` with Vulkan support for AMD iGPU (Vega 8) acceleration (2x speedup).
-3.  **Turn-Based Queue**: Implement a resource-gated queue system to keep RAM <6.5GB during concurrent operations.
+3.  **Turn-Based Queue**: Implement a resource-gated queue system to keep RAM <10GB during concurrent operations.
 4.  **Service Isolation**:
     -   **RAG API**: Moved to Port `8012` to resolve `8002` conflict with Prometheus.
     -   **Oikos**: Port `8006`.

@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This comprehensive research report covers small models (8B parameters or less) suitable for image generation, video generation, and memory optimization strategies for CPU+Vulkan environments with 8GB RAM + 12GB zRAM. The research also includes verification of Ancient-Greek-BERT implementation and models directory structure.
+This comprehensive research report covers small models (8B parameters or less) suitable for image generation, video generation, and memory optimization strategies for CPU+Vulkan environments with 8GB RAM + 16GB zRAM. The research also includes verification of Ancient-Greek-BERT implementation and models directory structure.
 
 ## Table of Contents
 
@@ -272,7 +272,7 @@ make -j4 LLAMA_VULKAN=1
 
 #### **Optimal zRAM Settings**
 ```bash
-# Configure zRAM for 12GB
+# Configure zRAM for 16GB
 echo 12G | sudo tee /sys/block/zram0/disksize
 echo lz4 | sudo tee /sys/block/zram0/comp_algorithm
 sudo mkswap /dev/zram0

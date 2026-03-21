@@ -21,7 +21,7 @@ This document tracks known issues with the AI coding assistants and IDEs used in
 |--------|---------|
 | **Symptom** | OpenCode progressively fills BOTH RAM AND zRAM swap until system-wide OOM |
 | **Root Cause** | Unknown - appears to be a memory leak in session/context management |
-| **Impact** | **Filled entire 12GB zRAM drive** - caused system-wide OOM |
+| **Impact** | **Filled entire 16GB zRAM drive** - caused system-wide OOM |
 | **First Observed** | 2026-02-27 |
 
 **Incident Timeline**:
@@ -37,7 +37,7 @@ This document tracks known issues with the AI coding assistants and IDEs used in
 |--------|---------|
 | **Symptom** | Memory usage grows from ~500MB to 2GB+ over extended sessions |
 | **Cause** | Session history, tool outputs, and context accumulation not fully released |
-| **Impact** | Can cause system-wide OOM on memory-constrained systems (6.6GB RAM + 12GB zRAM) |
+| **Impact** | Can cause system-wide OOM on memory-constrained systems (6.6GB RAM + 16GB zRAM) |
 | **First Observed** | 2026-02-27 |
 
 **Timeline**:

@@ -33,7 +33,7 @@ async def test_a2a():
                 "agent_id": "general",
                 "context_type": "technical",
                 "context_data": {
-                    "summary": "Swap initialized with 12GB total capacity.",
+                    "summary": "Swap initialized with 16GB total capacity.",
                     "lessons_learned": ["Always cap parallel build jobs to 2."]
                 }
             })

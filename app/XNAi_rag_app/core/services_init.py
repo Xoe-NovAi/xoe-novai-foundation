@@ -132,13 +132,12 @@ class ServiceOrchestrator:
             # 2.2 Circuit Breakers
             redis_pass = os.getenv("REDIS_PASSWORD") or self.config.get('redis', {}).get('password', '')
             redis_host = self.config.get('redis', {}).get('host', 'redis')
-            redis_port = self.config.get('redis', {}).get('port', 6379)
+            redis_port = int(self.config.get('redis', {}).get('port', 6379))
             tls_enabled = os.getenv("REDIS_TLS_ENABLED", "false").lower() == "true"
             scheme = "rediss" if tls_enabled else "redis"
-            redis_url = f"{scheme}://:{redis_pass}@{redis_host}:{redis_port}/0"
             try:
-                await initialize_circuit_breakers(redis_url)
-                await initialize_voice_circuit_breakers(redis_url)
+                await initialize_circuit_breakers(host=redis_host, port=redis_port, password=redis_pass)
+                await initialize_voice_circuit_breakers(host=redis_host, port=redis_port, password=redis_pass)
                 logger.info("✓ Circuit breakers initialized")
             except Exception as e:
                 logger.warning(f"⚠ Failed to initialize circuit breakers: {e}")

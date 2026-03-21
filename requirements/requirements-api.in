@@ -82,3 +82,5 @@ pyjwt
 cryptography
 sqlite-utils
 dnspython==2.7.0
+passlib
+langchain-qdrant

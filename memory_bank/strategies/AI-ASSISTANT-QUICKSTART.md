@@ -94,7 +94,7 @@ Type `@` to invoke: `@explore`, `@review`, `@security`, `@cli-dispatch`
 |----|------|--------|
 | P-001 | Doc sync (stream keys) | ✅ Complete |
 | P-002 | Permissions fix | ⏳ Script ready, needs execution |
-| P-003 | zRAM persistence | ✅ Complete (12GB zstd active) |
+| P-003 | zRAM persistence | ✅ Complete (16GB zstd active) |
 | P-004 | Chinese mirror | ✅ Complete (not found) |
 
 ---

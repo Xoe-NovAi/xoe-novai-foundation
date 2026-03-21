@@ -51,6 +51,17 @@ class CliPruner:
         text = re.sub(r'[ \t]+', ' ', text)
         return text.strip()
     
+    def prune(self, text: str) -> str:
+        """Unified entry point for pruning text."""
+        if not text:
+            return ""
+        
+        text = self.remove_timestamps(text)
+        text = self.remove_tool_calls(text)
+        text = self.remove_metadata(text)
+        text = self.clean_whitespace(text)
+        return text
+    
     def split_into_chunks(self, text: str, chunk_size: int = 500) -> List[str]:
         """
         Split text into chunks preserving semantic units (paragraphs).

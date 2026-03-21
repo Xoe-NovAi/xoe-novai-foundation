@@ -50,6 +50,8 @@ from XNAi_rag_app.core.config_loader import load_config, get_config_value
 from XNAi_rag_app.core.dependencies import get_embeddings, get_vectorstore, get_redis_client, get_vectorstore_async
 from XNAi_rag_app.services.library_api_integrations import LibraryEnrichmentEngine, DomainCategory
 from XNAi_rag_app.core.logging_config import setup_logging, get_logger, PerformanceLogger
+from XNAi_rag_app.core.infrastructure.resource_hub import ResourceHub
+from XNAi_rag_app.core.xnai_zram_monitor import wait_for_resource_availability
 
 # Setup logging
 setup_logging()
@@ -125,6 +127,7 @@ class EnterpriseIngestionEngine:
         self.redis_client = get_redis_client()
         self.enrichment_engine = LibraryEnrichmentEngine()
         self.scholarly_curator = ScholarlyTextCurator()
+        self.resource_hub = ResourceHub()
         self.embeddings = None
         self.vectorstore = None
         self.processed_checksums: Set[str] = set()
@@ -196,6 +199,9 @@ class EnterpriseIngestionEngine:
         stats = IngestionStats()
         stats.start_time = time.time()
         try:
+            # 🔱 RESOURCE HARDENING GATE
+            await wait_for_resource_availability()
+            
             api_client = self.enrichment_engine.get_api_client(api_name)
             if not api_client: raise ValueError(f"Unknown API: {api_name}")
             results = await anyio.to_thread.run_sync(lambda: api_client.search(query, max_results=max_items))
@@ -228,6 +234,9 @@ class EnterpriseIngestionEngine:
         stats = IngestionStats()
         stats.start_time = time.time()
         try:
+            # 🔱 RESOURCE HARDENING GATE
+            await wait_for_resource_availability()
+            
             directory = Path(directory_path)
             files = []
             for ext in ['.md', '.txt']:
@@ -279,7 +288,9 @@ class EnterpriseIngestionEngine:
 
     async def _store_in_vectorstore(self, content: str, metadata: ContentMetadata) -> bool:
         try:
-            if not self.embeddings: self.embeddings = get_embeddings()
+            if not self.embeddings:
+                # 🔱 RESOURCE HARDENING: Use Singleton Managed Hub
+                self.embeddings = await self.resource_hub.get_model('embeddings')
             
             # Prioritize Qdrant (Central Vector Hub)
             if not self.vectorstore:

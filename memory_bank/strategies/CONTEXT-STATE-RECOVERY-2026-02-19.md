@@ -47,7 +47,7 @@ This document serves as a "Context Anchor" to recover project state after multip
 ### 3.1 Tier 1 Progress (Production Blockers)
 - **P-001 (Agent Bus)**: ✅ Complete. Unified stream keys to `xnai:agent_bus` in skill and clinerules.
 - **P-002 (Permissions)**: ✅ Complete. Enhanced `fix-permissions.sh` with 6 missing directories and `podman unshare` support for rootless mapping safety.
-- **P-003 (zRAM)**: ✅ Complete. 12GB zstd device active with 4.1:1 compression.
+- **P-003 (zRAM)**: ✅ Complete. 16GB zstd device active with 4.1:1 compression.
 - **P-004 (Chinese Mirror)**: ✅ Complete. Verified `Dockerfile.base` uses Fastly CDN; no Chinese mirrors found.
 
 ### 3.2 Strategic Scaffolding

@@ -61,7 +61,7 @@ redis-cli -h localhost -p 6379 -a changeme123 GET "coordination:visual_models_ha
 - **Key Tasks**:
   - Download and convert Stable Diffusion 1.5 to GGUF format
   - Build llama.cpp with Vulkan support
-  - Configure zRAM for 12GB memory extension
+  - Configure zRAM for 16GB memory extension
   - Implement basic image generation CLI command
   - Test image generation with various prompts
 

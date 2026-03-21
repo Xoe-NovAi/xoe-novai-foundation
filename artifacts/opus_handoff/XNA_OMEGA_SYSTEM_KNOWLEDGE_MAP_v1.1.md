@@ -29,7 +29,7 @@ The Omega Stack is a **Hybrid-Cognitive Architecture** running on **Podman Rootl
 *   **Runtime**: Podman 5.4.2 (Rootless, UID 1000).
 *   **Orchestrator**: Docker Compose (16 services).
 *   **Memory**: Redis 7.4 (Hot) + Qdrant 1.13 (Vector/mmap) + Disk (Cold).
-*   **Hardware Constraint**: 12GB RAM (Ryzen 5700U).
+*   **Hardware Constraint**: 16GB RAM (Ryzen 5700U).
 
 ---
 
@@ -51,7 +51,7 @@ The Omega Stack is a **Hybrid-Cognitive Architecture** running on **Podman Rootl
 ---
 
 ## 4. INFRASTRUCTURE & STARTUP
-**Strategy**: Tiered Startup to respect 12GB limit.
+**Strategy**: Tiered Startup to respect 16GB limit.
 
 *   **Tier 1 (Core)**: Redis, Postgres, Qdrant (mmap), MCP Servers. (~2GB)
 *   **Tier 2 (App)**: FastAPI RAG, Caddy, Oikos. (~5GB)

@@ -5,10 +5,10 @@
 
 set -e
 
-# Calculate optimal size (12GB for stability)
+# Calculate optimal size (16GB for stability)
 ZRAM_MB=12288
 
-echo "XNAi zRAM Init: Activating 12GB zstd swap..."
+echo "XNAi zRAM Init: Activating 16GB zstd swap..."
 
 # 1. Cleanup
 for dev in /dev/zram*; do

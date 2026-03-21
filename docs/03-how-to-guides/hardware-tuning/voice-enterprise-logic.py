@@ -392,7 +392,7 @@ config.batch_size = 8
 # 2. TTS (XTTS V2): ~600MB (on-demand)
 # 3. LLM: ~8GB for 13B model
 
-# Recommended: 12GB+ VRAM for all three active
+# Recommended: 16GB+ VRAM for all three active
 # Production: 24GB+ for safety margin
 
 ## Vulkan & AMD Integrated GPU (whisper.cpp)

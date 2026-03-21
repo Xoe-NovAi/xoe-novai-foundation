@@ -5,7 +5,7 @@
 ---
 
 ## 1. The Multi-CLI Taxonomy
-To preserve the 12GB RAM budget and optimize for token ROI, tasks must be routed to the appropriate tool.
+To preserve the 16GB RAM budget and optimize for token ROI, tasks must be routed to the appropriate tool.
 
 | Tool | Strength | Cost (Context/RAM) | Use Case |
 | :--- | :--- | :--- | :--- |

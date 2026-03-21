@@ -26,7 +26,7 @@ hash_sha256: a3e901c9122eb120c51f70cc1053b934fb98faa80da7a58c41482d10df31cd1d
 | **Secrets Rotation** | ✅ COMPLETE | Purged `changeme123` & `vikunja123`; implemented random base64 secrets. | `docs/protocols/SECRETS_ENFORCEMENT_PROTOCOL.md` |
 | **Memory Bank MCP** | ✅ ACTIVE | Refactored for **SSE/FastAPI** (Port 8000). Watchdog active. | `mcp-servers/memory-bank-mcp/server.py` |
 | **Permissions Model** | ✅ HARDENED | 4-Layer recursive `setfacl` for UID 1000/100999 mapping. | `memory_bank/specification_permissions-4layer-model_v1.0_20260315_active.md` |
-| **Metropolis Caps**| ✅ HARDENED | Enforced 6.6GB RAM + 12GB zRAM (4GB lz4 + 8GB zstd) budget. | `infra/docker/docker-compose.yml` |
+| **Metropolis Caps**| ✅ HARDENED | Enforced 6.6GB RAM + 16GB zRAM (4GB lz4 + 8GB zstd) budget. | `infra/docker/docker-compose.yml` |
 | **The Librarian** | ✅ LIVE | Recursive summarization & archival service. | `app/XNAi_rag_app/workers/librarian.py` |
 
 ---
@@ -74,7 +74,7 @@ hash_sha256: a3e901c9122eb120c51f70cc1053b934fb98faa80da7a58c41482d10df31cd1d
 | **DG-001** | **Compose Drift** | 🟡 MEDIUM | Multiple versions: `.yml`, `-noninit.yml`, `.production.yml`. Needs consolidation. |
 | **DG-002** | **Docker Drift** | 🟡 LOW | Multiple Dockerfiles for same services. Needs standardization. |
 | **DG-003** | **Archival Sync** | 🔴 HIGH | Critical code (`rate_limit_handler`) prematurely archived. Fixed in SESS-01. |
-| **DG-004** | **zRAM Capacity Gap** | 🟢 LOW | Fixed: Restored 12GB total swap capacity (Zen 2 Optimized). |
+| **DG-004** | **zRAM Capacity Gap** | 🟢 LOW | Fixed: Restored 16GB total swap capacity (Zen 2 Optimized). |
 
 ---
 

@@ -23,7 +23,7 @@
 - **Storage**: Overlay with Z,U SELinux labels
 
 ### Resource Allocation Strategy
-With 8GB physical + 12GB Zram:
+With 8GB physical + 16GB Zram:
 
 | Service | Memory Limit | CPU Limit | Notes |
 |---------|-------------|-----------|-------|

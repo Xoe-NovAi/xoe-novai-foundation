@@ -7,7 +7,7 @@ The Omega Stack is now operating under the **Metropolis Foundation v4.1.2-HARDEN
 ---
 
 ## 🎯 1. Tiered Infrastructure Startup
-The stack is optimized for **6.6GB RAM + 12GB zRAM**. Use the tiered approach to prevent OOM.
+The stack is optimized for **6.6GB RAM + 16GB zRAM**. Use the tiered approach to prevent OOM.
 
 ### Phase 1: Core Mesh
 Starts Redis (Cache/Bus), PostgreSQL (IAM), Qdrant (Vector DB), and Memory Bank MCP.

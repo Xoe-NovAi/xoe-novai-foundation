@@ -36,7 +36,7 @@ This synthesis ensures the stack remains both **Stable (Maat)** and **Sovereign 
 
 | Scenario | Maat Response (Order) | Lilith Response (Sovereignty) | Integrated Action |
 |:---|:---|:---|:---|
-| **Resource Pressure** | Graceful degradation to save RAM. | Reject external throttle; prioritize user intent. | **Phase-Locked**: Enforce Metropolis Caps + 12GB zRAM. |
+| **Resource Pressure** | Graceful degradation to save RAM. | Reject external throttle; prioritize user intent. | **Phase-Locked**: Enforce Metropolis Caps + 16GB zRAM. |
 | **Tool Execution** | Verify compliance with safety rules. | Execute without external permission. | **Phylax Gate**: Validated autonomous execution. |
 | **Data Ingestion** | Citations required; no hallucinations. | Distill hidden patterns (Shadow-Logic). | **Hellenic Ingestion**: High-fidelity RCF distillation. |
 

@@ -156,3 +156,28 @@ def check_and_backoff(backoff_duration: int = DEFAULT_BACKOFF_DURATION_SECONDS) 
     
     # Safe to continue
     return True
+    
+async def wait_for_resource_availability(
+    check_interval: int = 10,
+    backoff_duration: int = DEFAULT_BACKOFF_DURATION_SECONDS
+):
+    """
+    Proactive gating: Async loop that waits until system resources (zRAM) are available.
+    
+    This allows workers to pause execution until zRAM usage drops below threshold,
+    rather than just performing a single backoff check.
+    
+    Args:
+        check_interval: Seconds to wait between resource checks
+        backoff_duration: Seconds to sleep if high usage is detected in each check
+    """
+    import anyio
+    
+    logger.info("Resource gate active: waiting for zRAM availability...")
+    
+    while not check_and_backoff(backoff_duration=backoff_duration):
+        # check_and_backoff already sleeps for backoff_duration if high usage
+        # We also add an async sleep here for responsiveness to cancellations
+        await anyio.sleep(check_interval)
+    
+    logger.info("Resource gate cleared: system safe for processing")

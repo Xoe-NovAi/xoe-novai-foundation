@@ -1335,3 +1335,4 @@ zstandard==0.25.0
 # setuptools
 python-consul2>=0.1.5
 qdrant-client==1.13.2
+passlib==1.7.4

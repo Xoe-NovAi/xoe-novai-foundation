@@ -150,7 +150,7 @@ All latency measurements are in milliseconds (ms):
 
 4. **Memory Per Vector** (3.5-9.5GB per 1M vectors)
    - 384-dim: 3.5GB/1M vectors
-   - 768-dim: 6.5GB/1M vectors
+   - 768-dim: 10GB/1M vectors
    - 1152-dim: 9.5GB/1M vectors
 
 ### Combined System (combined_benchmarks.py)

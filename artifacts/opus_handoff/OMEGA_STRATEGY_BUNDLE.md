@@ -23,10 +23,10 @@ We are transitioning from a fragmented "Xoe-NovAi Foundation" to a unified "Omeg
 
 ---
 
-## 2. INFRASTRUCTURE HARDENING (12GB CONSTRAINT)
-**Hardware Reality**: AMD Ryzen 7 5700U (Zen 2) | 12GB RAM | 8GB zRAM (lz4/zstd).
+## 2. INFRASTRUCTURE HARDENING (16GB CONSTRAINT)
+**Hardware Reality**: AMD Ryzen 7 5700U (Zen 2) | 16GB RAM | 8GB zRAM (lz4/zstd).
 **Mandates**:
-1.  **Turn-Based Queue**: Concurrent services must be gated to stay under 6.5GB RAM.
+1.  **Turn-Based Queue**: Concurrent services must be gated to stay under 10GB RAM.
 2.  **Vulkan Acceleration**: `llama-cpp-python` must use iGPU (Vega 8) for inference (2x speedup).
 3.  **Port Isolation**:
     -   `RAG API`: **8012** (Resolved conflict with Prometheus on 8002).
@@ -93,12 +93,12 @@ We are transitioning from a fragmented "Xoe-NovAi Foundation" to a unified "Omeg
 
 ---
 
-## 2. INFRASTRUCTURE HARDENING (The 12GB Mandate)
-**Constraint**: 12GB Physical RAM + 8GB zRAM (Dual-Tier lz4/zstd).
+## 2. INFRASTRUCTURE HARDENING (The 16GB Mandate)
+**Constraint**: 16GB Physical RAM + 8GB zRAM (Dual-Tier lz4/zstd).
 **Strategy**:
 1.  **zRAM Hardening**: Enforce persistent 8GB swap.
 2.  **Vulkan Inference**: Deploy `llama-cpp-python` with Vulkan support for AMD iGPU (Vega 8) acceleration (2x speedup).
-3.  **Turn-Based Queue**: Implement a resource-gated queue system to keep RAM <6.5GB during concurrent operations.
+3.  **Turn-Based Queue**: Implement a resource-gated queue system to keep RAM <10GB during concurrent operations.
 4.  **Service Isolation**:
     -   **RAG API**: Moved to Port `8012` to resolve `8002` conflict with Prometheus.
     -   **Oikos**: Port `8006`.

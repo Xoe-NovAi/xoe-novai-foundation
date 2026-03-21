@@ -7,7 +7,7 @@ The stack has transitioned from a monolithic assistant to a **Fractal Hive Mind*
 
 ## 2. Technical Integrity (Sovereign Level)
 *   **Storage**: **28GB Free**. Surgical purge of corrupted 13GB OpenCode snapshots completed.
-*   **Memory**: **12GB ZRAM Swap** active. 4GB Level-3 (Frontline) + 8GB Level-15 (Bulk).
+*   **Memory**: **16GB ZRAM Swap** active. 4GB Level-3 (Frontline) + 8GB Level-15 (Bulk).
 *   **Podman**: All core services (Redis, Postgres, Qdrant) stabilized with corrected permissions (`:Z,U` and `podman unshare`).
 *   **Network**: **Vampire Control** live (`scripts/vampire_control.sh`) to manage background network audits.
 

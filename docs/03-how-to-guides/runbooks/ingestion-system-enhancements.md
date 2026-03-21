@@ -97,7 +97,7 @@ class EnterpriseIngestionEngine:
 
     Hardware Optimizations:
     - CPU cores: 6 (75% utilization of Ryzen 7 5700U)
-    - Memory limit: 12GB (4GB reserved for system)
+    - Memory limit: 16GB (4GB reserved for system)
     - Batch size: 50 (CPU-optimized smaller batches)
     - Concurrent batches: 3 (prevent system overload)
 
@@ -165,7 +165,7 @@ max_concurrent_batches = 3 # Prevent system saturation
 ```
 
 ### Memory Management
-- **Working Memory:** 12GB limit for ingestion processes
+- **Working Memory:** 16GB limit for ingestion processes
 - **System Reserve:** 4GB for OS and other services
 - **Batch Processing:** Smaller batches to reduce memory pressure
 - **Cleanup:** Aggressive memory cleanup between operations
@@ -343,7 +343,7 @@ print(f"Authority: {enhanced.scholarly.scholarly_rating:.2f}")
 - **Scholarly Enhancement:** 40-60 items/minute (CPU intensive)
 
 ### Memory Usage
-- **Peak Usage:** 8-12GB during large batch processing
+- **Peak Usage:** 8-16GB during large batch processing
 - **Average Usage:** 4-6GB for typical operations
 - **System Reserve:** 4GB maintained for OS stability
 
@@ -398,7 +398,7 @@ python-magic==0.4.27    # File type detection for diverse content
 - ✅ **Knowledge Base Construction:** Expert profile generation
 
 ### Performance Validation
-- ✅ **Memory Limits:** 12GB working memory constraint respected
+- ✅ **Memory Limits:** 16GB working memory constraint respected
 - ✅ **CPU Utilization:** 6-core processing limit maintained
 - ✅ **Concurrent Operations:** Maximum 3 simultaneous batches
 - ✅ **Error Recovery:** Circuit breaker and fallback mechanisms
@@ -451,7 +451,7 @@ The system is production-ready and extensible for future domain additions and pr
 ## References
 
 - **Hardware Specs:** AMD Ryzen 7 5700U (Zen 2, 8C/16T, 16GB DDR4)
-- **Memory Constraints:** 12GB working memory, 4GB system reserve
+- **Memory Constraints:** 16GB working memory, 4GB system reserve
 - **CPU Optimization:** 6 cores active (75% utilization target)
 - **Domain Configurations:** 8 domains with specialized processing rules
 - **Quality Thresholds:** Domain-specific authority and quality requirements

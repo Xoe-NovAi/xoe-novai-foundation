@@ -33,7 +33,7 @@ Mount Point                              Size    Used   Free   Status
 ───────────────────────────────────────────────────────────────────────
 / (root, ext4, NVMe SSD)                 117GB   109GB   8GB   🔴 CRITICAL (93%)
 /media/arcana-novai/omega_library        110GB   45GB    65GB  ✅ Healthy (40%)
-/media/arcana-novai/omega_vault          16GB    12GB    4GB   ⚠️ Warning (75%)
+/media/arcana-novai/omega_vault          16GB    16GB    4GB   ⚠️ Warning (75%)
 ───────────────────────────────────────────────────────────────────────
 TOTAL                                    244GB   166GB   78GB
 ```

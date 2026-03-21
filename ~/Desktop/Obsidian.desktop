@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Obsidian
+Comment=Launch Obsidian with your vault
+Exec=/home/arcana-novai/Documents/Xoe-NovAi/local-machine-apps/Obsidian-1.12.4.AppImage --no-sandbox --folder /home/arcana-novai/Documents/Xoe-NovAi/local-machine-apps
+Icon=obsidian
+Terminal=false
+Type=Application
+Categories=Office;Productivity;
+StartupWMClass=Obsidian

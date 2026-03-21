@@ -24,7 +24,6 @@ ascii-colors==0.11.15
     # via pipmaster
 attrs==25.4.0
     # via aiohttp
-bcrypt==5.0.0
     # via -r requirements-curation_worker.in
 beautifulsoup4==4.14.3
     # via -r requirements-curation_worker.in
@@ -234,3 +233,9 @@ xlsxwriter==3.2.9
 yarl==1.23.0
     # via aiohttp
 llama-cpp-python==0.3.16
+passlib==1.7.4
+PyJWT==2.11.0
+sqlalchemy==2.0.25
+psycopg2-binary==2.9.9
+bcrypt==4.1.2
+langchain-qdrant==0.1.0

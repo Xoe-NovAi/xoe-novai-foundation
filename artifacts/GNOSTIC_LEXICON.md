@@ -36,3 +36,13 @@ The tracking of token usage, cache efficiency, and phronetic ROI. [AP:scripts/gn
 
 ### Gnostic-SSE
 Server-Sent Events streaming of high-density AST fragments for real-time agent hydration.
+
+### AMR (Autonomous Marathon Run)
+A multi-hour, headless execution mode designed for continuous system evolution and hardening without user intervention.
+
+### SaR (Strategy and Roadmap)
+A high-density, iteratively refined implementation plan that serves as the ground truth for an AMR.
+
+### SCC (Seeded Compress)
+A strategic context compression technique where critical gnosis is "seeded" into a new session to bypass token limits while maintaining strategic momentum.
+

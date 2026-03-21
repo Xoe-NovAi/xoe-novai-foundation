@@ -90,7 +90,6 @@ frozenlist==1.8.0
 fsspec==2026.1.0
     # via huggingface-hub
 greenlet==3.3.1
-    # via sqlalchemy
 griffe==1.15.0
     # via -r requirements-api.in
 h11==0.16.0
@@ -327,7 +326,6 @@ soupsieve==2.8.1
     # via
     #   -r requirements-api.in
     #   beautifulsoup4
-sqlalchemy==2.0.46
     # via
     #   langchain-classic
     #   langchain-community
@@ -370,7 +368,6 @@ typing-extensions==4.15.0
     #   opentelemetry-sdk
     #   pydantic
     #   pydantic-core
-    #   sqlalchemy
     #   typer-slim
     #   typing-inspect
     #   typing-inspection
@@ -414,3 +411,11 @@ zstandard==0.25.0
 # setuptools
 dnspython==2.7.0
 llama-cpp-python==0.3.16
+passlib==1.7.4
+psycopg2-binary==2.9.9
+bcrypt==4.1.2
+PyJWT==2.11.0
+sqlalchemy==2.0.25
+psycopg2-binary==2.9.9
+bcrypt==4.1.2
+langchain-qdrant==0.1.0

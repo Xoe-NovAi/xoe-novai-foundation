@@ -11,7 +11,7 @@
 
 This document outlines a comprehensive memory management system for the XNAi Foundation, designed for a system with:
 - **Physical RAM**: ~6.6GB usable (8GB stick + iGPU sharing)
-- **zRAM Swap**: 12GB (zstd compression)
+- **zRAM Swap**: 16GB (zstd compression)
 - **Total Effective Memory**: ~18GB
 
 The memory crisis on 2026-02-27 demonstrated the need for proactive memory monitoring and automated remediation.

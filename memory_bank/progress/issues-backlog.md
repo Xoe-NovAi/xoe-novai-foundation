@@ -28,7 +28,7 @@ version: "1.0"
 - **Status**: Monitoring - Phase 5 profiling scheduled
 
 ### 3. zRAM Optimization Needed
-- **Current**: 8GB physical RAM + 12GB zRAM configured
+- **Current**: 8GB physical RAM + 16GB zRAM configured
 - **Issue**: OOM errors when VS Code + stack running simultaneously
 - **Status**: Phase 5 design created, ready for testing
 - **Action**: Kernel tuning (vm.swappiness=180), stress testing

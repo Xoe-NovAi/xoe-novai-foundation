@@ -18,11 +18,11 @@
 ---
 
 ## 📍 2. Infrastructure: zRAM & Swap Visibility (OPUS Alignment)
-**Goal**: Restore the 12GB zRAM configuration and implement granular visibility to prevent OOM.
+**Goal**: Restore the 16GB zRAM configuration and implement granular visibility to prevent OOM.
 
 ### 🛠️ Remediation Steps
 - **zRAM Restoration (4GB Fix)**:
-    - The user reports a "missing 4GB zRAM swap." Audit indicates a 12GB target. I will aim for the **12GB ZRAM** (as per Audit Task C2) but ensure it's partitioned correctly to provide the "missing 4GB" the user expects.
+    - The user reports a "missing 4GB zRAM swap." Audit indicates a 16GB target. I will aim for the **16GB ZRAM** (as per Audit Task C2) but ensure it's partitioned correctly to provide the "missing 4GB" the user expects.
     - **Configuration**: Use `zramctl` to ensure `/dev/zram0` is initialized with `zstd` compression and the correct `max-device-size`.
 - **Visibility & Swap Stats**:
     - Create `scripts/monitor_swap.py`: This script will parse `/proc/swaps` and `/sys/block/zram0/` (total_bytes, comp_data_size, mem_used_total) to provide a real-time "Compression Ratio" metric.
@@ -64,7 +64,7 @@
 ## 🛠️ Implementation Phasing
 
 ### Phase A: Infrastructure & Diagnostics
-- [ ] Initialize/Fix zRAM to 12GB (ensuring the missing 4GB is recovered).
+- [ ] Initialize/Fix zRAM to 16GB (ensuring the missing 4GB is recovered).
 - [ ] Deploy `monitor_swap.py` and verify metrics in Grafana.
 - [ ] Apply Docker Compose memory limit reductions (Task C2).
 
@@ -81,6 +81,6 @@
 ---
 
 ## 🧪 Verification
-- **Swap**: `zramctl` shows 12GB capacity; `free -h` shows correct swap space.
+- **Swap**: `zramctl` shows 16GB capacity; `free -h` shows correct swap space.
 - **Metrics**: Grafana "Omega Dashboard" shows Gemini token consumption.
 - **Resilience**: Librarian handles simulated session bloat without OOM.

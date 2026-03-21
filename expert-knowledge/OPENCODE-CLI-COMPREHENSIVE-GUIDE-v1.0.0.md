@@ -434,7 +434,7 @@ rm ~/.config/opencode/antigravity-accounts.json && opencode auth login
 #### Progressive Memory Growth
 - **Symptom**: OpenCode memory usage grows from ~500MB to 2GB+ over extended sessions
 - **Cause**: Session history, tool outputs, and context accumulation not fully released
-- **Impact**: Can cause system-wide OOM on memory-constrained systems (6.6GB RAM + 12GB zRAM)
+- **Impact**: Can cause system-wide OOM on memory-constrained systems (6.6GB RAM + 16GB zRAM)
 - **Mitigation**:
   - Restart OpenCode periodically (every 2-3 hours of heavy use)
   - Clear session history: `rm -rf ~/.local/share/opencode/storage/session/*`
@@ -457,7 +457,7 @@ rm ~/.config/opencode/antigravity-accounts.json && opencode auth login
 
 ### ⚠️ CRITICAL: Never-Ending Memory Leak (2026-02-27)
 - **Symptom**: OpenCode progressively fills BOTH RAM AND zRAM swap until system-wide OOM
-- **Incident**: Filled entire 12GB zRAM drive - caused complete system OOM
+- **Incident**: Filled entire 16GB zRAM drive - caused complete system OOM
 - **Impact**: This is a progressive leak that WILL eventually consume all available memory regardless of swap size
 - **Solution**: MUST restart OpenCode before it fills available resources (every 2-3 hours of heavy use)
 - **See Also**: `docs/reference/IDE-CLI-KNOWN-ISSUES.md`

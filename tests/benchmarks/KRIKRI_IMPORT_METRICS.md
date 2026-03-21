@@ -1,7 +1,7 @@
 # 📊 Krikri-8B Import Metrics (Crucible Cycle 1)
 
 **Date**: 2026-03-07
-**Hardware**: Ryzen 5700U | 8GB RAM | 12GB zRAM
+**Hardware**: Ryzen 5700U | 8GB RAM | 16GB zRAM
 **Engine**: Ollama
 
 ## 📈 Import Telemetry

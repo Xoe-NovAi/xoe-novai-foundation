@@ -1,4 +1,38 @@
 {
+  "general": {
+    "plan": {
+      "directory": "memory_bank/plans/"
+    }
+  },
+  "model": {
+    "maxSessionTurns": 2000,
+    "summarizeToolOutput": {
+      "run_shell_command": {
+        "tokenBudget": 4000
+      }
+    }
+  },
+  "tools": {
+    "truncateToolOutputThreshold": 10000
+  },
+  "agents": {
+    "overrides": {
+      "generalist": {
+        "max_turns": 200
+      },
+      "codebase_investigator": {
+        "enabled": true,
+        "runConfig": {
+          "maxTurns": 50
+        }
+      }
+    }
+  },
+  "experimental": {
+    "toolOutputMasking": {
+      "enabled": true
+    }
+  },
   "mcpServers": {
     "memory-bank": {
       "command": "/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/.venv_mcp/bin/python3",

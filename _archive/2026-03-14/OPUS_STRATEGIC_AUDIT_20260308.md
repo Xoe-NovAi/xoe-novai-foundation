@@ -118,7 +118,7 @@ if self.redis is None:
 | Open WebUI | 1GB |
 | **TOTAL** | **~18.8GB** |
 
-The host has **6.6GB RAM + 12GB ZRAM = 18.6GB total**, but ZRAM is compressed swap, not RAM. Running all 14 services simultaneously will trigger catastrophic OOM kills.
+The host has **6.6GB RAM + 16GB ZRAM = 18.6GB total**, but ZRAM is compressed swap, not RAM. Running all 14 services simultaneously will trigger catastrophic OOM kills.
 
 **Fix**: Implement a tiered startup strategy in a `Makefile` or script:
 ```makefile
@@ -506,7 +506,7 @@ Comment the `AgentBusClient` import as Phase 4.0 planned.
 
 ```mermaid
 graph TB
-    subgraph "Host: 6.6GB RAM + 12GB ZRAM"
+    subgraph "Host: 6.6GB RAM + 16GB ZRAM"
         subgraph "Core Services ~2.8GB"
             Redis["🟢 Redis<br/>512MB limit"]
             Qdrant["🟢 Qdrant<br/>1GB limit"]

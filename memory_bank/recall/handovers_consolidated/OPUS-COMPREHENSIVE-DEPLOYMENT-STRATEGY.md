@@ -232,7 +232,7 @@ Memory Budget:
 ├─ Cache: 1GB (recent results, hot queries)
 ├─ Buffers: 1-2GB (task queues, intermediate results)
 └─ System: 1GB (OS and utilities)
-Total: 8-9GB (leaving 1-2GB buffer on 12GB system)
+Total: 8-9GB (leaving 1-2GB buffer on 16GB system)
 
 GPU Utilization:
 ├─ Idle (<10% usage): Background tasks

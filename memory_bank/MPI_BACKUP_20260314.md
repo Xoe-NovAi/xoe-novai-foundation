@@ -25,7 +25,7 @@ hash_sha256: 9b0943e314e70864d39efd7dfe01f56340622d3142c4cb04f40a901c6d79d6c4
 | **Enterprise IAM** | ✅ ACTIVE | Scoped API Keys (IA1) + Ed25519 Signatures (IA2). | `app/XNAi_rag_app/core/iam_service.py` |
 | **Secrets Rotation** | ✅ COMPLETE | Purged `changeme123` & `vikunja123`; implemented random base64 secrets. | `docs/protocols/SECRETS_ENFORCEMENT_PROTOCOL.md` |
 | **Memory Bank MCP** | ✅ ACTIVE | Refactored for **SSE/FastAPI** (Port 8000). Watchdog active. | `mcp-servers/memory-bank-mcp/server.py` |
-| **Metropolis Caps**| ✅ ACTIVE | Enforced 6.6GB RAM + 12GB zRAM budget across stack. | `infra/docker/docker-compose.yml` |
+| **Metropolis Caps**| ✅ ACTIVE | Enforced 6.6GB RAM + 16GB zRAM budget across stack. | `infra/docker/docker-compose.yml` |
 | **The Librarian** | ✅ LIVE | Recursive summarization & archival service. | `app/XNAi_rag_app/workers/librarian.py` |
 
 ---
@@ -73,7 +73,7 @@ hash_sha256: 9b0943e314e70864d39efd7dfe01f56340622d3142c4cb04f40a901c6d79d6c4
 | **DG-001** | **Compose Drift** | 🟡 MEDIUM | Multiple versions: `.yml`, `-noninit.yml`, `.production.yml`. Needs consolidation. |
 | **DG-002** | **Docker Drift** | 🟡 LOW | Multiple Dockerfiles for same services. Needs standardization. |
 | **DG-003** | **Archival Sync** | 🔴 HIGH | Critical code (`rate_limit_handler`) prematurely archived. Fixed in SESS-01. |
-| **DG-004** | **zRAM Capacity Gap** | 🟢 LOW | Fixed: Restored 12GB total swap capacity (Zen 2 Optimized). |
+| **DG-004** | **zRAM Capacity Gap** | 🟢 LOW | Fixed: Restored 16GB total swap capacity (Zen 2 Optimized). |
 
 ---
 

@@ -39,7 +39,7 @@
 **Goal**: Load massive vector indexes without consuming RAM.
 
 ### **The "Zero-Copy" Protocol**
-*   **Problem**: Loading 1GB of embeddings into RAM kills the 12GB limit.
+*   **Problem**: Loading 1GB of embeddings into RAM kills the 16GB limit.
 *   **Solution**: **Memory-Mapped Files (`mmap`)**.
     *   **Qdrant**: Already supports `mmap` storage backend. We must *enforce* it in `config.toml`.
     *   **Implementation**: Ensure `storage_type: mmap` is set for all Qdrant collections in `infra/docker/docker-compose.yml` (environment variables).

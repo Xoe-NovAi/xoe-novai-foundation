@@ -134,12 +134,12 @@ rag_api_breaker = CircuitBreakerProxy("rag_api")
 redis_breaker = CircuitBreakerProxy("redis_cache")
 voice_processing_breaker = CircuitBreakerProxy("voice_processing")
 
-async def initialize_circuit_breakers(redis_url: str):
+async def initialize_circuit_breakers(redis_url: Optional[str] = None, host: str = "redis", port: int = 6379, password: Optional[str] = None):
     """Initialize the global circuit breaker registry."""
     global _registry, registry
     if _registry is None:
         try:
-            _registry = await create_circuit_breaker_registry(redis_url=redis_url)
+            _registry = await create_circuit_breaker_registry(redis_url=redis_url, host=host, port=port, password=password)
             registry = _registry
             logger.info("Circuit breaker registry initialized")
             
@@ -199,9 +199,9 @@ async def initialize_circuit_breakers(redis_url: str):
             raise
     return _registry
 
-async def initialize_voice_circuit_breakers(redis_url: str):
+async def initialize_voice_circuit_breakers(redis_url: Optional[str] = None, host: str = "redis", port: int = 6379, password: Optional[str] = None):
     """Initialize circuit breakers specifically for voice services."""
-    return await initialize_circuit_breakers(redis_url)
+    return await initialize_circuit_breakers(redis_url=redis_url, host=host, port=port, password=password)
 
 async def get_circuit_breaker_status() -> Dict[str, Any]:
     """

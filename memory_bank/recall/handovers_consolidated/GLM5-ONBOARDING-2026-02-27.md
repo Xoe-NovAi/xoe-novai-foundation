@@ -35,7 +35,7 @@ The XNAi Foundation is a **sovereign AI development stack** - a local-first, pri
 
 ### Critical Issue: Memory Crisis
 
-**2026-02-27**: OpenCode caused system-wide OOM by filling entire 12GB zRAM. Details:
+**2026-02-27**: OpenCode caused system-wide OOM by filling entire 16GB zRAM. Details:
 - OpenCode has a **never-ending memory leak**
 - Progressively fills RAM AND zRAM until OOM
 - Must restart OpenCode every 2-3 hours
@@ -180,7 +180,7 @@ The knowledge synthesis system that transforms research into documentation and e
 **What Happened**:
 1. OpenCode memory grew from 500MB → 1.9GB over 3 hours
 2. System RAM hit 97% (6.4GB/6.6GB)
-3. zRAM hit 94% (11.3GB/12GB) - **ENTIRE SWAP FILLED**
+3. zRAM hit 94% (11.3GB/16GB) - **ENTIRE SWAP FILLED**
 4. System OOM - all processes killed
 
 **Root Cause**: Unknown memory leak in OpenCode session/context management

@@ -3757,7 +3757,7 @@
       "headings": [
         "Hardware Mastery: Ryzen 5700U & Vulkan 1.4",
         "1. Thermal & Power (25W cTDP)",
-        "2. Memory Orchestration (8GB Physical / 12GB ZRAM)",
+        "2. Memory Orchestration (8GB Physical / 16GB ZRAM)",
         "3. Vulkan 1.4 Acceleration",
         "4. CPU Thread Pinning"
       ],

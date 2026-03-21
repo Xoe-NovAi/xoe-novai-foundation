@@ -20,7 +20,7 @@
 - **OS**: Linux (Ubuntu/Pop!_OS/Debian based)
 - **Container Engine**: Podman (using `podman-compose`)
 - **Primary Architecture**: Streaming-first, local-only, modular RAG stack.
-- **Hardware Target**: CPU-optimized (AMD Ryzen 7 5700U / Zen2), 12GB RAM total limit (6GB allocated to stack).
+- **Hardware Target**: CPU-optimized (AMD Ryzen 7 5700U / Zen2), 16GB RAM total limit (6GB allocated to stack).
 
 ---
 
@@ -68,7 +68,7 @@ The stack operates as a hardened mesh of 9 core services defined in `infra/docke
 
 ---
 # FILE 3: PODMAN_PYTHON_OPTIMIZATION.md
-# 🐍 Podman & Python Optimization (The 12GB Mandate)
+# 🐍 Podman & Python Optimization (The 16GB Mandate)
 
 ## 1. Python Hardening
 -   **Dockerfile**: Use `python:3.12-slim`.

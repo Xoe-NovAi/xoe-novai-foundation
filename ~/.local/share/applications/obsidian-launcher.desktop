@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Obsidian Launcher
+Comment=Launch Obsidian with AppArmor workaround
+Exec=/home/arcana-novai/Documents/Xoe-NovAi/omega-stack/obsidian-launcher.sh
+Icon=obsidian
+Terminal=false
+Type=Application
+Categories=Office;Productivity;
+StartupWMClass=Obsidian

@@ -9,8 +9,8 @@
 
 ## 🏛️ Current State: THE RIGID FOUNDATION
 We have successfully implemented the **P0 Hardening Phase**. The stack is now stable for ingestion:
-1.  **Memory**: 12GB Dual-Tier zRAM (4GB lz4 + 8GB zstd) active.
-2.  **Permissions**: 4-Layer ACL model implemented; `storage/` redirected to `omega_library` (112GB partition).
+1.  **Memory**: 16GB Dual-Tier zRAM (4GB lz4 + 8GB zstd) active.
+2.  **Permissions**: 4-Layer ACL model implemented; `storage/` redirected to `omega_library` (116GB partition).
 3.  **Sovereignty**: Lilith-Maat Guardrails integrated into `app/`.
 4.  **Storage**: Root partition freed (now 11G Avail).
 

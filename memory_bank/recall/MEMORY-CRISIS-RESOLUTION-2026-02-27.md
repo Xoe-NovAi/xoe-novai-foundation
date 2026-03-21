@@ -10,7 +10,7 @@
 
 The XNAi Foundation system is experiencing a **critical memory crisis**:
 - Physical RAM: 85% full (15% / ~2.4GB remaining on 16GB system)
-- zRAM Swap: **11.3GB in use** (designed for ~12GB capacity)
+- zRAM Swap: **11.3GB in use** (designed for ~16GB capacity)
 - OpenCode alone: 2GB RAM usage
 
 This document captures all discovered issues, planned fixes, and prioritization for the memory crisis resolution.
@@ -78,7 +78,7 @@ This document captures all discovered issues, planned fixes, and prioritization 
 
 **Current State** (from btop):
 - Physical RAM: 6.4 GB / 6.6 GB (**97% full**)
-- zRAM Swap: **11.3 GB / 12 GB (94%)** ← OpenCode filled ENTIRE 12GB zRAM
+- zRAM Swap: **11.3 GB / 12 GB (94%)** ← OpenCode filled ENTIRE 16GB zRAM
 - OpenCode Process: **1.9 GB (27.5% of system RAM)**
 - Available: **218 MB**
 
@@ -124,12 +124,12 @@ From log analysis:
 ### zRAM Status
 
 From `xnai-zram-init.sh`:
-- Configured: **12GB** zRAM
+- Configured: **16GB** zRAM
 - Algorithm: **zstd** (good compression)
 - Priority: 100
 - Settings: `vm.swappiness=180`, `vm.page-cluster=0`
 
-**Current Usage**: 11.3GB / 12GB = **94%** - CRITICAL
+**Current Usage**: 11.3GB / 16GB = **94%** - CRITICAL
 
 ---
 

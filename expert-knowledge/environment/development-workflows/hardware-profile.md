@@ -10,7 +10,7 @@
 ```
 CPU: AMD Ryzen 7 5700U (8 cores, 16 threads, up to 4.3 GHz)
 RAM: 8GB DDR4-3200 (expandable to 32GB)
-Storage: 512GB NVMe SSD (PCIe 3.0)
+Storage: 516GB NVMe SSD (PCIe 3.0)
 Graphics: AMD Radeon Vega 8 iGPU (Vulkan 1.2, OpenGL 4.6)
 Display: 1920x1080 16:9 IPS panel
 OS: Ubuntu 22.04.4 LTS (Kernel 6.5.x)

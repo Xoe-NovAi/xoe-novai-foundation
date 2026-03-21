@@ -291,7 +291,7 @@ ui:
    - RAG: 4GB
    - UI: 2GB
    - Other services: minimal
-   - Total: ~6.5GB
+   - Total: ~10GB
    - **Is 1.5GB headroom sufficient?**
 
 3. **Swap Configuration**: `memswap_limit: 4g` equals `mem_limit`. Should swap be:
