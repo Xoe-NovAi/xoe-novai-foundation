@@ -95,7 +95,7 @@ jobs:
           coverage json --output-file=coverage.json || true
 
       - name: Upload Coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         if: always()
         with:
           files: ./coverage.xml
