@@ -2,7 +2,7 @@
 ## The Nous Protocol: 16GB Sovereign Orchestration & Multimodal Senses
 
 **Created**: 2026-03-19  
-**Version**: 2.5 (SESS-27.7 Ratified - Gemini 3 Flash Optimized)  
+**Version**: 2.6 (SESS-27.7 Ratified - Gemini 3 Flash Optimized)  
 **Target Model**: Claude (Haiku/Sonnet/Opus)  
 **Scope**: Xoe-NovAi Omega-Stack (16GB RAM, 2,895 directories, 8 facets)
 
