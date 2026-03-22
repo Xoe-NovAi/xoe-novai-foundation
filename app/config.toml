@@ -1,21 +1,21 @@
 # ============================================================================
-# Xoe-NovAi Phase 1 v0.1.4-stable Application Configuration
+# Xoe-NovAi Phase 1 v1.0.0-beta Application Configuration
 # ============================================================================
 # Purpose: Centralized application-level settings (complements .env runtime)
 # Usage: Loaded by config_loader.py via toml.load() at startup
 # Validation: python3 -c "import toml; toml.load('config.toml')"
 # Guide Reference: Section 3.1 (config.toml Structure - 23 sections)
-# Last Updated: 2025-11-08
-# Sections: 23 total (v0.1.4-stable)
+# Last Updated: 2026-03-21
+# Sections: 23 total (v1.0.0-beta)
 # ============================================================================
 
 # ============================================================================
 # [metadata] - Stack Identity
 # ============================================================================
 [metadata]
-stack_version = "v0.1.0-alpha"
-release_date = "2026-01-27"
-codename = "Sovereign Foundation"
+stack_version = "v1.0.0-beta"
+release_date = "2026-03-21"
+codename = "Gnostic Vault"
 description = "CPU-optimized local AI RAG stack with CrawlModule v0.1.7"
 architecture = "streaming-first, zero-telemetry, modular, library-curation"
 

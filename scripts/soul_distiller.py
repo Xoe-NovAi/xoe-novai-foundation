@@ -9,8 +9,8 @@ import time
 from pathlib import Path
 from datetime import datetime
 
-SOUL_PATH = Path("/app/memory_bank/SOUL_PATHS.yaml")
-CHRONICLE_DIR = Path("/app/memory_bank/chronicles")
+SOUL_PATH = Path("/app/memory_bank/mission_control/SOUL_PATHS.yaml")
+CHRONICLE_DIR = Path("/app/memory_bank/mission_control/chronicles")
 
 async def distill_cycle(session_id: str, turn_count: int, context_summary: str):
     """
