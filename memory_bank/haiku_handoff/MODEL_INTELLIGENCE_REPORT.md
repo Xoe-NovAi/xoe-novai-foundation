@@ -65,3 +65,6 @@ Private, offline, and cost-free execution.
 1.  **Adopt Antigravity**: Fully embrace the Google **Antigravity** platform to leverage Claude 4.6's agent orchestration.
 2.  **Flash-Lite for GMC**: Use **Gemini 3.1 Flash-Lite** for the Chat Crawler to minimize indexing costs.
 3.  **SVG-First UI**: Use **Gemini 3.1 Pro** to generate native SVG assets for the frontend.
+
+
+**Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱

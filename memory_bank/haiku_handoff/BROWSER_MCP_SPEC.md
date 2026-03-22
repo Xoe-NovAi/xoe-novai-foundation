@@ -23,3 +23,6 @@ The **Browser MCP** allows agents to browse the web safely and efficiently using
 1.  **Containerize**: Create `infra/docker/Dockerfile.browser` with Lightpanda/Playwright dependencies.
 2.  **MCP Server**: Create `mcp-servers/xnai-browser/server.py`.
 3.  **Agent Integration**: Add to `OMEGA_TOOLS.yaml` for Research Agents.
+
+
+**Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱

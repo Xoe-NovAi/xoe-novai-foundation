@@ -38,3 +38,6 @@ def clean_content(content: str) -> str:
 ## 3. Implementation
 -   **Script**: `scripts/gmc_worker.py`.
 -   **Service**: Runs as a sidecar to `xnai_memory_bank_mcp`.
+
+
+**Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱

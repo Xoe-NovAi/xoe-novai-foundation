@@ -75,3 +75,6 @@
 -   **Action**:
     1.  redirect 'plans' from `/tmp` to `.gemini/plans`.
     2.  Review `.gemini/settings.json` for masking and agent limits.
+
+
+**Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱

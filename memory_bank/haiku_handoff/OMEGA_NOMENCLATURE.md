@@ -32,3 +32,6 @@ We utilize Ancient Greek concepts to define the components of the Unified Mind M
 -   **Gnosis**: Compressed knowledge seeds.
 -   **Anamnesis**: The act of recalling/retrieving knowledge from the Vector Store.
 -   **Techne**: The specific skill or tool used to execute a task.
+
+
+**Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱

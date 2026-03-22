@@ -76,3 +76,6 @@
 
 ---
 **Prepared by**: Jem (The Archon)
+
+
+**Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱

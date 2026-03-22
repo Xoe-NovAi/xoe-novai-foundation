@@ -27,3 +27,6 @@ The **Chaos Agent** is a specialized background worker that intentionally introd
 ## 4. Implementation
 -   **Script**: `scripts/chaos_monkey.py`.
 -   **Schedule**: Controlled via **Oikos Mastermind** (not cron), triggered during "War Games" sessions.
+
+
+**Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱

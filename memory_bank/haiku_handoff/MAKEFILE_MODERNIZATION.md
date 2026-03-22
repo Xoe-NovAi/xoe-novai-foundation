@@ -54,3 +54,6 @@ Remove `Makefile` once all commands are migrated.
 1.  Install `just`.
 2.  Create the initial `Justfile`.
 3.  Move complex logic (like "build-tracking") out of Make and into `scripts/setup/`.
+
+
+**Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱
