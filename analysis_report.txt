@@ -1,0 +1,94 @@
+Analyzing branches against 'develop'...
+Develop Root: 79c880240300b60394f7983f5deda52469b91fd1
+Develop File Count: 55281
+------------------------------
+Branch: remotes/origin/audit/service-orchestrator-lazy-init
+  Root Commit: 24efb58f67443d3fb558199ce20514819cae88bb
+  STATUS: Unrelated History (Different Root)
+  Total Files: 675
+  Unique Files (not in develop): 287
+  Top 10 Unique Files:
+    code-reviews/RESEARCH_REQUEST_HRAG_KUZU_v1.0.md
+    projects/gemini-cli-integration/prompts/mind-model-prompts.md
+    projects/grok-onboarding-deliverables/forge-response-to-nova-final.md
+    .build_cache/wheelhouse.sha256
+    memory_bank/gemini.md
+    docs/06-development-log/tmpfs-infrastructure-recovery.md
+    docs/06-development-log/Suppl_Grok_Research_Logging_OpenTelemetry_Jaeger.md
+    app/XNAi_rag_app/models/domain.py
+    docs/06-development-log/strategic_implementation_plan_20260126.md
+    code-reviews/FORGE_RESEARCH_PHASE_2_20260123.md
+    ...
+------------------------------
+Branch: remotes/origin/feature/multi-account-hardening
+  Root Commit: de27c786c6fe7051c14ea1771607630c4d94ee68
+  STATUS: Unrelated History (Different Root)
+  Total Files: 2814
+  Unique Files (not in develop): 1298
+  Top 10 Unique Files:
+    internal_docs/07-archives/backups/docs-merge-to-main/archive/historical/PIPER_ONNX_IMPLEMENTATION_SUMMARY.md
+    internal_docs/01-strategic-planning/PHASE-EXECUTION-INDEXES/16-PHASE-16-INDEX.md
+    monitoring/grafana/dashboards/openpipe-dashboard.json
+    gemini-conversation-1771310721241.json
+    .github/workflows/semantic-release.yml
+    .github/workflows/python-3.12-smoke.yml
+    internal_docs/communication_hub/outbox/copilot_response_1771124618.json
+    internal_docs/06-team-knowledge/onboarding/TEMPLATES/PROVISION_RUNNER_TEMPLATE.sh
+    internal_docs/communication_hub/state/cline-cli.json
+    internal_docs/01-strategic-planning/session-state-archive/rewind-snapshots/backups/a8c54151103dc908-1771249007923
+    ...
+------------------------------
+Branch: remotes/origin/phase5a/account-naming-onboarding
+  Root Commit: de27c786c6fe7051c14ea1771607630c4d94ee68
+  STATUS: Unrelated History (Different Root)
+  Total Files: 1183
+  Unique Files (not in develop): 722
+  Top 10 Unique Files:
+    internal_docs/repo-backups/docs-merge-to-main/howto/voice-setup.md
+    internal_docs/code-reviews/FORGE_EXTENDED_STRATEGY_AND_RESEARCH_20260123.md
+    internal_docs/repo-backups/docs-merge-to-main/howto/qdrant-migration.md
+    xoe-novai-sync/_meta/sync-protocols-v1.5.0.md
+    internal_docs/code-reviews/Gemini Code Review Interval 17_20 - Deployment_20260123.md
+    _meta/CLAUDE-SONNET-RESEARCH-REQUEST-PHASE-5-7.md
+    docs/02-tutorials/gemini-mastery/xnai-cicd-integration-v3.md
+    site/03-reference/historical-manuals/week2-impl-manual.txtEE
+    memory_bank/mkdocs-commands.md
+    site/assets/stylesheets/palette.ab4e12ef.min.css.map
+    ...
+------------------------------
+Branch: remotes/origin/phase5a/rollback-automation
+  Root Commit: de27c786c6fe7051c14ea1771607630c4d94ee68
+  STATUS: Unrelated History (Different Root)
+  Total Files: 1176
+  Unique Files (not in develop): 721
+  Top 10 Unique Files:
+    internal_docs/repo-backups/docs-merge-to-main/howto/voice-setup.md
+    internal_docs/code-reviews/FORGE_EXTENDED_STRATEGY_AND_RESEARCH_20260123.md
+    internal_docs/repo-backups/docs-merge-to-main/howto/qdrant-migration.md
+    xoe-novai-sync/_meta/sync-protocols-v1.5.0.md
+    internal_docs/code-reviews/Gemini Code Review Interval 17_20 - Deployment_20260123.md
+    _meta/CLAUDE-SONNET-RESEARCH-REQUEST-PHASE-5-7.md
+    docs/02-tutorials/gemini-mastery/xnai-cicd-integration-v3.md
+    site/03-reference/historical-manuals/week2-impl-manual.txtEE
+    memory_bank/mkdocs-commands.md
+    site/assets/stylesheets/palette.ab4e12ef.min.css.map
+    ...
+------------------------------
+Branch: remotes/origin/xnai-agent-bus/harden-infra
+  Root Commit: de27c786c6fe7051c14ea1771607630c4d94ee68
+  STATUS: Unrelated History (Different Root)
+  Total Files: 2459
+  Unique Files (not in develop): 1194
+  Top 10 Unique Files:
+    internal_docs/07-archives/backups/docs-merge-to-main/implementation/quick-reference-checklist.md
+    internal_docs/communication_hub/state/xnaitest-agent.json
+    internal_docs/07-archives/backups/docs-merge-to-main/archive/historical/PIPER_ONNX_IMPLEMENTATION_SUMMARY.md
+    .github/copilot-review-protocol.md
+    internal_docs/01-strategic-planning/PHASE-4.2-SCOUTING-REPORT.md
+    .clinerules/02-memory-bank.md
+    xoe-novai-sync/_meta/sync-protocols-v1.5.0.md
+    internal_docs/01-strategic-planning/session-state-archive/rewind-snapshots/index.json
+    internal_docs/01-strategic-planning/sessions/02_16_2026_phase5_operationalization/PLAN-MODE-FINAL-UPDATE-KRIKRI-DIATAXIS-STACK.md
+    docs/02-tutorials/gemini-mastery/xnai-cicd-integration-v3.md
+    ...
+------------------------------

@@ -1,33 +1,125 @@
-# .opencodeignore - Prevent OpenCode from indexing large/irrelevant directories
-# Extends .gitignore for OOM prevention
+# Terraform
+.terraform/
+*.tfstate*
+*.tfvars
 
-# Version Control & Cache
-.git/
-.pytest_cache/
-.ruff_cache/
-.cache/
+# Credentials
+credentials.json
+gcp-credentials.json
+aws-credentials.json
+azure-credentials.json
+local.settings.json
+secrets/
+*secret*.yaml
+*secret*.yml
+*private_key*
+*private.key*
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*kubeconfig*
 
-# Node Modules
-node_modules/
-.opencode/node_modules/
+# Environment
+.env
+.env.*
+!/.env.example
 
-# Large Data & Archives
-data/
-artifacts/
-_archive/
-backups/
+# Local configs
+*local_env*
+app/config.toml
+
+# Ephemeral directories
+*ephemeral*
+
+# Logs
 logs/
-internal_docs/
+*.log
 
-# Models & Embeddings (Massive files)
-models/
-embeddings/
-
-# System Files
-/tmp/
-/tmp/xnai-instances/
-
-# Output Directories
-site/
+# Python
+.venv*/
+.venv_mcp/
+.venv_mcp_py312/
+__pycache__/
+*.py[cod]
+*$py.class
 dist/
 build/
+*.egg-info/
+.pytest_cache/
+
+# Node
+node_modules/
+.npm/
+*.lock
+
+# Other
+.server.pid
+.watcher.pid
+todos.db
+appimaged
+.DS_Store
+*.bak
+*.swp
+*~
+.idea/
+.vscode/
+.history/
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+.opencode/
+.ipynb_checkpoints/
+*.ipynb
+*.pyc
+
+# Project specific
+_archive/
+_meta/grok-context/
+.cli/
+.gemini/
+.git/
+.github/
+.logs/
+.opencode/
+.pytest_cache/
+.venv_mcp/
+.venv_mcp_py312/
+.vscode/
+app/
+ARCHIVE/
+artifacts/
+config/
+dashboard/
+data/
+docs/
+entities/
+entities_test/
+expert-knowledge/
+hooks/
+infra/
+knowledge/
+knowledge_bank/
+knowledge_base/
+knowledge_new/
+library/
+logs/
+mcp-servers/
+memory_bank/
+modularization/
+monitoring/
+orchestration/
+packages/
+plans/
+projects/
+requirements/
+research_env/
+scripts/
+secrets/
+setup/
+storage_backup/
+storage_new/
+tests/
+# Keep this file
+!.opencodeignore

@@ -10,7 +10,7 @@
 - **OS**: Linux (Ubuntu/Pop!_OS/Debian based)
 - **Container Engine**: Podman (using `podman-compose`)
 - **Primary Architecture**: Streaming-first, local-only, modular RAG stack.
-- **Hardware Target**: CPU-optimized (AMD Ryzen 7 5700U / Zen2), 16GB RAM total limit (6GB allocated to stack).
+- **Hardware Target**: CPU-optimized (AMD Ryzen 7 5700U / Zen2), 16GB RAM total limit (12GB Stack Cap).
 
 ---
 
@@ -99,7 +99,7 @@ The stack implements a hardened monitoring layer designed for offline, high-avai
 The `healthcheck.py` script (v0.1.4) monitors 8 critical subsystems with circuit breaker integration:
 1.  **LLM**: Verifies model path and context window loading.
 2.  **Embeddings**: Confirms vector generation availability.
-3.  **Memory**: Monitors the 6.0GB RAM gate (Gatekeeper).
+3.  **Memory**: Monitors the 10GB Operational Gate (Gatekeeper).
 4.  **Redis**: Validates Stream and Cache connectivity.
 5.  **Vectorstore**: Checks Qdrant collection health.
 6.  **Ryzen**: Verifies CPU thread-pinning and Zen2 optimizations.

@@ -44,7 +44,7 @@ This script is the **Source of Truth** for permissions. It applies:
 ## 5. Service-Specific Rules
 | Service | Internal UID | Host Strategy | Notes |
 | :--- | :--- | :--- | :--- |
-| **RAG API** | 1000 | `user: "1000:1000"` | Fixed in SESS-27.6. Direct access. |
+| **RAG API** | 1000 | `user: "1000:1000"` | Fixed in SESS-27.7. Direct access. |
 | **Redis** | 999 | ACL Mapped | Data dir needs `omega-permissions-heal.sh`. |
 | **Postgres** | 999 | ACL Mapped | Data dir needs `omega-permissions-heal.sh`. |
 | **Qdrant** | 1000 | `user: "1000:1000"` | Direct access. |

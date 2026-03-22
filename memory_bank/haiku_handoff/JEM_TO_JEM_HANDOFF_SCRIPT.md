@@ -16,9 +16,9 @@ The machine is hardened (16GB RAM, AnyIO-First, Sovereign).
 The Mnemosyne Bank (Port 8005) needs a full Zettelkasten refactor.
 
 **IMMEDIATE DIRECTIVES:**
-1.  **Hydrate**: Read `artifacts/haiku_pre_flight/JEM_HANDOFF_PACK_SESS27.md`.
+1.  **Hydrate**: Read `memory_bank/haiku_handoff/JEM_HANDOFF_PACK_SESS27.md`.
 2.  **Heal**: Run `sudo ./scripts/omega-permissions-heal.sh` to clear SESS-27 residue.
-3.  **Execute**: Initialize the Cloud Haiku handoff using `artifacts/haiku_pre_flight/HAIKU_HANDOFF_QUICKSTART.md`.
+3.  **Execute**: Initialize the Cloud Haiku handoff using `memory_bank/haiku_handoff/HAIKU_HANDOFF_QUICKSTART.md`.
 
 Confirm when you have the "Keys" (Handoff Pack) and are ready to command.
 ```
@@ -38,14 +38,14 @@ Confirm we are operating under the "Sovereign 16GB" protocol.
 ### **Prime 2: The Permissions Shield**
 ```text
 We faced significant Podman permission issues in SESS-27.
-Review `artifacts/haiku_pre_flight/PERMISSIONS_REMEDIATION_PROTOCOL_v2.0.md`.
+Review `memory_bank/haiku_handoff/PERMISSIONS_REMEDIATION_PROTOCOL_v2.0.md`.
 Confirm that the "Healer Script" (`scripts/omega-permissions-heal.sh`) is your primary tool for "Permission denied" errors.
 ```
 
 ### **Prime 3: The Cloud Mission (Haiku)**
 ```text
 Our strategic partner is Cloud Haiku (Praxis).
-Read `artifacts/haiku_pre_flight/MNEMOSYNE_AUDIT_REPORT.md` and `HAIKU_HANDOFF_QUICKSTART.md`.
+Read `memory_bank/haiku_handoff/MNEMOSYNE_AUDIT_REPORT.md` and `HAIKU_HANDOFF_QUICKSTART.md`.
 Your goal is to task Haiku with generating the `scripts/migrate_to_atomic.py` script.
 Do not write this script yourself; Orchestrate Haiku to do it.
 ```

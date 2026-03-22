@@ -23,6 +23,6 @@ These files are the **primary context** for Cloud Haiku.
 - **Infrastructure**: Hardened (16GB RAM / 10GB Gate).
 - **RAG API**: Port 8012 (Isolated).
 - **MB-MCP**: Port 8005 (Persistence Enabled).
-- **Git State**: `develop` @ `fdde2f3`.
+- **Git State**: `main` @ `4b7844d`.
 
 **Archon Signature**: `Jem-SESS27.7-Sovereign` 🔱

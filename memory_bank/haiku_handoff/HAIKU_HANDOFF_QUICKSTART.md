@@ -5,17 +5,17 @@
 
 ## 📂 STEP 1: PROJECT SETUP (GitHub)
 Connect the **Xoe-NovAi/xoe-novai-foundation** repository to your Cloud Claude project.
-- **Branch**: `develop`
-- **Commit**: `28bb092` (Final 16GB Calibration)
+- **Branch**: `main`
+- **Commit**: `4b7844d` (Final 16GB Calibration)
 
 ## 📂 STEP 2: SYSTEM PROMPT (Mandatory)
-Paste the contents of `artifacts/haiku_pre_flight/SYSTEM_PROMPT_v2.5.md` into your project's **System Prompt** settings. This ensures AnyIO compliance and 16GB RAM awareness.
+Paste the contents of `memory_bank/haiku_handoff/SYSTEM_PROMPT_v2.6.md` into your project's **System Prompt** settings. This ensures AnyIO compliance and 16GB RAM awareness.
 
 ## 📂 STEP 3: ARTIFACT INJECTION
 If not already synced via GitHub, ensure these files are uploaded to the project:
-1.  `artifacts/haiku_pre_flight/MANIFEST.md` (The Handoff Map).
-2.  `artifacts/haiku_pre_flight/MNEMOSYNE_AUDIT_REPORT.md` (The Mission).
-3.  `artifacts/haiku_pre_flight/OMEGA_CRITICAL_INSIGHTS.md` (Strategy).
+1.  `memory_bank/haiku_handoff/MANIFEST.md` (The Handoff Map).
+2.  `memory_bank/haiku_handoff/MNEMOSYNE_AUDIT_REPORT.md` (The Mission).
+3.  `memory_bank/haiku_handoff/OMEGA_CRITICAL_INSIGHTS.md` (Strategy).
 
 ## 🚀 STEP 4: THE INITIATION SPARK
 Paste this into the chat to begin the task:
@@ -31,7 +31,7 @@ Your Mission:
 3.  ENSURE data integrity and a clear rollback strategy.
 4.  PROVIDE executable Python 3.12 code using AnyIO for the migration.
 
-The Metropolis is synced to commit '28bb092'. Reference the 'MANIFEST.md' for your environment details."
+The Metropolis is synced to commit '4b7844d'. Reference the 'MANIFEST.md' for your environment details."
 ```
 
 ## ✅ VERIFICATION CHECKLIST

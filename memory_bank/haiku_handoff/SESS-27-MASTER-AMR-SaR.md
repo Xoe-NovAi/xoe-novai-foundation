@@ -64,7 +64,7 @@ memory_bank/
 
 **Evolution**:
 - Treat **Hardware Performance as first-class cognitive constraint**
-  - 6.6GB RAM + 16GB dual-tier zRAM (lz4 + zstd)
+  - 16GB Physical RAM + 8GB dual-tier zRAM (lz4 + zstd)
   - CPU-only optimization (Ryzen 5700U iGPU)
   - Token budget awareness (Phronesis Loop)
 
